@@ -151,36 +151,27 @@
     "touchTargets": ">=24px 全部；>=44px 主控件（§5.1）"
   },
   "verification": {
-    "acceptance": "scripts/acceptance.cjs",
-    "assertions": 53,
-    "result": "53/53",
-    "spotcheck": "scripts/spotcheck-6.cjs",
-    "spotcheckResult": "7/7",
-    "restyleCheck": "scripts/restyle-check.cjs",
-    "restyleCheckResult": "20/20",
+    "browser": "ego-browser (ego-lite) —— 按用户长期约定，所有浏览器操作只走 Ego",
+    "authoritative": "scripts/ego-acceptance.mjs + scripts/run-ego-acceptance.mjs",
+    "authoritativeResult": "53/53",
+    "assertionNamesMatchSource": true,
+    "projectSpecific": "scripts/ego-verify.mjs",
+    "projectSpecificResult": "40/40",
+    "sharedTool": "tools/ego-qa/run.mjs（本目录以 scripts/run-ego-qa.mjs 转调并补退出码）",
+    "sharedToolResult": "PASS (errors 0 / warnings 1)",
     "rawResults": [
+      "qa-ego-acceptance.json",
       "qa-ego-verify.json",
-      "qa-result.json",
-      "qa-spotcheck.json",
-      "qa-restyle.json",
-      "qa-ds-conformance.json"
+      "evidence/ego-qa/11-era-online.json"
     ],
-    "dsConformance": "scripts/ds-conformance.cjs",
-    "dsConformanceResult": "14/14",
-    "upstreamSelfTests": {
-      "validateTokens": "16-design-system/tools/validate-tokens.mjs → errors: 0",
-      "verifyPreview": "16-design-system/tools/verify-preview.mjs → errors: 0, warnings: 0"
-    },
-    "authoritative": "scripts/ego-verify.mjs（Ego 浏览器，40 项）",
-    "authoritativeResult": "40/40",
-    "headlessReplayTools": [
-      "scripts/acceptance.cjs（53 项）",
-      "scripts/spotcheck-6.cjs（7 项）",
-      "scripts/restyle-check.cjs（20 项）",
-      "scripts/ds-conformance.cjs（14 项）"
+    "retiredHeadlessScripts": [
+      "scripts/acceptance.cjs → scripts/ego-acceptance.mjs（逐项移植，断言名 0 缺 0 增）",
+      "scripts/spotcheck-6.cjs → 停用（覆盖并入 ego-acceptance / ego-verify）",
+      "scripts/restyle-check.cjs → 停用（通用项并入 tools/ego-qa，项目项并入 ego-verify）",
+      "scripts/ds-conformance.cjs → 停用（静态项并入 ego-verify，页面项并入 ego-verify + 共享工具）"
     ],
-    "headlessReplayNote": "headless 复跑工具，供 13-qa-curation / CI 在无 Ego 环境复跑；作者侧验收一律走 Ego。",
-    "fontStackRenderAudit": "617 个汉字/全角标点：系统族 617 / 子集 0 —— 零混排；旧序对照 444 字会混排"
+    "fontStackRenderAudit": "共享工具 getPlatformFontsForNode 实测：.brand__title 渲染字体 = PingFang SC（系统黑体），未使用 Noto 子集；逐字像素比对 617/617 走系统族、0 混排",
+    "notes": "共享工具报告 FAIL 时退出码仍为 0（文档写 0=PASS/1=FAIL），本目录用 scripts/run-ego-qa.mjs 兜底判定。"
   },
   "deployment": {
     "owner": "14-publish",
@@ -189,5 +180,6 @@
     "iframeEmbeddable": true,
     "notes": "本任务不部署。产物为纯静态 dist/，可直接放入任意子路径。"
   },
-  "screenshots": 16
+  "screenshots": 16,
+  "evidenceDir": "evidence/ego-qa"
 }

@@ -9,6 +9,10 @@
 > 外壳使用官方组件类（`.ds-topbar` / `.ds-footer` / `.ds-canvas-frame` / `.ds-skip` / `.ds-btn`）。
 > 改版只换**视觉**，不改作品名、文案与玩法；两个展项**画布内部的配色**按红线保持原样（可玩性优先）。
 > 逐项替换台账见 [`RESTYLE-INVENTORY.md`](./RESTYLE-INVENTORY.md)。
+>
+> **验收方式**：一律走 **Ego 浏览器**（`/Users/mekzenx2/.local/bin/ego-browser`）——
+> 功能全量 53 项（`scripts/ego-acceptance.mjs`）、项目特有 40 项（`scripts/ego-verify.mjs`）、
+> 通用体检用批次共享工具 `tools/ego-qa`。本目录不含 playwright / puppeteer / 无头 Chrome 路径。
 
 ---
 
@@ -127,11 +131,10 @@ npm run start      # 一键：装依赖 → 构建 → 预览
 │       └── fonts/          fonts.css + 5 款 woff2 + FONT-MANIFEST.json + OFL 许可全文
 ├── scripts/
 │   ├── start.sh               一键启动（安装 → 构建 → 预览）
-│   ├── ego-verify.mjs         **作者侧权威验收**（走 Ego 浏览器，40 项：静态 + 页面 + 功能）
-│   ├── acceptance.cjs         headless 复跑工具（53 项断言，需自行安装 playwright，不参与构建）
-│   ├── spotcheck-6.cjs        headless 复跑工具（键盘建造 / 升级 / 对话角标 6 项原始数值）
-│   ├── restyle-check.cjs      headless 复跑工具（20 项断言：视口 / ds 资源 / 组件类 / 无障碍）
-│   └── ds-conformance.cjs     headless 复跑工具（14 项：V.3/V.11/V.12/V.13 + §7 + §4.2 + §5.1）
+│   ├── ego-acceptance.mjs     **功能全量验收**（Ego 浏览器，53 项断言；原 acceptance.cjs 的逐项移植）
+│   ├── run-ego-acceptance.mjs 功能全量验收的 CLI 包装器（普通 node 跑，转调 ego-browser）
+│   ├── ego-verify.mjs         **项目特有验收**（Ego 浏览器，40 项：静态令牌判据 + DOM 判据 + 功能抽检）
+│   └── run-ego-qa.mjs         批次共享工具 tools/ego-qa 的转调包装（并补上退出码判定）
 ├── src/
 │   ├── main.ts              应用入口
 │   ├── styles/
@@ -158,6 +161,7 @@ npm run start      # 一键：装依赖 → 构建 → 预览
 │   │   ├── defense/         展项 A：types / config / sim / ai / render / view
 │   │   └── handheld/        展项 B：world / sim / render / view
 ├── licenses/               字体许可全文（OFL 1.1）+ FONT-MANIFEST
+├── evidence/ego-qa/         批次共享工具产出的报告 JSON + 四档视口截图
 ├── screenshots/             实机截图
 ├── QA.md                    验收记录
 ├── SOURCES.md               史料台账与抓取方法
@@ -197,5 +201,6 @@ npm run start      # 一键：装依赖 → 构建 → 预览
 7. 改版自检与 §9 规范复核只跑了 Chromium/Ego，未做 Firefox / Safari 实测。
 8. 掌机 DOM 文字色 `--pocket-text: #b8848e` 属本批自定（在 `#9a6a74` 基础上同色相提亮，
    目的是满足 §4.2 的 HUD 文字 ≥4.5:1），**非参考站实测值**；机身色阶与画布点阵色板保持原值。
-9. 作者侧权威验收走 **Ego 浏览器**（`scripts/ego-verify.mjs`，40/40）；仓库里的四个 Playwright 脚本
-   保留为 **headless 复跑工具**，供 13-qa-curation 与 CI 在无 Ego 环境复跑。
+9. 验收**只走 Ego 浏览器**（用户长期约定）：功能全量 53/53（`ego-acceptance.mjs`）、
+   项目特有 40/40（`ego-verify.mjs`）、批次共享工具 PASS（`tools/ego-qa`）。
+   仓库里**没有** playwright / puppeteer / 本机无头 Chrome 路径。

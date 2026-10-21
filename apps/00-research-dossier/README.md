@@ -30,81 +30,88 @@ npm run verify
 
 ---
 
-## 整页截图做法（供 13-qa-curation 复用）
+## 整页截图做法（Ego 口径，供 13-qa-curation 复用）
 
-> **为什么必须整页**：本目录的文档高 **26757px（桌面）/ 72758px（移动）**（改版第 2 步后的实测值）。视口截图只覆盖首屏，
+> ⚠️ **2026-10-22 起：所有浏览器操作一律只走 Ego 浏览器**（用户长期约定，已写入用户级持久记忆）。
+> 内置 Browser 工具、`chromium.launch()` / playwright / playwright-core / puppeteer / 本机无头 Chrome + CDP **全部禁用**；
+> 「本地 file:// 自测豁免 Ego」的旧例外**已取消**（Ego 可直接加载 `file://`，本目录已实测：标题 / CSS / 字体全部正常）。
+> Ego 故障时**诊断并如实报告**，不静默换浏览器。
+> 本节已于 2026-10-22 从 Playwright 实现**整体改写为 Ego 实现**；文末「历史坑」中属旧实现的条目已标注。
+
+> **为什么必须整页**：本目录的文档高 **26757px（桌面）/ 72758px（移动）**（改版第 2 步后实测；Ego 在 `file://` 下复测为 **26750px**，一致）。视口截图只覆盖首屏，
 > 而 D1/D2 命中、密集表格、卡片下半部分**全部在首屏以下** —— 只看视口图无法判定。
-> 13 的 `run-qa.mjs` 已有 fullPage 分支（约 229–235 行），但各 target 的截图目录里仍以视口图为主。
 
-**可直接复制的最小实现**（`playwright-core`，无额外依赖）：
+### 1. 先取当前版本的用法指南
 
-```js
-import http from 'node:http';
-import fs from 'node:fs';
-import path from 'node:path';
-import { createRequire } from 'node:module';
-const require = createRequire('/…/13-qa-curation/qa-harness/');
-const { chromium } = require('playwright-core');
-
-const ROOT  = '/…/00-research';                 // 被测目录
-const MOUNT = '/playtime-atlas-20261021/works/00-research-dossier/';
-/* ⚠️ MIME 必须给对：改版第 2 步起页面要加载 assets/ds/*.css 与 assets/ds/fonts/*.woff2，
-   统一回 application/json 会让样式表被浏览器拒收（页面裸奔、无字体）。 */
-const MIME = {
-  '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8',
-  '.woff2': 'font/woff2', '.woff': 'font/woff', '.png': 'image/png',
-  '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.md': 'text/markdown; charset=utf-8',
-};
-const server = http.createServer((req, res) => {
-  let p = decodeURIComponent(req.url.split('?')[0]);
-  if (!p.startsWith(MOUNT)) { res.writeHead(404); res.end(); return; }
-  p = p.slice(MOUNT.length);
-  if (p === '' || p.endsWith('/')) p += 'index.html';
-  const f = path.join(ROOT, p);
-  if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); res.end(); return; }
-  res.writeHead(200, { 'Content-Type': MIME[path.extname(f).toLowerCase()] || 'application/octet-stream' });
-  fs.createReadStream(f).pipe(res);
-});
-await new Promise(r => server.listen(0, '127.0.0.1', r));
-const url = `http://127.0.0.1:${server.address().port}${MOUNT}`;
-
-const browser = await chromium.launch({ headless: true, channel: 'chromium', args: ['--enable-unsafe-swiftshader'] });
-for (const vp of [{ w: 1440, h: 900, key: 'desktop' }, { w: 390, h: 844, key: 'mobile' }]) {
-  const page = await browser.newPage({ viewport: { width: vp.w, height: vp.h }, deviceScaleFactor: 1 });
-  await page.goto(url, { waitUntil: 'load' });
-  // 等内容真正渲染完再截：计数是 JS 渲染出来的
-  await page.waitForFunction(() => /条/.test(document.getElementById('count')?.textContent || ''), { timeout: 15000 });
-  // 字体是自托管的，等 document.fonts.ready 再截，否则会拍到 fallback 字形
-  await page.evaluate(() => document.fonts?.ready);
-  await page.waitForTimeout(600);
-  await page.screenshot({ path: `00-research-${vp.key}-full.png`, fullPage: true, animations: 'disabled', timeout: 120000 });
-  await page.screenshot({ path: `00-research-${vp.key}-fold.png`, animations: 'disabled' });
-  await page.close();
-}
-await browser.close();
-await new Promise(r => server.close(r));   // ← 必须：验证完立刻关
+```bash
+/Users/mekzenx2/.local/bin/ego-browser skill
 ```
 
-**五个坑（都踩过）**
+指南与本机 ego lite 版本配套（含 `page.screenshot` / `page.snapshot` / `page.cdp` / TaskSpace 的准确签名），**每轮动手前先跑**。
 
-| # | 坑 | 处置 |
+### 2. Ego 最小实现（一个目标复用一个 TaskSpace）
+
+```bash
+# 每轮一个新文件（不要改上一轮文件重放）；用 -e 引入，路径必须是绝对路径
+/Users/mekzenx2/.local/bin/ego-browser nodejs -e "await import('file:///abs/path/round-01.mjs')"
+```
+
+```js
+// round-01.mjs
+import fs from "node:fs/promises";
+const ROOT = "/abs/path/00-research";                     // 被测目录
+const OUT  = ROOT + "/evidence/ego-20261022";            // 截图落到**本目录自己的** evidence/
+await fs.mkdir(OUT, { recursive: true });
+
+const task = await taskSpace("00-research 整页截图 20261022");   // 同名即恢复自己的空间
+const page = task.page("p1");
+
+await page.goto("file://" + ROOT + "/index.html");        // Ego 可直接加载 file://（已实测）
+await page.waitForLoadState("load");
+await page.waitForFunction(                              // 等 JS 渲染完再截（计数是 JS 渲染的）
+  () => /条/.test(document.getElementById("count")?.textContent || ""),
+  undefined, { timeout: 15000 });
+await page.evaluate(() => document.fonts?.ready);         // 自托管字体就绪再截，否则拍到 fallback 字形
+await page.waitForTimeout(600);
+
+await page.screenshot({ path: OUT + "/00-research-fold.png" });   // 视口图
+console.log(await page.snapshot({ scope: "full_page" }));         // 视口以下的**全文快照**（文字）
+
+await task.finish({ keep: [] });                          // 收尾：关掉 Agent 管理的 Page
+```
+
+### 3. Ego 的已知边界（实测，2026-10-22）
+
+| 项 | 实测结论 | 处置 |
 |---|---|---|
-| 1 | `deviceScaleFactor: 2` + `fullPage` → 桌面位图 2880×91176 ≈ **1.05 GB**，渲染进程被 OOM 杀掉，表现为 `Target page, context or browser has been closed` | **整页截图一律用 `deviceScaleFactor: 1`**（本目录 6.3 MB/张）；要 2× 细节就单独开一个小视口去截某个元素 |
-| 2 | 截图在内容渲染完之前拍 → 拿到空白页 | 必须等 `document.getElementById('count')` 出现「条」字（该页是 JS 渲染，134 张卡） |
-| 3 | 用 `page.goto('file://…')` 截图 → 与线上子路径行为不一致 | 用**子路径挂载**的本地服务（本页在 `/playtime-atlas-20261021/works/00-research-dossier/` 下验过） |
-| 4 | 临时服务 / 浏览器没关 → 留下常驻监听进程 | `finally` 里 `browser.close()` + `server.close()` |
-| 5 | **改版第 2 步后**：临时服务器对 `.css` / `.woff2` 返回错误 MIME（老配方统一 `application/json`）→ 样式表被拒收、字体退化为系统栈，截图看起来像「改版没生效」 | 按上面的 `MIME` 表给正确类型；并等 `document.fonts.ready` 再截 |
+| `page.screenshot({ fullPage: true })` | ❌ **不支持**，报 `Unable to capture screenshot` | 视口以下内容用 `page.snapshot({ scope: "full_page" })` 取全文；要图像就分段滚动截 |
+| `page.screenshot({ path })` | ✅ 可用，路径**必须绝对** | 落盘到本目录 `evidence/`（gitignore + publish excluded） |
+| `file://` 加载 | ✅ 标题 / CSS（`body` 背景 `rgb(252,251,249)`、`h1` 52px）/ 5 个自托管字体**全部正常** | 单目录自测可直接用 `file://`；要复现线上子路径行为时仍建议本地服务按子路径挂载 |
+| CDP DOM/CSS 域 | ⚠️ **导航后要重新 `DOM.enable` / `CSS.enable`**，否则报 `DOM agent needs to be enabled first` | `goto` 之后再 enable，再 `DOM.getDocument` / `DOM.querySelector` / `CSS.getPlatformFontsForNode` |
+| 视口模拟 | ⚠️ 窗口带缩放，`Emulation.setDeviceMetricsOverride` 的 `width` 是设备像素 | 迭代校正 `w = round(w * targetW / innerWidth)` 直到 `innerWidth === targetW`；**先 `goto` 再设 metrics**；`cdp` 后等 300–400ms 再读值 |
+| 依赖 | Ego 自带，**无需 npm 依赖** | 本目录 `package.json` 的 `dependencies` / `devDependencies` 均为空 |
 
-**本目录的整页截图产物**（本地留痕，`.gitignore` 已排除、不进发布仓库）：
-`evidence/d1-review/00-research-desktop-full.png`（6.12 MB / 22779px，第 1 步留痕）、
-`00-research-mobile-full.png`（6.13 MB / 62170px，第 1 步留痕）、
-`00-research-desktop-fold.png`、`00-research-mobile-fold.png`。
-第 2 步改版后的整页尺寸为 **26757px（桌面）/ 72758px（移动）**（dsf 1，各约 6.3 MB），本地复核图在 `/tmp/d1probe/restyle/`（不入库）。
+### 4. 历史坑（Playwright 时代，2026-10-21 记录，**现行做法以本节 Ego 口径为准**）
 
-> 13 若要覆盖首屏以下的 D1 命中，**整页图是必需的**；视口图只能覆盖封面区。
-> 另：3× 的元素级特写（单张卡片）用 `deviceScaleFactor: 3` + `elementHandle.screenshot()`，
-> 内存占用可接受（~250 KB/张），适合逐条核对字形是否被切。
+| # | 坑 | 处置（历史） |
+|---|---|---|
+| 1 | `deviceScaleFactor: 2` + `fullPage` → 桌面位图 2880×91176 ≈ **1.05 GB**，渲染进程被 OOM 杀掉 | 整页截图一律用 `deviceScaleFactor: 1`（本目录 6.3 MB/张） |
+| 2 | 截图在内容渲染完之前拍 → 拿到空白页 | 等 `count` 出现「条」字（该页是 JS 渲染，134 张卡） |
+| 3 | `file://` 与线上子路径行为不一致 | 用子路径挂载的本地服务复核（`/playtime-atlas-20261021/works/00-research-dossier/`）。**现状：Ego 加载 `file://` 已实测样式/字体正常，单目录自测可直接用** |
+| 4 | 临时服务 / 浏览器没关 → 留下常驻监听进程 | `task.finish({ keep: [] })` 收尾；本地服务用完即关（**8080 例外**，由用户决定） |
+| 5 | 临时服务器对 `.css` / `.woff2` 返回错误 MIME → 样式表被拒收、字体退化 | 本地服务要给正确 MIME；并等 `document.fonts.ready` 再截 |
+
+### 5. 本目录的截图产物
+
+`evidence/ego-20261022/`（2026-10-22 由 Ego 产出，**本目录自己的** `evidence/`，已 gitignore + `publish.scope.exclude`）：
+
+- `00-research-fold.png` —— 桌面视口图（1309×873，0.12 MB；Ego 窗口的 `innerWidth` 为 1309）
+- `00-research-390-fold.png` —— 移动视口图（390×844，0.08 MB，`innerWidth` 校正到 390）
+
+改版第 2 步的整页留痕仍在 `evidence/d1-review/`（历史产物，Playwright 时代生成，不重出）。
+
+> 13 若要覆盖首屏以下的 D1 命中：**整页内容是必需的**；Ego 下用 `snapshot({ scope: "full_page" })` 取全文，
+> 图像则分段滚动截（`page.screenshot` 不支持 `fullPage`）。另：3× 的元素级特写同样用 `page.screenshot` 逐元素截。
 
 ---
 

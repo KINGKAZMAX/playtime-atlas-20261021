@@ -4,75 +4,75 @@
       "id": "01-chroma-s1",
       "buildState": "built",
       "entryExists": true,
-      "online": true
+      "online": 200
     },
     {
       "id": "02-abyss-salvager",
       "buildState": "built",
       "entryExists": true,
-      "online": true
+      "online": 200
     },
     {
       "id": "03-interaction",
       "buildState": "built",
       "entryExists": true,
-      "online": true
+      "online": 200
     },
     {
       "id": "04-frostgap-voyager",
       "buildState": "built",
       "entryExists": true,
-      "online": true
+      "online": 200
     },
     {
       "id": "06-museum-main",
       "buildState": "built",
       "entryExists": true,
-      "online": true
+      "online": 200
     },
     {
       "id": "07-museum-art",
       "buildState": "built",
       "entryExists": true,
-      "online": true
+      "online": 200
     },
     {
       "id": "08-era-origins",
       "buildState": "built",
       "entryExists": true,
-      "online": true
+      "online": 200
     },
     {
       "id": "09-era-arcade",
       "buildState": "built",
       "entryExists": true,
-      "online": true
+      "online": 200
     },
     {
       "id": "10-era-console",
       "buildState": "built",
       "entryExists": true,
-      "online": true
+      "online": 200
     },
     {
       "id": "11-era-online",
       "buildState": "built",
       "entryExists": true,
-      "online": true
+      "online": 200
     },
     {
       "id": "12-era-modern",
       "buildState": "built",
       "entryExists": true,
-      "online": true
+      "online": 200
     }
   ],
-  "builtAt": "2026-10-21T20:06:01.956Z",
+  "builtAt": "2026-10-21T21:10:54.652Z",
   "totals": {
-    "total": 17,
-    "built": 17,
+    "total": 14,
+    "built": 14,
     "fallback": 0,
     "unavailable": 0,
-    "bytes": 81195479
+    "bytes": 78837786
   }
 }

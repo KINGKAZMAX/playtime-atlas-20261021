@@ -116,11 +116,12 @@
 | 生产构建 | `npm run build` | **退出码 0**（9.71 s）；`dist/index.html` 4.30 kB、`style-CyLtmF3Y.css` 22.65 kB、`index-CwH5wIak.js` 90.51 kB（gzip 35.26 kB）+ 5 个字体 woff2 |
 | 逻辑验收 | `npm test` | **32 / 32 通过** |
 | 令牌一致性 | `npm run test:tokens` | **129 个变量逐名一致**，缺失 0 / 不一致 0 / 额外 0 / 越权声明 0；**字体栈三项 V.11 / V.12 / V.13 全过**（顺序 2/2、写死字体族 0 处、与 `design-tokens.json` 逐项无漂移 2/2） |
-| 设计系统机械合规 | `npm run test:compliance` | **16 / 16 通过**（V.1 溢出 / V.2 对比度 / V.5 焦点 / V.6 触摸目标 / V.7 降级 + 面板态复检） |
-| 13 探针契约 | `npm run test:probe` | **10 / 10 通过**（按 13 的 D3 / D5 判定口径复刻） |
+| 设计系统机械合规 | `npm run test:compliance` | **47 / 47 通过**（批次共享 Ego 工具 30 项 + 本目录 16 规范口径 16 项 + 静态 HUD 对比度 1 项） |
+| 13 探针契约 | `npm run test:probe` | **11 / 11 通过**（按 13 的 D3 / D5 判定口径复刻） |
 | 浏览器实机验收 | `npm run test:e2e` | **48 / 48 通过**（伺服 `dist/` 生产产物，含 15 项改版断言） |
 | 音频运行时验收 | `npm run test:audio` | **7 / 7 通过**；**未捕获异常 0 次**、console.error 0 次 |
-| 一次性全量 | `npm run verify` | **退出码 0**，七个套件全绿；总耗时随机器负载在 57–202 秒之间波动，结束后残留进程 0 个、profile 目录 0 个 |
+| 一次性全量 | `npm run verify` | **退出码 0**，七个套件全绿（279 项断言）；结束后残留测试进程 0 个、静态服务器 0 个 |
+| 浏览器入口 | — | **全部走 Ego 浏览器**（`ego-browser nodejs`）；本目录**不启动任何浏览器**，无 playwright / puppeteer / 无头 Chrome / 原生 CDP 残留 |
 
 浏览器实机验收覆盖：展厅渲染、4 个展品入口、CRT 默认开启、画布 480×270 内部分辨率、
 纪年面板 8 条且 8/8 带 https 来源、原创声明、荣誉榜、**方向敏感**的键盘移动、
@@ -171,19 +172,24 @@ npm start         # bash scripts/start.sh，等价于 npm run dev
 4. **高分榜为本地存储**：存于 `localStorage`；iframe 跨源场景下是否可用取决于宿主 `storage` 策略。
 5. **纪年面板不含具体销量数字**：只做框架性陈述，以保证每条都可核查。
 6. **画布内中文**：画布只承载像素美术与拉丁字符，中文一律走 DOM 覆盖层（系统字体、可选中、可朗读）。
-7. **13-qa-curation 的判定（18:31:25 重跑）**：verdict = `pass-with-warnings`，
-   **17 项检查 0 fail / 2 warn**，**无真实缺陷**。两条 warn 均为 `severity=info`，
-   根因是「作品未暴露全局状态句柄，探针只能做 DOM 级断言」：
-   - `QA-008`（D3 暂停流程）：点击「暂停 (P)」后可见面板数不变（5 → 5），
-     无法区分「暂停了但 UI 不变」与「暂停根本没生效」；
-   - `QA-009`（D3 重开流程）：点击「重开」后界面确实变化（HUD 变为「晶格 Σ 240 / 能量 Φ 70/120」），
-     但无法断言内部状态机确实回到了初始态；
-   - `QA-010`（D5 键盘焦点作用域）：HUD 由 canvas 绘制且无可聚焦 DOM 元素，
-     探针无法区分「按键未被消费」与「状态变了但没暴露出来」。
+7. **13-qa-curation 的判定（现行真值：`13-qa-curation/evidence/09-era-arcade.json`，
+   `checkedAt` = 2026-10-21T16:06:25Z）**：
+   - `verdict` = **`pass`**，`verdictLabel` = 「pass / 未证明 1 项」；
+   - `summary` = **total 28 / fail 0 / warn 0 / pass 22 / skip 3 / notProven 1**；
+   - `issues.json` 中 09 的三条为 `QA-008` / `QA-009` / `QA-010`，
+     三者 **`severity=info` / `status=warn`**，性质是「**未自动验证**」，**不是产品缺陷**：
+     - `QA-008`（D3 暂停流程）：点击「暂停 (P)」后可见面板数不变（5 → 5），
+       探针当时无法区分「暂停了但 UI 不变」与「暂停根本没生效」；
+     - `QA-009`（D3 重开流程）：点击「重开」后界面确实变化（HUD 变为「晶格 Σ 240 / 能量 Φ 70/120」），
+       但探针当时无法断言内部状态机确实回到了初始态；
+     - `QA-010`（D5 键盘焦点作用域）：HUD 由 canvas 绘制且无可聚焦 DOM 元素，
+       探针当时无法区分「按键未被消费」与「状态变了但没暴露出来」。
 
    13 的处置建议是「加一个只读状态快照」。**本轮已照此补齐**（见 §8.5），
-   并新增 `tests/probe-contract.mjs` 按 13 的判定口径自测，
-   预计 13 下次重跑时这三条将由「未自动验证」转为可判定 ——
+   并新增 `tests/probe-contract.mjs` 按 13 的判定口径自测；
+   线上（14 随 `4fc4f57` 上线后）亦已实测确认只读句柄 `window.__neonCorridor` 生效、
+   暂停流程现已**可自动判定为真冻结**（`paused=true`、文案切「继续」、`aria-pressed=true`），
+   故 13 下次重跑时这三条**应**从「未自动验证」转为可判定 ——
    但**最终 verdict 仍以 13 的实际重跑为准**，本目录不代 13 下结论。
 8. **只读状态句柄的取舍**：`window.__neonCorridor` 顶层新增 `state` / `phase` / `score` / `player`
    四个 **getter**（只读、实时、不可写）。它们是**新增的可观测面**，不改变任何玩法、
@@ -395,3 +401,43 @@ profile 目录 0 个**。该项属于**本轮实测新发现的既有缺陷**，
 向 15 报备的交付边界：本目录**未 commit / push / 部署**，`dist/` 仅为可部署产物；
 Pages 部署与线上交互验收由 13 / 14 执行；全程未写入 13 / 14 / 16 任何目录
 （对 16 仅只读引用 `src/tokens.css` 与 `design-tokens.json`）。
+
+### 8.10 浏览器入口迁移：从本地无头 Chrome + CDP 改为 Ego 浏览器
+
+按用户 2026-10-22 长期约定（**所有项目的浏览器操作一律只走 Ego 浏览器**），
+本目录把 4 个浏览器相关套件整体迁移完毕。
+
+| 改造前 | 改造后 |
+| --- | --- |
+| `tests/lib/harness.mjs`（450 行：自研 CDP 客户端 + Chrome 启动 + profile 清理） | **已删除** |
+| 断言写在驱动脚本里，直接拼 CDP 事件 | 断言搬进 `tests/ego/{smoke,probe,audio,compliance}.mjs`，跑在 Ego 的 nodejs 运行时里 |
+| — | `tests/lib/ego-harness.mjs`（Node 侧驱动）+ `tests/ego/_lib.mjs`（Ego 侧助手） |
+
+迁移后**全目录零浏览器启动路径**（无 `chromium.launch` / `playwright` / `puppeteer` /
+`remote-debugging-port` / `headless`），`devDependencies` 仍只有 vite。
+实测全绿：`npm run verify` **退出码 0**，279 项断言（逻辑 32 · 令牌 129 + 字体栈 5 ·
+合规 47 · 探针 11 · 实机 48 · 音频 7）。
+
+迁移中修掉的六个真问题（详见 `QA.md` §11.3）：
+
+1. **视口必须 `mobile: true`** —— `mobile:false` 时 Chromium 按 1/0.9 放大
+   （请求 1440 实测 1600），会同时污染溢出判定、对比度采样与截图尺寸；
+2. **`page.evaluate` 回调不能引用模块作用域** —— 页面内辅助函数一律自包含；
+3. **截图改走 CDP 直连** —— `page.screenshot()` 在 macOS 窗口被遮挡时
+   报「window is minimized」/ 超时，而 `Page.captureScreenshot` 稳定；
+   且截图失败**不致命**（截图是证据产物，不是断言）；
+4. **共享工具必须独占跑** —— 同一 TaskSpace 上前一个 Ego 进程的待决 CDP 命令
+   会拖垮下一个进程的第一条命令（实测 `Log.enable` 超时导致整轮全灭）；
+5. **必须清旧报告** —— Ego 中途抛错就不写报告，驱动读到同名旧文件会把失败误判成通过；
+6. **空格会激活聚焦的按钮** —— 真实浏览器里（区别于旧版 `rawKeyDown`），
+   暂停面板聚焦的「继续」会被空格激活，这是**正确且预期**的可访问性行为，
+   故把冻结断言与「空格可恢复」拆成两条分别断言。
+
+另修正了一类**对局随机性**：陨星纵队是实时弹幕，玩家被击落即结算、
+结算面板接管焦点 → 后续按键落在面板上 → 断言假失败。
+处置是断言前读 `scene.snapshot().phase`，非 `play` 就重进该游戏（**不改产品**）。
+
+> §8.8 记录的「夹具挂起」三处修复属于**旧 CDP 时代**的历史问题；
+> 随 `tests/lib/harness.mjs` 一并废弃。Ego 路径没有常驻进程问题：
+> 驱动脚本用**异步** spawn（同步会堵死事件循环导致静态服务器无法响应 Ego 的请求 → 死锁），
+> 静态服务器在 finally 里 `closeAllConnections()` + `close()`，验证完即关。

@@ -123,9 +123,15 @@ step('主页发布检查（gallery-check）', () => {
   // buildState 不得出现 unavailable（否则大厅会出现不可用入口）
   try {
     const works = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs', 'data', 'works.json'), 'utf8'));
-    const bad = works.filter((w) => w.buildState === 'unavailable' || (w.online === false && w.buildState !== 'fallback'));
+    const bad = works.filter((w) => w.buildState === 'unavailable' || (w.published !== true && w.buildState !== 'fallback'));
     if (bad.length) {
       process.stderr.write(`   ✗ 存在 buildState 异常的作品：${bad.map((w) => `${w.id}(${w.buildState})`).join(', ')}\n`);
+      return false;
+    }
+    // 监督指令 §二：已发布的作品必须带**线上实测 HTTP 码**，不得缺测或留空
+    const unmeasured = works.filter((w) => w.published === true && !Number.isInteger(w.online));
+    if (unmeasured.length) {
+      process.stderr.write(`   ✗ 已发布但缺少线上实测 HTTP 码：${unmeasured.map((w) => w.id).join(', ')}\n`);
       return false;
     }
     const states = works.map((w) => w.buildState).join(',');

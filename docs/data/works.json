@@ -25,7 +25,8 @@
     "qaState": "verified",
     "buildState": "built",
     "entryExists": true,
-    "online": true,
+    "published": true,
+    "online": 200,
     "bytes": 1145055
   },
   {
@@ -57,8 +58,9 @@
     "qaState": "pending-reverify",
     "buildState": "built",
     "entryExists": true,
-    "online": true,
-    "bytes": 10186509,
+    "published": true,
+    "online": 200,
+    "bytes": 10186062,
     "artifacts": [
       {
         "label": "导出的 GLB 模型（9.1 MB）",
@@ -92,7 +94,8 @@
     "qaState": "pending-reverify",
     "buildState": "built",
     "entryExists": true,
-    "online": true,
+    "published": true,
+    "online": 200,
     "bytes": 423787
   },
   {
@@ -130,8 +133,9 @@
     "qaState": "pending-reverify",
     "buildState": "built",
     "entryExists": true,
-    "online": true,
-    "bytes": 1157483
+    "published": true,
+    "online": 200,
+    "bytes": 1157080
   },
   {
     "id": "06-museum-main",
@@ -160,8 +164,9 @@
     "qaState": "pending-reverify",
     "buildState": "built",
     "entryExists": true,
-    "online": true,
-    "bytes": 4960564
+    "published": true,
+    "online": 200,
+    "bytes": 4960833
   },
   {
     "id": "07-museum-art",
@@ -190,7 +195,8 @@
     "qaState": "pending-reverify",
     "buildState": "built",
     "entryExists": true,
-    "online": true,
+    "published": true,
+    "online": 200,
     "bytes": 56353155
   },
   {
@@ -219,8 +225,9 @@
     "qaState": "pending-reverify",
     "buildState": "built",
     "entryExists": true,
-    "online": true,
-    "bytes": 366015
+    "published": true,
+    "online": 200,
+    "bytes": 366097
   },
   {
     "id": "09-era-arcade",
@@ -248,7 +255,8 @@
     "qaState": "pending-reverify",
     "buildState": "built",
     "entryExists": true,
-    "online": true,
+    "published": true,
+    "online": 200,
     "bytes": 518036
   },
   {
@@ -277,7 +285,8 @@
     "qaState": "pending-reverify",
     "buildState": "built",
     "entryExists": true,
-    "online": true,
+    "published": true,
+    "online": 200,
     "bytes": 685818
   },
   {
@@ -306,7 +315,8 @@
     "qaState": "verified",
     "buildState": "built",
     "entryExists": true,
-    "online": true,
+    "published": true,
+    "online": 200,
     "bytes": 611415
   },
   {
@@ -335,7 +345,8 @@
     "qaState": "pending-reverify",
     "buildState": "built",
     "entryExists": true,
-    "online": true,
-    "bytes": 1156607
+    "published": true,
+    "online": 200,
+    "bytes": 1156599
   }
 ]

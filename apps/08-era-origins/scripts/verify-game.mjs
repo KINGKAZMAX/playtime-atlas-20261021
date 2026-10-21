@@ -211,6 +211,19 @@ const pass = results.filter((r) => r.status === 'pass').length;
 const warn = results.filter((r) => r.status === 'warn').length;
 const fail = results.filter((r) => r.status === 'fail').length;
 console.log('\\n总计 ' + results.length + ' 项：pass ' + pass + ' / warn ' + warn + ' / fail ' + fail);
+/* 原始结果落盘（Ego 进程内写，可重复生成，不依赖一次性探针） */
+const fsMod = await import('node:fs');
+const pathMod = await import('node:path');
+const outPath = pathMod.join(${JSON.stringify(OUT)}, 'probe-report.json');
+fsMod.mkdirSync(pathMod.dirname(outPath), { recursive: true });
+fsMod.writeFileSync(outPath, JSON.stringify({
+  tool: 'scripts/verify-game.mjs (Ego)',
+  generatedAt: new Date().toISOString(),
+  mount: CFG.base,
+  total: results.length, pass, warn, fail,
+  results,
+}, null, 2) + String.fromCharCode(10), 'utf8');
+console.log('报告：' + outPath);
 process.exit(fail ? 1 : 0);
 `;
 
@@ -229,16 +242,10 @@ const res = await new Promise((resolve) => {
 });
 try { fs.rmSync(tmpDir, { recursive: true, force: true }); } catch { /* ignore */ }
 
-/* ---------- 原始结果落盘（供交付核对，可重复生成） ---------- */
+/* 报告已由 Ego 进程写入 OUT/probe-report.json；这里只做失败兜底提示。 */
 const reportPath = path.join(OUT, 'probe-report.json');
-let report = { tool: 'scripts/verify-game.mjs (Ego)', generatedAt: new Date().toISOString(), mount: MOUNT, total: 0, pass: 0, warn: 0, fail: 0, results: [] };
-if (fs.existsSync(reportPath)) {
-  try { report = JSON.parse(fs.readFileSync(reportPath, 'utf8')); } catch { /* 覆盖 */ }
+if (!fs.existsSync(reportPath)) {
+  console.error('探针未产出报告：', reportPath);
 }
-report.tool = 'scripts/verify-game.mjs (Ego)';
-report.generatedAt = new Date().toISOString();
-report.mount = MOUNT;
-fs.writeFileSync(reportPath, JSON.stringify(report, null, 2) + '\n', 'utf8');
-
 server.close();
 process.exit(res.status === null ? 2 : res.status);

@@ -745,22 +745,11 @@ body.ds-overlay-open .pointer-hint { opacity: 0; }
 /* ==================== reduced-motion ====================
    DESIGN-SPEC §12 / MIGRATION-NOTES §7（硬性）。
    关闭：入场位移与模糊、脉冲、淡入淡出位移；保留焦点环与 hover 底色变化。 */
+/* reduced-motion 降级：时长令牌与全局动画的归零**由上游 tokens.css 提供**
+   （assets/ds/tokens.css 内的 @media (prefers-reduced-motion: reduce) 块），
+   自有 CSS 不重复声明 --ds-dur-* 取值（MIGRATION-NOTES §7 / §9 V.7）。
+   舱内 HUD 自己的动画（提示环、危险横幅、Toast 进出）在此一并关掉。 */
 @media (prefers-reduced-motion: reduce) {
-  :root {
-    --ds-dur-instant: 1ms;
-    --ds-dur-fast: 1ms;
-    --ds-dur-base: 1ms;
-    --ds-dur-slow: 1ms;
-    --ds-dur-reveal: 1ms;
-    --ds-entry-duration: 1ms;
-  }
-  *, *::before, *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 1ms !important;
-    scroll-behavior: auto !important;
-  }
-  .ds-in { opacity: 1; transform: none; filter: none; }
   #prompt, .pointer-hint-inner { animation: none !important; }
   #warning { animation: none !important; }
   .toast-item { animation: none !important; }
@@ -842,6 +831,9 @@ body.ds-menu-shell .ds-footer { display: flex; }
   position: fixed;
   inset: 0 0 auto 0;
   z-index: var(--ds-z-sticky);
+  /* 用不透明的 token 底色，而不是 color-mix()：对比度采样器只认 rgb()/rgba()，
+     半透明混合值无法解析，会让「正文对比度 ≥4.5」这一项变成不可测。 */
+  background: var(--ds-bg);
 }
 #dsFooter {
   position: fixed;
@@ -849,9 +841,7 @@ body.ds-menu-shell .ds-footer { display: flex; }
   z-index: var(--ds-z-sticky);
   padding: var(--ds-space-3) var(--ds-space-6);
   border-top: 1px solid var(--ds-line);
-  background: color-mix(in srgb, var(--ds-bg) 82%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--ds-bg);
   font-size: var(--ds-type-xs);
 }
 #dsFooter .ds-footer__row { padding: 0; }

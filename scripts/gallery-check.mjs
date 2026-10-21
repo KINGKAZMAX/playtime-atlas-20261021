@@ -342,12 +342,32 @@ function main() {
       const abs = safeJoin(docsDir, w.cover);
       if (!abs || !fileExists(abs)) { fail('cover', '作品 ' + id + ' 的封面文件不存在：' + w.cover, 'docs', w.cover); coverBad++; }
     }
-    if (w.online === true && w.entryExists !== true) {
-      fail('state', '作品 ' + id + ' 标记 online 但入口不存在', 'docs', w.entry);
+    if (w.published === true && w.entryExists !== true) {
+      fail('state', '作品 ' + id + ' 标记 published 但入口不存在', 'docs', w.entry);
       stateBad++;
     }
-    if (w.online === true && !['built', 'fallback', 'built-no-entry'].includes(w.buildState)) {
-      fail('state', '作品 ' + id + ' 标记 online 但 buildState=' + w.buildState + ' 与既有状态不符');
+    if (w.published === true && !['built', 'fallback', 'built-no-entry'].includes(w.buildState)) {
+      fail('state', '作品 ' + id + ' 标记 published 但 buildState=' + w.buildState + ' 与既有状态不符');
+      stateBad++;
+    }
+    // 监督指令 §二：声明必须与线上实测 HTTP 码逐条对齐
+    //   · online 只能是 HTTP 状态码（number）或 null；
+    //   · status=ready 必须对应 200；
+    //   · 入口不存在时 online 必须是 null。
+    if (w.online !== null && !Number.isInteger(w.online)) {
+      fail('state', '作品 ' + id + ' 的 online 必须是 HTTP 状态码或 null，实际为 ' + JSON.stringify(w.online), 'docs', w.entry);
+      stateBad++;
+    }
+    if (w.status === 'ready' && w.online !== 200) {
+      fail('state', '作品 ' + id + ' 标 status=ready 但线上实测码为 ' + JSON.stringify(w.online), 'docs', w.entry);
+      stateBad++;
+    }
+    if (w.entryExists === false && w.online !== null) {
+      fail('state', '作品 ' + id + ' 入口不存在但 online=' + JSON.stringify(w.online), 'docs', w.entry);
+      stateBad++;
+    }
+    if (w.published === true && !Number.isInteger(w.online)) {
+      fail('state', '作品 ' + id + ' 已发布但缺少线上实测 HTTP 码（online=null）', 'docs', w.entry);
       stateBad++;
     }
   }

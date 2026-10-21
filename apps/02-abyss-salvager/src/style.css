@@ -23,24 +23,12 @@
 @import "./styles/components.css";
 
 :root {
-  /* ---- 语义别名：全部指向 16 令牌，不另立色板 ---- */
-  --abyss: var(--ds-bg);
-  --glass: var(--ds-canvas-hud-bg);
-  --glass-2: var(--ds-bg-raised);
-  --glass-3: var(--ds-surface);
-  --line: var(--ds-line);
-  --line-2: var(--ds-line-strong);
-  --ink: var(--ds-ink);
-  --ink-2: var(--ds-ink-soft);
-  --ink-soft: var(--ds-ink-faint);
-  --accent: var(--ds-jade);
-  --accent-soft: var(--ds-jade-soft);
-  --warn: var(--ds-accent);
-  --focus: var(--ds-accent);
-  --shadow: var(--ds-shadow-3);
-
-  --mono: var(--ds-font-mono);
-  --sans: var(--ds-font-text);
+  /* ---- 语义别名：全部指向 16 令牌，不另立色板 ----
+     v1.1.2 清理：旧的 --abyss / --accent / --glass / --ink / --warn / --focus 等
+     语义别名经全项目检索确认**零引用**（改版时已全部改为直接引用 --ds-*），
+     一并删除 —— 避免 `--accent` 指向 jade 而 `--ds-accent` 指向橙这类语义歧义。
+     MIGRATION-NOTES §2.0 要求的映射由此落实：--abyss → --ds-bg、
+     --accent → --ds-jade，代码里不再存在旧名。 */
 
   /* ---- 结构线稿 / 技术读数的透明梯度（由 --ds-jade 派生） ---- */
   --jade-05: color-mix(in srgb, var(--ds-jade) 5%, transparent);
@@ -53,7 +41,8 @@
   --jade-40: color-mix(in srgb, var(--ds-jade) 40%, transparent);
   --jade-55: color-mix(in srgb, var(--ds-jade) 55%, transparent);
   --jade-70: color-mix(in srgb, var(--ds-jade) 70%, transparent);
-  /* ---- 强调色（焦点 / 选中）的透明梯度 ---- */
+  /* ---- 强调色（焦点 / 选中）的透明梯度 ----
+     MIGRATION-NOTES §2.0 ②：--acc-08/16/28/45 基于 --ds-accent 的 color-mix 派生，保留。 */
   --acc-08: color-mix(in srgb, var(--ds-accent) 8%, transparent);
   --acc-16: color-mix(in srgb, var(--ds-accent) 16%, transparent);
   --acc-28: color-mix(in srgb, var(--ds-accent) 28%, transparent);

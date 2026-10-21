@@ -83,7 +83,7 @@
 | 1 | **`.ds-cover` 未套用到序厅** | `.ds-cover` 是 `display:flex; flex-direction:column; align-items:center` 的居中骨架；08 的序厅是「左文右示波器」两栏网格，套用会把示波器示样压到标题下方。改为只借用其子元素语义（`.ds-cover__title` / `.ds-cover__eyebrow` / `.ds-cover__lede`），并保留 08 的两栏结构 |
 | 2 | **`.ds-rail` 未套用到年代长廊** | 规范层 `.ds-rail` 是 `position:fixed` 的左侧悬浮轨（132px 宽）；08 的年代长廊是**文档流内**的纵向时间轴，套用 fixed 会把长廊从版面里抽走。改为只借用 `.ds-rail__item` 的等宽排版语义（并在 08 层修正其按钮化的几何） |
 | 3 | **`.ds-indicator` 未使用** | 规范层的底部圆点指示器对应「整屏滚动指示」交互；08 的长廊是常规文档流，没有滚动吸附或整屏分段。**不为此新增功能**（G.6 保留既有功能，不扩张） |
-| 4 | **画布相邻的 DOM 层（焦点提示、开始/暂停/结算覆盖层）保留 `--lumen-*` 画布色板** | 它们压在深靛画面上，改用外壳色板会形成一块可见的深色矩形并削弱对比度。依据 §4 K.3「HUD 的可读性优先于风格统一」与 K.1，**有意偏离**并在此登记 |
+| 4 | **画布相邻的 DOM 层（焦点提示、开始/暂停/结算覆盖层）保留 `--lumen-*` 画布色板** | 它们压在深靛画面上，改用外壳色板会形成一块可见的深色矩形并削弱对比度。依据 §4 K.3「HUD 的可读性优先于风格统一」与 K.1，**有意偏离**并在此登记。**但色板保留不等于对比度豁免** —— 按 16「HUD 文字对比度 ≥4.5:1 不豁免」，覆盖层眉标 / 脚注已由 `--lumen-cyan-dim`(4.22:1) / `--lumen-dim`(2.4:1) 改为同属画布色板的 `--lumen-cyan`(12.95:1) / `--lumen-slate`(6.71:1) |
 | 5 | **未采用 `noto-sans-sc-subset.woff2`（197 600 B）** | 该子集按 07-museum-art 自身用字生成，覆盖不了本目录的汉字；缺字时浏览器仍逐字回退到系统栈，收益为零，却让仓库与产物各多背约 197 KB。MIGRATION-NOTES §8 亦明确「中文优先系统栈」。**顺序规则仍满足**：本目录 `--ds-font-*` 已按 2026-10-21 修正把完整覆盖的系统 CJK 栈排在子集之前；由于不加载该子集，栈中的 `"Noto Sans SC"` 只是从不生效的占位名，不会发生混排基线错位 |
 | 6 | **`.ds-btn` 高度按 44px，而非规范实现里的 128px** | 规范内部不一致：`components.css` 写 `--ds-btn-h: var(--ds-space-10)`（= 128px），而 `DESIGN-SPEC.md` §7.1「尺寸」明确「`.ds-btn` 最小高 40px」。以**成文规范**为准，同时取 §5.1 的 AAA 目标值 44px（44 > 40，两条都满足）。若不修正，128px 高的按钮会把封面 CTA 与触控区撑破 |
 | 7 | **`.ds-canvas-frame` 的 `contain: paint` 降级为 `isolation: isolate`** | paint containment 会裁掉溢出到 padding box 之外的描边，与 §5「焦点环任何状态不得移除」冲突。保留 `isolation: isolate`（画布独立层叠上下文这一真正目的） |
@@ -92,6 +92,8 @@
 | 10 | **`.ds-chip` 的筛选用途落在年代长廊** | §3 规定筛选 chip 用 `aria-pressed` + `aria-live` 计数。08 的长廊跨 1948—1979 共 12 站，按年代筛选是这条长廊最自然的一个交互；模式/难度切换在游戏页同样以 `.ds-chip` 承载（`aria-pressed` 语义完全一致）。**默认「全部」，12 站全显，不改变既有行为** |
 | 11 | **仍不提供 `hreflang="en"`** | 本批只有中文版，没有可交替的英文版，不提供虚构的语言标注；`<html lang="zh-CN">` 已正确声明。附带原因：Vite 的 `assetAttrsConfig.link = ["href"]` 会把任何 `<link href>` 当资源打包 |
 | 12 | **顶栏外层还原为 `display: block`**（覆盖规范层 `.ds-topbar { display: flex }`） | 规范的 `.ds-topbar` 是「brand + nav 直接作为 flex 子项」的行容器；08 的顶栏内容包在限宽内层容器里（`.masthead__inner` / `.topbar__inner`，`max-width: 1280px` + `auto` 外边距）。不还原的话，内层会成为 flex 子项被压缩成**内容宽度并居中**——顶栏整簇缩在页面中央，与下方正文错位（实测品牌从 x=128 漂到 x=447）。还原后品牌回到 x=128、与正文同列，导航/按钮靠右，与改版前一致。**只改几何，不动排版与语义** |
+| 13 | **入口注入的 `--ds-base` 带 `!important`** | Vite 构建时把合并后的 CSS `<link>` 放到 `<head>` **末尾**，位置在源码里的内联 `<style>` 之后；规范层 `tokens.css` 的 `:root{--ds-base:""}` 因此在**构建产物**中反向覆盖注入值（开发态看不出来，产物里运行时读到 `""`）。自定义属性支持 `!important`，加上后源码与产物一致，运行时实测 `/playtime-atlas-20261021/`。**该变量仍不参与任何资源 URL**（见 G.7） |
+| 14 | **游戏页正文补挂 `.ds-body` / `.ds-sm` / `.ds-mono`** | 规范层 12 个对比度样本中，游戏页原本只存在 4 个（`.ds-btn--primary/secondary/ghost`、`.ds-chip`），正文与等宽没有对应类名，导致「12 项对比度全可测」的说法在游戏页不成立。补挂后游戏页有 7 个规范样本（`.ds-body` `.ds-sm` `.ds-mono` + 4 个控件），另加 5 项 HUD 样本共 12 项。**副作用**：字号从 12.5px 提到 16px / 14px（跟随规范层排版基线），侧栏密度有变化 |
 
 ### 六、发现的规范内部不一致（已按「成文规范优先」处置并登记）
 
@@ -108,8 +110,8 @@
 | L1 单元 | `node --test "tests/*.test.mjs"` | **54 / 54 通过** |
 | L2 构建与自验 | `npm run verify` | **退出码 0**（测试 → 构建 → 产物检查 → manifest 一致性 → 改版专项） |
 | L2 令牌 | `scripts/check-tokens.mjs` | **error 0 / warn 0**：浅色 16 项 + 深色 16 项与 `design-tokens.json` **逐值完全一致**；必备令牌 21 项齐备；命名空间唯一；画布镜像 15 项一致；与 16 源文件 0 漂移 |
-| L3 页面机械检查 | `scripts/verify-pages.mjs`（改编自 16 的 `tools/verify-preview.mjs`，零依赖 CDP） | **0 error / 0 warn**：三页 × 四档视口无横向溢出、12 项对比度全部可测且达标（最低 4.74 / 5.56）、触摸目标 24px 与主控件 44px 两档全过、Tab 3/3 有焦点环、reduced-motion 生效、深色令牌正确、零控制台错误、G.3 与 G.4 全部达标 |
-| L3 游戏行为 | `scripts/verify-game.mjs` | **全通过：18 / 18（warn 0 / fail 0）**（D3 / D4 / D5 / D6；含 1 项条件记录项，项数在 18–19 间浮动） |
+| L3 页面机械检查 | `scripts/verify-pages.mjs`（**Ego 浏览器** + 批次共享 `tools/ego-qa`） | **0 error / 0 warn**：三页 × 四档视口（视口精度自检通过）无横向溢出、**每页 12 项对比度全部可测且达标**（最低 4.74 / 5.56，含 5 项 HUD 样本）、触摸目标 24px 与主控件 44px 两档全过、**Tab 8/8 有焦点环**、reduced-motion 生效、渲染字体正确、深色令牌正确、零控制台错误、G.3 与 G.4 全部达标、源码接入完整性 12 项全过 |
+| L3 游戏行为 | `scripts/verify-game.mjs`（**Ego 浏览器**） | **全通过：19 / 19（warn 0 / fail 0）**（D3 / D4 / D5 / D6；含 1 项条件记录项，项数在 18–19 间浮动） |
 | L4 批次 harness | 13-qa-curation | **verdict = pass**（详见下方「13 复测结论」） |
 
 ---
@@ -189,10 +191,10 @@ node scripts/verify-game.mjs     # 游戏行为回归（D3 / D4 / D5 / D6）
 8. **本批只有中文版**，未提供 `hreflang="en"`（无可交替的英文版）。
 9. **画布焦点环保留青色，是对 K.3「HUD 可读性优先」的有意偏离**：几何对齐 `--ds-focus-width` / `--ds-focus-offset`（2px + 2px），颜色保留 `--lumen-cyan`（深靛画面上远高于朱砂）。**此项无参考站实测依据，为本批自定**。
 10. 中文正文使用**系统字体栈**（未内置 Noto Sans SC 子集，理由见「暂缓项」§5）；不同系统上的中文渲染差异未做逐字校对。
-11. 改版中「样式表顺序」「固定深色主题」「画布相邻层保留画布色板」「年代筛选作为 `.ds-chip` 载体」「顶栏外层还原为 `display: block`」等取舍**无参考站实测依据，为本批自定** —— 参考站 olek.si 未在这些维度取证，不臆造为「olek.si 风格」。
+11. 改版中「样式表顺序」「固定深色主题」「画布相邻层保留画布色板」「年代筛选作为 `.ds-chip` 载体」「顶栏外层还原为 `display: block`」「`--ds-base` 注入带 `!important`」等取舍**无参考站实测依据，为本批自定** —— 参考站 olek.si 未在这些维度取证，不臆造为「olek.si 风格」。
 12. `14-publish/release/works.json` 中 08 的条目仍是 `"status": "pending"` / `"qaState": "pending-reverify"`；该文件属 14-publish，**本任务不得修改**。
 13. 本目录的 `assets/ds/` 是 16 规范层在本目录内的落地副本；16 若后续更新其规范层，需重跑 `scripts/check-tokens.mjs`（第 10 项会报漂移）并同步。
-14. **浏览器使用口径**：`scripts/verify-pages.mjs`（零依赖 CDP）与 `scripts/verify-game.mjs`（playwright-core）内部各自拉起无头 Chromium，属**仓库内的自验工具链**，`npm run verify` 依赖本机已安装 Chrome；本轮**交付截图**（`screenshots/0*.png`）改由 **Ego 浏览器**拍摄，两条路径互不冲突。
+14. **浏览器使用口径已统一到 Ego**：`scripts/verify-pages.mjs`（改为复用批次共享 `tools/ego-qa/lib/runner.mjs`）与 `scripts/verify-game.mjs` 均经 `ego-browser nodejs` 执行，不再本地另起 Chromium / Playwright。两支脚本**刻意不并入 `npm run verify`**（保持后者全程离线、无常驻进程），需单独运行，前提是本机已安装 Ego lite。交付截图（`screenshots/0*.png`）同样由 Ego 拍摄。
 
 ## 变更日志
 
@@ -211,3 +213,6 @@ node scripts/verify-game.mjs     # 游戏行为回归（D3 / D4 / D5 / D6）
 - 2026-10-21（第四轮·收尾）：修掉两处自检/实现缺陷 —— ① 规范 `.ds-topbar{display:flex}` 把 08 的限宽内层容器压成内容宽度并居中（顶栏品牌从 x=128 漂到 x=447），08 层还原 `display: block`；② 游戏页 `<h1 class="topbar__title">` 带 `white-space: nowrap` 违反 G.3，改为 `normal` + `overflow-wrap: anywhere`。
 - 2026-10-21（第四轮·收尾）：修正 `scripts/verify-pages.mjs` 的两处判定缺陷 —— `letter-spacing: normal` 归一为 0；正文取样回退到 `.note` 并排除 `.sr-only` / `[hidden]` / 瞬态 HUD。页面检查由 7 error 回到 **0 error / 0 warn**。
 - 2026-10-21（第四轮·收尾）：`scripts/verify-game.mjs` 增写 `screenshots/probe-report.json`（可重复生成，替换此前一次性探针留下的 66 项旧报告）；主截图 7 张改由 **Ego 浏览器**按固定视口重拍；README / RESTYLE-INVENTORY / QA / STATUS 按第四轮分层架构重写。
+- 2026-10-22（第四轮·终态）：**按 16 的规范就绪告知 + 用户「Ego 是唯一浏览器入口」的长期约定**，把两支 L3 脚本从「本地另起 Chromium / Playwright」迁到 **Ego**（前者直接复用批次共享 `tools/ego-qa/lib/runner.mjs`），`npm run verify` 保持全程离线。
+- 2026-10-22（第四轮·终态）：补测 HUD 层对比度，**查出并修掉两处真实缺陷** —— ① 覆盖层眉标 4.22:1 / 脚注 2.4:1 不达 AA（16 明确 HUD 不豁免），改用同属画布色板的 `--lumen-cyan` / `--lumen-slate`；② 入口注入的 `--ds-base` 在**构建产物**里被规范层默认值反向覆盖（Vite 把合并 CSS 放到 `<head>` 末尾），加 `!important` 修正。
+- 2026-10-22（第四轮·终态）：游戏页正文补挂 `.ds-body` / `.ds-sm` / `.ds-mono`，使 12 个规范对比度样本在游戏页同样可测（每页 12 项：展厅 12 规范样本 / 游戏页 7 规范 + 5 HUD）。

@@ -240,6 +240,18 @@ process.exit(bad ? 1 : 0);
 NODE2
 if [ $? -eq 0 ]; then ok "规范层接入完整"; else bad "规范层接入不完整"; fi
 
+# ---------------------------------------------------------------- 浏览器层（不在本脚本内）
+# 依 2026-10-22 起的长期约定，网页调试 / 截图 / 验收一律走 Ego 浏览器，
+# 不再本地另起 Playwright / Chromium / Chrome。因此下面两支**需要浏览器**的
+# 验收脚本刻意不并入 `npm run verify`（保持本脚本全程离线、无常驻进程）：
+#
+#   node scripts/verify-pages.mjs   # 页面机械检查（复用批次共享 tools/ego-qa）
+#   node scripts/verify-game.mjs    # 游戏行为回归 D3 / D4 / D5 / D6
+#
+# 两者都以 `ego-browser nodejs` 执行，产出：
+#   screenshots/verify/pages-verification.json
+#   screenshots/probe-report.json
+
 # ---------------------------------------------------------------- 结果
 printf '\n'
 if [ "$FAIL" -eq 0 ]; then

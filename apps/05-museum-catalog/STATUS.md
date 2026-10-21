@@ -54,7 +54,7 @@
 
 ### S3 截图取证 ✅
 - 当时内置 Browser 的 `screenshot` 在本环境返回纯白图（Electron 合成面问题，内容本身可 `query` 读出），
-  故改用**本机 headless Chrome**（`--headless=new --screenshot`）取得真实页面快照。
+  故改用**本机 headless Chrome**（`--headless=new --screenshot`）取得真实页面快照。（**历史时点说明**：该轮发生在 2026-10-21 21:xx，早于 Ego 迁移；自 2026-10-22 00:2x 起同类抓取一律走 Ego（`scripts/capture_refs.py`），且已于 02:1x 把视口固定为 1440×900 使截图尺寸可复现。）
   > 2026-10-22 更新：按用户长期约定（Ego 是唯一浏览器入口），**参考站截图脚本已整体迁移到 Ego**
   > （`scripts/capture_refs.py` + `scripts/ego_refshots.template.mjs`）。本节记录的是 S3 阶段的历史做法。
 - 12 张成功；`videogamehistory.org` 因 TLS 握手被网关中断无图（正文抓取成功，仍作为参考站收录）；`old-computers.com` 站点处于建设中，亦无图。
@@ -344,7 +344,18 @@ MIGRATION.md §1③ 点名的坑，**05 自己踩中了**。用 Ego 对 05 实�
 
 **定性**：harness/环境问题，**不计产品失败**。恢复后重跑，全绿。
 
-#### 9.6 证据位置
+#### 9.6 自测口径的一个修正：`skipped` 不再冒充「通过」
+
+本轮复跑时线上实探遇到一次 **harness 超时**（`CDP request timed out: Runtime.evaluate`），
+被记为 `skipped` 且 `ok=true`，于是 summary 报出「**23/23 通过**」—— 但那一项**线上状态根本没核验**
+（既非 200 也非 404），23/23 会被读成「线上也通过了」。
+
+**已修正**：`restyle_selftest.py` 的 `add()` 增加 `skipped` 标记，summary 拆成
+`passedExecuted`（真正执行且通过）/ `skipped` / `failed` / `blockedByPublish` / `blockedByHarness`，
+终端输出用 `[SKIPPED]` 独立标记。**口径变化后本轮的线上项正常返回 404** → 正确归为
+`blocked-by-publish`，最终 **22/23、产品侧失败 0、skipped 0**。
+
+#### 9.7 证据位置
 
 | 证据 | 路径 | 内容 |
 | --- | --- | --- |
@@ -365,7 +376,7 @@ MIGRATION.md §1③ 点名的坑，**05 自己踩中了**。用 Ego 对 05 实�
 
 | 套件 | 结果 | 证据 | 复现命令 |
 | --- | --- | --- | --- |
-| 功能自测 | **23 / 23 通过** | `evidence/restyle-selftest.json` | `python3 scripts/restyle_selftest.py` |
+| 功能自测 | **22 / 23**（产品侧失败 0；1 项线上 404 归发布侧 blocked-by-publish；`skipped` 单列不计通过） | `evidence/restyle-selftest.json` | `python3 scripts/restyle_selftest.py` |
 | 设计系统验收 | **14 / 14 通过** | `evidence/ds-verify.json` | `python3 scripts/ds_check.py` |
 | 改版前后对照 | **4 / 4 通过** | `evidence/restyle-visual-diff.json` | `python3 scripts/restyle_visual_regression.py` |
 | 动效时长与命名空间审计 | **13 / 13 通过** | `evidence/ds-duration-audit.json` | `python3 scripts/ds_duration_audit.py` |
@@ -374,6 +385,9 @@ MIGRATION.md §1③ 点名的坑，**05 自己踩中了**。用 Ego 对 05 实�
 | 截图 | 四档视口 + 深色主题 | `evidence/screens/ds-*.png`、`before/after-1440.png` | — |
 | **16 侧门禁在 05 副本下复核**（S8-补-7） | `/tmp` 农场跑 16 原版 `validate-tokens.mjs` | **PASS** — tokens 213 / css vars 130 / errors 0 / warnings 1 | 见 §2「S8-补-7」 |
 | **16 探针自测在 05 侧复现** | 农场内跑 16 原版 `selftest-verify-preview.mjs` | **6/6 PASS** | 同上 |
+| **共享工具 `tools/ego-qa`（Ego）**（S9） | 批次共享验收工具跑 05 实页 | 25 项检查中 **24 通过 / 1 失败**；四档视口**精度自检全过**；溢出/控制台/关键组件/样式表/对比度/**触摸目标**/reduced-motion/渲染字体**全过**；唯一失败项 `chrome-untrusted://new-tab-page/…` 判为**工具侧假阳性**（Ego 新标签页资源，网页无法发起该 scheme；见 S9.4，已回报工具所有者） | `evidence/ego-qa/05-catalog.json` |
+| **自测口径修正**（S9） | `skipped` 与「通过」拆分 | `evidence/restyle-selftest.json`（summary 字段） | `restyle_selftest.py` 的 summary 现为 `passedExecuted` / `skipped` / `failed` / `blockedByPublish` / `blockedByHarness` 五项分列；线上实探因 harness 超时而 skip 时**不再被读成通过** |
+| **触摸目标审计（WCAG 2.2 SC 2.5.8 AA）**（S9） | `checkVisibility()` 区分真正绘制 vs 折叠 details 的幽灵矩形 | 初始态绘制目标 18 个、<24px **0**；展开态 435 个绘制目标、<24px **0**；2.5.8 违例 **0** | `evidence/touch-target-audit.json` |
 
 **最终复跑（2026-10-22 00:3x，**探针迁移到 Ego** 后）**：`qa_check.py` **18/18** · `ds_duration_audit.py` **13/13** ·
 `restyle_selftest.py` **22/23（产品侧失败 0；1 项线上 404 归发布侧 blocked-by-publish）** · `ds_check.py` **14/14** ·
@@ -497,9 +511,35 @@ python3 scripts/restyle_selftest.py --no-live   # 离线跑（跳过线上实探
 python3 scripts/ds_check.py                     # 设计系统验收 14 项 → evidence/ds-verify.json
 python3 scripts/restyle_visual_regression.py    # 改版前后对照 4 项 → evidence/restyle-visual-diff.json
 python3 scripts/ds_duration_audit.py            # 动效时长/命名空间/资产一致性审计 13 项 → evidence/ds-duration-audit.json
-node ../16-design-system/tools/validate-tokens.mjs   # 16 侧令牌门禁（只读）
-node ../16-design-system/tools/verify-preview.mjs     # 16 侧样例页门禁（只读）
+python3 scripts/touch_target_audit.py          # 触摸目标审计（WCAG 2.2 SC 2.5.8 AA）→ evidence/touch-target-audit.json
 ```
+
+**浏览器验收一律走 Ego**（用户 2026-10-22 长期约定；批次通用入口 = 共享工具 `tools/ego-qa`）：
+
+```bash
+# 通用验收层：批次共享工具（Ego）。先起静态服务（按 Pages 子路径形态），再跑：
+python3 -m http.server 8971 --directory <Pages 形态目录根>
+node ../tools/ego-qa/run.mjs \
+  --url "http://127.0.0.1:8971/playtime-atlas-20261021/research/catalog.html" \
+  --space "05-museum-catalog ego-qa" --label "05-catalog" \
+  --out "$PWD/evidence/ego-qa" \
+  --require ".ds-topbar,.ds-catalog__item,.ds-chip,.ds-footer,.ds-skip,.ds-catalog__row,.ds-detail__caption,.ds-catalog__kv" \
+  --contrast "页眉标题:.ds-catalog__title,条目名:.ds-catalog__name,副标题:.ds-catalog__sub,正文:.ds-catalog__desc,次级计数:.ds-catalog__count,年份:.ds-catalog__year,chip:.ds-chip,来源说明:.ds-detail__caption" \
+  --font-selector ".ds-catalog__title"
+# 退出码 0=PASS / 1=FAIL / 2=参数或环境错误
+
+# 领域专属门禁（Ego）：DS 令牌注入、焦点环、旧色板、密度、筛选/搜索、来源角标 —— 共享工具不覆盖
+python3 scripts/ds_check.py
+python3 scripts/restyle_selftest.py
+python3 scripts/restyle_visual_regression.py
+
+# 16 侧只读门禁（纯静态，不碰浏览器）
+node ../16-design-system/tools/validate-tokens.mjs
+```
+
+> **取消 file:// 豁免后的口径**：16 的 `tools/verify-preview.mjs`（原生 CDP、非 Ego、加载本地 `file://` 样例页）
+> **不再是 05 的通过条件**，降级为「16 侧自测记录」（产物仍留在 `evidence/ds-verify-preview/` 作为历史证据）。
+> 05 的通用验收层改为上面的共享 Ego 工具。详见 S9.3。
 
 `restyle_selftest.py` 与 `ds_check.py` 会临时起一个静态服务（按 Pages 子路径形态
 `/playtime-atlas-20261021/research/catalog.html`，含站点根 `assets/ds/`），

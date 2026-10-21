@@ -25,7 +25,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_WORK_FIELDS = [
   'id', 'title', 'subtitle', 'description', 'entry', 'section', 'era', 'kind',
   'tags', 'controls', 'cover', 'playable', 'status', 'qaState', 'buildState',
-  'entryExists', 'online', 'bytes', 'artifacts',
+  'entryExists', 'published', 'online', 'bytes', 'artifacts',
 ];
 /** 公开元信息白名单。 */
 const PUBLIC_META_FIELDS = ['project', 'projectCn', 'hall', 'hallEn', 'repo', 'batch', 'updated'];
@@ -209,19 +209,22 @@ function buildPublicWorks(ctx) {
 
     const entryAbs = entry ? safeJoin(docsDir, entry) : null;
     const entryExists = !!(entryAbs && fileExists(entryAbs));
-    const priorOnline = runtime.online === true || rep.built === true || rep.fallback === true
+    const priorPublished = runtime.published === true || rep.built === true || rep.fallback === true
       || buildState === 'built' || buildState === 'fallback' || buildState === 'built-no-entry';
-    const online = entryExists && priorOnline;
+    const published = entryExists && priorPublished;
+    // online = **线上实测 HTTP 状态码**（number）；未发布或未实测一律 null，绝不猜测。
+    const online = published && Number.isInteger(runtime.online) ? runtime.online : null;
 
     const out = {
       ...pick(w, ['id', 'title', 'subtitle', 'description', 'section', 'era', 'kind', 'tags', 'controls', 'artifacts']),
       entry,
       cover: typeof w.cover === 'string' ? w.cover : '',
-      playable: w.playable === true && online,
+      playable: w.playable === true && published,
       status: w.status,
       qaState: runtime.qaState ?? w.qaState,
       buildState,
       entryExists,
+      published,
       online,
     };
     if (typeof runtime.bytes === 'number') out.bytes = runtime.bytes;

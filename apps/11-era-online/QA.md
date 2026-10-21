@@ -7,108 +7,57 @@
 
 ## 1. 验收方式
 
+> **浏览器入口**：按用户长期约定，所有网页访问 / 截图 / 网页调试 / 验收**一律走 Ego 浏览器**
+> （`/Users/mekzenx2/.local/bin/ego-browser`）。本目录**不再**使用
+> playwright / playwright-core / puppeteer / 本机无头 Chrome + CDP。
+
 | 项目 | 说明 |
 | --- | --- |
-| 自动化脚本 | Playwright 1.64.1 驱动 **Chromium headless shell**（Playwright 自带，不下载浏览器）；脚本副本见 `scripts/acceptance.cjs` |
-| 被测对象 | `npm run build` 产出的 `dist/`，由临时静态服务器提供 |
-| 视口 | 桌面 `1440×900`（dpr 1）+ 移动 `390×844`（dpr 2, isMobile, hasTouch） |
-| 断言数量 | **53 项**，全部为可执行断言（DOM 状态 / 数值 / 存储 / 网络 / 控制台） |
-| 原始结果 | `qa-result.json`（本目录） |
-| 截图 | `screenshots/`（16 张，桌面 + 移动双视口） |
+| 浏览器 | **Ego 浏览器**（ego-lite，用户的真实浏览器环境；TaskSpace 按名复用，保留登录态，不清 cookies） |
+| 通用体检 | 批次共享工具 `tools/ego-qa/run.mjs`（本目录用 `scripts/run-ego-qa.mjs` 转调并补退出码） |
+| 项目特有验收 | `scripts/ego-verify.mjs`（40 项：静态令牌判据 + 项目特有 DOM 判据 + 功能抽检） |
+| 功能全量验收 | `scripts/ego-acceptance.mjs`（53 项，原 `acceptance.cjs` 的逐项移植） |
+| 被测对象 | `npm run build` 产出的 `dist/`，由临时静态服务器提供（ES module 站点**不能**用 `file://`） |
+| 视口 | 1440×900 / 1280×800 / 768×1024 / 390×844，**`mobile: true`**（否则 Chromium 把 1440 放大成 1600） |
+| 原始结果 | `qa-ego-acceptance.json`、`qa-ego-verify.json`、`evidence/ego-qa/11-era-online.json` |
+| 截图 | `screenshots/`（16 张）+ `evidence/ego-qa/screenshots/`（四档视口） |
 
-### 1.1 测试环境注意事项（影响验收脚本，不影响产物）
+### 1.1 Ego 环境的四条硬约束（改造时踩过，已固化进脚本）
 
-| 事项 | 处理方式 |
-| --- | --- |
-| 平滑滚动干扰点击稳定性检测 | 验收期间注入 `html{scroll-behavior:auto}`；**只作用于测试会话**，不改变产物 |
-| 启动参数 | **不加 `--disable-gpu`**：该参数会让动画中的 canvas 无法合成进视口截图（元素截图仍正常） |
-| 机器负载 | 本机同期有其它会话并发跑浏览器实例，系统负载一度达 90+，墙钟被严重拉长。验收脚本因此做了三处加固（见 1.2） |
-| Chromium 被系统杀死 | 负载过高时会出现 `Target page, context or browser has been closed`；这是**宿主资源问题**，重跑即可 |
-
-### 1.2 本轮对验收脚本本身做的加固（不削弱任何断言）
-
-| # | 问题 | 处理 |
+| 事项 | 约束 | 本目录的落地 |
 | --- | --- | --- |
-| 1 | 控制条按钮用位置型 CSS 选择器（`.btn:nth-child(4)`）定位，一旦在按钮之间插入元素就会点错按钮（本轮真实发生：把「存档」点成了「速度」） | 产品侧给控制条按钮加了稳定标识 `data-act="start|pause|speed|save|load|reset|mute"`；脚本改用 `[data-act=...]` 定位 |
-| 2 | 「准备阶段 22 秒自动开波」与慢机器之间存在竞态：波次自行开始 → 灯塔被打穿 → 结算遮罩挡住后续点击 | 脚本用白盒接口在测试期把 `prepTimer` 拉长并维持灯塔耐久（**测试侧干预，不改变产品行为**）；开波断言改为「波次编号必须推进」而非固定值 |
-| 3 | 截图取景时战场画布可能已滚出视口，产出「一片空白」的无效证据 | 每次截图前把对应画布 `scrollIntoViewIfNeeded()`；重生成全部 12 张验收截图并逐张目视复核 |
-| 4 | 方向键用「按下→间隔→抬起」模拟轻点，间隔在慢机器上会被拉长到超过产品连发延迟，一次轻点被判成按住、光标连跳多格 | 产品侧把连发延迟从 0.24s 提到 0.40s（缺陷 16）；脚本侧改用 `keyboard.press()` 表达真实轻点 |
+| 视口精度 | `Emulation.setDeviceMetricsOverride` 必须 `mobile: true`，否则布局被缩到 0.9 倍（请求 1440 实得 1600），**同时污染溢出判定、对比度采样与截图尺寸** | 共享工具每档做**视口精度自检**，不符即判 FAIL；本目录脚本同样 `mobile: true` 并回读校准 |
+| `page.evaluate` 作用域 | 回调内**不能**引用模块作用域的函数/变量；页面内辅助函数必须定义在回调内部，需要传数据用 `page.evaluate(fn, arg)` | 所有页面内函数内联在回调里 |
+| 无 argv / 不继承 env | Ego 的 nodejs 进程**没有** `process.argv`、不继承 `process.env` | 配置写进脚本；CLI 侧用 `scripts/run-ego-*.mjs` 包装器生成一次性脚本再执行 |
+| 事件缓冲取出即清空 | `await page.events()` 取用后缓冲被清空 | 每次导航前先取一次清空，再导航，再取一次收集 console 错误 / 页面异常 / 请求失败 / 外部请求 |
 
-### 1.3 定点取证脚本（`scripts/spotcheck-6.cjs` → `qa-spotcheck.json`）
+### 1.2 颜色解析：Chromium 对 `color-mix()` 返回 `color(srgb …)`
 
-针对「纯键盘建造 / U 键升级 / 对话说话人 / 来源角标 / 具体年份 / 可点击外链」这 6 项，
-单独拆出来打印**可直接复核的原始数值**（资源前后差、场上设施数、塔等级、角标 href），
-与整体回归脚本互为佐证。最新一次运行：**7/7 通过**（含「页面 JS 运行时错误 0 条」）。
+本目录多处用 `color-mix(in srgb, …)` 派生语义色，Chromium 的 `getComputedStyle` 对其返回
+**`color(srgb r g b)`**（分量是 0—1 浮点），而不是 `rgb()`：
 
-| # | 断言 | 实测证据 |
-| --- | --- | --- |
-| 1 | 纯键盘路径可建造（`1` + 方向键 + `Enter`） | Σ **242 → 184**，场上设施 **0 → 1**，生成 `pulse Lv1 @(0,1)` |
-| 2 | `U` 键升级（先 `Enter` 选中） | 选中前「未选中」→ 选中后「脉冲塔 Lv1」→ 按 `U` 后「**脉冲塔 Lv2**」；Σ 185 → 131（升级价 Σ55 / Φ18） |
-| 3 | 对话显示说话人 | 「**岑 · 守灯人**」 |
-| 4 | 对话含带来源角标的历史陈述 | 首句即带 **1 枚**角标：`百科 → https://en.wikipedia.org/wiki/Xbox_network` |
-| 5 | 对话含具体年份史实 | 年份 **2002**（原文：Xbox Live 是 2002 年 11 月 15 日随初代 Xbox 开放） |
-| 6 | 角标为可点击外链 | `https://en.wikipedia.org/wiki/Xbox_network`（https 前缀） |
+```
+.notice__body  color = rgb(192, 183, 176)   bg = rgba(0, 0, 0, 0)
+.notice        color = rgb(247, 244, 240)   bg = color(srgb 0.14902 0.128471 0.0923922)
+```
 
-> 塔价口径（`src/games/defense/config.ts`）：建造 Σ **60 / 85 / 140 / 110**（脉冲塔 / 霜凝场 / 磁轨炮 / 谐振塔），
-> 升 Lv2 用 Σ **55 / 70 / 120 / 95** 并消耗 Φ 18 / 22 / 30 / 26。
-> 因此「一次建造」的 Σ 降幅应等于该塔造价减去期间自然回复的晶格，而非固定值。
+只匹配 `rgb()/rgba()` 的解析器会得到 null → 对比度项被误判为「无法计算」。
+本目录脚本的解析器同时吃两种格式，且向祖先找背景时**把 `color(srgb …)` 视为有效背景**（不是透明）。
 
-### 1.4 改版自检脚本（`scripts/restyle-check.cjs` → `qa-restyle.json`）
+> 批次共享工具目前只匹配 `rgb()/rgba()`，因此本项目的 `.notice` 背景在共享工具里报
+> 「对比度无法计算」（**warning，非 error**）——已记录，未改共享目录。
 
-专测「视觉语言接入」这一层，与功能验收脚本（§2）互为佐证。最新一次运行：**20/20 通过**。
+### 1.3 方向键的「本帧刚按下」机制
 
-覆盖四档视口（1440 / 1280 / 768 / 390）无横向溢出、ds 资源全部 200、官方组件类到位、
-`--ds-base` 注入、焦点环可见、Tab 不被吞、三条诚实声明可见、触摸目标 ≥24px、
-reduced-motion 归零、运行期零外部请求。逐项结果见 `qa-restyle.json`。
-
-> 截图前脚本会先 `blur()` 当前焦点，避免 `.ds-skip` 跳转链接的聚焦态遮住封面品牌文字
-> （聚焦态本身是**期望行为**，不是缺陷）。
-
-### 1.5 §9 规范机械复核脚本（`scripts/ds-conformance.cjs` → `qa-ds-conformance.json`）
-
-把 16 的 `MIGRATION-NOTES.md` §9（V.1—V.13）、§7（降级）、§4.2（画布豁免边界）、§5.1（触摸目标）
-落到**本目录**的独立复核。最新一次运行：**14/14 通过**。
-
-| # | 检查 | 实测 |
-| --- | --- | --- |
-| V.3 | 令牌一致性（深色主题 `--ds-*` == `design-tokens.json`） | 全部一致 |
-| V.11 | 字体栈顺序 | `Noto Sans SC` 下标大于所有系统 CJK 族下标 |
-| V.12 | 不自造字体栈 | 4 个自有 CSS 文件中无任何字面 CJK 字体族列表 |
-| V.13 | 无规范漂移 | display / text / mono 字体族序列逐项相等（含顺序） |
-| §7 | 降级块写法 | `:root` 6 个时长变量均为真实值；`1ms` 只在 reduce 块内 |
-| §7 | 自有 CSS 不声明 `--ds-dur-*` | 仅消费，不声明 |
-| §4.2 | HUD DOM 文字对比度 | 展项 A 57 个 / 展项 B 21 个文字元素全部 ≥4.5:1 |
-| §5.1 | 触摸目标 24px / 44px | 82 类全部达标；主控件无违反项 |
-| — | ds 令牌层与 16 上游 | sha256 逐字节一致 |
-
-> 16 的两个自测脚本也已在本机跑通：`node tools/validate-tokens.mjs` → `errors: 0`；
-> `node tools/verify-preview.mjs` → `errors: 0 | warnings: 0`（首次运行在 load average 105 时
-> 出现一次 `timeout Page.navigate`，重跑即过，属宿主资源问题）。
-
-### 1.6 **作者侧权威验收脚本**（`scripts/ego-verify.mjs` → `qa-ego-verify.json`）
-
-按用户的长期约定，**所有网页访问 / 截图 / 网页调试 / 验收一律走 Ego 浏览器**
-（`/Users/mekzenx2/.local/bin/ego-browser`），不另起 Playwright / Chromium / Chrome。
-因此作者侧的权威验收路径是 `scripts/ego-verify.mjs`（走 Ego 的 TaskSpace / Page API），
-最新一次运行：**40/40 通过**，对应当前构建产物。
-
-| 段 | 覆盖 |
-| --- | --- |
-| 静态 | ds 令牌层与 16 上游逐字节一致 / V.3 令牌一致性 / V.11 字体栈顺序 / V.12 不自造字体栈 / V.13 无规范漂移 / §7 降级写法 + 自有 CSS 不声明 `--ds-dur-*` |
-| 页面 | 四档视口无溢出 / 运行期零外部请求 / ds 资源全 200 / 官方组件类 / `--ds-base` / `aria-current` / **V.11b 渲染层不混排** / 三条诚实声明 / 焦点环 + Tab 不被吞 / 触摸目标 24px + 44px / §4.2 HUD DOM 对比度（展项 A、B 各一遍） / 两展项可切换 / reduced-motion |
-| 功能 | 展项 A 纯键盘建造（`1` + 方向键 + `Enter`）与 `U` 键升级；展项 B 对话说话人 / 来源角标 / 具体年份 / https 可点击外链 |
-
-> §1.1—§1.5 的四个 Playwright 脚本（`acceptance.cjs` / `spotcheck-6.cjs` / `restyle-check.cjs` /
-> `ds-conformance.cjs`）**保留为 headless 复跑工具**，供 13-qa-curation 与 CI 在无 Ego 环境下复跑，
-> 不是作者侧验收路径。其最近一次结果为 53/53 + 7/7 + 20/20 + 14/14；此后源码只改了
-> `src/styles/base.css` 的 `.src` 触摸目标（24px → 25px），该变化已由 Ego 验收独立覆盖
-> （§5.1 触摸目标项在当前构建上通过）。
+展项 A 的方向键走 60Hz 轮询的「刚按下」判定，keydown+keyup 落在同一帧内会被**吞掉**。
+因此方向键必须 `keyboard.down()` → 间隔 ≥120ms → `keyboard.up()`；
+而 `Digit1`/`KeyU`/`KeyX`/`Enter`/`KeyZ` 是 keydown 直接处理，`keyboard.press()` 即可。
 
 ---
 
 ## 2. 验收结果总览
 
-### **53 / 53 全部通过 ✅**
+### **53 / 53 全部通过 ✅**（Ego 版 `ego-acceptance.mjs`）
 
 | 分组 | 项数 | 结果 |
 | --- | --- | --- |
@@ -308,6 +257,7 @@ reduced-motion 归零、运行期零外部请求。逐项结果见 `qa-restyle.j
 | `11-handheld-hud.png` | 展项 B 掌机 HUD：上屏点阵画面（画布，色板未动）+ 下屏交互区 + 状态栏 + 控制键；HUD DOM 文字为提亮后的 `--pocket-text` |
 | `12-sources-chips.png` | 史料台账密集列表：104 个来源角标实测 43×25（≥24px），版面无溢出 |
 | `13-ego-verify-real-browser.png` | **Ego 真实浏览器**下的渲染取证：汉字恒走系统黑体（PingFang SC），无子集混排、无基线错位 |
+| `evidence/ego-qa/screenshots/11-era-online-{1440x900,1280x800,768x1024,390x844}.png` | 批次共享工具 `tools/ego-qa` 产出的四档视口截图（含视口精度自检） |
 
 ---
 
@@ -361,14 +311,17 @@ reduced-motion 归零、运行期零外部请求。逐项结果见 `qa-restyle.j
 | R25 | **Ego 权威验收** | `scripts/ego-verify.mjs`（走 Ego 浏览器） | ✅ **40/40 通过**（静态 + 页面 + 功能三段） |
 | R26 | **V.11b 渲染层不混排** | 逐字渲染比对：页面真实栈 vs 强制系统族 vs 强制子集 | ✅ 全页 **617** 个汉字/全角标点：系统族 617 / 子集 0 / 其它 0 —— **无混排** |
 | R27 | 旧序 vs 新序的影响面量化 | Ego 真实浏览器内按两套字体栈逐字渲染同一批字 | ✅ 617 字中 **444 字**（72%）在旧序下会走子集、新序走系统 —— 证明该条款「真实影响渲染」，也证明本目录已在修正后的顺序上 |
+| R28 | **浏览器入口合规** | `grep` 全目录脚本 | ✅ `scripts/` 下无 `playwright` / `playwright-core` / `puppeteer` / `chromium.launch`；原 4 个 Playwright 脚本已改造/停用 |
+| R29 | **批次共享工具复跑** | `node scripts/run-ego-qa.mjs --url http://127.0.0.1:4331/ …` | ✅ **PASS，errors 0 / warnings 1**；四档视口**视口精确**且无横向溢出；无外部请求；控制台 0 错误；触摸目标 AA/AAA 全过；reduced-motion 生效 |
+| R30 | **渲染字体（第三方取证）** | 共享工具的 `CSS.getPlatformFontsForNode` | ✅ `.brand__title` 实际渲染字体 = **PingFang SC（系统黑体）**，**未**使用 Noto 子集 —— 独立于本目录脚本的第三方证据 |
 
 ---
 
 ## 9. 结论
 
-**53 / 53 项自动化断言全部通过**（§9 复核轮修复后复跑，无回归）；定点取证 **7/7**；
-改版自检 `scripts/restyle-check.cjs` **20/20**；§9 规范机械复核 `scripts/ds-conformance.cjs` **14/14**；
-**Ego 权威验收 `scripts/ego-verify.mjs` 40/40**；
+**53 / 53 项自动化断言全部通过**（Ego 版 `scripts/ego-acceptance.mjs`，断言名称集合与原
+`acceptance.cjs` **逐项一致**：0 缺 0 增）；项目特有验收 `scripts/ego-verify.mjs` **40/40**；
+批次共享工具 `tools/ego-qa` **PASS（errors 0 / warnings 1）**；
 `npm run build` 退出码 0，产出 `dist/index.html`；
 产物为纯静态、相对路径、零运行时依赖、运行期零外部请求、字体全本地。
 

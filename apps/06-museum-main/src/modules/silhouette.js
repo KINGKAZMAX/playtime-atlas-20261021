@@ -9,11 +9,11 @@ import { escapeHtml } from '../core/format.js';
 
 /*
  * 展签图形画的是「实物」：浅色机身 + 深色屏幕。
- * 这两个值来自令牌层（--ds-art-paper / --ds-art-ink），与美术包同一套色阶；
+ * 这两个值来自令牌层（--art-paper / --art-ink），与美术包同一套色阶；
  * 它们刻意不跟随主题反转——真实机器就是浅色机身。
  */
-const INK = 'var(--ds-art-ink)';
-const PAPER = 'var(--ds-art-paper)';
+const INK = 'var(--art-ink)';
+const PAPER = 'var(--art-paper)';
 
 const SHAPES = {
   console: `<rect x="16" y="54" width="88" height="34" rx="9" fill="${PAPER}" opacity="0.92"/><rect x="28" y="66" width="24" height="6" rx="3" fill="${INK}"/><circle cx="84" cy="69" r="5.5" fill="var(--era-accent)"/><rect x="94" y="63" width="8" height="11" rx="3" fill="${PAPER}" opacity="0.5"/>`,

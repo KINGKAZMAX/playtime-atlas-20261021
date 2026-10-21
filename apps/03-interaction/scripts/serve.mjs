@@ -90,7 +90,8 @@ export async function startServer({ root = DIST, port = 0 } = {}) {
 
 /* ────────────── 命令行入口 ────────────── */
 
-const isMain = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(__filename);
+/** Ego 的 nodejs 进程没有 argv —— 用可选链兜住，导入本模块时不要误触发 CLI 分支。 */
+const isMain = Boolean(process.argv?.[1]) && path.resolve(process.argv[1]) === path.resolve(__filename);
 
 if (isMain) {
   if (!fs.existsSync(path.join(DIST, 'index.html'))) {

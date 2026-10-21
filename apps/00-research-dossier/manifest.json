@@ -383,7 +383,32 @@
     "dsBase": "/playtime-atlas-20261021/ （按 MIGRATION-NOTES §6 在入口注入；本页资源仍全部相对路径）",
     "integration": "assets/ds/ 下 tokens.css + components.css + fonts/（5 woff2 + 5 OFL 原文 + fonts.css + FONT-MANIFEST.json，共 492 KiB）；index.html 三个 <link rel=stylesheet> 全部相对路径；<body class=\"ds-shell\">；.ds-topbar/.ds-footer/.ds-skip",
     "redLinesRespected": "未改名/未复制参考站作品名文案（TOP3 卡标题改为本批改编名 + 来源行）；未复制参考站图片/视频/字体；既有 CSS 未删除（只重定向取值）；未用 z-index 掩盖重叠；未复制参考站紫 #6549F2（改用朱砂 #B4432B）；标题无 nowrap；中文无负字距；无 CDN 字体脚本（零外部请求）",
-    "acceptance": "npm run verify → PASS 120 / FAIL 0 / WARN 0 (exit 0)；浏览器四档视口（1440/1280/768/390）验收 62 项全绿：横向溢出 0 / 正文对比度最低 4.81:1 / D1 双口径 0/0 / 负字距 0 / 标题 nowrap 0 / 触摸目标 <24px 0 / 控制台错误 0 / HTTP≥400 0 / 外部请求 0 / 焦点环 12/12 可见 / Tab 12/12 推进 / 搜索 134→9 / reduced-motion 0.001s / 5 个字体本地 loaded；字体栈顺序：独立复扫真缺陷 0 项（修复前 2 项），CDP CSS.getPlatformFontsForNode 实测汉字统一由系统 CJK 族渲染（修复前同段文字混排 Noto 子集 + PingFang 两套字形）",
+    "acceptance": "npm run verify → PASS 120 / FAIL 0 / WARN 0 (exit 0)；浏览器四档视口（1440/1280/768/390）验收 62 项全绿：横向溢出 0 / 正文对比度最低 4.81:1 / D1 双口径 0/0 / 负字距 0 / 标题 nowrap 0 / 触摸目标 <24px 0 / 控制台错误 0 / HTTP≥400 0 / 外部请求 0 / 焦点环 12/12 可见 / Tab 12/12 推进 / 搜索 134→9 / reduced-motion 0.001s / 5 个字体本地 loaded；字体栈顺序：独立复扫真缺陷 0 项（修复前 2 项），CDP CSS.getPlatformFontsForNode 实测汉字统一由系统 CJK 族渲染（修复前同段文字混排 Noto 子集 + PingFang 两套字形）。2026-10-22 起浏览器操作一律走 Ego，已用 Ego 复跑关键项（file:// 加载 / 实际渲染字体 / 子路径发布包）结论一致",
     "fontStackOrder": "2026-10-21 22:4x 修正：assets/ds/tokens.css 的 --ds-font-display/--ds-font-text 换序为「拉丁自托管 → 完整系统 CJK 栈（PingFang SC / Hiragino Sans GB / Microsoft YaHei / Source Han Sans SC）→ Noto Sans SC 子集 → -apple-system/BlinkMacSystemFont → sans-serif」。此前自托管有限子集 Noto Sans SC 排在完整系统 CJK 族之前，CSS 按字符回退导致同段汉字混入两套字形（基线错位）。noto-sans-sc-subset.woff2 保留不删、@font-face 声明一字未改，子集降为渐进增强兜底。assets/ds/tokens.css、assets/ds/fonts/fonts.css、assets/ds/fonts/FONT-MANIFEST.json 已与 16-design-system 修正版逐字一致。"
+  },
+  "browserPolicy": {
+    "since": "2026-10-22",
+    "rule": "所有浏览器操作一律只走 Ego 浏览器（/Users/mekzenx2/.local/bin/ego-browser，先跑 ego-browser skill）；内置 Browser 工具、chromium.launch()、playwright、playwright-core、puppeteer、本机无头 Chrome + CDP 全部禁用；「本地 file:// 自测豁免 Ego」的旧例外已取消（Ego 可直接加载 file://，已实测样式与字体正常）",
+    "selfBrowserScripts": 0,
+    "selfBrowserDependencies": 0,
+    "grepResult": "grep -rnE 'chromium\\.launch|playwright|puppeteer' 00-research/ --include='*.mjs' --include='*.js' --include='*.py' --include='*.sh' --include='*.ts' --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=references → 退出码 1（零命中）",
+    "packageJsonDeps": "dependencies 与 devDependencies 均为空",
+    "egoRevalidation": "2026-10-22 用 Ego 复跑：file:// 加载正常（标题/CSS/5 字体 loaded/溢出 0/文档高 26750px）；CSS.getPlatformFontsForNode 实测 h1 8 汉字、lede 64+8、.c-title a 15 全为 PingFang SC（与 22:4x 结论一致）；截图落 evidence/ego-20261022/",
+    "egoLimits": "page.screenshot({ fullPage: true }) 不支持（Unable to capture screenshot）→ 用 page.snapshot({ scope: 'full_page' }) 取全文或分段滚动截；DOM/CSS 域须在导航后重新 enable；Emulation.setDeviceMetricsOverride 受窗口缩放影响须迭代校正到 innerWidth === 目标宽度"
+  },
+  "referenceLibraryExclusion": {
+    "path": "references/mia-100-html/",
+    "origin": "克隆自 MiaAI-Lab/MiniMax-M3.1-Flash-100-HTML-Files（该仓库无 LICENSE，默认保留所有权利）",
+    "policy": "reference-only：仅可作结构与提示词参考，禁止复制其文件内容；不删、不改、不迁",
+    "playwrightFileKeptAsIs": "references/mia-100-html/scripts/capture_screenshots.py（sha256 a4e5ee8c535dad1d607c598d1618dd7c6e7b522833935b951b647c6675ec2520）保持原样，未做任何改造",
+    "exclusionChain": [
+      "00-research/.gitignore:23 references/ → git check-ignore 命中",
+      "manifest.json publish.scope.exclude 含 references/",
+      "14-publish/release/scripts/sync-apps.mjs DENY 集合含 'references'（第 40–42 行）",
+      "14-publish/release/scripts/build.mjs static 分支 keepDirs 不含 references/",
+      "release-package/PAYLOAD/ 16 个文件中不含 references",
+      "外层仓库 git ls-files -- 00-research/references → 0"
+    ],
+    "conclusion": "该文件不会被本目录的交付物、Git 仓库或站点发布中的任何路径带到"
   }
 }

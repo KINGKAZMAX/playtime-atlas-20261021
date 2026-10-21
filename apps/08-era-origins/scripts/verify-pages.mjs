@@ -57,7 +57,11 @@ const sourceChecks = {};
     const pos = (n) => links.indexOf(n);
     const ordered = present.every((n, i) => i === 0 || pos(present[i - 1]) < pos(n));
     // 该页应当出现的 7 张表（shell / game 互斥）
-    const expect = order.filter((n) => (file === 'index.html') === n.includes('shell.css'));
+    const isShellOrGame = (n) => n.includes('shell.css') || n.includes('game.css');
+    const expect = order.filter((n) => {
+      if (!isShellOrGame(n)) return true;
+      return file === 'index.html' ? n.includes('shell.css') : n.includes('game.css');
+    });
     const dsBase = /<style>[\s\S]*?--ds-base:\s*"\/playtime-atlas-20261021\/"[^}]*\}/.test(html);
     const dsShell = /<body[^>]*class="[^"]*\bds-shell\b[^"]*"/.test(html);
     const lang = /<html[^>]*lang="zh-CN"/.test(html);
@@ -110,14 +114,24 @@ const HUD_CONTRAST = [
   ['HUD 覆盖层眉标', '.overlay__kicker'], ['HUD 覆盖层脚注', '.overlay__meta'],
   ['HUD 焦点提示', '.focus-hint'],
 ];
+/**
+ * 12 个规范样本选择器里，**每个页面只列该页真实存在的那些** ——
+ * 共享运行器会对「缺失」的样本算出 undefined，混进 min 统计里变成 NaN。
+ * 游戏页没有封面标题 / 导航轴 / 标签（那是展厅页的结构），不列。
+ */
+const GAME_CONTRAST = [
+  ['正文 .ds-body', '.ds-body'], ['次级 .ds-sm', '.ds-sm'], ['等宽 .ds-mono', '.ds-mono'],
+  ['主按钮文字', '.ds-btn--primary'], ['次按钮文字', '.ds-btn--secondary'],
+  ['幽灵按钮文字', '.ds-btn--ghost'], ['筛选 chip', '.ds-chip'],
+];
 const PAGES = [
   { file: 'index.html', label: 'index', font: '.hero__latin', contrast: COMMON_CONTRAST,
     require: ['.ds-topbar', '.ds-footer', '.ds-skip', '.ds-grid', '.ds-work', '.ds-chip'] },
   { file: 'rally.html', label: 'rally', font: '.topbar__title span',
-    contrast: [...COMMON_CONTRAST, ...HUD_CONTRAST],
+    contrast: [...GAME_CONTRAST, ...HUD_CONTRAST],
     require: ['.ds-topbar', '.ds-footer', '.ds-skip', '.ds-canvas-frame', '.ds-chip'] },
   { file: 'gravity.html', label: 'gravity', font: '.topbar__title span',
-    contrast: [...COMMON_CONTRAST, ...HUD_CONTRAST],
+    contrast: [...GAME_CONTRAST, ...HUD_CONTRAST],
     require: ['.ds-topbar', '.ds-footer', '.ds-skip', '.ds-canvas-frame', '.ds-chip'] },
 ];
 

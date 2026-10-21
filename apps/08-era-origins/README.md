@@ -28,8 +28,13 @@ npm run dev                        # http://127.0.0.1:4328
 | `npm run build` | 产出静态站点到 `dist/`（三页 + 相对路径资源） |
 | `npm run preview` | 本地预览构建产物，同样占用 4328 |
 | `npm run start` | 一键脚本：缺依赖时自动安装再启动 |
-| `npm run verify` | 自验脚本：跑测试 → 构建 → 产物检查 → manifest 一致性 → **改版专项**（见 [`QA.md`](./QA.md)） |
+| `npm run verify` | 自验脚本（**全程离线、不启浏览器**）：跑测试 → 构建 → 产物检查 → manifest 一致性 → **改版专项**（见 [`QA.md`](./QA.md)） |
 | `node --test "tests/*.test.mjs"` | 单独跑单元测试（**必须用 glob**，目录形式会报 `MODULE_NOT_FOUND`） |
+| `node scripts/check-tokens.mjs` | 令牌一致性 / 命名空间唯一 / 画布镜像 / 规范层副本漂移（纯本地，零依赖） |
+| `node scripts/verify-pages.mjs` | 页面机械检查（**走 Ego 浏览器**，复用批次共享 `tools/ego-qa`） |
+| `node scripts/verify-game.mjs` | 游戏行为回归 D3 / D4 / D5 / D6（**走 Ego 浏览器**） |
+
+> **浏览器入口**：依 2026-10-22 起的长期约定，网页调试 / 截图 / 验收**一律走 Ego 浏览器**（`ego-browser nodejs`），不再本地另起 Playwright / Chromium / Chrome。上面两支浏览器脚本因此**不并入 `npm run verify`**，需单独运行；详见 [`tools/ego-qa/MIGRATION.md`](../tools/ego-qa/MIGRATION.md)。
 
 三个入口：
 
@@ -191,6 +196,8 @@ http://127.0.0.1:4328/gravity.html   展品 08-B 引力双星
 - `.ds-canvas-frame` 的 `contain: paint` 降级为 `isolation: isolate` —— paint containment 会裁掉焦点环，与「焦点环任何状态不得移除」冲突。
 - 未内置 `Noto Sans SC` 子集（197 600 B 且覆盖不了本目录汉字），字体栈顺序仍满足「拉丁自托管 → 完整系统 CJK 栈 → Noto 子集 → 通用 sans-serif」。
 - 顶栏 / 封面 / 渐变标题等处的 `color-mix()` 底色改写为 `rgba()` 字面量 —— Chrome 会把 `color-mix()` 计算成 `color(srgb …)` 形式，WCAG 对比度工具识别不了，会把可测项判成「无法计算」。
+- **HUD 文字对比度不豁免**（16 的明确要求）：覆盖层眉标与脚注原本用画布色板的暗色（`--lumen-cyan-dim` 4.22:1 / `--lumen-dim` 2.4:1），已改为同属画布色板的 `--lumen-cyan`（12.95:1）与 `--lumen-slate`（6.71:1）。
+- 入口注入的 `--ds-base` 带 `!important` —— Vite 构建时把合并后的 CSS `<link>` 放到 `<head>` 末尾，位置在内联块之后；不加 `!important` 规范层 `tokens.css` 的 `:root{--ds-base:""}` 会在**构建产物**里反向覆盖注入值。
 
 ### 字体（自托管，零 CDN）
 
@@ -244,12 +251,14 @@ http://127.0.0.1:4328/gravity.html   展品 08-B 引力双星
 ├── tests/                  node:test + 极简 DOM/Canvas 垫片，54 个用例
 ├── scripts/
 │   ├── start.sh            一键启动
-│   ├── verify.sh           自验 5 步：测试 → 构建 → 产物检查 → manifest 一致性 → 改版专项
-│   ├── check-tokens.mjs    令牌一致性 / 命名空间唯一 / 画布镜像 / 规范层副本漂移
-│   ├── verify-pages.mjs    16 口径页面机械检查（视口 / 对比度 / 触摸目标 / Tab / 降级 / 控制台）
-│   └── verify-game.mjs     游戏行为回归（D3 状态机 / D4 存档 / D5 键盘作用域 / D6 控制台）
+│   ├── verify.sh           自验 5 步：测试 → 构建 → 产物检查 → manifest 一致性 → 改版专项（全程离线）
+│   ├── check-tokens.mjs    令牌一致性 / 命名空间唯一 / 画布镜像 / 规范层副本漂移（纯本地）
+│   ├── verify-pages.mjs    页面机械检查（Ego + 批次共享 tools/ego-qa；视口 / 对比度 / 触摸目标 / Tab / 降级 / 控制台）
+│   └── verify-game.mjs     游戏行为回归（D3 状态机 / D4 存档 / D5 键盘作用域 / D6 控制台；Ego）
 ├── screenshots/            实机截图 + 探针原始报告
-│   └── verify/               12 张多视口截图 + pages-verification.json
+│   ├── 0*.png                7 张主截图（Ego 浏览器拍摄）
+│   ├── probe-report.json     游戏行为探针结果（scripts/verify-game.mjs 生成）
+│   └── verify/               12 张多视口截图 + pages-verification.json + 三份分页报告
 ├── handoff/                给 06-museum-core 与 14-publish 的交接说明
 └── README.md SOURCES.md DIFFERENCES.md LICENSES.md QA.md RESTYLE-INVENTORY.md STATUS.md TASK.md
 ```
@@ -299,7 +308,8 @@ http://127.0.0.1:4328/gravity.html   展品 08-B 引力双星
 11. **中文排版整体为本系统自有设计**：参考站 olek.si 是纯英文站点，没有任何中文字形，因此中文字距 / 行高 / 标点 / 换行 / 按钮宽度**不存在「参考站怎么做的」这一事实来源**。本目录采用的 `--ds-track-cjk: 0` 与正文行高 1.85 属规范层既定值，同样标注为**本批自定**。
 12. **规范层以副本形式落地到 `assets/ds/`**：文件与 `16-design-system/src/` 逐字节一致，由 `scripts/check-tokens.mjs` 每次比对；16 若继续更新，本目录需重跑该脚本并同步副本（当前 0 漂移）。
 13. **`.ds-cover` / `.ds-rail` / `.ds-indicator` 未整体套用**，只借用其子元素语义 —— 理由与逐项影响见 [`STATUS.md`](./STATUS.md)「暂缓项」章；这三条属**本批自定的接入边界**，参考站没有可对应的多作品大厅结构可供比对。
-14. **游戏页未内置 `.ds-body` 载体**：游戏页正文沿用 08 既有 `.note` 段落，行高 1.85 由 08 专属层的 `:lang(zh) p` 规则统一施加，与展厅页 `.ds-body` 的计算结果一致（均实测 1.85 / 字距 0）。
+14. **游戏页的正文用 08 既有 `.note` 段落承载，但已挂 `.ds-body` / `.ds-sm` 语义类名**（第四轮补齐）：两段正文挂 `.ds-body`、两处小注挂 `.ds-sm`、顶栏拉丁副名挂 `.ds-mono`，使 12 个规范样本选择器在游戏页同样可测。字号因此从 12.5px 提到 16px / 14px（跟随规范层排版基线），侧栏密度有变化。
+15. **浏览器入口已统一到 Ego**：`scripts/verify-pages.mjs` 与 `scripts/verify-game.mjs` 原先各自拉起无头 Chrome / Playwright，现已改为经 `ego-browser nodejs` 执行（前者复用批次共享 `tools/ego-qa`）。两支脚本**不再并入 `npm run verify`**，以保持该脚本全程离线、无常驻进程。
 
 ---
 

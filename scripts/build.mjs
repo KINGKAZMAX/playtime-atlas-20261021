@@ -28,7 +28,7 @@ import { filterOutput } from './publish-filter.mjs';
  *   node scripts/publish-guard.mjs --selftest
  * 本文件在**每一条复制路径**上调用它，命中即跳过并记入构建报告。
  */
-const { isReferenceCapture } = await import('./publish-guard.mjs');
+const { isReferenceCapture, checkReferenceCaptureFile } = await import('./publish-guard.mjs');
 
 /** 本次构建被机械拦截掉的参考站抓取件（写进构建报告，便于核对）。 */
 const blockedCaptures = [];
@@ -67,7 +67,8 @@ function copyDir(src, dest, filter, rel = '') {
       copyDir(s, d, filter, r);
     } else if (entry.isFile()) {
       if (filter && !filter(s)) continue;
-      if (isReferenceCapture(r)) {
+      const guard = checkReferenceCaptureFile(s, r);
+      if (guard.blocked) {
         blockedCaptures.push(r);
         continue;
       }
@@ -330,7 +331,8 @@ async function buildWork(work) {
             if (keepExts.has(ext) && e.name !== 'package.json') {
               // 静态分支的顶层文件同样必须过守卫 —— 否则参考站抓取件
               // （olek-index.js / sitemap.xml / ref-*.png）会绕过 copyDir 直接进产物。
-              if (isReferenceCapture(e.name)) {
+              const guard = checkReferenceCaptureFile(s, e.name);
+              if (guard.blocked) {
                 blockedCaptures.push(e.name);
                 continue;
               }
@@ -501,49 +503,6 @@ function refreshGallery() {
 }
 
 /**
- * 发布 16-design-system 的令牌层与自托管字体 → docs/assets/ds/
- *
- * 路径约定（Pages 在 /docs，发布根下）：
- *   docs/assets/ds/tokens.css      令牌层（--ds-* 变量）
- *   docs/assets/ds/fonts/fonts.css 自托管字体声明（相对路径引用同目录 woff2）
- *   docs/assets/ds/fonts/*.woff2   字体文件（OFL-1.1）
- *   docs/assets/ds/fonts/OFL-*.txt 许可文本（依法随资产分发）
- *
- * 子路径（/playtime-atlas-20261021/）下用相对路径引用即可自动正确解析。
- */
-function publishDesignSystem() {
-  const src = path.join(ROOT, 'apps', '16-design-system');
-  const out = path.join(SITE, 'assets', 'ds');
-  const stats = { tokens: false, fonts: 0 };
-  if (!fs.existsSync(src)) {
-    warn('apps/16-design-system 缺失，跳过设计系统发布（先跑 node scripts/sync-apps.mjs）');
-    return stats;
-  }
-  rmrf(out);
-  ensure(path.join(out, 'fonts'));
-
-  const tokens = path.join(src, 'src', 'tokens.css');
-  if (fs.existsSync(tokens)) {
-    fs.copyFileSync(tokens, path.join(out, 'tokens.css'));
-    stats.tokens = true;
-  }
-
-  const fontsDir = path.join(src, 'fonts');
-  if (fs.existsSync(fontsDir)) {
-    for (const f of fs.readdirSync(fontsDir)) {
-      const s = path.join(fontsDir, f);
-      if (!fs.statSync(s).isFile()) continue;
-      if (f.endsWith('.woff2') || f.endsWith('.txt') || f === 'fonts.css') {
-        fs.copyFileSync(s, path.join(out, 'fonts', f));
-        stats.fonts++;
-      }
-    }
-  }
-  log(`设计系统已发布 → assets/ds/（令牌 ${stats.tokens ? '✓' : '✗'} · 字体文件 ${stats.fonts}）`);
-  return stats;
-}
-
-/**
  * 站点根图标 —— 生成 docs/favicon.ico。
  *
  * 作品页各自声明了图标，但站点根此前没有 /favicon.ico：浏览器在无 <link rel=icon>
@@ -598,9 +557,13 @@ async function main() {
       out.buildNotes = rec.notes;
       out.bytes = rec.bytes;
       out.entryExists = rec.entryExists;
-      out.online = rec.buildState === 'built' || rec.buildState === 'built-no-entry' || rec.buildState === 'fallback';
-      if (rec.buildState === 'unavailable' || !rec.entryExists) {
-        out.online = false;
+      // published：构建成功**且**入口文件确实落在发布面里（布尔，供内部一致性判定）
+      out.published =
+        ['built', 'built-no-entry', 'fallback'].includes(rec.buildState) && rec.entryExists === true;
+      // online：**线上实测 HTTP 状态码**（number）；未发布或未实测一律 null，绝不猜测。
+      // 声明值来自 works.json 里记录的上一轮实测码，本轮构建只做透传与「未发布置 null」。
+      out.online = out.published && Number.isInteger(w.online) ? w.online : null;
+      if (!out.published) {
         out.playable = false;
         out.statusNote =
           out.statusNote ||
@@ -608,7 +571,8 @@ async function main() {
       }
     } else {
       out.buildState = 'skipped';
-      out.online = false;
+      out.published = false;
+      out.online = null;
     }
     return out;
   });
@@ -617,7 +581,6 @@ async function main() {
     builtAt: new Date().toISOString(),
     node: process.version,
     works: results,
-    designSystem: publishDesignSystem(),
     blockedReferenceCaptures: blockedCaptures,
     totals: {
       total: results.length,

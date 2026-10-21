@@ -14,7 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { applyPatches } from './patches.mjs';
-import { isReferenceCapture } from './publish-guard.mjs';
+import { isReferenceCapture, checkReferenceCaptureFile } from './publish-guard.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..');
@@ -95,8 +95,9 @@ function copyDir(src, dest, rel = '') {
     } else if (e.isFile()) {
       if (DENY_EXT.has(path.extname(e.name).toLowerCase())) continue;
       // 参考站抓取件一律不入库（即使它出现在白名单目录里，例如 17 的 data/）
-      if (isReferenceCapture(r)) {
-        console.log(`[sync] ⛔ 拦截参考站抓取件 ${r}`);
+      const guard = checkReferenceCaptureFile(s, r);
+      if (guard.blocked) {
+        console.log(`[sync] ⛔ 拦截参考站抓取件 ${r}（${guard.why}）`);
         continue;
       }
       try {
@@ -114,8 +115,18 @@ function copyDir(src, dest, rel = '') {
  *
  * 16 是本批唯一的风格规范产出方（design-tokens.json / src/tokens.css / fonts/）。
  * 本脚本**只读**复制，不修改 16 的任何文件。
+ *
+ * ⚠ 范围闸门（监督指令 15-supervisor，2026-10-22）：
+ *   「本轮发布**不要**把 16—19 入库（它们尚未完成改版与验收）」。
+ *   因此 16 的设计系统**默认不入库**，需要显式加 --with-design-system 才同步。
+ *   注意：各作品自己的 public/assets/ds/ 副本是作品自带的文件，
+ *   与 apps/16-design-system 无依赖关系，撤回 16 不会让任何作品页面缺资源。
  */
 function syncDesignSystem() {
+  if (!process.argv.includes('--with-design-system')) {
+    console.log('[sync] —  16-design-system 本轮不入库（监督指令：16—19 未完成改版与验收）；如需恢复请加 --with-design-system');
+    return 0;
+  }
   const src = path.join(BATCH, '16-design-system');
   const dest = path.join(ROOT, 'apps', '16-design-system');
   if (!fs.existsSync(src)) {
@@ -212,8 +223,9 @@ function main() {
     let n = 0;
     for (const e of fs.readdirSync(src, { withFileTypes: true })) {
       if (e.isFile() && (ALLOW_FILES.has(e.name) || (e.name.endsWith('.html') && e.name !== 'index.html'))) {
-        if (isReferenceCapture(e.name)) {
-          console.log(`[sync] ⛔ 拦截参考站抓取件 ${e.name}`);
+        const guard = checkReferenceCaptureFile(path.join(src, e.name), e.name);
+        if (guard.blocked) {
+          console.log(`[sync] ⛔ 拦截参考站抓取件 ${e.name}（${guard.why}）`);
           continue;
         }
         fs.copyFileSync(path.join(src, e.name), path.join(dest, e.name));

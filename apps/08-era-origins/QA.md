@@ -2,7 +2,7 @@
 
 作品：**光点年代 · 早期可玩展厅 / LUMEN ERA**（`08-era-origins`）
 验收时间：2026-10-21（**第四轮改版后复测**）
-验收环境：macOS（darwin 25.2.0 arm64）、Node 24.13.0、Vite 5.4.11、Chromium（headless，CDP / playwright-core）
+验收环境：macOS（darwin 25.2.0 arm64）、Node 24.13.0、Vite 5.4.11、**Ego 浏览器**（ego-lite，指南 v2.1.0）
 
 ---
 
@@ -14,13 +14,17 @@
 | --- | --- | --- |
 | L1 单元 | `node --test "tests/*.test.mjs"` | 状态机、碰撞、计分、难度、存档、**键盘焦点作用域** |
 | L2 构建 | `npm run build` + `npm run verify` | 产物齐全、路径全相对、**运行期零外部请求**、manifest 一致性、**改版专项（令牌 / 画布色板镜像 / 无障碍标记 / 规范层接入完整性）** |
-| L3 页面 | `scripts/verify-pages.mjs`（零依赖 CDP，改编自 16 的 `tools/verify-preview.mjs`） | V.1–V.9 真实浏览器行为 + G.3 / G.4 排版硬性条款 + 截图 |
-| L3 游戏 | `scripts/verify-game.mjs`（playwright-core） | D3 状态机 / D4 存档 / D5 键盘作用域 / D6 控制台 |
+| L3 页面 | `scripts/verify-pages.mjs`（**Ego 浏览器**，复用批次共享 `tools/ego-qa/lib/runner.mjs`） | V.1–V.9 真实浏览器行为 + G.3 / G.4 排版硬性条款 + HUD 对比度 + 源码接入完整性 + 截图 |
+| L3 游戏 | `scripts/verify-game.mjs`（**Ego 浏览器**） | D3 状态机 / D4 存档 / D5 键盘作用域 / D6 控制台 |
 | L3 令牌 | `scripts/check-tokens.mjs` | 令牌逐值一致 / 命名空间唯一 / 画布镜像 / 规范层副本漂移 |
 | L4 批次 | 13-qa-curation 全量 harness | 权威 verdict |
 
 三个 L3 脚本全部**落地在仓库内**，可随时重复生成；原始结果见 `screenshots/verify/pages-verification.json` 与 `screenshots/probe-report.json`。
 
+> **浏览器入口（2026-10-22 起的长期约定）**：网页调试 / 截图 / 验收一律走 **Ego 浏览器**，不本地另起 Playwright / Chromium / Chrome。原第 3 层的两支脚本已迁移：
+> `scripts/verify-pages.mjs` 改为经 `ego-browser nodejs` 调用批次共享运行器 `tools/ego-qa/lib/runner.mjs`（视口精度自检 / 横向溢出 / 对比度 / 触摸目标 / reduced-motion / **实际渲染字体** / 零外部请求 / 控制台 / 破图 / 截图），再在同一次会话内追加 08 专属的 G.3 / G.4 / Tab / `--ds-base` / 源码顺序检查；`scripts/verify-game.mjs` 同样改为 Ego 路径（D5 的过程采样用 `page.keyboard.down/up` + 期间连续取样）。
+> 两支脚本因此**不并入 `npm run verify`**，以保持后者全程离线、无常驻进程。
+>
 > **关于批次 harness**：13-qa-curation 的全量 harness 已于 2026-10-21T16:05:16.070Z 对本任务跑完，结论 **verdict = pass**（详见下文 L4）。
 
 ---
@@ -32,23 +36,35 @@
 | L1 单元测试 | **54 / 54 通过**（`node --test "tests/*.test.mjs"`） |
 | L2 构建 | `npm run build` **退出码 0**，产出 `dist/index.html` / `dist/rally.html` / `dist/gravity.html`；`npm run verify` **退出码 0**（0/5—5/5 五步） |
 | L3 令牌校验 | **error 0 / warn 0**（`scripts/check-tokens.mjs`，8 项全过） |
-| L3 页面机械检查 | **0 error / 0 warn**（`scripts/verify-pages.mjs`，三页 × 四档视口 + 12 项对比度 + 触摸目标两档 + Tab + 降级 + 深色令牌 + 控制台） |
+| L3 页面机械检查 | **0 error / 0 warn**（`scripts/verify-pages.mjs`，三页 × 四档视口 + 每页 12 项对比度 + 触摸目标两档 + Tab + 降级 + 深色令牌 + 控制台 + 源码接入完整性） |
 | L3 游戏行为探针 | **pass 18 / warn 0 / fail 0**（`scripts/verify-game.mjs`；另有 1 项「聚焦测试前对局状态」为**条件记录项** —— 仅在需要重开对局时才写入，故项数在 **18–19** 间浮动，两种情形均全 pass。仓库内最新报告为 18 项） |
 | L4 批次 QA harness | **verdict = pass**（`13-qa-curation/evidence/08-era-origins.json`，checkedAt 2026-10-21T16:05:16.070Z，total 28 / pass 24 / warn 0 / fail 0 / skip 1） |
 
-### L3 页面检查维度分布（第四轮）
+### 本轮（第四轮终态）由规范复核**新查出并修掉**的两个真实缺陷
+
+| # | 缺陷 | 根因 | 处置 |
+| --- | --- | --- | --- |
+| 1 | **HUD 文字对比度不达标**：覆盖层眉标 **4.22:1**、脚注 **2.4:1**（AA 需 4.5:1） | 两个元素用了画布色板里偏暗的 `--lumen-cyan-dim` / `--lumen-dim`；画布底色为 `--lumen-void`(#04060d) | 改为**同属画布色板**的 `--lumen-cyan`(#5ce1e6, 12.95:1) 与 `--lumen-slate`(#8595b4, 6.71:1) —— 只提高明度，不引入新色 |
+| 2 | **入口注入的 `--ds-base` 在构建产物里被反向覆盖**（运行时读到 `""` 而非 `/playtime-atlas-20261021/`） | Vite 构建时把合并后的 CSS `<link>` 放到 `<head>` **末尾**，位置在源码里那���内联 `<style>` 之后；规范层 `tokens.css` 的 `:root{--ds-base:""}` 因此在**产物**里胜出 | 内联注入加 `!important`（自定义属性支持），源码与产物一致；运行时实测 `--ds-base = "/playtime-atlas-20261021/"` |
+
+> 第 1 项是 16 明确「HUD 文字对比度 ≥4.5:1 **不豁免**」后补测出来的；此前 08 的自检只覆盖 12 个规范样本，**没有覆盖 HUD 层**。
+> 第 2 项是接入三步第 ③ 步在**开发态可见、构建产物失效**的隐蔽缺陷，只有在真实构建产物上取值才能发现。
+
+### L3 页面检查维度分布（第四轮终态）
 
 | 维度 | 项数 | 结果 | 说明 |
 | --- | --- | --- | --- |
 | V.1 水平溢出 | 12 | 12 ✓ | 1440 / 1280 / 768 / 390 × 三页，`scrollWidth = innerWidth` |
-| V.2 对比度 | 12 | 12 ✓ | 三页各 12 个 `.ds-*` 样本，全部可测且 ≥4.5:1（见下表） |
-| V.5 Tab 焦点 + 焦点环 | 3 | 3 ✓ | 每页 Tab 可达 3 个元素，**3/3 有可见焦点环** |
+| V.2 对比度 | 12 | 12 ✓ | **每页 12 个样本**（展厅 12 规范样本；游戏页 7 规范样本 + 5 项 HUD），全部可测且 ≥4.5:1（见下表） |
+| V.5 Tab 焦点 + 焦点环 | 3 | 3 ✓ | 每页 Tab 可达 **8 个**元素，**8/8 有可见焦点环**（Ego 真实按键 `page.keyboard.press("Tab")`） |
 | V.6 触摸目标 | 6 | 6 ✓ | AA ≥24px 全过；AAA ≥44px 主控件全过 |
 | V.7 reduced-motion | 3 | 3 ✓ | `--ds-dur-base=1ms`、`--ds-entry-duration=1ms`，按钮 `transition=0.001s` |
 | V.8 零外部请求 | 12 | 12 ✓ | 每页 10 个请求全部同源本地 |
 | 样式表解析 / `lang` / `--ds-base` | 36 | 36 ✓ | 三页均为 `zh-CN`；`--ds-base` 已注入 |
 | G.3 标题禁止 nowrap | 3 | 3 ✓ | 三页 `h1/h2/h3` + `.ds-display/.ds-h1/.ds-h2/.ds-h3` **0 个**使用 nowrap |
 | G.4 中文字距 / 行高 | 6 | 6 ✓ | 字距 `normal`（归一 **0**）；正文行高 **1.85** |
+| HUD 文字对比度 | 2 | 2 ✓ | 游戏页 5 项 HUD 样本（覆盖层标题 / 说明 / 眉标 / 脚注 / 焦点提示）全部 ≥4.5:1 |
+| 源码接入完整性 | 12 | 12 ✓ | 三页：7 张样式表顺序、`--ds-base` 注入、`body.ds-shell`、`lang="zh-CN"` |
 | 深色主题令牌 | 3 | 3 ✓ | `--ds-bg: rgb(16,15,14)`、`--ds-ink: #f7f4f0`、`--ds-accent: #e0684a` |
 | 控制台 | 1 | 1 ✓ | 0 条错误 |
 
@@ -56,11 +72,13 @@
 
 12 个样本选择器（13 未来机械检查同款）：`.ds-body` `.ds-sm` `.ds-xs` `.ds-h3` `.ds-cover__title` `.ds-mono` `.ds-tag` `.ds-btn--primary` `.ds-btn--secondary` `.ds-btn--ghost` `.ds-chip` `.ds-rail__item`。
 
-| 页面 | 最低对比度 | 判定 |
-| --- | --- | --- |
-| `index.html` | **4.74 : 1** | 12/12 达标 |
-| `rally.html` | **5.56 : 1** | 12/12 达标 |
-| `gravity.html` | **5.56 : 1** | 12/12 达标 |
+| 页面 | 样本数 | 最低对比度 | 判定 |
+| --- | --- | --- | --- |
+| `index.html` | 12（12 个规范样本） | **4.74 : 1** | 12/12 达标 |
+| `rally.html` | 12（7 规范 + 5 HUD） | **5.56 : 1** | 12/12 达标 |
+| `gravity.html` | 12（7 规范 + 5 HUD） | **5.56 : 1** | 12/12 达标 |
+
+> 12 个规范样本选择器：`.ds-body` `.ds-sm` `.ds-xs` `.ds-h3` `.ds-cover__title` `.ds-mono` `.ds-tag` `.ds-btn--primary` `.ds-btn--secondary` `.ds-btn--ghost` `.ds-chip` `.ds-rail__item`。游戏页没有封面标题 / 导航轴 / 标签（那是展厅页的结构），故只列该页真实存在的 7 项，另加 5 项 HUD 样本（16 明确「HUD 文字对比度不豁免」）。
 
 > 顶栏底色改用 `rgba(16,15,14,.86/.82)` **字面量**而非 `color-mix()`：Chrome 会把 `color-mix(in srgb, …)` 计算成 `color(srgb …)` 形式，16 的 `lum()` 与 13 的 harness 同款解析器识别不了，会把可测项判成「无法计算」。改字面量后三页 12 项全部可测。
 > 渐变标题拆出内层 `<span class="hero__title-grad">`：`h1` 承载可测的 `--ds-ink`，渐变只作用于内层 span —— `color: transparent` 的文字无法被对比度工具测量（实测会被判 1.1:1）。
@@ -254,8 +272,9 @@ node --test "tests/*.test.mjs"
 | `screenshots/06-hall-mobile.png` | 移动端展厅首屏 | 390×844 |
 | `screenshots/07-rally-mobile.png` | 移动端展品 08-A（对局中 + 触控区） | 390×844 |
 | `screenshots/probe-report.json` | **游戏行为探针原始结果**（`scripts/verify-game.mjs` 生成，可重复） | — |
-| `screenshots/verify/*.png`（12 张） | 三页 × 四档视口（1440 / 1280 / 768 / 390）机械检查截图 | — |
-| `screenshots/verify/pages-verification.json` | 页面机械检查完整结果（`scripts/verify-pages.mjs` 生成） | — |
+| `screenshots/verify/*.png`（12 张） | 三页 × 四档视口（1440 / 1280 / 768 / 390）机械检查截图 | 1440×900 / 1280×800 / 768×1024 / 390×844 |
+| `screenshots/verify/pages-verification.json` | 页面机械检查**合并**结果（`scripts/verify-pages.mjs` 生成） | — |
+| `screenshots/verify/{index,rally,gravity}.json` | 每页的**批次共享 runner** 标准检查报告（视口精度 / 溢出 / 对比度 / 触摸目标 / 降级 / 渲染字体 / 网络 / 控制台） | — |
 
 > 截图工具：**Ego 浏览器**（`ego-browser nodejs`）按固定视口拍摄，1440×900 / 390×844 像素与上表一致。
 
@@ -272,5 +291,5 @@ node --test "tests/*.test.mjs"
 7. 13-qa-curation 的全量 harness 在本机曾因 GPU / 网络进程崩溃中断过一次（环境资源争用），但其**最终产出的证据是 `verdict = pass`**，本任务的 D5 / D3 / D4 全部为 pass。
 8. 中文正文使用**系统字体栈**（未内置 Noto Sans SC 子集：197 600 B 且按 07 用字生成，覆盖不了本目录汉字）；拉丁字符与等宽字符使用自托管 OFL 字体。不同系统上的中文渲染差异未做逐字校对。
 9. 本批**只有中文版**，因此未提供 `hreflang="en"`（无可交替的英文版，不提供虚构的语言标注）；语言由 `<html lang="zh-CN">` 声明。
-10. **13 的批次证据时间戳为 2026-10-21T16:05:16.070Z**，早于本轮最后两项修正（顶栏几何还原、标题去 nowrap）。这两项已由本目录自建的三套 L3 脚本复测通过（0 error / 0 warn），但**仍需 13 再跑一次批次复测**才能刷新权威证据。
-11. `scripts/verify-pages.mjs` 与 `scripts/verify-game.mjs` 内部**各自拉起无头 Chromium**（前者零依赖 CDP，后者用 playwright-core），属仓库内的自验工具链；`npm run verify` 依赖本机已安装 Chrome。交付截图改由 **Ego 浏览器**拍摄，两者互不冲突。
+10. **13 的批次证据时间戳为 2026-10-21T16:05:16.070Z**，早于本轮的四项修正（顶栏几何还原、标题去 nowrap、HUD 对比度、`--ds-base` 级联）。这些已由本目录自建的三套 L3 脚本复测通过（0 error / 0 warn），但**仍需 13 再跑一次批次复测**才能刷新权威证据。
+11. **浏览器入口已统一到 Ego**：`scripts/verify-pages.mjs`（复用批次共享 `tools/ego-qa`）与 `scripts/verify-game.mjs` 均经 `ego-browser nodejs` 执行，不再本地另起 Chromium / Playwright。两支脚本**不并入 `npm run verify`**（保持其全程离线、无常驻进程），需单独运行；前提是本机已安装 Ego lite。

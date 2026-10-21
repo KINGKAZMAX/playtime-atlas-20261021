@@ -37,17 +37,21 @@
 | 生产构建 | `npm run build` | — | 成功（9.71 s），`dist/index.html` 4.30 kB / css 22.65 kB / js 90.51 kB（gzip 35.26 kB）/ 5 个字体 woff2 | **0** |
 | 逻辑验收 | `npm test` | 32 | **32 通过 / 0 失败** | 0 |
 | 令牌一致性 | `npm run test:tokens` | 129 变量 + 5 项字体栈 | **逐名一致 129 / 缺失 0 / 不一致 0 / 额外 0**；**V.11 顺序 2/2、V.12 写死字体族 0、V.13 无漂移 2/2** | 0 |
-| 设计系统机械合规 | `npm run test:compliance` | 17 | **17 通过 / 0 失败** | 0 |
-| 13 探针契约 | `npm run test:probe` | 10 | **10 通过 / 0 失败** | 0 |
+| 设计系统机械合规 | `npm run test:compliance` | 47 | **47 通过 / 0 失败**（批次共享 Ego 工具 30 项 + 本目录 16 规范口径 16 项 + 静态 HUD 对比度 1 项） | 0 |
+| 13 探针契约 | `npm run test:probe` | 11 | **11 通过 / 0 失败** | 0 |
 | 浏览器实机验收 | `npm run test:e2e` | 48 | **48 通过 / 0 失败**（含 15 项改版断言） | 0 |
 | 音频运行时验收 | `npm run test:audio` | 7 | **7 通过 / 0 失败**，会话内未捕获异常 **0 次** | 0 |
-| 一键全量 | `npm run verify` | 248 | 七个套件全部通过，且**正常退出不挂起** | 0 |
+| 一键全量 | `npm run verify` | 279 | 七个套件全部通过，且**正常退出不挂起** | 0 |
+
+> 浏览器相关套件（合规 / 探针 / 实机 / 音频）全部走**用户的 Ego 浏览器**，
+> 本目录**不启动任何浏览器**。
 
 ---
 
 ## 3. 浏览器实机验收明细（48 项）
 
-伺服对象是 `dist/`（生产构建），每一步都通过真实 CDP 事件驱动。
+伺服对象是 `dist/`（生产构建），每一步都通过 **Ego 浏览器**的真实事件驱动
+（`page.click` / `page.keyboard` / `page.evaluate`，无自造事件）。
 
 | # | 断言 | 结果 |
 | --- | --- | --- |
@@ -202,17 +206,21 @@ npm ci
 npm run build            # 退出码应为 0
 npm test                 # 32/32
 npm run test:tokens      # 令牌一致性：129 个变量逐名一致，0 缺失 / 0 不一致；+ 字体栈 V.11/V.12/V.13
-npm run test:compliance  # 设计系统机械合规：17/17（含画布 HUD 对比度与面板态复检）
-npm run test:probe       # 13 探针契约：10/10
-npm run test:e2e         # 48/48（自启临时静态服务器 + headless Chrome，结束即关）
+npm run test:compliance  # 设计系统机械合规：47/47（批次共享 Ego 工具 + 本目录 16 口径 + 静态 HUD 对比度）
+npm run test:probe       # 13 探针契约：11/11
+npm run test:e2e         # 48/48（自启临时静态服务器 + Ego 浏览器，结束即关）
 npm run test:audio       # 7/7，未捕获异常 0 次
 
-# 或一键（实测 57.4 秒，退出码 0，正常退出不挂起）
+# 或一键（实测 120–180 秒，退出码 0，正常退出不挂起）
 npm run verify
 ```
 
-- 自动化用到的静态服务器端口由系统分配，**不占用 4329**；Chrome 进程与临时 profile 在结束时清理。
-- 未安装 Chrome 时，两个浏览器套件会打印「未找到 Chrome，跳过…」并以退出码 0 结束（不误判为失败）。
+- 自动化用到的静态服务器端口由系统分配，**不占用 4329**；服务器在结束时强制断连并关闭。
+- **浏览器**：四个浏览器相关套件全部走 **Ego 浏览器**（`ego-browser nodejs`）。
+  首次运行前建议先执行一次 `ego-browser skill` 以确认当前版本指南。
+  Ego 不可用时驱动会打印「Ego 未产出报告」并以退出码 **1** 结束 —— **不静默跳过、不误判为通过**。
+- TaskSpace 按名复用（`09-era-arcade ego-qa`），保留用户标签页与登录态，**不清 cookies**。
+- 验收证据落在 `evidence/ego/`（JSON 报告 + 每档截图），见 §11.5。
 
 ---
 
@@ -227,7 +235,18 @@ npm run verify
 | `screenshots/05-pause.png` | 暂停面板 |
 | `screenshots/06-meteor.png` | 陨星纵队实机（编队、弹型、共振槽） |
 
-均由 `npm run test:e2e` 在同一轮验收中自动产出（2026-10-21 20:33）。
+均由 `npm run test:e2e` 在同一轮验收中自动产出（Ego 浏览器）。
+
+此外，Ego 验收证据落在 `evidence/ego/`：
+
+| 文件 | 内容 |
+| --- | --- |
+| `evidence/ego/09-era-arcade.json` | 批次共享工具的标准报告（四档视口 + 视口精度自检 + 外链 / 控制台 / 样式表 / 对比度 / 触摸目标 / 降级 / 渲染字体 / 破图） |
+| `evidence/ego/09-era-arcade-compliance.json` | 本目录 16 规范口径（V.1 / V.2 / V.5 / V.6 / V.7 + 面板态复检） |
+| `evidence/ego/09-era-arcade-smoke.json` | 端到端 48 项明细 |
+| `evidence/ego/09-era-arcade-probe.json` | 13 探针契约 11 项明细 |
+| `evidence/ego/09-era-arcade-audio.json` | 音频运行时 7 项明细 |
+| `evidence/ego/screenshots/` | 共享工具的四档视口截图 + 各套件的分步截图 |
 
 ---
 
@@ -339,6 +358,11 @@ npm run verify
 > `design-tokens.json` ↔ `src/tokens.css`（无目录参数，跑它会写 16 的 `evidence/`），
 > `tools/verify-preview.mjs` 硬编码验证 16 自己的 `preview.html` 且占用**固定端口 9338**。
 > 因此按 §9 口径在本目录自建等价实现（只读引用 16 的文件，不在他目录写任何东西）。
+>
+> **浏览器一律走 Ego 浏览器**（见 §1 与 §11）：本目录的合规 / 探针 / 实机 / 音频
+> 四个套件都不再自造浏览器，而是把断言搬进 `tests/ego/*.mjs`，
+> 由 `ego-browser nodejs` 在用户的真实浏览器里执行。
+> 标准机械项同时跑**批次共享工具** `tools/ego-qa/run.mjs`，产出全批统一格式的证据。
 
 ### 10.1 令牌一致性与字体栈（V.3 / V.4 / V.11 / V.12 / V.13）— `npm run test:tokens`
 
@@ -404,3 +428,89 @@ npm run verify
 > 第 9 项在补契约前是**失败**的：舞台失焦后键盘仍在劫持，
 > 而此前 13 判为 warn 只是因为没有可观测状态、探针**看不见**这个行为。
 > 详见 §5.2 J 项与 `STATUS.md` §8.6。
+
+---
+
+## 11. 浏览器入口迁移：从本地无头 Chrome + CDP 改为 Ego 浏览器
+
+> 依据：用户 2026-10-22 长期约定 —— **所有项目的浏览器操作一律只走 Ego 浏览器**
+> （入口 `/Users/mekzenx2/.local/bin/ego-browser`，先跑 `ego-browser skill`）；
+> 禁止内置 Browser 工具、`chromium.launch()` / playwright / playwright-core / puppeteer、
+> 本机无头 Chrome + CDP；取消「本地 `file://` 自测豁免」——Ego 可直接加载 `file://`，无豁免必要。
+
+### 11.1 改造范围
+
+| 改造前 | 改造后 | 说明 |
+| --- | --- | --- |
+| `tests/lib/harness.mjs`（450 行） | **已删除** | 自研 CDP 客户端 + Chrome 启动 + profile 清理，整体废弃 |
+| — | `tests/lib/ego-harness.mjs` | **Node 侧驱动**：静态服务器 / 调起 Ego / 读回报告 / 清旧报告 |
+| — | `tests/ego/_lib.mjs` | **Ego 侧助手**：视口 / 导航 / 点击 / 按键 / 事件收集 + 页面内断言 |
+| — | `tests/ego/{smoke,probe,audio,compliance}.mjs` | 四个套件的断言，运行在 Ego 的 nodejs 运行时里 |
+| `tests/{browser-smoke,probe-contract,audio-runtime-check,ds-compliance}.mjs` | 同名**改为驱动脚本** | 只做「起服务器 → 调 Ego → 读报告 → 打印结论」，不再含浏览器逻辑 |
+
+改造后**全目录零浏览器启动路径**（`grep` 无 `chromium.launch` / `playwright` / `puppeteer` /
+`remote-debugging-port` / `headless`），`package.json` 的 `devDependencies` 仍只有 vite。
+
+### 11.2 架构
+
+```
+node tests/xxx.mjs                      ← Node 侧驱动（起静态服务器 + 调 Ego）
+  └─ ego-browser nodejs                 ← 唯一的浏览器入口
+       └─ tests/ego/xxx.mjs             ← 断言在这里执行（可直接 import 本目录模块）
+            └─ taskSpace('09-era-arcade ego-qa') → page('p1')
+```
+
+两条关键设计：
+
+1. **驱动与 Ego 之间用「一次性入口脚本」传配置**。Ego 的 nodejs 进程**没有 argv、
+   也不继承环境变量**（`process.env` 全是 undefined），配置必须写进脚本 ——
+   驱动把 `{ space, url, outDir, label }` 以 JSON 字面量内联进临时 `.mjs`。
+2. **驱动里的 spawn 必须是异步的**。静态服务器与驱动同在一个 Node 进程；
+   若用 `spawnSync` 等 Ego，事件循环会被堵死 → 服务器无法响应 Ego 的请求 → 死锁。
+
+### 11.3 实测踩到的六个坑（都是真问题，已修）
+
+| # | 现象 | 根因 | 处置 |
+| --- | --- | --- | --- |
+| 1 | 视口 1440 实测 1600 | Chromium 在 `mobile:false` 时按 1/0.9 放大 | 所有视口一律 `mobile: true`（桌面档也如此），并加**视口精度自检** |
+| 2 | `page.evaluate` 抛 `ReferenceError` | 回调在页面上下文独立执行，引用不到模块作用域的函数 | 页面内辅助函数一律**自包含**；外部数据用第二个参数 JSON 传入 |
+| 3 | 截图报「window is minimized」/ `CDP request timed out` | macOS 上 Ego 窗口在后台被系统遮挡，Chromium 拒绝捕获 | 截图改走 **CDP 直连 `Page.captureScreenshot`**（实测稳定），wrapper 兜底；且截图**失败不致命**（截图是证据产物，不是断言） |
+| 4 | 共享工具整轮报 `Log.enable` 超时 | 同一 TaskSpace 上，前一个 Ego 进程的待决 CDP 命令会拖垮下一个进程的**第一条**命令 | 共享工具**独占**跑（放在本套件最后），两段之间留 3 秒沉降；失败最多重试 3 次 |
+| 5 | 「用例全绿」但实际是上一轮的旧报告 | Ego 中途抛错就不写报告，驱动却读到了同名旧文件 | 每轮开始先 `prepareReport()` 删旧报告，读不到即判失败 |
+| 6 | 暂停期间按空格游戏恢复了 | 旧版用原生 CDP 的 `rawKeyDown`（不触发按钮默认激活）；**真实浏览器**里空格会激活聚焦的按钮，而暂停面板的首个按钮正是主操作「继续」 | 冻结断言只按**移动键**；另加一条断言显式验证「暂停面板聚焦『继续』，空格可恢复」——这是**正确且预期**的可访问性行为 |
+
+> 第 6 条是迁移带来的**语义变化**，不是缺陷：改造前观察不到，是因为无头 Chrome 的
+> `rawKeyDown` 不带按钮激活语义。真实浏览器里这才是用户会遇到的行为。
+
+### 11.4 实时弹幕带来的对局随机性（另一类非确定性）
+
+陨星纵队是实时弹幕：玩家站着不动会被击落，`lives` 归零即结算，结算面板会接管焦点 →
+后续按键落在面板按钮上、场景不再响应 → 「数字键切弹型」「开火得分」会**假失败**。
+
+处置（测试侧，**不改产品**）：断言前先读 `scene.snapshot().phase`，
+发现非 `play` 就**重进该游戏**拿一个干净的 `play` 态再继续。
+这与改造前「命中判定改用追踪弹型」是同一类问题的同一类处置。
+
+### 11.5 证据位置
+
+| 文件 | 内容 |
+| --- | --- |
+| `evidence/ego/09-era-arcade.json` | **批次共享工具**（`tools/ego-qa/run.mjs`）的标准报告 + 四档截图 |
+| `evidence/ego/09-era-arcade-compliance.json` | 本目录 16 规范口径（V.1 / V.2 / V.5 / V.6 / V.7 + 面板态） |
+| `evidence/ego/09-era-arcade-smoke.json` | 端到端 48 项 |
+| `evidence/ego/09-era-arcade-probe.json` | 13 探针契约 11 项 |
+| `evidence/ego/09-era-arcade-audio.json` | 音频运行时 7 项 |
+| `evidence/ego/screenshots/` | 各套件的截图（共享工具按视口命名，本套件按步骤命名） |
+| `screenshots/01–06*.png` | 展厅 / 纪年 / 荣誉榜 / 晶格 / 暂停 / 陨星 六张主视觉 |
+
+### 11.6 与批次共享工具的分工
+
+| 项 | 归属 |
+| --- | --- |
+| 四档视口 + 视口精度自检、横向溢出、跨源外部请求、控制台错误、样式表解析、破图检测、**实际渲染字体**、四档截图、标准 JSON 报告 | **批次共享工具** `tools/ego-qa/run.mjs`（只读引用，输出目录指向本目录） |
+| V.2b 画布 HUD 对比度（静态计算） | 本目录 Node 侧（取色于 `src/core/palette.js` 运行时真值） |
+| V.2 全页面文本对比度扫描（12 项、逐层 alpha 合成）、V.6 主控件 44px 判定、V.5 焦点可达与可见、V.7 降级、**面板打开态复检** | 本目录 `tests/ego/compliance.mjs` |
+| 端到端 48 项、探针契约 11 项、音频 7 项 | 本目录 `tests/ego/{smoke,probe,audio}.mjs` |
+
+> 共享工具若因截图捕获失败而中断，按 16 的「harness 与产品缺陷必须分开记账」口径
+> 归类为**环境问题**：不计入产品失败，但会在输出里单列「环境提示」，**如实记录、不静默吞掉**。

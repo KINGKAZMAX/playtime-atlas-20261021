@@ -6,7 +6,7 @@
 > 可借鉴的是**交互结构、策展逻辑、元数据模型与信息密度**。
 
 - 研究时间：2026-10-21（UTC）
-- 抓取方式：`scripts/capture_refs.sh`（headless Chrome 实机截图）+ `scripts/fetch_text.py`（正文与条款页抓取）
+- 抓取方式：`scripts/capture_refs.py`（**Ego 浏览器**实机截图，固定视口 1440×900）+ `scripts/fetch_text.py`（正文与条款页抓取）
 - 截图存档：`screenshots/`，索引见 `screenshots/INDEX.tsv`
 - 覆盖站点：**14 个真实存在且本次实测可达的站点**（要求 ≥8）
 
@@ -125,7 +125,7 @@
 | **对 06 的启示** | ✅ 两个强信号：①「**条目详情里必须显示许可字段**」是本项目"来源与许可"展示的模板；②「**可玩入口 = 流式调用，不打包 ROM**」是 06 做"可玩入口"时避免分发受版权素材的正确做法。 |
 
 ## 10. The National Video Game History Museum（迈阿密）
-**URL**：https://www.videogamehistory.org/ · 截图：本次 headless 抓取 0 字节（TLS 在本机被拒），正文经 `fetch_text.py` 抓取成功
+**URL**：https://www.videogamehistory.org/ · 截图：本次抓取 0 字节（TLS 在本机被拒），正文经 `fetch_text.py` 抓取成功
 
 | 维度 | 观察 |
 | --- | --- |

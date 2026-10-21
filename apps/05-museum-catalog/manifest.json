@@ -21,7 +21,7 @@
     "note": "第 1 步（清点 + 清单 + 双语 key 骨架）与第 2 步（增量改版）均已完成。改版后页面层直接消费 26 个 16 令牌，139 条数据密集区密度未被压缩（行高 59px / 标题 20px / 年份 13px mono）。本目录不含任何「olek.si 风格」实测结论——改版依据只有 16 的产物。原 §11.3 的 Noto Sans SC 子集顺序偏差已于 2026-10-21 22:25 由 16 上游修正，本地覆写已删除，自有 CSS 不声明任何 --ds-* 变量。 字体栈顺序已按 16 的上游修正落为 A.10/A.11 守卫（审计 12 项全通过）。 23:1x 起自测探针已按 16 的门禁修复同源加固（轮询等待 + 有界重试 + 显式告警），探针超时归类为 harness、不计产品失败。 00:05 15-supervisor 独立核验后：重同步 fonts/FONT-MANIFEST.json（16 于 22:49 更新过），三个关键文件 tokens.css / fonts.css / FONT-MANIFEST.json 现均与 16 原件逐字节一致；新增 A.13「DS 资产全量逐字节一致」（src 副本 + dist 产物 vs 16 原件，共 14 个资产文件），审计 13 项全通过。 00:2x 起全部验收探针已迁移到 ego-browser（ego_probe.py + 四个 template + page_probe.mjs），原自行 spawn Chrome 的 selftest_browser.mjs / ds_verify.mjs / capture_refs.sh 已删除，仓库内无其他浏览器路径。 01:2x 只读复核 16 的工具加固（单次 CDP 超时上界 + selftest-verify-preview.mjs 6/6 + V.11—V.13 全站化 + harness 口径入 MIGRATION-NOTES §9.1）：05 侧无需任何改动，三方 SHA 仍全等、自有审计 13/13、16 的 validate-tokens 在 05 副本下 PASS。已回报 16 一个工具侧缺口（V.12 的 ownCssFiles 硬编码）。",
     "durationAudit": "evidence/ds-duration-audit.json",
     "dsPreviewGate": "evidence/ds-verify-preview/preview-verification.json",
-    "browserDriver": "ego-browser（唯一浏览器入口；见 RESTYLE-CHECKLIST.md §11.10）",
+    "browserDriver": "ego-browser（唯一浏览器入口；见 RESTYLE-CHECKLIST.md §11.10 / §11.11）",
     "step2VerifiedAt": "2026-10-22 01:2x",
     "upstreamCrossCheck": {
       "at": "2026-10-22 01:2x",
@@ -31,7 +31,26 @@
       "v12OnOwnCss": "src 3 处 / dist 3 处 font-family 全部走 var(--ds-font-*)，违规 0 条",
       "gapReportedTo16": "validate-tokens.mjs:220 的 ownCssFiles 硬编码为 ['src/components.css']，在消费目录里不检查该目录自己的页面 CSS；05 由自有 A.11 覆盖同一判据，合规性不受影响",
       "coverageWording": "维持「某页 / 本页」口径（1031 个汉字的 57.5%），待 13 给出跨页分布后再升级"
-    }
+    },
+    "browserMigration": {
+      "at": "2026-10-22 02:1x",
+      "trigger": "用户指令：所有项目浏览器操作一律只走 Ego；批次共享验收工具 tools/ego-qa/run.mjs；取消 file:// 豁免",
+      "removedScripts": [
+        "scripts/capture_refs.sh（CHROME --headless=new，已删）",
+        "scripts/selftest_browser.mjs（--headless=new，已删）",
+        "scripts/ds_verify.mjs（--headless=new，已删）"
+      ],
+      "viewportFix": "ego_ds_probe / ego_selftest / ego_live_probe / ego_refshots 全部改 mobile:true 并加视口精度自检；实测 mobile:false 下 1440→1600、1280→1422、768→853",
+      "sharedTool": "tools/ego-qa/run.mjs（Ego）—— 05 的通用验收层；16 的 verify-preview.mjs（原 CDP + file://）降级为「16 侧自测记录」，不再是 05 的通过条件",
+      "toolGapsReported": [
+        "tools/ego-qa 触摸目标检查把折叠 <details> 的幽灵矩形计入（实测真正绘制且 <24px 为 0 个，它报 416 个）→ 建议用 checkVisibility() 区分",
+        "tools/ego-qa 外部请求过滤未覆盖 chrome-untrusted://（Ego 新标签页 Google 搜索栏）",
+        "tools/ego-qa 遇截图失败会中止整轮（fatal），非截图类检查未跑完即判 FAIL"
+      ],
+      "egoDiagnostic": "窗口最小化时 page.screenshot 与 CDP Page.captureScreenshot 同错；Page.bringToFront 无效；AppleScript 被辅助功能权限拒（-10006）；解法 open -a \"ego lite\""
+    },
+    "touchTargetAudit": "evidence/touch-target-audit.json",
+    "sharedToolEvidence": "evidence/ego-qa/05-catalog.json"
   },
   "entryFiles": [
     "dist/catalog.html",
@@ -66,7 +85,7 @@
     "referenceSites": 14,
     "screenshots": "screenshots/",
     "rawFetchData": "data/raw_sources.json",
-    "scripts": 25,
+    "scripts": 27,
     "catalogPage": "dist/catalog.html",
     "catalogStylesheet": "dist/catalog.css",
     "restyleTokens": 78,
@@ -98,7 +117,15 @@
     "dsFontManifestSha256": "7174ecf5d614841d",
     "selfTestFailed": 0,
     "selfTestBlockedByHarness": 0,
-    "selfTestBlockedByPublishItem": "线上 /research/catalog.html 可访问（发布侧 · blocked-by-publish）"
+    "selfTestBlockedByPublishItem": "线上 /research/catalog.html 可访问（发布侧 · blocked-by-publish）",
+    "sharedToolChecks": "evidence/ego-qa/05-catalog.json（Ego，四档视口精度自检全过）",
+    "touchTargetAudit": "evidence/touch-target-audit.json（WCAG 2.2 SC 2.5.8 AA，0 违例）",
+    "dsVerifyPassed": 14,
+    "dsVerifyTotal": 14,
+    "visualDiffTotal": 4,
+    "durationAuditTotal": 13,
+    "qaTotal": 18,
+    "touchTargetViolations": 0
   },
   "consumers": [
     "06-museum-core",

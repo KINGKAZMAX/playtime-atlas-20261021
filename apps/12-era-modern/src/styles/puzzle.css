@@ -28,7 +28,10 @@
   font-family: var(--ds-font-display);
   font-size: var(--ds-type-h2);
   font-weight: var(--ds-w-medium);
-  letter-spacing: var(--ds-track-display);
+  /* 中文标题不得用负字距：本选择器特异度 (0,1,1) 高于 `:lang(zh)` (0,1,0)，
+     若用 --ds-track-display 会压过设计系统的中文归零规则。
+     与 .hero-fact span / .count-chip 等 6 条同类规则统一改用 --ds-track-cjk。 */
+  letter-spacing: var(--ds-track-cjk);
   color: var(--ds-ink);
 }
 

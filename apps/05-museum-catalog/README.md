@@ -46,10 +46,12 @@ python3 scripts/restyle_visual_regression.py
 
 # 动效时长 / 命名空间审计（9 项：与 16 规范逐项对齐）
 python3 scripts/ds_duration_audit.py
+python3 scripts/touch_target_audit.py         # 触摸目标审计（WCAG 2.2 SC 2.5.8 AA）→ evidence/touch-target-audit.json
 
 # 16 侧门禁（只读调用，不改 16 任何文件）
 node ../16-design-system/tools/validate-tokens.mjs
-node ../16-design-system/tools/verify-preview.mjs
+# 通用浏览器验收走批次共享工具（Ego）：node ../tools/ego-qa/run.mjs --url ... --out ...
+node ../16-design-system/tools/validate-tokens.mjs
 ```
 
 资料部分无构建步骤、无运行时依赖、无在线接口调用，纯静态可分发；目录页的构建只依赖 Node（无 npm 依赖、无 CDN、无外链字体）。

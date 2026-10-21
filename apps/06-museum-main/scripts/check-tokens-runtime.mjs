@@ -149,10 +149,19 @@ const runtime = await page.evaluate(async (dsCss) => {
   for (const n of names) site[n] = cs.getPropertyValue(n).trim();
 
   // 2) DS 基准：隔离 iframe，让浏览器自己解析一遍
+  //    注意顺序：覆盖必须放在 DS 的 CSS **之后**。
+  //    DS 的 tokens.css 里 :root 声明了 --ds-base: ""；
+  //    站点侧靠**后加载**的注入样式把它改成生产基准（§6）。
+  //    基准 iframe 必须复刻这个"后加载"关系，否则比出来的是注入值的级联，
+  //    不是令牌漂移。
+  const siteBase = cs.getPropertyValue('--ds-base').trim();
+  // getPropertyValue 返回的是**作者写下的 token 流**（含引号），
+  // 直接照抄进基准 iframe 才是同口径；再套一层 JSON.stringify 会把引号变成字面量。
+  const baseOverride = siteBase ? `<style>:root{--ds-base:${siteBase};}</style>` : '';
   const frame = document.createElement('iframe');
   frame.setAttribute('aria-hidden', 'true');
   frame.style.cssText = 'position:fixed;left:-9999px;width:1px;height:1px;border:0';
-  frame.srcdoc = `<!doctype html><html data-ds-theme="${root.getAttribute('data-ds-theme') || ''}"><head><style>${dsCss}</style></head><body></body></html>`;
+  frame.srcdoc = `<!doctype html><html data-ds-theme="${root.getAttribute('data-ds-theme') || ''}"><head><style>${dsCss}</style>${baseOverride}</head><body></body></html>`;
   document.body.appendChild(frame);
   await new Promise((res) => { frame.onload = res; setTimeout(res, 3000); });
 

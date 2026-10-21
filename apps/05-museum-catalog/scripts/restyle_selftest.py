@@ -217,8 +217,16 @@ def main() -> int:
         "checks": [],
     }
 
-    def add(name, ok, detail, level="fail"):
-        report["checks"].append({"name": name, "ok": bool(ok), "level": "info" if ok else level, "detail": detail})
+    def add(name, ok, detail, level="fail", skipped=False):
+        """skipped=True 表示**该项未真正执行**（如线上实探因网络/harness 不可达）。
+
+        它与「通过」严格区分：skipped 项在 summary 里单列，既不计入产品侧失败，
+        也不冒充通过 —— 否则「线上未核验」会被读成「线上通过」。
+        """
+        entry = {"name": name, "ok": bool(ok), "level": "info" if ok else level, "detail": detail}
+        if skipped:
+            entry["skipped"] = True
+        report["checks"].append(entry)
         return ok
 
     # ---- A. 数据侧 ----
@@ -343,12 +351,18 @@ def main() -> int:
     # ---- C. 线上侧 ----
     if args.no_live:
         report["live"] = {"skipped": True, "reason": "--no-live"}
-        add("线上实探（跳过）", True, "按参数跳过")
+        add("线上实探（跳过）", True, "按参数跳过", level="info", skipped=True)
     else:
         live = probe_live()
         report["live"] = live
         if live.get("skipped"):
-            add("线上实探（网络不可达）", True, f"跳过：{live.get('reason')}", level="info")
+            add(
+                "线上实探（未执行）",
+                True,
+                f"跳过：{live.get('reason')} —— 线上状态本轮**未核验**（既非 200 也非 404）",
+                level="info",
+                skipped=True,
+            )
         elif live.get("status") == 404:
             # 404 与「页面本身坏了」是两回事：多半是发布侧把该页移出了发布树
             add(
@@ -389,9 +403,14 @@ def main() -> int:
         and ("harness" in str(c.get("detail", "")).lower() or "负载" in str(c.get("detail", "")))
     ]
     report["finishedAt"] = time.strftime("%Y-%m-%dT%H:%M:%S%z")
+    skipped_checks = [c for c in report["checks"] if c.get("skipped")]
     report["summary"] = {
         "total": len(report["checks"]),
         "passed": sum(1 for c in report["checks"] if c["ok"]),
+        # 真正执行且通过的数量（不含 skipped 项）
+        "passedExecuted": sum(1 for c in report["checks"] if c["ok"] and not c.get("skipped")),
+        "skipped": len(skipped_checks),
+        "skippedNames": [c["name"] for c in skipped_checks],
         "failed": len(fails),
         "failedNames": [c["name"] for c in fails],
         "blockedByPublish": [c["name"] for c in blocked],
@@ -403,11 +422,18 @@ def main() -> int:
 
     print("\n=== 05 策展目录自测 ===")
     for c in report["checks"]:
-        mark = "PASS" if c["ok"] else ("PUBLISH-BLOCKED" if c["level"] == "info" else "FAIL")
+        if c.get("skipped"):
+            mark = "SKIPPED"
+        elif c["ok"]:
+            mark = "PASS"
+        else:
+            mark = "PUBLISH-BLOCKED" if c["level"] == "info" else "FAIL"
         print(f"[{mark}] {c['name']} — {c['detail']}")
+    s = report["summary"]
     print(
-        f"\n合计 {report['summary']['passed']}/{report['summary']['total']} 通过，"
-        f"产品侧失败 {report['summary']['failed']} 项"
+        f"\n合计 {s['passedExecuted']}/{s['total']} 通过"
+        + (f"，{s['skipped']} 项跳过（未执行）" if s["skipped"] else "")
+        + f"，产品侧失败 {s['failed']} 项"
         + (f"，发布侧阻塞 {len(blocked)} 项（blocked-by-publish）" if blocked else "")
         + (f"，harness 阻塞 {len(harness_blocked)} 项（非产品缺陷）" if harness_blocked else "")
     )

@@ -1,6 +1,6 @@
 # QA — 回响电玩馆 / PLAYTIME ATLAS 美术包验收记录
 
-最后更新：2026-10-21 23:55 · 对应版本 `1.1.0`
+最后更新：2026-10-22 02:45 · 对应版本 `1.1.0`
 执行环境：macOS（darwin 25.2.0 arm64）· Node v24.13.0 · npm 11.6.2 · Chromium（Playwright）
 全部验收由本会话（MiniMax Code M3.1-Flash / max）自动化执行。
 
@@ -10,7 +10,7 @@
 
 | 脚本 | 作用 | 结果 |
 | --- | --- | --- |
-| `npm run qa` → `scripts/qa-check.mjs` | 资产完整性：文件存在性、尺寸、GLB 合法性、令牌对齐、外链扫描、品牌词扫描、i18n 结构、DOM 引用完整性 | **158 项全部通过** |
+| `npm run qa` → `scripts/qa-check.mjs` | 资产完整性：文件存在性、尺寸、GLB 合法性、令牌对齐、主色口径、字体档位、外链扫描、品牌词扫描、i18n 结构、DOM 引用完整性 | **163 项全部通过** |
 | `node scripts/qa-browser.mjs` | 浏览器验收：结构、网格布局、字体加载、图像加载、3D 查看器、交互、截图、响应式、网络与控制台 | **45 / 45 通过** |
 | `node scripts/qa-subpath.mjs` | 线上子路径部署复验：`/playtime-atlas-20261021/exhibits/07-museum-art/` | **40 / 40 通过** |
 | `node scripts/qa-ds-conformance.mjs` | 与 16-design-system 的符合性：`MIGRATION-NOTES §9` 的 **V.1–V.10** 清单 | **18 / 18 通过** |
@@ -20,7 +20,7 @@
 
 ---
 
-## 1. 资产完整性（158 项通过）
+## 1. 资产完整性（163 项通过）
 
 ### 1.1 设计令牌
 - `design-tokens.json` 共 **883 个令牌**，分区：`meta` / `designSystem`（16 令牌树，213 个叶子）/ `local`（展品内嵌配色）/ `compat`（1.0.0 旧键名兼容视图）/ `cssVars`（129 个 `--ds-*` + 21 个深色覆盖）
@@ -357,7 +357,7 @@ A 结构与字体 / B 图片完整性 / C 3D 查看器 / D 交互 / E 区块截�
 cd 07-museum-art
 npm install
 npm run build          # 退出码应为 0
-npm run qa             # 资产完整性：158 项
+npm run qa             # 资产完整性：163 项
 node scripts/qa-browser.mjs   # 浏览器验收：45 项 + 15 张截图
 node scripts/qa-subpath.mjs   # 线上子路径复验：40 项
 node scripts/qa-ds-conformance.mjs  # 与 16 的 V.1–V.10 符合性：18 项
@@ -371,12 +371,14 @@ node scripts/qa-ds-conformance.mjs  # 与 16 的 V.1–V.10 符合性：18 项
 
 | 维度 | 结论 |
 | --- | --- |
-| 资产完整性 | ✅ 158 / 158 |
+| 资产完整性 | ✅ 163 / 163 |
 | 浏览器验收 | ✅ 45 / 45 |
 | 线上子路径 | ✅ 40 / 40 |
 | 与 16 的符合性（V.1–V.10） | ✅ 18 / 18 |
 | 构建 | ✅ 退出码 0，产物完整 |
 | 令牌对齐 | ✅ 129 个 `--ds-*` 与 16 逐项一致；跨层差异 1 项已登记（源自 16 自身） |
+| 主色口径 | ✅ 界面层 `--ds-accent` = `#B4432B` / `#E0684A`（16 定义）；UI 无写死旧主色 |
+| 字体档位 | ✅ 5 条 `@font-face` 的族名/style/字重/文件映射与 16 逐项一致 |
 | 字体 | ✅ 与 16 逐字节一致；运行期零外部字体请求 |
 | 外部请求 | ✅ 0 |
 | 控制台错误 | ✅ 0 |

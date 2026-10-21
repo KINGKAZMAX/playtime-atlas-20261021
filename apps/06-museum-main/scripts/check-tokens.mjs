@@ -2,23 +2,29 @@
 /**
  * 令牌一致性校验（对应 16-design-system/MIGRATION-NOTES.md §9 的 V.3 / V.4）
  *
- * 校验两件事：
- *   V.3 取值一致 —— 本目录 src/styles/tokens.css 里出现的每一个 `--ds-*`，
- *                   取值必须与 16-design-system/src/tokens.css 的同名令牌**逐字相同**。
- *   V.4 命名空间  —— 本目录不得**重新定义** DS 之外的 `--ds-*`（MIGRATION-NOTES 风险 B：
- *                   同名变量「后加载者胜」，覆盖后值可能完全不同）。
+ * 2026-10-22 起本目录改用「**唯一声明处 + 增量层**」结构
+ * （与 11-era-online / 12-era-modern 同约定）：
+ *
+ *   唯一声明处：public/assets/ds/tokens.css
+ *                ← 逐字节复制自 16-design-system/src/tokens.css
+ *                ← index.html 里 <link href="./assets/ds/tokens.css"> 引入
+ *   增量层：    src/styles/tokens.css
+ *                只保留语义别名层、本馆专属令牌、对设计系统的增量覆盖
+ *
+ * 因此校验项变成四条：
+ *   V.3 接入完整性 —— 产物里那一份 assets/ds/tokens.css 的全部 --ds-* 取值，
+ *                     必须与 16-design-system/src/tokens.css 逐名逐值相同。
+ *   V.4 唯一声明处 —— 本目录自有样式层**不得**声明任何 --ds-* 的取值。
+ *                     同名变量声明两遍就是「后加载者胜」（风险 B），
+ *                     本目录既然已经引入权威层，就不能再自己抄一遍。
+ *   V.5 命名空间   —— 自有层不得出现设计系统之外的 --ds-* 名字（风险 A）。
+ *   V.6 别名层     —— 自有层的语义别名必须指向 --ds-*（MIGRATION-NOTES 推荐的落地方式）。
  *
  * 16 的文件是**只读引用**：本脚本只读它，不写入它一个字。
  *
- * 两处本目录自有、DS 无同名令牌的出口，单独列为「说明」而非缺陷：
- *   --ds-art-paper / --ds-art-ink：展签图形（实物插画）专用色，
- *                                 DS 规范里没有这两个名字。
- *   --ds-base：DS 取值 "/playtime-atlas-20261021/"，本馆只在自己的子路径下，
- *              按 MIGRATION-NOTES §6 允许改用相对基准 ""。
- *
  * 解析要点（踩过的坑）：
  *   1. 令牌值可能跨行（--ds-font-display 就是），声明解析不能按行切。
- *   2. DS 的 tokens.css 里 @media (prefers-reduced-motion: reduce) 块内还有一个
+ *   2. 基准文件里 @media (prefers-reduced-motion: reduce) 块内还有一个
  *      :root，会把 --ds-dur-* 覆盖成 1ms。取基准值时**必须排除媒体查询里的块**，
  *      否则会拿「降级后的值」当规范值比，比出一堆假不一致。
  *
@@ -27,18 +33,21 @@
  */
 
 import { readFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const DS_TOKENS = path.resolve(ROOT, '..', '16-design-system', 'src', 'tokens.css');
-const MINE = path.join(ROOT, 'src', 'styles', 'tokens.css');
 
-/** 本目录自有、DS 无同名令牌 → 允许，列为「说明」 */
-const LOCAL_ONLY = new Set(['--ds-art-paper', '--ds-art-ink']);
-/** DS 有同名令牌，但本目录按规范允许自定义取值 */
-const LOCAL_OVERRIDE = new Set(['--ds-base']);
+/** 16 的权威令牌层（只读参照） */
+const DS_TOKENS = path.resolve(ROOT, '..', '16-design-system', 'src', 'tokens.css');
+/** 本目录随产物发布的那一份（应为 DS 的逐字节副本） */
+const SHIPPED_TOKENS = path.join(ROOT, 'public', 'assets', 'ds', 'tokens.css');
+/** 本目录的自有增量层 */
+const MINE = path.join(ROOT, 'src', 'styles', 'tokens.css');
+/** 自有层目录：整目录扫，确保没有任何一处偷偷声明了 --ds-* 取值 */
+const MY_STYLE_DIR = path.join(ROOT, 'src', 'styles');
 
 /**
  * 把 CSS 拆成「块」列表。
@@ -55,7 +64,6 @@ function parseBlocks(css) {
     const open = text.indexOf('{', i);
     if (open === -1) break;
     const prelude = text.slice(i, open).trim();
-    // 找到匹配的右括号
     let depth = 1;
     let j = open + 1;
     while (j < text.length && depth > 0) {
@@ -66,7 +74,6 @@ function parseBlocks(css) {
     const body = text.slice(open + 1, j - 1);
 
     if (prelude.startsWith('@media')) {
-      // 媒体查询本身不含声明，内部另算一层
       mediaDepth += 1;
       stack.push({ prelude, body });
       i = j;
@@ -81,7 +88,6 @@ function parseBlocks(css) {
     }
     blocks.push({ selector: prelude, inMedia: mediaDepth > 0, vars });
 
-    // 媒体查询块：把它的内层声明块也解析出来（inMedia = true）
     if (mediaDepth > 0) {
       const inner = stack.pop();
       if (inner) {
@@ -121,77 +127,95 @@ function dsNamesOf(blocks) {
   return s;
 }
 
-const dsCss = await readFile(DS_TOKENS, 'utf8');
-const myCss = await readFile(MINE, 'utf8');
-
-const dsBlocks = parseBlocks(dsCss);
-const myBlocks = parseBlocks(myCss);
-
-const dsRoot = varsFor(dsBlocks, ':root');
-const dsDark = varsFor(dsBlocks, '[data-ds-theme="dark"]');
-const myRoot = varsFor(myBlocks, ':root');
-const myDark = varsFor(myBlocks, '[data-ds-theme="dark"]');
-
-const dsNames = dsNamesOf(dsBlocks);
-const myNames = dsNamesOf(myBlocks);
-
 const errors = [];
 const notes = [];
 
-function cmp(label, mine, theirs, name) {
-  if (mine === undefined) return;
-  if (theirs === undefined) {
-    if (LOCAL_ONLY.has(name)) {
-      notes.push(`${label} ${name} = ${mine}（本目录新增，DS 无同名令牌）`);
-    } else {
-      errors.push(`${label} ${name}：DS 令牌层里不存在这个名字`);
-    }
-    return;
-  }
-  if (LOCAL_OVERRIDE.has(name)) {
-    notes.push(`${label} ${name} = ${mine}（DS 同名取值 ${theirs}；按 §6 允许本目录自定义基准）`);
-    return;
-  }
-  if (mine.toLowerCase() !== theirs.toLowerCase()) {
-    errors.push(`${label} ${name}：本目录 ${mine} ≠ DS ${theirs}`);
-  }
+if (!existsSync(SHIPPED_TOKENS)) {
+  console.error(`✗ 缺少产物侧的令牌层：${path.relative(ROOT, SHIPPED_TOKENS)}`);
+  console.error('  先跑 `npm run sync`（它从 16-design-system 逐字节复制到 public/assets/ds/）');
+  process.exit(1);
 }
 
-// 1) V.3 取值一致
-for (const [name, value] of myRoot) {
-  if (!name.startsWith('--ds-')) continue;
-  cmp('浅色主题', value, dsRoot.get(name), name);
-}
-for (const [name, value] of myDark) {
-  if (!name.startsWith('--ds-')) continue;
-  cmp('暗色主题', value, dsDark.get(name), name);
-}
-
-// 2) V.4 命名空间：不得引入 DS 之外的 --ds-*
-for (const name of myNames) {
-  if (dsNames.has(name) || LOCAL_ONLY.has(name)) continue;
-  errors.push(`命名空间冲突：本目录定义了 DS 中不存在的 ${name}`);
-}
-
-// 3) 语义别名层必须指向 --ds-*（MIGRATION-NOTES 推荐的落地方式）
-//    别名形如 `--ink: var(--ds-ink)`；允许别名再指向别名，但最终必须落到 --ds-*。
+const dsCss = await readFile(DS_TOKENS, 'utf8');
+const shippedCss = await readFile(SHIPPED_TOKENS, 'utf8');
 const myRaw = await readFile(MINE, 'utf8');
+
+const dsBlocks = parseBlocks(dsCss);
+const shippedBlocks = parseBlocks(shippedCss);
+
+const dsRoot = varsFor(dsBlocks, ':root');
+const dsDark = varsFor(dsBlocks, '[data-ds-theme="dark"]');
+const shipRoot = varsFor(shippedBlocks, ':root');
+const shipDark = varsFor(shippedBlocks, '[data-ds-theme="dark"]');
+const dsNames = dsNamesOf(dsBlocks);
+const shipNames = dsNamesOf(shippedBlocks);
+
+/* ── V.3 接入完整性：产物里的那份必须与 16 逐名逐值相同 ─────────────────── */
+for (const [name, value] of dsRoot) {
+  const mine = shipRoot.get(name);
+  if (mine === undefined) {
+    errors.push(`V.3 接入不完整：产物侧 tokens.css 缺少 ${name}`);
+  } else if (mine.toLowerCase() !== value.toLowerCase()) {
+    errors.push(`V.3 取值不一致（浅色）${name}：产物侧 ${mine} ≠ 16 ${value}`);
+  }
+}
+for (const [name, value] of dsDark) {
+  const mine = shipDark.get(name);
+  if (mine === undefined) {
+    errors.push(`V.3 接入不完整：产物侧 tokens.css 缺少暗色覆盖 ${name}`);
+  } else if (mine.toLowerCase() !== value.toLowerCase()) {
+    errors.push(`V.3 取值不一致（暗色）${name}：产物侧 ${mine} ≠ 16 ${value}`);
+  }
+}
+for (const name of shipNames) {
+  if (!dsNames.has(name)) errors.push(`V.3 产物侧多出设计系统没有的令牌 ${name}`);
+}
+
+/* ── V.4 唯一声明处 + V.5 命名空间：自有层不得声明 --ds-* 取值 ──────────── */
+const myBlocks = parseBlocks(myRaw);
+const myNames = dsNamesOf(myBlocks);
+if (myNames.size > 0) {
+  const detail = [...myNames].map((n) => {
+    const b = myBlocks.find((x) => x.vars.has(n));
+    return `${n}=${b ? b.vars.get(n) : '?'}`;
+  }).join(', ');
+  errors.push(`V.4 违反唯一声明处：自有层 src/styles/tokens.css 仍声明了 ${myNames.size} 个 --ds-* 取值（${detail}）`);
+}
+
+/* 整个自有样式目录再扫一遍，防止在别的文件里偷偷声明 */
+const { readdir } = await import('node:fs/promises');
+const styleFiles = (await readdir(MY_STYLE_DIR)).filter((f) => f.endsWith('.css'));
+const stray = [];
+for (const f of styleFiles) {
+  const css = await readFile(path.join(MY_STYLE_DIR, f), 'utf8');
+  for (const b of parseBlocks(css)) {
+    for (const [k, v] of b.vars) {
+      if (!k.startsWith('--ds-')) continue;
+      // 只认「取值声明」：值里出现 var(--ds-*) 的是引用，不是声明
+      if (v.includes('var(--ds-')) continue;
+      stray.push(`${f}: ${k} = ${v}`);
+    }
+  }
+}
+if (stray.length) {
+  errors.push(`V.4 违反唯一声明处：自有样式层里出现 ${stray.length} 处 --ds-* 取值声明 —— ${stray.join('; ')}`);
+}
+
+/* ── V.6 别名层必须指向 --ds-* ───────────────────────────────────────────── */
 const aliasRe = /^\s*(--(?!ds-)[a-z0-9-]+)\s*:\s*([^;]+);/gim;
 let am;
 let aliasCount = 0;
 while ((am = aliasRe.exec(myRaw)) !== null) {
   const name = am[1];
   const value = am[2].trim();
-  // 只看「指向其它变量」的别名
   if (!value.startsWith('var(')) continue;
   aliasCount += 1;
   const ref = value.match(/var\(\s*(--[a-z0-9-]+)/i);
   if (!ref) {
-    errors.push(`语义别名 ${name} = ${value} 不是合法的 var() 引用`);
+    errors.push(`V.6 语义别名 ${name} = ${value} 不是合法的 var() 引用`);
     continue;
   }
   if (!ref[1].startsWith('--ds-')) {
-    // 允许别名指向别名，但必须能追到 --ds-*
     const chain = new Set();
     let cur = ref[1];
     let ok = false;
@@ -203,17 +227,29 @@ while ((am = aliasRe.exec(myRaw)) !== null) {
       if (!next) break;
       cur = next[1];
     }
-    if (!ok) errors.push(`语义别名 ${name} → ${ref[1]} 未追到任何 --ds-* 令牌`);
+    if (!ok) errors.push(`V.6 语义别名 ${name} → ${ref[1]} 未追到任何 --ds-* 令牌`);
   }
 }
 
-console.log('▶ 令牌一致性校验（V.3 取值 / V.4 命名空间）');
-console.log(`  DS 参照： 16-design-system/src/tokens.css`);
-console.log(`  本目录：   src/styles/tokens.css`);
-console.log(`  DS  --ds-* 令牌数： ${dsNames.size}`);
-console.log(`  本目录 --ds-* 令牌数： ${myNames.size}`);
-console.log(`  其中与 DS 同名：     ${[...myNames].filter((n) => dsNames.has(n)).length}`);
-console.log(`  本目录独有（已备案）： ${[...myNames].filter((n) => !dsNames.has(n)).join(', ') || '无'}`);
+/* 本目录自有的、非 --ds- 前缀的令牌（备案清单） */
+const localOnly = new Set();
+for (const b of myBlocks) {
+  for (const k of b.vars.keys()) {
+    if (k.startsWith('--ds-')) continue;
+    if (k.startsWith('--era-accent')) continue; // 年代身份色，另有备案
+    localOnly.add(k);
+  }
+}
+notes.push(`本目录自有令牌（非 --ds- 前缀，不占设计系统命名空间）：${[...localOnly].sort().join(', ')}`);
+
+/* ── 输出 ─────────────────────────────────────────────────────────────────── */
+console.log('▶ 令牌一致性校验（V.3 接入 / V.4 唯一声明处 / V.5 命名空间 / V.6 别名层）');
+console.log('  DS 参照：  16-design-system/src/tokens.css（只读）');
+console.log('  产物侧：    public/assets/ds/tokens.css（页面实际引入的那份）');
+console.log('  自有层：    src/styles/tokens.css（别名 + 本馆专属 + 增量覆盖）');
+console.log(`  DS --ds-* 令牌数： ${dsNames.size}`);
+console.log(`  产物侧 --ds-* 令牌数： ${shipNames.size}`);
+console.log(`  自有层 --ds-* 取值声明数： ${myNames.size}（应为 0 —— 取值唯一声明处是 assets/ds/tokens.css）`);
 console.log(`  语义别名层条目： ${aliasCount}（均须指向 --ds-*）`);
 
 if (notes.length) {
@@ -227,4 +263,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log('\n✓ 令牌取值与命名空间均与设计系统一致');
+console.log('\n✓ 令牌取值唯一声明在设计系统权威层；自有层未重复声明，且别名全部指向 --ds-*');

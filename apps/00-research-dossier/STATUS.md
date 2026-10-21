@@ -1,8 +1,8 @@
 # STATUS.md · 00-research
 
-**最后更新**：2026-10-22 00:16（Asia/Taipei）
+**最后更新**：2026-10-22 04:10（Asia/Taipei）
 **执行模型**：MiniMax Code · MiniMax-M3.1-Flash · effort=max
-**状态**：✅ 研究任务范围内全部完成；✅ **改版第 1 步完成**（准备 + 4 个缺陷修复）；✅ **改版第 2 步完成**（增量接入 16「余晖设计系统」）；✅ **字体栈顺序缺陷已修**（22:4x 监工派单）；✅ **发布包已交付**（00:1x 交 14-publish，包级自检 12 项 + 发布包浏览器验收 32 项全绿）→ ⏸ 待 13 验收（第 3 步）与 14 统一提交上线（第 4 步）
+**状态**：✅ 研究任务范围内全部完成；✅ **改版第 1 步完成**（准备 + 4 个缺陷修复）；✅ **改版第 2 步完成**（增量接入 16「余晖设计系统」）；✅ **字体栈顺序缺陷已修**（22:4x 监工派单）；✅ **发布包已交付**（00:1x 交 14-publish，包级自检 12 项 + 发布包浏览器验收 32 项全绿）；✅ **浏览器口径统一为 Ego**（04:0x，参考库排除复核 + 文档口径改写 + 字体结论用 Ego 独立复现）→ ⏸ 待 13 验收（第 3 步）与 14 统一提交上线（第 4 步）
 
 ---
 
@@ -119,7 +119,8 @@ MiniMax M3.1 Flash 全球公开案例库已建成：**134 条**案例、6 个平
 
 ### 本轮验收（四档视口，62 项全绿）
 
-> 探针：`/tmp/d1probe/accept.mjs`（Playwright + 本机 Chromium，参考 16 的 `tools/verify-preview.mjs` 检查项）；临时静态服务器 `python3 -m http.server 8931`，**验证完已关闭**。
+> 探针（**历史记录，2026-10-21 21:20–21:55 当时的方法**）：`/tmp/d1probe/accept.mjs`（Playwright + 本机 Chromium，参考 16 的 `tools/verify-preview.mjs` 检查项）；临时静态服务器 `python3 -m http.server 8931`，**验证完已关闭**。
+> **现行方法（2026-10-22 起）**：浏览器操作一律走 **Ego**（`/Users/mekzenx2/.local/bin/ego-browser`），内置 Browser / playwright / puppeteer / 本机无头 Chrome + CDP 全部禁用。已用 Ego 在子路径与 `file://` 两种形态下复跑本表的关键项，结论一致（见下文「Ego 口径与排除复核」一节）。
 
 | 检查 | 1440 | 1280 | 768 | 390 |
 |---|---|---|---|---|
@@ -210,6 +211,10 @@ CSS 字体回退是**按字符**进行的 → 子集缺字时浏览器**逐字**
 （扫描器首版曾因「只在同一文件内比对」漏判跨文件场景 —— `@font-face` 在 `fonts.css`、栈在 `tokens.css` —— 且判据方向写反，已修正并加对照组验证。）
 
 ### 浏览器实测：实际用于渲染的字体（CDP `CSS.getPlatformFontsForNode`）
+
+> **方法（现行）**：**Ego** 浏览器 + `page.cdp("CSS.getPlatformFontsForNode")`（2026-10-22 复跑，命令与产物见下方「Ego 口径与排除复核」）。
+> 表中「修复后」一列已于 2026-10-22 用 Ego **独立复现**：`h1` → `Space Grotesk Light(19 拉丁) + PingFang SC(8 汉字)`；`.lede` → `Inter(15 拉丁) + PingFang SC Regular(64) + PingFang SC Semibold(8)`；`.c-title a` → `PingFang SC Semibold(15)`。
+> 「修复前」一列为 2026-10-21 22:4x 的历史实测（Playwright 时代），保留作对照，不重跑。
 
 | 元素 | 修复前 | 修复后 |
 |---|---|---|
@@ -415,6 +420,46 @@ C1 入口存在且非空 · C2 别名与主入口逐字一致 · C3 无根绝对
 1. **本包不含 git 写入动作，请 14 统一提交**（无 add / commit / push；未改 `works.json` / `hall/` / `scripts/`）。
 2. **要不要进大厅由 14 决定**：当前 `works.json` 中 `00-research-dossier` 为 `publish:false`，`build.mjs` 第 125 行会跳过它、`make-covers.mjs` 也不会生成封面。置 `true` 即由流水线托管（封面按 archive 调色板自动生成）；保持 `false` 而直接把 `PAYLOAD/` 拷进 `docs/`，下次 `build.mjs` 的 `rmrf(docs)` 会清掉该目录。
 3. **不需要 14 留入口锚点**：页面自带 `#main` / `#top3` / `#out` / `#perplat` / `#foot` 与顶栏导航。若希望大厅「复制线上地址」直接落到分平台最高榜，把 entry 写成 `works/00-research-dossier/index.html#perplat` 即可（页面会自动展开该折叠区）。检索词不写入 URL，深链无法预置搜索词。
+
+---
+
+## Ego 口径与参考库排除复核 —— 2026-10-22 04:0x（15-supervisor 派单）
+
+用户最新指令：**所有项目的浏览器操作一律只走 Ego 浏览器**（内置 Browser 工具、`chromium.launch()` / playwright / playwright-core / puppeteer / 本机无头 Chrome + CDP **全部禁用**；「本地 `file://` 自测豁免 Ego」的旧例外**取消**）。
+
+### 一、参考库原始文件：保留原样 + 排除依据
+
+`references/mia-100-html/scripts/capture_screenshots.py` 是**克隆自 MiaAI-Lab/MiniMax-M3.1-Flash-100-HTML-Files 的参考库原始内容**（该仓库无 LICENSE，默认保留所有权利）→ **不删、不改、不迁**（改造它等于修改他人作品）。
+
+| 排除环节 | 依据 | 核验结果 |
+|---|---|---|
+| 本目录 Git | `00-research/.gitignore:23` `references/` | ✅ `git check-ignore -v` 命中该规则 |
+| 本目录发布清单 | `manifest.json` `publish.scope.exclude`：`references/ (★ 无 LICENSE 的克隆参考库，禁止复制其内容)` | ✅ |
+| 14 的同步层 | `14-publish/release/scripts/sync-apps.mjs` 的 `DENY` 集合含 `'references'` | ✅ 逐行核对（第 40–42 行） |
+| 14 的构建层 | `build.mjs` static 分支只复制 `keepDirs`（data/public/assets/exhibits/models/fonts）+ 根级 `keepExts`；`references/` 不在其中 | ✅ |
+| 交付包 | `release-package/PAYLOAD/` = `index.html` + `case-index.html` + `assets/ds/**`（16 文件） | ✅ 不含 references |
+| 外层仓库 | `git ls-files -- 00-research/references` | ✅ **0 个跟踪文件** |
+
+> **结论：该文件不会被本目录的交付物、Git 仓库或站点发布中的任何路径带到。**
+
+### 二、本目录自身的浏览器脚本：**无**
+
+`grep -rnE "chromium\.launch|playwright|puppeteer" 00-research/ --include='*.mjs' --include='*.js' --include='*.py' --include='*.sh' --include='*.ts' --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=references` → **退出码 1（零命中）**。
+`package.json` 的 `dependencies` 与 `devDependencies` **均为空**；本目录的脚本（`build_cases.py` / `build_index.py` / `gen_ranking.py` / `verify.py` / `scan_font_stack.py` / `make_release_package.py`）**不启动任何浏览器**，唯一的子进程调用是 `verify.py` 调 `scan_font_stack.py`（纯文本扫描）。
+
+### 三、用 Ego 复跑（现行方法）
+
+| 项 | 结果 |
+|---|---|
+| `file://` 加载 `00-research/index.html` | ✅ 标题「MiniMax M3.1 Flash · 全球公开案例索引」、`count` 134/134、`body` 背景 `rgb(252,251,249)`（设计系统纸白）、`h1` 52px、`.ds-topbar` / `.ds-footer` 均在位、**5 个自托管字体全部 `loaded`**、横向溢出 0、文档高 26750px（与记录的 26757px 一致） |
+| 实际渲染字体（`CSS.getPlatformFontsForNode`） | ✅ `h1` → `Space Grotesk Light(19 拉丁) + PingFang SC(8 汉字)`；`.lede` → `Inter(15 拉丁) + PingFang SC Regular(64) + Semibold(8)`；`.c-title a` → `PingFang SC Semibold(15)` —— **字体栈修复结论用现行工具独立复现** |
+| 截图 | ✅ 落在**本目录自己的** `evidence/ego-20261022/`（`00-research-fold.png` 1309×873、`00-research-390-fold.png` 390×844） |
+
+**Ego 的实测边界（已写进 `README.md`）**：`page.screenshot({ fullPage: true })` **不支持**（报 `Unable to capture screenshot`）→ 视口以下内容用 `page.snapshot({ scope: "full_page" })` 取全文快照或分段滚动截；`DOM` / `CSS` 域须在**导航后**重新 `enable`；视口 `Emulation.setDeviceMetricsOverride` 受窗口缩放影响，须迭代校正到 `innerWidth === 目标宽度`。
+
+### 四、文档口径同步
+
+`README.md`「整页截图做法」已**整体改写为 Ego 实现**（原 Playwright 最小实现整段替换，旧坑表保留并标注「历史（Playwright 时代）」）；`ACCEPTANCE.md` 抽查 G / H 标注现行方法与 Ego 复跑结果；`manifest.json` 的 `metrics.restyleAcceptance` 等记录同步注明 Ego 口径。**历史验收记录如实保留当时的方法，不改写历史**。
 
 ---
 

@@ -1,0 +1,5 @@
+{
+  "base": "http://127.0.0.1:4399/repo/prism-era",
+  "taskSpace": "prism-era-ds-verify-20261022",
+  "note": "Ego 的 nodejs 运行时不继承 shell 环境变量，因此目标地址与 TaskSpace 名写在此处；改地址只需改本文件。"
+}

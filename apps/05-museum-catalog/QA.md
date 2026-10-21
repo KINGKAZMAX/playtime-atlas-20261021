@@ -81,7 +81,7 @@ python3 scripts/consistency_check.py   # 策展字段 ↔ 来源条目 infobox �
 | Centre for Computing History | `computinghistory.org.uk/` | 200 | 截图 ✅ |
 | Museum of the Game (KLOV) | `arcade-museum.com/` | 200 | 截图 ✅ |
 | Internet Archive Software Collection | `archive.org/details/software` | 200 | 截图 ✅ |
-| The National Video Game History Museum | `videogamehistory.org/` | 正文可达 | ⚠️ headless 截图 0 字节（TLS 受限），正文抓取成功 |
+| The National Video Game History Museum | `videogamehistory.org/` | 正文可达 | ⚠️ 截图 0 字节（TLS 受限），正文抓取成功 |
 | Emulation Nation | `emulatorzone.com/` | 200 | 截图 ✅ |
 | Google Arts & Culture | `artsandculture.google.com/` | 200 | 截图 ✅ |
 | Games That Weren't | `gamesthatwerent.com/` | 200 | 截图 ✅ |

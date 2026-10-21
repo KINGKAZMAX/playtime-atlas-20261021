@@ -1,6 +1,6 @@
 # STATUS — 《联机曙光 LINK DAWN》2000s 可玩展厅
 
-最后更新：2026-10-22（规范更新响应 + Ego 验收路径轮次）
+最后更新：2026-10-22（浏览器入口统一轮次）
 
 | 阶段 | 状态 | 说明 |
 | --- | --- | --- |
@@ -22,7 +22,8 @@
 | 15. **改版自检脚本** | ✅ 完成 | 新增 `scripts/restyle-check.cjs` → `qa-restyle.json`，**20/20 通过** |
 | 16. **§9 规范机械复核** | ✅ 完成 | 新增 `scripts/ds-conformance.cjs` → `qa-ds-conformance.json` **14/14 通过**；据此修掉 2 处真实缺陷（掌机 HUD DOM 文字对比度、来源角标触摸目标） |
 | 17. **规范更新响应（v1.0.1 字体栈条款 + Ego 验收路径）** | ✅ 完成 | 核对：本目录 tokens.css 已是修正后顺序且与 16 上游逐字节一致，**无需改动**；新增 `scripts/ego-verify.mjs`（Ego 权威验收）**40/40**，量化旧序影响面 444/617 字 |
-| 18. 部署 | ⏸ 归 14-publish | 本任务**不部署**，只交付可静态构建的产物包 |
+| 18. **浏览器入口统一（Playwright → Ego）** | ✅ 完成 | 4 个 Playwright 脚本改造/停用完毕；新增 `ego-acceptance.mjs`（53/53）、`ego-verify.mjs`（40/40）、`run-ego-qa.mjs`；证据见 `evidence/ego-qa/` 与 `qa-ego-*.json` |
+| 19. 部署 | ⏸ 归 14-publish | 本任务**不部署**，只交付可静态构建的产物包 |
 
 ## 当前状态
 
@@ -321,6 +322,60 @@ Noto Sans SC 子集之前，否则同一段文字会混入两套度量不同的�
 
 ---
 
+## 浏览器入口统一轮次（Playwright → Ego）
+
+> 用户指令：**所有项目的浏览器操作一律只走 Ego 浏览器**；禁止内置 Browser 工具、
+> `chromium.launch()` / playwright / playwright-core / puppeteer / 本机无头 Chrome + CDP；
+> 取消「本地 file:// 自测豁免 Ego」的自我例外；Ego 故障须诊断并如实报告。
+> 批次共享验收工具已建好：`tools/ego-qa/run.mjs`（已对 00-research 与线上 Pages 实跑通过）。
+
+### 待改造脚本清单与处置
+
+| 原脚本 | 断言数 | 处置 | 覆盖去向 |
+| --- | --- | --- | --- |
+| `scripts/acceptance.cjs` | 53 | **改造** | → `scripts/ego-acceptance.mjs` + `scripts/run-ego-acceptance.mjs`（逐项移植，断言名称集合与源**完全一致**：0 缺 0 增） |
+| `scripts/spotcheck-6.cjs` | 7 | **停用** | 6 项定点取证已进入 `ego-acceptance.mjs`；另在 `ego-verify.mjs` 中独立复核 |
+| `scripts/restyle-check.cjs` | 20 | **停用** | 通用项（视口/溢出/对比度/触摸目标/reduced-motion/外部请求）→ 批次共享 `tools/ego-qa`；项目特有项（`.ds-topbar` sticky / `.ds-footer` / `.ds-skip` 首元素 / `.ds-canvas-frame` / `--ds-base` / `aria-current` / 三条诚实声明 / 焦点环 / Tab 不被吞）→ `ego-verify.mjs` |
+| `scripts/ds-conformance.cjs` | 14 | **停用** | 静态判据（V.3 / V.11 / V.12 / V.13 / §7 + 与 16 上游逐字节一致）→ `ego-verify.mjs`；页面侧（§4.2 HUD 对比度 / §5.1 触摸目标）→ `ego-verify.mjs` + 共享工具 |
+| — | — | **新增** | `scripts/ego-verify.mjs`（项目自有 Ego 验收）、`scripts/run-ego-qa.mjs`（共享工具的退出码兜底包装） |
+
+停用方式：`mavis-trash`（可恢复），连同其产物 `qa-spotcheck.json` / `qa-restyle.json` / `qa-ds-conformance.json` 一并移出，
+避免留下「用禁用路径产出的证据」被误当作当前验收记录。
+
+### 新的验收结构
+
+| 层 | 脚本 | 产出 |
+| --- | --- | --- |
+| 通用体检 | `node scripts/run-ego-qa.mjs --url … --out …`（转调批次共享 `tools/ego-qa/run.mjs`） | `evidence/ego-qa/11-era-online.json` + 四档视口截图 |
+| 项目特有 | `scripts/ego-verify.mjs` | `qa-ego-verify.json`（40 项：静态 + 页面 + 功能） |
+| 功能全量 | `scripts/run-ego-acceptance.mjs` → `scripts/ego-acceptance.mjs` | `qa-ego-acceptance.json`（53 项）+ 12 张截图 |
+
+### 改造中实测到的三处「共享工具 / 通用认知」偏差（已在本目录规避）
+
+1. **共享工具的退出码不反映判定**：`tools/ego-qa/run.mjs` 文档写「0 = PASS，1 = FAIL」，
+   但生成的临时脚本**没有把 `report.verdict` 映射到退出码**——实测报告判 FAIL 时退出码仍为 **0**，
+   CI 会误放行。共享目录不归本任务改，故在本目录加 `scripts/run-ego-qa.mjs` 兜底：
+   跑完读报告 JSON，verdict 非 PASS 即以 1 退出（实测 FAIL → 1、PASS → 0）。**此缺陷建议由共享工具侧修复。**
+2. **`color-mix()` 的计算值不是 `rgb()`**：Chromium 对 `color-mix(in srgb, …)` 派生的
+   `backgroundColor` 返回 `color(srgb r g b)`（分量 0—1 浮点）。共享工具的 `lum()` 只匹配
+   `rgb()/rgba()`，遇到该格式返回 null → 对比度项被标成「无法计算」（本项目的 `.notice` 背景即属此类）。
+   本目录脚本的解析器已兼容两种格式。
+3. **Ego 的 `setDeviceMetricsOverride` 在 `mobile:false` 下把布局缩到 0.9 倍**（请求 1440 实得 1600），
+   会同时污染溢出判定、对比度采样与截图尺寸；**必须 `mobile:true`**。
+
+### 本轮验证结果
+
+| 检查 | 结果 |
+| --- | --- |
+| 批次共享工具 | ✅ `node scripts/run-ego-qa.mjs …` → **PASS，errors 0 / warnings 1**（唯一 warning 是上述 `color(srgb)` 解析局限） |
+| 渲染字体（共享工具 `getPlatformFontsForNode`） | ✅ `.brand__title` 实际渲染字体 = **PingFang SC（系统黑体）**，**未**使用 Noto 子集 —— 独立于本目录脚本的第三方证据 |
+| 项目自有验收 | ✅ `scripts/ego-verify.mjs` **40/40** |
+| 功能全量验收 | ✅ `scripts/ego-acceptance.mjs` **53/53**，断言名称集合与源脚本**逐项一致**（0 缺 0 增） |
+| 停用自查 | ✅ `scripts/` 下已无 `playwright` / `playwright-core` / `puppeteer` / `chromium.launch` 引用 |
+| 红线复核 | ✅ 画布内部配色 / 尺寸比 / 玩法 / 存档键 / 史料口径 / 三条诚实声明**均未动** |
+
+---
+
 ## 限制与未覆盖（如实记录）
 
 | # | 项 | 说明 |
@@ -340,6 +395,8 @@ Noto Sans SC 子集之前，否则同一段文字会混入两套度量不同的�
 | 13 | **§9 复核只跑 Chromium** | `scripts/ds-conformance.cjs` 与 16 的两个自测脚本均基于 Chromium/CDP；Firefox / Safari 未实测。16 的 `verify-preview.mjs` 在本机高负载（load average 100+）下出现过一次 `timeout Page.navigate`，重跑即 0 error，属宿主资源问题 |
 | 14 | **headless 复跑工具的结果相对当前构建有 1 处 delta** | 四个 Playwright 脚本最近一次结果（53/53 + 7/7 + 20/20 + 14/14）产出于 `.src` 触摸目标 24px → 25px 之前；该唯一变化已由 Ego 权威验收在当前构建上覆盖，但 13/CI 复跑时建议以 Ego 的 `qa-ego-verify.json` 为最新基准 |
 | 15 | **Ego 验收未覆盖展项 A 的完整 18 波通关与展项 B 的完整三区域通关** | 与 headless 套件同样以白盒方式验证胜负判定与关键交互，未做真人全流程录像 |
+| 16 | **共享工具的退出码缺陷未在本目录修** | `tools/ego-qa/run.mjs` 报告 FAIL 时退出码仍为 0（文档写的是 0=PASS/1=FAIL）。共享目录不归本任务改，本目录用 `scripts/run-ego-qa.mjs` 兜底；**共享工具侧建议修复** |
+| 17 | **本目录已无 headless 复跑路径** | 四个 Playwright 脚本已停用（可恢复），因此「无 Ego 环境」的复跑能力目前只依赖批次共享工具 + 本目录的 Ego 脚本 |
 
 ---
 
@@ -388,3 +445,10 @@ Noto Sans SC 子集之前，否则同一段文字会混入两套度量不同的�
   在 Ego 真实浏览器量化该条款影响面：617 字中 **444 字（72%）** 在旧序下会混排，当前构建实测 **零混排**；
   按用户长期约定新增 **Ego 权威验收脚本 `scripts/ego-verify.mjs`** → **40/40**（`qa-ego-verify.json`），
   四个 Playwright 脚本保留为 headless 复跑工具；顺带修掉 1 处亚像素缺陷（`.src` 23.993px → 43×25）。
+- 2026-10-22：浏览器入口统一轮（用户指令：所有浏览器操作一律只走 Ego）——按批次共享工具
+  `tools/ego-qa/run.mjs` 口径改造本目录 4 个 Playwright 脚本：
+  `acceptance.cjs`（53 项）→ **`scripts/ego-acceptance.mjs` + `scripts/run-ego-acceptance.mjs`**（断言名称集合与源逐项一致，0 缺 0 增，**53/53 通过**）；
+  `spotcheck-6.cjs` / `restyle-check.cjs` / `ds-conformance.cjs` **停用**（mavis-trash 可恢复），
+  其覆盖并入 `scripts/ego-verify.mjs`（**40/40**）与批次共享工具（**PASS**）；
+  新增 `scripts/run-ego-qa.mjs` 为共享工具补退出码（实测 FAIL→1）；产出证据
+  `evidence/ego-qa/11-era-online.json` + 四档视口截图 + `qa-ego-acceptance.json` + `qa-ego-verify.json`。

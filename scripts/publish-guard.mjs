@@ -15,6 +15,7 @@
  */
 
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
@@ -40,13 +41,17 @@ const REFERENCE_CAPTURE_DIRS = [
 
 /** 单个文件名命中即拦截。 */
 const REFERENCE_CAPTURE_FILES = [
-  /^olek[^/]*$/i,     // olek-index.js / olek-css-blocks.txt / olek-tokens.json / oleksi-*.png
-  /^ref-[^/]*$/i,     // ref-home-2560.png 之类
-  /^sitemap\.xml$/i,  // 抓取的 sitemap
+  /olek/i,          // 文件名**含** olek（任意位置）：olek-index.js / olek-si.html / my-olek-copy.js
+  /^ref-[^/]*$/i,   // ref-home-2560.png 之类
+  /^sitemap\.xml$/i,// 抓取的 sitemap
+  /^bundle\.js$/i,  // 参考站整包 JS 快照（本批构建链用 Vite，产物名为 assets/index-<hash>.js，不产出此名）
 ];
 
 /** 参考站域名特征：命中即视为参考站派生文件（用于体积规则的佐证）。 */
 const REFERENCE_SITE_HINT = /olek\.si/i;
+
+/** HTML 快照扩展名：正文带参考站域名特征的一律视为参考站快照。 */
+const HTML_SNAPSHOT_EXT = /\.(html?|htm)$/i;
 
 
 /** 判定规则（按相对路径）。 */
@@ -72,8 +77,35 @@ export function checkReferenceCapture(relPath) {
     const re = new RegExp(`(^|/)${d.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(/|$)`, 'i');
     if (re.test(p)) return { blocked: true, why: `参考站/取证隔离目录（${d}/）` };
   }
+  // 任一**路径段**含 olek → 整条路径拦截（例如 research/olek-si/bundle.js）
+  for (const seg of p.split('/')) {
+    if (/olek/i.test(seg)) return { blocked: true, why: '参考站派生路径段（含 olek）' };
+  }
   for (const re of REFERENCE_CAPTURE_FILES) {
     if (re.test(base)) return { blocked: true, why: '参考站抓取件' };
+  }
+  return { blocked: false, why: null };
+}
+
+/**
+ * 判定一个**磁盘文件**是否为参考站抓取件：先按路径规则，再按内容规则。
+ *
+ * 内容规则只针对 HTML 快照：文件名可能不含 olek（例如 site-home.html），
+ * 但正文带参考站域名特征 —— 一律视为参考站快照，不予复制。
+ *
+ * @param {string} absPath 文件绝对路径
+ * @param {string} relPath 相对路径（用于路径规则）
+ */
+export function checkReferenceCaptureFile(absPath, relPath) {
+  const p = checkReferenceCapture(relPath);
+  if (p.blocked) return p;
+  if (HTML_SNAPSHOT_EXT.test(String(relPath))) {
+    try {
+      const content = fs.readFileSync(absPath, 'utf8');
+      if (REFERENCE_SITE_HINT.test(content)) {
+        return { blocked: true, why: '参考站 HTML 快照（正文含参考站域名特征）' };
+      }
+    } catch { /* 读不了就按放行处理，复制阶段会再报错 */ }
   }
   return { blocked: false, why: null };
 }
@@ -155,7 +187,7 @@ export function scanTree(root, opts = {}) {
   let scanned = 0;
   for (const f of walkFiles(root)) {
     scanned++;
-    const check = checkReferenceCapture(f.rel);
+    const check = checkReferenceCaptureFile(f.abs, f.rel);
     if (check.blocked) {
       hits.push({ path: f.rel, type: 'reference-capture', why: check.why, size: f.size });
       continue;
@@ -187,7 +219,7 @@ export function scanStaged(root) {
   for (const rel of files) {
     const abs = path.join(root, rel);
     if (!fs.existsSync(abs) || !fs.statSync(abs).isFile()) continue;
-    const check = checkReferenceCapture(rel);
+    const check = checkReferenceCaptureFile(abs, rel);
     if (check.blocked) {
       hits.push({ path: rel, type: 'reference-capture', why: check.why, size: fs.statSync(abs).size });
       continue;
@@ -247,6 +279,12 @@ function selftest() {
     '_QUARANTINE__/nested/olek-tokens.json',
     'references/mia-100-html/index.html',
     'references/mia-100-html/100.html',
+    // 监督指令 §四.1 加强项：文件名含 olek（任意位置）/ 路径段含 olek / bundle.js 快照
+    'public/assets/my-olek-copy.js',
+    'research/olek-si/bundle.js',
+    'research/olek-si/olek-si.html',
+    'assets/vendor/bundle.js',
+    'dist/bundle.js',
   ];
   const allowed = [
     'index.html',
@@ -258,6 +296,8 @@ function selftest() {
     'fonts/inter-latin.woff2',
     'LICENSE',
     'works/06-museum-main/data/catalog.json',
+    'assets/ds/tokens.css',
+    'assets/bundles/app.bundle.js',
   ];
   let fail = 0;
   for (const p of blocked) {
@@ -266,6 +306,16 @@ function selftest() {
   for (const p of allowed) {
     if (isReferenceCapture(p)) { console.error(`✗ 应放行但拦截：${p}`); fail++; }
   }
+  // 内容规则：HTML 快照（文件名不含 olek，但正文带参考站域名）→ 拦截；普通页面 → 放行
+  const tmp = path.join(os.tmpdir(), `publish-guard-selftest-${process.pid}.html`);
+  const clean = path.join(os.tmpdir(), `publish-guard-selftest-clean-${process.pid}.html`);
+  fs.writeFileSync(tmp, '<a href="https://olek.si/reference">参考</a>');
+  fs.writeFileSync(clean, '<p>本批自产页面</p>');
+  const snapReal = checkReferenceCaptureFile(tmp, 'site-home.html');
+  const cleanReal = checkReferenceCaptureFile(clean, 'site-home.html');
+  try { fs.unlinkSync(tmp); fs.unlinkSync(clean); } catch { /* ignore */ }
+  if (!snapReal.blocked) { console.error('✗ 应拦截但放行：正文含参考站域名的 HTML 快照'); fail++; }
+  if (cleanReal.blocked) { console.error('✗ 应放行但拦截：普通 HTML 页面'); fail++; }
   if (fail) {
     console.error(`发布守卫自检失败：${fail} 项不符合预期`);
     process.exit(1);
