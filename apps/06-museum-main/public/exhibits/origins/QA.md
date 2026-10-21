@@ -1,25 +1,27 @@
 # 验收记录 / QA
 
 作品：**光点年代 · 早期可玩展厅 / LUMEN ERA**（`08-era-origins`）
-验收时间：2026-10-21（**改版后复测**）
-验收环境：macOS（darwin 25.2.0 arm64）、Node 24.13.0、Vite 5.4.11、Chromium（playwright-core 1.64.1，headless）
+验收时间：2026-10-21（**第四轮改版后复测**）
+验收环境：macOS（darwin 25.2.0 arm64）、Node 24.13.0、Vite 5.4.11、Chromium（headless，CDP / playwright-core）
 
 ---
 
 ## 一、验收方式
 
-三层，互相独立：
+四层，互相独立：
 
 | 层 | 工具 | 覆盖 |
 | --- | --- | --- |
 | L1 单元 | `node --test "tests/*.test.mjs"` | 状态机、碰撞、计分、难度、存档、**键盘焦点作用域** |
-| L2 构建 | `npm run build` + `npm run verify` | 产物齐全、路径全相对、**运行期零外部请求**、manifest 一致性、**改版专项（令牌 / 画布色板镜像 / 无障碍标记）** |
-| L3 实机 | 定向 Playwright 探针（Chromium，Pages 子路径挂载） | D3/D4/D5/D6 + V.1–V.9 真实浏览器行为 + 截图 |
+| L2 构建 | `npm run build` + `npm run verify` | 产物齐全、路径全相对、**运行期零外部请求**、manifest 一致性、**改版专项（令牌 / 画布色板镜像 / 无障碍标记 / 规范层接入完整性）** |
+| L3 页面 | `scripts/verify-pages.mjs`（零依赖 CDP，改编自 16 的 `tools/verify-preview.mjs`） | V.1–V.9 真实浏览器行为 + G.3 / G.4 排版硬性条款 + 截图 |
+| L3 游戏 | `scripts/verify-game.mjs`（playwright-core） | D3 状态机 / D4 存档 / D5 键盘作用域 / D6 控制台 |
+| L3 令牌 | `scripts/check-tokens.mjs` | 令牌逐值一致 / 命名空间唯一 / 画布镜像 / 规范层副本漂移 |
 | L4 批次 | 13-qa-curation 全量 harness | 权威 verdict |
 
-L3 的探针脚本放在 `/tmp`（**不写入 `13-qa-curation/`**），逻辑与批次 QA harness 的 `checkKeyboardScope` 同口径：先冻结 → 未聚焦按键 → 比对状态 → 聚焦 → 同一组键 → 再比对。原始结果见 `screenshots/probe-report.json`。
+三个 L3 脚本全部**落地在仓库内**，可随时重复生成；原始结果见 `screenshots/verify/pages-verification.json` 与 `screenshots/probe-report.json`。
 
-> **关于批次 harness**：13-qa-curation 的全量 harness 已于 2026-10-21T11:48:48Z 对本任务跑完，结论 **verdict = pass**（详见下文 L4）。本任务自行复用该 harness 做定向复测时，Chromium 曾因本机 GPU / 网络进程资源争用退出过一次（`Target page, context or browser has been closed`），**不是页面缺陷**——同一构建在等价口径的定向探针下连续跑通 66/66。
+> **关于批次 harness**：13-qa-curation 的全量 harness 已于 2026-10-21T16:05:16.070Z 对本任务跑完，结论 **verdict = pass**（详见下文 L4）。
 
 ---
 
@@ -28,69 +30,72 @@ L3 的探针脚本放在 `/tmp`（**不写入 `13-qa-curation/`**），逻辑与
 | 层 | 结果 |
 | --- | --- |
 | L1 单元测试 | **54 / 54 通过**（`node --test "tests/*.test.mjs"`） |
-| L2 构建 | `npm run build` **退出码 0**，产出 `dist/index.html` / `dist/rally.html` / `dist/gravity.html`；`npm run verify` **退出码 0** |
-| L3 实机探针 | **66 / 66 通过**（pass 66 / warn 0 / fail 0） |
-| L4 批次 QA harness | **verdict = pass**（`13-qa-curation/evidence/08-era-origins.json`，checkedAt 2026-10-21T11:48:48Z） |
+| L2 构建 | `npm run build` **退出码 0**，产出 `dist/index.html` / `dist/rally.html` / `dist/gravity.html`；`npm run verify` **退出码 0**（0/5—5/5 五步） |
+| L3 令牌校验 | **error 0 / warn 0**（`scripts/check-tokens.mjs`，8 项全过） |
+| L3 页面机械检查 | **0 error / 0 warn**（`scripts/verify-pages.mjs`，三页 × 四档视口 + 12 项对比度 + 触摸目标两档 + Tab + 降级 + 深色令牌 + 控制台） |
+| L3 游戏行为探针 | **pass 18 / warn 0 / fail 0**（`scripts/verify-game.mjs`；另有 1 项「聚焦测试前对局状态」为**条件记录项** —— 仅在需要重开对局时才写入，故项数在 **18–19** 间浮动，两种情形均全 pass。仓库内最新报告为 18 项） |
+| L4 批次 QA harness | **verdict = pass**（`13-qa-curation/evidence/08-era-origins.json`，checkedAt 2026-10-21T16:05:16.070Z，total 28 / pass 24 / warn 0 / fail 0 / skip 1） |
 
-### L3 探针维度分布（改版后）
+### L3 页面检查维度分布（第四轮）
 
-| 维度 | 项数 | 通过 | 说明 |
+| 维度 | 项数 | 结果 | 说明 |
 | --- | --- | --- | --- |
-| V.1 水平溢出 | 8 | 8 | desktop 1440 / laptop 1280 / tablet 768 / mobile 390 × index/rally，`scrollWidth - innerWidth = 0px` |
-| V.2 对比度 | 10 | 10 | 全部 ≥4.5:1，见下表实测值 |
-| V.5 焦点可达 + 焦点环 | 2 | 2 | 两页 Tab 可达 3 个元素，**3/3 有可见焦点环** |
-| V.6 触摸目标 | 8 | 8 | 独立目标全部 ≥24px |
-| V.7 reduced-motion | 1 | 1 | `--ds-dur-fast=1ms`、`--ds-dur-base=1ms`，按钮 `transition=0.001s` |
-| V.8 外部请求 | 8 | 8 | 运行期零外部请求 |
-| V.9 字体本地化 | 2 | 2 | 4 个 `@font-face`（Space Grotesk / Inter / Space Mono），无 CDN |
-| D3 状态机 | 8 | 8 | 开始 / 倒计时暂停 / 继续 / 重开 |
-| D4 本地存档 | 2 | 2 | `lumen-era.rally.settings`、`lumen-era.rally.best`、`lumen-era.gravity.settings` |
-| D5 键盘作用域 | 7 | 7 | 未聚焦不响应 / 聚焦后响应 / 聚焦时不滚动页面 |
-| D6 控制台 | 10 | 10 | 零错误 |
+| V.1 水平溢出 | 12 | 12 ✓ | 1440 / 1280 / 768 / 390 × 三页，`scrollWidth = innerWidth` |
+| V.2 对比度 | 12 | 12 ✓ | 三页各 12 个 `.ds-*` 样本，全部可测且 ≥4.5:1（见下表） |
+| V.5 Tab 焦点 + 焦点环 | 3 | 3 ✓ | 每页 Tab 可达 3 个元素，**3/3 有可见焦点环** |
+| V.6 触摸目标 | 6 | 6 ✓ | AA ≥24px 全过；AAA ≥44px 主控件全过 |
+| V.7 reduced-motion | 3 | 3 ✓ | `--ds-dur-base=1ms`、`--ds-entry-duration=1ms`，按钮 `transition=0.001s` |
+| V.8 零外部请求 | 12 | 12 ✓ | 每页 10 个请求全部同源本地 |
+| 样式表解析 / `lang` / `--ds-base` | 36 | 36 ✓ | 三页均为 `zh-CN`；`--ds-base` 已注入 |
+| G.3 标题禁止 nowrap | 3 | 3 ✓ | 三页 `h1/h2/h3` + `.ds-display/.ds-h1/.ds-h2/.ds-h3` **0 个**使用 nowrap |
+| G.4 中文字距 / 行高 | 6 | 6 ✓ | 字距 `normal`（归一 **0**）；正文行高 **1.85** |
+| 深色主题令牌 | 3 | 3 ✓ | `--ds-bg: rgb(16,15,14)`、`--ds-ink: #f7f4f0`、`--ds-accent: #e0684a` |
+| 控制台 | 1 | 1 ✓ | 0 条错误 |
 
-### V.2 对比度实测值（WCAG 2.1，最小 4.5:1）
+### V.2 对比度实测值（WCAG 2.1，正文最小 4.5:1）
 
-| 选择器 | 实测 | 字号/字重 |
+12 个样本选择器（13 未来机械检查同款）：`.ds-body` `.ds-sm` `.ds-xs` `.ds-h3` `.ds-cover__title` `.ds-mono` `.ds-tag` `.ds-btn--primary` `.ds-btn--secondary` `.ds-btn--ghost` `.ds-chip` `.ds-rail__item`。
+
+| 页面 | 最低对比度 | 判定 |
 | --- | --- | --- |
-| `.hero__lede` | **9.70 : 1** | 19px / 400 |
-| `.hero__latin` | **5.70 : 1** | 18px / 400 |
-| `.section__intro` | **9.70 : 1** | 16px / 400 |
-| `.stop__note` | **9.70 : 1** | 14px / 400 |
-| `.stop__src` | **5.70 : 1** | 12.5px / 400 |
-| `.source__claims` | **8.54 : 1** | 14px / 400 |
-| `.notice p` | **8.08 : 1** | 14px / 400 |
-| `.foot__note` | **6.40 : 1** | 14px / 400 |
-| `.brand` | **6.79 : 1** | 12.5px / 600 |
-| `.masthead nav a` | **10.64 : 1** | 14px / 400 |
+| `index.html` | **4.74 : 1** | 12/12 达标 |
+| `rally.html` | **5.56 : 1** | 12/12 达标 |
+| `gravity.html` | **5.56 : 1** | 12/12 达标 |
 
-深色主题三档墨色对 `--ds-bg` 的对比度：**17.46 : 1**（`--ds-ink`）/ **9.71 : 1**（`--ds-ink-soft`）/ **≥5.15 : 1**（`--ds-ink-faint`），均达 AA。
+> 顶栏底色改用 `rgba(16,15,14,.86/.82)` **字面量**而非 `color-mix()`：Chrome 会把 `color-mix(in srgb, …)` 计算成 `color(srgb …)` 形式，16 的 `lum()` 与 13 的 harness 同款解析器识别不了，会把可测项判成「无法计算」。改字面量后三页 12 项全部可测。
+> 渐变标题拆出内层 `<span class="hero__title-grad">`：`h1` 承载可测的 `--ds-ink`，渐变只作用于内层 span —— `color: transparent` 的文字无法被对比度工具测量（实测会被判 1.1:1）。
+
+### G.4 取样口径（自检脚本的一次修正）
+
+第一版自检取 `document.querySelector('.ds-body, .section__intro, p.ds-body')`，在游戏页取到 `null`（游戏页没有 `.ds-body` 载体），把「无法取样」误报成「行高不达标」。修正后：
+
+- 取样顺序 `.ds-body` → `.section__intro` → `p.ds-body` → `.note` → **首个可见 `p`**；
+- 排除 `.sr-only`（状态播报）、`[hidden]`（覆盖层）、`.overlay` / `.game-frame`（瞬态 HUD）—— 这类元素带 caps 字距，拿来判「中文正文字距」会得到失真结论；
+- `letter-spacing` 的计算值可能是 `normal`（等价于 0），必须**归一化后再判定**，否则 `parseFloat('normal') = NaN` 会被误判为不达标。
+
+修正后三页取样分别为：展厅 `.ds-body P.section__intro`、两作 `.note P.note`，字距均 `normal`（归一 0）、行高均 **1.85**。
 
 ### L4 批次 harness 结论（权威口径）
 
-由 13-qa-curation 在真实批次根目录跑出的最终证据，**本任务全部验收项为 pass，无 warn、无 skip**：
+由 13-qa-curation 在真实批次根目录跑出的证据，**本任务全部验收项为 pass，无 warn**：
 
 | 维度 | 结论 |
 | --- | --- |
 | D1 布局（desktop 1440×900 / mobile 390×844） | pass —— 布局正常，无文字互相压盖 |
 | D2 mobile 布局 | pass |
 | D3 进入可玩展品 | pass —— 展厅枢纽 → 子页 `rally.html` |
-| D3 游戏载体存在 | pass —— 找到 `[data-game-root]`（942×531） |
-| D3 开始流程 | pass —— 点击「开始对拉」后 `state=playing` |
-| D3 暂停流程 | pass —— 点击「暂停」后 `state=paused` |
-| D3 重开流程 | pass —— 点击「重开」后 `state=countdown` |
-| D3 难度切换 | pass —— 找到难度控件并切换到「初辉 / 轻松」 |
-| D4 本地存档键 | pass —— 写入 `lumen-era.rally.settings` |
-| **D5 键盘焦点作用域（未聚焦不响应）** | **pass** —— `activeElement=BODY`，位于游戏区=false，游戏已冻结（`state=paused`），按键未驱动游戏状态 |
+| D3 游戏载体存在 | pass —— 找到 `[data-game-root]` |
+| D3 开始流程 / 暂停流程 / 重开流程 | pass —— `state=countdown` / `paused` / `countdown` |
+| D3 难度切换 | pass —— 切换到「初辉 / 轻松」 |
+| D4 本地存档键 | pass —— `lumen-era.rally.settings` |
+| **D5 键盘焦点作用域（未聚焦不响应）** | **pass** —— `activeElement=BODY`，按键未驱动游戏状态 |
 | **D5 键盘焦点作用域（聚焦后响应）** | **pass** —— 聚焦（root）后按键正常驱动游戏状态 |
-| D5 键盘焦点可达性与可见性 | pass —— 47 个可聚焦元素，Tab 可移动焦点，8/8 个焦点态可见 |
 | D6 控制台错误 | pass —— 无 console error、无未捕获异常 |
 | D7 资源 404 / 请求失败 | pass —— 全部同源请求成功 |
 | D7 外部依赖（跨域请求） | 零跨域请求 —— 全部资源本地化 |
-| D8 页面子路径兼容性 | pass —— 所有资源在 `/playtime-atlas-20261021/exhibits/08-era-origins/` 下解析成功 |
+| D8 页面子路径兼容性 | pass —— 所有资源在 Pages 子路径下解析成功 |
 
-> 此前该任务的证据里 **D5 聚焦后响应 = warn、D4 = warn、难度切换 = skip**，第二轮修复后已全部转为 **pass**。
->
-> **13 于 2026-10-21 18:31:03 重跑 08 的结论**：`verdict = pass-with-warnings`、`fail = 0`；其中 D5 键盘劫持一项已确认修好（未聚焦 / 聚焦后均 pass）。
+> 13 的证据时间戳为 **2026-10-21T16:05:16.070Z**。本轮在其之后的**两项修正**（顶栏几何还原、标题去 nowrap）需要 13 再跑一次复测，见「七、限制声明」第 10 条。
 
 ---
 
@@ -129,15 +134,27 @@ node --test "tests/*.test.mjs"
 
 > 出处链接（`<a href="https://…">`）是**史实引用**，不是运行时请求，不计入「外部请求」统计。
 
-### L2 改版专项校验（`scripts/verify.sh` 第 5 步）
+### L2 改版专项校验（`scripts/verify.sh` 第 5 步 → `scripts/check-tokens.mjs`）
 
 | 检查项 | 结果 |
 | --- | --- |
-| 深色令牌与 `16-design-system/design-tokens.json` 逐项一致 | ✅ |
+| 浅色主题令牌与 `16-design-system/design-tokens.json` 逐值一致（`:root` 16 项） | ✅ |
+| 深色主题令牌与 `design-tokens.json` 逐值一致（`[data-ds-theme="dark"]` 16 项） | ✅ |
+| 必备令牌齐备（21 项） | ✅ |
+| 目录自有层未重复声明 `--ds-*` 取值（唯一声明处 = `assets/ds/tokens.css`） | ✅ |
 | `--lumen-*` 镜像与 `src/core/gfx.js` 的 `PALETTE` 一致（15 项） | ✅ |
 | 玩法代码不读取任何 CSS 变量（K.1 的结构保证） | ✅ 4 个文件全部无 `getComputedStyle` / `getPropertyValue` |
-| 三页 `lang="zh-CN"` + `data-ds-theme="dark"` + `tokens → components` 样式表顺序 | ✅ |
-| `dist` 产物内含令牌层与组件层（`--ds-bg:` / `.ds-btn`） | ✅ |
+| `assets/ds/tokens.css` 与 16 源一致（无漂移） | ✅ |
+| `assets/ds/components.css` 与 16 源一致（无漂移） | ✅ |
+
+### L2 规范层接入完整性（第 5 步附带校验）
+
+| 检查项 | 结果 |
+| --- | --- |
+| 三页样式表顺序 = 既有 → 规范层 → 08 专属层（7 张） | ✅ |
+| 三页 `<head>` 注入 `--ds-base: "/playtime-atlas-20261021/"` | ✅ |
+| 三页 `<body>` 带 `ds-shell` 类 | ✅ |
+| 三页 `lang="zh-CN"` | ✅ |
 
 ---
 
@@ -194,48 +211,59 @@ node --test "tests/*.test.mjs"
 
 焦点判定是「缓存标志 **且** 实时 activeElement 在容器内」的**双条件**，避免元素失焦后标志残留导致误判。
 
-### Tab 焦点遍历（改版后实测）
+### Tab 焦点遍历（第四轮实测）
 
 | 页面 | Tab 可达元素 | 有可见焦点环 |
 | --- | --- | --- |
+| `index.html` | 3（skip-link / 品牌链接 / 顶栏链接） | **3 / 3** ✅ |
 | `rally.html` | 3（skip-link / 品牌链接 / 主按钮） | **3 / 3** ✅ |
 | `gravity.html` | 3（同上） | **3 / 3** ✅ |
 
+> Tab 检查必须用 CDP `Input.dispatchKeyEvent`：**合成 `KeyboardEvent` 不触发浏览器默认的焦点移动**，第一版自检曾因此误报「可达 0」。
 > 画布容器（`[data-game-root]`，`tabindex="0"`、`role="application"`）在 Tab 序列中，可被聚焦并驱动游戏；其焦点环**几何**对齐 `--ds-focus-width` / `--ds-focus-offset`（2px + 2px 偏移），**颜色**保留青色（K.3「HUD 可读性优先」的有意偏离，深靛画面上青色对比度远高于朱砂）。
 
 ---
 
-## 五、修复记录（本次验收期间）
+## 五、修复记录
 
-| 问题 | 根因 | 处置 |
-| --- | --- | --- |
-| D5 冻结失败 | **暂停在倒计时阶段失效**，游戏仍在推进，状态差分无法归因 | `pause()` 覆盖 `playing` + `countdown`，新增 `resumeState`，`resume()` 精确恢复 |
-| 切换难度抹掉比分 | `setDifficulty()` 一律重开对局 | 改为仅 `idle` / `over` 时重开；模式切换仍重开 |
-| 文字整体不显示 | `body::before` / `body::after` 两个 `position:fixed` 覆盖层压住正文 | 删除伪元素，纹理改为 `body` 自身的 `background-image` + `background-attachment: fixed` |
-| 控制台 favicon 404 | 无 `/favicon.ico` | 三页补内联 SVG data-URI 图标（不引入二进制素材） |
-| 验收可观测性不足 | 无稳定句柄可读游戏状态 | 暴露只读 `p1` / `p2` getter；构造时即写入 settings 存档 |
-| 改版后引力双星 D5 误报 | **探针端点判定 + 左右对称键组**，净转角为 0 | 探针改为过程采样（**代码未改动**）；修正后 66/66 全通过 |
+| 轮次 | 问题 | 根因 | 处置 |
+| --- | --- | --- | --- |
+| 二 | D5 冻结失败 | **暂停在倒计时阶段失效**，游戏仍在推进，状态差分无法归因 | `pause()` 覆盖 `playing` + `countdown`，新增 `resumeState`，`resume()` 精确恢复 |
+| 二 | 切换难度抹掉比分 | `setDifficulty()` 一律重开对局 | 改为仅 `idle` / `over` 时重开；模式切换仍重开 |
+| 二 | 文字整体不显示 | `body::before` / `body::after` 两个 `position:fixed` 覆盖层压住正文 | 删除伪元素，纹理改为 `body` 自身的 `background-image` + `background-attachment: fixed` |
+| 二 | 控制台 favicon 404 | 无 `/favicon.ico` | 三页补内联 SVG data-URI 图标（不引入二进制素材） |
+| 二 | 验收可观测性不足 | 无稳定句柄可读游戏状态 | 暴露只读 `p1` / `p2` getter；构造时即写入 settings 存档 |
+| 三 | 改版后引力双星 D5 误报 | **探针端点判定 + 左右对称键组**，净转角为 0 | 探针改为过程采样（**代码未改动**） |
+| 四 | 触控按钮在 390px 横向溢出 71px | 规范 `.ds-btn { white-space: nowrap }` | 08 层对 `.touchpad__btn.ds-btn` 放行换行 |
+| 四 | 渐变标题对比度被判 1.1:1 | `color: transparent` 的文字无法被对比度工具测量 | 渐变拆到内层 `span`，`h1` 承载可测的 `--ds-ink` |
+| 四 | 顶栏与页面正文不对齐 | 规范 `.ds-topbar` 是 `display:flex` 行容器，而 08 的顶栏内容包在限宽内层容器里，内层被压缩成内容宽度并居中 | 08 层把顶栏外层还原为 `display:block`，限宽内层恢复占位（品牌回到 x=128，与正文同列） |
+| 四 | 游戏页 H1 违反 G.3 | `src/styles/game.css` 的 `.topbar__title` 带 `white-space: nowrap` | 改为 `white-space: normal` + `overflow-wrap: anywhere` |
+| 四 | G.4 自检误报 | `parseFloat('normal') = NaN`；游戏页无 `.ds-body` 载体导致取样为 `null` | 归一化 `normal` → 0；取样回退到 `.note` 并排除 `.sr-only` / `[hidden]` / HUD 层 |
 
 ---
 
 ## 六、截图
 
-| 文件 | 内容 |
-| --- | --- |
-| `screenshots/01-hall-hero.png` | 展厅主站首屏（示波器示样在动） |
-| `screenshots/02-hall-timeline.png` | 年代长廊 12 站 |
-| `screenshots/03-hall-sources.png` | 来源台账 17 条 |
-| `screenshots/04-rally.png` | 展品 08-A 对局中（含焦点环、比分、AI 面板） |
-| `screenshots/05-gravity.png` | 展品 08-B 对局中（中央核心、轨道、光迹） |
-| `screenshots/06-hall-mobile.png` | 移动端展厅首屏（390×844） |
-| `screenshots/07-rally-mobile.png` | 移动端展品 08-A |
-| `screenshots/probe-report.json` | 探针原始结果（**66 项**，含前后状态快照与过程采样值） |
+| 文件 | 内容 | 尺寸 |
+| --- | --- | --- |
+| `screenshots/01-hall-hero.png` | 展厅主站首屏（示波器示样在动） | 1440×900 |
+| `screenshots/02-hall-timeline.png` | 年代长廊（12 站横向时间轴 + 年代筛选 chip + 计数） | 1440×900 |
+| `screenshots/03-hall-sources.png` | 来源台账 17 条 | 1440×900 |
+| `screenshots/04-rally.png` | 展品 08-A 对局中（含画面焦点环、比分、AI 面板） | 1440×900 |
+| `screenshots/05-gravity.png` | 展品 08-B 对局中（中央核心、轨道、光迹） | 1440×900 |
+| `screenshots/06-hall-mobile.png` | 移动端展厅首屏 | 390×844 |
+| `screenshots/07-rally-mobile.png` | 移动端展品 08-A（对局中 + 触控区） | 390×844 |
+| `screenshots/probe-report.json` | **游戏行为探针原始结果**（`scripts/verify-game.mjs` 生成，可重复） | — |
+| `screenshots/verify/*.png`（12 张） | 三页 × 四档视口（1440 / 1280 / 768 / 390）机械检查截图 | — |
+| `screenshots/verify/pages-verification.json` | 页面机械检查完整结果（`scripts/verify-pages.mjs` 生成） | — |
+
+> 截图工具：**Ego 浏览器**（`ego-browser nodejs`）按固定视口拍摄，1440×900 / 390×844 像素与上表一致。
 
 ---
 
 ## 七、限制声明
 
-1. `bnl.gov` 在本次沙箱内直连被拦截，其正文经检索索引完整取回并逐条比对；来源表已如实标注「检索索引取证」，其余 15 条为直接 HTTP 200 取证。
+1. `bnl.gov` 在本次沙箱内直连被拦截，其正文经搜索索引完整取回并逐条比对；来源表已如实标注「检索索引取证」，其余 15 条为直接 HTTP 200 取证。
 2. 展厅为**代表性选样**，不宣称覆盖 1948—1979 全部电子游戏作品。
 3. 两款游戏为**原创重新演绎**，不是任何历史作品的复刻或可运行副本。
 4. 触屏手势基于 Chromium 模拟上下文验证（`hasTouch` 移动视口），未在真机 Safari / iOS 上实测。
@@ -244,3 +272,5 @@ node --test "tests/*.test.mjs"
 7. 13-qa-curation 的全量 harness 在本机曾因 GPU / 网络进程崩溃中断过一次（环境资源争用），但其**最终产出的证据是 `verdict = pass`**，本任务的 D5 / D3 / D4 全部为 pass。
 8. 中文正文使用**系统字体栈**（未内置 Noto Sans SC 子集：197 600 B 且按 07 用字生成，覆盖不了本目录汉字）；拉丁字符与等宽字符使用自托管 OFL 字体。不同系统上的中文渲染差异未做逐字校对。
 9. 本批**只有中文版**，因此未提供 `hreflang="en"`（无可交替的英文版，不提供虚构的语言标注）；语言由 `<html lang="zh-CN">` 声明。
+10. **13 的批次证据时间戳为 2026-10-21T16:05:16.070Z**，早于本轮最后两项修正（顶栏几何还原、标题去 nowrap）。这两项已由本目录自建的三套 L3 脚本复测通过（0 error / 0 warn），但**仍需 13 再跑一次批次复测**才能刷新权威证据。
+11. `scripts/verify-pages.mjs` 与 `scripts/verify-game.mjs` 内部**各自拉起无头 Chromium**（前者零依赖 CDP，后者用 playwright-core），属仓库内的自验工具链；`npm run verify` 依赖本机已安装 Chrome。交付截图改由 **Ego 浏览器**拍摄，两者互不冲突。

@@ -21,14 +21,17 @@
     <!-- Pages 子路径基准（MIGRATION-NOTES §6）。本目录所有资源仍走相对路径。 -->
     <style>
       :root {
-        --ds-base: "/playtime-atlas-20261021/";
+        /* !important：Vite 构建时会把合并后的 CSS <link> 放到 <head> 末尾，
+           位置在本内联块之后 —— 若不加 !important，规范层 tokens.css 的
+           :root{--ds-base:""} 会在**构建产物**里反向覆盖这里的注入值。 */
+        --ds-base: "/playtime-atlas-20261021/" !important;
       }
     </style>
-    <script type="module" crossorigin src="./assets/rally-GUIshxiI.js"></script>
+    <script type="module" crossorigin src="./assets/rally-ClKc9Ntv.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/loop-wgRk2069.js">
-    <link rel="modulepreload" crossorigin href="./assets/storage-BRGAT99v.js">
+    <link rel="modulepreload" crossorigin href="./assets/storage-UNcd7qE1.js">
     <link rel="stylesheet" crossorigin href="./assets/loop-D4DqSMcZ.css">
-    <link rel="stylesheet" crossorigin href="./assets/storage-CIVSUuMJ.css">
+    <link rel="stylesheet" crossorigin href="./assets/storage-CfMcSie4.css">
   </head>
   <body class="game-page ds-shell">
     <a class="skip-link ds-skip" href="#stage">跳到游戏</a>

@@ -644,7 +644,10 @@
       "upstream": "05-museum-research",
       "build": {
         "type": "page",
-        "appDir": "apps/05-museum-catalog"
+        "appDir": "apps/05-museum-catalog",
+        "env": {
+          "PUBLISH_ARCHIVE_PAGES": "1"
+        }
       },
       "cover": "assets/covers/05-museum-catalog.svg",
       "controls": [
@@ -665,7 +668,9 @@
       ],
       "differences": "资料型交付物，明确为代表性选样，不宣称穷尽任何时代。",
       "qaState": "pending-reverify",
-      "qaNote": "资料已补齐，13 复验后更新"
+      "qaNote": "资料已补齐，13 复验后更新",
+      "deepLink": true,
+      "statusNote": "独立深链（可达但不进大厅目录）：13-qa HANDOFF §二红线 3 曾要求不在线上发布，2026-10-22 监工复核后要求「不要让被点名的交付物变成 404」，故改为独立可达路径 /research/catalog.html，playable=false；页面由 scripts/build-catalog-page.mjs 从仓库内 apps/05-museum-catalog/catalog.json 生成。"
     },
     {
       "id": "13-qa-report",
@@ -690,7 +695,10 @@
       "upstream": "13-qa-curation",
       "build": {
         "type": "page",
-        "appDir": "apps/13-qa-report"
+        "appDir": "apps/13-qa-report",
+        "env": {
+          "PUBLISH_ARCHIVE_PAGES": "1"
+        }
       },
       "cover": "assets/covers/13-qa-report.svg",
       "controls": [
@@ -711,7 +719,9 @@
       ],
       "differences": "审计报告，不修改实现者文件。",
       "qaState": "pending-reverify",
-      "qaNote": "由 13-qa-curation 维护，结论以其自报为准"
+      "qaNote": "由 13-qa-curation 维护，结论以其自报为准",
+      "deepLink": true,
+      "statusNote": "独立深链（可达但不进大厅目录）：2026-10-22 监工要求「全作品验收报告不得变成 404」，故发布为 /qa/index.html；页面由 scripts/build-qa-page.mjs 从仓库内 apps/13-qa-report/QA-MATRIX.md 与 issues.json 生成。"
     },
     {
       "id": "16-design-system",

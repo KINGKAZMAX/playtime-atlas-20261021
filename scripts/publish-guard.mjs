@@ -32,7 +32,10 @@ const REFERENCE_CAPTURE_DIRS = [
   'evidence/ref',      // 16 的参考站取证截图
   'evidence/ego-ref',  // 17 的参考站视口度量等观察证据
   'docs/reference',    // 18 的参考站对照截图
-  'research',          // 观察证据根目录（19 / 18）
+  'evidence',          // 各任务的观察证据根目录（16 / 17 / 18 / 19 / 00）
+  // 注意：发布面上的 docs/research/catalog.html（05 策展目录）是**站点产物**，
+  // 不是观察证据目录，因此不整目录排除；19 的参考站材料由更精确的
+  // `_QUARANTINE__/` 规则与文件名规则（olek*）覆盖。
 ];
 
 /** 单个文件名命中即拦截。 */
@@ -233,6 +236,9 @@ function selftest() {
     'evidence/ego-ref/olek-si-viewport-metrics.json',
     'docs/reference/oleksi-01-hero.png',
     'research/_QUARANTINE__/olek-si/bundle.js',
+    'evidence/d1-review/desktop-1440.png',
+    'evidence/local/preview.png',
+    'evidence/local/preview-desktop-1444.png',
     'public/art/ref-home-2560.png',
     'nested/deep/olek-x.json',
     'research-ref/olek-index.js',
@@ -248,7 +254,6 @@ function selftest() {
     'data/catalog.json',
     'data/raw_sources.json',
     'data/validate-report.json',
-    'evidence/local/preview-desktop-1444.png',
     'design-tokens.json',
     'fonts/inter-latin.woff2',
     'LICENSE',

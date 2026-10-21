@@ -1,0 +1,172 @@
+{
+  "ranAt": "2026-10-21T19:37:46.082Z",
+  "taskSpaceId": 162,
+  "base": "https://kingkazmax.github.io/playtime-atlas-20261021",
+  "arcade09": {
+    "url": "https://kingkazmax.github.io/playtime-atlas-20261021/works/09-era-arcade/?game=lattice",
+    "title": "霓虹街廊 · 街机可玩展厅",
+    "stateBefore": {
+      "text": "跳到游戏画面\n晶格回廊 · LATTICE CORRIDOR\n\nNEON CORRIDOR · 1980s ARCADE HALL · 原创演绎\n\n街机纪年\nCRT 开\n声音 开\n触控\n暂停\n设置\nEN\n晶格回廊\nLATTICE CORRIDOR\n陨星纵队\nMETEOR COLUMN\n街机纪年\nCHRONICLE\n荣誉榜\nLEDGER\n第 1 / 4 件展品\n\n点击画面启用键盘 · 方向键 / WASD 移动 · 空格 相位穿行 · E 残响 · P 暂停 · R 重开\n\n本作品为原创演绎：机制取自街机黄金时代的公共范式，角色、地图、规则、音效与视觉全部重新设计；不含任何未授权 ROM、商业游戏资源或品牌视觉。时代介绍附可核查来源，见「街机纪年」。\n\n纯静态 · 零外部依赖 · 离线可运行\nMiniMax Code M3.1-Flash 制作",
+      "hasGameMode": true,
+      "playing": false,
+      "pressable": [
+        {
+          "text": "街机纪年",
+          "ariaPressed": null,
+          "id": "btn-catalog"
+        },
+        {
+          "text": "CRT 开",
+          "ariaPressed": "true",
+          "id": "btn-crt"
+        },
+        {
+          "text": "声音 开",
+          "ariaPressed": "true",
+          "id": "btn-sound"
+        },
+        {
+          "text": "触控",
+          "ariaPressed": "false",
+          "id": "btn-touch"
+        },
+        {
+          "text": "暂停",
+          "ariaPressed": "false",
+          "id": "btn-pause"
+        },
+        {
+          "text": "设置",
+          "ariaPressed": null,
+          "id": "btn-settings"
+        },
+        {
+          "text": "EN",
+          "ariaPressed": "false",
+          "id": "btn-lang"
+        },
+        {
+          "text": "晶格回廊\nLATTICE CORRIDO",
+          "ariaPressed": null,
+          "id": ""
+        },
+        {
+          "text": "陨星纵队\nMETEOR COLUMN",
+          "ariaPressed": null,
+          "id": ""
+        },
+        {
+          "text": "街机纪年\nCHRONICLE",
+          "ariaPressed": null,
+          "id": ""
+        },
+        {
+          "text": "荣誉榜\nLEDGER",
+          "ariaPressed": null,
+          "id": ""
+        },
+        {
+          "text": "▲",
+          "ariaPressed": null,
+          "id": ""
+        },
+        {
+          "text": "◀",
+          "ariaPressed": null,
+          "id": ""
+        },
+        {
+          "text": "▶",
+          "ariaPressed": null,
+          "id": ""
+        },
+        {
+          "text": "▼",
+          "ariaPressed": null,
+          "id": ""
+        },
+        {
+          "text": "相位",
+          "ariaPressed": null,
+          "id": ""
+        },
+        {
+          "text": "残响",
+          "ariaPressed": null,
+          "id": ""
+        }
+      ],
+      "pauseCandidate": [
+        {
+          "text": "触控",
+          "ariaPressed": "false",
+          "id": "btn-touch"
+        },
+        {
+          "text": "暂停",
+          "ariaPressed": "false",
+          "id": "btn-pause"
+        },
+        {
+          "text": "EN",
+          "ariaPressed": "false",
+          "id": "btn-lang"
+        }
+      ]
+    },
+    "stateAfter": {
+      "text": "跳到游戏画面\n晶格回廊 · LATTICE CORRIDOR\n\nNEON CORRIDOR · 1980s ARCADE HALL · 原创演绎\n\n街机纪年\nCRT 开\n声音 开\n触控\n继续\n设置\nEN\n晶格回廊\nLATTICE CORRIDOR\n陨星纵队\nMETEOR COLUMN\n街机纪年\nCHRONICLE\n荣誉榜\nLEDGER\n已暂停\n\nLATTICE CORRIDOR\n\n方向键 / WASD 移动\n空格 主操作\nE 副操作\n1 2 3 切换\nP 暂停 · R 重开 · M 静音 · H 帮助\n继续\n重新开始\n设置\n返回展厅\n第 1 / 4 件展品\n\n点击画面启用键盘 · 方向键 / WASD 移动 · 空格 相位穿行 · E 残响 · P 暂停 · R 重开\n\n本作品为原创演绎：机制取自街机黄金时代的公共范式，角色、地图、规则、音效与视觉全部重新设计；不含任何未授权 ROM、商业",
+      "paused": true,
+      "resumeLabel": "继续",
+      "ariaPressed": "true"
+    },
+    "health": {
+      "consoleErrors": [],
+      "http4xx5xx": []
+    },
+    "screenshot": "/Users/mekzenx2/Documents/ChatGPT/mavis-14-v3/online-evidence/ego/09-era-arcade-paused.png"
+  },
+  "hall": {
+    "url": "https://kingkazmax.github.io/playtime-atlas-20261021/",
+    "title": "回响电玩馆 · PLAYTIME ATLAS",
+    "health": {
+      "consoleErrors": [],
+      "http4xx5xx": []
+    },
+    "entries": {
+      "count": 0,
+      "hrefs": []
+    },
+    "covers": {
+      "total": 11,
+      "broken": 0
+    },
+    "screenshot": "/Users/mekzenx2/Documents/ChatGPT/mavis-14-v3/online-evidence/ego/hall-index.png"
+  },
+  "assets": [
+    {
+      "path": "favicon.ico",
+      "status": 200
+    },
+    {
+      "path": "assets/ds/tokens.css",
+      "status": 200
+    },
+    {
+      "path": "assets/ds/fonts/fonts.css",
+      "status": 200
+    },
+    {
+      "path": "works/06-museum-main/art/assets/fonts/fonts.css",
+      "status": 200
+    },
+    {
+      "path": "data/works.json",
+      "status": 200
+    },
+    {
+      "path": "assets/gallery-covers/09-era-arcade.webp",
+      "status": 200
+    }
+  ]
+}

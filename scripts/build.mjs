@@ -354,7 +354,7 @@ async function buildWork(work) {
       if (!work.buildCommand) throw new Error('缺少 buildCommand');
       const parts = work.buildCommand.trim().split(/\s+/);
       log(`→ ${work.id}: ${work.buildCommand}`);
-      run(parts[0], parts.slice(1), ROOT, { quiet: true });
+      run(parts[0], parts.slice(1), ROOT, { quiet: true, env: work.build?.env || null });
       if (!fs.existsSync(outDir)) throw new Error('页面构建后未生成产物目录');
     } else {
       throw new Error(`未知构建类型 ${type}`);
