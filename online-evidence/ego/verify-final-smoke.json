@@ -1,0 +1,160 @@
+{
+  "ranAt": "2026-10-21T21:19:53.681Z",
+  "taskSpaceId": 215,
+  "base": "https://kingkazmax.github.io/playtime-atlas-20261021",
+  "smoke": [
+    {
+      "label": "hall",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/",
+      "title": "回响电玩馆 · PLAYTIME ATLAS",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "exceptions": [],
+      "covers": {
+        "total": 11,
+        "broken": 0
+      },
+      "horizontalScroll": false
+    },
+    {
+      "label": "00-research-dossier",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/works/00-research-dossier/",
+      "title": "MiniMax M3.1 Flash · 全球公开案例索引",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "exceptions": [],
+      "covers": {
+        "total": 0,
+        "broken": 0
+      },
+      "horizontalScroll": false
+    },
+    {
+      "label": "05-museum-catalog",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/research/catalog.html",
+      "title": "博物馆策展目录 · CATALOG | PLAYTIME ATLAS",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "exceptions": [],
+      "covers": {
+        "total": 0,
+        "broken": 0
+      },
+      "horizontalScroll": false
+    },
+    {
+      "label": "13-qa-report",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/qa/",
+      "title": "全作品验收报告 · QA MATRIX | PLAYTIME ATLAS",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "exceptions": [],
+      "covers": {
+        "total": 0,
+        "broken": 0
+      },
+      "horizontalScroll": false
+    },
+    {
+      "label": "01-chroma-s1",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/works/01-chroma-s1/",
+      "title": "CHROMA S1 · 千色仪 — 把颜色，量出来。",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "exceptions": [],
+      "covers": {
+        "total": 0,
+        "broken": 0
+      },
+      "horizontalScroll": false
+    },
+    {
+      "label": "06-museum-main",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/works/06-museum-main/",
+      "title": "回响电玩馆 · PLAYTIME ATLAS",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "exceptions": [],
+      "covers": {
+        "total": 6,
+        "broken": 0
+      },
+      "horizontalScroll": false
+    },
+    {
+      "label": "11-era-online",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/works/11-era-online/",
+      "title": "联机曙光 LINK DAWN · 2000s 可玩展厅",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "exceptions": [],
+      "covers": {
+        "total": 0,
+        "broken": 0
+      },
+      "horizontalScroll": false
+    }
+  ],
+  "assets": [
+    {
+      "path": "works/06-museum-main/art/assets/fonts/fonts.css",
+      "expected": 200,
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "works/06-museum-main/assets/ds/tokens.css",
+      "expected": 200,
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "works/01-chroma-s1/assets/ds/tokens.css",
+      "expected": 200,
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "works/11-era-online/assets/ds/fonts/fonts.css",
+      "expected": 200,
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "data/works.json",
+      "expected": 200,
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "favicon.ico",
+      "expected": 200,
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "works/16-design-system/index.html",
+      "expected": 404,
+      "status": 404,
+      "ok": true
+    },
+    {
+      "path": "works/17-architecture-research/index.html",
+      "expected": 404,
+      "status": 404,
+      "ok": true
+    },
+    {
+      "path": "works/18-architecture-models/index.html",
+      "expected": 404,
+      "status": 404,
+      "ok": true
+    },
+    {
+      "path": "assets/ds/tokens.css",
+      "expected": 404,
+      "status": 404,
+      "ok": true
+    }
+  ]
+}

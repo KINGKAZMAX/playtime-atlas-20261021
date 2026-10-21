@@ -21,7 +21,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'online-evidence', 'ego');
 const BASE = 'https://kingkazmax.github.io/playtime-atlas-20261021';
-const TAG = 'baseline-4f6c0f1';
+const TAG = 'final-6ab8b02';
 
 await fs.mkdir(OUT, { recursive: true });
 
@@ -53,8 +53,11 @@ const out = {
 
 async function measure(rel) {
   const url = `${BASE}/${rel}`;
+  // GitHub Pages 边缘缓存 TTL 可达数分钟：同一 URL 在部署切换后仍可能返回旧内容。
+  // 因此每次实测都附加一次性 query（cache-busting），确保拿到的是**当前部署**的状态。
+  const bust = `${BASE}/${rel}?cb=${Date.now()}`;
   const r = await probe
-    .fetch(url, { timeout: 20000 })
+    .fetch(bust, { timeout: 20000 })
     .catch((e) => ({ status: 0, error: String((e && e.message) || e) }));
   return {
     path: rel,
@@ -62,6 +65,7 @@ async function measure(rel) {
     status: typeof r.status === 'number' ? r.status : 0,
     bytes: r.body ? r.body.length : undefined,
     error: r.error || null,
+    cacheBusted: true,
   };
 }
 
