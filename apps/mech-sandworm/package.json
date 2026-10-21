@@ -1,0 +1,20 @@
+{
+  "name": "abyss-carapace-salvager",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "《渊甲拾遗者 / ABYSS-CARAPACE SALVAGER》 — an original interactive Three.js deep-sea mining carapace with procedural geometry, exploded inspection, parameter editing and GLB export.",
+  "scripts": {
+    "dev": "vite --port 4312 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview --port 4312 --strictPort",
+    "capture": "node scripts/capture.mjs",
+    "verify:glb": "node scripts/verify-glb.mjs"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.5"
+  }
+}

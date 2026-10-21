@@ -1,0 +1,226 @@
+{
+  "id": "00-research",
+  "title": "MiniMax M3.1 Flash 全球公开案例索引",
+  "description": "对 MiniMax M3.1 Flash 全球公开案例的联网检索与核验成果：134 条案例（X 55 / B站 19 / YouTube 31 / GitHub 10 / 中文媒体 12 / 官方基准 6 / 小红书登录墙 1），每条记录原作者、直达 URL、发布时间、模型归属原文证据、平台互动指标、观测时间与不可见项；并给出覆盖网页 / 3D / 交互的 TOP3 原创改编规格（作品名·文案·内容·字体·配色·布局·模型形态全部另起，非一致复刻）与逐项对照差异说明。附可浏览的本地案例索引页 index.html（静态、自包含、零外部请求）。",
+  "entry": "index.html",
+  "buildCommand": "npm run build",
+  "outputDir": "./",
+  "status": "completed",
+  "upstream": "00-research",
+  "license": {
+    "code": "MIT",
+    "assets": "仅引用公开帖文摘录与自有核验记录，不含原始视频与抓取日志"
+  },
+  "sources": [
+    {
+      "title": "核验方式：X syndication 端点逐条拉取正文 / 作者 / 时间 / 互动量",
+      "url": "https://cdn.syndication.twimg.com/tweet-result",
+      "note": "所有平台指标为 2026-10-21 观测快照，不同平台口径不可横向比较。"
+    }
+  ],
+  "$schema": "https://json.schemastore.org/manifest.json",
+  "task": "00",
+  "batch": "flash-showcase-20261021",
+  "model": {
+    "name": "MiniMax-M3.1-Flash",
+    "effort": "max",
+    "note": "全部检索、抽帧、分析、构建与测试均由 MiniMax Code M3.1-Flash / max 完成"
+  },
+  "observedAt": "2026-10-21",
+  "artifacts": [
+    {
+      "id": "00-research/index.html",
+      "title": "可浏览案例索引页",
+      "type": "entry",
+      "path": "index.html",
+      "description": "自包含静态索引：搜索 / 平台筛选 / 维度筛选 / 排序 / TOP3 卡片 / 分平台最高榜 / 口径声明。零外部请求，file:// 可直接打开。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/cases.json",
+      "title": "案例总表（结构化）",
+      "type": "data",
+      "path": "cases.json",
+      "description": "134 条案例统一 schema，含 meta（模型本体 / 方法论 / 平台口径 / 计数）与 cases（归属证据 / 指标 / 不可见项 / 观测时间 / 核验方法 / 本地资产）。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/data/case-index.json",
+      "title": "索引页精简数据",
+      "type": "data",
+      "path": "data/case-index.json",
+      "description": "由 build_index.py 从 cases.json 生成，供程序化消费。",
+      "status": "generated"
+    },
+    {
+      "id": "00-research/TOP3.md",
+      "title": "TOP3 原创改编规格",
+      "type": "spec",
+      "path": "TOP3.md",
+      "description": "三个入选案例的完整实现规格：参考帧、机制拆解、原创改编规格（改名/文案/内容/字体/配色/布局/模型形态）、关键交互、资产许可、验收清单；附备选案例。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/DIFF-REFERENCES.md",
+      "title": "对照差异说明",
+      "type": "spec",
+      "path": "DIFF-REFERENCES.md",
+      "description": "逐项列出参考作品 → 改编作品的差异（名称/文案/内容/字体/配色/布局/模型形态/交互），含红线条目与验收用自检速查表。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/RANKING.md",
+      "title": "分平台排名",
+      "type": "report",
+      "path": "RANKING.md",
+      "description": "10 张分平台表 + 平台口径与可见/不可见项 + 合并热度线索 + TOP3 理由 + 负面对照 + 核验方法。",
+      "status": "generated"
+    },
+    {
+      "id": "00-research/TASK.md",
+      "title": "任务定义",
+      "type": "doc",
+      "path": "TASK.md",
+      "description": "目标、范围界定、执行步骤、交付清单、验收标准。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/STATUS.md",
+      "title": "执行状态",
+      "type": "doc",
+      "path": "STATUS.md",
+      "description": "进度表、关键发现、未完成/阻塞项、交接说明。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/README.md",
+      "title": "使用说明",
+      "type": "doc",
+      "path": "README.md",
+      "description": "快速上手、构建命令、目录结构、数据 schema、来源与资产许可、限制说明。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/CHANGELOG.md",
+      "title": "变更记录",
+      "type": "doc",
+      "path": "CHANGELOG.md",
+      "description": "版本化变更记录。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/ACCEPTANCE.md",
+      "title": "验收记录",
+      "type": "doc",
+      "path": "ACCEPTANCE.md",
+      "description": "逐条验收项的检查方法、结果与证据位置。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/LICENSE.md",
+      "title": "许可与来源声明",
+      "type": "doc",
+      "path": "LICENSE.md",
+      "description": "本目录许可、第三方素材/参考库许可状态与使用边界。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/raw",
+      "title": "原始证据",
+      "type": "evidence",
+      "path": "raw/",
+      "description": "53 份 X syndication 原始 JSON、平台原始响应、13 段原始视频 MP4、25 张 ffmpeg 抽帧参考图。",
+      "status": "ready",
+      "publish": "excluded"
+    },
+    {
+      "id": "00-research/references/mia-100-html",
+      "title": "参考库（无 LICENSE，仅参考）",
+      "type": "reference",
+      "path": "references/mia-100-html/",
+      "description": "克隆自 MiaAI-Lab/MiniMax-M3.1-Flash-100-HTML-Files。100 个单文件 HTML + 完整原始提示词。该仓库无 LICENSE，默认保留所有权利 —— 仅可作结构与提示词参考，禁止复制文件内容。",
+      "status": "reference-only",
+      "publish": "excluded"
+    }
+  ],
+  "build": {
+    "buildCommand": "npm run build",
+    "steps": [
+      "python3 build_cases.py  # 汇总 raw/ 证据 → cases.json",
+      "python3 build_index.py  # cases.json → index.html + data/case-index.json",
+      "python3 gen_ranking.py # cases.json → RANKING.md"
+    ],
+    "verifyCommand": "python3 verify.py",
+    "serveCommand": "npm run serve",
+    "outputDir": "./",
+    "static": true,
+    "externalRequests": 0,
+    "dependencies": "无（仅需 Python 3.8+；Node 18+ 仅用于 npm 脚本包装）"
+  },
+  "publish": {
+    "authorizedByUser": true,
+    "deployOwner": "14-publish",
+    "note": "用户已授权本批成果发布到其已登录 GitHub 并在线体验；本任务只准备可静态构建的本地产物，不上传凭据、不含日志/私有文件、不另建仓库。发布由同级 14-publish 统一集成与部署。",
+    "scope": {
+      "include": [
+        "index.html",
+        "cases.json",
+        "data/case-index.json",
+        "RANKING.md",
+        "TOP3.md",
+        "DIFF-REFERENCES.md",
+        "TASK.md",
+        "STATUS.md",
+        "README.md",
+        "CHANGELOG.md",
+        "ACCEPTANCE.md",
+        "LICENSE.md",
+        "manifest.json",
+        "package.json",
+        "build_cases.py",
+        "build_index.py",
+        "gen_ranking.py",
+        "verify.py",
+        ".gitignore"
+      ],
+      "exclude": [
+        "media/ (13 段第三方原始视频，约 324 MB)",
+        "raw/ (平台原始抓取证据，含第三方内容)",
+        "frames/ (第三方视频抽帧，仅供内部比对，不得作为作品素材)",
+        "references/ (★ 无 LICENSE 的克隆参考库，禁止复制其内容)"
+      ],
+      "gitignore": "00-research/.gitignore 已声明上述排除项",
+      "note": "研究证据保留在本机，供 01-04 并行任务读取与改编比对；不进入发布仓库。"
+    }
+  },
+  "metrics": {
+    "totalCases": 134,
+    "xVerified": 51,
+    "xUnavailable": 4,
+    "bilibili": 19,
+    "youtube": 31,
+    "github": 10,
+    "chineseMedia": 12,
+    "official": 6,
+    "platformsAttempted": 7,
+    "platformsWithData": 6,
+    "platformsBlocked": 1,
+    "blockedDetail": "小红书：搜索需登录（已尝试 6 条路径），记为不可见项"
+  },
+  "attributionPolicy": {
+    "countedAsM31Flash": "仅当作者正文 / 画面水印 / 官方文档明确写出 M3.1 Flash 或 M3.1-Flash",
+    "excluded": [
+      "MiniMax M3",
+      "MiniMax M2.7",
+      "MiniMax M2.5",
+      "MiniMax M2.1",
+      "MiniMax M2"
+    ],
+    "separatelyLabeled": [
+      "MiniMax-M3.1-Flash-Preview (2026-09-27)",
+      "Space Bunny 匿名期（官方 2026-10-19 认领为早期版本）",
+      "M3.1 Flash + H3 混合模型"
+    ],
+    "globalFirstClaim": "不声称全网第一；各平台指标分别比较，不可横向相加"
+  }
+}

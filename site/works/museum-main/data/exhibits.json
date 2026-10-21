@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-10-21T09:12:52.120Z",
+  "halls": [
+    {
+      "id": "origins",
+      "task": "08-era-origins",
+      "status": "pending",
+      "entryPath": null,
+      "note": "来源目录不存在：08-era-origins"
+    },
+    {
+      "id": "arcade",
+      "task": "09-era-arcade",
+      "status": "pending",
+      "entryPath": null,
+      "note": "来源目录不存在：09-era-arcade"
+    },
+    {
+      "id": "console",
+      "task": "10-era-console",
+      "status": "pending",
+      "entryPath": null,
+      "note": "来源目录不存在：10-era-console"
+    },
+    {
+      "id": "online",
+      "task": "11-era-online",
+      "status": "pending",
+      "entryPath": null,
+      "note": "来源目录不存在：11-era-online"
+    },
+    {
+      "id": "modern",
+      "task": "12-era-modern",
+      "status": "pending",
+      "entryPath": null,
+      "note": "来源目录不存在：12-era-modern"
+    }
+  ]
+}

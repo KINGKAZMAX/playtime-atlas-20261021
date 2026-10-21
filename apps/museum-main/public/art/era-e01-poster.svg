@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200" role="img" aria-label="1950s 计算的童年 年代海报">
+  <defs>
+    <linearGradient id="pg" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#0D1526"/>
+      <stop offset="55%" stop-color="#070C16"/>
+      <stop offset="100%" stop-color="#6FC7BE" stop-opacity="0.22"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#pg)"/>
+  <circle cx="246" cy="901" r="0.9" fill="#F4EDE0" opacity="0.10"/>
+  <circle cx="235" cy="475" r="2.5" fill="#F4EDE0" opacity="0.17"/>
+  <circle cx="807" cy="614" r="1.0" fill="#F4EDE0" opacity="0.12"/>
+  <circle cx="791" cy="662" r="2.7" fill="#F4EDE0" opacity="0.19"/>
+  <circle cx="401" cy="263" r="1.6" fill="#F4EDE0" opacity="0.17"/>
+  <circle cx="376" cy="677" r="2.5" fill="#F4EDE0" opacity="0.21"/>
+  <circle cx="812" cy="791" r="2.0" fill="#F4EDE0" opacity="0.10"/>
+  <circle cx="492" cy="717" r="2.7" fill="#F4EDE0" opacity="0.38"/>
+  <circle cx="367" cy="1027" r="2.9" fill="#F4EDE0" opacity="0.30"/>
+  <circle cx="808" cy="780" r="1.2" fill="#F4EDE0" opacity="0.11"/>
+  <circle cx="859" cy="650" r="2.2" fill="#F4EDE0" opacity="0.22"/>
+  <circle cx="533" cy="987" r="1.3" fill="#F4EDE0" opacity="0.31"/>
+  <circle cx="886" cy="1130" r="1.0" fill="#F4EDE0" opacity="0.09"/>
+  <circle cx="194" cy="904" r="2.1" fill="#F4EDE0" opacity="0.36"/>
+  <circle cx="672" cy="741" r="0.8" fill="#F4EDE0" opacity="0.38"/>
+  <circle cx="569" cy="1097" r="3.0" fill="#F4EDE0" opacity="0.34"/>
+  <circle cx="326" cy="90" r="1.0" fill="#F4EDE0" opacity="0.20"/>
+  <circle cx="773" cy="457" r="2.8" fill="#F4EDE0" opacity="0.10"/>
+  <circle cx="712" cy="745" r="2.4" fill="#F4EDE0" opacity="0.16"/>
+  <circle cx="618" cy="226" r="1.2" fill="#F4EDE0" opacity="0.31"/>
+  <circle cx="405" cy="534" r="1.8" fill="#F4EDE0" opacity="0.23"/>
+  <circle cx="1" cy="983" r="1.8" fill="#F4EDE0" opacity="0.26"/>
+  <circle cx="400" cy="245" r="2.0" fill="#F4EDE0" opacity="0.24"/>
+  <circle cx="810" cy="67" r="2.4" fill="#F4EDE0" opacity="0.16"/>
+  <circle cx="605" cy="412" r="2.9" fill="#F4EDE0" opacity="0.18"/>
+  <circle cx="878" cy="816" r="2.4" fill="#F4EDE0" opacity="0.09"/>
+  <circle cx="720" cy="29" r="1.5" fill="#F4EDE0" opacity="0.34"/>
+  <circle cx="650" cy="515" r="0.8" fill="#F4EDE0" opacity="0.23"/>
+  <circle cx="447" cy="138" r="2.3" fill="#F4EDE0" opacity="0.30"/>
+  <circle cx="895" cy="25" r="2.3" fill="#F4EDE0" opacity="0.19"/>
+  <circle cx="224" cy="798" r="2.6" fill="#F4EDE0" opacity="0.30"/>
+  <circle cx="317" cy="847" r="1.7" fill="#F4EDE0" opacity="0.18"/>
+  <circle cx="177" cy="406" r="2.4" fill="#F4EDE0" opacity="0.15"/>
+  <circle cx="106" cy="283" r="1.6" fill="#F4EDE0" opacity="0.35"/>
+  <circle cx="635" cy="225" r="0.9" fill="#F4EDE0" opacity="0.35"/>
+  <circle cx="501" cy="25" r="1.6" fill="#F4EDE0" opacity="0.28"/>
+  <circle cx="721" cy="169" r="2.7" fill="#F4EDE0" opacity="0.20"/>
+  <circle cx="738" cy="453" r="2.6" fill="#F4EDE0" opacity="0.14"/>
+  <circle cx="245" cy="431" r="2.4" fill="#F4EDE0" opacity="0.15"/>
+  <circle cx="342" cy="577" r="0.9" fill="#F4EDE0" opacity="0.08"/>
+  <circle cx="398" cy="618" r="1.7" fill="#F4EDE0" opacity="0.33"/>
+  <circle cx="672" cy="668" r="2.6" fill="#F4EDE0" opacity="0.16"/>
+  <circle cx="646" cy="397" r="1.1" fill="#F4EDE0" opacity="0.10"/>
+  <circle cx="454" cy="202" r="1.0" fill="#F4EDE0" opacity="0.09"/>
+  <circle cx="850" cy="123" r="2.9" fill="#F4EDE0" opacity="0.12"/>
+  <circle cx="567" cy="795" r="0.9" fill="#F4EDE0" opacity="0.13"/>
+  <circle cx="713" cy="882" r="1.0" fill="#F4EDE0" opacity="0.33"/>
+  <circle cx="892" cy="985" r="1.9" fill="#F4EDE0" opacity="0.33"/>
+  <circle cx="715" cy="927" r="2.4" fill="#F4EDE0" opacity="0.25"/>
+  <circle cx="246" cy="605" r="1.9" fill="#F4EDE0" opacity="0.36"/>
+  <circle cx="258" cy="84" r="1.0" fill="#F4EDE0" opacity="0.38"/>
+  <circle cx="589" cy="152" r="1.1" fill="#F4EDE0" opacity="0.19"/>
+  <circle cx="113" cy="602" r="3.0" fill="#F4EDE0" opacity="0.37"/>
+  <circle cx="90" cy="301" r="1.0" fill="#F4EDE0" opacity="0.14"/>
+  <circle cx="288" cy="943" r="0.8" fill="#F4EDE0" opacity="0.08"/>
+  <circle cx="738" cy="264" r="1.0" fill="#F4EDE0" opacity="0.29"/>
+  <circle cx="126" cy="190" r="2.7" fill="#F4EDE0" opacity="0.11"/>
+  <circle cx="550" cy="701" r="2.6" fill="#F4EDE0" opacity="0.11"/>
+  <circle cx="271" cy="361" r="2.5" fill="#F4EDE0" opacity="0.33"/>
+  <circle cx="383" cy="553" r="1.6" fill="#F4EDE0" opacity="0.22"/>
+  <g opacity="0.5">
+    <rect x="56" y="56" width="788" height="1088" fill="none" stroke="#6FC7BE" stroke-width="2" opacity="0.55"/>
+    <rect x="74" y="74" width="752" height="1052" fill="none" stroke="#6FC7BE" stroke-width="1" opacity="0.3"/>
+  </g>
+  <text x="96" y="300" font-family="Georgia, 'Songti SC', serif" font-size="132" fill="#6FC7BE" letter-spacing="6">1950s</text>
+  <text x="96" y="392" font-family="'PingFang SC', 'Noto Sans CJK SC', sans-serif" font-size="58" font-weight="600" fill="#F4EDE0">计算的童年</text>
+  <rect x="96" y="430" width="180" height="6" fill="#FF6B2C"/>
+  <text x="96" y="1120" font-family="'SF Mono', Menlo, monospace" font-size="26" fill="#F4EDE0" opacity="0.72" letter-spacing="3">PLAYTIME ATLAS · 回响电玩馆</text>
+</svg>

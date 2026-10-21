@@ -1,0 +1,187 @@
+{
+  "id": "cabinet-01",
+  "name": "星港立式机柜",
+  "latin": "STARLIGHT CABINET",
+  "range": "1972 — 1979",
+  "form": "立式投币机柜",
+  "story": "一台把「街机」这件事浓缩到最小空间的机器：上方灯箱负责招徕，中段屏幕负责留人，下方操作台负责让手比脑子快。投币口旁边那枚橙色小灯，是它唯一的成绩。",
+  "note": "原创提炼：所有早期投币机柜共有的「灯箱—屏幕—控制台」三段式比例，无任何具体机型的标识、贴图或独特造型。",
+  "parts": [
+    {
+      "name": "底座底墩",
+      "material": "shell-deep"
+    },
+    {
+      "name": "机身主体",
+      "material": "shell-dark"
+    },
+    {
+      "name": "顶部压条",
+      "material": "shell-mid"
+    },
+    {
+      "name": "灯箱外壳",
+      "material": "shell-deep"
+    },
+    {
+      "name": "灯箱灯面",
+      "material": "accent-lit"
+    },
+    {
+      "name": "灯箱标记1",
+      "material": "shell-deep"
+    },
+    {
+      "name": "灯箱标记2",
+      "material": "shell-deep"
+    },
+    {
+      "name": "灯箱标记3",
+      "material": "shell-deep"
+    },
+    {
+      "name": "屏幕边框",
+      "material": "shell-deep"
+    },
+    {
+      "name": "屏幕玻璃",
+      "material": "screen-glass"
+    },
+    {
+      "name": "屏幕辉光",
+      "material": "screen-glow"
+    },
+    {
+      "name": "操作台",
+      "material": "shell-mid"
+    },
+    {
+      "name": "操作台面板",
+      "material": "cream"
+    },
+    {
+      "name": "摇杆底座",
+      "material": "shell-deep"
+    },
+    {
+      "name": "摇杆杆",
+      "material": "metal-dark"
+    },
+    {
+      "name": "摇杆球头",
+      "material": "accent"
+    },
+    {
+      "name": "按键A",
+      "material": "cream"
+    },
+    {
+      "name": "按键B",
+      "material": "accent"
+    },
+    {
+      "name": "投币门",
+      "material": "shell-deep"
+    },
+    {
+      "name": "投币口上",
+      "material": "metal"
+    },
+    {
+      "name": "投币口下",
+      "material": "metal"
+    },
+    {
+      "name": "退币口",
+      "material": "metal-dark"
+    },
+    {
+      "name": "侧板左",
+      "material": "shell-mid"
+    },
+    {
+      "name": "侧板斜纹左-1",
+      "material": "accent"
+    },
+    {
+      "name": "侧板斜纹左-2",
+      "material": "accent"
+    },
+    {
+      "name": "侧板斜纹左-3",
+      "material": "accent"
+    },
+    {
+      "name": "侧板右",
+      "material": "shell-mid"
+    },
+    {
+      "name": "侧板斜纹右-1",
+      "material": "accent"
+    },
+    {
+      "name": "侧板斜纹右-2",
+      "material": "accent"
+    },
+    {
+      "name": "侧板斜纹右-3",
+      "material": "accent"
+    },
+    {
+      "name": "散热百叶1",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热百叶2",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热百叶3",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热百叶4",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热百叶5",
+      "material": "shell-deep"
+    },
+    {
+      "name": "正面框条",
+      "material": "accent"
+    }
+  ],
+  "partCount": 36,
+  "triangleCount": 1076,
+  "dimensions": {
+    "w": 0.72,
+    "h": 1.78,
+    "d": 0.85
+  },
+  "measuredBounds": {
+    "min": [
+      -0.4772,
+      0,
+      -0.65
+    ],
+    "max": [
+      0.4772,
+      1.765,
+      0.8283
+    ],
+    "size": [
+      0.9544,
+      1.765,
+      1.4783
+    ]
+  },
+  "files": {
+    "glb": "./model-cabinet-01.glb",
+    "png": "./model-cabinet-01.png",
+    "techSvg": "./model-cabinet-01.tech.svg",
+    "json": "./model-cabinet-01.json"
+  },
+  "license": "CC0-1.0",
+  "origin": "本馆原创虚构展品"
+}

@@ -1,0 +1,203 @@
+{
+  "hw-xbox": {
+    "titleZh": "Microsoft Xbox",
+    "summary": "2001 年推出的第六世代主机，微软首款游戏主机，配备规模庞大的内置硬盘并引入 Xbox Live 在线服务。",
+    "significance": "「主机 + 硬盘 + 在线服务」三者绑定成为后来两代主机的基础配置；也标志软件巨头正式进入游戏硬件。"
+  },
+  "hw-gamecube": {
+    "titleZh": "Nintendo GameCube",
+    "summary": "2001 年推出的第六世代主机，采用小型光盘与手柄设计，并以 GameCube 掌机作为独特的双人游玩方案。",
+    "significance": "「一套硬件两种玩法」的产品思路独特；其失败也说明第六世代需要软件阵容而非单点创意取胜。"
+  },
+  "hw-psp": {
+    "titleZh": "PlayStation Portable",
+    "summary": "2004 年推出的掌上主机，采用 UMD 光碟介质与高分辨率宽屏显示，主打可随身携带的高规格游戏体验。",
+    "significance": "定义了「掌机也能跑家用机级作品」的市场想象；其销量曲线也提示了硬件规格与使用场景的错配风险。"
+  },
+  "hw-xbox-360": {
+    "titleZh": "Microsoft Xbox 360",
+    "summary": "2005 年推出的第七世代主机，配备 HDMI、以太网与硬盘，并率先把 Xbox Live 做成成熟的付费订阅与数字商城。",
+    "significance": "主机数字商店与订阅服务的商业样板；其在线多人体验直接重塑了「游戏被分发」这件事。"
+  },
+  "hw-ps3": {
+    "titleZh": "PlayStation 3",
+    "summary": "2006 年推出的第七世代主机，采用 Cell 处理器与蓝光光盘，并在后期加入跨平台数字发行与免费游玩模式。",
+    "significance": "长期在线能力与数字内容分发的转折点；也是主机开始承担「家庭影音中枢」职能的代表。"
+  },
+  "hw-wii": {
+    "titleZh": "Nintendo Wii",
+    "summary": "2006 年推出的第七世代主机，以 Wii Remote 体感控制器、横向双手握持方式与面向家庭聚会的内容定位著称。",
+    "significance": "把交互从按钮扩展到身体动作，并明确区分「客厅共同体验」与「玩家独自沉浸」两条产品路线。"
+  },
+  "pl-steam": {
+    "titleZh": "Steam 数字发行平台",
+    "summary": "Valve 于 2003 年推出的数字发行与游戏平台，提供商店、社区、成就、防作弊与云存档等服务。",
+    "significance": "数字发行取代实体零售成为主渠道的起点；也让「一款游戏同时是商店、社交网络与服务平台」成为可能。"
+  },
+  "pl-app-store": {
+    "titleZh": "iOS App Store",
+    "summary": "2008 年随 iPhone 出现的移动应用商店，以审核分发、付费分成与后续系统级推广迅速建立移动分发标准。",
+    "significance": "把「一个人可以独立发布一款游戏并触达全球用户」的成本降到接近于零，是独立游戏时代的基础设施。"
+  },
+  "sw-world-of-warcraft": {
+    "titleZh": "《World of Warcraft》",
+    "summary": "2004 年 Blizzard 推出的大型 MMORPG，订阅制运营，包含持续更新的世界事件、战场与资料片。",
+    "significance": "订阅制持续服务型游戏的标杆；其公会组织、 raids 与虚拟经济影响了此后所有长线运营型多人游戏。"
+  },
+  "sw-cs-source": {
+    "titleZh": "《Counter-Strike: Source》",
+    "summary": "2004 年 Valve 发布的《Counter-Strike》引擎升级版本，把回合制战术射击带入 Steam 并支持自定义模组与官方赛事。",
+    "significance": "「玩家自制内容 + 官方竞技 + 数字平台」三者结合的模板，是电子竞技作为产业分支的起点之一。"
+  },
+  "sw-league-of-legends": {
+    "titleZh": "《League of Legends》",
+    "summary": "2009 年 Riot Games 推出的 MOBA 游戏，以召唤师峡谷的 5v5 对抗、固定技能与持续更新的英雄阵容为核心。",
+    "significance": "免费游玩 + 英雄养成 + 电竞运营的商业与内容闭环模板，深刻影响了此后十年的多人竞技设计。"
+  },
+  "sw-minecraft": {
+    "titleZh": "《Minecraft》",
+    "summary": "2009 年由 Markus Persson 开始开发、后由 Mojang 发布的沙盒建造游戏，以体素世界、采集合成与红石机制为核心。",
+    "significance": "把「玩家创造内容」推到主机级销量；其教育应用与模组生态也让它成为跨代际的入门游戏范例。"
+  },
+  "sw-angry-birds": {
+    "titleZh": "《Angry Birds》",
+    "summary": "2009 年 Rovio 推出的移动物理弹射游戏，以抛物线轨迹与结构破坏为核心玩法。",
+    "significance": "移动端首发即全球爆款的代表；也是「触控 + 短会话 + 物理反馈」这一移动游戏公式的样板。"
+  },
+  "sw-guitar-hero": {
+    "titleZh": "《Guitar Hero》",
+    "summary": "2005 年 Harmonix 推出的节奏游戏，玩家使用吉他形状控制器模拟弹奏乐曲。",
+    "significance": "「外设即玩法」的里程碑；与《Rock Band》一道把音乐游戏从街机厅带进客厅，也带来首次发行的版权争议。"
+  },
+  "sw-garys-mod": {
+    "titleZh": "《Garry's Mod》",
+    "summary": "2006 年 Facepunch Studios 推出的沙盒游戏，以可自由搭建场景、物理沙盒与 Steam 创意工坊的模组分发为核心。",
+    "significance": "证明「工具 + 共享资产库 + 创意工坊」可以让玩家社区承担内容生产；也是 UGC 平台化的关键案例。"
+  },
+  "sw-braid": {
+    "titleZh": "《Braid》",
+    "summary": "2008 年 Jonathan Blow 独立开发的首发作品，以时间倒流、拼贴式美术与解谜式平台关卡为特色。",
+    "significance": "独立游戏进入主流视野的标志性作品之一，为后来的数字发行与独立发行提供了叙事样本。"
+  },
+  "sw-world-of-goo": {
+    "titleZh": "《World of Goo》",
+    "summary": "2008 年 2D Boy 推出的物理解谜游戏，堆叠会蠕动的结构体以支撑并抵达目标。",
+    "significance": "「小团队 + 独特物理 + 独立发行」的成功样本，说明差异化机制比模仿主流更能立足。"
+  },
+  "sw-portal": {
+    "titleZh": "《Portal》",
+    "summary": "2007 年 Valve 推出的第一人称解谜游戏，以传送门、重量方块与机器人的讽刺对白为核心。",
+    "significance": "「在既有类型里做出极高完成度」的典范；其对白驱动叙事与谜题物理结合影响了此后大量作品。"
+  },
+  "sw-left-4-dead": {
+    "titleZh": "《Left 4 Dead》",
+    "summary": "2008 年 Valve 推出的四人合作射击游戏，以 AI 队友引导、动态难度与关卡脚本化的敌人生成系统为特色。",
+    "significance": "「导演系统」控制敌人节奏的代表作；其四人在线合作也确立了非竞技向多人游戏的结构。"
+  },
+  "sw-maplestory": {
+    "titleZh": "《MapleStory》",
+    "summary": "2003 年 Wizet 开发、Nexon 发行的 2D 横向卷轴 MMORPG，以角色职业成长与长期更新运营著称。",
+    "significance": "亚洲 MMORPG 的代表形态；其长线运营与社区生态说明多人游戏可以成为长期社会空间。"
+  },
+
+  "hw-ipad": {
+    "titleZh": "Apple iPad（第一代）",
+    "summary": "2010 年发布的平板电脑，采用多点触控与较大屏幕，把消费电子与移动内容的边界重新划分。",
+    "significance": "直接催生了触屏原生游戏这一品类；也是「设备形态决定玩法」这一命题最清晰的一次验证。"
+  },
+  "hw-3ds": {
+    "titleZh": "Nintendo 3DS",
+    "summary": "2011 年推出的掌上主机，采用无需眼镜的裸眼 3D 显示与触摸屏，并支持 3D 摄影与街机模式。",
+    "significance": "以显示技术创新带动销量的便携设备案例；其 AR 相册等系统功能也把游戏与相机体验缝合。"
+  },
+  "hw-ps-vita": {
+    "titleZh": "PlayStation Vita",
+    "summary": "2011 年推出的掌上主机，配备 OLED 触摸屏、双摇杆与前后摄像头，并支持购买 PSP 数字游戏。",
+    "significance": "「掌机 + 家用机内容互通」的第一次系统级尝试，说明向下兼容本身不构成市场理由。"
+  },
+  "hw-ouya": {
+    "titleZh": "Ouya",
+    "summary": "2013 年发布的开源风格 Android 微主机，以每月免费游戏换取开发者分成与公开众筹模式引发关注。",
+    "significance": "「新型发行平台」尝试的经典案例；其遇冷揭示了硬件平台竞争中生态位比技术规格更决定成败。"
+  },
+  "hw-ps4": {
+    "titleZh": "PlayStation 4",
+    "summary": "2013 年推出的第八世代主机，采用 x86 架构处理器与高度集成的社交分享功能（分享按钮）。",
+    "significance": "「一键分享」把社交传播写进硬件操作，也推动了主机体验从客厅转向可展示的内容流。"
+  },
+  "hw-xbox-one": {
+    "titleZh": "Xbox One",
+    "summary": "2013 年推出的第八世代主机，以一体化电视功能、更名策略与强化的社交分享为特色。",
+    "significance": "「主机即家庭娱乐中心」定位的明确表达；其后期策略转向也说明主机竞争已进入生态与成本阶段。"
+  },
+  "sw-flappy-bird": {
+    "titleZh": "《Flappy Bird》",
+    "summary": "2013 年由越南开发者 Dong Nguyễn 发布的极简点击游戏，2014 年从应用商店下架。",
+    "significance": "「极简规则 + 极短会话 + 极强传播」的极致案例；它的消失本身也成为移动游戏商业逻辑的注脚。"
+  },
+  "sw-candy-crush": {
+    "titleZh": "《Candy Crush Saga》",
+    "summary": "2012 年 King 推出的三消社交游戏，以关卡制难度曲线、道具与好友排行榜构成留存结构。",
+    "significance": "移动端长线留存与变现设计的模板；也是「免费 + 内购」在大众市场跑通的代表作。"
+  },
+  "sw-temple-run": {
+    "titleZh": "《Temple Run》",
+    "summary": "2011 年 Imangi Studios 推出的无尽跑酷游戏，以陀螺仪操控转向、连续跑酷与复活机制为核心。",
+    "significance": "移动端体感操控与短循环玩法的代表作；被大量作品模仿，也推动了「体感即差异点」的产品思路。"
+  },
+  "sw-pvz2": {
+    "titleZh": "《Plants vs. Zombies 2》",
+    "summary": "2013 年 PopCap 与 EA 推出的续作，在塔防结构上加入世界地图推进、多种资源与社交挑战。",
+    "significance": "「主机级玩法 + 移动化关卡包装」的代表；也是免费游戏如何长期运营大型内容的样本。"
+  },
+  "sw-monument-valley": {
+    "titleZh": "《Monument Valley》",
+    "summary": "2014 年 ustwo games 推出的视错觉解谜游戏，通过正交投影与不可能几何构造空间谜题。",
+    "significance": "证明移动游戏可以实现纯艺术取向的高完成度表达；其视觉语言也影响了一批「安静游戏」。"
+  },
+  "sw-2048": {
+    "titleZh": "《2048》",
+    "summary": "2014 年由 Gabriele Cirulli 制作的开源数字合并小游戏，源码公开后迅速在网页与移动端扩散。",
+    "significance": "开源代码直接转化为全球现象的少见案例；其「一行规则 + 数字渐变反馈」也是极简设计的教科书。"
+  },
+  "sw-fnaf": {
+    "titleZh": "《Five Nights at Freddy's》",
+    "summary": "2014 年 Scott Cawthon 制作、以监控视角与夜间安保为设定的恐怖游戏，主要依靠音视频线索而非动作。",
+    "significance": "「低成本高概念」的独立游戏成功样本，也展示了一种几乎不依赖传统玩法循环的恐怖营造方式。"
+  },
+  "sw-papers-please": {
+    "titleZh": "《Papers, Please》",
+    "summary": "2013 年 Lucas Pope 开发的文字界面模拟游戏，玩家扮演边境检查员审阅证件并执行不断变化的规则。",
+    "significance": "把道德困境做成核心玩法的杰作；其极简图形与层层加码的制度压力产生了强烈的叙事张力。"
+  },
+  "sw-gone-home": {
+    "titleZh": "《Gone Home》",
+    "summary": "2013 年 The Fullbright Company 推出的第一人称叙事探索游戏，全程无战斗，靠环境与物品讲述家庭故事。",
+    "significance": "「环境叙事」与「无对抗体验」的高完成度代表；让独立游戏证明叙事可以独立成为卖点。"
+  },
+  "sw-vvvvvv": {
+    "titleZh": "《VVVVVV》",
+    "summary": "2010 年 Terry Cavanagh 制作的平台游戏，玩家操控角色在重力反转的关卡间移动，可开启简单与困难模式。",
+    "significance": "独立开发者以极简视听风格与高难度设计获得主流关注的早期样本；其自创音乐也说明独立游戏的表达自主度。"
+  },
+  "sw-sword-sworcery": {
+    "titleZh": "《Superbrothers: Sword & Sworcery EP》",
+    "summary": "2011 年 Capybara Games 推出的像素风冒险游戏，以电子配乐、色彩与梦境式场景配合点击解谜。",
+    "significance": "「独立游戏作为艺术表达」的先声；其低分辨率美术与声音设计的组合被大量后续作品借鉴。"
+  },
+  "sw-terraria": {
+    "titleZh": "《Terraria》",
+    "summary": "2011 年 Re-Logic 发布的 2D 沙盒冒险游戏，包含挖掘、建造、战斗、装备与大量程序生成世界。",
+    "significance": "以开发成本远低于《Minecraft》却同样提供沙盒深度的作品，证明类型上限不由预算决定。"
+  },
+  "sw-cut-the-rope": {
+    "titleZh": "《Cut the Rope》",
+    "summary": "2010 年 ZeptoLab 推出的休闲解谜游戏，玩家割断绳索以把糖果送入怪物口中。",
+    "significance": "移动端「一屏一关」结构的代表；说明极短关卡与直观物理可以在手机上形成稳定的留存。"
+  },
+  "sw-super-meat-boy": {
+    "titleZh": "《Super Meat Boy》",
+    "summary": "2010 年 Team Meat 制作的精确平台游戏，玩家控制不断牺牲的肉块在关卡间高速通过。",
+    "significance": "「高响应手感 + 即时重开」定义的当代独立平台体验，影响了此后大量硬核向平台作品。"
+  }
+}

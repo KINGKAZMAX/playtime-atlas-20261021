@@ -1,0 +1,68 @@
+name: Deploy Playtime Atlas to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: '本次手动触发的原因（写入构建日志）'
+        required: false
+        default: 'manual'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 构建作品总廊
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出源码
+        uses: actions/checkout@v4
+
+      - name: 安装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 生成封面
+        run: node scripts/make-covers.mjs
+
+      - name: 构建全部作品并组装 site/
+        run: node scripts/build.mjs
+
+      - name: 产物清单
+        run: |
+          echo "### site/ 体积" >> "$GITHUB_STEP_SUMMARY"
+          du -sh site | sed 's/^/site: /' >> "$GITHUB_STEP_SUMMARY"
+          find site -maxdepth 2 -type d | sort | head -60 >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "### 构建报告" >> "$GITHUB_STEP_SUMMARY"
+          node -e "const r=require('./site/data/build-report.json');console.log(JSON.stringify(r.totals));r.works.forEach(w=>console.log(w.id,'→',w.buildState));" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传站点产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    name: 发布到 GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 发布
+        id: deployment
+        uses: actions/deploy-pages@v4

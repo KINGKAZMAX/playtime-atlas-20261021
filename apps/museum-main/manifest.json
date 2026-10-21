@@ -1,0 +1,75 @@
+{
+  "id": "06-museum-core",
+  "title": "回响电玩馆 · PLAYTIME ATLAS",
+  "description": "一座关于电子游戏时间的原创可漫游博物馆主站：十个年代门沿时间长廊排开，含 2D 无障碍目录、检索筛选、收藏、展品详情与逐条来源，以及一个可选的程序化 3D 展厅与四个已并入的可玩展厅。",
+  "entry": "index.html",
+  "buildCommand": "npm run build",
+  "outputDir": "dist",
+  "status": "ready",
+  "upstream": "06-museum-core",
+  "license": {
+    "code": "MIT",
+    "assets": "展品图像为程序化抽象图形，不使用任何商业游戏截帧或品牌 logo"
+  },
+  "sources": [
+    {
+      "title": "策展底稿：05 联网策展目录（生成中）",
+      "url": "",
+      "note": "目录项逐条附来源 URL；代表性选样，不宣称穷尽全时代。"
+    }
+  ],
+  "port": 4326,
+  "type": "static-site",
+  "stack": [
+    "vite",
+    "vanilla-esm",
+    "three.js"
+  ],
+  "offline": true,
+  "entrypoints": [
+    {
+      "id": "06-museum-core",
+      "title": "回响电玩馆 · PLAYTIME ATLAS",
+      "path": "index.html",
+      "note": "博物馆主站；馆内导览、时间长廊、2D 目录、可选 3D 展厅"
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "origins",
+      "task": "08-era-origins",
+      "status": "pending",
+      "path": "exhibits/origins/index.html"
+    },
+    {
+      "id": "arcade",
+      "task": "09-era-arcade",
+      "status": "integrated",
+      "path": "exhibits/arcade/index.html"
+    },
+    {
+      "id": "console",
+      "task": "10-era-console",
+      "status": "integrated",
+      "path": "exhibits/console/index.html"
+    },
+    {
+      "id": "online",
+      "task": "11-era-online",
+      "status": "integrated",
+      "path": "exhibits/online/index.html"
+    },
+    {
+      "id": "modern",
+      "task": "12-era-modern",
+      "status": "integrated",
+      "path": "exhibits/modern/index.html"
+    }
+  ],
+  "integrations": {
+    "catalog": "05-museum-research → public/data/catalog.json（运行时优先级最高）",
+    "art": "07-museum-art → public/art/assets/ + public/data/design-tokens.json",
+    "games": "08–12 → public/exhibits/<dir>/"
+  },
+  "notes": "本任务只交付可静态构建的产物；GitHub 仓库创建与 Pages 部署由 14-publish 统一执行。"
+}

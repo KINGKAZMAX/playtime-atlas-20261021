@@ -1,0 +1,187 @@
+{
+  "id": "modern-06",
+  "name": "矢量节点",
+  "latin": "VECTOR NODE",
+  "range": "2020 — 至今",
+  "form": "立式模块化主机",
+  "story": "一台更像「设备」而不是「玩具」的机器。侧板可以整块抽走，格栅后面是沉默的算力。橙色指示灯只亮一次，意思是：它在等你打开自己。",
+  "note": "原创提炼：取当代主机/PC 融合形态的立式机箱与模块化侧板，通风栅格样式与分色为原创。",
+  "parts": [
+    {
+      "name": "底座",
+      "material": "shell-deep"
+    },
+    {
+      "name": "机箱",
+      "material": "shell-mid"
+    },
+    {
+      "name": "顶盖",
+      "material": "shell-light"
+    },
+    {
+      "name": "顶盖饰条",
+      "material": "accent"
+    },
+    {
+      "name": "散热格栅1",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅2",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅3",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅4",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅5",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅6",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅7",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅8",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅9",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅10",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅11",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅12",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅13",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅14",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热格栅15",
+      "material": "shell-deep"
+    },
+    {
+      "name": "前面板饰框",
+      "material": "shell-deep"
+    },
+    {
+      "name": "状态指示灯",
+      "material": "accent-lit"
+    },
+    {
+      "name": "指示灯槽",
+      "material": "shell-deep"
+    },
+    {
+      "name": "可拆侧板",
+      "material": "shell-light"
+    },
+    {
+      "name": "侧板接缝",
+      "material": "shell-deep"
+    },
+    {
+      "name": "侧板扣手",
+      "material": "metal"
+    },
+    {
+      "name": "脚垫左后",
+      "material": "shell-deep"
+    },
+    {
+      "name": "脚垫右后",
+      "material": "shell-deep"
+    },
+    {
+      "name": "脚垫左前",
+      "material": "shell-deep"
+    },
+    {
+      "name": "脚垫右前",
+      "material": "shell-deep"
+    },
+    {
+      "name": "后部散热槽1",
+      "material": "shell-deep"
+    },
+    {
+      "name": "后部散热槽2",
+      "material": "shell-deep"
+    },
+    {
+      "name": "后部散热槽3",
+      "material": "shell-deep"
+    },
+    {
+      "name": "后部散热槽4",
+      "material": "shell-deep"
+    },
+    {
+      "name": "后部散热槽5",
+      "material": "shell-deep"
+    },
+    {
+      "name": "后部散热槽6",
+      "material": "shell-deep"
+    },
+    {
+      "name": "接口面板",
+      "material": "shell-deep"
+    }
+  ],
+  "partCount": 36,
+  "triangleCount": 1044,
+  "dimensions": {
+    "w": 0.18,
+    "h": 0.34,
+    "d": 0.18
+  },
+  "measuredBounds": {
+    "min": [
+      -0.095,
+      0,
+      -0.136
+    ],
+    "max": [
+      0.096,
+      0.3375,
+      0.205
+    ],
+    "size": [
+      0.191,
+      0.3375,
+      0.341
+    ]
+  },
+  "files": {
+    "glb": "./model-modern-06.glb",
+    "png": "./model-modern-06.png",
+    "techSvg": "./model-modern-06.tech.svg",
+    "json": "./model-modern-06.json"
+  },
+  "license": "CC0-1.0",
+  "origin": "本馆原创虚构展品"
+}

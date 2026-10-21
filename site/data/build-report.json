@@ -1,0 +1,223 @@
+{
+  "builtAt": "2026-10-21T09:12:59.980Z",
+  "node": "v24.13.0",
+  "works": [
+    {
+      "id": "01-tiny-pocket",
+      "title": "口袋终端",
+      "type": "npm",
+      "outputDir": "site/works/01-tiny-pocket",
+      "buildState": "unavailable",
+      "built": false,
+      "fallback": false,
+      "bytes": 0,
+      "durationMs": 390,
+      "notes": [
+        "npm run build 失败 (exit 1)"
+      ],
+      "absolutePathRisks": [],
+      "entryExists": false
+    },
+    {
+      "id": "mech-sandworm",
+      "title": "机械沙虫 1312M",
+      "type": "npm",
+      "outputDir": "site/works/mech-sandworm",
+      "buildState": "built",
+      "built": true,
+      "fallback": false,
+      "bytes": 688809,
+      "durationMs": 1791,
+      "notes": [],
+      "absolutePathRisks": [],
+      "entryExists": true
+    },
+    {
+      "id": "03-monstera-study",
+      "title": "龟背竹观察室",
+      "type": "npm",
+      "outputDir": "site/works/03-monstera-study",
+      "buildState": "unavailable",
+      "built": false,
+      "fallback": false,
+      "bytes": 0,
+      "durationMs": 0,
+      "notes": [
+        "缺少 package.json，无法构建"
+      ],
+      "absolutePathRisks": [],
+      "entryExists": false
+    },
+    {
+      "id": "deep-space-drifter",
+      "title": "深空漫游",
+      "type": "npm",
+      "outputDir": "site/works/deep-space-drifter",
+      "buildState": "built",
+      "built": true,
+      "fallback": false,
+      "bytes": 677609,
+      "durationMs": 1806,
+      "notes": [],
+      "absolutePathRisks": [],
+      "entryExists": true
+    },
+    {
+      "id": "museum-main",
+      "title": "回响电玩馆",
+      "type": "npm",
+      "outputDir": "site/works/museum-main",
+      "buildState": "built",
+      "built": true,
+      "fallback": false,
+      "bytes": 38139937,
+      "durationMs": 3426,
+      "notes": [],
+      "absolutePathRisks": [],
+      "entryExists": true
+    },
+    {
+      "id": "museum-art",
+      "title": "美术资产包预览",
+      "type": "npm",
+      "outputDir": "site/works/museum-art",
+      "buildState": "unavailable",
+      "built": false,
+      "fallback": false,
+      "bytes": 0,
+      "durationMs": 598,
+      "notes": [
+        "npm run build 失败 (exit 1)"
+      ],
+      "absolutePathRisks": [],
+      "entryExists": false
+    },
+    {
+      "id": "era-origins",
+      "title": "光点年代",
+      "type": "npm",
+      "outputDir": "site/works/era-origins",
+      "buildState": "unavailable",
+      "built": false,
+      "fallback": false,
+      "bytes": 0,
+      "durationMs": 643,
+      "notes": [
+        "npm run build 失败 (exit 1)"
+      ],
+      "absolutePathRisks": [],
+      "entryExists": false
+    },
+    {
+      "id": "era-arcade",
+      "title": "霓虹街廊",
+      "type": "npm",
+      "outputDir": "site/works/era-arcade",
+      "buildState": "built",
+      "built": true,
+      "fallback": false,
+      "bytes": 88944,
+      "durationMs": 760,
+      "notes": [],
+      "absolutePathRisks": [],
+      "entryExists": true
+    },
+    {
+      "id": "era-console",
+      "title": "色块远征",
+      "type": "npm",
+      "outputDir": "site/works/era-console",
+      "buildState": "built",
+      "built": true,
+      "fallback": false,
+      "bytes": 127072,
+      "durationMs": 841,
+      "notes": [],
+      "absolutePathRisks": [],
+      "entryExists": true
+    },
+    {
+      "id": "era-online",
+      "title": "联机曙光",
+      "type": "npm",
+      "outputDir": "site/works/era-online",
+      "buildState": "unavailable",
+      "built": false,
+      "fallback": false,
+      "bytes": 0,
+      "durationMs": 385,
+      "notes": [
+        "npm run build 失败 (exit 1)"
+      ],
+      "absolutePathRisks": [],
+      "entryExists": false
+    },
+    {
+      "id": "era-modern",
+      "title": "万象游乐",
+      "type": "npm",
+      "outputDir": "site/works/era-modern",
+      "buildState": "built",
+      "built": true,
+      "fallback": false,
+      "bytes": 783824,
+      "durationMs": 1682,
+      "notes": [],
+      "absolutePathRisks": [],
+      "entryExists": true
+    },
+    {
+      "id": "research-top3",
+      "title": "TOP3 案例核验",
+      "type": "page",
+      "outputDir": "site/research",
+      "buildState": "built",
+      "built": true,
+      "fallback": false,
+      "bytes": 10532,
+      "durationMs": 61,
+      "notes": [],
+      "absolutePathRisks": [],
+      "entryExists": true
+    },
+    {
+      "id": "museum-catalog",
+      "title": "博物馆策展目录",
+      "type": "page",
+      "outputDir": "site/research",
+      "buildState": "unavailable",
+      "built": false,
+      "fallback": false,
+      "bytes": 0,
+      "durationMs": 38,
+      "notes": [
+        "node scripts/build-catalog-page.mjs 失败 (exit 1)"
+      ],
+      "absolutePathRisks": [],
+      "entryExists": false
+    },
+    {
+      "id": "qa-report",
+      "title": "全作品验收报告",
+      "type": "page",
+      "outputDir": "site/qa",
+      "buildState": "unavailable",
+      "built": false,
+      "fallback": false,
+      "bytes": 0,
+      "durationMs": 38,
+      "notes": [
+        "node scripts/build-qa-page.mjs 失败 (exit 1)"
+      ],
+      "absolutePathRisks": [],
+      "entryExists": false
+    }
+  ],
+  "totals": {
+    "total": 14,
+    "built": 7,
+    "fallback": 0,
+    "unavailable": 7,
+    "bytes": 40516727
+  }
+}

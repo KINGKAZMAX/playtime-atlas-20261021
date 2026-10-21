@@ -1,0 +1,397 @@
+{
+  "count": 48,
+  "categories": {
+    "nav": "导航",
+    "era": "年代",
+    "action": "操作",
+    "media": "媒体",
+    "audio": "声音",
+    "state": "状态"
+  },
+  "icons": [
+    {
+      "name": "arrow-left",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "返回",
+      "file": "./arrow-left.svg",
+      "sprite": "#atlas-icon-arrow-left"
+    },
+    {
+      "name": "arrow-right",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "前进",
+      "file": "./arrow-right.svg",
+      "sprite": "#atlas-icon-arrow-right"
+    },
+    {
+      "name": "arrow-up-right",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "外链",
+      "file": "./arrow-up-right.svg",
+      "sprite": "#atlas-icon-arrow-up-right"
+    },
+    {
+      "name": "menu",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "菜单",
+      "file": "./menu.svg",
+      "sprite": "#atlas-icon-menu"
+    },
+    {
+      "name": "close",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "关闭",
+      "file": "./close.svg",
+      "sprite": "#atlas-icon-close"
+    },
+    {
+      "name": "search",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "搜索",
+      "file": "./search.svg",
+      "sprite": "#atlas-icon-search"
+    },
+    {
+      "name": "filter",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "筛选",
+      "file": "./filter.svg",
+      "sprite": "#atlas-icon-filter"
+    },
+    {
+      "name": "grid",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "网格视图",
+      "file": "./grid.svg",
+      "sprite": "#atlas-icon-grid"
+    },
+    {
+      "name": "list",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "列表视图",
+      "file": "./list.svg",
+      "sprite": "#atlas-icon-list"
+    },
+    {
+      "name": "map",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "展厅平面",
+      "file": "./map.svg",
+      "sprite": "#atlas-icon-map"
+    },
+    {
+      "name": "clock",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "年代",
+      "file": "./clock.svg",
+      "sprite": "#atlas-icon-clock"
+    },
+    {
+      "name": "compass",
+      "category": "nav",
+      "categoryLabel": "导航",
+      "label": "导览",
+      "file": "./compass.svg",
+      "sprite": "#atlas-icon-compass"
+    },
+    {
+      "name": "era-01",
+      "category": "era",
+      "categoryLabel": "年代",
+      "label": "街机初萌",
+      "file": "./era-01.svg",
+      "sprite": "#atlas-icon-era-01"
+    },
+    {
+      "name": "era-02",
+      "category": "era",
+      "categoryLabel": "年代",
+      "label": "街机黄金",
+      "file": "./era-02.svg",
+      "sprite": "#atlas-icon-era-02"
+    },
+    {
+      "name": "era-03",
+      "category": "era",
+      "categoryLabel": "年代",
+      "label": "八位年代",
+      "file": "./era-03.svg",
+      "sprite": "#atlas-icon-era-03"
+    },
+    {
+      "name": "era-04",
+      "category": "era",
+      "categoryLabel": "年代",
+      "label": "光盘纪元",
+      "file": "./era-04.svg",
+      "sprite": "#atlas-icon-era-04"
+    },
+    {
+      "name": "era-05",
+      "category": "era",
+      "categoryLabel": "年代",
+      "label": "三维与网络",
+      "file": "./era-05.svg",
+      "sprite": "#atlas-icon-era-05"
+    },
+    {
+      "name": "era-06",
+      "category": "era",
+      "categoryLabel": "年代",
+      "label": "掌机与联机",
+      "file": "./era-06.svg",
+      "sprite": "#atlas-icon-era-06"
+    },
+    {
+      "name": "era-07",
+      "category": "era",
+      "categoryLabel": "年代",
+      "label": "融合与云",
+      "file": "./era-07.svg",
+      "sprite": "#atlas-icon-era-07"
+    },
+    {
+      "name": "play",
+      "category": "action",
+      "categoryLabel": "操作",
+      "label": "开始游玩",
+      "file": "./play.svg",
+      "sprite": "#atlas-icon-play"
+    },
+    {
+      "name": "pause",
+      "category": "action",
+      "categoryLabel": "操作",
+      "label": "暂停",
+      "file": "./pause.svg",
+      "sprite": "#atlas-icon-pause"
+    },
+    {
+      "name": "collect",
+      "category": "action",
+      "categoryLabel": "操作",
+      "label": "收藏",
+      "file": "./collect.svg",
+      "sprite": "#atlas-icon-collect"
+    },
+    {
+      "name": "bookmark",
+      "category": "action",
+      "categoryLabel": "操作",
+      "label": "标记",
+      "file": "./bookmark.svg",
+      "sprite": "#atlas-icon-bookmark"
+    },
+    {
+      "name": "share",
+      "category": "action",
+      "categoryLabel": "操作",
+      "label": "分享",
+      "file": "./share.svg",
+      "sprite": "#atlas-icon-share"
+    },
+    {
+      "name": "download",
+      "category": "action",
+      "categoryLabel": "操作",
+      "label": "下载",
+      "file": "./download.svg",
+      "sprite": "#atlas-icon-download"
+    },
+    {
+      "name": "external",
+      "category": "action",
+      "categoryLabel": "操作",
+      "label": "在新窗口打开",
+      "file": "./external.svg",
+      "sprite": "#atlas-icon-external"
+    },
+    {
+      "name": "reset",
+      "category": "action",
+      "categoryLabel": "操作",
+      "label": "重置",
+      "file": "./reset.svg",
+      "sprite": "#atlas-icon-reset"
+    },
+    {
+      "name": "fullscreen",
+      "category": "action",
+      "categoryLabel": "操作",
+      "label": "全屏",
+      "file": "./fullscreen.svg",
+      "sprite": "#atlas-icon-fullscreen"
+    },
+    {
+      "name": "camera",
+      "category": "action",
+      "categoryLabel": "操作",
+      "label": "截图",
+      "file": "./camera.svg",
+      "sprite": "#atlas-icon-camera"
+    },
+    {
+      "name": "volume",
+      "category": "media",
+      "categoryLabel": "媒体",
+      "label": "音量",
+      "file": "./volume.svg",
+      "sprite": "#atlas-icon-volume"
+    },
+    {
+      "name": "volume-mute",
+      "category": "media",
+      "categoryLabel": "媒体",
+      "label": "静音",
+      "file": "./volume-mute.svg",
+      "sprite": "#atlas-icon-volume-mute"
+    },
+    {
+      "name": "headphone",
+      "category": "media",
+      "categoryLabel": "媒体",
+      "label": "耳机",
+      "file": "./headphone.svg",
+      "sprite": "#atlas-icon-headphone"
+    },
+    {
+      "name": "image",
+      "category": "media",
+      "categoryLabel": "媒体",
+      "label": "图像",
+      "file": "./image.svg",
+      "sprite": "#atlas-icon-image"
+    },
+    {
+      "name": "video",
+      "category": "media",
+      "categoryLabel": "媒体",
+      "label": "视频",
+      "file": "./video.svg",
+      "sprite": "#atlas-icon-video"
+    },
+    {
+      "name": "disc",
+      "category": "media",
+      "categoryLabel": "媒体",
+      "label": "光盘",
+      "file": "./disc.svg",
+      "sprite": "#atlas-icon-disc"
+    },
+    {
+      "name": "joystick",
+      "category": "media",
+      "categoryLabel": "媒体",
+      "label": "摇杆",
+      "file": "./joystick.svg",
+      "sprite": "#atlas-icon-joystick"
+    },
+    {
+      "name": "handheld",
+      "category": "media",
+      "categoryLabel": "媒体",
+      "label": "掌机",
+      "file": "./handheld.svg",
+      "sprite": "#atlas-icon-handheld"
+    },
+    {
+      "name": "waveform",
+      "category": "audio",
+      "categoryLabel": "声音",
+      "label": "波形",
+      "file": "./waveform.svg",
+      "sprite": "#atlas-icon-waveform"
+    },
+    {
+      "name": "note",
+      "category": "audio",
+      "categoryLabel": "声音",
+      "label": "音符",
+      "file": "./note.svg",
+      "sprite": "#atlas-icon-note"
+    },
+    {
+      "name": "piano",
+      "category": "audio",
+      "categoryLabel": "声音",
+      "label": "键盘",
+      "file": "./piano.svg",
+      "sprite": "#atlas-icon-piano"
+    },
+    {
+      "name": "radio",
+      "category": "audio",
+      "categoryLabel": "声音",
+      "label": "收音机",
+      "file": "./radio.svg",
+      "sprite": "#atlas-icon-radio"
+    },
+    {
+      "name": "check",
+      "category": "state",
+      "categoryLabel": "状态",
+      "label": "已完成",
+      "file": "./check.svg",
+      "sprite": "#atlas-icon-check"
+    },
+    {
+      "name": "warning",
+      "category": "state",
+      "categoryLabel": "状态",
+      "label": "注意",
+      "file": "./warning.svg",
+      "sprite": "#atlas-icon-warning"
+    },
+    {
+      "name": "error",
+      "category": "state",
+      "categoryLabel": "状态",
+      "label": "错误",
+      "file": "./error.svg",
+      "sprite": "#atlas-icon-error"
+    },
+    {
+      "name": "info",
+      "category": "state",
+      "categoryLabel": "状态",
+      "label": "说明",
+      "file": "./info.svg",
+      "sprite": "#atlas-icon-info"
+    },
+    {
+      "name": "pending",
+      "category": "state",
+      "categoryLabel": "状态",
+      "label": "待整理",
+      "file": "./pending.svg",
+      "sprite": "#atlas-icon-pending"
+    },
+    {
+      "name": "locked",
+      "category": "state",
+      "categoryLabel": "状态",
+      "label": "未公开",
+      "file": "./locked.svg",
+      "sprite": "#atlas-icon-locked"
+    },
+    {
+      "name": "offline",
+      "category": "state",
+      "categoryLabel": "状态",
+      "label": "离线",
+      "file": "./offline.svg",
+      "sprite": "#atlas-icon-offline"
+    }
+  ]
+}

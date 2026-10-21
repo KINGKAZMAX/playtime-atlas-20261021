@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="phone 轮廓">
+  <rect width="120" height="120" rx="16" fill="#0D1526"/>
+  <rect x="40" y="14" width="40" height="92" rx="10" fill="#F4EDE0" opacity="0.9"/><rect x="46" y="24" width="28" height="46" rx="3" fill="#0D1526" opacity="0.85"/><circle cx="60" cy="84" r="6" fill="#0D1526" opacity="0.35"/><circle cx="60" cy="84" r="3" fill="#FF6B2C"/>
+</svg>

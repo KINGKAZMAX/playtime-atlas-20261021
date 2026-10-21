@@ -1,0 +1,21 @@
+{
+  "id": "museum-catalog",
+  "title": "博物馆策展目录",
+  "description": "1950s 实验电子到 2020s VR 与独立游戏的代表硬件与作品目录，逐条附年代、平台、厂商、说明、意义与来源链接，并标注配图许可状态。",
+  "entry": "research/catalog.html",
+  "buildCommand": "node scripts/build-catalog-page.mjs",
+  "outputDir": "site/research",
+  "status": "pending",
+  "upstream": "05-museum-research",
+  "license": {
+    "code": "MIT",
+    "assets": "文本条目与来源链接；配图为程序化抽象图形"
+  },
+  "sources": [
+    {
+      "title": "来源台账 SOURCES.md（随 05 交付）",
+      "url": "",
+      "note": "每条至少一条可访问来源 URL。"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "playtime-atlas-20261021",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "回响电玩馆 · 作品总廊 — 本批 MiniMax M3.1 Flash 关联作品、年代展厅与来源档案的统一静态站点，GitHub Pages 自动部署",
+  "license": "MIT",
+  "scripts": {
+    "sync": "node scripts/sync-apps.mjs",
+    "covers": "node scripts/make-covers.mjs",
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs",
+    "pages": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

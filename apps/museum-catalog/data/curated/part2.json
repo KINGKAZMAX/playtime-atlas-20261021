@@ -1,0 +1,218 @@
+{
+  "hw-vic20": {
+    "titleZh": "Commodore VIC-20",
+    "summary": "1980 年 Commodore 推出的家用计算机，率先把彩色字符与图形能力装进低价整机上，累计销量远超其他同期机型。",
+    "significance": "让家用计算机进入普通家庭价格带的标志性产品；也是「家用机销量突破玩具量级」这一转折的起点。"
+  },
+  "hw-game-and-watch": {
+    "titleZh": "Game & Watch（游戏与手表）",
+    "summary": "1980 年 Nintendo 推出的液晶电子游戏掌机系列，采用双屏折叠结构与单键控制，兼具秒表功能。",
+    "significance": "把电子游戏装进口袋的第一条产品路线；其极简操作与「随时可玩」的场景设定影响了此后所有掌机设计语言。"
+  },
+  "hw-zx-spectrum": {
+    "titleZh": "Sinclair ZX Spectrum",
+    "summary": "1981 年 Sinclair Research 推出的 8 位家用计算机，以彩色图形与廉价键盘著称，催生了英国本土的独立游戏发行生态。",
+    "significance": "「低门槛硬件 + 玩家自购软件」造就了欧洲最活跃的早期家用游戏市场之一，是理解 8 位时代发行格局的关键机型。"
+  },
+  "hw-commodore-64": {
+    "titleZh": "Commodore 64",
+    "summary": "1982 年由 Commodore 推出的 8 位家用计算机，集成声音芯片与图形芯片，是史上销量最高的单一计算机型号之一。",
+    "significance": "8 位时代的绝对中心机型；大量经典作品的原生平台，也是家用机「内容与硬件互相成就」的样板。"
+  },
+  "hw-colecovision": {
+    "titleZh": "ColecoVision",
+    "summary": "1982 年 Coleco 推出的 8 位卡带主机，以扩展模块与高质量精灵图形著称，在北美市场曾一度紧咬 Atari 2600。",
+    "significance": "「可扩展硬件 + 第三方卡带」的另一种成功方案，说明家用机竞争不只发生在主机之间。"
+  },
+  "hw-famicom": {
+    "titleZh": "Nintendo Famicom（Family Computer）",
+    "summary": "1983 年 Nintendo 在日本推出的 8 位家用主机，采用磁带式大容量卡带与配套光线枪等外设。",
+    "significance": "把家用机从「计算机配件」重新定位为「有独立身份的家庭娱乐设备」，为后来的 NES 全球统治奠定基础。"
+  },
+  "hw-nes": {
+    "titleZh": "Nintendo Entertainment System（NES）",
+    "summary": "1985 年在北美推出的 Famicom 欧美版主机，通过更换机型与内置授权机型制，在美国家用机市场重振 Nintendo。",
+    "significance": "1980 年代末美国家用机市场的决定性产品；其独占策略也直接催生了《俄罗斯方块》授权风波等产业事件。"
+  },
+  "hw-amiga": {
+    "titleZh": "Commodore Amiga",
+    "summary": "1985 年推出的 Amiga 系列家用计算机，采用定制协处理器实现多任务与彩色图形，在图形与音频表现上大幅超越同代 8 位机。",
+    "significance": "「多媒体电脑」路线的代表；是理解《Elite》这类早期开放宇宙玩法为何能成立的硬件前提。"
+  },
+  "hw-master-system": {
+    "titleZh": "Sega Master System",
+    "summary": "1986 年 Sega 推出的 8 位家用主机，配备 3D 眼镜与手柄等多款外设，在欧洲与巴西长期占据主导地位。",
+    "significance": "证明非日系厂商也能靠外设与本地化运营打开家用机市场；其失败与成功共同定义了 8 位世代的竞争烈度。"
+  },
+  "hw-mega-drive": {
+    "titleZh": "Sega Mega Drive / Genesis",
+    "summary": "1988 年 Sega 推出的 16 位家用主机，内置一个 8 位副处理器以兼容老游戏，是 1980 年代末销量最高的 16 位机之一。",
+    "significance": "以街机质量与性能优势对抗 Nintendo 的家用机战略；也是「厂商内部街机与家用部门互相喂养」的经典样本。"
+  },
+  "sw-pac-man": {
+    "titleZh": "《Pac-Man》",
+    "summary": "1980 年 Namco 推出的街机游戏，Toru Iwatani 以「吃点心避开幽灵」替代了当时流行的射击敌对叙事。",
+    "significance": "非对抗性目标设计的里程碑，也是第一个真正大规模跨越性别与年龄层级的街机角色；「吃豆人」至今仍是最通用的游戏图标之一。"
+  },
+  "sw-donkey-kong": {
+    "titleZh": "《Donkey Kong》",
+    "summary": "1981 年 Nintendo 推出的街机游戏，Shigeru Miyamoto 设计的爬梯与躲避结构确立了平台跳跃的关卡语法。",
+    "significance": "平台跳跃类的定义作；也是「Jumpman」这一形象日后更名为 Mario 并独立成主角的起点。"
+  },
+  "sw-tetris": {
+    "titleZh": "《Tetris》（俄罗斯方块）",
+    "summary": "1984 年由苏联数学家 Alexey Pajitnov 与 Vadim Gerasimov 创作、Elorg 发行，后经多家授权扩散到全球各平台。",
+    "significance": "「极简规则 + 随机性 + 速度曲线」的杰作，也是电子游戏史上版权归属与发行权争夺最著名的案例。"
+  },
+  "sw-elite": {
+    "titleZh": "《Elite》",
+    "summary": "1984 年 David Braben 与 Ian Bell 开发、BBC Micro 首发的太空探索与贸易游戏，采用线框三维与程序生成的多星系宇宙。",
+    "significance": "程序化生成与「自由目标 + 资源循环」玩法的里程碑；被称为把「开放宇宙」变成可行玩法的作品之一。"
+  },
+  "sw-super-mario-bros": {
+    "titleZh": "《Super Mario Bros.》",
+    "summary": "1985 年 Nintendo 推出的横版卷轴平台游戏，Shigeru Miyamoto 与 Takashi Tezuka 主导设计，以跳跃与关卡节奏为核心。",
+    "significance": "确立现代平台游戏的手感、镜头与关卡设计范式，并成为家用机在美国家庭中的文化入口。"
+  },
+  "sw-legend-of-zelda": {
+    "titleZh": "《The Legend of Zelda》",
+    "summary": "1986 年 Nintendo 推出的动作冒险游戏，在 Famicom Disk System 上首发，引入俯视视角、迷宫与道具驱动的探索。",
+    "significance": "动作冒险类型的确立作品；其「先探索、后解谜」的节奏与角色驱动的叙事都为后世沿用。"
+  },
+  "sw-prince-of-persia": {
+    "titleZh": "《Prince of Persia》（1989 版）",
+    "summary": "1989 年 Jordan Mechner 制作、Brøderbund 发行的动作冒险游戏，以逐帧动画手绘场景与实时动画混合制作。",
+    "significance": "「电影化叙事 + 精密动作」的标准；也是家用机上少见的高制作值动画与关卡设计范例。"
+  },
+  "sw-simcity": {
+    "titleZh": "《SimCity》",
+    "summary": "1989 年由 Maxis 发行、Will Wright 与 Jeff Braun 开发的城市建造模拟游戏，玩家在网格上规划分区并管理预算。",
+    "significance": "「系统模拟」品类的开山者之一；把城市当作一台可推演的机器，也是「沙盒」与「模拟」两类玩法的分水岭。"
+  },
+  "sw-space-quest": {
+    "titleZh": "《Space Quest》",
+    "summary": "1986 年 Sierra On-Line 发行、Mark Crowe 与 Scott Murphy 开发的点击式冒险游戏，以幽默对话与解析式谜题驱动。",
+    "significance": "把个人电脑从「工具」变成「可讲故事的媒介」；点击式图形冒险的代表作，也带动了 1990 年代的冒险游戏热潮。"
+  },
+  "sw-gradius": {
+    "titleZh": "《Gradius》",
+    "summary": "1985 年 Konami 推出的横向卷轴射击游戏，含可选分级的能量系统与横版关卡滚动。",
+    "significance": "「横版 + 卷轴 + 火力选择」这一射击子类型的标准形态，对后续射击作品影响极广。"
+  },
+  "sw-dragons-lair": {
+    "titleZh": "《Dragon's Lair》",
+    "summary": "1983 年 Cinematronics 推出、由 Don Bluth 执导的激光碟游戏，画面为预渲染动画，玩家输入时机指令决定剧情走向。",
+    "significance": "「预先渲染 + 玩家输入」的早期实现，也是「动画电影人才进入电子游戏」的标志性合作；光碟格式的可行性实验。"
+  },
+  "sw-adventure-atari": {
+    "titleZh": "《Adventure》（Atari 2600 版）",
+    "summary": "1980 年 Warren Robinett 为 Atari 2600 制作的动作冒险游戏，地图由画面符号拼成，包含迷宫、道具与巨龙，并藏有开发者签名彩蛋。",
+    "significance": "家用机上开放探索与隐藏内容的早期代表；「彩蛋」文化由此正式进入电子游戏。"
+  },
+  "sw-arkanoid": {
+    "titleZh": "《Arkanoid》",
+    "summary": "1986 年 Romstar 推出、由 Akira Fujita 设计的街机打砖块游戏，沿用《Breakout》结构但加入道具系统与关卡编排。",
+    "significance": "「简单物理 + 道具系统」如何撑起长线留存的范式；也是日本厂商输出规则型玩法的代表。"
+  },
+
+  "hw-snes": {
+    "titleZh": "Super Nintendo Entertainment System（SNES / Super Famicom）",
+    "summary": "1990 年推出的 16 位家用主机，加入了图形协处理器与音效芯片，为 2D 游戏提供远超 8 位机的表现力。",
+    "significance": "把 2D 游戏的画面与音频推到当时的技术上限；也是家用机从「简化版街机」转向「独立表达」的分界。"
+  },
+  "hw-3do": {
+    "titleZh": "3DO Interactive Multiplayer",
+    "summary": "1993 年由 3DO Company 推出、多家厂商授权生产的多媒体主机，以高规格硬件和统一第三方授权模式试图统一市场。",
+    "significance": "「授权型主机」商业模式的最著名实验；其高成本与软件数量不足，说明硬件规格不等于生态。"
+  },
+  "hw-jaguar": {
+    "titleZh": "Atari Jaguar",
+    "summary": "1993 年推出的混合架构主机，宣称 64 位运算能力并在同一张卡带上混用不同世代的处理器。",
+    "significance": "营销先行于生态的典型案例；其卡带兼容策略为后来 Nintendo 64 与主机向下兼容提供了教训。"
+  },
+  "hw-playstation": {
+    "titleZh": "Sony PlayStation",
+    "summary": "1994 年推出的 32 位 CD-ROM 主机，Ken Kutaragi 主导设计，通过统一开发接口把 3D 游戏带入家庭客厅。",
+    "significance": "把 3D 图形与 CD 音频带入主流家庭市场，定义了此后二十年主机产业的基本形态与竞争强度。"
+  },
+  "hw-saturn": {
+    "titleZh": "Sega Saturn",
+    "summary": "1994 年推出的 16/32 位混合架构 CD 主机，双处理器并行工作，硬件规格强于同期 PlayStation 但开发环境更复杂。",
+    "significance": "「街机硬件直接家用化」的成功案例，也是主机性能评测与实际可开发性脱节的典型样本。"
+  },
+  "hw-n64": {
+    "titleZh": "Nintendo 64",
+    "summary": "1996 年推出的 64 位卡带主机，采用 SGI 技术并坚持使用 ROM 卡带 devoid of 标准光驱。",
+    "significance": "在 3D 时代坚持卡带介质，形成独特的第三方关系与作品阵容；其 4 控制器手柄成为多人本地对战的行业标准。"
+  },
+  "hw-virtual-boy": {
+    "titleZh": "Nintendo Virtual Boy",
+    "summary": "1995 年推出的桌面式立体显示游戏机，Gunpei Yokoi 主导设计，配独立控制器与红色 LED 立体显示。",
+    "significance": "「硬件概念超前于市场」的经典失败案例，提醒博物馆展陈中技术理想与消费现实的落差。"
+  },
+  "hw-dreamcast": {
+    "titleZh": "Sega Dreamcast",
+    "summary": "1998 年推出的 128 位主机，内置调制解调器与 GD-ROM，是最早把网络功能做进主机标准配置的产品之一。",
+    "significance": "「主机即网络节点」的早期尝试；其 VMU 掌机与在线功能，也预示了后来的跨设备体验。"
+  },
+  "sw-street-fighter-ii": {
+    "titleZh": "《Street Fighter II》",
+    "summary": "1991 年 Capcom 推出的对战格斗街机游戏，以必杀技指令、连段与角色差异重定义了 2D 对战手感。",
+    "significance": "把对战格斗从少数人的竞技圈带进大众娱乐，直接催生了 1990 年代的格斗游戏热潮与相关赛事文化。"
+  },
+  "sw-doom": {
+    "titleZh": "《Doom》（1993）",
+    "summary": "1993 年 id Software 发布、John Carmack 与 John Romero 主导开发的 FPS，使用分形算法程序化生成关卡纹理与地图。",
+    "significance": "程序化内容生成、第一人称伪三维与 MOD 文化三者合一；既是技术里程碑，也是社区创作模式的源头。"
+  },
+  "sw-myst": {
+    "titleZh": "《Myst》",
+    "summary": "1993 年 Cyan 推出、由 Rand Miller 与 Robyn Miller 制作、以静态图像与声音线索解谜构成的教育版冒险游戏。",
+    "significance": "1990 年代销量最高的电子游戏之一，证明「无动作、高气质、强解谜」也能成为主流商业形态。"
+  },
+  "sw-ocarina-of-time": {
+    "titleZh": "《The Legend of Zelda: Ocarina of Time》",
+    "summary": "1998 年 Nintendo EAD 推出、Shigeru Miyamoto 监制的 3D 动作冒险游戏，采用实时渲染与上下文动作判定。",
+    "significance": "3D 动作冒险的行业模板，影响了此后所有第三人称冒险游戏的镜头、交互与关卡逻辑。"
+  },
+  "sw-ffvii": {
+    "titleZh": "《Final Fantasy VII》",
+    "summary": "1997 年 Square 发行、Hironobu Sakaguchi 监制的角色扮演游戏，引入预渲染过场与实时战斗结合的表现方式。",
+    "significance": "把电影化叙事大规模带入互动游戏，同时奠定主机 RPG 的叙事密度与商业规模。"
+  },
+  "sw-half-life": {
+    "titleZh": "《Half-Life》",
+    "summary": "1998 年 Valve 推出、Gabe Newell 与 Ken Levine 主导开发的 FPS，以无缝场景与情境化叙事取代关卡切换。",
+    "significance": "「环境叙事 + 连续空间」路线的定义作，也确立了以脚本化事件驱动演出的叙事工程方法。"
+  },
+  "sw-tomb-raider": {
+    "titleZh": "《Tomb Raider》（1996）",
+    "summary": "1996 年 Core Design 推出、由 Toby Gard 设计的动作冒险游戏，女主角 Lara Croft 与关卡解谜、跳跃与爬墙构成核心。",
+    "significance": "让女性主角成为销量级作品的标志人物之一；其关卡结构是此后「动作 + 平台 + 解谜」融合的标准。"
+  },
+  "sw-grand-theft-auto": {
+    "titleZh": "《Grand Theft Auto》（1998）",
+    "summary": "1998 年 DMA Design 推出、David Jones 主导开发的开放世界游戏，玩家在三维城市中驾车、劫掠与完成任务。",
+    "significance": "「开放城市 + 任务链 + 可自由破坏」组合成街机式开放世界的模板，并引发持续至今的暴力内容讨论。"
+  },
+  "sw-civilization": {
+    "titleZh": "《Civilization》（1991）",
+    "summary": "1991 年 MicroProse 推出、Sid Meier 与 Bruce Shelley 设计的回合制策略游戏，文明在网格地图上从远古演化到星际时代。",
+    "significance": "策略四价的奠基作之一；「科技树 + 回合 + 宏观模拟」的组合影响几乎所有后来的文明类作品。"
+  },
+  "sw-alone-in-the-dark": {
+    "titleZh": "《Alone in the Dark》",
+    "summary": "1992 年 Infogrames 推出、由 Frédérick Raynal 设计的生存恐怖游戏，采用固定视角与实时帧渲染。",
+    "significance": "「生存恐怖」类型的确立作，为后来的《生化危机》与整个类型提供了原型与命名。"
+  },
+  "sw-dune-ii": {
+    "titleZh": "《Dune II》",
+    "summary": "1992 年 Westwood Studios 推出、Louis Castle 与 Brett Sperry 设计的即时战略游戏，实时指令、建造与采矿构成循环。",
+    "significance": "确立即时战略的基本形态：资源采集 + 建筑布局 + 部队单位；对 RTS 类型的定义作用超过任何其他作品。"
+  },
+  "sw-tekken": {
+    "titleZh": "《Tekken》（1994）",
+    "summary": "1994 年 Namco 推出、Seiichi Ishii 设计的 3D 对战格斗游戏，引入三维模型、连段与完整的角色列表配置。",
+    "significance": "3D 格斗的标准形态；其角色体积差异化设计也影响了后来的动作游戏数值框架。"
+  }
+}

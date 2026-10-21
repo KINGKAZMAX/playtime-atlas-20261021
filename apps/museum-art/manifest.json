@@ -1,0 +1,21 @@
+{
+  "id": "museum-art",
+  "title": "美术资产包预览",
+  "description": "博物馆原创美术包的可浏览预览：深墨蓝 + 暖纸白 + 信号橙视觉方案、自托管许可字体、图标、年代海报与封面、展柜以及跨时代硬件简化模型。",
+  "entry": "works/museum-art/index.html",
+  "buildCommand": "npm run build",
+  "outputDir": "site/works/museum-art",
+  "status": "pending",
+  "upstream": "07-museum-art",
+  "license": {
+    "code": "MIT",
+    "assets": "全部由脚本程序化生成，字体为可再分发的开源字体子集"
+  },
+  "sources": [
+    {
+      "title": "原创资产，无外部素材来源",
+      "url": "",
+      "note": "硬件外形为跨时代通用造型的简化再创作，无品牌 logo 与商标字体。"
+    }
+  ]
+}

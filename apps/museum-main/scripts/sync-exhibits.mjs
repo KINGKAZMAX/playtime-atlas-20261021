@@ -1,0 +1,416 @@
+#!/usr/bin/env node
+/**
+ * 兄弟任务同步器 · sync-exhibits
+ *
+ * 把 05 / 07 / 08—12 的产物**复制**到本任务的 public/ 下：
+ *   05 → public/data/catalog.json          （策展目录，运行时优先级最高）
+ *   07 → public/art/assets/**  + public/data/design-tokens.json
+ *   08—12 → public/exhibits/<dir>/**        （可玩展厅包体）
+ *
+ * 规则：
+ *   - **只复制，不修改源目录**
+ *   - 包体必须是「可直接静态部署」的产物：会检查 index.html 是否存在、
+ *     是否仍引用源码目录、是否为占位页、引用的静态资源是否存在
+ *   - 源产物缺失或未构建时，对应展项标记 pending，
+ *     主站渲染「待集成」占位而非假入口
+ *   - 每次运行生成 public/data/exhibits.json 供主站读取
+ *
+ * 用法：node scripts/sync-exhibits.mjs [--clean]
+ *   --clean  先清空 public/exhibits 与 public/data，再同步
+ */
+
+import { cp, mkdir, rm, readdir, stat, writeFile, readFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { symlink } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.resolve(__dirname, '..');
+const SIBLINGS = path.resolve(ROOT, '..');
+const PUBLIC = path.join(ROOT, 'public');
+const CLEAN = process.argv.includes('--clean');
+
+const log = (...a) => console.log(...a);
+const rel = (p) => path.relative(ROOT, p) || path.basename(p);
+
+async function dirSize(dir) {
+  let total = 0;
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    const p = path.join(dir, entry.name);
+    if (entry.isDirectory()) total += await dirSize(p);
+    else if (entry.isFile()) total += (await stat(p)).size;
+  }
+  return total;
+}
+
+async function readJson(file) {
+  try {
+    return JSON.parse(await readFile(file, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
+/* ── 05：策展目录 ──────────────────────────────────────────────────────────── */
+function wikiUrl(title) {
+  if (!title) return null;
+  return `https://en.wikipedia.org/wiki/${String(title).trim().replace(/\s+/g, '_')}`;
+}
+
+/** 从 05 的中间产物（seed_items + curated）拼装目录 */
+async function buildCatalogFromSeed() {
+  const seedPath = path.join(SIBLINGS, '05-museum-research', 'data', 'seed_items.json');
+  if (!existsSync(seedPath)) return null;
+  const seed = await readJson(seedPath);
+  if (!Array.isArray(seed) || !seed.length) return null;
+
+  const curatedDir = path.join(SIBLINGS, '05-museum-research', 'data', 'curated');
+  let curated = {};
+  if (existsSync(curatedDir)) {
+    for (const f of await readdir(curatedDir)) {
+      if (!f.endsWith('.json')) continue;
+      const part = await readJson(path.join(curatedDir, f));
+      if (part && typeof part === 'object') curated = { ...curated, ...part };
+    }
+  }
+
+  const items = seed.map((s) => {
+    const c = curated[s.id] ?? {};
+    const url = wikiUrl(s.wiki ?? c.wiki);
+    return {
+      id: s.id,
+      title: c.title ?? c.titleZh ?? s.wiki ?? s.id,
+      titleZh: c.titleZh ?? '',
+      year: s.year ?? 0,
+      era: s.era ?? '',
+      platform: s.platform ?? '',
+      creator: s.creator ?? '',
+      kind: s.kind ?? 'game',
+      summary: c.summary ?? '',
+      significance: c.significance ?? '',
+      sourceUrls: url ? [url] : [],
+      sourceTitles: url ? [s.wiki ?? c.wiki] : [],
+      imageLicense: c.imageLicense ?? '展签图形为自绘 SVG（回响电玩馆原创资产，项目自有）',
+    };
+  }).filter((i) => i.sourceUrls.length);
+
+  return items.length ? items : null;
+}
+
+async function syncCatalog() {
+  await mkdir(path.join(PUBLIC, 'data'), { recursive: true });
+  const target = path.join(PUBLIC, 'data', 'catalog.json');
+
+  // 1) 首选 05 正式交付的 catalog.json
+  const formal = [
+    path.join(SIBLINGS, '05-museum-research', 'catalog.json'),
+    path.join(SIBLINGS, '05-museum-research', 'dist', 'catalog.json'),
+    path.join(SIBLINGS, '05-museum-research', 'public', 'catalog.json'),
+    path.join(SIBLINGS, '05-museum-research', 'data', 'catalog.json'),
+  ];
+  for (const p of formal) {
+    if (!existsSync(p)) continue;
+    const raw = await readJson(p);
+    const items = Array.isArray(raw) ? raw : raw?.items;
+    if (!Array.isArray(items) || !items.length) continue;
+    await writeFile(target, JSON.stringify(items), 'utf8');
+    log(`✓ 策展目录已同步：05-museum-research 正式目录（${items.length} 条）← ${rel(p)}`);
+    return { ok: true, count: items.length, from: rel(p), mode: 'formal' };
+  }
+
+  // 2) 回落到 05 的中间产物（seed_items + curated）
+  const seeded = await buildCatalogFromSeed();
+  if (seeded) {
+    await writeFile(target, JSON.stringify(seeded), 'utf8');
+    log(`✓ 策展目录已同步：05-museum-research 中间产物拼装（${seeded.length} 条）← data/seed_items.json + data/curated/`);
+    return { ok: true, count: seeded.length, from: '05/data/seed_items.json', mode: 'seed' };
+  }
+
+  // 3) 未交付：删除旧文件，运行时回落到本馆本地初版
+  await rm(target, { force: true });
+  log('· 策展目录：05-museum-research 尚未交付 → 运行时使用本馆本地初版（未生成 public/data/catalog.json）');
+  return { ok: false, count: 0, from: null, mode: 'none' };
+}
+
+/* ── 07：美术包 ────────────────────────────────────────────────────────────── */
+const ART_FILE = /\.(svg|png|webp|jpg|jpeg|woff2?|ttf|otf)$/i;
+
+async function copyAssets(fromDir, toDir) {
+  if (!existsSync(fromDir)) return 0;
+  let n = 0;
+  const entries = await readdir(fromDir, { withFileTypes: true });
+  await mkdir(toDir, { recursive: true });
+  for (const e of entries) {
+    const src = path.join(fromDir, e.name);
+    const dst = path.join(toDir, e.name);
+    if (e.isDirectory()) {
+      n += await copyAssets(src, dst);
+    } else if (e.isFile() && ART_FILE.test(e.name)) {
+      await cp(src, dst, { force: true });
+      n += 1;
+    }
+  }
+  return n;
+}
+
+async function syncArt() {
+  const artRoot = path.join(PUBLIC, 'art');
+  await mkdir(artRoot, { recursive: true });
+
+  // 07 的真实资产目录（public/assets 与 assets）
+  const assetSources = [
+    path.join(SIBLINGS, '07-museum-art', 'public', 'assets'),
+    path.join(SIBLINGS, '07-museum-art', 'assets'),
+  ];
+  let copied = 0;
+  let used = null;
+  for (const src of assetSources) {
+    if (!existsSync(src)) continue;
+    const n = await copyAssets(src, path.join(artRoot, 'assets'));
+    if (n) {
+      copied += n;
+      used = rel(src);
+    }
+  }
+
+  // 设计令牌
+  let tokensFrom = null;
+  for (const c of [
+    path.join(SIBLINGS, '07-museum-art', 'design-tokens.json'),
+    path.join(SIBLINGS, '07-museum-art', 'public', 'assets', 'design-tokens.json'),
+  ]) {
+    if (!existsSync(c)) continue;
+    const json = await readJson(c);
+    if (!json) continue;
+    await mkdir(path.join(PUBLIC, 'data'), { recursive: true });
+    await writeFile(path.join(PUBLIC, 'data', 'design-tokens.json'), JSON.stringify(json, null, 2), 'utf8');
+    tokensFrom = rel(c);
+    break;
+  }
+
+  // 令牌 CSS（可选，运行时按需引入）
+  for (const c of [
+    path.join(SIBLINGS, '07-museum-art', 'public', 'assets', 'tokens.css'),
+    path.join(SIBLINGS, '07-museum-art', 'assets', 'tokens.css'),
+  ]) {
+    if (!existsSync(c)) continue;
+    await mkdir(path.join(PUBLIC, 'data'), { recursive: true });
+    await cp(c, path.join(PUBLIC, 'data', 'tokens.css'), { force: true });
+    break;
+  }
+
+  if (copied) log(`✓ 美术包已同步：07-museum-art（${copied} 个资产）← ${used}`);
+  else log('· 美术包：07-museum-art 尚未交付 → 使用本馆程序化生成的原创 SVG（public/art/）');
+  if (tokensFrom) log(`✓ 设计令牌已同步：${tokensFrom}`);
+
+  return { ok: copied > 0, tokens: Boolean(tokensFrom), count: copied };
+}
+
+/* ── 08—12：可玩展厅 ──────────────────────────────────────────────────────── */
+const HALLS = [
+  { id: 'origins', task: '08-era-origins', dir: 'origins' },
+  { id: 'arcade', task: '09-era-arcade', dir: 'arcade' },
+  { id: 'console', task: '10-era-console', dir: 'console' },
+  { id: 'online', task: '11-era-online', dir: 'online' },
+  { id: 'modern', task: '12-era-modern', dir: 'modern' },
+];
+
+/** 判断一个目录是否是「可直接静态部署」的包体 */
+async function inspectBundle(dir) {
+  const indexPath = path.join(dir, 'index.html');
+  if (!existsSync(indexPath)) return { ok: false, reason: '缺少 index.html' };
+  const html = await readFile(indexPath, 'utf8');
+
+  if (/(?:src|href)=["'][^"']*\/src\//i.test(html)) {
+    return { ok: false, reason: '仍引用源码目录，尚未构建为静态包' };
+  }
+  if (/type=["']module["'][^>]*\ssrc=["']\//i.test(html)) {
+    return { ok: false, reason: '引用了绝对路径模块，无法在子路径下部署' };
+  }
+  if (/展厅建设中|建设中|敬请期待|coming soon/i.test(html)) {
+    return { ok: false, reason: '仍是占位页面' };
+  }
+  const refs = [...html.matchAll(/(?:src|href)=["'](\.\/[^"']+)["']/g)].map((m) => m[1]);
+  for (const r of refs) {
+    const target = path.join(dir, r.split('?')[0].split('#')[0]);
+    if (!existsSync(target)) return { ok: false, reason: `引用了不存在的静态资源 ${r}` };
+  }
+  return { ok: true, reason: '可静态部署' };
+}
+
+/** 在本任务目录内的临时副本中构建兄弟任务（绝不写入源目录） */
+async function tryTempBuild(task) {
+  const srcRoot = path.join(SIBLINGS, task);
+  const pkgPath = path.join(srcRoot, 'package.json');
+  if (!existsSync(pkgPath)) return { ok: false, reason: '来源目录没有 package.json，无法构建' };
+
+  const tmp = path.join(ROOT, '.tmpbuild', task);
+  await rm(tmp, { recursive: true, force: true });
+  await mkdir(tmp, { recursive: true });
+
+  // 复制源码（排除 node_modules 与已有产物）
+  await cp(srcRoot, tmp, {
+    recursive: true,
+    filter: (src) => {
+      const base = path.basename(src);
+      if (base === 'node_modules' || base === 'dist' || base === '.git') return false;
+      return true;
+    },
+  });
+
+  // 复用来源目录的依赖，避免重复安装
+  const srcModules = path.join(srcRoot, 'node_modules');
+  if (existsSync(srcModules)) {
+    await symlink(srcModules, path.join(tmp, 'node_modules'), 'dir');
+  }
+
+  const { execFile } = await import('node:child_process');
+  const { promisify } = await import('node:util');
+  const run = promisify(execFile);
+  try {
+    await run('npx', ['vite', 'build'], { cwd: tmp, timeout: 300000, maxBuffer: 32 * 1024 * 1024 });
+  } catch (err) {
+    const detail = (err.stderr?.toString() || err.stdout?.toString() || err.message)
+      .split('\n')
+      .filter((l) => l.trim())
+      .slice(-2)
+      .join(' ')
+      .slice(0, 160);
+    await rm(tmp, { recursive: true, force: true });
+    return { ok: false, reason: `来源任务尚未构建完成（${detail}）` };
+  }
+
+  const dist = path.join(tmp, 'dist');
+  if (!existsSync(dist)) {
+    await rm(tmp, { recursive: true, force: true });
+    return { ok: false, reason: '来源任务构建未产出 dist' };
+  }
+  return { ok: true, dist, tmp };
+}
+
+async function syncExhibits() {
+  const results = [];
+
+  for (const hall of HALLS) {
+    const srcRoot = path.join(SIBLINGS, hall.task);
+    const target = path.join(PUBLIC, 'exhibits', hall.dir);
+
+    if (!existsSync(srcRoot)) {
+      results.push({ id: hall.id, task: hall.task, status: 'pending', entryPath: null, note: `来源目录不存在：${hall.task}` });
+      log(`· ${hall.task} → 待集成（来源目录尚未创建）`);
+      continue;
+    }
+
+    // 优先使用构建产物；包体根目录仅在通过部署性检查时接受
+    const candidates = [
+      path.join(srcRoot, 'dist'),
+      path.join(srcRoot, 'build'),
+      path.join(srcRoot, 'public'),
+      srcRoot,
+    ];
+    let chosen = null;
+    let chosenReason = '';
+    for (const c of candidates) {
+      if (!existsSync(c)) continue;
+      const check = await inspectBundle(c);
+      if (check.ok) {
+        chosen = c;
+        chosenReason = check.reason;
+        break;
+      }
+      chosenReason = check.reason;
+    }
+
+    // 上游尚未构建时：在本任务目录内的临时副本中代为构建一次
+    if (!chosen) {
+      const built = await tryTempBuild(hall.task);
+      if (built.ok) {
+        const check = await inspectBundle(built.dist);
+        if (check.ok) {
+          chosen = built.dist;
+          chosenReason = `由来源任务源码在临时副本中构建（${check.reason}）`;
+        } else {
+          chosenReason = `临时构建产物未通过部署性检查：${check.reason}`;
+        }
+      } else {
+        chosenReason = built.reason;
+      }
+    }
+
+    if (!chosen) {
+      await rm(target, { recursive: true, force: true });
+      results.push({ id: hall.id, task: hall.task, status: 'pending', entryPath: null, note: `${hall.task}：${chosenReason}` });
+      log(`· ${hall.task} → 待集成（${chosenReason}）`);
+      continue;
+    }
+
+    await rm(target, { recursive: true, force: true });
+    await mkdir(path.dirname(target), { recursive: true });
+    await cp(chosen, target, { recursive: true, force: true });
+    await prune(target);
+
+    const size = await dirSize(target);
+    results.push({
+      id: hall.id,
+      task: hall.task,
+      status: 'integrated',
+      entryPath: `${hall.dir}/index.html`,
+      note: `已从 ${rel(chosen)} 复制（${chosenReason}）`,
+      bytes: size,
+    });
+    log(`✓ ${hall.task} → 已并入 public/exhibits/${hall.dir}/（${(size / 1024).toFixed(0)} KB ← ${rel(chosen)}）`);
+  }
+
+  // 清理临时构建目录
+  await rm(path.join(ROOT, '.tmpbuild'), { recursive: true, force: true });
+
+  await mkdir(path.join(PUBLIC, 'data'), { recursive: true });
+  await writeFile(
+    path.join(PUBLIC, 'data', 'exhibits.json'),
+    JSON.stringify({ generatedAt: new Date().toISOString(), halls: results }, null, 2),
+    'utf8',
+  );
+
+  return results;
+}
+
+/** 清理包体里不该上线的内容 */
+async function prune(dir) {
+  const JUNK = new Set(['node_modules', '.git', '.vite', 'coverage', '.cache', 'tests', 'test']);
+  const entries = await readdir(dir, { withFileTypes: true });
+  for (const e of entries) {
+    if (e.isDirectory() && JUNK.has(e.name)) {
+      await rm(path.join(dir, e.name), { recursive: true, force: true });
+    }
+    if (e.isFile() && /\.map$/i.test(e.name)) {
+      await rm(path.join(dir, e.name), { force: true });
+    }
+  }
+}
+
+/* ── 主流程 ────────────────────────────────────────────────────────────────── */
+async function main() {
+  log('▶ 同步兄弟任务产物（只复制，不修改源目录）');
+  if (CLEAN) {
+    await rm(path.join(PUBLIC, 'exhibits'), { recursive: true, force: true });
+    await rm(path.join(PUBLIC, 'data'), { recursive: true, force: true });
+    await rm(path.join(PUBLIC, 'art', 'assets'), { recursive: true, force: true });
+    log('· 已清空 public/exhibits、public/data、public/art/assets');
+  }
+
+  const catalog = await syncCatalog();
+  const art = await syncArt();
+  const halls = await syncExhibits();
+
+  const integrated = halls.filter((h) => h.status === 'integrated').length;
+  log('');
+  log(`✓ 同步完成：策展目录 ${catalog.ok ? `${catalog.count} 条（${catalog.mode}）` : '未交付（使用本地初版）'} · `
+    + `美术包 ${art.ok ? `${art.count} 个资产` : '未交付（使用本馆生成）'} · 可玩展厅 ${integrated}/${halls.length} 已并入`);
+  log('  产物清单：public/data/exhibits.json');
+}
+
+main().catch((err) => {
+  console.error('✗ 同步失败：', err);
+  process.exit(1);
+});

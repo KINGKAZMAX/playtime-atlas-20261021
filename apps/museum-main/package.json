@@ -1,0 +1,23 @@
+{
+  "name": "playtime-atlas-museum-core",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "回响电玩馆 / PLAYTIME ATLAS - walkable museum main site for electronic game history (Vite + vanilla ESM + optional three.js hall, fully offline)",
+  "scripts": {
+    "art": "node scripts/generate-art.mjs",
+    "sync": "node scripts/sync-exhibits.mjs",
+    "prebuild": "npm run art && npm run sync",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node scripts/test.mjs",
+    "verify:catalog": "node scripts/verify-catalog.mjs"
+  },
+  "dependencies": {
+    "three": "0.169.0"
+  },
+  "devDependencies": {
+    "vite": "5.4.11"
+  }
+}

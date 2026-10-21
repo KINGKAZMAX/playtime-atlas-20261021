@@ -1,0 +1,101 @@
+/* =========================================================
+   折光纪 · PRISM ERA —— 设计令牌
+   原创视觉识别：夜蓝墨底 + 棱镜三色 + 纸白
+   ========================================================= */
+
+:root {
+  /* 底色层次 */
+  --ink-900: #04061a;
+  --ink-850: #050918;
+  --ink-800: #070b1e;
+  --ink-700: #0b1130;
+  --ink-600: #101a42;
+  --ink-500: #16235a;
+  --ink-400: #1d2d70;
+
+  /* 前景 */
+  --paper: #f2f0e9;
+  --paper-90: rgba(242, 240, 233, 0.9);
+  --paper-70: rgba(242, 240, 233, 0.7);
+  --paper-52: rgba(242, 240, 233, 0.52);
+  --paper-34: rgba(242, 240, 233, 0.34);
+  --paper-18: rgba(242, 240, 233, 0.18);
+  --paper-10: rgba(242, 240, 233, 0.1);
+  --paper-06: rgba(242, 240, 233, 0.06);
+
+  /* 棱镜三色 + 辅助色 */
+  --prism-cyan: #4fe3d0;
+  --prism-magenta: #ff5fa2;
+  --prism-amber: #ffc46b;
+  --prism-violet: #9d7bff;
+  --prism-blue: #5aa9ff;
+
+  --cyan-soft: rgba(79, 227, 208, 0.16);
+  --magenta-soft: rgba(255, 95, 162, 0.16);
+  --amber-soft: rgba(255, 196, 107, 0.16);
+  --violet-soft: rgba(157, 123, 255, 0.16);
+
+  /* 语义 */
+  --good: #7ee787;
+  --warn: #ffc46b;
+  --bad: #ff6b81;
+
+  /* 描边与阴影 */
+  --line: rgba(242, 240, 233, 0.12);
+  --line-strong: rgba(242, 240, 233, 0.22);
+  --glass: rgba(10, 16, 44, 0.62);
+  --glass-solid: rgba(8, 13, 36, 0.9);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.55);
+  --shadow-md: 0 12px 34px rgba(0, 0, 0, 0.42);
+  --glow-cyan: 0 0 24px rgba(79, 227, 208, 0.35);
+  --glow-magenta: 0 0 24px rgba(255, 95, 162, 0.32);
+
+  /* 字体（Latin 自托管 OFL；中文走系统栈，不下载不外链） */
+  --font-display: 'Space Grotesk Variable', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'Noto Sans CJK SC', 'Source Han Sans SC', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, 'Menlo', 'Consolas', monospace;
+  --font-body: var(--font-display);
+
+  /* 尺度 */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --maxw: 1180px;
+  --gap: 20px;
+
+  /* 动效 */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 220ms;
+}
+
+/* 高对比模式 */
+:root[data-high-contrast='true'] {
+  --paper: #ffffff;
+  --paper-70: rgba(255, 255, 255, 0.86);
+  --paper-52: rgba(255, 255, 255, 0.72);
+  --paper-34: rgba(255, 255, 255, 0.5);
+  --line: rgba(255, 255, 255, 0.3);
+  --line-strong: rgba(255, 255, 255, 0.55);
+  --glass: rgba(4, 8, 26, 0.88);
+  --glass-solid: rgba(2, 4, 16, 0.97);
+}
+
+/* 减少动效 */
+:root[data-reduced-motion='true'] *,
+:root[data-reduced-motion='true'] *::before,
+:root[data-reduced-motion='true'] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

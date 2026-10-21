@@ -1,0 +1,137 @@
+{
+  "hw-ps5": {
+    "titleZh": "Sony PlayStation 5",
+    "summary": "2020 年推出的第九世代主机，采用定制 AMD 架构与固态硬盘，并在数字版本引入光线追踪与自适应触发器等特性。",
+    "significance": "以存储速度与触觉反馈重新定义主机硬件竞争；其「游戏 + 影音」双轨定位也是当代主机生态的缩影。"
+  },
+  "hw-nintendo-switch": {
+    "titleZh": "Nintendo Switch",
+    "summary": "2017 年推出的混合式主机，可作为家用机连接屏幕，也可在手持模式下使用，外接底座与 Joy-Con 控制器支持拆分组合。",
+    "significance": "把「在家与出门」合并为一台设备，重塑了硬件分类；也带来销量与软件跨平台策略的成功案例。"
+  },
+  "hw-steam-deck": {
+    "titleZh": "Valve Steam Deck",
+    "summary": "2022 年发布的掌上 PC，配备 7 英寸屏幕与可更换存储卡，并可运行完整的桌面 Linux 与 Steam 游戏库。",
+    "significance": "把「PC 游戏库」作为掌机内容来源，验证了跨设备游玩对硬件设计的价值。"
+  },
+  "hw-ps-vr": {
+    "titleZh": "PlayStation VR",
+    "summary": "2016 年推出的 VR 头显，配合 PlayStation 4 使用，配备发光追踪标记与 3D 音频耳机。",
+    "significance": "把 VR 从小众装置推向主流家庭客厅的早期尝试，也是消费级 VR 定价策略的重要案例。"
+  },
+  "hw-oculus-quest": {
+    "titleZh": "Meta Quest（Oculus Quest）",
+    "summary": "2019 年推出的独立式 VR 头显，内置处理器与追踪系统，无需主机或 PC 即可运行应用与游戏。",
+    "significance": "「一体机式」VR 让体验摆脱了主机依赖，是 VR 从发烧友设备走向普及的关键一步。"
+  },
+  "hw-vision-pro": {
+    "titleZh": "Apple Vision Pro",
+    "summary": "2024 年发布的空间计算头显，配备双 4K 轻量显示与外部电池组，以眼动与手部追踪为主要交互方式。",
+    "significance": "把「空间计算」而非「VR」作为叙事主线；其交互范式以注视与手势为核心，对未来的展陈交互有直接参考价值。"
+  },
+  "sw-botw": {
+    "titleZh": "《The Legend of Zelda: Breath of the Wild》",
+    "summary": "2017 年 Nintendo EPD 推出、Eiji Aonuma 监制的开放世界动作冒险游戏，强调化学引擎、物理反应与玩家自造解法。",
+    "significance": "重定义了开放世界的「涌现式解谜」；其物理与化学系统成为此后开放世界设计的事实参照。"
+  },
+  "sw-pokemon-go": {
+    "titleZh": "《Pokémon Go》",
+    "summary": "2016 年 Niantic 推出的增强现实收集对战手游，结合手机定位、摄像头与经典宝可梦收集对战机制。",
+    "significance": "AR 与 LBS 首次在主流规模上同时成立；也重新定义了游戏与城市公共空间的关系，引发大量公共讨论。"
+  },
+  "sw-fortnite": {
+    "titleZh": "《Fortnite》",
+    "summary": "2017 年 Epic Games 发布的第三人称射击建造游戏，以持续更新的赛季、大逃买玩法与跨平台联动著称。",
+    "significance": "「服务型游戏 + 跨平台 + 实时事件」的运营模板，对当代长线运营影响极广。"
+  },
+  "sw-hades": {
+    "titleZh": "《Hades》",
+    "summary": "2020 年 Supergiant Games 发布的 roguelike 动作游戏，以每次死亡推进剧情对话与角色关系为核心结构。",
+    "significance": "证明 roguelike 的重复循环可以承载持续推进的叙事；其角色配音与演出品质重塑了该类型的预算预期。"
+  },
+  "sw-elden-ring": {
+    "titleZh": "《Elden Ring》",
+    "summary": "2022 年 FromSoftware 发布的开放世界动作角色扮演游戏，以碎片化叙事线索与高自由度探索结构为特色。",
+    "significance": "把「魂系」体验扩展到开放世界；其探索与谜题设计成为当代动作 RPG 的主流参考。"
+  },
+  "sw-disco-elysium": {
+    "titleZh": "《Disco Elysium》",
+    "summary": "2019 年 ZA/UM 推出的叙事角色扮演游戏，以 24 项互相冲突的技能与人格特质驱动对话与破案。",
+    "significance": "把「角色内建」作为核心机制并与侦探叙事结合；其文本密度与多解性重新定义了叙事 RPG 的可能形态。"
+  },
+  "sw-outer-wilds": {
+    "titleZh": "《Outer Wilds》",
+    "summary": "2019 年 Mobius Digital 发布的探索解谜游戏，玩家驾驶小飞船在太阳系中探索，并依靠「时间循环」推进认知。",
+    "significance": "以知识而非数值驱动进度的时间循环设计；对「重玩结构如何承载叙事」的探索极具启发。"
+  },
+  "sw-celeste": {
+    "titleZh": "《Celeste》",
+    "summary": "2018 年 Maddy Makes Games 发布的精确平台游戏，主题围绕焦虑与自我接纳，机制上以冲刺与八向攀爬为核心。",
+    "significance": "「机制与主题互为表里」的独立游戏典范；其辅助模式与长关卡节奏也提供了无障碍设计参考。"
+  },
+  "sw-slay-the-spire": {
+    "titleZh": "《Slay the Spire》",
+    "summary": "2019 年 Mega Crit 推出的牌组构筑 roguelike，每局随机生成路线与奖励，通过卡牌组合构筑应对逐层增强的敌人。",
+    "significance": "定义了当代卡牌 roguelike 的结构，被无数作品模仿；也说明规则层的可组合性能独立驱动留存。"
+  },
+  "sw-hollow-knight": {
+    "titleZh": "《Hollow Knight》",
+    "summary": "2017 年 Team Cherry 制作的类银河恶魔城动作游戏，以手绘昆虫世界、精密平台操作与碎片化叙事著称。",
+    "significance": "独立团队在美术手感与探索结构上的高完成度代表；其地图分层与能力解锁节奏是同类作品范本。"
+  },
+  "sw-among-us": {
+    "titleZh": "《Among Us》",
+    "summary": "2018 年 InnerSloth 推出的多人社交推理游戏，玩家在太空船中完成任务并互相指认破坏者。",
+    "significance": "以极简美术与语音社交实现病毒式传播；说明低成本玩法也可以借由创作者生态获得远超开发投入的影响力。"
+  },
+  "sw-animal-crossing-nh": {
+    "titleZh": "《Animal Crossing: New Horizons》",
+    "summary": "2020 年 Nintendo EPD 推出的生活模拟游戏，玩家在无人岛改造地形、布置家具并与邻居居民日常往来。",
+    "significance": "「无压力养成」在疫情时期成为现象级产品，也提示博物馆类内容可以承载陪伴式而非挑战式体验。"
+  },
+  "sw-half-life-alyx": {
+    "titleZh": "《Half-Life: Alyx》",
+    "summary": "2020 年 Valve 推出的 VR 作品，以第一人称手部交互、重量感操作与规模化的环境叙事延续《Half-Life》世界观。",
+    "significance": "被广泛视为 VR 交互设计的分水岭；其「手部即接口」的做法对触屏与体感展陈都有直接参考意义。"
+  },
+  "sw-vampire-survivors": {
+    "titleZh": "《Vampire Survivors》",
+    "summary": "2021 年 poncle 发布的自动战斗 roguelite，角色持续自动攻击，玩家只需移动与选择升级项。",
+    "significance": "以「减法」重新定义幸存者类玩法，证明去掉操作负担后仍能形成深度与长线留存。"
+  },
+  "sw-balatro": {
+    "titleZh": "《Balatro》",
+    "summary": "2024 年 LocalThunk 发布的扑克牌型构筑 roguelike，以小丑牌强化、计分公式与牌型规则组合为核心。",
+    "significance": "把扑克牌玩法与 roguelike 构筑结合成高度可重玩的系统；独立作品在小体量中展现系统设计密度的代表。"
+  },
+  "sw-black-myth-wukong": {
+    "titleZh": "《Black Myth: Wukong》",
+    "summary": "2024 年 Game Science 开发的动作角色扮演游戏，以《西游记》为题材，采用虚幻引擎与高精度场景表现。",
+    "significance": "中国文化题材 3A 制作的代表项目；也提供了关于本土题材如何进行现代化视觉转译的讨论素材。"
+  },
+  "sw-dave-the-diver": {
+    "titleZh": "《Dave the Diver》",
+    "summary": "2023 年 MINTROCKET 开发的混合玩法游戏，昼间经营潜水餐厅、晚间潜入深海战斗与叙事。",
+    "significance": "「双循环结构 + 强美术风格 + 轻叙事」的独立游戏成功案例，说明机制切换本身就是叙事。"
+  },
+  "sw-beat-saber": {
+    "titleZh": "《Beat Saber》",
+    "summary": "2018 年 Beat Games 推出的 VR 节奏游戏，玩家用光剑把飞来的方块切成与节拍匹配的形状。",
+    "significance": "VR 商业成功的代表作；其「身体参与即玩法」的设计思路对体感展厅有直接借鉴意义。"
+  },
+  "sw-tetris-effect": {
+    "titleZh": "《Tetris Effect: Connected》",
+    "summary": "2018 年 Enhance Games 推出的节奏驱动的方块消除游戏，Tetsuya Mizuguchi 主导，以音乐与场景随消除变化。",
+    "significance": "证明经典玩法可以经由视听一体化的再包装获得新生命，也是「老机制 + 新表达」的重设计范本。"
+  },
+  "sw-superhot": {
+    "titleZh": "《Superhot》",
+    "summary": "2016 年 Superhot Team 开发的 FPS，玩家在枪械被夺走前解决敌人，场景以白色抽象几何构成。",
+    "significance": "「时间静止的战术解谜 + 极简色彩语言」的独特组合；其视觉语言也成为当代极简展陈美学的常见参照。"
+  },
+  "sw-return-of-the-obsidian": {
+    "titleZh": "《Return of the Obra Dinn》",
+    "summary": "2019 年 Lucas Pope 开发的第一人称推理游戏，玩家在 60 人的轮船上逐一验明死者身份与死因。",
+    "significance": "以单色剪影与状态标记进行信息推理的罕见设计；展示了「极简表现 + 强推理」可以同时成立。"
+  }
+}

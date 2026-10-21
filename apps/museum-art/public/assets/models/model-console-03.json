@@ -1,0 +1,171 @@
+{
+  "id": "console-03",
+  "name": "子午线光盘机",
+  "latin": "MERIDIAN DECK",
+  "range": "1994 — 2000",
+  "form": "16 位光盘主机",
+  "story": "圆角取代了直角，像一枚被磨圆的光盘。托盘弹出时那句机械合拢声，比任何开机画面都更有仪式感。两只摇杆开始分工：左手转向，右手确认。",
+  "note": "原创提炼：取光盘主机通行的圆角机身与托盘结构，具体曲线、开孔与配色均为原创。",
+  "parts": [
+    {
+      "name": "机身",
+      "material": "shell-mid"
+    },
+    {
+      "name": "顶盖",
+      "material": "shell-light"
+    },
+    {
+      "name": "光盘托槽",
+      "material": "shell-deep"
+    },
+    {
+      "name": "光盘",
+      "material": "metal"
+    },
+    {
+      "name": "光盘内圈",
+      "material": "cream"
+    },
+    {
+      "name": "光盘托盘唇",
+      "material": "shell-deep"
+    },
+    {
+      "name": "前面板",
+      "material": "shell-deep"
+    },
+    {
+      "name": "状态灯条",
+      "material": "accent-lit"
+    },
+    {
+      "name": "电源键",
+      "material": "accent"
+    },
+    {
+      "name": "手柄口左",
+      "material": "metal-dark"
+    },
+    {
+      "name": "手柄口右",
+      "material": "metal-dark"
+    },
+    {
+      "name": "侧面散热槽1",
+      "material": "shell-deep"
+    },
+    {
+      "name": "侧面散热槽2",
+      "material": "shell-deep"
+    },
+    {
+      "name": "侧面散热槽3",
+      "material": "shell-deep"
+    },
+    {
+      "name": "侧面散热槽4",
+      "material": "shell-deep"
+    },
+    {
+      "name": "侧面散热槽5",
+      "material": "shell-deep"
+    },
+    {
+      "name": "侧面散热槽6",
+      "material": "shell-deep"
+    },
+    {
+      "name": "侧面散热槽7",
+      "material": "shell-deep"
+    },
+    {
+      "name": "侧面散热槽8",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄外壳",
+      "material": "shell-light"
+    },
+    {
+      "name": "手柄左握把",
+      "material": "shell-light"
+    },
+    {
+      "name": "手柄右握把",
+      "material": "shell-light"
+    },
+    {
+      "name": "左摇杆座",
+      "material": "shell-deep"
+    },
+    {
+      "name": "左摇杆帽",
+      "material": "shell-deep"
+    },
+    {
+      "name": "右摇杆座",
+      "material": "shell-deep"
+    },
+    {
+      "name": "右摇杆帽",
+      "material": "shell-deep"
+    },
+    {
+      "name": "面键1",
+      "material": "accent"
+    },
+    {
+      "name": "面键2",
+      "material": "cream"
+    },
+    {
+      "name": "面键3",
+      "material": "cream"
+    },
+    {
+      "name": "面键4",
+      "material": "cream"
+    },
+    {
+      "name": "手柄十字键",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄线缆",
+      "material": "shell-deep"
+    }
+  ],
+  "partCount": 32,
+  "triangleCount": 2472,
+  "dimensions": {
+    "w": 0.32,
+    "h": 0.1,
+    "d": 0.24
+  },
+  "measuredBounds": {
+    "min": [
+      -0.16,
+      -0.0007,
+      -0.12
+    ],
+    "max": [
+      0.163,
+      0.1167,
+      0.281
+    ],
+    "size": [
+      0.323,
+      0.1173,
+      0.401
+    ]
+  },
+  "files": {
+    "glb": "./model-console-03.glb",
+    "png": "./model-console-03.png",
+    "techSvg": "./model-console-03.tech.svg",
+    "json": "./model-console-03.json"
+  },
+  "license": "CC0-1.0",
+  "origin": "本馆原创虚构展品"
+}

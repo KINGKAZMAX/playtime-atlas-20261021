@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>霓虹街廊 · 街机可玩展厅</title>
+    <meta
+      name="description"
+      content="霓虹街廊：一座可游玩的 1980 年代街机时代展厅。包含两款完整原创小游戏《晶格回廊》与《陨星纵队》，像素美术、可开关 CRT 效果、键盘与触屏操作，附有来源可核查的时代介绍。"
+    />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content="霓虹街廊 · 街机可玩展厅" />
+    <meta
+      property="og:description"
+      content="原创街机时代展厅与两款完整小游戏：晶格回廊（迷宫追逐）、陨星纵队（编队射击）。纯静态、离线可运行。"
+    />
+    <script type="module" crossorigin src="./assets/index-D0aw8j9g.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/style-BOTEfOmZ.css">
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="topbar">
+        <div class="topbar__brand">
+          <span class="topbar__mark" aria-hidden="true"></span>
+          <div>
+            <h1 id="hall-title" class="topbar__title">霓虹街廊 · 街机可玩展厅</h1>
+            <p class="topbar__sub">NEON CORRIDOR · 1980s ARCADE HALL · 原创演绎</p>
+          </div>
+        </div>
+        <nav class="topbar__tools" aria-label="工具">
+          <button id="btn-catalog" type="button" class="toolbtn">街机纪年</button>
+          <button id="btn-crt" type="button" class="toolbtn" aria-pressed="true">CRT 开</button>
+          <button id="btn-sound" type="button" class="toolbtn" aria-pressed="true">声音 开</button>
+          <button id="btn-touch" type="button" class="toolbtn" aria-pressed="false">触控</button>
+          <button id="btn-settings" type="button" class="toolbtn">设置</button>
+        </nav>
+      </header>
+
+      <main class="stage" id="stage" tabindex="0" aria-label="街机展厅画面">
+        <div class="screen">
+          <canvas id="view" width="480" height="270" aria-label="像素游戏画面"></canvas>
+          <div class="crt" aria-hidden="true">
+            <div class="crt__scan"></div>
+            <div class="crt__roll"></div>
+            <div class="crt__vignette"></div>
+            <div class="crt__glare"></div>
+          </div>
+        </div>
+        <div class="overlay" id="overlay" hidden></div>
+        <div class="touchpad" id="touchpad" hidden></div>
+      </main>
+
+      <p class="statusline" id="statusline"></p>
+
+      <nav class="exhibitnav" id="exhibit-nav" aria-label="展品目录"></nav>
+
+      <footer class="footer">
+        <p>
+          本作品为原创演绎：机制取自街机黄金时代的公共范式，角色、地图、规则、音效与视觉全部重新设计；
+          不含任何未授权 ROM、商业游戏资源或品牌视觉。时代介绍附可核查来源，见「街机纪年」。
+        </p>
+        <p class="footer__meta">
+          <span>纯静态 · 零外部依赖 · 离线可运行</span>
+          <span>MiniMax Code M3.1-Flash 制作</span>
+        </p>
+      </footer>
+    </div>
+
+  </body>
+</html>

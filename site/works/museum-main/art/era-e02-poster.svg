@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200" role="img" aria-label="1960s 太空竞赛与光点 年代海报">
+  <defs>
+    <linearGradient id="pg" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#0D1526"/>
+      <stop offset="55%" stop-color="#070C16"/>
+      <stop offset="100%" stop-color="#9AA7FF" stop-opacity="0.22"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#pg)"/>
+  <circle cx="61" cy="522" r="2.4" fill="#F4EDE0" opacity="0.13"/>
+  <circle cx="490" cy="1106" r="1.6" fill="#F4EDE0" opacity="0.24"/>
+  <circle cx="204" cy="1064" r="1.8" fill="#F4EDE0" opacity="0.11"/>
+  <circle cx="340" cy="825" r="2.3" fill="#F4EDE0" opacity="0.15"/>
+  <circle cx="793" cy="435" r="2.0" fill="#F4EDE0" opacity="0.20"/>
+  <circle cx="241" cy="23" r="1.2" fill="#F4EDE0" opacity="0.36"/>
+  <circle cx="846" cy="556" r="2.5" fill="#F4EDE0" opacity="0.10"/>
+  <circle cx="84" cy="2" r="3.0" fill="#F4EDE0" opacity="0.37"/>
+  <circle cx="421" cy="653" r="2.0" fill="#F4EDE0" opacity="0.26"/>
+  <circle cx="860" cy="855" r="1.9" fill="#F4EDE0" opacity="0.15"/>
+  <circle cx="625" cy="728" r="1.5" fill="#F4EDE0" opacity="0.13"/>
+  <circle cx="312" cy="183" r="2.0" fill="#F4EDE0" opacity="0.32"/>
+  <circle cx="714" cy="277" r="2.5" fill="#F4EDE0" opacity="0.17"/>
+  <circle cx="127" cy="919" r="2.7" fill="#F4EDE0" opacity="0.34"/>
+  <circle cx="825" cy="237" r="1.8" fill="#F4EDE0" opacity="0.23"/>
+  <circle cx="383" cy="1137" r="2.0" fill="#F4EDE0" opacity="0.16"/>
+  <circle cx="864" cy="545" r="1.6" fill="#F4EDE0" opacity="0.10"/>
+  <circle cx="150" cy="170" r="1.5" fill="#F4EDE0" opacity="0.21"/>
+  <circle cx="147" cy="255" r="1.1" fill="#F4EDE0" opacity="0.24"/>
+  <circle cx="662" cy="77" r="2.9" fill="#F4EDE0" opacity="0.37"/>
+  <circle cx="407" cy="156" r="2.1" fill="#F4EDE0" opacity="0.30"/>
+  <circle cx="655" cy="1173" r="1.7" fill="#F4EDE0" opacity="0.32"/>
+  <circle cx="882" cy="366" r="1.0" fill="#F4EDE0" opacity="0.16"/>
+  <circle cx="318" cy="37" r="1.2" fill="#F4EDE0" opacity="0.38"/>
+  <circle cx="203" cy="96" r="2.2" fill="#F4EDE0" opacity="0.18"/>
+  <circle cx="892" cy="228" r="1.9" fill="#F4EDE0" opacity="0.08"/>
+  <circle cx="127" cy="311" r="1.9" fill="#F4EDE0" opacity="0.12"/>
+  <circle cx="539" cy="965" r="1.8" fill="#F4EDE0" opacity="0.25"/>
+  <circle cx="570" cy="154" r="1.4" fill="#F4EDE0" opacity="0.17"/>
+  <circle cx="890" cy="239" r="2.7" fill="#F4EDE0" opacity="0.22"/>
+  <circle cx="377" cy="30" r="1.1" fill="#F4EDE0" opacity="0.15"/>
+  <circle cx="88" cy="887" r="1.6" fill="#F4EDE0" opacity="0.21"/>
+  <circle cx="273" cy="412" r="1.9" fill="#F4EDE0" opacity="0.09"/>
+  <circle cx="212" cy="131" r="1.3" fill="#F4EDE0" opacity="0.24"/>
+  <circle cx="9" cy="473" r="2.2" fill="#F4EDE0" opacity="0.28"/>
+  <circle cx="499" cy="226" r="2.5" fill="#F4EDE0" opacity="0.32"/>
+  <circle cx="342" cy="1158" r="1.5" fill="#F4EDE0" opacity="0.35"/>
+  <circle cx="407" cy="319" r="1.7" fill="#F4EDE0" opacity="0.20"/>
+  <circle cx="572" cy="1123" r="1.8" fill="#F4EDE0" opacity="0.29"/>
+  <circle cx="725" cy="1041" r="1.3" fill="#F4EDE0" opacity="0.21"/>
+  <circle cx="386" cy="781" r="2.2" fill="#F4EDE0" opacity="0.15"/>
+  <circle cx="553" cy="1044" r="2.4" fill="#F4EDE0" opacity="0.32"/>
+  <circle cx="623" cy="303" r="2.7" fill="#F4EDE0" opacity="0.36"/>
+  <circle cx="153" cy="870" r="1.4" fill="#F4EDE0" opacity="0.31"/>
+  <circle cx="559" cy="18" r="1.8" fill="#F4EDE0" opacity="0.11"/>
+  <circle cx="262" cy="1148" r="2.7" fill="#F4EDE0" opacity="0.09"/>
+  <circle cx="311" cy="293" r="2.4" fill="#F4EDE0" opacity="0.32"/>
+  <circle cx="557" cy="983" r="1.0" fill="#F4EDE0" opacity="0.33"/>
+  <circle cx="97" cy="1196" r="1.1" fill="#F4EDE0" opacity="0.14"/>
+  <circle cx="457" cy="229" r="2.4" fill="#F4EDE0" opacity="0.28"/>
+  <circle cx="467" cy="40" r="1.9" fill="#F4EDE0" opacity="0.16"/>
+  <circle cx="772" cy="852" r="1.0" fill="#F4EDE0" opacity="0.22"/>
+  <circle cx="856" cy="1108" r="1.6" fill="#F4EDE0" opacity="0.10"/>
+  <circle cx="174" cy="106" r="2.8" fill="#F4EDE0" opacity="0.29"/>
+  <circle cx="514" cy="682" r="2.1" fill="#F4EDE0" opacity="0.24"/>
+  <circle cx="316" cy="435" r="1.1" fill="#F4EDE0" opacity="0.33"/>
+  <circle cx="759" cy="685" r="2.9" fill="#F4EDE0" opacity="0.28"/>
+  <circle cx="292" cy="923" r="2.5" fill="#F4EDE0" opacity="0.31"/>
+  <circle cx="279" cy="1035" r="1.0" fill="#F4EDE0" opacity="0.19"/>
+  <circle cx="425" cy="330" r="2.3" fill="#F4EDE0" opacity="0.28"/>
+  <g opacity="0.5">
+    <rect x="56" y="56" width="788" height="1088" fill="none" stroke="#9AA7FF" stroke-width="2" opacity="0.55"/>
+    <rect x="74" y="74" width="752" height="1052" fill="none" stroke="#9AA7FF" stroke-width="1" opacity="0.3"/>
+  </g>
+  <text x="96" y="300" font-family="Georgia, 'Songti SC', serif" font-size="132" fill="#9AA7FF" letter-spacing="6">1960s</text>
+  <text x="96" y="392" font-family="'PingFang SC', 'Noto Sans CJK SC', sans-serif" font-size="58" font-weight="600" fill="#F4EDE0">太空竞赛与光点</text>
+  <rect x="96" y="430" width="180" height="6" fill="#FF6B2C"/>
+  <text x="96" y="1120" font-family="'SF Mono', Menlo, monospace" font-size="26" fill="#F4EDE0" opacity="0.72" letter-spacing="3">PLAYTIME ATLAS · 回响电玩馆</text>
+</svg>

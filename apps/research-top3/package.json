@@ -1,0 +1,30 @@
+{
+  "name": "minimax-m31-flash-case-index",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Task 00 · MiniMax M3.1 Flash 全球公开案例索引 —— 134 条可核验案例 + TOP3 原创改编规格",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "type": "module",
+  "scripts": {
+    "build": "python3 build_cases.py && python3 build_index.py && python3 gen_ranking.py",
+    "build:cases": "python3 build_cases.py",
+    "build:index": "python3 build_index.py",
+    "build:ranking": "python3 gen_ranking.py",
+    "verify": "python3 verify.py",
+    "serve": "python3 -m http.server 8080",
+    "clean": "rm -rf data/case-index.json"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "minimax",
+    "m3.1-flash",
+    "case-study",
+    "research",
+    "three.js",
+    "webgpu"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,175 @@
+{
+  "id": "console-02",
+  "name": "小行星卡带机",
+  "latin": "ASTER CONSOLE",
+  "range": "1983 — 1990",
+  "form": "八位家用主机",
+  "story": "巴掌大的扁平机身，插在电视下方，像一块被压扁的糖果。游戏的全部内容都住进一张比邮票略大的卡带，插下去时那声「咔哒」，是那个年代最精准的交互反馈。",
+  "note": "原创提炼：取八位主机通行的「扁平方盒 + 顶部卡槽 + 十字键」语汇，比例与配色为原创。",
+  "parts": [
+    {
+      "name": "主机本体",
+      "material": "shell-mid"
+    },
+    {
+      "name": "顶盖面板",
+      "material": "cream"
+    },
+    {
+      "name": "卡槽",
+      "material": "shell-deep"
+    },
+    {
+      "name": "卡带",
+      "material": "cream-dim"
+    },
+    {
+      "name": "卡带标签",
+      "material": "accent"
+    },
+    {
+      "name": "前面板",
+      "material": "shell-deep"
+    },
+    {
+      "name": "电源灯",
+      "material": "accent-lit"
+    },
+    {
+      "name": "手柄口左",
+      "material": "metal-dark"
+    },
+    {
+      "name": "手柄口右",
+      "material": "metal-dark"
+    },
+    {
+      "name": "散热槽1",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热槽2",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热槽3",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热槽4",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热槽5",
+      "material": "shell-deep"
+    },
+    {
+      "name": "散热槽6",
+      "material": "shell-deep"
+    },
+    {
+      "name": "脚垫0-后",
+      "material": "shell-deep"
+    },
+    {
+      "name": "脚垫0-前",
+      "material": "shell-deep"
+    },
+    {
+      "name": "脚垫1-后",
+      "material": "shell-deep"
+    },
+    {
+      "name": "脚垫1-前",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄左外壳",
+      "material": "shell-light"
+    },
+    {
+      "name": "手柄左握把",
+      "material": "shell-light"
+    },
+    {
+      "name": "手柄左十字键",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄左按键A",
+      "material": "accent"
+    },
+    {
+      "name": "手柄左按键B",
+      "material": "cream"
+    },
+    {
+      "name": "手柄左启动键",
+      "material": "cream-dim"
+    },
+    {
+      "name": "手柄左线缆",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄右外壳",
+      "material": "shell-light"
+    },
+    {
+      "name": "手柄右握把",
+      "material": "shell-light"
+    },
+    {
+      "name": "手柄右十字键",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄右按键A",
+      "material": "accent"
+    },
+    {
+      "name": "手柄右按键B",
+      "material": "cream"
+    },
+    {
+      "name": "手柄右启动键",
+      "material": "cream-dim"
+    },
+    {
+      "name": "手柄右线缆",
+      "material": "shell-deep"
+    }
+  ],
+  "partCount": 33,
+  "triangleCount": 1652,
+  "dimensions": {
+    "w": 0.22,
+    "h": 0.07,
+    "d": 0.16
+  },
+  "measuredBounds": {
+    "min": [
+      -0.193,
+      0,
+      -0.08
+    ],
+    "max": [
+      0.193,
+      0.094,
+      0.1998
+    ],
+    "size": [
+      0.386,
+      0.094,
+      0.2798
+    ]
+  },
+  "files": {
+    "glb": "./model-console-02.glb",
+    "png": "./model-console-02.png",
+    "techSvg": "./model-console-02.tech.svg",
+    "json": "./model-console-02.json"
+  },
+  "license": "CC0-1.0",
+  "origin": "本馆原创虚构展品"
+}

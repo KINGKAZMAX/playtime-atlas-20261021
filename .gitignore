@@ -1,0 +1,29 @@
+# 依赖与构建缓存
+node_modules/
+.npm/
+
+# 平台产物
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+
+# 凭据与本地环境（绝不入库）
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# 编辑器
+.vscode/
+.idea/
+
+# 注意：site/ 是**有意提交**的
+# 它是已验证产物的快照，作为单个作品构建失败时的回退来源，
+# 也是 Pages 部署的发布根。CI 会重新构建并覆盖它。
+
+# 各应用的本地构建产物（CI 会重新生成）
+apps/*/dist/
+apps/*/.vite/

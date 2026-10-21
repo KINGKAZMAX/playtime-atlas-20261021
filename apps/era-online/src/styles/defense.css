@@ -1,0 +1,409 @@
+/* defense.css — 《灯塔协议》展项 */
+
+.game--defense {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.defense__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 14px;
+  align-items: start;
+}
+
+.defense__board {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #080c17;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.42);
+}
+
+.defense__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 640 / 400;
+  touch-action: manipulation;
+  cursor: crosshair;
+}
+
+.defense__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6, 9, 18, 0.78);
+  backdrop-filter: blur(3px);
+  padding: 18px;
+}
+
+.defense__overlay[hidden] {
+  display: none;
+}
+
+.overlay__card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--panel-hi), var(--deep));
+  padding: 20px 22px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+
+.overlay__title {
+  font-size: 19px;
+  margin-bottom: 8px;
+  color: var(--dawn);
+}
+
+.overlay__body {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.75;
+  text-align: left;
+}
+
+.overlay__body p {
+  margin-bottom: 8px;
+}
+
+.overlay__actions {
+  display: flex;
+  gap: 9px;
+  justify-content: center;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.result {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px 14px;
+  margin-top: 10px;
+}
+
+.result li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  border-bottom: 1px dashed var(--line-soft);
+  padding: 3px 0;
+  color: var(--text-dim);
+}
+
+.result b {
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+/* ── 侧栏 ── */
+
+.defense__side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panel--ai {
+  border-color: rgba(255, 93, 115, 0.34);
+  background: linear-gradient(180deg, rgba(74, 31, 49, 0.4), rgba(13, 18, 36, 0.72));
+}
+
+.ai__intent {
+  margin-top: 9px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(8, 11, 22, 0.6);
+  border-left: 2px solid var(--danger);
+  font-size: 12px;
+  line-height: 1.7;
+  color: #ffc4cd;
+}
+
+.ai__log {
+  margin-top: 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-height: 92px;
+  overflow-y: auto;
+}
+
+.ai__logitem {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-faint);
+  line-height: 1.6;
+}
+
+.ai__logitem--muted {
+  color: #4d5772;
+}
+
+/* ── 建造按钮 ── */
+
+.panel--build {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.buildbtn {
+  appearance: none;
+  display: grid;
+  grid-template-columns: 14px 1fr auto;
+  grid-template-areas: "sw name cost" "sw role key";
+  align-items: center;
+  gap: 1px 9px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: rgba(13, 18, 36, 0.6);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  cursor: pointer;
+  min-height: 46px;
+  transition: all 0.14s ease;
+}
+
+.buildbtn:hover {
+  border-color: var(--data);
+  background: rgba(28, 37, 69, 0.6);
+}
+
+.buildbtn.is-active {
+  border-color: var(--dawn);
+  background: rgba(255, 138, 61, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 138, 61, 0.3);
+}
+
+.buildbtn.is-locked {
+  opacity: 0.45;
+}
+
+.buildbtn__swatch {
+  grid-area: sw;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.buildbtn__name {
+  grid-area: name;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.buildbtn__role {
+  grid-area: role;
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.buildbtn__cost {
+  grid-area: cost;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--echo);
+  align-self: center;
+}
+
+.buildbtn__key {
+  grid-area: key;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-faint);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0 5px;
+  justify-self: start;
+}
+
+/* ── 选中设施 ── */
+
+.sel__name {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.sel__body {
+  font-size: 12px;
+  color: var(--text-faint);
+  line-height: 1.7;
+}
+
+.sel__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px 12px;
+  margin-top: 4px;
+}
+
+.sel__list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--text-dim);
+}
+
+.sel__list b {
+  font-family: var(--font-mono);
+  color: var(--text);
+}
+
+.sel__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.sel__actions .btn {
+  width: 100%;
+  font-size: 12.5px;
+  padding: 8px 10px;
+}
+
+.sel__max {
+  font-size: 12px;
+  color: var(--echo);
+  font-family: var(--font-mono);
+}
+
+.sel__modes {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.sel__modelabel {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-right: 2px;
+}
+
+.chipbtn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: rgba(13, 18, 36, 0.6);
+  color: var(--text-dim);
+  border-radius: 20px;
+  padding: 4px 11px;
+  font-size: 11.5px;
+  cursor: pointer;
+  min-height: 30px;
+}
+
+.chipbtn:hover {
+  border-color: var(--data);
+  color: var(--text);
+}
+
+.chipbtn.is-active {
+  border-color: var(--dawn);
+  background: rgba(255, 138, 61, 0.14);
+  color: var(--dawn-soft);
+}
+
+/* ── 预览 ── */
+
+.preview__title {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.preview__list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.preview__item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.preview__item b {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  color: var(--text);
+}
+
+.preview__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex: none;
+}
+
+.preview__item--elite {
+  color: var(--warn);
+  margin-top: 4px;
+}
+
+.preview__item--boss {
+  color: var(--danger);
+}
+
+/* ── 控制条 ── */
+
+.game__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 11px 13px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: rgba(13, 18, 36, 0.55);
+}
+
+.bar__label {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-left: 4px;
+}
+
+.game__note {
+  font-size: 11.5px;
+  color: var(--text-faint);
+  margin-left: auto;
+}
+
+@media (max-width: 1000px) {
+  .defense__main {
+    grid-template-columns: 1fr;
+  }
+  .defense__side {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .game__bar {
+    gap: 6px;
+  }
+  .game__bar .btn {
+    flex: 1 1 auto;
+    padding: 9px 10px;
+    font-size: 12.5px;
+  }
+  .game__note {
+    margin-left: 0;
+    width: 100%;
+  }
+}

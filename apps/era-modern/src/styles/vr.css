@@ -1,0 +1,223 @@
+/* =========================================================
+   《光环台 / HALO DECK》
+   ========================================================= */
+
+.halo-wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(18px, 3vw, 28px) clamp(14px, 3vw, 28px) 44px;
+}
+
+.halo-head {
+  margin-bottom: 12px;
+}
+
+.halo-head-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.halo-head h1 {
+  margin: 2px 0 0;
+  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+}
+
+.halo-disclaimer {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  border: 1px solid rgba(157, 123, 255, 0.36);
+  background: rgba(157, 123, 255, 0.09);
+  border-radius: var(--r-lg);
+  padding: 15px 18px;
+  margin-bottom: 16px;
+}
+
+.halo-disclaimer p {
+  margin: 0;
+  font-size: 0.89rem;
+  color: var(--paper-70);
+  line-height: 1.7;
+}
+
+.halo-disclaimer b {
+  color: var(--prism-violet);
+}
+
+.halo-body {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+}
+
+.halo-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(400px, 62vh, 640px);
+  background: #05081a;
+}
+
+.halo-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+
+.halo-canvas.is-grabbing {
+  cursor: grabbing;
+}
+
+.halo-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.halo-card {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: min(330px, 74vw);
+  background: rgba(6, 10, 30, 0.9);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+  pointer-events: auto;
+  animation: halo-in 240ms var(--ease);
+}
+
+@keyframes halo-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -46%);
+  }
+}
+
+.halo-card-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-bottom: 7px;
+}
+
+.halo-card h3 {
+  font-size: 0.98rem;
+  margin: 0 0 6px;
+}
+
+.halo-card p {
+  margin: 0 0 9px;
+  font-size: 0.82rem;
+  color: var(--paper-70);
+  line-height: 1.65;
+}
+
+.halo-card-src {
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  line-height: 1.8;
+}
+
+.halo-card-src a {
+  color: var(--paper-52);
+}
+
+.halo-card-src a:hover {
+  color: var(--prism-violet);
+}
+
+/* ---------------- 设备状态面板 ---------------- */
+
+.halo-panel {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--glass);
+  padding: 20px 22px;
+}
+
+.halo-panel h2 {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+
+.device-list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.device-list li {
+  font-size: 0.87rem;
+  color: var(--paper-70);
+  border-bottom: 1px dashed var(--paper-10);
+  padding-bottom: 6px;
+}
+
+.device-list b {
+  display: inline-block;
+  min-width: 8.6em;
+  color: var(--paper-52);
+  font-weight: 500;
+}
+
+.device-status {
+  margin-bottom: 14px;
+}
+
+.device-line {
+  margin: 0 0 6px;
+  font-size: 0.86rem;
+  color: var(--paper-70);
+}
+
+.device-line b {
+  color: var(--paper-52);
+  font-weight: 500;
+}
+
+.device-line.is-yes b {
+  color: var(--good);
+}
+
+.device-line.is-no b {
+  color: var(--prism-amber);
+}
+
+.device-note {
+  margin: 10px 0 0;
+  font-size: 0.8rem;
+  color: var(--paper-52);
+  line-height: 1.7;
+}
+
+.halo-panel-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.halo-panel-foot {
+  margin: 14px 0 0;
+  font-size: 0.78rem;
+  color: var(--paper-34);
+}
+
+@media (max-width: 720px) {
+  .halo-stage {
+    height: clamp(360px, 56vh, 520px);
+  }
+  .halo-card {
+    width: min(280px, 84vw);
+  }
+}

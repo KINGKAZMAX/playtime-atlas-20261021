@@ -1,0 +1,21 @@
+{
+  "id": "03-monstera-study",
+  "title": "龟背竹观察室",
+  "description": "复刻公开案例「MONSTERA STUDY 3D 模型查看器」：程序化龟背竹与陶土花盆、影棚背景、10 键控制条、五向视角预设、线框与自转、底栏三段式物种信息。",
+  "entry": "works/03-monstera-study/index.html",
+  "buildCommand": "npm run build",
+  "outputDir": "site/works/03-monstera-study",
+  "status": "pending",
+  "upstream": "03-interaction",
+  "license": {
+    "code": "MIT",
+    "assets": "程序化几何与纯色材质，无第三方植物模型"
+  },
+  "sources": [
+    {
+      "title": "原案例：@ItsmeAjayKV 的 3D 花盆查看器",
+      "url": "https://x.com/ItsmeAjayKV/status/2112111033359933516",
+      "note": "2026-10-19 发布，观测于 2026-10-21：184 赞 / 4 回复。作者未公开源码。"
+    }
+  ]
+}

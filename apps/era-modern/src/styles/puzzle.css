@@ -1,0 +1,289 @@
+/* =========================================================
+   《折光阁 / PRISM ATRIUM》
+   ========================================================= */
+
+.atrium-wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(18px, 3vw, 28px) clamp(14px, 3vw, 28px) 40px;
+}
+
+.atrium-head {
+  margin-bottom: 14px;
+}
+
+.atrium-head-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.atrium-head h1 {
+  margin: 2px 0 0;
+  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+}
+
+.atrium-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(460px, 70vh, 720px);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: radial-gradient(120% 100% at 50% 0%, #0d1338 0%, #05081a 72%);
+  box-shadow: var(--shadow-lg);
+}
+
+.atrium-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+
+.atrium-canvas:active {
+  cursor: grabbing;
+}
+
+.atrium-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+}
+
+.atrium-hud > * {
+  pointer-events: none;
+}
+
+.atrium-hud button,
+.atrium-hud a {
+  pointer-events: auto;
+}
+
+.atrium-hud-top {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: linear-gradient(180deg, rgba(4, 6, 26, 0.7), transparent);
+  padding-bottom: 14px;
+  border-radius: var(--r-md);
+}
+
+.atrium-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.atrium-tab {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  background: rgba(8, 13, 36, 0.72);
+  color: var(--paper-70);
+  border-radius: 999px;
+  padding: 5px 13px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: var(--font-display);
+  transition: all var(--dur) var(--ease);
+}
+
+.atrium-tab b {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--prism-cyan);
+}
+
+.atrium-tab i {
+  color: var(--prism-amber);
+  font-style: normal;
+  font-size: 0.8rem;
+}
+
+.atrium-tab:hover {
+  border-color: var(--paper-34);
+  color: var(--paper);
+}
+
+.atrium-tab[aria-pressed='true'] {
+  background: linear-gradient(120deg, var(--prism-cyan), #7deee0);
+  color: var(--ink-900);
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.atrium-tab[aria-pressed='true'] b {
+  color: var(--ink-900);
+}
+
+.atrium-hud-stats {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hud-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.hud-stat label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper-52);
+}
+
+.hud-value {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.receiver-status {
+  display: flex;
+  gap: 6px;
+}
+
+.rev-chip {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--rc, var(--paper-34));
+  color: var(--paper-34);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.rev-chip.is-lit {
+  background: color-mix(in srgb, var(--rc) 26%, transparent);
+  color: var(--rc);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--rc) 55%, transparent);
+}
+
+.rev-chip.is-bad {
+  border-color: var(--bad);
+  color: var(--bad);
+}
+
+.atrium-hud-bottom {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: linear-gradient(0deg, rgba(4, 6, 26, 0.75), transparent);
+  padding-top: 16px;
+  border-radius: var(--r-md);
+}
+
+.hud-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hud-legend {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  color: var(--paper-52);
+}
+
+.legend-item i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.atrium-help {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 74px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 0.72rem;
+  color: var(--paper-34);
+  pointer-events: none;
+  background: rgba(4, 6, 26, 0.55);
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--paper-06);
+}
+
+.atrium-overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(4, 6, 26, 0.84);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.atrium-overlay.is-active {
+  display: flex;
+}
+
+.atrium-result {
+  text-align: center;
+  max-width: 520px;
+  width: 100%;
+}
+
+.result-stars {
+  font-size: 2.4rem;
+  color: var(--prism-amber);
+  letter-spacing: 6px;
+  margin-bottom: 6px;
+  text-shadow: 0 0 26px rgba(255, 196, 107, 0.5);
+}
+
+.atrium-result h2 {
+  margin-bottom: 2px;
+}
+
+@media (max-width: 720px) {
+  .atrium-help {
+    display: none;
+  }
+  .atrium-hud-top,
+  .atrium-hud-bottom {
+    gap: 8px;
+  }
+  .atrium-hud-stats {
+    gap: 12px;
+  }
+  .hud-value {
+    font-size: 0.95rem;
+  }
+}

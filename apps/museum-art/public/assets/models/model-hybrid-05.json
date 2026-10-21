@@ -1,0 +1,143 @@
+{
+  "id": "hybrid-05",
+  "name": "光环平板",
+  "latin": "HALO SLATE",
+  "range": "2012 — 2017",
+  "form": "平板混合主机",
+  "story": "一块玻璃板，加上一对可以摘下来的手柄。放进客厅是主机，拿在手里是平板，接上电视又是另一台机器。它的机身薄得能透出桌面的木纹。",
+  "note": "原创提炼：取平板加可拆手柄的通用架构，手柄形态与轨道接口为原创设计。",
+  "parts": [
+    {
+      "name": "平板本体",
+      "material": "shell-deep"
+    },
+    {
+      "name": "平板边框",
+      "material": "shell-mid"
+    },
+    {
+      "name": "平板屏幕",
+      "material": "screen-glass"
+    },
+    {
+      "name": "平板屏幕辉光",
+      "material": "screen-glow"
+    },
+    {
+      "name": "摄像头",
+      "material": "metal-dark"
+    },
+    {
+      "name": "支撑脚",
+      "material": "shell-light"
+    },
+    {
+      "name": "侧轨左",
+      "material": "metal"
+    },
+    {
+      "name": "侧轨右",
+      "material": "metal"
+    },
+    {
+      "name": "后盖散热",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄左外壳",
+      "material": "shell-light"
+    },
+    {
+      "name": "手柄左连接臂",
+      "material": "shell-mid"
+    },
+    {
+      "name": "手柄左摇杆座",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄左摇杆帽",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄左十字键",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄左按键A",
+      "material": "accent"
+    },
+    {
+      "name": "手柄左按键B",
+      "material": "cream"
+    },
+    {
+      "name": "手柄左按键C",
+      "material": "cream-dim"
+    },
+    {
+      "name": "手柄右外壳",
+      "material": "shell-light"
+    },
+    {
+      "name": "手柄右连接臂",
+      "material": "shell-mid"
+    },
+    {
+      "name": "手柄右摇杆座",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄右摇杆帽",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄右十字键",
+      "material": "shell-deep"
+    },
+    {
+      "name": "手柄右按键A",
+      "material": "accent"
+    },
+    {
+      "name": "手柄右按键B",
+      "material": "cream"
+    },
+    {
+      "name": "手柄右按键C",
+      "material": "cream-dim"
+    }
+  ],
+  "partCount": 25,
+  "triangleCount": 1932,
+  "dimensions": {
+    "w": 0.24,
+    "h": 0.02,
+    "d": 0.17
+  },
+  "measuredBounds": {
+    "min": [
+      -0.184,
+      0,
+      -0.108
+    ],
+    "max": [
+      0.184,
+      0.0509,
+      0.108
+    ],
+    "size": [
+      0.368,
+      0.0509,
+      0.216
+    ]
+  },
+  "files": {
+    "glb": "./model-hybrid-05.glb",
+    "png": "./model-hybrid-05.png",
+    "techSvg": "./model-hybrid-05.tech.svg",
+    "json": "./model-hybrid-05.json"
+  },
+  "license": "CC0-1.0",
+  "origin": "本馆原创虚构展品"
+}
