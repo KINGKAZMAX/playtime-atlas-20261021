@@ -9,19 +9,28 @@ await page.goto(BASE + "#/catalog");
 await page.waitForSelector(".exhibit-card", { timeout: 30000 });
 
 // ① 字体样式表与字体二进制是否真的取到了
+// 权威位置自 2026-10-22 起是 assets/ds/fonts/（16-design-system 接入）；
+// art/assets/fonts/fonts.css 是历史兼容 shim，MIGRATION-NOTES §6 的发布前必查仍会 curl 它。
 const fonts = await page.evaluate(async (base) => {
   const urls = [
+    "assets/ds/fonts/fonts.css",
+    "assets/ds/fonts/space-grotesk-latin.woff2",
+    "assets/ds/fonts/inter-latin.woff2",
+    "assets/ds/fonts/noto-sans-sc-subset.woff2",
+    "assets/ds/fonts/space-mono-regular.woff2",
+    "assets/ds/fonts/space-mono-bold.woff2",
+    "assets/ds/components.css",
+    "assets/ds/tokens.css",
     "art/assets/fonts/fonts.css",
-    "art/assets/fonts/space-grotesk-latin.woff2",
-    "art/assets/fonts/inter-latin.woff2",
-    "art/assets/fonts/noto-sans-sc-subset.woff2",
-    "art/assets/fonts/space-mono-regular.woff2",
-    "art/assets/fonts/space-mono-bold.woff2",
   ];
   const out = [];
   for (const u of urls) {
-    const r = await fetch(base + u, { method: "GET" });
-    out.push({ url: u, status: r.status, bytes: (await r.arrayBuffer()).byteLength });
+    try {
+      const r = await fetch(base + u, { method: "GET" });
+      out.push({ url: u, status: r.status, bytes: (await r.arrayBuffer()).byteLength });
+    } catch (e) {
+      out.push({ url: u, status: 0, bytes: 0, error: String(e) });
+    }
   }
   await document.fonts.ready;
   const families = ["Space Grotesk", "Inter", "Space Mono", "Noto Sans SC"];

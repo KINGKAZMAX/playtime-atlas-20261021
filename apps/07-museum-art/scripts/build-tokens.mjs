@@ -80,11 +80,16 @@ const css = [];
 css.push('/* =========================================================');
 css.push('   回响电玩馆 / PLAYTIME ATLAS — 设计令牌（已对齐余晖设计系统）');
 css.push('   ----------------------------------------------------');
+css.push('   对齐 16-design-system design-tokens v' + align.designSystemVersion +
+  '（对齐时间 ' + align.alignedAt + '）');
 css.push('   依据：16-design-system/design-tokens.json（取值唯一来源）');
 css.push('         16-design-system/src/tokens.css（变量名与分组）');
 css.push('   生成：scripts/build-tokens.mjs ← scripts/sync-ds-tokens.mjs');
-css.push('   对齐：' + align.designSystem + ' v' + align.designSystemVersion);
 css.push('   来源：' + align.source + '   指纹：' + String(align.fingerprints?.designTokensSha256 || '').slice(0, 16));
+css.push('   主色：--ds-accent = ' + (tokens.cssVars?.root?.['--ds-accent'] || '见 :root') +
+  '（亮色） / ' + (tokens.cssVars?.dark?.['--ds-accent'] || '见主题块') + '（暗色）');
+css.push('         —— 16 是规范的唯一定义方，07 消费并登记对齐版本号。');
+css.push('   展品内嵌配色（--atlas-local-*）是作品自身表达，已烘焙进资产，不随 UI 主题变化。');
 css.push('   ----------------------------------------------------');
 css.push('   三层结构：');
 css.push('     1. --ds-*          16 的令牌层（浅色默认 + 深色主题）');
@@ -175,7 +180,13 @@ writeFileSync(path.join(SRC, 'tokens.css'), cssText, 'utf8');
    ========================================================= */
 const jsText = [
   '/* 由 scripts/build-tokens.mjs 自动生成，请勿手改。',
+  ' * 对齐 16-design-system design-tokens v' + align.designSystemVersion +
+    '（对齐时间 ' + align.alignedAt + '）',
   ' * 依据 16-design-system/design-tokens.json（对齐来源：' + align.source + '）',
+  ' * 主色：--ds-accent = ' + (tokens.cssVars?.root?.['--ds-accent'] || '') +
+    '（亮色） / ' + (tokens.cssVars?.dark?.['--ds-accent'] || '') + '（暗色）',
+  ' * —— 16 是规范的唯一定义方；本文件消费并登记对齐版本号。',
+  ' * 展品内嵌配色（local.color / --atlas-local-*）是作品自身表达，已烘焙进资产，不随 UI 主题变化。',
   ' */',
   `export const tokens = ${JSON.stringify(tokens, null, 2)};`,
   'export default tokens;',

@@ -160,6 +160,31 @@ PRISM_BASE="http://127.0.0.1:4399/repo/prism-era" node scripts/verify-ds.mjs
 | 2 | 「高对比」开关同样重定义 `--ds-line` / `--ds-ink-soft` 等 `--ds-*` 取值 | 改为 `--hc-*` **间接层**（`--hc-line: var(--ds-line)` …），开关只改本目录自有变量 |
 | 3 | 字体栈顺序把覆盖有限的 Noto Sans SC 子集排在了系统 CJK 栈之前（V.11 违规） | 随 16 的 `tokens.css` 原样副本一并修正；由 `verify-ds.mjs` 的「字体栈顺序」断言守护 |
 
+### I. 对 16 号「规范就绪告知」三条前提的逐条回应
+
+> 2026-10-22 收到 16 号的规范就绪告知（`MIGRATION-NOTES.md §2.0` 那一行）。
+> 本目录第三轮已按该规范落地，以下为**逐条核对结论**（非计划，均为实测）。
+
+| 告知里的要求 | 本目录现状 | 结论 |
+| --- | --- | --- |
+| **① reduced-motion 降级实现在 `@media (prefers-reduced-motion: reduce)` 块里，而不是把 `--ds-dur-*` 直接写成 1ms** | 本目录自有 CSS 中 `--ds-dur-*: 1ms` 的命中数为 **0**；1ms 只存在于 16 号 `tokens.css` 副本的 `@media (prefers-reduced-motion: reduce) { :root { … } }` 块内（`assets/ds/tokens.css:355`）。设置开关路径另走 16 的 `[data-rm="reduce"]`（`components.css:936`） | ✅ **符合**，未踩 00/03/05 的坑 |
+| **② 字体：保留自研 JetBrains Mono 必须自托管 + 登记 LICENSES.md，否则改用本系统等宽族 Space Mono** | 本目录**无 JetBrains Mono 残留**（全仓 grep 命中 0）；等宽族已改用 16 号交付的 **Space Mono**（400 / 700 两款 woff2），自托管于 `assets/ds/fonts/`，5 款字体全部登记在 `LICENSES.md §1.1`（含 OFL 全文与版权声明） | ✅ **符合** |
+| **③ 入口注入 `--ds-base`，别写死绝对根路径** | `index.html` 注入 `:root{--ds-base:"/playtime-atlas-20261021/";}`，取 `design-tokens.json → meta.basePathVar` 的权威值；本厅产物**自包含**，自身资源全相对路径（`base: './'`），已实测可部署于任意子路径 | ✅ **符合** |
+| **④ 自测 `node tools/validate-tokens.mjs && node tools/verify-preview.mjs`，0 error 再交** | 见下 | ⚠️ 见下 |
+
+**关于 16 号自测脚本的实跑结果**（在 `/tmp` 的 16 号副本上跑，**未写入 16 号工作目录**）：
+
+| 脚本 | 结果 |
+| --- | --- |
+| `16-design-system/tools/validate-tokens.mjs` | **errors: 0**，warnings: 1（`motion.easing.spring` 的 cubic-bezier y 分量越界，**16 号自有项**，与本目录无关）→ `PASS` |
+| `16-design-system/tools/verify-preview.mjs` | 默认参数下报 `FATAL timeout Page.captureScreenshot`；**把截图超时从 25s 放宽到 120s 后全绿：errors 0 / warnings 0 → PASS** |
+
+> **诊断结论**：该失败**不是产品缺陷**，是**机器负载导致的截图超时**——
+> 本机当时 `load average: 375.51`（多任务并发）。同一台机器上本目录的 `scripts/verify-ds.mjs`
+> （走完全相同的 CDP 路径）稳定通过 13/1/0，可佐证。
+> 16 号若在自测口径上遇到同样的 `FATAL timeout Page.captureScreenshot`，
+> 可先确认负载再判断；建议其把截图超时改为可配置项。
+
 ## 交付物清单
 
 | 文件 | 说明 |
@@ -234,6 +259,30 @@ PRISM_BASE="http://127.0.0.1:4399/repo/prism-era" node scripts/verify-ds.mjs
   第三轮复验 **13 pass / 1 warn / 0 fail / 0 error（verdict = PASS）**；
   连同自建 QA 49/49、13 号探针 8 pass、无障碍 11/11、字体 11/11 全绿；
   截图增至 21 张；补齐 README / STATUS / QA / LICENSES / manifest / handoff。
+- **2026-10-22（第三轮收尾）**：回应 16 号「规范就绪告知」——三条前提逐条核对**全部符合**
+  （reduced-motion 只在 `@media` 块内降级、无 JetBrains Mono 残留且已登记 LICENSES、`--ds-base` 由构建注入）。
+  收尾时把本地层最后 1 处 `--ds-btn-h` 重设改为**直接覆盖 `height`**，使
+  **本地自有 CSS 的 `--ds-*` 取值声明数归零**（`QA.md` 缺陷 23）；重建产物后全套回归复跑仍全绿。
+- **2026-10-22（第三轮收尾）**：在 `/tmp` 的 16 号副本上实跑 `validate-tokens.mjs`（**0 error**）
+  与 `verify-preview.mjs`（默认 25s 截图超时下 `FATAL timeout Page.captureScreenshot`，
+  **放宽到 120s 后 0 error / 0 warning 全绿**）——诊断为**机器负载**（load average 375）导致的
+  截图超时，非产品缺陷；建议 16 号把截图超时改为可配置项。
+- **2026-10-22（第三轮收尾）**：回应 16 号 v1.0.1「字体栈顺序（V.11）」更新——该通知基于**第二轮旧状态**。
+  本目录第三轮已把字体栈整体换成 16 号 `tokens.css` 原样副本，顺序即为其要求
+  （拉丁自托管 → 完整系统 CJK 栈 → Noto Sans SC 子集 → 通用 sans-serif），**未删子集**；
+  且本目录**确实随包分发该子集**（197 600 B），故 16 号全库现状表里 12 的「⚠️ 子集不可用」前提已不成立。
+  已向 16 号发回执，附本目录自有层 `--ds-*` 声明数 0、`verify-ds.mjs` 检查 9 守护证据，
+  以及其 `verify-preview.mjs` 在高负载下误报失败（放宽超时即全绿）的实测反馈。
+- **2026-10-22（第三轮收尾）**：回应 15-supervisor「字体栈顺序缺陷 · 独立实测复核」派单——
+  派单点名的 `src/styles/tokens.css:62` / `:64` 现为 `--ink-400: var(--hc-line-strong);` 与
+  `/* 前景 */`，该文件**已无任何字体栈声明**；本地自有层 `--ds-font-display` / `--ds-font-text`
+  的**声明数为 0**（只做语义别名引用）。派单读到的是**第二轮快照**。
+  生效字体栈来自 16 号 `tokens.css` 原样副本，Noto Sans SC 已在所有完整 CJK 族之后，
+  `-apple-system, BlinkMacSystemFont` 亦在其后，woff2 与 `@font-face` 原样保留未删未改。
+  **本次只重跑构建刷新 `dist/`（产物哈希未变），未改任何源码**，未碰其他目录，未做 git 推送。
+  复扫 `verify-ds.mjs`：**13 pass / 1 warn / 0 fail / 0 error（verdict = PASS）**，
+  其中「字体栈顺序」pass、「令牌一致性」121 项全部一致。
+  已向 15-supervisor 发回执，说明 12 的正确分类是「子集真实可用 + 顺序正确 = 合规」。
 
 ## 限制（L）
 
@@ -242,11 +291,15 @@ PRISM_BASE="http://127.0.0.1:4399/repo/prism-era" node scripts/verify-ds.mjs
   **不重新定义任何 `--ds-*` 取值**（MIGRATION-NOTES §0 风险 B），
   因此与 05-museum-research、01-web 的同名 `--ds-*` 不存在互相覆盖的问题。
   若 14 号在站点层再统一分发 16 号的 `tokens.css`，需确认加载顺序与作用域。
-- **L-2**：**中文以系统字体栈为主**。16 号交付的 `Noto Sans SC` 子集（197 600 B）已随包引入，
+- **L-2**：**中文以系统字体栈为主**。16 号交付的 `Noto Sans SC` 子集（197 600 B）已随包引入
+  （`public/assets/ds/fonts/noto-sans-sc-subset.woff2`，`fonts.css` 内有对应 `@font-face`），
   但只排在**完整覆盖的系统 CJK 族之后**作为最后兜底——该子集按 07-museum-art 自身用字生成，
   覆盖范围有限。**顺序不可颠倒**：若把它排在系统栈之前，会因 CSS 按字符回退导致
   同段文字混入两套字形、基线错位（16 号规范源头已修正此项，本批 8 个目录曾集体出现）。
   代价仍是**跨设备汉字字形不一致**（macOS 苹方 / Windows 雅黑 / Linux Noto）。
+  **本目录的实际字体栈直接来自 16 号 `tokens.css` 的原样副本**（自有层不声明 `--ds-font-*`），
+  顺序为「拉丁自托管 → 完整系统 CJK 栈 → Noto Sans SC 子集 → 通用 sans-serif」，
+  并由 `scripts/verify-ds.mjs` 的检查 9「字体栈顺序」持续守护（V.11）。
 - **L-3**：**未切换语言**。文案骨架已就绪（162 键），但界面仍为中文，且内容型文案
   （史料、关卡叙事、热点长文、展项长描述）不在骨架内。
 - **L-4**：**「唯一强调色」有一处自觉偏离**——三个展项与时间轴年代保留了各自的**身份色**
@@ -275,3 +328,6 @@ PRISM_BASE="http://127.0.0.1:4399/repo/prism-era" node scripts/verify-ds.mjs
 - **L-12**：**令牌一致性存在 1 处已知差异**：`--ds-font-mono` 的 CSS 取值比 `design-tokens.json`
   多一个 `Consolas` 兜底族。该差异来自 **16 号 `tokens.css` 本身**（原样副本，未改动），
   不是本目录引入；已在 `scripts/verify-ds.mjs` 中按「提示」而非「失败」处理，并提请 16 号确认。
+- **L-13**：**本地自有 CSS 的 `--ds-*` 取值声明数为 0**（达标口径与 05-museum-research 一致）。
+  本目录只**引用** `--ds-*`、不**定义** `--ds-*`；唯一的例外是**几何校正**也只覆盖普通属性
+  （`height` / `appearance`），不动 16 号组件层的变量。

@@ -6,7 +6,7 @@
     "en": "Timber Craft Lab"
   },
   "version": "1.1.0",
-  "generatedAt": "2026-10-21T14:40:24.012Z",
+  "generatedAt": "2026-10-21T18:15:45.561Z",
   "generator": "scripts/build-model-index.mjs",
   "description": "六件中国传统建筑结构的可拆解 3D 教学模型清单（机器可读）。所有几何由代码程序化生成，均为教学示意模型，非测绘级复原；材质与比例为教学表达，非考古数据。",
   "disclaimer": {

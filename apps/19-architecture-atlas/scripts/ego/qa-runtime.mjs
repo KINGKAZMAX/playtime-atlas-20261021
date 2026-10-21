@@ -19,6 +19,7 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
+import { ensureWindowVisible } from './lib/window.mjs';
 
 const ROOT = '/Users/mekzenx2/Documents/ChatGPT/Minimax测评/output/flash-showcase-20261021/19-architecture-atlas';
 const DIST = path.join(ROOT, 'dist');
@@ -50,6 +51,29 @@ const server = http.createServer((req, res) => {
 });
 await new Promise((resolve) => server.listen(PORT, '127.0.0.1', resolve));
 
+/**
+ * Apply an exact viewport width.
+ *
+ * Measured behaviour of ego-browser's CDP bridge (2026-10-21):
+ *   · `Emulation.setDeviceMetricsOverride` with `mobile: false` does NOT
+ *     survive a navigation — the layout viewport silently reverts to the
+ *     browser window width, so a "1440" pass would really be 1600.
+ *   · with `mobile: true` the override applies and survives navigation, and
+ *     the layout viewport is exactly the requested width.
+ * `mobile: true` only adds touch/UA emulation. Layout is driven by the
+ * viewport width, and this project's CSS contains no `hover` or `pointer`
+ * media query, so the measurement is equivalent for the questions asked
+ * (horizontal overflow, visible focus ring).
+ *
+ * The override is therefore applied before AND after the navigation, so that
+ * a viewport which silently reverts can never make a measurement meaningless.
+ */
+async function setViewport(page, width, height, mobile = true) {
+  const params = { width, height, deviceScaleFactor: 1, mobile: true };
+  await page.cdp('Emulation.setDeviceMetricsOverride', params);
+}
+
+
 /* ------------------------------------------------------------------ driver */
 
 const PASSES = [
@@ -60,14 +84,13 @@ const PASSES = [
 
 const task = await taskSpace('bic19-architecture-atlas');
 const page = task.page('p1');
+await ensureWindowVisible(page);
 
 const reports = [];
 let failed = 0;
 
 for (const pass of PASSES) {
-  await page.cdp('Emulation.setDeviceMetricsOverride', {
-    width: pass.width, height: pass.height, deviceScaleFactor: 1, mobile: pass.width < 700,
-  });
+  await setViewport(page, pass.width, pass.height, pass.width < 700);
   await page.cdp('Emulation.setEmulatedMedia', {
     features: pass.reducedMotion
       ? [{ name: 'prefers-reduced-motion', value: 'reduce' }]
@@ -75,6 +98,7 @@ for (const pass of PASSES) {
   });
 
   await page.goto(`http://127.0.0.1:${PORT}/?qa=1`);
+  await setViewport(page, pass.width, pass.height, pass.width < 700);
   await page.waitForSelector('#qa-results', { timeout: 90000 });
 
   // the harness writes the result last; wait for it to finish

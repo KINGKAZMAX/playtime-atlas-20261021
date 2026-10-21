@@ -65,15 +65,22 @@
 
 ### 2.3 字体
 
+> **2026-10-21 23:xx 起已随设计系统接入改版**（详见 `STATUS.md` §6.1、§6.6）：下表「现用」一列为当前实际随产物发布的字体；
+> 「上一版」一列是研究阶段的做法，**已不再随产物发布**（对应 npm 依赖已从 `package.json` 与 `package-lock.json` 移除，`npm ci` 校验通过）。
+
 | 字体 | 来源 | 许可 | 打包方式 |
 |---|---|---|---|
-| Martian Mono（400/600/800） | npm `@fontsource/martian-mono` | SIL OFL 1.1 | latin 子集 woff2/woff，随构建产物本地化 |
-| Space Grotesk（300/400/500/700） | npm `@fontsource/space-grotesk` | SIL OFL 1.1 | 同上 |
-| JetBrains Mono（400/500） | npm `@fontsource/jetbrains-mono` | SIL OFL 1.1 | 同上 |
-| 中文（PingFang SC / 微软雅黑 / Noto Sans CJK） | 操作系统自带 | 系统字体 | **不下载**，使用系统字体栈回退 |
+| Space Grotesk（300/400/500/700） | `16-design-system/fonts/space-grotesk-latin.woff2` | SIL OFL 1.1 | 随产物发布到 `assets/ds/fonts/`，相对 URL 自托管（**现用**） |
+| Inter | `16-design-system/fonts/inter-latin.woff2` | SIL OFL 1.1 | 同上（**现用**） |
+| Space Mono（Regular/Bold） | `16-design-system/fonts/space-mono-*.woff2` | SIL OFL 1.1 | 同上（**现用**） |
+| Noto Sans SC 子集 | `16-design-system/fonts/noto-sans-sc-subset.woff2` | SIL OFL 1.1 | 随包复制作**渐进增强兜底**（系统 CJK 栈不可用时才回退），页面不直接引用（**现用**） |
+| 中文（PingFang SC / 苹方 / 微软雅黑 / 思源黑体） | 操作系统自带 | 系统字体 | **不下载**，走系统字体栈（**现用**） |
+| Martian Mono（400/600/800） | npm `@fontsource/martian-mono` | SIL OFL 1.1 | **上一版**：latin 子集 woff2/woff 随构建产物本地化（已移除） |
+| JetBrains Mono（400/500） | npm `@fontsource/jetbrains-mono` | SIL OFL 1.1 | **上一版**：同上（已移除） |
 
-> 中文字形不打包：Martian Mono 等拉丁字体不含 CJK 字形，强行打包思源黑体会把产物撑大数 MB。
+> 中文字形不打包：拉丁字体不含 CJK 字形，强行打包思源黑体会把产物撑大数 MB。
 > 因此中文走系统栈，拉丁字母与全部数字走上面的等宽/无衬线字体——这恰好构成本页「中文正文 + 仪表盘等宽数字」的双语排版系统。
+> 2026-10-21 起该栈按 MIGRATION-NOTES §5.3 调序：覆盖完整的系统 CJK 族排在覆盖有限的 `Noto Sans SC` 子集**之前**。
 
 ### 2.4 代码依赖
 
@@ -83,10 +90,9 @@
 | vite | 7.1.7 | MIT | 构建与开发服务器 |
 | typescript | 5.9.2 | Apache-2.0 | 类型检查 |
 | @types/three | 0.186.0 | MIT | 类型定义 |
-| @fontsource/* | 5.3.0 | OFL-1.1 | 字体 |
 | playwright | 1.64.1 | Apache-2.0 | **仅 QA 用**，不进入产物 |
 
-`playwright` 只在 `qa/verify.mjs` 里用于驱动本机 Chrome 做点击验证，不参与 `npm run build`，不进入 `dist/`。
+`playwright` 只在 `qa/verify.mjs` 等 QA 脚本里用于驱动本机 Chrome 做验证，不参与 `npm run build`，不进入 `dist/`。
 
 ---
 

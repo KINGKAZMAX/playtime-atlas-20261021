@@ -8,11 +8,27 @@
  */
 
 import { spawn } from 'node:child_process';
+import net from 'node:net';
 
 const BASE = process.argv[2] || 'http://127.0.0.1:4312/';
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-const PORT = 9351;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** 向操作系统要一个当前空闲的 TCP 端口（写死端口会被同机其它任务的残留 Chrome 抢占）。 */
+async function freePort() {
+  return new Promise((resolve, reject) => {
+    const srv = net.createServer();
+    srv.unref();
+    srv.on('error', reject);
+    srv.listen(0, '127.0.0.1', () => {
+      const { port } = srv.address();
+      srv.close(() => resolve(port));
+    });
+  });
+}
+
+
+const PORT = await freePort();
 
 const chrome = spawn(CHROME, [
   '--headless=new', `--remote-debugging-port=${PORT}`,
@@ -23,7 +39,7 @@ const chrome = spawn(CHROME, [
 ], { stdio: ['ignore', 'ignore', 'pipe'] });
 
 let target = null;
-for (let i = 0; i < 60; i++) {
+for (let i = 0; i < 160; i++) {
   await sleep(250);
   try {
     const res = await fetch(`http://127.0.0.1:${PORT}/json/list`);

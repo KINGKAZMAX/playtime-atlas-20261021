@@ -119,13 +119,13 @@ export function renderLabDetail(host, labId, { onToast } = {}) {
 
   const partList = el('ul.part-list', { role: 'list' });
   const partDetail = el('div.part-detail');
-  const stepList = el('ol.step-list');
-  const stepLabel = el('output', { text: '' });
+  const stepList = el('ol.step-list.step-assembly');
+  const stepLabel = el('output.step-readout', { text: '' });
   const explodeOut = el('output', { text: '0%' });
   const sectionOut = el('output', { text: '50%' });
 
   const state = {
-    step: spec.steps.length,   // index into spec.steps
+    step: spec.steps.length - 1,   // index into spec.steps；-1 = 尚未开始
     playing: false,
     viewer: null,
     build: null,
@@ -250,7 +250,7 @@ export function renderLabDetail(host, labId, { onToast } = {}) {
     el('div', {}, [
       el('h4', { text: t('labs.steps') }),
       el('div.ctrl-row', {}, [
-        el('span', { text: stepLabel }),
+        el('span', {}, [stepLabel]),
         el('span', {}, [
           el('button.btn.btn-sm', {
             type: 'button', text: '←', 'aria-label': t('labs.prevStep'),
@@ -337,13 +337,21 @@ export function renderLabDetail(host, labId, { onToast } = {}) {
   /* ---------------- assembly ---------------- */
 
   function applyStep() {
+    const n = spec.steps.length;
     const step = spec.steps[state.step];
-    stepLabel.textContent = t('labs.step', { i: state.step + 1, n: spec.steps.length });
+    // 步号：state.step = -1 表示「尚未开始」，0..n-1 表示第 i+1 步。
+    // 越界会读出 "Step 6 of 5" 这种假读数，所以这里显式分两态。
+    stepLabel.textContent = state.step < 0
+      ? t('labs.stepIdle')
+      : t('labs.step', { i: state.step + 1, n });
     const items = stepList.querySelectorAll('li');
     items.forEach((li, i) => li.classList.toggle('is-current', i === state.step));
     if (!state.viewer) return;
-    if (state.step >= spec.steps.length - 1) state.viewer.setAssemblyImmediate(Infinity);
-    else state.viewer.setAssemblyImmediate(step.stepValue);
+    // 18 的契约：viewer.setAssembly(target) 以构件 order 为单位推进，
+    // order <= target 的构件才可见。stepValue = 本步最后一个构件的 order + 1，
+    // 所以要减 1 才「恰好装到本步这一组」；不减 1 会让下一步的构件提前出现。
+    // state.step = -1 → target = -1 → 无构件可见（从零开始装配）。
+    state.viewer.setAssemblyImmediate(step ? step.stepValue - 1 : -1);
   }
 
   /* ---------------- assemble ---------------- */
@@ -478,8 +486,10 @@ export function renderLabDetail(host, labId, { onToast } = {}) {
       reducedMotion: prefersReduced(),
     });
     viewer.setModel(model, build);
-    viewer.setAssemblyImmediate(Infinity);
     state.viewer = viewer;
+    // 与面板状态保持一致：初始停在最后一步（整装完成），而不是另写一个
+    // 与步号脱节的 Infinity。
+    applyStep();
     loading.setAttribute('hidden', '');
     fallback.setAttribute('hidden', '');
   };

@@ -20,6 +20,7 @@
 
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:http';
+import { createServer as createNetServer } from 'node:net';
 import fs from 'node:fs';
 import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -46,6 +47,23 @@ const VIEWPORTS = [
 ].filter((v) => !ONLY || v.name === ONLY);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * 向操作系统要一个当前空闲的 TCP 端口。
+ * 固定端口（9351 之类）会与同机其它任务的残留 headless Chrome 抢占，
+ * 表现为「DevTools endpoint never came up」的假失败。
+ */
+async function freePort() {
+  return new Promise((resolve, reject) => {
+    const srv = createNetServer();
+    srv.unref();
+    srv.on('error', reject);
+    srv.listen(0, '127.0.0.1', () => {
+      const { port } = srv.address();
+      srv.close(() => resolve(port));
+    });
+  });
+}
 
 /** 极简静态服务器：把 root 挂到 mount 下。 */
 function startStaticServer({ root, mount }) {
@@ -224,7 +242,7 @@ const DETECTOR = `(() => {
 
 async function measure(baseUrl, vp) {
   const userDir = await mkdtemp(path.join(tmpdir(), 'abyss-d1-'));
-  const port = 9400 + Math.floor(Math.random() * 300);
+  const port = await freePort();
   const chrome = spawn(
     CHROME,
     [
@@ -249,7 +267,8 @@ async function measure(baseUrl, vp) {
 
   let target = null;
   const ENDPOINTS = [`http://127.0.0.1:${port}/json/list`, `http://[::1]:${port}/json/list`];
-  for (let i = 0; i < 60 && !target; i++) {
+  // 机器并发负载高时 Chrome 冷启动可能要十几秒，窗口给到 40s 免得假失败。
+  for (let i = 0; i < 160 && !target; i++) {
     await sleep(250);
     for (const endpoint of ENDPOINTS) {
       try {

@@ -22,7 +22,17 @@ async function mainImpl() {
   const task = await taskSpace("05-catalog-refshots");
   const page = await task.newPage();
   try {
-    const rows = ["slug\turl\thttp_status\tbytes\tfile\tshot_at"];
+    // 固定视口，让 14 张参考站截图的尺寸可复现（原先用浏览器默认窗口，尺寸随用户窗口浮动）。
+    // mobile:true 才能 1:1 精确 —— 见 tools/ego-qa/MIGRATION.md §1③。
+    await page.cdp("Emulation.setDeviceMetricsOverride", {
+      width: 1440,
+      height: 900,
+      deviceScaleFactor: 1,
+      mobile: true,
+    });
+    const shotViewport = { requested: 1440, measuredInnerWidth: await page.evaluate(`window.innerWidth`) };
+    console.log(`  视口 请求 1440 实测 ${shotViewport.measuredInnerWidth}`);
+    const rows = ["slug\turl\thttp_status\tbytes\tfile\tshot_at\tviewport"];
     for (const { slug, url } of SLUGS) {
       const safe = slug.replace(/[^A-Za-z0-9._-]/g, "_");
       const file = path.join(OUT, `${safe}.png`);
@@ -40,7 +50,15 @@ async function mainImpl() {
         status = 0;
       }
       rows.push(
-        [slug, url, status, bytes, `${safe}.png`, new Date().toISOString().replace(/\.\d+Z$/, "Z")].join("\t")
+        [
+          slug,
+          url,
+          status,
+          bytes,
+          `${safe}.png`,
+          new Date().toISOString().replace(/\.\d+Z$/, "Z"),
+          `${shotViewport.measuredInnerWidth}px`,
+        ].join("\t")
       );
       console.log(`  ${slug} -> http=${status} bytes=${bytes}`);
     }

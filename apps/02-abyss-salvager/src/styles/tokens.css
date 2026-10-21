@@ -11,43 +11,48 @@
      本文件是本项目**自行编写**的令牌落地层，变量名与取值与上游 token 一一对应，
      但针对本作的「深海仪表 HUD」场景做了两处受控偏离，见文末 §偏离说明。
 
-   本作为沉浸式 3D 画布，默认深色主题（对应 design-tokens.json
+   本作为沉浸式 3D 画布，使用深色主题（对应 design-tokens.json
    `color.dark` / `color.canvas`），因此 <html data-ds-theme="dark">。
+   主题分层遵循 MIGRATION-NOTES §1.1-A2：`:root` 只给**默认值**（浅色），
+   暗色由 [data-ds-theme="dark"] 选择器给出，不写死在 :root —— 将来要支持
+   浅色切换时无需返工。
    ========================================================================== */
 
 :root {
-  /* ---------- 色彩 · 深色主题（本作默认） ----------
-     依据：design-tokens.json → color.dark */
-  --ds-bg: #100f0e;
-  --ds-bg-raised: #1a1917;
-  --ds-bg-sunken: #0b0a09;
-  --ds-ink: #f7f4f0;
-  --ds-ink-soft: #c0b7b0;
-  --ds-ink-faint: #9a918a;
-  --ds-line: #2b2926;
-  --ds-line-strong: #453f39;
-  --ds-surface: #1e1d1b;
-  --ds-accent: #e0684a;
-  --ds-accent-hover: #ee8266;
-  --ds-accent-soft: #331c15;
-  --ds-accent-ink: #17110f;
-  --ds-jade: #5fa99a;
-  --ds-jade-soft: #16211e;
-  --ds-overlay: rgba(8, 7, 6, 0.62);
+  /* ---------- 色彩 · 默认（浅色） ----------
+     依据：design-tokens.json → color.light
+     暗色主题**不在 :root 写死**，改由 [data-ds-theme="dark"] 给出
+     （MIGRATION-NOTES §1.1-A2），将来支持浅色切换时不必返工。 */
+  --ds-bg: #fcfbf9;
+  --ds-bg-raised: #ffffff;
+  --ds-bg-sunken: #f2eee9;
+  --ds-ink: #14110f;
+  --ds-ink-soft: #59514b;
+  --ds-ink-faint: #6e655e;
+  --ds-line: #e4ded7;
+  --ds-line-strong: #cfc6bc;
+  --ds-surface: #f2eee9;
+  --ds-accent: #b4432b;
+  --ds-accent-hover: #97361f;
+  --ds-accent-soft: #f6e9e4;
+  --ds-accent-ink: #ffffff;
+  --ds-jade: #2e6a5e;
+  --ds-jade-soft: #e4eeeb;
+  --ds-overlay: rgba(20, 17, 15, 0.44);
 
   /* ---------- 色彩 · 分区（tone-aware） ---------- */
   --ds-section-ink: var(--ds-ink);
-  --ds-section-soft: rgba(247, 244, 240, 0.78);
-  --ds-section-faint: rgba(247, 244, 240, 0.46);
+  --ds-section-soft: rgba(20, 17, 15, 0.62);
+  --ds-section-faint: rgba(20, 17, 15, 0.38);
   --ds-section-bg: var(--ds-bg);
-  --ds-tone-fade: #141311;
+  --ds-tone-fade: #edeae5;
   --ds-glow: var(--ds-bg);
   --ds-section-radius-scale: 1;
 
   /* ---------- 色彩 · 画布 / HUD ----------
      依据：design-tokens.json → color.canvas
      画布上承载文字必须用 --ds-canvas-hud-bg / --ds-canvas-hud-ink。 */
-  --ds-canvas-hud-bg: rgba(8, 7, 6, 0.78);
+  --ds-canvas-hud-bg: rgba(16, 15, 14, 0.72);
   --ds-canvas-hud-ink: #f7f4f0;
   --ds-canvas-hud-line: rgba(247, 244, 240, 0.24);
   --ds-canvas-scrim: rgba(16, 15, 14, 0.55);
@@ -193,26 +198,62 @@
   --ds-font-display-src: var(--ds-base);
 }
 
-/* ---------- 浅色主题（备用；本作默认深色） ----------
-   依据：design-tokens.json → color.light */
-[data-ds-theme="light"] {
-  --ds-bg: #fcfbf9;
-  --ds-bg-raised: #ffffff;
-  --ds-bg-sunken: #f2eee9;
-  --ds-ink: #14110f;
-  --ds-ink-soft: #59514b;
-  --ds-ink-faint: #6e655e;
-  --ds-line: #e4ded7;
-  --ds-line-strong: #cfc6bc;
-  --ds-surface: #f2eee9;
-  --ds-accent: #b4432b;
-  --ds-accent-hover: #97361f;
-  --ds-accent-soft: #f6e9e4;
-  --ds-accent-ink: #ffffff;
-  --ds-jade: #2e6a5e;
-  --ds-jade-soft: #e4eeeb;
-  --ds-overlay: rgba(20, 17, 15, 0.44);
-  --ds-canvas-hud-bg: rgba(16, 15, 14, 0.72);
+/* ---------- 深色主题 ----------
+   依据：MIGRATION-NOTES §1.1-A2 —— 「若该目录将来要支持浅色切换，请改用
+   选择器 [data-ds-theme="dark"] 而非写死在 :root」。
+   取值与 16-design-system/src/tokens.css 的同名块**逐字一致**。
+   本作为深海沉浸式 3D 查看器，<html data-ds-theme="dark"> 常驻。 */
+[data-ds-theme="dark"] {
+  --ds-bg: #100f0e;
+  --ds-bg-raised: #1a1917;
+  --ds-bg-sunken: #0b0a09;
+  --ds-ink: #f7f4f0;
+  --ds-ink-soft: #c0b7b0;
+  --ds-ink-faint: #9a918a;
+  --ds-line: #2b2926;
+  --ds-line-strong: #453f39;
+  --ds-surface: #1e1d1b;
+  --ds-accent: #e0684a;
+  --ds-accent-hover: #ee8266;
+  --ds-accent-soft: #331c15;
+  --ds-accent-ink: #17110f;
+  --ds-jade: #5fa99a;
+  --ds-jade-soft: #16211e;
+  --ds-overlay: rgba(8, 7, 6, 0.62);
+  --ds-section-ink: #f7f4f0;
+  --ds-section-soft: rgba(247, 244, 240, 0.78);
+  --ds-section-faint: rgba(247, 244, 240, 0.46);
+  --ds-tone-fade: #141311;
+  --ds-canvas-hud-bg: rgba(8, 7, 6, 0.78);
+}
+
+/* ---------- 跟随系统（未显式指定主题时） ----------
+   结构性兜底：未显式写 data-ds-theme 时跟随系统偏好；
+   显式 data-ds-theme="light" 时该块不生效，浅色（:root 默认值）胜出。 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-ds-theme="light"]) {
+    --ds-bg: #100f0e;
+    --ds-bg-raised: #1a1917;
+    --ds-bg-sunken: #0b0a09;
+    --ds-ink: #f7f4f0;
+    --ds-ink-soft: #c0b7b0;
+    --ds-ink-faint: #9a918a;
+    --ds-line: #2b2926;
+    --ds-line-strong: #453f39;
+    --ds-surface: #1e1d1b;
+    --ds-accent: #e0684a;
+    --ds-accent-hover: #ee8266;
+    --ds-accent-soft: #331c15;
+    --ds-accent-ink: #17110f;
+    --ds-jade: #5fa99a;
+    --ds-jade-soft: #16211e;
+    --ds-overlay: rgba(8, 7, 6, 0.62);
+    --ds-section-ink: #f7f4f0;
+    --ds-section-soft: rgba(247, 244, 240, 0.78);
+    --ds-section-faint: rgba(247, 244, 240, 0.46);
+    --ds-tone-fade: #141311;
+    --ds-canvas-hud-bg: rgba(8, 7, 6, 0.78);
+  }
 }
 
 /* ---------- 排版基类 ----------
@@ -346,10 +387,11 @@
       执行：汉字走系统栈，拉丁走自托管 woff2。族名与 16 清单一致。
       未随包 noto-sans-sc-subset.woff2（避免引入不完整字形源）。
 
-   ② 默认主题为深色，不跟随系统。
+   ② 主题由 [data-ds-theme="dark"] 给出，不写死在 :root（MIGRATION-NOTES §1.1-A2）。
+      :root 给浅色默认值，<html data-ds-theme="dark"> 常驻以选暗色；
+      另附 prefers-color-scheme 兜底（未显式指定主题时跟随系统）。
       依据：design-tokens.json → color.dark 注明「建筑项目与游戏内夜间场景默认使用」；
-      本作为深海场景 3D 查看器，全画布沉浸，统一深色。浅色主题仍以
-      [data-ds-theme="light"] 完整提供。
+      本作为深海场景 3D 查看器，全画布沉浸，常驻深色。
 
    ③ 未引入 --ds-work-dim / --ds-section-height 等与本作无关的布局令牌。
       保留无害，但本作无作品卡网格，--ds-work-dim 置空即可，不产生行为差异。

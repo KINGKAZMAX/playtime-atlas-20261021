@@ -70,6 +70,10 @@ export default {
 
   /* ---------- 载入 / 指针 ---------- */
   'load.init': '正在初始化',
+  /* 页头 / 页脚（G.2 .ds-topbar / .ds-footer） */
+  'menu.tag': '可玩 · 6DOF',
+  'footer.hint': '键盘操作 · Esc 暂停 · M 星图 · F 扫描 · R 对接',
+  'footer.credit': '全部素材程序化生成 · 零外部请求 · 自托管字体',
   'load.hint': '全部素材由程序实时生成 · 无外部网络请求',
   'pointer.title': '点击画面',
   'pointer.desc': '锁定鼠标以驾驶',

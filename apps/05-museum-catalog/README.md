@@ -217,9 +217,10 @@ node ../16-design-system/tools/verify-preview.mjs
   `imageLicense` 仅供逐图复核参考。
 - **08–12 年代展厅**：各展厅的年代与条目可按 `era` 直接过滤；`summary` 已含史实，可直接做展厅导语底稿。
 - **13-qa-curation**：`QA.md` 列出全部机器核对结论与 `review` 名单，可直接作为"来源可靠性"抽查清单；
-  目录页的**实跑证据**在 `evidence/restyle-selftest.json`（23 项）、
-  `evidence/ds-verify.json`（设计系统 14/14）、`evidence/restyle-visual-diff.json`（结构/计算样式/像素三重一致）、
-  `evidence/ds-duration-audit.json`（时长/命名空间 9/9），可直接对照，不必重复造。
+  目录页的**实跑证据**在 `evidence/restyle-selftest.json`（23 项：22 通过 + 1 项线上 404 归发布侧 blocked-by-publish，**产品侧失败 0**）、
+  `evidence/ds-verify.json`（设计系统 14/14）、`evidence/restyle-visual-diff.json`（结构/计算样式/像素三重一致 4/4）、
+  `evidence/ds-duration-audit.json`（时长/命名空间/字体栈/资产一致性审计 **13/13**），可直接对照，不必重复造。
+  全部由 **ego-browser** 驱动（用户长期约定的唯一浏览器入口）。
   `CHK[D8]`（线上 404）归属 14 发布侧，按 15 的路由标 blocked-by-publish。
 - **14-publish**：资料部分无构建步骤，`manifest.json` 的 `dataEntry` 指向 `catalog.json`；
   目录页的构建产物在 `dist/`（`buildCommand` = `node src/catalog-page/build-catalog-page.mjs`）。

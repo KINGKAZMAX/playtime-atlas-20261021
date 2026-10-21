@@ -1,0 +1,224 @@
+{
+  "ranAt": "2026-10-21T18:35:22.257Z",
+  "taskSpaceId": 123,
+  "base": "https://kingkazmax.github.io/playtime-atlas-20261021",
+  "assetStatus": [
+    {
+      "path": "works/06-museum-main/art/assets/fonts/fonts.css",
+      "status": 200,
+      "bytes": 1472
+    },
+    {
+      "path": "works/06-museum-main/art/assets/fonts/inter-latin.woff2",
+      "status": 200,
+      "bytes": 125792
+    },
+    {
+      "path": "works/06-museum-main/art/assets/fonts/space-grotesk-latin.woff2",
+      "status": 200,
+      "bytes": 32996
+    },
+    {
+      "path": "works/06-museum-main/assets/index-DnTTdWMf.css",
+      "status": 200,
+      "bytes": 47848
+    },
+    {
+      "path": "works/06-museum-main/exhibits/modern/assets/ds/fonts/fonts.css",
+      "status": 200,
+      "bytes": 2146
+    },
+    {
+      "path": "works/06-museum-main/exhibits/online/assets/ds/fonts/fonts.css",
+      "status": 200,
+      "bytes": 1676
+    },
+    {
+      "path": "assets/ds/tokens.css",
+      "status": 200,
+      "bytes": 10115
+    },
+    {
+      "path": "assets/ds/fonts/fonts.css",
+      "status": 200,
+      "bytes": 1676
+    },
+    {
+      "path": "assets/ds/fonts/inter-latin.woff2",
+      "status": 200,
+      "bytes": 125792
+    },
+    {
+      "path": "assets/ds/fonts/space-grotesk-latin.woff2",
+      "status": 200,
+      "bytes": 32996
+    },
+    {
+      "path": "assets/ds/fonts/space-mono-regular.woff2",
+      "status": 200,
+      "bytes": 14100
+    },
+    {
+      "path": "assets/ds/fonts/space-mono-bold.woff2",
+      "status": 200,
+      "bytes": 14233
+    },
+    {
+      "path": "assets/ds/fonts/noto-sans-sc-subset.woff2",
+      "status": 200,
+      "bytes": 187176
+    },
+    {
+      "path": "assets/gallery-covers/01-chroma-s1.webp",
+      "status": 200,
+      "bytes": 38431
+    },
+    {
+      "path": "assets/gallery-covers/06-museum-main.webp",
+      "status": 200,
+      "bytes": 58003
+    },
+    {
+      "path": "assets/gallery-covers/12-era-modern.webp",
+      "status": 200,
+      "bytes": 31638
+    },
+    {
+      "path": "works/07-museum-art/assets/icons/joystick.svg",
+      "status": 200,
+      "bytes": 334
+    },
+    {
+      "path": "data/works.json",
+      "status": 200,
+      "bytes": 7873
+    },
+    {
+      "path": "favicon.ico",
+      "status": 200,
+      "bytes": 5430
+    }
+  ],
+  "smoke": [
+    {
+      "label": "hall",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/",
+      "title": "回响电玩馆 · PLAYTIME ATLAS",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "desktop": {
+        "scrollWidth": 1636,
+        "clientWidth": 1636,
+        "bodyScrollWidth": 1636
+      },
+      "mobile": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390
+      },
+      "desktopNoHScroll": true,
+      "mobileNoHScroll": true,
+      "storageKeys": 34,
+      "covers": {
+        "total": 11,
+        "broken": 0
+      }
+    },
+    {
+      "label": "06-museum-main",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/works/06-museum-main/",
+      "title": "回响电玩馆 · PLAYTIME ATLAS",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "desktop": {
+        "scrollWidth": 1636,
+        "clientWidth": 1636,
+        "bodyScrollWidth": 1636
+      },
+      "mobile": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390
+      },
+      "desktopNoHScroll": true,
+      "mobileNoHScroll": true,
+      "storageKeys": 34,
+      "covers": {
+        "total": 1,
+        "broken": 0
+      }
+    },
+    {
+      "label": "07-museum-art",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/works/07-museum-art/",
+      "title": "回响电玩馆 / PLAYTIME ATLAS — 原创美术与硬件模型包",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "desktop": {
+        "scrollWidth": 1636,
+        "clientWidth": 1636,
+        "bodyScrollWidth": 1636
+      },
+      "mobile": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390
+      },
+      "desktopNoHScroll": true,
+      "mobileNoHScroll": true,
+      "storageKeys": 34,
+      "covers": {
+        "total": 35,
+        "broken": 2
+      }
+    },
+    {
+      "label": "02-abyss-salvager",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/works/02-abyss-salvager/",
+      "title": "渊甲拾遗者 AC-VII · ABYSS-CARAPACE SALVAGER",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "desktop": {
+        "scrollWidth": 1636,
+        "clientWidth": 1636,
+        "bodyScrollWidth": 1636
+      },
+      "mobile": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 416
+      },
+      "desktopNoHScroll": true,
+      "mobileNoHScroll": false,
+      "storageKeys": 34,
+      "covers": {
+        "total": 0,
+        "broken": 0
+      }
+    },
+    {
+      "label": "17-architecture-research",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/works/17-architecture-research/",
+      "title": "构筑华夏 · 中国经典建筑与传统结构 · 研究成果",
+      "http4xx5xx": [],
+      "consoleErrors": [],
+      "desktop": {
+        "scrollWidth": 1636,
+        "clientWidth": 1636,
+        "bodyScrollWidth": 1636
+      },
+      "mobile": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390
+      },
+      "desktopNoHScroll": true,
+      "mobileNoHScroll": true,
+      "storageKeys": 34,
+      "covers": {
+        "total": 0,
+        "broken": 0
+      }
+    }
+  ]
+}

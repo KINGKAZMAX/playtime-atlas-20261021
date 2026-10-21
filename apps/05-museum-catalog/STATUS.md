@@ -29,7 +29,7 @@
 | `src/catalog-page/` | ✅ 完成 | **目录页自有源码**（生成器 + 页面样式层 + `assets/ds/` 设计系统资产） |
 | `src/catalog-page/assets/ds/` | ✅ 完成 | 16 的 `tokens.css` + `components.css` + `fonts/`（4 个 OFL 字体族）副本，与原件逐字节一致 |
 | `i18n/catalog-keys.md` | ✅ 完成 | zh/en 双语 key 骨架（41 个界面 key），**只建骨架未切语言** |
-| `evidence/` | ✅ 完成 | 改版证据：`restyle-selftest.json` 23/23 · `ds-verify.json` 14/14 · `restyle-visual-diff.json` 4/4 · `ds-duration-audit.json` 13/13 · `ds-verify-preview/preview-verification.json`（16 侧门禁 errors 0）· 四档视口截图 |
+| `evidence/` | ✅ 完成 | 改版证据：`restyle-selftest.json` **22/23（产品侧失败 0；1 项线上 404 归发布侧 blocked-by-publish）** · `ds-verify.json` 14/14 · `restyle-visual-diff.json` 4/4 · `ds-duration-audit.json` 13/13 · `ds-verify-preview/preview-verification.json`（16 侧门禁 errors 0）· 四档视口截图 |
 | `handoff/CATALOG-PAGE-HANDOFF.md` | ✅ 完成 | 给 14 的目录页源码接管步骤 + 设计系统资产发布路径 + 线上缺陷修法 |
 
 ---
@@ -144,7 +144,7 @@
 **A.11 自有 CSS 不自造字体栈**（6 处 `font-family` 全部走 `var(--ds-font-*)`）、**A.12 CSS 与 `design-tokens.json` 逐项相等（无规范漂移）**——
 本页随包分发 `noto-sans-sc-subset.woff2` 且 `@font-face` 为活体，故 A.10 是**真缺陷守卫**。审计由 9 项增至 **12 项**。
 
-**验收**：功能自测 23/23、设计系统验收 14/14、改版前后对照 4/4、时长与命名空间与资产一致性审计 13/13（见 §3）。
+**验收**：功能自测 **22/23**（1 项线上 404 归发布侧 blocked-by-publish，**产品侧失败 0**）、设计系统验收 14/14、改版前后对照 4/4、时长与命名空间与资产一致性审计 13/13（见 §3）。
 
 **S8-补-6 · 验收探针整体迁移到 Ego（00:2x，按用户长期约定）**：用户 2026-10-22 起永久约定
 「**Ego 浏览器是唯一浏览器入口**」，禁止内置 Browser 与另起 Playwright/Chromium/Chrome 等替代路径。
@@ -154,7 +154,7 @@
 旧的 `selftest_browser.mjs` / `ds_verify.mjs` / `capture_refs.sh` 已删除，**仓库内已无任何其他浏览器路径**。
 迁移中修正的三处环境差异（Ego 的 console.log 走 stderr / 用户扩展请求需排除 / 程序化 focus 不触发 `:focus-visible`
 → 改用**真实键盘 Tab** 检验焦点环）。迁移后全套复跑：`qa_check` 18/18 · `ds_duration_audit` 13/13 ·
-`restyle_selftest` 23/23（1 项线上 404 归发布侧 blocked，产品侧失败 0）· `ds_check` 14/14 · `restyle_visual_regression` 4/4。
+`restyle_selftest` **22/23**（1 项线上 404 归发布侧 blocked-by-publish，产品侧失败 0）· `ds_check` 14/14 · `restyle_visual_regression` 4/4。
 
 **S8-补-4 · 自测探针的自加固（23:1x，与 16 的门禁缺陷同源）**：16 的 `verify-preview.mjs` 出现**偶发假失败**
 （导航后固定 `sleep(1500)` → 样式表未解析完就读到 `--ds-dur-base: ""` → 误判 reduced-motion 未生效；首跑 FAIL 1、复跑 PASS），
@@ -189,7 +189,7 @@
    （`tokens.css` / `components.css` / `fonts/**` 共 14 个文件）的 **src 副本与 dist 产物**是否都与 16 原件一致。
    该守卫在加入后的**第一次运行就抓到了 dist 里的旧 FONT-MANIFEST**（重建前），重建后 13/13 全通过。
 3. **计数口径已按实际文件名与实际计数对齐**：README / STATUS 现一律引用实际文件名
-   （`restyle-selftest.json` 23/23 · `ds-verify.json` 14/14 · `restyle-visual-diff.json` 4/4 ·
+   （`restyle-selftest.json` 22/23（1 项线上 404 归发布侧 blocked-by-publish）· `ds-verify.json` 14/14 · `restyle-visual-diff.json` 4/4 ·
    `ds-duration-audit.json` 13/13 · `ds-verify-preview/preview-verification.json`），不再出现旧口径数字。
 4. **「自有 CSS 零声明」精确化**：准确表述为「**自有 CSS 零 `--ds-*` 声明，仅构建期在 HTML 注入 `--ds-base`**
    （`src/catalog-page/build-catalog-page.mjs:169`；`--ds-base` 是 16 §2.0 要求的接入项，不是 CSS 声明）」。
@@ -225,6 +225,138 @@ SHA-256 同为 `2cdc2120…6425`，`:root` 取值为 120 / 200 / 320 / 520 / 800
 > （重导航后固定 `sleep(1500)` 不足以保证样式表解析完成，首跑读到 `durBase:""` 报 1 error，
 > 复跑即 PASS）。判读建议复跑一次。
 
+**S8-补-7 · 16 的工具加固复核与 V.11—V.13 全站化（01:2x）**：16 采纳本目录提出的「不变量要写成可复跑断言」，
+并把本目录的 **A.11 / A.12 升格为全站通用验收项 V.12 / V.13**（与 V.11 同族），在 `tools/validate-tokens.mjs` 内实装
+（含负向测试：顺序错 → V.11+V.13 双命中；写死 CJK 字体族 → V.12 命中；只改 JSON 不改 CSS → V.13 命中）。
+`MIGRATION-NOTES.md` §9.1 已写入 **harness 与产品缺陷分开记账**的判定口径表（探针超时 → `harness-timeout` /
+`blockedByHarness`，不计产品失败，先重跑再判定；重跑后稳定复现 → 才是产品问题），与本目录的
+`blockedByHarness` / `classification: harness-timeout` 完全一致。
+
+**05 侧本轮复核结论（只读核对，零改动）**：
+
+| 核对项 | 方法 | 结果 |
+| --- | --- | --- |
+| DS 资产未漂移 | 三方 SHA-256 对比（16 原件 / 05 src / 05 dist） | `tokens.css` `e9595d51…` · `fonts.css` `ebccba0f…` · `FONT-MANIFEST.json` `7174ecf5…` **三处全等**；A.13 覆盖的 14 个资产文件逐字节一致 |
+| 自有审计未回归 | `python3 scripts/ds_duration_audit.py` | **13/13 PASS**（A.7 自有 CSS 零 `--ds-*` 声明 · A.10 栈序 · A.11 不自造 · A.12 无漂移 · A.13 全量一致） |
+| 16 门禁在 05 副本下通过 | `/tmp` symlink 农场（`design-tokens.json`/`preview.html` 指向 16，DS 资产指向 **05 实际发布的副本**），跑 16 原版 `validate-tokens.mjs` | **PASS** — tokens 213 / css vars 130 / **errors 0** / warnings 1（spring cubic-bezier y 分量越界，16 侧既有允许项） |
+| 16 探针自测在 05 侧复现 | 农场内跑 16 原版 `selftest-verify-preview.mjs` | **6/6 PASS**（含「单次 ev 硬睡 5s 时总时长仍封顶」一条，实测 10.4s ≪ 默认 45s） |
+| V.12 对 05 自有 CSS 成立 | 以 16 的 V.12 判据实测 05 `catalog.css` | src 3 处 / dist 3 处 `font-family` **全部走 `var(--ds-font-*)`，违规 0 条** |
+
+> **16 目录零写入**：两支脚本均在 `/tmp` 农场内执行（农场为 16 原版脚本的**副本**，DS 资产指向 05 副本，
+> `evidence/` 指向农场本地目录），复核后 `16-design-system/` 无新增或修改文件。
+
+> **一处工具侧缺口（已回报 16，不影响 05 合规）**：`validate-tokens.mjs` 的 V.12 判据里
+> `ownCssFiles` 硬编码为 `['src/components.css']` —— 即「自有 CSS 不得自造字体栈」在**被复制的目录**里
+> 只会检查那份**逐字节等同于 16 原件的** `components.css`，**不会检查消费目录自己的页面 CSS**。
+> 05 由自身的 **A.11** 覆盖同一判据（6 处 `font-family` 全部走令牌），故 05 合规性不受影响；
+> 已把该缺口回报 16，供其把 `ownCssFiles` 改为可配置（例如扫描 `src/**/*.css` 或接受 `--own-css` 参数），
+> 以便全站复制的目录都能真正被 V.12 覆盖。
+
+### S9 浏览器入口统一与共享验收工具迁移（2026-10-22 02:1x）
+
+**指令**：用户明确「所有项目的浏览器操作一律只走 Ego 浏览器」，并给出批次共享验收工具
+`tools/ego-qa/run.mjs`（要求先读 `tools/ego-qa/MIGRATION.md`），同时**取消「本地 file:// 自测豁免 Ego」**。
+
+#### 9.1 待改造脚本清单与处置
+
+| 脚本 | 改造前 | 处置 | 状态 |
+| --- | --- | --- | --- |
+| `scripts/capture_refs.sh`（`CHROME --headless=new`） | 自起无头 Chrome | **已删除**（00:2x 迁移时），改为 `scripts/capture_refs.py` + `ego_refshots.template.mjs` | ✅ |
+| `scripts/selftest_browser.mjs`（`--headless=new`） | 自起无头 Chrome | **已删除**，改为 `ego_selftest.template.mjs` | ✅ |
+| `scripts/ds_verify.mjs`（`--headless=new`） | 自起无头 Chrome | **已删除**，改为 `ego_ds_probe.template.mjs` | ✅ |
+| `scripts/ego_ds_probe.template.mjs` | 四档视口 **3 档 `mobile:false`** | 改 `mobile:true` + **视口精度自检** | ✅ 本轮修 |
+| `scripts/ego_selftest.template.mjs` | 1440 **���mobile:false** | 改 `mobile:true` + 精度自检 | ✅ 本轮修 |
+| `scripts/ego_live_probe.template.mjs` | 无视口设置 | 补确定性视口 + `measuredInnerWidth` | ✅ 本轮修 |
+| `scripts/ego_refshots.template.mjs` | 用浏览器默认窗口（尺寸随用户窗口浮动） | 固定 1440×900 + `INDEX.tsv` 增 `viewport` 列 | ✅ 本轮修 |
+| `scripts/page_probe.mjs` | 注释仍写「自行 spawn headless Chrome」 | 改注释 | ✅ 本轮修 |
+| `scripts/restyle_selftest.py` | 文档串仍写「headless Chrome + CDP」 | 改文档串 | ✅ 本轮修 |
+| `scripts/touch_target_audit.py` + `ego_touch_target.template.mjs` | — | **本轮新增**：触摸目标审计（见 9.4） | ✅ 新增 |
+
+> 仓库内现已**无任何**自起浏览器路径：全量扫描 `headless` / `remote-debugging-port` / `chromium.launch` /
+> `playwright` / `puppeteer` / `CHROME=` 均只剩**禁止性注释**。
+
+#### 9.2 ⚠️ 由此发现的一处真缺陷：视口被放大，旧证据的响应式判定被污染
+
+MIGRATION.md §1③ 点名的坑，**05 自己踩中了**。用 Ego 对 05 实页实测（`evidence/touch-target-audit.json` 同源方法）：
+
+| 请求视口 | `mobile:false` 实测 innerWidth | `mobile:true` 实测 innerWidth |
+| --- | --- | --- |
+| 1440 | **1600**（dpr 0.9） | 1440 ✅ |
+| 1280 | **1422** | 1280 ✅ |
+| 768 | **853** | 768 ✅ |
+| 390 | 433 | 390 ✅ |
+
+**后果**：
+1. 旧证据里「四档视口 `scrollWidth ≤ innerWidth`」是在 **1600 / 1422 / 853 / 390** 上判定的 —— 宽度被放大，
+   **溢出判定偏宽松**（1440 处的真实溢出会被漏检）；
+2. **768 档（853px）根本没触发 `@media (max-width: 767px)` 的移动端断点** —— 平板档的移动端布局从未被测到；
+3. 对比度采样与截图尺寸同样受影响。
+
+**处置**：两个模板全部改 `mobile:true`，并**加视口精度自检**（实测 innerWidth 必须 1:1 等于请求宽，
+不符即写入 `styleWarnings` 并判 FAIL），**随后全套重跑**：
+
+| 套件 | 改造后 | 证据 |
+| --- | --- | --- |
+| 设计系统验收 | **14/14 通过**（V.1 证据里的 innerWidth 现为真实的 1440/1280/768/390） | `evidence/ds-verify.json` |
+| 功能自测 | **22/23**（产品侧失败 0；1 项线上 404 归发布侧 blocked-by-publish） | `evidence/restyle-selftest.json` |
+| 改版前后对照 | **4/4 通过** | `evidence/restyle-visual-diff.json` |
+| 触摸目标审计 | **0 违例** | `evidence/touch-target-audit.json` |
+| 共享 `tools/ego-qa` | 视口精度四档全 ✅ | `evidence/ego-qa/05-catalog.json` |
+
+#### 9.3 取消 file:// 豁免后的门禁口径调整
+
+**原口径**：05 的门禁包含 16 的 `tools/verify-preview.mjs`（原生 CDP，**非 Ego**，加载本地 `file://` 样例页）。
+按用户「取消 file:// 自测豁免」的指令，**该脚本不再作为 05 的通过条件**：
+
+- 05 的**通用验收层**改为批次共享的 **`tools/ego-qa/run.mjs`（Ego）**；
+- 16 的 `verify-preview.mjs` 降级为「**16 侧自测记录**」（仍保留在 `evidence/ds-verify-preview/` 作为历史证据，
+  不再计入 05 的门禁结论）；
+- 16 的 `validate-tokens.mjs`（纯静态、不碰浏览器）**仍是**只读门禁。
+
+#### 9.4 触摸目标：共享工具的假阳性 + 05 的真实处理
+
+用共享 `tools/ego-qa` 跑 05，首轮报 **2 个 FAIL**。逐条查证后：
+
+| FAIL 项 | 查证结论 | 处置 |
+| --- | --- | --- |
+| 「无外部网络请求：416 个不足」→ 触摸目标 416 个 <24px | **工具侧假阳性**。共享工具以 `getBoundingClientRect()` 非零作「可见」判据，而 Chromium 对**折叠的 `<details>` 内容**（`::details-content` + `content-visibility:hidden`）仍返回**未折叠时的固有尺寸**（"幽灵矩形"）。实测：初始态 435 个有尺寸目标中**只有 18 个真正被绘制**（`checkVisibility()` 判定），**真正绘制且 <24px 的为 0 个**；`elementFromPoint` 命中测试返回 `null`，证实折叠内容未绘制。**任何用 `<details>` 做折叠的目录都会中招。** | **不改共享工具**（只改本目录）；新增 `scripts/touch_target_audit.py` 做正确判定并落证据；已回报工具所有者 |
+| 「无外部网络请求：外部 chrome-untrusted://new-tab-page/one-google-bar」 | **工具侧假阳性**。`chrome-untrusted://` 是 Chromium 内部 scheme，网页 JS 无法发起；该请求只出现在**首次导航**（后三档均为 51 个请求、跨源 0）。共享工具过滤了 `chrome://` / `chrome-extension://` / `devtools://`，**漏了 `chrome-untrusted://`**。 | 已回报工具所有者。05 侧交叉证据：自有探针 `V.6 无运行期外部请求` **四档均为 `[]`**（只统计 `^https?://`） |
+
+**但顺带查出一处 05 自身的真实问题**：**展开态**（139 张卡全开）时，来源链接命中高度仅 **22px** < 24px
+（139 张卡 × 3 条来源链接，共 279 个目标 @390 / 417 个 @1440）。虽然按 WCAG 2.2 SC 2.5.8 的
+**间距例外**（24px 直径圆不相邻，源链接中心间距 30.5px > 24px）**勉强合规**，
+但依赖例外不稳，且会让共享工具的朴素判据 FAIL、成为 13 验收的拦路虎。
+
+**处置**：在 05 自有 CSS 的 `.ds-catalog__sources a` 上补 `padding-block: 2px` →
+命中高度 21.875px → **25.88px**。**视觉无变化**（折叠行高 59px 不变、扫读密度不变），
+展开态不足目标数 **279 → 0**（@390）、**417 → 0**（@1440），不再依赖间距例外。
+**16 的 DS 资产未动**（改的是 05 自有的 `catalog.css`）。
+
+#### 9.5 Ego 故障诊断：窗口最小化导致截图全挂（harness，非产品缺陷）
+
+共享工具首跑报 `FATAL Cannot capture a screenshot while the window is minimized.`。诊断：
+
+- `page.screenshot()`、CDP `Page.captureScreenshot` **两条路径报同一错** → 是 **OS 层面的窗口最小化**，
+  Chromium 在最小化窗口上拒绝任何截图；
+- `Page.bringToFront` 返回 OK 但**唤不起 OS 窗口**；
+- AppleScript（`System Events`）被系统**辅助功能权限**拒绝（`-10006`）；
+- **可用解法**：`open -a "ego lite"`（LaunchServices，无需辅助功能权限）→ 窗口恢复，三条截图路径全部复通。
+
+**定性**：harness/环境问题，**不计产品失败**。恢复后重跑，全绿。
+
+#### 9.6 证据位置
+
+| 证据 | 路径 | 内容 |
+| --- | --- | --- |
+| 共享工具标准验收 | `evidence/ego-qa/05-catalog.json` + `evidence/ego-qa/screenshots/*.png` | 四档视口 + 视口精度自检 + 溢出 + 控制台 + 关键组件 + 样式表 + 对比度 + 触摸目标 + reduced-motion + 实际渲染字体 |
+| 触摸目标审计 | `evidence/touch-target-audit.json` | 幽灵矩形 vs 真正绘制的区分；初始态/展开态分列；WCAG 2.5.8 间距例外判定 |
+| 设计系统验收 | `evidence/ds-verify.json` | 14/14（视口已 1:1 精确） |
+| 功能自测 | `evidence/restyle-selftest.json` | 22/23（产品侧 0 失败） |
+| 改版前后对照 | `evidence/restyle-visual-diff.json` | 4/4 |
+| 四档视口截图 | `evidence/screens/ds-*.png` | 由 `ds_check.py` 重出，视口已精确 |
+
+---
+
 ---
 
 ## 3. 自测结论（供 13 对照）
@@ -240,10 +372,30 @@ SHA-256 同为 `2cdc2120…6425`，`:root` 取值为 120 / 200 / 320 / 520 / 800
 | 16 侧门禁（只读调用） | `validate-tokens` PASS / `verify-preview` **errors 0 · warnings 0** | `evidence/ds-verify-preview/preview-verification.json` | `node ../16-design-system/tools/verify-preview.mjs` |
 | 视觉面清点（改版前/后两态） | — | `evidence/restyle-inventory.md` / `.json` | `python3 scripts/restyle_inventory.py` |
 | 截图 | 四档视口 + 深色主题 | `evidence/screens/ds-*.png`、`before/after-1440.png` | — |
+| **16 侧门禁在 05 副本下复核**（S8-补-7） | `/tmp` 农场跑 16 原版 `validate-tokens.mjs` | **PASS** — tokens 213 / css vars 130 / errors 0 / warnings 1 | 见 §2「S8-补-7」 |
+| **16 探针自测在 05 侧复现** | 农场内跑 16 原版 `selftest-verify-preview.mjs` | **6/6 PASS** | 同上 |
 
-**最终复跑（2026-10-22 00:1x，重同步 `FONT-MANIFEST.json` 后）**：`qa_check.py` **18/18** · `ds_duration_audit.py` **13/13** ·
-`restyle_selftest.py` **23/23（产品侧失败 0）** · `ds_check.py` **14/14** · `restyle_visual_regression.py` **4/4**；
+**最终复跑（2026-10-22 00:3x，**探针迁移到 Ego** 后）**：`qa_check.py` **18/18** · `ds_duration_audit.py` **13/13** ·
+`restyle_selftest.py` **22/23（产品侧失败 0；1 项线上 404 归发布侧 blocked-by-publish）** · `ds_check.py` **14/14** ·
+`restyle_visual_regression.py` **4/4**；16 侧 `validate-tokens` PASS（errors 0）· `verify-preview` PASS（errors 0 / warnings 0）。
+全部由 **ego-browser** 驱动（唯一浏览器入口，见 §11.10）；线上实探经 Ego 实测确认 **404**（`status 404`）。
+
+**最新一轮（2026-10-22 01:17，证据文件刷新）**：`restyle_selftest.py` 重跑 → **22/23**，
+`summary.total=23 / passed=22 / failed=0 / blockedByPublish=1 / blockedByHarness=0`；
+线上实探 `classification: published-page-removed`（`status 404`、9379 B 为 GitHub 404 页）。
+本轮同时以**实际计数**复核了 `catalog.json`：139 条、10 个必需字段**缺失 0**、
+139/139 条来源全为 https、id 唯一、`verification.status` 分布 `ok` 132 / `ok-article` 6 / `ok-infobox` 1 / **`review` 0**。
+**01:2x 另完成 16 侧工具的只读复核**（见 §2「S8-补-7」）：05 侧**零改动**。
+
+（00:1x 一轮，重同步 `FONT-MANIFEST.json` 后、迁移前）：`qa_check` **18/18** · `ds_duration_audit` **13/13** ·
+`restyle_selftest` **23/23** · `ds_check` **14/14** · `restyle_visual_regression` **4/4**；
 16 侧 `validate-tokens` PASS（errors 0）· `verify-preview` PASS（errors 0 / warnings 0）。
+
+> **历史轮次数字的读法**：线上 404 这一项**自 00:05 起**即被记为 `blocked-by-publish`（不计产品失败），
+> 因此下列历史轮次记作「`restyle_selftest` 23/23」者，应读作「**22/23 + 1 项 blocked-by-publish**」——
+> 分母 23 不变，产品侧失败始终为 0。最新一轮的**实际计数**以 `evidence/restyle-selftest.json` 为准
+> （`summary.total=23 / passed=22 / failed=0 / blockedByPublish=1`）。
+
 （23:5x 一轮：18/18 · 12/12 · 23/23 · 14/14 · 4/4）：
 
 **最终复跑（2026-10-21 23:5x，探针加固后全量重跑）**：`qa_check.py` **18/18** · `ds_duration_audit.py` **12/12** ·
@@ -272,7 +424,7 @@ SHA-256 同为 `2cdc2120…6425`，`:root` 取值为 120 / 200 / 320 / 520 / 800
 | **404 / 网络失败数** | **0**（含 `./catalog.css` 相对路径解析） |
 | **设计系统验收（14 项）** | ✅ 四档视口（1440/1280/768/390）`scrollWidth ≤ innerWidth`；对比度最低 **5.37:1**（≥4.5）；焦点环可见且首个可聚焦元素是 `.ds-skip`；Tab 序列不被吞；DS 令牌 16 个关键项全注入；**旧色板 0 残留**；运行期外部请求 **0**；自托管字体 4 族已加载且 0 个 404；密度未压缩；筛选/搜索可用；来源角标与 mono 编号可见；控制台错误 0；未捕获异常 0 |
 | **改版前后结构对照** | ✅ 卡片 139→139、年代筛选 15/14/23/20/20/20/27 不变、类型 48/91 不变、搜索 `nintendo` 命中 16→16（集合逐条相等）、详情字段 6 行不变；**视觉已按 16 更换**（像素 diffBytes 107006，预期不同） |
-| **动效时长与命名空间审计（13 项）** | ✅ 三份 `tokens.css` 逐字节一致；`:root` 取值 120/200/320/520/800ms + entry 640ms == 16 规范；1ms 仅在 `@media (prefers-reduced-motion: reduce)` 与 `[data-rm="reduce"]` 内（降级外 0 次）；05 自有 CSS 声明的 `--ds-*` 仅 2 条字体族顺序覆写；无硬编码时长 |
+| **动效时长与命名空间审计（13 项）** | ✅ 三份 `tokens.css` 逐字节一致；`:root` 取值 120/200/320/520/800ms + entry 640ms == 16 规范；1ms 仅在 `@media (prefers-reduced-motion: reduce)` 与 `[data-rm="reduce"]` 内（降级外 0 次）；05 自有 CSS 声明的 `--ds-*` **0 个**（16 于 22:25 上游修正字体栈顺序后，本地覆写已删除）；无硬编码时长 |
 | **字体栈顺序守卫（16 §9 V.11）** | ✅ A.10：三份 tokens.css 的显示体/正文体中，全部覆盖完整的系统 CJK 族（PingFang SC / Hiragino Sans GB / Microsoft YaHei / Source Han Sans SC）下标均小于 `Noto Sans SC` 子集下标，且**子集未被删除**；A.11：05 自有 CSS 的 6 处 `font-family` 全部只引用 `var(--ds-font-*)`。本页随包分发 `noto-sans-sc-subset.woff2` 且 `@font-face` 为活体，故 A.10 为真缺陷守卫 |
 | **16 侧门禁（只读复跑）** | ✅ `validate-tokens.mjs` → PASS（tokens 213 / css vars 130 / errors 0 / warnings 1，warning 为 spring cubic-bezier y 分量越界，既有允许项）；`verify-preview.mjs` → **PASS，errors 0 / warnings 0**（对比度最低 4.93 · reduced-motion 生效 `dur-base=1ms` · 深色主题切换正常 · 控制台错误 0） |
 
@@ -362,14 +514,16 @@ node ../16-design-system/tools/verify-preview.mjs     # 16 侧样例页门禁（
 - **07**：配图方向与许可边界见 `LICENSES.md` §4–§5。
 - **08—12**：按 `era` 过滤即可取到本展厅条目；`summary` 可直接做导语底稿。
 - **13**：目录页的实跑证据齐备，**可直接对照，不必重复造** ——
-  `evidence/restyle-selftest.json`（功能 23/23）、`evidence/ds-verify.json`（设计系统 14/14）、
-  `evidence/restyle-visual-diff.json`（改版前后 4/4）、`evidence/ds-duration-audit.json`（时长/命名空间 9/9）、
+  `evidence/restyle-selftest.json`（功能 **22/23，1 项线上 404 归发布侧 blocked-by-publish，产品侧失败 0**）、
+  `evidence/ds-verify.json`（设计系统 14/14）、
+  `evidence/restyle-visual-diff.json`（改版前后 4/4）、`evidence/ds-duration-audit.json`（时长/命名空间/字体栈/资产一致性 **13/13**）、
   `evidence/ds-verify-preview/preview-verification.json`（16 样例页门禁 errors 0）、
   `evidence/screens/ds-*.png`（四档视口 + 深色主题）。
+  全部由 **ego-browser** 驱动（用户长期约定的唯一浏览器入口）。
   `QA.md` 的机器核对结论与 `review` 名单仍可作"来源可靠性"抽查清单。
 - **16**：05 侧对「`--ds-dur-*: 1ms` 写死在 `:root`」的独立复核已完成并落证据 ——
   **结论：该问题在 05 侧不存在，无需改动**，与你的更正一致（详见 `RESTYLE-CHECKLIST.md` §11.8 与
-  `evidence/ds-duration-audit.json`，9/9）。
+  `evidence/ds-duration-audit.json`；当时 9/9，现扩为 **13/13**）。
   你于 22:25 的上游修正（字体栈顺序）已同步进 05，自有 CSS **零 `--ds-` 变量声明**（A.7 判据）。
   你 22:5x 通知中指出的「05 根 `:root` 仍是旧序」**已是同步前的快照**：当前 05 的根 `:root`
   即新序（三份 SHA-256 同为 `e9595d51336fac6a`），无需再改。

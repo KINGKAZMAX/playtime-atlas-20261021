@@ -50,8 +50,8 @@
 | 项 | 说明 |
 | --- | --- |
 | 字符集来源 | 构建脚本扫描 `index.html` 与 `src/*.js` 的真实文本自动收集，**不手工维护** |
-| 覆盖范围 | 实测 **565/565 个汉字与中文标点**全部命中（`npm run check:fonts` 用 harfbuzz 逐码位校验） |
-| 体积 | 106 556 字节（占原 16 子集 197 600 字节的 54%，且覆盖更多字） |
+| 覆盖范围 | 实测 **576/576 个汉字与中文标点**全部命中（`npm run check:fonts` 用 harfbuzz 逐码位校验） |
+| 体积 | 107 968 字节（占原 16 子集 197 600 字节的 55%，且覆盖更多字；v1.1.2 因新增页脚文案增加 11 个字符） |
 | 处理方式 | `subset-font` 按用字裁剪 → `wght` 轴实例化到 400（静态 Regular）→ 重写 `name` 表族名 → `wawoff2` 压缩 |
 | 名字来源 | 源字型是 Noto Sans SC 的可变字体，其 `name` 表把族名写作「Noto Sans SC Thin」（默认实例 Thin）。本作品把 `wght` 实例化到 400 后将 name ID 1/4/6/16/17 规整为「Noto Sans SC / Regular」，否则浏览器按 CSS `font-family: 'Noto Sans SC'` 匹配不到该文件。**OFL 合规性**：该字体的保留字体名（Reserved Font Name）仅为 `'Source'`（见 `OFL-noto-sans-sc.txt` 首行），本次改名未使用保留名，符合 OFL 1.1 第 3 条 |
 | 源字型未收录的符号 | 仅 `⌨`（键盘提示图标）不在 Noto Sans SC 中，由系统符号字体回退，不缺字 |
@@ -71,7 +71,7 @@
 1. 五个 woff2 存在且字节数与 `fonts.manifest.json` 一致；
 2. 五份 OFL 许可全文随包；
 3. 每个字体的 `name` 表族名与 `16-design-system/fonts/FONT-MANIFEST.json` 一致；
-4. Noto Sans SC 子集覆盖本作品全部汉字（当前 565/565）；
+4. Noto Sans SC 子集覆盖本作品全部汉字（当前 576/576）；
 5. Inter 拉丁子集覆盖全部可打印 ASCII；
 6. 入口 HTML 与全部样式表中**无外链字体 / CDN 引用**。
 

@@ -24,7 +24,8 @@
  * 产出：qa-ego-verify.json（与其它 qa-*.json 同格式：[{name, ok, detail}]）
  */
 
-const ROOT = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
+const { fileURLToPath } = await import('node:url');
+const ROOT = fileURLToPath(new URL('..', import.meta.url)).replace(/\/$/, '');
 const DS = ROOT.replace(/\/11-era-online$/, '/16-design-system');
 const BASE = 'http://127.0.0.1:4331/';
 const OUT = `${ROOT}/qa-ego-verify.json`;
@@ -162,15 +163,35 @@ check('自有 CSS 不声明 --ds-dur-*（不覆盖降级逻辑）', !ownDeclDur.
 const task = await taskSpace('linkdawn-era-online-verify');
 const page = task.page('p1');
 
+// Ego 的 Emulation.setDeviceMetricsOverride 在 deviceScaleFactor:1 下会把布局宽度缩到 0.9 倍
+// （实测：请求 1440 → clientWidth 1600），故按 target*0.9 输入；再回读校准，确保落点准确。
 const setViewport = async (w, h) => {
-  await page.cdp('Emulation.setDeviceMetricsOverride', { width: w, height: h, deviceScaleFactor: 1, mobile: w < 500 });
+  await page.cdp('Emulation.setDeviceMetricsOverride', {
+    width: Math.round(w * 0.9), height: Math.round(h * 0.9), deviceScaleFactor: 1, mobile: w < 500,
+  });
   await page.waitForTimeout(250);
+  const got = await page.evaluate(() => document.documentElement.clientWidth);
+  if (Math.abs(got - w) > 2) {
+    await page.cdp('Emulation.setDeviceMetricsOverride', {
+      width: Math.round(w * (w / got)), height: Math.round(h * (w / got)), deviceScaleFactor: 1, mobile: w < 500,
+    });
+    await page.waitForTimeout(250);
+  }
 };
 
 const AUDIT = `(() => {
-  const parse = (c) => { const m = c.match(/rgba?\\(([^)]+)\\)/); if (!m) return null;
-    const p = m[1].split(/[\\s,/]+/).filter(Boolean).map(Number);
-    return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }; };
+  // 同时吃 rgb()/rgba() 与 color-mix() 派生的 color(srgb r g b)（分量是 0—1 浮点）
+  const parse = (c) => {
+    if (!c) return null;
+    let m = c.match(/^rgba?\\(([^)]+)\\)$/);
+    if (m) { const p = m[1].split(/[\\s,/]+/).filter(Boolean).map(Number);
+      return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }; }
+    m = c.match(/^color\\(srgb\\s+([^)]+)\\)$/);
+    if (m) { const parts = m[1].split('/'); const comps = parts[0].trim().split(/\\s+/).map(Number);
+      const a = parts.length > 1 ? parseFloat(parts[1]) : 1;
+      return { r: comps[0] * 255, g: comps[1] * 255, b: comps[2] * 255, a }; }
+    return null;
+  };
   const over = (fg, bg) => ({ r: fg.r*fg.a + bg.r*(1-fg.a), g: fg.g*fg.a + bg.g*(1-fg.a), b: fg.b*fg.a + bg.b*(1-fg.a), a: 1 });
   const lum = (c) => { const f = (v) => { v/=255; return v<=0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4); };
     return 0.2126*f(c.r) + 0.7152*f(c.g) + 0.0722*f(c.b); };
@@ -348,32 +369,41 @@ await page.evaluate(() => { const t = document.querySelectorAll('.tab')[0]; if (
 await page.waitForTimeout(700);
 const before = await page.evaluate(() => {
   const s = window.__linkDawn.defense.getState();
-  return { sigma: s.sigma, facilities: s.facilities.length, selected: s.selectedTower, kind: s.buildKind };
+  return { sigma: s.sigma, towers: s.towers.length, selected: s.selectedTower, kind: s.buildKind };
 });
 await page.keyboard.press('Digit1');
 await page.waitForTimeout(200);
-await page.keyboard.press('ArrowRight');
-await page.waitForTimeout(250);
+// 方向键走的是「本帧刚按下」轮询，必须 down→间隔→up，保证跨过一个渲染帧
+await page.keyboard.down('ArrowDown');
+await page.waitForTimeout(160);
+await page.keyboard.up('ArrowDown');
+await page.waitForTimeout(400);
+const cursorPos = await page.evaluate(() => {
+  const c = window.__linkDawn.defense.getState().cursor;
+  return c ? { col: c.col, row: c.row } : null;
+});
 await page.keyboard.press('Enter');
 await page.waitForTimeout(400);
 const afterBuild = await page.evaluate(() => {
   const s = window.__linkDawn.defense.getState();
-  return { sigma: s.sigma, facilities: s.facilities.length, kinds: s.facilities.map((f) => f.kind + ' Lv' + f.level) };
+  return { sigma: s.sigma, towers: s.towers.length, kinds: s.towers.map((f) => f.kind + ' Lv' + f.level) };
 });
-check('展项 A 纯键盘路径可建造（1 + 方向键 + Enter）', afterBuild.facilities > before.facilities,
-  `设施 ${before.facilities} → ${afterBuild.facilities}（${afterBuild.kinds.join(', ')}），Σ ${before.sigma} → ${afterBuild.sigma}`);
+check('展项 A 纯键盘路径可建造（1 + 方向键 + Enter）', afterBuild.towers > before.towers,
+  `设施 ${before.towers} → ${afterBuild.towers}（${afterBuild.kinds.join(', ')}），光标 @(${cursorPos ? cursorPos.col + ',' + cursorPos.row : 'n/a'}），Σ ${before.sigma} → ${afterBuild.sigma}`);
 
-await page.keyboard.press('Enter');   // 选中刚建的塔
-await page.waitForTimeout(250);
-const sel = await page.evaluate(() => window.__linkDawn.defense.getState().selectedTower);
-await page.keyboard.press('KeyU');
+await page.keyboard.press('Enter');   // 选中刚建的塔（keydown 直接处理）
 await page.waitForTimeout(300);
+const sel = await page.evaluate(() => window.__linkDawn.defense.getState().selectedTower);
+await page.keyboard.down('KeyU');
+await page.waitForTimeout(120);
+await page.keyboard.up('KeyU');
+await page.waitForTimeout(350);
 const afterUp = await page.evaluate(() => {
   const s = window.__linkDawn.defense.getState();
-  return { facilities: s.facilities.map((f) => f.kind + ' Lv' + f.level), sigma: s.sigma };
+  return { towers: s.towers.map((f) => f.kind + ' Lv' + f.level), sigma: s.sigma };
 });
-check('展项 A U 键升级生效（需先选中塔）', afterUp.facilities.some((k) => /Lv2/.test(k)),
-  `选中 ${sel ? '有' : '无'} → ${afterUp.facilities.join(', ')}，Σ ${afterUp.sigma}`);
+check('展项 A U 键升级生效（需先选中塔）', afterUp.towers.some((k) => /Lv2/.test(k)),
+  `选中 ${sel ? '有' : '无'} → ${afterUp.towers.join(', ')}，Σ ${afterUp.sigma}`);
 
 // ── 11. 功能抽检：展项 B 对话（说话人 / 来源角标 / 年份 / https 外链）──
 await page.evaluate(() => { const t = document.querySelectorAll('.tab')[1]; if (t) t.click(); });
@@ -415,7 +445,7 @@ await page.evaluate(() => {
   window.scrollTo(0, 0);
 });
 await page.waitForTimeout(700);
-const shot = await page.screenshot({ path: `${ROOT}/screenshots/13-ego-verify-handheld.png` });
+const shot = await page.screenshot({ path: `${ROOT}/screenshots/13-ego-verify-real-browser.png` });
 console.log('截图：' + shot);
 
 await fs.writeFile(OUT, JSON.stringify(results, null, 2));

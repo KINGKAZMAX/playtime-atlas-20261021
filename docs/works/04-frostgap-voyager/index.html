@@ -1,20 +1,65 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-ds-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#05060b" />
+  <meta name="theme-color" content="#100F0E" />
   <title>霜隙远航 · Frostgap Voyager</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M4 16 L16 5 L28 16 L16 27 Z' fill='none' stroke='%23E9A93D' stroke-width='2'/><circle cx='16' cy='16' r='3' fill='%23E9A93D'/></svg>" />
-  <script type="module" crossorigin src="./assets/index-qJhNQ2aO.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DADzE6FR.css">
+  <!--
+    hreflang 说明：hreflang 必须指向**绝对 URL**，而本作品要部署到
+    Pages 子路径（/playtime-atlas-20261021/works/<id>/），静态写死会在
+    换前缀后失效；同时 Vite 的 build-html 会把所有 <link href> 当作资源
+    解析（相对路径会解析到项目根目录 → EISDIR，构建失败）。
+    因此 hreflang 改为**运行时按当前 location 注入**，见 src/i18n/index.js
+    的 syncHreflang()；语言本身也支持 ?lang=zh-CN / ?lang=en 直达。
+  -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M4 16 L16 5 L28 16 L16 27 Z' fill='none' stroke='%23E0684A' stroke-width='2'/><circle cx='16' cy='16' r='3' fill='%23E0684A'/></svg>" />
+  <!--
+    余晖 / Afterglow 设计系统接入（MIGRATION-NOTES §1 路径 C）
+      · tokens.css     —— 令牌层（:root 浅色 + [data-ds-theme="dark"] 暗色）
+      · components.css —— 组件层（.ds-topbar / .ds-btn / .ds-lightbox / .ds-chip …）
+      · fonts/fonts.css—— 自托管字体 @font-face（相对同目录，无外链）
+    本作为沉浸式作品，按 MIGRATION-NOTES §2.7 路径 A2 以**暗色主题为默认**：
+    <html data-ds-theme="dark">。
+  -->
+  <!-- 运行时基准（MIGRATION-NOTES §6）：线上站点根前缀，本地预览可置为 "" -->
+  <style>:root{--ds-base:"/playtime-atlas-20261021/";}</style>
+  <!-- 自托管字体：仅预加载首屏用到的两个拉丁字体（DESIGN-SPEC §10.3 / §2.4） -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="./assets/space-grotesk-latin-D_RL9BCa.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="./assets/inter-latin-Bsj20kCF.woff2" />
+  <script type="module" crossorigin src="./assets/index-BL8XmH9-.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-3ezcluzu.css">
 </head>
-<body>
-  <div id="app">
-    <canvas id="scene"></canvas>
+<body class="ds-shell">
+  <!-- 跳转链接：每页首个可聚焦元素（DESIGN-SPEC §11.1 / §3 .ds-skip） -->
+  <a class="ds-skip" href="#scene" data-i18n="menu.skip">跳到驾驶舱</a>
+
+  <!-- ============================================================ -->
+  <!--  页头（G.2 / §3 .ds-topbar）                                   -->
+  <!--  仅在「主菜单态」显示：飞行中 HUD 已占满四角，页头页脚会与其 -->
+  <!--  争位。状态由 body.ds-menu-shell 驱动（Game 切换 state 时维护）。 -->
+  <!-- ============================================================ -->
+  <header class="ds-topbar" id="dsTopbar">
+    <a class="ds-topbar__brand" href="#scene">霜隙远航 · FROSTGAP VOYAGER</a>
+    <div class="ds-topbar__nav">
+      <span class="ds-tag ds-tag--accent" data-i18n="menu.tag">可玩 · 6DOF</span>
+    </div>
+  </header>
+
+  <div id="app" class="ds-canvas-frame">
+    <canvas id="scene" tabindex="0" aria-label="驾驶舱视图" data-i18n-aria="menu.scene"></canvas>
 
     <!-- ============================================================ -->
-    <!--  HUD — 底部长条仪表台 + 左右竖栏                                -->
+    <!--  语言切换（DESIGN-SPEC §4.3：chip 风格，标注「中 / EN」）      -->
+    <!--  位置：放在**对话框内部**（主菜单卡 / 暂停设置卡各一枚）。      -->
+    <!--  原因：浮层的遮罩铺满全屏，浮在视口角落的 chip 会被遮罩盖住 -->
+    <!--  而点不到（§11.3：布局冲突在结构层解决，不用 z-index 掩盖）； -->
+    <!--  而飞行中指针被画布锁定，视口角落的控件本就点不到。放进对话 -->
+    <!--  框里既不会被遮罩盖住，也在焦点陷阱内、键盘可达。              -->
+    <!-- ============================================================ -->
+
+    <!-- ============================================================ -->
+    <!--  HUD — 底部长条仪表台 + 左右竖栏（画布内层）                 -->
     <!-- ============================================================ -->
     <div id="hud" class="hidden">
 
@@ -26,7 +71,7 @@
           <circle cx="20" cy="20" r="2.4" fill="currentColor"/>
         </svg>
         <div class="plate-text">
-          <b>霜隙号</b>
+          <b data-i18n="hud.shipName">霜隙号</b>
           <span id="regionName">维岚轨道</span>
           <i id="regionCoords">X 0 · Y 0 · Z 0</i>
         </div>
@@ -35,7 +80,7 @@
       <!-- 左侧：远航日志 / 当前任务 -->
       <div class="log-strip">
         <div class="strip-head">
-          <span>远航日志</span><em id="missionStep">1/8</em>
+          <span data-i18n="hud.logTitle">远航日志</span><em id="missionStep">1/8</em>
         </div>
         <div class="strip-body">
           <div class="strip-title" id="missionTitle">—</div>
@@ -48,23 +93,23 @@
       <!-- 右侧：读数塔 -->
       <div class="gauge-tower">
         <div class="tower-row">
-          <label>最近目标</label>
+          <label data-i18n="hud.nearest">最近目标</label>
           <b id="nearest">—</b>
         </div>
         <div class="tower-row">
-          <label>泊位距离</label>
+          <label data-i18n="hud.dockDist">泊位距离</label>
           <b id="dockDist">—</b>
         </div>
         <div class="tower-row">
-          <label>已归档</label>
+          <label data-i18n="hud.discovery">已归档</label>
           <b id="discoveryCount">0 / 10</b>
         </div>
         <div class="tower-row">
-          <label>航向</label>
+          <label data-i18n="hud.heading">航向</label>
           <b id="headingValue">000°</b>
         </div>
         <div class="tower-row">
-          <label>驾驶模式</label>
+          <label data-i18n="hud.camMode">驾驶模式</label>
           <b id="camMode">座舱</b>
         </div>
       </div>
@@ -72,22 +117,22 @@
       <!-- 底部中央：仪表台 -->
       <div class="instrument-rail">
         <div class="rail-cell">
-          <label>推进</label>
+          <label data-i18n="hud.throttle">推进</label>
           <div class="rail-bar"><i id="throttleBar"></i></div>
           <b id="throttleValue">0%</b>
         </div>
         <div class="rail-cell">
-          <label>燃料</label>
+          <label data-i18n="hud.fuel">燃料</label>
           <div class="rail-bar"><i id="fuelBar" class="fuel"></i></div>
           <b id="fuelValue">100</b>
         </div>
         <div class="rail-cell">
-          <label>船体</label>
+          <label data-i18n="hud.hull">船体</label>
           <div class="rail-bar"><i id="hullBar" class="hull"></i></div>
           <b id="hullValue">100</b>
         </div>
         <div class="rail-cell">
-          <label>扫描</label>
+          <label data-i18n="hud.scan">扫描</label>
           <div class="rail-bar"><i id="scanBar" class="scan"></i></div>
           <b id="scanValue">—</b>
         </div>
@@ -100,15 +145,20 @@
 
       <!-- 右下：按键速查 -->
       <div class="quick-keys">
-        <span><kbd>W A S D</kbd>推进</span><span><kbd>Space</kbd><kbd>Ctrl</kbd>升降</span>
-        <span><kbd>Q</kbd><kbd>E</kbd>滚转</span><span><kbd>Shift</kbd>后燃</span>
-        <span><kbd>X</kbd>刹停</span><span><kbd>F</kbd>扫描</span>
-        <span><kbd>R</kbd>对接</span><span><kbd>M</kbd>星图</span>
-        <span><kbd>V</kbd>视角</span><span><kbd>H</kbd>帮助</span>
+        <span><kbd>W A S D</kbd><span data-i18n="hud.key.thrust">推进</span></span>
+        <span><kbd>Space</kbd><kbd>Ctrl</kbd><span data-i18n="hud.key.lift">升降</span></span>
+        <span><kbd>Q</kbd><kbd>E</kbd><span data-i18n="hud.key.roll">滚转</span></span>
+        <span><kbd>Shift</kbd><span data-i18n="hud.key.boost">后燃</span></span>
+        <span><kbd>X</kbd><span data-i18n="hud.key.brake">刹停</span></span>
+        <span><kbd>F</kbd><span data-i18n="hud.key.scan">扫描</span></span>
+        <span><kbd>R</kbd><span data-i18n="hud.key.dock">对接</span></span>
+        <span><kbd>M</kbd><span data-i18n="hud.key.starmap">星图</span></span>
+        <span><kbd>V</kbd><span data-i18n="hud.key.view">视角</span></span>
+        <span><kbd>H</kbd><span data-i18n="hud.key.help">帮助</span></span>
       </div>
 
       <!-- 中央准星 -->
-      <div id="reticle">
+      <div id="reticle" aria-hidden="true">
         <svg viewBox="0 0 140 140" width="140" height="140">
           <path d="M70 24 L70 46 M70 94 L70 116 M24 70 L46 70 M94 70 L116 70"
                 stroke="rgba(233,169,61,.85)" stroke-width="1.6" />
@@ -121,7 +171,7 @@
       </div>
 
       <!-- 目标标记 -->
-      <div id="markers"></div>
+      <div id="markers" aria-hidden="true"></div>
 
       <!-- 交互提示 -->
       <div id="prompt" class="hidden"><kbd id="promptKey">F</kbd><span id="promptText"></span></div>
@@ -134,19 +184,19 @@
       </div>
 
       <!-- 警告横幅 -->
-      <div id="warning" class="hidden"></div>
+      <div id="warning" class="hidden" role="alert"></div>
     </div>
 
     <!-- ============================================================ -->
     <!--  覆盖层                                                      -->
     <!-- ============================================================ -->
-    <div id="vignette"></div>
-    <div id="flash"></div>
+    <div id="vignette" aria-hidden="true"></div>
+    <div id="flash" aria-hidden="true"></div>
 
     <!-- 载入 -->
-    <div id="loading" class="overlay">
+    <div id="loading" class="overlay" role="status" aria-live="polite" aria-label="载入">
       <div class="wordmark">
-        <svg viewBox="0 0 520 150" class="wordmark-svg" role="img" aria-label="霜隙远航">
+        <svg viewBox="0 0 520 150" class="wordmark-svg" role="img" aria-label="霜隙远航 Frostgap Voyager">
           <g class="wm-frame" fill="none" stroke="currentColor" stroke-width="1.2">
             <path d="M18 14 L502 14 L502 136 L18 136 Z" opacity=".3"/>
             <path d="M18 14 L60 14 M460 14 L502 14 M18 136 L60 136 M460 136 L502 136" stroke-width="2.4"/>
@@ -160,14 +210,14 @@
         </svg>
       </div>
       <div class="loader"><div class="loader-bar"><i id="loadBar"></i></div></div>
-      <div class="loader-text" id="loadText">正在初始化</div>
-      <div class="loader-hint">全部素材由程序实时生成 · 无外部网络请求</div>
+      <div class="loader-text" id="loadText" data-i18n="load.init">正在初始化</div>
+      <div class="loader-hint" data-i18n="load.hint">全部素材由程序实时生成 · 无外部网络请求</div>
     </div>
 
     <!-- 主菜单 -->
-    <div id="mainMenu" class="overlay hidden">
-      <div class="menu-card">
-        <svg viewBox="0 0 520 150" class="wordmark-svg menu-mark" role="img" aria-label="霜隙远航">
+    <div id="mainMenu" class="ds-lightbox hidden" role="dialog" aria-modal="true" aria-label="主菜单">
+      <div class="menu-card ds-lightbox__panel ds-in">
+        <svg viewBox="0 0 520 150" class="wordmark-svg menu-mark" role="img" aria-label="霜隙远航 Frostgap Voyager">
           <g class="wm-frame" fill="none" stroke="currentColor" stroke-width="1.2">
             <path d="M18 14 L502 14 L502 136 L18 136 Z" opacity=".3"/>
             <path d="M18 14 L60 14 M460 14 L502 14 M18 136 L60 136 M460 136 L502 136" stroke-width="2.4"/>
@@ -179,115 +229,132 @@
           <text class="wm-cn" x="260" y="86" text-anchor="middle">霜 隙 远 航</text>
           <text class="wm-en" x="260" y="118" text-anchor="middle">F R O S T G A P &nbsp; V O Y A G E R</text>
         </svg>
-        <p class="menu-lore">
-          灯塔站的补给只够走完七段航程。<br />
-          你的任务是把这艘单人穿梭艇——<b>霜隙号 FG-1</b>——开过这片空隙，
-          并把沿途每一个天体都登记进远航档案。
-        </p>
-        <button class="btn primary" id="btnStart">接管霜隙号</button>
+        <p class="menu-lore" data-i18n-html="menu.lore"></p>
+        <button class="btn ds-btn ds-btn--primary" id="btnStart" type="button" data-i18n="menu.start">接管霜隙号</button>
         <div class="menu-row">
-          <button class="btn" id="btnHelpMenu">操作说明</button>
-          <button class="btn" id="btnSettings">设置</button>
-          <button class="btn" id="btnJournalMenu">远航档案</button>
+          <button class="btn ds-btn ds-btn--secondary" id="btnHelpMenu" type="button" data-i18n="menu.help">操作说明</button>
+          <button class="btn ds-btn ds-btn--secondary" id="btnSettings" type="button" data-i18n="menu.settings">设置</button>
+          <button class="btn ds-btn ds-btn--secondary" id="btnJournalMenu" type="button" data-i18n="menu.journal">远航档案</button>
         </div>
-        <div class="menu-note">进入后点击画面锁定鼠标；若浏览器拒绝锁定，将自动切换为拖拽 / 方向键操控。</div>
+        <div class="menu-note" data-i18n="menu.note"></div>
+        <div class="lang-switch lang-switch--inline" role="group" aria-label="Language / 语言">
+          <button class="ds-chip" type="button" data-lang="zh" lang="zh-CN" aria-pressed="true">中</button>
+          <button class="ds-chip" type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+        </div>
       </div>
     </div>
 
     <!-- 暂停 -->
-    <div id="pauseMenu" class="overlay hidden">
-      <div class="menu-card wide">
-        <h2>航行暂停 <span class="dim">/ PAUSED</span></h2>
+    <div id="pauseMenu" class="ds-lightbox hidden" role="dialog" aria-modal="true" aria-label="航行暂停">
+      <div class="menu-card wide ds-lightbox__panel ds-in">
+        <h2><span data-i18n="pause.title">航行暂停</span> <span class="dim">/ PAUSED</span></h2>
         <div class="settings-grid">
-          <label>画质
+          <label><span data-i18n="set.quality">画质</span>
             <select id="setQuality">
-              <option value="low">低</option>
-              <option value="medium">中</option>
-              <option value="high">高</option>
+              <option value="low" data-i18n="set.quality.low">低</option>
+              <option value="medium" data-i18n="set.quality.medium">中</option>
+              <option value="high" data-i18n="set.quality.high">高</option>
             </select>
           </label>
-          <label>音量
+          <label><span data-i18n="set.volume">音量</span>
             <input type="range" id="setVolume" min="0" max="100" value="70" />
             <output id="setVolumeOut">70</output>
           </label>
-          <label>鼠标灵敏度
+          <label><span data-i18n="set.sensitivity">鼠标灵敏度</span>
             <input type="range" id="setSens" min="20" max="250" value="100" />
             <output id="setSensOut">1.00</output>
           </label>
-          <label>视场角 FOV
+          <label><span data-i18n="set.fov">视场角 FOV</span>
             <input type="range" id="setFov" min="55" max="105" value="72" />
             <output id="setFovOut">72</output>
           </label>
-          <label class="check"><input type="checkbox" id="setInvertY" /> 反转 Y 轴</label>
-          <label class="check"><input type="checkbox" id="setAssist" /> 飞行辅助（松杆自动减速）</label>
-          <label class="check"><input type="checkbox" id="setMute" /> 静音</label>
+          <label class="check"><input type="checkbox" id="setInvertY" /> <span data-i18n="set.invertY">反转 Y 轴</span></label>
+          <label class="check"><input type="checkbox" id="setAssist" /> <span data-i18n="set.assist">飞行辅助（松杆自动减速）</span></label>
+          <label class="check"><input type="checkbox" id="setMute" /> <span data-i18n="set.mute">静音</span></label>
+        </div>
+        <div class="menu-row menu-row--end">
+          <div class="lang-switch lang-switch--inline" role="group" aria-label="Language / 语言">
+            <button class="ds-chip" type="button" data-lang="zh" lang="zh-CN" aria-pressed="true">中</button>
+            <button class="ds-chip" type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+          </div>
         </div>
         <div class="menu-row">
-          <button class="btn primary" id="btnResume">继续航行</button>
-          <button class="btn" id="btnHelp">操作说明</button>
-          <button class="btn" id="btnReset">重置飞船</button>
-          <button class="btn" id="btnQuit">返回主菜单</button>
+          <button class="btn ds-btn ds-btn--primary" id="btnResume" type="button" data-i18n="pause.resume">继续航行</button>
+          <button class="btn ds-btn ds-btn--secondary" id="btnHelp" type="button" data-i18n="pause.help">操作说明</button>
+          <button class="btn ds-btn ds-btn--secondary" id="btnReset" type="button" data-i18n="pause.reset">重置飞船</button>
+          <button class="btn ds-btn ds-btn--secondary" id="btnQuit" type="button" data-i18n="pause.quit">返回主菜单</button>
         </div>
       </div>
     </div>
 
     <!-- 星图 -->
-    <div id="starMap" class="overlay hidden">
-      <div class="menu-card wide">
-        <h2>星图 <span class="dim">/ STELLAR CHART</span></h2>
+    <div id="starMap" class="ds-lightbox hidden" role="dialog" aria-modal="true" aria-label="星图">
+      <div class="menu-card wide ds-lightbox__panel ds-in">
+        <h2><span data-i18n="starmap.title">星图</span> <span class="dim">/ STELLAR CHART</span></h2>
         <div class="starmap-body">
           <div class="starmap-list" id="starmapList"></div>
           <div class="starmap-detail">
-            <canvas id="starmapCanvas" width="360" height="360"></canvas>
+            <canvas id="starmapCanvas" width="360" height="360" role="img" aria-label="星图"></canvas>
             <div class="starmap-info" id="starmapInfo"></div>
           </div>
         </div>
         <div class="menu-row">
-          <button class="btn primary" id="btnJump">执行跃迁</button>
-          <button class="btn" id="btnCloseStarMap">关闭</button>
+          <button class="btn ds-btn ds-btn--primary" id="btnJump" type="button" data-i18n="starmap.jump">执行跃迁</button>
+          <button class="btn ds-btn ds-btn--secondary" id="btnCloseStarMap" type="button" data-i18n="starmap.close">关闭</button>
         </div>
       </div>
     </div>
 
     <!-- 帮助 -->
-    <div id="helpPanel" class="overlay hidden">
-      <div class="menu-card wide">
-        <h2>操作说明 <span class="dim">/ CONTROLS</span></h2>
+    <div id="helpPanel" class="ds-lightbox hidden" role="dialog" aria-modal="true" aria-label="操作说明">
+      <div class="menu-card wide ds-lightbox__panel ds-in">
+        <h2><span data-i18n="help.title">操作说明</span> <span class="dim">/ CONTROLS</span></h2>
         <div class="help-grid" id="helpGrid"></div>
-        <div class="menu-note">飞船遵循牛顿惯性：推进只加速，松杆不会自动停住。</div>
-        <div class="menu-row"><button class="btn primary" id="btnCloseHelp">返回</button></div>
+        <div class="menu-note" data-i18n="help.note"></div>
+        <div class="menu-row"><button class="btn ds-btn ds-btn--primary" id="btnCloseHelp" type="button" data-i18n="help.close">返回</button></div>
       </div>
     </div>
 
     <!-- 档案 -->
-    <div id="journalPanel" class="overlay hidden">
-      <div class="menu-card wide">
-        <h2>远航档案 <span class="dim">/ VOYAGE LOG</span></h2>
+    <div id="journalPanel" class="ds-lightbox hidden" role="dialog" aria-modal="true" aria-label="远航档案">
+      <div class="menu-card wide ds-lightbox__panel ds-in">
+        <h2><span data-i18n="journal.title">远航档案</span> <span class="dim">/ VOYAGE LOG</span></h2>
         <div class="journal-body" id="journalBody"></div>
-        <div class="menu-row"><button class="btn primary" id="btnCloseJournal">返回</button></div>
+        <div class="menu-row"><button class="btn ds-btn ds-btn--primary" id="btnCloseJournal" type="button" data-i18n="journal.close">返回</button></div>
       </div>
     </div>
 
     <!-- 扫描结果 -->
-    <div id="scanResult" class="overlay hidden">
-      <div class="menu-card">
+    <div id="scanResult" class="ds-lightbox hidden" role="dialog" aria-modal="true" aria-label="扫描结果">
+      <div class="menu-card ds-lightbox__panel ds-in">
         <div class="scan-result-kind" id="scanResultKind">行星</div>
         <h2 id="scanResultName">—</h2>
         <p id="scanResultSummary" class="dim"></p>
         <div class="scan-stats" id="scanResultStats"></div>
-        <div class="menu-row"><button class="btn primary" id="btnCloseScan">关闭</button></div>
+        <div class="menu-row"><button class="btn ds-btn ds-btn--primary" id="btnCloseScan" type="button" data-i18n="scan.close">关闭</button></div>
       </div>
     </div>
 
-    <div id="toast"></div>
+    <div id="toast" aria-live="polite"></div>
 
-    <div id="pointerHint" class="hidden">
+    <div id="pointerHint" class="hidden" aria-hidden="true">
       <div class="pointer-hint-inner">
-        <b>点击画面</b>
-        <span>锁定鼠标以驾驶</span>
+        <b data-i18n="pointer.title">点击画面</b>
+        <span data-i18n="pointer.desc">锁定鼠标以驾驶</span>
       </div>
     </div>
   </div>
+
+  <!-- ============================================================ -->
+  <!--  页脚（G.2 / §3 .ds-footer）                                   -->
+  <!--  与页头同理：仅主菜单态显示，避免与舱内 HUD 争位。            -->
+  <!-- ============================================================ -->
+  <footer class="ds-footer" id="dsFooter">
+    <div class="ds-footer__row">
+      <span data-i18n="footer.hint">键盘操作 · Esc 暂停 · M 星图 · F 扫描 · R 对接</span>
+      <span data-i18n="footer.credit">全部素材程序化生成 · 零外部请求 · 自托管字体</span>
+    </div>
+  </footer>
 
 </body>
 </html>

@@ -1,7 +1,7 @@
 # STATUS — 17 中国经典建筑与传统结构联网研究
 
-**最后更新**：2026-10-21 23:58（GMT+8）
-**当前阶段**：S1 ~ S8 **全部完成**；交付物齐备，校验 **75/75 通过**，成果页实机测试 **44/44 通过**，16 的验收清单 V.1—V.13 全覆盖
+**最后更新**：2026-10-22 02:30（GMT+8）
+**当前阶段**：S1 ~ S10 **全部完成**；交付物齐备，校验 **84/84 通过**，成果页实机测试 **Ego 共享工具 PASS + 交互类 18/18**，16 的验收清单 V.1—V.13 全覆盖
 **执行**：MiniMax M3.1-Flash（max）｜**调度**：Codex / 15-supervisor
 
 ---
@@ -21,15 +21,15 @@
 | `INTERACTION-BRIEF.md` | ✅ 完成 | 交互机制规格 M-01 ~ M-16 + 通用约定 + 分派表 + 不得照搬清单 |
 | `SOURCES.md` | ✅ 完成 | 逐条来源台账 + 54 个独立来源清单 |
 | `LICENSES.md` | ✅ 完成 | 许可边界、素材规则、署名规则、下游执行清单 |
-| `QA.md` | ✅ 完成 | **75 项断言实测输出**（由 `scripts/build_qa.py` 注入，非手写） |
-| `manifest.json` | ✅ 完成 | 92 个文件条目（角色 / 字节 / sha256）+ **发布契约**（id / description / entry / buildCommand / outputDir / status） |
+| `QA.md` | ✅ 完成 | **84 项断言实测输出**（由 `scripts/build_qa.py` 注入，非手写） |
+| `manifest.json` | ✅ 完成 | 目录文件条目（角色 / 字节 / sha256）+ **发布契约**（id / description / entry / buildCommand / outputDir / status） |
 | `PUBLISH-EXCLUDE.txt` | ✅ 完成 | **发布前必须排除的精确路径清单**（含 `src/`、`evidence/`）；明确 `dist/` 为应发布产物 |
 | `dist/catalog.html` | ✅ 完成 | **研究成果页**（中英双语，42 案例 / 74 术语 / 21 构造），可独立部署 |
 | `src/catalog-page/` | ✅ 完成 | 成果页源码 + vendored 的 16 设计系统资源（与 16 原件**字节一致**） |
 | `handoff/` | ✅ 完成 | `first-18.json`（18 例）、`first-18-ids.json`、`structure-groups.json`（**21 组**）、**`FIELD-MAPPING.md` + `field-mapping.json`**、`VERIFIED-VS-ASSUMED.md` + `verification-status.json` |
-| `evidence/` | ✅ 完成 | 浏览器测试报告（**44/44**，含 16 的 V.1—V.12）+ 4 张成果页截图（浅色 / 暗色 / 移动 / 平板） |
-| `screenshots/` | ✅ 完成 | 5 张实拍 + `INDEX.tsv`，全部字节数 > 0 |
-| `scripts/` | ✅ 完成 | 13 个可复现脚本（见 §6） |
+| `evidence/` | ✅ 完成 | **Ego 实测证据**：`evidence/ego/`（共享工具 PASS，4 档视口截图）+ `evidence/ego-interactions/`（交互类 18/18）+ `evidence/ego-ref/`（参考站 16 档视口几何）+ 4 张成果页截图（浅色 / 暗色 / 移动 / 平板） |
+| `screenshots/` | ✅ 完成 | 5 张 **Ego 实拍** + `INDEX.tsv`（记录采集通道），全部字节数 > 0 |
+| `scripts/` | ✅ 完成 | 19 个可复现脚本（见 §6），网页相关 3 个**全部走 Ego** |
 | `research-ref/` | ✅ 完成 | **隔离区**：参考站观察证据 + README（非本项目产物，不发布） |
 | `data/` | ✅ 完成 | 仅 2 个**本项目自产**文件（UNESCO 官方编号映射、校验报告） |
 
@@ -74,12 +74,13 @@
 读取 16 / 18 / 19 三份下游 `PROMPT.md` 对齐消费方式；
 以 05-museum-research 为研究类任务范式；确认**不建仓、不 push、不部署**。
 
-### S2 参考站实测取证 ✅
-内置 Browser `navigate` + `query(text)` + `screenshot` 成功；`inspect` 返回 `BROWSER_RESULT_TOO_LARGE`、
-`scroll` 超时 → 改用 **headless Chrome 155** 为主证据通道。
-产出 5 张实拍（1440×900 / 1440×2600 / 390×844@2x / 820×1180 / 2560×1440），字节数全部 > 0。
-下载生产 bundle 解析出 26 个 hex 色、53 个 CSS 变量、字体 `inter`/`monospace`、时长 .2–2s。
-**已确认参考站自身缺陷**：390 px 视口下标题溢出右边界被裁切 → 19 号须自行兜底。
+### S2 参考站实测取证 ✅（2026-10-22 已由 Ego 复测并更正）
+首轮（2026-10-21）以无头 Chrome 为主证据通道取 5 张实拍并解析生产 bundle
+（26 个 hex 色、53 个 CSS 变量、字体 `inter`/`monospace`、时长 .2–2s）。
+**2026-10-22 按浏览器入口约定改由 Ego 浏览器全部重做**：5 张截图重取 + 16 档视口几何实测。
+→ **旧结论「390px 标题溢出」被推翻**（无头环境缺站方字体导致的假象）；
+真实缺陷在 **768–883px 平板档**（标题单行自然宽 883px 被裁切，不产生横向滚动）。
+详见 `REFERENCE-NOTES.md` §7.1 与 `evidence/ego-ref/olek-si-viewport-metrics.json`。
 
 ### S3 可视化项目研究 ✅
 18 个真实项目台账（GitHub API 实测许可）；9 个开源 + 9 个机构。
@@ -152,6 +153,7 @@
    **25/25 通过**——三视口无横向溢出、正文对比度 ≥4.5、触达达标（控件 ≥44px / 链接 ≥24px）、
    中英切换、构造筛选、搜索、skip link、reduced-motion、暗色切换、零控制台错误、零 4xx。
    顺带修掉三个真缺陷：chip 高度 36→44px、`favicon` 404、`data-ds-theme` 硬钉导致暗色失效。
+   ⚠️ 该脚本已于 **S10** 按浏览器入口约定**停用并移除**，由 `scripts/ego_interactions.mjs` 取代。
 3. **manifest 发布契约**：补 `id` / `description` / `entry` / `buildCommand` / `outputDir` / `status`
    （+ `kind` / `entryFiles` / `rebuildCommands` / `publish.standaloneSite`）。
    `PUBLISH-EXCLUDE.txt` 同步：新增 `src/`、`evidence/` 排除，并明确 **`dist/` 是应发布产物**、
@@ -166,6 +168,48 @@
 6. **发现并登记一处下游错位**：19 的 `src/data/upstream/catalog.meta.json` 是 23:04 旧快照，
    `structureTypes` 只有 19 个（缺 `cross-plan` / `caisson`）→ 19 侧 `SYSTEMS.length === 19`。
    已写入 `FIELD-MAPPING.md` §8.1 并**通知 19 重新 vendor**（本任务不写 19 目录）。
+
+### S9 http 来源可达性复核 ✅
+用 Ego 浏览器复测 3 个 http 来源的 https 可用性：https 变体全部 `net::ERR_CONNECTION_CLOSED`
+（curl 通道独立复现 `SSL_ERROR_SYSCALL`），http 变体全部加载成功并取到真实标题
+→ 如实保留 http、不伪造 https；`SOURCES.md` 新增「http 来源例外登记」一节
+（由 `build_catalog.py` 生成）+ `validate_catalog.py` 的 `HTTP_SOURCE_EXCEPTIONS` + `QA.md` §3.1。
+
+### S10 浏览器入口统一迁移到 Ego ✅（本轮重点）
+**触发**：用户指令——17 目录内所有浏览器操作统一迁移到 **Ego 浏览器**（用户长期约定，2026-10-22）。
+
+1. **待改造脚本清单与处置**
+
+   | 原脚本 | 原通道 | 处置 |
+   | --- | --- | --- |
+   | `scripts/browser_test.mjs` | 本机无头 Chrome + 原生 CDP | **停用并移除** → `scripts/ego_interactions.mjs` |
+   | `scripts/capture_cdp.mjs` | 原生 CDP 设备仿真 | **停用并移除** → `scripts/ego_capture.mjs` |
+   | `scripts/capture.sh` | 本机无头 Chrome `--headless=new` | **停用并移除** → `scripts/ego_capture.mjs` |
+
+2. **新增三个 Ego 脚本**
+   - `scripts/ego_interactions.mjs`（18 KB）：成果页**交互类**验收，补共享工具不覆盖的项目
+     （中英切换、构造筛选、搜索、skip link、焦点环、Tab 序列、字体栈顺序、子路径相对 URL、
+     暗色对比度、三类卡片计数、caveat 42/42）→ **18/18 通过**。
+   - `scripts/ego_capture.mjs`（4.4 KB）：**唯一**截图路径（http/https/file，light/dark，移动 @2x）。
+   - `scripts/ego_ref_metrics.mjs`（7.6 KB）：参考站 16 档视口几何实测，内置重试退避、
+     **失败不覆盖既有报告**。
+3. **修掉 `ego_capture.mjs` 的真缺陷**：原实现把「目标文件已存在」当成成功 →
+   截图全部超时失败却报 OK。改为**先删目标文件**、以 Ego 回报的 `ok` 字段判定、
+   **HTTP ≥400 视为错误页拒绝取证**、失败即删除残留。
+4. **修掉 Ego 回报解析缺陷**：`ego-browser nodejs` 把脚本 `console.log` 写到 **stderr**，
+   只读 stdout 会误判「无回报」→ 改为 stdout + stderr 双流解析。
+5. **验收分工**：共享工具 `tools/ego-qa/run.mjs` 跑标准项（**只读使用，不修改**），
+   本目录脚本补交互类。共享工具首个视口需**先在同一 TaskSpace 预热**，
+   否则 Ego 自身新标签页请求会被计为外部请求 → 首个视口必 FAIL。
+6. **参考站取证全部重做**：5 张截图重取（Ego）+ 16 档视口几何实测
+   → **推翻了旧结论**「390px 标题溢出」；真实缺陷在 768–883px 平板档。
+7. **校验加项**：`validate_catalog.py` 75 → **84 项**，新增两组断言：
+   - 「浏览器入口」：已停用脚本确已移除 / 可执行脚本无禁用技术启动调用 / Ego 脚本齐备且全走 ego-browser；
+   - 「Ego 证据」：共享工具报告 4 档视口干净 / 交互类 verdict=PASS / 参考站采样成功率 ≥80% / 9 张截图非空。
+8. **文档口径同步**：`README.md`（脚本表、复现命令、Ego 踩坑一节）、`STATUS.md`、
+   `LICENSES.md`、`REFERENCE-NOTES.md`（§1 通道变更声明 + §7.1 更正记录）、`screenshots/INDEX.tsv`。
+9. **流水线**：`run_pipeline.sh` 增加可选第 8 步 `EGO_ACCEPT=1`（自起停本地静态服务）。
+   该步**不属字节级幂等链路**，默认不随流水线执行。
 
 ---
 
@@ -185,6 +229,8 @@
 | 先出 18 / 19 首批切片 | 要求「尽早首批交 18 和 19」，不等研究做完 |
 | 令牌层一律 vendored 16 原件，不自建 | 16 的 `ds-audit-tokens.mjs` 判定 17 🟢（129 令牌 / 缺 0 / 值差 0 / 顺序问题 0）；自有 CSS 只做版式补充，且**不写死字体族**（V.12） |
 | `--ds-base` 在入口注入而非 CSS 声明 | 16 的 §6 规定由入口注入；避免同名不同义（V.4）。本页资源全相对，与挂载深度无关 |
+| **浏览器入口统一为 Ego**（用户长期约定，2026-10-22） | 网页访问、截图、调试、验收**只走 Ego 浏览器**；禁用内置 Browser 工具、Playwright / Puppeteer / `chromium.launch()`、本机无头 Chrome + 原生 CDP。目录内三个无头脚本**移除而非保留**，并由 `validate_catalog.py` 的「浏览器入口」组断言机器守护 |
+| 参考站取证**用 Ego 重做**而非沿用旧图 | 旧截图由无头环境拍摄，**站方字体未加载**导致字宽偏大，把假象记成了站点缺陷。Ego 真实浏览器复测后**推翻了「390px 标题溢出」**，真实缺陷在 768–883px 平板档 |
 
 ---
 
@@ -203,10 +249,12 @@
 | L-9 | 成果页的 3D / 剖面 / 受力能力**未实现** | 事实 | 本页只做目录与检索；教学示意声明已就位，3D 交互由 18 / 19 承担 |
 | L-10 | 未复用任何第三方代码 | 事实 | 三个入选案例虽为 MIT，本任务只提炼机制；实际复用须按 `LICENSES.md` §2.4 署名 |
 | L-11 | 成果页的**英译**为 17 自撰，非官方英文名 | 事实 | 来源机构有官方英文名的以其为准（见 `sources[].label`） |
-| L-12 | `scripts/capture.sh` 在移动视口下产出**裁切伪影** | 已绕过 | 改用 `scripts/capture_cdp.mjs`（CDP 设备仿真），与 `browser_test.mjs` 同通道，度量一致 |
+| L-12 | `scripts/capture.sh` 在移动视口下产出**裁切伪影** | **已消除** | 该脚本已按浏览器入口约定**停用并移除**；截图一律走 `scripts/ego_capture.mjs`（Ego），失败自动删除残留，不会用旧文件冒充 |
 | L-13 | 19 的 `src/data/upstream/catalog.meta.json` 尚未重新 vendor | **待 19 处理** | 19 侧 `SYSTEMS.length === 19`（应为 21），缺 `cross-plan` / `caisson`；详见 `handoff/FIELD-MAPPING.md` §8.1 |
 | L-15 | 成果页的 3D / 剖面 / 受力能力**未实现** | 事实 | 本页只做目录与检索；教学示意声明已就位，3D 交互由 18 / 19 承担 |
-| L-14 | 成果页实机测试走**本机 headless Chrome + CDP**，非 Ego 浏览器 | 已说明 | 用户长期约定（2026-10-22）：**对外站点**的访问与截图一律走 Ego。本任务的测试**只访问 127.0.0.1**（本地静态服务 + 本地 CDP 端口），零对外请求（「无资源加载失败 / 无 4xx」断言即护栏）。此前用 curl / headless 完成的 UNESCO 与机构页面取证**有效、不必重取**；`research-ref/` 隔离标注维持不变 |
+| L-14 | 旧版成果页实机测试走**本机 headless Chrome + CDP**，非 Ego 浏览器 | **已消除（2026-10-22）** | 三个无头脚本（`browser_test.mjs` / `capture_cdp.mjs` / `capture.sh`）**已停用并移除**；参考站 5 张截图**全部用 Ego 重取**，成果页验收改由共享工具 + `ego_interactions.mjs` 完成。UNESCO 与机构页面的 curl 取证**有效、不必重取**；`research-ref/` 隔离标注维持不变 |
+| L-16 | 旧结论「olek.si 390px 标题溢出」**已被 Ego 实测推翻** | **已更正** | 无头环境缺站方 Inter 字体导致假性溢出；真实缺陷在 **768–883px 平板档**（标题单行自然宽 883px 被裁切，且不产生横向滚动）。见 `REFERENCE-NOTES.md` §7.1、`evidence/ego-ref/olek-si-viewport-metrics.json` |
+| L-17 | 本机到 `olek.si` 存在**间歇性** TLS / 代理失败 | 已缓解 | Ego 脚本内置重试退避；`ego_ref_metrics.mjs` 采样成功率 <80% 时**拒绝覆盖**既有报告并以退出码 1 结束；曾观测到 16 档中 11 档批量失败后重跑 16/16 成功 |
 
 ---
 
@@ -221,11 +269,11 @@
 | `scripts/build_field_mapping.py` | 生成 `handoff/field-mapping.json`（枚举分布与 id 清单由数据现算） |
 | `scripts/build_manifest.py` | 文件清单（角色/字节/sha256）+ 发布契约 + `publish.exclude*` |
 | `scripts/build_qa.py` | 生成 `QA.md`（注入校验脚本的**实时**输出） |
-| `scripts/validate_catalog.py` | **75 项断言**；`--json` 写 `data/validate-report.json` |
-| `scripts/browser_test.mjs` | 成果页实机测试（CDP 驱动本机 Chrome，**44 项断言**，覆盖 16 的 V.1—V.12） |
-| `scripts/capture_cdp.mjs` | 成果页截图（CDP 设备仿真，支持 light / dark） |
+| `scripts/validate_catalog.py` | **84 项断言**（含「浏览器入口约定」「Ego 实测证据」两组）；`--json` 写 `data/validate-report.json` |
+| `scripts/ego_interactions.mjs` | 成果页**交互类**验收（**走 Ego 浏览器**，18 项断言：卡片计数 / caveat 42/42 / 中英切换 / 构造筛选 / 搜索 / skip link / 焦点环 / Tab 序列 / 字体栈顺序 / 子路径 URL / 暗色对比度） |
+| `scripts/ego_capture.mjs` | **Ego 浏览器唯一截图路径**（http/https/file，light/dark，移动 @2x；先删目标文件，失败即删残留，HTTP ≥400 拒绝取证） |
+| `scripts/ego_ref_metrics.mjs` | 参考站**多视口几何实测**（走 Ego，16 档视口，内置重试退避，失败不覆盖既有报告） |
 | `src/catalog-page/build-catalog-page.mjs` | 构建成果页 `dist/catalog.html` + `dist/catalog.css` + `dist/assets/ds/**` |
-| `scripts/capture.sh` | headless Chrome 截图（内置重试 + 递增退避 + 独立 user-data-dir） |
 | `scripts/extract_tokens.js` | 从生产 bundle 提取令牌（**只读隔离目录**，输出只作机制参考） |
 | `scripts/verify_unesco.js` | UNESCO 批量校验（**本机网络不通，实测未生效**，留作审计痕迹） |
 | `scripts/{repair,fix_tuple,normalize,final}_quotes.py` | 中文引号规范化工具链（历史遗留，保留作审计痕迹） |
@@ -233,16 +281,23 @@
 **复现顺序**（幂等，连跑两轮 8 个关键产物逐字节一致）：
 
 ```bash
+bash scripts/run_pipeline.sh    # 退出码 0 = 84/84 断言全通过
+
+# 手动逐条（与流水线等价）
 python3 scripts/build_catalog.py && python3 scripts/build_glossary.py \
   && python3 scripts/build_unesco_verified.py && python3 scripts/build_verification_status.py \
   && python3 scripts/build_field_mapping.py \
   && node src/catalog-page/build-catalog-page.mjs \
   && python3 scripts/build_manifest.py && python3 scripts/build_qa.py \
-  && python3 scripts/build_manifest.py && python3 scripts/validate_catalog.py   # 退出码 0 = 73/73
+  && python3 scripts/build_manifest.py && python3 scripts/validate_catalog.py   # 退出码 0 = 84/84
 
-# 成果页实机测试（需先起静态服务）
+# 成果页实机测试（需先起静态服务；**只走 Ego 浏览器**）
 python3 -m http.server 8899 --bind 127.0.0.1 --directory dist &
-node scripts/browser_test.mjs --url http://127.0.0.1:8899/catalog.html   # 25/25
+node scripts/ego_interactions.mjs --url http://127.0.0.1:8899/catalog.html \
+  --out "$PWD/evidence/ego-interactions" --space "17-architecture ego-interactions"   # 18/18
+
+# 或用流水线的可选第 8 步（自起停静态服务）
+EGO_ACCEPT=1 bash scripts/run_pipeline.sh
 ```
 
 ---
@@ -257,6 +312,9 @@ node scripts/browser_test.mjs --url http://127.0.0.1:8899/catalog.html   # 25/25
   + `handoff/first-18.json`（18 例首批）+ `INTERACTION-BRIEF.md` M-04 ~ M-16
   + **`handoff/FIELD-MAPPING.md` / `field-mapping.json`（字段语义与适配约定）**。
   ⚠️ 19 需**重新 vendor `catalog.meta.json`**（现为 19 类，应为 21 类）。
+  ⚠️ 19 的长标题兜底依据**已更正**：参考站标题缺陷在 **768–883px 平板档**（不是移动端），
+  结论仍是「19 号须自行 `clamp()` / `overflow-wrap` 兜底」，但触发区间与成因按
+  `REFERENCE-NOTES.md` §7.1 更正。
 - **给 16**：本任务提供**观察证据**（`REFERENCE-NOTES.md` + 截图）；**取值由 16 决定**。
   成果页已 vendored 16 的 `tokens.css` / `components.css` / 自托管字体（**与原件字节一致**，
   见 `src/catalog-page/assets/ds/ASSET-SOURCE.json`），未自建色板或字体。
@@ -270,6 +328,19 @@ node scripts/browser_test.mjs --url http://127.0.0.1:8899/catalog.html   # 25/25
 
 ## 8. 变更日志
 
+- **2026-10-22 02:30** — S10 完成：目录内浏览器操作**全部迁移到 Ego 浏览器**。
+  移除 `browser_test.mjs` / `capture_cdp.mjs` / `capture.sh` 三个无头 Chrome 脚本；
+  新增 `ego_interactions.mjs`（交互类 18/18）、`ego_capture.mjs`（唯一截图路径）、
+  `ego_ref_metrics.mjs`（参考站 16 档几何）；修掉截图脚本「旧文件冒充成功」与
+  「只读 stdout 漏解析 stderr」两个真缺陷；参考站 5 张截图全部用 Ego 重取，
+  **推翻了旧结论「390px 标题溢出」**（真实缺陷在 768–883px 平板档）；
+  校验 75 → **84 项**（新增「浏览器入口」「Ego 证据」两组断言）；流水线加可选
+  `EGO_ACCEPT=1` 第 8 步；`README` / `STATUS` / `LICENSES` / `REFERENCE-NOTES` /
+  `screenshots/INDEX.tsv` 口径同步。
+- **2026-10-22 00:56** — S9 完成（续作增量，仅做未完成项）：按监工要求**用 Ego 浏览器复测** 3 个 http 来源的 https 可用性，
+  两条独立通道（curl / Ego Chromium）结论一致 → 如实保留 http、不伪造 https；
+  新增 `SOURCES.md`「http 来源例外登记」一节（由 `build_catalog.py` 生成，含两条通道的实测错误码与 http 变体真实标题）；
+  `HTTP_SOURCE_EXCEPTIONS` 与 `QA.md` §3.1 同步补入 Ego 证据。全库 U+FFFD = 0，校验 **75/75**，流水线三轮幂等。
 - **2026-10-21 23:58** — S7 完成：成果页 `dist/catalog.html` 建成并通过 **25/25** 实机测试（CDP）；
   manifest 补齐发布契约字段；`PUBLISH-EXCLUDE.txt` 增 `src/`、`evidence/` 并声明 `dist/` 应发布；
   新增 `handoff/FIELD-MAPPING.md` + `field-mapping.json`；校验 53 → **73 项全通过**；流水线幂等复验通过。

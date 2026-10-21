@@ -20,6 +20,7 @@
 
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:http';
+import { createServer as createNetServer } from 'node:net';
 import fs from 'node:fs';
 import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -37,11 +38,24 @@ const ROOT_DIR = path.resolve(ROOT, arg('root', 'dist'));
 const URL_ = arg('url', '');
 const MOUNT = arg('mount', '/');
 const OUT = path.resolve(ROOT, arg('out', 'screenshots'));
-const PORT = Number(arg('port', '9334'));
+const PORT_ARG = arg('port', '');   // 留空则向系统要一个空闲端口
 const WIDTH = 1440;
 const HEIGHT = 900;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** 向操作系统要一个当前空闲的 TCP 端口给 Chrome 的调试通道。 */
+async function freePort() {
+  return new Promise((resolve, reject) => {
+    const srv = createNetServer();
+    srv.unref();
+    srv.on('error', reject);
+    srv.listen(0, '127.0.0.1', () => {
+      const { port } = srv.address();
+      srv.close(() => resolve(port));
+    });
+  });
+}
 
 /** 极简静态服务器：把 root 挂到 mount 下。 */
 function startStaticServer({ root, mount }) {
@@ -184,6 +198,8 @@ async function main() {
   console.log('[fallback] target:', targetUrl);
 
   const userDir = await mkdtemp(path.join(tmpdir(), 'abyss-fallback-'));
+  // 动态端口：写死端口会被同机其它任务的残留 headless Chrome 抢占
+  const PORT = PORT_ARG ? Number(PORT_ARG) : await freePort();
   const chrome = spawn(
     CHROME,
     [
@@ -211,7 +227,7 @@ async function main() {
 
   let target = null;
   const ENDPOINTS = [`http://127.0.0.1:${PORT}/json/list`, `http://[::1]:${PORT}/json/list`];
-  for (let i = 0; i < 80 && !target; i++) {
+  for (let i = 0; i < 160 && !target; i++) {
     await sleep(250);
     for (const endpoint of ENDPOINTS) {
       try {

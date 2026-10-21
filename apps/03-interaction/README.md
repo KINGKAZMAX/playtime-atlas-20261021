@@ -26,9 +26,12 @@ npm run serve        # 本地静态服务：http://127.0.0.1:4313
 - `npm run check:fonts` 校验字体资产：族名与 `16-design-system/fonts/FONT-MANIFEST.json` 一致、
   五份 OFL 全文齐备、Noto Sans SC 子集覆盖本作品全部汉字、Inter 覆盖全部可打印 ASCII、无外链字体。
 - `node scripts/check-contrast.mjs` 校验配色对比度（正文 ≥4.5:1，图形与控件边界 ≥3:1）。
-- `node ../16-design-system/tools/ds-audit-tokens.mjs --root ..` 校验令牌层与 16 规范的一致性
-  （必备令牌、逐名取值、**中文字族栈顺序**）。
-- `npm run qa` 跑真实浏览器冒烟测试（19 项），产出 `qa/report.json` 与 `screenshots/`；
+- `npm run check:tokens` 校验令牌层与 16 规范的**九项**一致性：V.11 字体栈顺序、V.12 不自造字体栈、
+  V.13 与 `design-tokens.json` 无漂移、口径 A 必备 17 项、与 16 的 `src/tokens.css` 全量等值、
+  **降级隔离**（1ms 只能出现在 `prefers-reduced-motion` 块内）、`--ds-target-min` 44px。
+- `node ../16-design-system/tools/ds-audit-tokens.mjs --root ..` 同样口径的全库只读审计（跨目录比对）。
+- `npm run qa` 跑真实浏览器冒烟测试（19 项），产出 `qa/report.json` 与自测截图 `qa/shots/`
+  （**不覆盖** `screenshots/` 里的交付截图 —— 那三张由 Ego 浏览器产出，见 `QA.md` §3.5）；
   需要本机已装 Chromium（缺浏览器时先跑 `npx playwright install chromium`）。
 - **运行期零外部请求**：不连 CDN、不调 API、不加载外部字体。
 
@@ -44,7 +47,7 @@ npm run serve        # 本地静态服务：http://127.0.0.1:4313
 │                           含 data-i18n 双语钩子
 ├── src/
 │   ├── tokens.css          设计令牌层：--ds-* 取值 + 旧变量语义别名层 + 中文排版修正
-│   ├── ds-components.css   通用组件层：.ds-skip / .ds-topbar / .ds-btn / .ds-tag / .ds-chip / .ds-field / .ds-input
+│   ├── ds-components.css   通用组件层：.ds-shell / .ds-skip / .ds-topbar / .ds-footer / .ds-btn / .ds-tag / .ds-chip / .ds-field / .ds-input
 │   ├── styles.css          作品样式层（增量替换：语义别名重定向 + 浅色栏头 + 三档响应式）
 │   ├── workshop.js         车间模型与仿真核心（机台状态机、订单、遥测、派单、日志）
 │   ├── storage.js          localStorage 持久化 + 配额/隐私模式降级 + 存档补齐
@@ -54,6 +57,7 @@ npm run serve        # 本地静态服务：http://127.0.0.1:4313
 │   ├── build-fonts.mjs     扫描源码收集字符集 → 子集化中文 + 实例化字重 + 规范化 name 表
 │   ├── check-fonts.mjs     字体资产校验（族名 / 许可 / 汉字覆盖 / ASCII / 无外链）
 │   ├── check-contrast.mjs  对比度校验（WCAG 2.2）
+│   ├── check-tokens-spec.mjs 令牌层自测（V.11/V.12/V.13 + 口径 A 必备 + 降级隔离 + 阈值）
 │   ├── clean-dist.mjs      构建后清理产物中的 .DS_Store（postbuild）
 │   ├── restyle-apply.mjs   改版增量替换脚本（61 条精确替换，作为审计证据保留）
 │   ├── fetch-sources.sh    需要重新生成中文子集时拉取 Noto Sans SC 源字型（仅构建期）
@@ -62,9 +66,10 @@ npm run serve        # 本地静态服务：http://127.0.0.1:4313
 │   └── verify-build.mjs    产物自检（无外部引用 / 字体本地化 / 无敏感文件）
 ├── public/fonts/           5 个自托管 woff2 + 5 份 OFL 全文 + fonts.css + fonts.manifest.json
 ├── i18n/keys.json          中英键表（194 键）
-├── screenshots/            桌面与移动端实测截图
+├── screenshots/            交付截图（桌面 / 抽屉 / 移动端）—— 由 Ego 浏览器产出
+├── qa/                     自测报告 report.json 与自测截图 shots/（不覆盖交付截图）
 ├── SOURCE.md               参考案例核验、模型归属证据、证据限制
-├── DESIGN-DIFF.md          与参考案例的七项差异对照
+├── DESIGN-DIFF.md          与参考案例的七项差异对照 + 本轮规范迁移的执行结果
 ├── RESTYLE-INVENTORY.md    改版「待替换清单」与落地结果
 ├── I18N-KEYS.md            双语键表与接入说明
 ├── CHANGELOG.md            变更记录
@@ -136,6 +141,8 @@ npm run serve        # 本地静态服务：http://127.0.0.1:4313
 - 视觉语言：余晖设计系统（`16-design-system`）浅色主题 ——
   `src/tokens.css` 提供 `--ds-*` 令牌，`src/ds-components.css` 提供 `.ds-*` 通用组件，
   `src/styles.css` 保留作品自有结构并把旧变量重定向到新 token（增量替换，非推倒重写）。
+- 统一外壳（`DESIGN-SPEC §14.3`）：`<body class="ds-shell">` + `.ds-topbar` 页头 + `.ds-footer` 来源与许可页脚 + `.ds-skip` 跳转链接；
+  `--ds-base` 注入在 `index.html` 入口（取空串 + `base: './'`，适配任意子路径深度）。
 - 字体：Space Grotesk（展示）+ Inter（正文）+ Space Mono（等宽）+ **Noto Sans SC**（中文离线兜底），
   全部自托管（OFL 1.1），构建时按源码实际用到的字符裁剪中文子集（**565/565 汉字全覆盖**），
   随产物发布共 304 KB，运行时不请求任何字体 CDN。

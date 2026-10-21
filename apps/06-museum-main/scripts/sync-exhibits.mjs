@@ -155,8 +155,13 @@ const ART_JUNK_DIRS = new Set([
  * 07 的 fonts/ 里同时给了 woff2 和 ttf；本馆的 @font-face 全部走 woff2
  * （见 src/assets/fonts/fonts.css，5 条规则无一例外），ttf 合计约 824 KB
  * 纯属白上线的体积。这里不落 ttf。
+ *
+ * woff2 也不在这里落：字体二进制自 2026-10-22 起统一由
+ * `syncDesignSystem()` 从 16-design-system/fonts/ 拷到 public/assets/ds/fonts/，
+ * 07 与 16 的 woff2 逐字节一致（已用 cmp 核过 5/5），
+ * 两处各留一份只会让产物体积凭空多 393 KB。
  */
-const ART_SKIP_FILES = new Set(['.ttf']);
+const ART_SKIP_FILES = new Set(['.ttf', '.woff2']);
 
 async function copyAssets(fromDir, toDir, base = '') {
   if (!existsSync(fromDir)) return 0;
@@ -247,6 +252,78 @@ async function syncArt() {
   if (tokensFrom) log(`✓ 设计令牌已同步：${tokensFrom}`);
 
   return { ok: copied > 0, tokens: Boolean(tokensFrom), count: copied };
+}
+
+/* ── 16：设计系统接入（assets/ds/）────────────────────────────────────────── */
+
+/**
+ * 把 16-design-system 的**权威产物**接入本项目 public/assets/ds/。
+ *
+ * 依据：
+ *   16-design-system/MIGRATION-NOTES.md §1 接入四步 ①③（token 层 / 换外壳）
+ *   16-design-system/MIGRATION-NOTES.md §6 Pages 子路径资源拼接
+ *     「发布前必查」列出 /assets/ds/tokens.css、/assets/ds/components.css、
+ *     /assets/ds/fonts/fonts.css、/assets/ds/fonts/inter-latin.woff2
+ *   15-supervisor 派单「接入三步」第 1、2 条
+ *
+ * 三个文件都是**逐字节复制**，不做任何改写：
+ *   src/tokens.css     → public/assets/ds/tokens.css      （130 个 --ds-* 权威值）
+ *   src/components.css → public/assets/ds/components.css  （27 类 .ds-* 组件层）
+ *   fonts/             → public/assets/ds/fonts/          （5 woff2 + OFL 全文 + fonts.css）
+ *
+ * 为什么 tokens.css 是「复制但不接管」：
+ *   本目录自有的 src/styles/tokens.css 才是**页面里唯一生效**的令牌层
+ *   （它 = DS 取值 + 67 条语义别名 + 本馆深色主题 + 2 个 --ds-art-* 本地令牌），
+ *   已由 scripts/check-tokens.mjs 与 check-tokens-runtime.mjs 逐名核验 0 不一致。
+ *   若同时把 DS 的 tokens.css 引入页面，同一批 --ds-* 会被声明两遍
+ *   （MIGRATION-NOTES §0 风险 B），谁后加载谁生效，纯属脆弱。
+ *   所以：文件照抄发布（供全批对照与 §6 的 curl 必查），页面不重复引入。
+ *
+ * 为什么 fonts/ 必须是 DS 版本而不是 07 版本：
+ *   16 的 fonts.css 带 CJK 回落顺序的成文约束（覆盖完整的系统 CJK 族必须排在
+ *   有限覆盖的子集之前，否则同段文字混排基线错位），
+ *   07 的同名文件没有这段约束。两者 @font-face 声明等价（族名/字重/src 全同），
+ *   5 个 woff2 与 5 份 OFL 全文已用 cmp 核过逐字节一致。
+ */
+async function syncDesignSystem() {
+  const dsRoot = path.join(SIBLINGS, '16-design-system');
+  const outRoot = path.join(PUBLIC, 'assets', 'ds');
+  await mkdir(outRoot, { recursive: true });
+
+  const files = [
+    { from: path.join(dsRoot, 'src', 'tokens.css'), to: path.join(outRoot, 'tokens.css') },
+    { from: path.join(dsRoot, 'src', 'components.css'), to: path.join(outRoot, 'components.css') },
+  ];
+
+  let n = 0;
+  for (const f of files) {
+    if (!existsSync(f.from)) continue;
+    await cp(f.from, f.to, { force: true });
+    n += 1;
+  }
+
+  // fonts/：5 个 woff2 + 5 份 OFL 全文 + fonts.css + FONT-MANIFEST.json
+  let fontCount = 0;
+  const fontSrc = path.join(dsRoot, 'fonts');
+  const fontDst = path.join(outRoot, 'fonts');
+  if (existsSync(fontSrc)) {
+    await mkdir(fontDst, { recursive: true });
+    const entries = await readdir(fontSrc, { withFileTypes: true });
+    for (const e of entries) {
+      if (!e.isFile()) continue;
+      if (!/\.(woff2|css|txt|json)$/i.test(e.name)) continue;
+      await cp(path.join(fontSrc, e.name), path.join(fontDst, e.name), { force: true });
+      fontCount += 1;
+    }
+  }
+
+  if (n === 2) {
+    log(`✓ 设计系统已接入：16-design-system → public/assets/ds/（tokens.css + components.css + fonts/${fontCount} 个文件）`);
+  } else {
+    log('· 设计系统：16-design-system 尚未交付 → public/assets/ds/ 保持上一版');
+  }
+
+  return { ok: n === 2, files: n, fonts: fontCount };
 }
 
 /* ── 08—12：可玩展厅 ──────────────────────────────────────────────────────── */
@@ -497,12 +574,14 @@ async function main() {
 
   const catalog = await syncCatalog();
   const art = await syncArt();
+  const ds = await syncDesignSystem();
   const halls = await syncExhibits();
 
   const integrated = halls.filter((h) => h.status === 'integrated').length;
   log('');
   log(`✓ 同步完成：策展目录 ${catalog.ok ? `${catalog.count} 条（${catalog.mode}）` : '未交付（使用本地初版）'} · `
-    + `美术包 ${art.ok ? `${art.count} 个资产` : '未交付（使用本馆生成）'} · 可玩展厅 ${integrated}/${halls.length} 已并入`);
+    + `美术包 ${art.ok ? `${art.count} 个资产` : '未交付（使用本馆生成）'} · `
+    + `设计系统 ${ds.ok ? '已接入 assets/ds/' : '未交付'} · 可玩展厅 ${integrated}/${halls.length} 已并入`);
   log('  产物清单：public/data/exhibits.json');
 }
 

@@ -1,6 +1,6 @@
 {
   "$comment": "LOOMDECK 自托管字体清单。族名与 16-design-system/fonts/FONT-MANIFEST.json 一致（MIGRATION-NOTES §8）。",
-  "generatedAt": "2026-10-21T16:40:48.277Z",
+  "generatedAt": "2026-10-21T18:23:56.907Z",
   "fontDisplay": "swap",
   "cjkStrategy": "Noto Sans SC 自托管子集覆盖本作品全部汉字（wght 实例化到 400 的静态 Regular）；源字型缺失的符号（如 ⌨）回退系统字体。",
   "faces": [

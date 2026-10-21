@@ -279,3 +279,24 @@
 D1 压盖审计仍为 **0 / 0**（见 §7）。
 
 执行项与暂缓项的逐条理由见 `STATUS.md` §6。
+
+## 10. 独立复核（用 16 自己的工具审本目录）
+
+派单要求用 16 的零依赖脚本自测到 0 error。那两个脚本（`validate-tokens.mjs`、`verify-preview.mjs`）把 `ROOT` **硬绑定到 `16-design-system/` 自身**，且会写 `16-design-system/evidence/`；本任务只写 `01-web/`，故把 16 整目录复制到 `/tmp/ds16-sandbox/` 后在副本中运行，仓库内 16 目录零写入。
+
+| 工具 | 结果 |
+|---|---|
+| `16-design-system/tools/ds-audit-tokens.mjs --root <批次根>` | `01-web` 🟢：必备缺 0 · 必备值差 0 · 声明 129 · 缺 0 · 值差 0 · 额外 0 · 字体栈顺序问题 0 |
+| `16-design-system/tools/validate-tokens.mjs`（沙箱） | `errors: 0 \| warnings: 1`（spring easing y 分量越界，规范允许）→ PASS |
+| `16-design-system/tools/verify-preview.mjs`（沙箱） | `errors: 0 \| warnings: 0` → PASS（对比度最低 4.93 · 触摸目标 24/44 双档 · reduced-motion 1ms · 深色主题 · 零外部请求） |
+
+本目录消费的是逐字节副本（`tokens.css` sha256 `e9595d51…f368`、`fonts.css` sha256 `ebccba0f…4d76`，`diff -r` 无差异），故上述结论等价覆盖本作品；另用 `grep` 复核本目录 CSS 中 `--ds-*` **取值声明 0 处**（vendored 副本除外）。
+
+**16 侧 2026-10-22 更正的落地核对**：撤回的「另缺 `--ds-radius-xs` / `--ds-shadow-1` / `--ds-dur-instant` / `--ds-space-1`」经实测不成立 —— 这 4 个令牌在权威令牌层中本就在位，已随整体替换进入本目录；仍然成立的三条（`--ds-ink-faint` → `#6e655e` 5.51:1、`--ds-ink-soft` → `#59514b` 7.51:1、补 `--ds-target-min: 44px`）已全部满足。**无需代码改动。**
+
+### 10.1 QA 健壮性加固
+
+三套自检并发跑时，`npm run qa` 曾报 `locator.innerText: Timeout 30000ms exceeded`（`#lab-peak`）而崩溃；单独复跑 65/65 通过，判定为并发争用导致的**假失败**（三个脚本都沿用 Playwright 默认 30s）。已为 `qa/verify.mjs`、`qa/ds-verify.mjs`、`qa/d1-overlap.mjs` 补 `setDefaultTimeout(60000)` / `setDefaultNavigationTimeout(60000)`，只放宽等待上限、**不放宽断言**。在原争用条件下复跑 `npm run qa` → 65/65 通过。
+
+**最终回归（2026-10-22 02:00 前后）**：`npm run build` exit 0 ｜ `npm run qa` **65/65** ｜ `npm run qa:ds` **21/21** ｜ `npm run qa:d1` 真实文字压盖 **0 / 0**（desktop 1440 / mobile 390）。
+

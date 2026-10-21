@@ -2,7 +2,8 @@
  * 美术包接入探测
  *
  * 07-museum-art 交付 `design-tokens.json` 与 OFL 字体（字体样式表由 index.html
- * 静态引入，见 <link rel="stylesheet" href="./art/assets/fonts/fonts.css">）。
+ * 静态引入，见 <link rel="stylesheet" href="./assets/ds/fonts/fonts.css">，
+ * 权威来源是 16-design-system/fonts/，art/assets/fonts/fonts.css 只是兼容 shim）。
  *
  * **本模块不再把 07 的令牌写进 CSS 变量**：改版后全站色板由
  * 16-design-system 的 `--ds-*` 令牌层唯一决定（DESIGN-SPEC §1.1），
@@ -24,7 +25,8 @@ const BASE = (import.meta.env?.BASE_URL ?? './').replace(/\/*$/, '/');
  * 美术包接入探测
  *
  * 07-museum-art 交付 `design-tokens.json` 与 OFL 字体（字体样式表由 index.html
- * 静态引入，见 `<link rel="stylesheet" href="./art/assets/fonts/fonts.css">`）。
+ * 静态引入，见 `<link rel="stylesheet" href="./assets/ds/fonts/fonts.css">`，
+ * 权威来源是 16-design-system/fonts/，art/assets/fonts/fonts.css 只是兼容 shim）。
  *
  * **本模块不再把 07 的令牌写进 CSS 变量**：改版后全站色板由
  * 16-design-system 的 `--ds-*` 令牌层唯一决定（DESIGN-SPEC §1.1），

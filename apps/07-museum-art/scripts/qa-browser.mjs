@@ -108,8 +108,10 @@ async function launchBrowser(base) {
   const browser = await chromium.launch({ args: LAUNCH_ARGS });
   _browser = browser;
   const page = await browser.newPage({ viewport: { ...VIEWPORT }, deviceScaleFactor: 1 });
-  page.setDefaultTimeout(120000);
-  page.setDefaultNavigationTimeout(120000);
+  /* 同机并发任务多时（实测 load average 可达 100+），Chromium 启动与导航会显著变慢，
+     120 秒偶发不够用；给足余量，避免把环境抖动误判成产物缺陷。 */
+  page.setDefaultTimeout(300000);
+  page.setDefaultNavigationTimeout(300000);
   const pageState = attach(page, base);
   return { browser, page, pageState };
 }
@@ -172,7 +174,7 @@ async function settle(page, ms = 1200) {
 }
 
 /** 阶段执行器：失败重试，仍失败则记为失败项并继续后续阶段 */
-async function phase(label, fn, attempts = 3) {
+async function phase(label, fn, attempts = 4) {
   for (let i = 0; i < attempts; i++) {
     try {
       return await fn();
@@ -436,7 +438,7 @@ async function main() {
       }));
       await settle(page, 1200);
       lbOpen = await page.evaluate(() => !document.getElementById('lightbox').hidden);
-      await page.screenshot({ path: lbPath, timeout: 120000 });
+      await page.screenshot({ path: lbPath, timeout: 300000 });
       lbFlat = isFlat(lbPath);
       if (!lbFlat) break;
       console.warn(`  ! 灯箱截图第 ${attempt + 1} 次为平图，重试`);
@@ -484,7 +486,7 @@ async function main() {
       await target.scrollIntoViewIfNeeded();
       await settle(page, 1500);
       const file = path.join(SHOTS, `section-${name}.png`);
-      await page.screenshot({ path: file, timeout: 120000 });
+      await page.screenshot({ path: file, timeout: 300000 });
       /* 平图 = 内容没被绘制（并发负载下合成器饥饿），换新进程重试 */
       if (isFlat(file)) throw new Error('截图为平图，内容未渲染');
     }, block));
@@ -516,7 +518,7 @@ async function main() {
       if (overflow <= 1) ok(`${label} (${w}px) 无横向溢出`);
       else bad(`${label} (${w}px) 横向溢出 ${overflow}px`);
       const file = path.join(SHOTS, `responsive-${label}.png`);
-      await page.screenshot({ path: file, fullPage: false, timeout: 120000 });
+      await page.screenshot({ path: file, fullPage: false, timeout: 300000 });
       if (isFlat(file)) throw new Error(`${label} 截图为平图`);
     }
   }, [BLOCK.posters, BLOCK.covers, BLOCK.cases, BLOCK.modelPng, BLOCK.fallback]));

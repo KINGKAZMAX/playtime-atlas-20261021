@@ -233,11 +233,18 @@ function main() {
     '/* 回响电玩馆 / PLAYTIME ATLAS — 自托管字体',
     ' * Space Grotesk, Inter, Space Mono, Noto Sans SC — SIL Open Font License 1.1',
     ' * 全部子集化并存放于本目录，运行期无外部字体请求。',
+    ' *',
+    ' * 与 16-design-system 对齐：字体族名、font-style、字重档位与 src 文件映射逐项一致',
+    ' * （对齐 16-design-system/fonts/fonts.css，design-tokens v1.0.0，对齐时间 2026-10-21），',
+    ' * 5 个 woff2 亦逐字节一致（SHA-256 见 FONT-MANIFEST.json）。',
+    ' *',
+    ' * CJK 顺序规则：覆盖完整的系统 CJK 族必须排在覆盖有限的 Noto Sans SC 子集之前',
+    ' * （CSS 按字符回退，子集在前会让同一段文字混入两套字形、基线错位）。',
     ' */',
     '',
     ...faces.map(
       (f) =>
-        `@font-face {\n  font-family: '${f.fam}';\n  font-style: normal;\n  font-weight: ${f.weight};\n  font-display: swap;\n  src: url('./${f.file}') format('woff2');\n}`,
+        `@font-face {\n  font-family: "${f.fam}";\n  font-style: normal;\n  font-weight: ${f.weight};\n  font-display: swap;\n  src: url("./${f.file}") format("woff2");\n}`,
     ),
     '',
   ].join('\n');

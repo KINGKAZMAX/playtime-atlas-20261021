@@ -311,21 +311,20 @@
 /* --------------------------------------------------------------------------
    7. 减少动态效果
    保留不产生位移的淡入淡出（design-tokens.json §motion.reducedMotion）。
+   注：令牌层的降级覆盖（--ds-dur-* → 1ms）在 src/tokens.css 的
+   「减少动态效果」块里 —— 与 16 的结构一致：令牌在令牌层降级，
+   组件层只负责把 animation/transition 的时长整体压到 1ms。
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  :root {
-    --ds-dur-instant: 1ms;
-    --ds-dur-fast: 1ms;
-    --ds-dur-base: 1ms;
-    --ds-dur-slow: 1ms;
-    --ds-dur-reveal: 1ms;
-  }
   *,
   *::before,
   *::after {
     animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
     scroll-behavior: auto !important;
   }
 }

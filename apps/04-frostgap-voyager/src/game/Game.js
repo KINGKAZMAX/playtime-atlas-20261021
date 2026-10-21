@@ -105,6 +105,7 @@ export class Game {
     this.overlays.hideLoading();
     this.overlays.open('menu');
     this.state = 'menu';
+    this._syncShellChrome();
 
     this.loop = this.loop.bind(this);
     requestAnimationFrame(this.loop);
@@ -357,6 +358,7 @@ export class Game {
 
     this.state = 'playing';
     this.overlays.close();
+    this._syncShellChrome();
     this.hud.show();
     this._showTutorialHints();
     this.hud.toast(t('toast.lockHint'), 'good');
@@ -392,9 +394,19 @@ export class Game {
     this.pause();
   }
 
+  /**
+   * 外壳页头 / 页脚只在「主菜单态」出现（MIGRATION-NOTES §3 .ds-topbar / .ds-footer）。
+   * 飞行中舱内 HUD 已占满四角，页头页脚会与之争位 —— 用状态类在结构层避开，
+   * 而不是用 z-index 相互掩盖。
+   */
+  _syncShellChrome() {
+    document.body.classList.toggle('ds-menu-shell', this.state === 'menu');
+  }
+
   pause() {
     if (this.state !== 'playing') return;
     this.state = 'paused';
+    this._syncShellChrome();
     this.input.releaseLock();
     this._blurFocus();
     this._syncSettingsUI();
@@ -409,6 +421,7 @@ export class Game {
       return;
     }
     this.state = 'playing';
+    this._syncShellChrome();
     // Order matters: drop the focus from the overlay control first, then
     // close the overlay — closing hands the focus back (to the cockpit view
     // while flying), and blurring afterwards would wipe that again.
@@ -430,6 +443,7 @@ export class Game {
     this.overlays.close();
     this.hud.hide();
     this.state = 'menu';
+    this._syncShellChrome();
     this.input.releaseLock();
     this.overlays.open('menu');
     this.audio.setEngineLoad(0, 0);

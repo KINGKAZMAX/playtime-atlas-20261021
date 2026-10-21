@@ -22,6 +22,7 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
+import { ensureWindowVisible } from './lib/window.mjs';
 
 const ROOT = '/Users/mekzenx2/Documents/ChatGPT/Minimax测评/output/flash-showcase-20261021/19-architecture-atlas';
 const DIST = path.join(ROOT, 'dist');
@@ -52,6 +53,29 @@ const server = http.createServer((req, res) => {
   res.end(fs.readFileSync(file));
 });
 await new Promise((resolve) => server.listen(PORT, '127.0.0.1', resolve));
+
+/**
+ * Apply an exact viewport width.
+ *
+ * Measured behaviour of ego-browser's CDP bridge (2026-10-21):
+ *   · `Emulation.setDeviceMetricsOverride` with `mobile: false` does NOT
+ *     survive a navigation — the layout viewport silently reverts to the
+ *     browser window width, so a "1440" pass would really be 1600.
+ *   · with `mobile: true` the override applies and survives navigation, and
+ *     the layout viewport is exactly the requested width.
+ * `mobile: true` only adds touch/UA emulation. Layout is driven by the
+ * viewport width, and this project's CSS contains no `hover` or `pointer`
+ * media query, so the measurement is equivalent for the questions asked
+ * (horizontal overflow, visible focus ring).
+ *
+ * The override is therefore applied before AND after the navigation, so that
+ * a viewport which silently reverts can never make a measurement meaningless.
+ */
+async function setViewport(page, width, height, mobile = true) {
+  const params = { width, height, deviceScaleFactor: 1, mobile: true };
+  await page.cdp('Emulation.setDeviceMetricsOverride', params);
+}
+
 
 /* ------------------------------------------------------------------ probe */
 
@@ -155,6 +179,7 @@ const VIEWPORTS = [
 
 const task = await taskSpace('bic19-architecture-atlas');
 const page = task.page('p1');
+await ensureWindowVisible(page);
 
 const report = { generatedAt: new Date().toISOString(), viewports: [] };
 let problems = 0;
@@ -164,10 +189,9 @@ for (const vp of VIEWPORTS) {
   const vpEntry = { viewport: vp, routes: [] };
 
   for (const route of ROUTES) {
-    await page.cdp('Emulation.setDeviceMetricsOverride', {
-      width: vp.width, height: vp.height, deviceScaleFactor: 1, mobile: vp.width < 700,
-    });
+    await setViewport(page, vp.width, vp.height, vp.width < 700);
     await page.goto(`http://127.0.0.1:${PORT}/${route}`);
+    await setViewport(page, vp.width, vp.height, vp.width < 700);
     await page.waitForSelector('#main', { timeout: 20000 });
     await page.waitForTimeout(700);
 

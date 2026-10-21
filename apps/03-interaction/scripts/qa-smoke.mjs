@@ -21,7 +21,9 @@ import { startServer } from './serve.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
-const SHOTS = path.join(ROOT, 'screenshots');
+/* 自测截图写进 qa/shots/（自测产物），**不覆盖交付截图**。
+   交付截图 screenshots/ 由 Ego 浏览器产出（用户长期约定：截图一律走 Ego）。 */
+const SHOTS = path.join(ROOT, 'qa', 'shots');
 const REPORT = path.join(ROOT, 'qa', 'report.json');
 
 if (!fs.existsSync(path.join(DIST, 'index.html'))) {
@@ -226,13 +228,13 @@ try {
   await page.keyboard.press('Escape');           // 关掉抽屉，拍完整调度台
   await page.waitForTimeout(600);
   await page.screenshot({ path: path.join(SHOTS, '01-desktop.png'), animations: 'disabled' });
-  ok('截图', 'screenshots/01-desktop.png（完整调度台）');
+  ok('截图', 'qa/shots/01-desktop.png（完整调度台，自测产物）');
 
   await page.click('.loom >> nth=2');
   await page.waitForTimeout(600);
   const drawerOpen = await page.evaluate(() => !document.querySelector('#drawer').hidden);
   await page.screenshot({ path: path.join(SHOTS, '02-desktop-drawer.png'), animations: 'disabled' });
-  if (drawerOpen) ok('截图', 'screenshots/02-desktop-drawer.png（机台详情抽屉）');
+  if (drawerOpen) ok('截图', 'qa/shots/02-desktop-drawer.png（机台详情抽屉，自测产物）');
   else bad('截图', '抽屉未打开');
   await page.click('#btn-close-drawer');
   await page.waitForTimeout(200);
@@ -291,7 +293,7 @@ try {
     hScroll: document.documentElement.scrollWidth > document.documentElement.clientWidth + 2,
     docH: document.documentElement.scrollHeight,
   }));
-  if (!mscroll.hScroll) ok('移动端布局', `390×844 无横向滚动，页面高 ${mscroll.docH}px，截图 screenshots/03-mobile.png`);
+  if (!mscroll.hScroll) ok('移动端布局', `390×844 无横向滚动，页面高 ${mscroll.docH}px，截图 qa/shots/03-mobile.png（自测产物）`);
   else bad('移动端布局', `出现横向滚动（scrollW>clientW），页面高 ${mscroll.docH}px`);
   await mctx.close();
 

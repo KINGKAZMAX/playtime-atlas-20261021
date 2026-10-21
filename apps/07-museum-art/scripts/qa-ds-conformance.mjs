@@ -601,11 +601,26 @@ const report = {
   },
   results,
   dsTokenValidator: tokenRun?.report ?? null,
+  /* 指纹说明：
+     本包的 tokens.css 在 16 的 --ds-* 之外还多出 --atlas-* 别名层、:lang(zh) 排版规则、
+     reduced-motion 降级块与说明注释；design-tokens.json 在 16 令牌树之外还多出
+     meta/local/compat/cssVars 分区。因此**文件级 SHA-256 本就不应相等**，
+     真正的一致性判据是「逐项取值比对」，见 results 中 V.3 / V.4 的结论。
+     下列指纹用于记录各自依据的来源版本，便于 13 / 14 复核时对齐同一次对齐。 */
   fingerprints: {
-    localTokensCss: sha256(path.join(ROOT, 'public', 'assets', 'tokens.css')),
-    localDesignTokens: sha256(path.join(ROOT, 'design-tokens.json')),
-    dsTokensCss: existsSync(path.join(DS, 'src', 'tokens.css')) ? sha256(path.join(DS, 'src', 'tokens.css')) : null,
-    dsDesignTokens: existsSync(path.join(DS, 'design-tokens.json')) ? sha256(path.join(DS, 'design-tokens.json')) : null,
+    source: {
+      note: '16 的源文件指纹（本次对齐的依据版本）',
+      dsTokensCss: existsSync(path.join(DS, 'src', 'tokens.css')) ? sha256(path.join(DS, 'src', 'tokens.css')) : null,
+      dsDesignTokens: existsSync(path.join(DS, 'design-tokens.json')) ? sha256(path.join(DS, 'design-tokens.json')) : null,
+    },
+    local: {
+      note: '本包产物指纹（含额外的别名层与兼容视图，故与 16 不同）',
+      tokensCss: sha256(path.join(ROOT, 'public', 'assets', 'tokens.css')),
+      designTokens: sha256(path.join(ROOT, 'design-tokens.json')),
+    },
+    alignedAt: existsSync(path.join(ROOT, 'design-tokens.json'))
+      ? JSON.parse(readFileSync(path.join(ROOT, 'design-tokens.json'), 'utf8')).meta?.alignment?.alignedAt ?? null
+      : null,
   },
 };
 writeFileSync(path.join(EVIDENCE, 'ds-conformance.json'), JSON.stringify(report, null, 2) + '\n', 'utf8');

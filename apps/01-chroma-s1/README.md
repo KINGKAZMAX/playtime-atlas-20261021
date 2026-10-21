@@ -32,7 +32,7 @@ npm run dev     # 开发服务器 → http://127.0.0.1:4311
 | `npm run typecheck` | 仅类型检查 |
 | `npm run qa` | Playwright 驱动本机 Chrome 跑 **65 项**点击断言 + 出截图 |
 | `npm run qa:headed` | 同上，但显示浏览器窗口 |
-| `npm run qa:ds` | 设计系统接入验收（V.1–V.11 + G.1–G.7，18 项）→ `qa/ds-report.json` |
+| `npm run qa:ds` | 设计系统接入验收（V.1–V.11 + G.1–G.7，21 项）→ `qa/ds-report.json` |
 | `npm run qa:d1` | D1 文字压盖审计（与 13 同口径，多滚动位置）→ `qa/d1-final.json` |
 
 > `npm run qa` 需要本机装有 Google Chrome（脚本用 `channel: 'chrome'`）。
@@ -103,7 +103,7 @@ npm run dev     # 开发服务器 → http://127.0.0.1:4311
 │   ├── components.css      组件层（.ds-* 类）
 │   └── fonts/              5 个 woff2 + fonts.css + OFL 许可全文 + FONT-MANIFEST.json
 ├── qa/verify.mjs           Playwright 点击验证脚本（65 项断言）
-├── qa/ds-verify.mjs        设计系统接入验收（V.1–V.11 + G.1–G.7，18 项）
+├── qa/ds-verify.mjs        设计系统接入验收（V.1–V.11 + G.1–G.7，21 项）
 ├── qa/d1-overlap.mjs       D1 文字压盖审计（与 13 同口径）
 ├── qa/lib/overlap-measure.mjs  压盖测量函数（与 13 同判定口径，共用）
 ├── qa/shot-fullpage.mjs    整页截图脚本（可复用给 13）

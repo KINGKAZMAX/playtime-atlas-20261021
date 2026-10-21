@@ -85,7 +85,8 @@
       "count": 23,
       "pointsTo": "--ds-* only (no literal values)",
       "note": "MIGRATION-NOTES §2.0：写法正确，保留；改版后自有 CSS 已直接使用 --ds-*，该层为零引用的重定向层。"
-    }
+    },
+    "fontStackOrder": "系统 CJK 族在前、Noto Sans SC 子集在后（MIGRATION-NOTES §2.0.1 / V.11）；本目录 tokens.css 与 16 上游 sha256 逐字节一致"
   },
   "fonts": {
     "selfHosted": true,
@@ -158,6 +159,7 @@
     "restyleCheck": "scripts/restyle-check.cjs",
     "restyleCheckResult": "20/20",
     "rawResults": [
+      "qa-ego-verify.json",
       "qa-result.json",
       "qa-spotcheck.json",
       "qa-restyle.json",
@@ -168,7 +170,17 @@
     "upstreamSelfTests": {
       "validateTokens": "16-design-system/tools/validate-tokens.mjs → errors: 0",
       "verifyPreview": "16-design-system/tools/verify-preview.mjs → errors: 0, warnings: 0"
-    }
+    },
+    "authoritative": "scripts/ego-verify.mjs（Ego 浏览器，40 项）",
+    "authoritativeResult": "40/40",
+    "headlessReplayTools": [
+      "scripts/acceptance.cjs（53 项）",
+      "scripts/spotcheck-6.cjs（7 项）",
+      "scripts/restyle-check.cjs（20 项）",
+      "scripts/ds-conformance.cjs（14 项）"
+    ],
+    "headlessReplayNote": "headless 复跑工具，供 13-qa-curation / CI 在无 Ego 环境复跑；作者侧验收一律走 Ego。",
+    "fontStackRenderAudit": "617 个汉字/全角标点：系统族 617 / 子集 0 —— 零混排；旧序对照 444 字会混排"
   },
   "deployment": {
     "owner": "14-publish",
@@ -177,5 +189,5 @@
     "iframeEmbeddable": true,
     "notes": "本任务不部署。产物为纯静态 dist/，可直接放入任意子路径。"
   },
-  "screenshots": 15
+  "screenshots": 16
 }

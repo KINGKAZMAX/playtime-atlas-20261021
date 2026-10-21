@@ -31,7 +31,10 @@
          该变量仅供未来引用批次根共享资源时使用；本地预览置空即可。 -->
     <style>
       :root {
-        --ds-base: "/playtime-atlas-20261021/";
+        /* !important：Vite 构建时会把合并后的 CSS <link> 放到 <head> 末尾，
+           位置在本内联块之后 —— 若不加 !important，规范层 tokens.css 的
+           :root{--ds-base:""} 会在**构建产物**里反向覆盖这里的注入值。 */
+        --ds-base: "/playtime-atlas-20261021/" !important;
       }
     </style>
   </head>

@@ -75,15 +75,20 @@ const railCount = await desk.locator('.rail-list [data-era-link]').count();
 check('桌面侧栏年代导航完整', railCount === 10, `${railCount} 个`);
 
 // 字体样式表与字体文件
+// 权威位置：assets/ds/fonts/（16-design-system 接入，fonts.css 与 woff2 同目录同路径）
+// 历史路径：art/assets/fonts/fonts.css（兼容 shim，MIGRATION-NOTES §6「发布前必查」仍会 curl 它）
 const fontChecks = await desk.evaluate(async () => {
   const out = [];
   for (const url of [
+    './assets/ds/fonts/fonts.css',
+    './assets/ds/fonts/inter-latin.woff2',
+    './assets/ds/fonts/space-grotesk-latin.woff2',
+    './assets/ds/fonts/space-mono-regular.woff2',
+    './assets/ds/fonts/space-mono-bold.woff2',
+    './assets/ds/fonts/noto-sans-sc-subset.woff2',
+    './assets/ds/components.css',
+    './assets/ds/tokens.css',
     './art/assets/fonts/fonts.css',
-    './art/assets/fonts/inter-latin.woff2',
-    './art/assets/fonts/space-grotesk-latin.woff2',
-    './art/assets/fonts/space-mono-regular.woff2',
-    './art/assets/fonts/space-mono-bold.woff2',
-    './art/assets/fonts/noto-sans-sc-subset.woff2',
   ]) {
     try {
       const res = await fetch(url, { method: 'GET' });
@@ -95,7 +100,7 @@ const fontChecks = await desk.evaluate(async () => {
   return out;
 });
 for (const f of fontChecks) {
-  check(`字体资源 ${f.url.replace('./art/assets/fonts/', '')} 返回 200`, f.status === 200, `HTTP ${f.status}`);
+  check(`字体资源 ${f.url.replace('./assets/ds/fonts/', 'ds/').replace('./assets/ds/', 'ds/').replace('./art/assets/fonts/', '历史路径 ')} 返回 200`, f.status === 200, `HTTP ${f.status}`);
 }
 
 // 实际生效的字体族

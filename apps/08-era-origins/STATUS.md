@@ -14,8 +14,8 @@
 | 7. 展厅主站页面 | ✅ 完成 | 序厅 / 导览 / 年代长廊 / 参考与差异 / 来源台账 / 操作与无障碍 |
 | 8. 响应式与无障碍 | ✅ 完成 | 移动端竖横屏、焦点提示、`prefers-reduced-motion`、ARIA 实时播报、可见焦点环 |
 | 9. 构建验证 | ✅ 完成 | `npm run build` 退出码 0，三页产物齐全，路径全相对，运行期零外部请求 |
-| 10. 实机验收 | ✅ 完成 | 单元测试 54/54；16 口径页面检查 **0 error / 0 warn**；游戏行为探针 **19/19**；**批次 harness verdict = pass** |
-| 11. 截图 | ✅ 完成 | `screenshots/` 7 张实机截图 + `screenshots/verify/` 12 张多视口截图 + 两份 JSON 报告 |
+| 10. 实机验收 | ✅ 完成 | 单元测试 54/54；令牌校验 **0 error / 0 warn**；16 口径页面检查 **0 error / 0 warn**；游戏行为探针 **18/18 全通过**（含条件记录项时 19 项）；**批次 harness verdict = pass** |
+| 11. 截图 | ✅ 完成 | `screenshots/` 7 张实机截图（Ego 浏览器拍摄）+ `screenshots/verify/` 12 张多视口截图 + 三份 JSON 报告 |
 | 12. 文档与交付 | ✅ 完成 | README / SOURCES / DIFFERENCES / LICENSES / QA / RESTYLE-INVENTORY / manifest / handoff×2 / scripts×4 |
 | 13. 设计系统改版（第三轮） | ✅ 完成 | 令牌层 + 组件层落地，三页 HTML 改造，自托管字体 |
 | 14. 改版执行（第四轮） | ✅ 完成 | **接入三步** + **G.1—G.7** + **§3.3 键盘与焦点专项**；执行项与暂缓项见下文 |
@@ -41,10 +41,10 @@
 | --- | --- | --- | --- |
 | G.1 | 引入 tokens.css + components.css | ✅ | 规范层链接置于既有 CSS 之后、08 专属层之前；`--ds-*` 取值的**唯一声明处** = `assets/ds/tokens.css`（§0 风险 B） |
 | G.2 | 页头 `.ds-topbar` / 页脚 `.ds-footer` / 加 `.ds-skip` | ✅ | 展厅 `<header class="masthead ds-topbar">`、游戏页 `<header class="topbar ds-topbar">`；两页页脚 `.ds-footer` + `.ds-footer__row` / `.ds-footer__links`；三页首元素 `.ds-skip`（跳过链接） |
-| G.3 | 标题**禁止** `white-space: nowrap` | ✅ | `scripts/verify-pages.mjs` 运行时实测：三页 `h1/h2/h3` + `.ds-display/.ds-h1/.ds-h2/.ds-h3` 共 **0 个** 使用 nowrap |
-| G.4 | 正文 `:lang(zh)` 字距归零、行高 1.85 | ✅ | 运行时实测：字距 `0`（非负）、正文行高 **1.85**、标题行高 1.22 |
+| G.3 | 标题**禁止** `white-space: nowrap` | ✅ | `scripts/verify-pages.mjs` 运行时实测：三页 `h1/h2/h3` + `.ds-display/.ds-h1/.ds-h2/.ds-h3` 共 **0 个** 使用 nowrap。**实测发现并修掉一处真实违规**：游戏页 `<h1 class="topbar__title">` 继承自 `src/styles/game.css` 的 `white-space: nowrap` → 改为 `normal` + `overflow-wrap: anywhere`（与 `.ds-cover__title` 同策略） |
+| G.4 | 正文 `:lang(zh)` 字距归零、行高 1.85 | ✅ | 运行时实测：字距 `normal`（归一 **0**）、正文行高 **1.85**、标题行高 1.22。**取样口径修正过两次**：① `letter-spacing` 计算值可能是 `normal`（等价 0），必须归一化后再判，否则 `parseFloat('normal') = NaN` 误判为不达标；② 游戏页没有 `.ds-body` 载体，原探针取样为 `null`，改为回退到 `.note`（08 既有正文段）并排除 `.sr-only` / `[hidden]` / `.overlay` / `.game-frame` 等非正文元素 |
 | G.5 | 元信息用 `--ds-font-mono` | ✅ | 来源台账 `.source__meta`、页脚 `.foot__meta`、年代轴 `.stop__year` 均挂 `.ds-mono` / `.ds-rail__item`（等宽） |
-| G.6 | 保留既有功能 | ✅ | 单元测试 **54/54**；游戏行为探针 **19/19**（D3 状态机 / D4 存档 / D5 键盘作用域 / D6 控制台）；新增的年代筛选默认「全部」，12 站全显 |
+| G.6 | 保留既有功能 | ✅ | 单元测试 **54/54**；游戏行为探针 **全通过（18–19 项，warn 0 / fail 0）**（D3 状态机 / D4 存档 / D5 键盘作用域 / D6 控制台；其中「聚焦测试前对局状态」为条件记录项，仅在需要重开对局时写入，故项数在 18–19 间浮动）；新增的年代筛选默认「全部」，12 站全显 |
 | G.7 | 资源相对化适配 `/playtime-atlas-20261021/` 子路径 | ✅ | `base: './'`；产物内**零绝对路径引用**；`--ds-base` 已注入但不参与任何资源 URL —— 故本目录在批次根、作品页 `/works/08-era-origins/`、以及 06 母站的 iframe 三种挂载下均可直接运行 |
 
 ### 三、§3.3 键盘与焦点专项（执行项）
@@ -91,6 +91,7 @@
 | 9 | **序厅渐变标题拆出内层 `<span class="hero__title-grad">`** | 渐变文字的 `color` 是 `transparent`，对比度工具无法测量（实测被判 1.1:1）。拆分后 `h1` 承载可测的 `--ds-ink`（17.46:1），渐变仍由内层 span 呈现，视觉不变 |
 | 10 | **`.ds-chip` 的筛选用途落在年代长廊** | §3 规定筛选 chip 用 `aria-pressed` + `aria-live` 计数。08 的长廊跨 1948—1979 共 12 站，按年代筛选是这条长廊最自然的一个交互；模式/难度切换在游戏页同样以 `.ds-chip` 承载（`aria-pressed` 语义完全一致）。**默认「全部」，12 站全显，不改变既有行为** |
 | 11 | **仍不提供 `hreflang="en"`** | 本批只有中文版，没有可交替的英文版，不提供虚构的语言标注；`<html lang="zh-CN">` 已正确声明。附带原因：Vite 的 `assetAttrsConfig.link = ["href"]` 会把任何 `<link href>` 当资源打包 |
+| 12 | **顶栏外层还原为 `display: block`**（覆盖规范层 `.ds-topbar { display: flex }`） | 规范的 `.ds-topbar` 是「brand + nav 直接作为 flex 子项」的行容器；08 的顶栏内容包在限宽内层容器里（`.masthead__inner` / `.topbar__inner`，`max-width: 1280px` + `auto` 外边距）。不还原的话，内层会成为 flex 子项被压缩成**内容宽度并居中**——顶栏整簇缩在页面中央，与下方正文错位（实测品牌从 x=128 漂到 x=447）。还原后品牌回到 x=128、与正文同列，导航/按钮靠右，与改版前一致。**只改几何，不动排版与语义** |
 
 ### 六、发现的规范内部不一致（已按「成文规范优先」处置并登记）
 
@@ -107,8 +108,8 @@
 | L1 单元 | `node --test "tests/*.test.mjs"` | **54 / 54 通过** |
 | L2 构建与自验 | `npm run verify` | **退出码 0**（测试 → 构建 → 产物检查 → manifest 一致性 → 改版专项） |
 | L2 令牌 | `scripts/check-tokens.mjs` | **error 0 / warn 0**：浅色 16 项 + 深色 16 项与 `design-tokens.json` **逐值完全一致**；必备令牌 21 项齐备；命名空间唯一；画布镜像 15 项一致；与 16 源文件 0 漂移 |
-| L3 页面机械检查 | `scripts/verify-pages.mjs`（改编自 16 的 `tools/verify-preview.mjs`，零依赖 CDP） | **0 error / 0 warn**：三页 × 四档视口无横向溢出、12 项对比度全部可测且达标（最低 4.74 / 5.56）、触摸目标 24px 与主控件 44px 两档全过、Tab 3/3 有焦点环、reduced-motion 生效、深色令牌正确、零控制台错误 |
-| L3 游戏行为 | `scripts/verify-game.mjs` | **19 / 19 通过**（D3 / D4 / D5 / D6） |
+| L3 页面机械检查 | `scripts/verify-pages.mjs`（改编自 16 的 `tools/verify-preview.mjs`，零依赖 CDP） | **0 error / 0 warn**：三页 × 四档视口无横向溢出、12 项对比度全部可测且达标（最低 4.74 / 5.56）、触摸目标 24px 与主控件 44px 两档全过、Tab 3/3 有焦点环、reduced-motion 生效、深色令牌正确、零控制台错误、G.3 与 G.4 全部达标 |
+| L3 游戏行为 | `scripts/verify-game.mjs` | **全通过：18 / 18（warn 0 / fail 0）**（D3 / D4 / D5 / D6；含 1 项条件记录项，项数在 18–19 间浮动） |
 | L4 批次 harness | 13-qa-curation | **verdict = pass**（详见下方「13 复测结论」） |
 
 ---
@@ -148,9 +149,12 @@
 | --- | --- | --- |
 | 2026-10-21T11:48:48Z | **pass** | D1–D8 全 pass，无 warn、无 skip |
 | 2026-10-21 18:31:03（监工转述） | **pass-with-warnings** | **fail = 0**；D5 键盘劫持项确认已修好 |
-| 2026-10-21T13:46:13Z（13 自行复跑，证据文件现值） | **pass** | total 28 / pass 24 / warn 0 / fail 0 / skip 1（移动端无 Tab 环，harness 设计如此）；**D5 未聚焦不响应 = pass**（前后状态完全一致）、**D5 聚焦后响应 = pass**、键盘焦点可达性 = pass（47 个可聚焦元素，8/8 焦点态可见） |
+| 2026-10-21T13:46:13Z（13 自行复跑） | **pass** | total 28 / pass 24 / warn 0 / fail 0 / skip 1（移动端无 Tab 环，harness 设计如此）；**D5 未聚焦不响应 = pass**（前后状态完全一致）、**D5 聚焦后响应 = pass**、键盘焦点可达性 = pass（47 个可聚焦元素，8/8 焦点态可见） |
+| 2026-10-21T16:05:16.070Z（13 复跑，**证据文件现值**） | **pass** | total 28 / pass 24 / warn 0 / fail 0 / skip 1 / notProven 0；9 项探针（进入可玩展品 / 游戏载体存在 / 开始 / 暂停 / 重开 / 难度切换 / 本地存档键 / **D5 未聚焦不响应** / **D5 聚焦后响应**）**全部 pass**；`readiness.ready = true` |
 
-> 证据文件：`13-qa-curation/evidence/08-era-origins.json`。该目录由 13-qa-curation 自己写入，**本任务未写入其中任何文件**；本任务的 harness 复跑始终在 `/tmp` 假 batch root 内进行（已清理）。
+> 证据文件：`13-qa-curation/evidence/08-era-origins.json`。该目录由 13-qa-curation 自己写入，**本任务未写入其中任何文件**。
+>
+> ⚠️ **13 的最新证据（16:05:16Z）早于本轮最后两项修正** —— 「顶栏几何还原（`display: block`）」与「游戏页 H1 去 nowrap」是之后才改的。两项已由本目录自建的三套 L3 脚本复测通过（页面检查 0 error / 0 warn），但**权威证据仍需 13 再跑一次批次复测**才能刷新（`works.json` 中 08 的 `qaState` 仍为 `pending-reverify`，该字段属 14-publish，本任务不修改）。
 >
 > 监督方口径「13 对 08 的判定是 pass（17 项 0 fail 0 warn）」已记录；本轮改版的自测口径见上文「七、本轮验收结果」，改版**未引入回归**。
 
@@ -181,13 +185,14 @@ node scripts/verify-game.mjs     # 游戏行为回归（D3 / D4 / D5 / D6）
 4. 触屏手势基于 Chromium 模拟上下文验证，未在真机 Safari / iOS 上实测。
 5. 音频只验证了 AudioContext 可在用户手势后启动与无控制台报错，未做主观音质评估。
 6. 本任务不部署、不执行 GitHub 写操作；线上地址由 14-publish 产出后回填 `handoff/14-publish.md`。
-7. 13-qa-curation 的全量 harness 最新证据为 **verdict = pass**（2026-10-21T13:46:13Z），唯一 skip 为「移动端无 Tab 环」（harness 对触屏视口的设计如此，非缺陷）。
+7. 13-qa-curation 的全量 harness 最新证据为 **verdict = pass**（2026-10-21T16:05:16.070Z，total 28 / pass 24 / warn 0 / fail 0 / skip 1），唯一 skip 为「移动端无 Tab 环」（harness 对触屏视口的设计如此，非缺陷）。**该证据早于本轮最后两项修正（顶栏几何还原、标题去 nowrap），需 13 再跑一次批次复测刷新权威结论**。
 8. **本批只有中文版**，未提供 `hreflang="en"`（无可交替的英文版）。
 9. **画布焦点环保留青色，是对 K.3「HUD 可读性优先」的有意偏离**：几何对齐 `--ds-focus-width` / `--ds-focus-offset`（2px + 2px），颜色保留 `--lumen-cyan`（深靛画面上远高于朱砂）。**此项无参考站实测依据，为本批自定**。
 10. 中文正文使用**系统字体栈**（未内置 Noto Sans SC 子集，理由见「暂缓项」§5）；不同系统上的中文渲染差异未做逐字校对。
-11. 改版中「样式表顺序」「固定深色主题」「画布相邻层保留画布色板」「年代筛选作为 `.ds-chip` 载体」等取舍**无参考站实测依据，为本批自定** —— 参考站 olek.si 未在这些维度取证，不臆造为「olek.si 风格」。
+11. 改版中「样式表顺序」「固定深色主题」「画布相邻层保留画布色板」「年代筛选作为 `.ds-chip` 载体」「顶栏外层还原为 `display: block`」等取舍**无参考站实测依据，为本批自定** —— 参考站 olek.si 未在这些维度取证，不臆造为「olek.si 风格」。
 12. `14-publish/release/works.json` 中 08 的条目仍是 `"status": "pending"` / `"qaState": "pending-reverify"`；该文件属 14-publish，**本任务不得修改**。
 13. 本目录的 `assets/ds/` 是 16 规范层在本目录内的落地副本；16 若后续更新其规范层，需重跑 `scripts/check-tokens.mjs`（第 10 项会报漂移）并同步。
+14. **浏览器使用口径**：`scripts/verify-pages.mjs`（零依赖 CDP）与 `scripts/verify-game.mjs`（playwright-core）内部各自拉起无头 Chromium，属**仓库内的自验工具链**，`npm run verify` 依赖本机已安装 Chrome；本轮**交付截图**（`screenshots/0*.png`）改由 **Ego 浏览器**拍摄，两条路径互不冲突。
 
 ## 变更日志
 
@@ -203,3 +208,6 @@ node scripts/verify-game.mjs     # 游戏行为回归（D3 / D4 / D5 / D6）
 - 2026-10-21（第四轮）：挂 `.ds-*` 规范类名（含 `.ds-topbar` / `.ds-footer` / `.ds-skip` / `.ds-cover__title` / `.ds-work__*` / `.ds-tag` / `.ds-btn--*` / `.ds-chip` / `.ds-rail__item` / `.ds-canvas-frame`），三页 12 项对比度样本全部可测且达标。
 - 2026-10-21（第四轮）：新增 `scripts/check-tokens.mjs`（令牌一致性 / 命名空间唯一 / 画布镜像 / 副本漂移）、`scripts/verify-pages.mjs`（16 口径页面机械检查）、`scripts/verify-game.mjs`（游戏行为回归）；`scripts/verify.sh` 第 5 步改接三者。
 - 2026-10-21（第四轮）：同步 16 于 22:25 的字体栈顺序修正（完整 CJK 系统栈前置，修混排基线错位）；登记 3 处规范内部不一致及处置。
+- 2026-10-21（第四轮·收尾）：修掉两处自检/实现缺陷 —— ① 规范 `.ds-topbar{display:flex}` 把 08 的限宽内层容器压成内容宽度并居中（顶栏品牌从 x=128 漂到 x=447），08 层还原 `display: block`；② 游戏页 `<h1 class="topbar__title">` 带 `white-space: nowrap` 违反 G.3，改为 `normal` + `overflow-wrap: anywhere`。
+- 2026-10-21（第四轮·收尾）：修正 `scripts/verify-pages.mjs` 的两处判定缺陷 —— `letter-spacing: normal` 归一为 0；正文取样回退到 `.note` 并排除 `.sr-only` / `[hidden]` / 瞬态 HUD。页面检查由 7 error 回到 **0 error / 0 warn**。
+- 2026-10-21（第四轮·收尾）：`scripts/verify-game.mjs` 增写 `screenshots/probe-report.json`（可重复生成，替换此前一次性探针留下的 66 项旧报告）；主截图 7 张改由 **Ego 浏览器**按固定视口重拍；README / RESTYLE-INVENTORY / QA / STATUS 按第四轮分层架构重写。

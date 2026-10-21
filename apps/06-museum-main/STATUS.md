@@ -1,11 +1,19 @@
 # STATUS · 06-museum-core 回响电玩馆 / PLAYTIME ATLAS
 
-> 最后更新：2026-10-21 22:20 · 执行者 MiniMax Code M3.1-Flash / max
+> 最后更新：2026-10-22 00:55 · 执行者 MiniMax Code M3.1-Flash / max
 > 本文件为持续更新的进度记录；状态只反映**实际发生**的工作。
 
 ---
 
 ## 当前状态：🟢 已交付并通过子路径自验（可交 14-publish 部署）
+
+**最终实测数字**（子路径 `/playtime-atlas-20261021/works/06-museum-main/`）：
+单元 **58/58** · 子路径 **41/41** · 验收 **56/56** · 检索探针 **9/9** ·
+令牌 **130/130 一致** · 压盖 **8 路由 × 2 视口全 0** · 390px 溢出 **0px** ·
+控制台 **0** · 失败请求 **0** · 产物 **4.75 MB / 123 文件**。
+
+> 待发布项（源码已修、线上未生效）：检索去抖已移除、`fonts.css` 已改 1730 B。
+> 详见 §0.7、§0.8、§0.11 与 README「浏览器约定：Ego 是唯一浏览器入口」。
 
 ## 〇、视觉改版（15-supervisor 派单 · RESTYLE-SPEC）
 
@@ -18,7 +26,7 @@
 |---|---|
 | **fonts.css 404** | `…/works/06-museum-main/art/assets/fonts/fonts.css` → **HTTP 200（1730 B）**；5 个 woff2（space-grotesk-latin / inter-latin / noto-sans-sc-subset / space-mono-regular / space-mono-bold）**全部 200**；控制台 404 **0 条**，失败请求 **0 条** |
 | **D2 移动端溢出** | 390×844 下 7 条路由（`#/`、`#/catalog`、`#/timeline`、`#/era/e04`、`#/about`、`#/collection`、`#/hall`）**scrollWidth = clientWidth = 390，溢出 0px**；`nav-toggle-text` 实测 **51×22px 单行**（未被压成 14px 逐字换行） |
-| **D3 搜索筛选** | 关键词「掌机」→ **211 → 10 件**，计数同步更新，URL 写入 `?q=掌机`；不存在的关键词 → **0 件 + 空态提示**；「清除筛选」恢复 **211 件**；子路径下直达 `#/catalog?q=掌机` 同样收敛到 10 件 |
+| **D3 搜索筛选** | 已改为**输入即过滤**（去掉 220ms 去抖）：不存在的关键词 → **211 → 0 件 + 空态提示**；关键词「掌机」→ **211 → 10 件**；清空 → **211 件**；三个输入入口 × 存在/不存在词 = **9/9 通过**。计数同步更新，URL 写入 `?q=掌机`；子路径下直达 `#/catalog?q=掌机` 同样收敛到 10 件 |
 
 ### 0.2 改版准备清单
 
@@ -63,6 +71,17 @@
 > Noto Sans SC 之前，多数中文系统因此不必再下载 200 KB 中文子集）。
 > 本目录静态校验立即报出 2 项不一致，已同步为新取值并重建复验。
 > 若没有这套校验，这次漂移会**静默留在产物里**。
+
+### 0.5 改版期间发现并修掉的工程问题
+
+| 问题 | 现象 | 修复 |
+|---|---|---|
+| **产物体积失控** | `dist` 一度达 **127 MB**——07 美术包里混进了做字体子集用的 Python 虚拟环境 `.venv`（124 MB）与 07 自己画廊的 51 MB 媒体 | 同步脚本跳过垃圾目录；**07 同步范围收敛为只取 `fonts/`**（本馆只用 `art/assets/fonts/`，其余一张未引用）；新增 `scripts/check-dist.mjs` 体积守卫并接为 `postbuild`。**dist 现为 4.75 MB / 123 文件** |
+| **同源无用字体上线** | 07 的 fonts/ 里同源给了 woff2 与 ttf，本馆 `@font-face` 只用 woff2，4 个 ttf（824 KB）白白上线 | 同步脚本新增 `ART_SKIP_FILES` 排除 `.ttf` |
+| **验收脚本把「URL 少个斜杠」误判成站点缺陷** | 首次跑出 **29 条失败 + 102 控制台错误 + 143 网络错误**，全是 404——`acceptance.mjs` 的 base URL 未归一化尾斜杠，浏览器把 `./art/…` 锚定到了上一级目录 | 三个脚本统一归一化 base URL；`serve-subpath.mjs` 增加目录 URL **301 补斜杠**（对齐 GitHub Pages 行为），本地与线上从此一致 |
+| 展签图形仍有字面色值 | `silhouette.js` 写死 `#0D1526`/`#F4EDE0` | 改为 `var(--ds-art-ink)`/`var(--ds-art-paper)`，新增两个 `--ds-art-*` 令牌并备案；已实测确认 SVG 表现属性里的 `var()` 在 Chromium 中生效（`scripts/probe-svg-var.mjs`） |
+| 展厅身份色是死代码 | `exhibits.config.js` 的 5 个展厅色被写进 `--era-accent`，但 `.hall-card` 的 CSS 从不读它 | 改为 `--identity-accent`，由 `.hall-card::before` 的 3px 发丝条消费，与年代门 `.door-light` 同一套用法 |
+| 身份色侵入交互态 | 导览轴**选中项**编号与年代门 **hover** 描边用的是年代专属色 | 按 DESIGN-SPEC §1.1「当前选中用强调色」统一为 `--ds-accent`；年代身份仍由编号文字与 3px 灯条承载 |
 
 ---
 
@@ -209,20 +228,6 @@ public/data/catalog.json（05 策展目录 139 条）
 - 项目自带的 `scripts/acceptance.mjs` 等是**交付给 13 复用的自动化回归套件**
   （13 的 harness 同为 Playwright 体系），不是我的交互式浏览；
   它的「整页截图做法」已写进 README 供全批照抄。
-
----
-
-### 0.5 改版期间发现并修掉的工程问题
-
-
-| 问题 | 现象 | 修复 |
-|---|---|---|
-| **产物体积失控** | `dist` 一度达 **127 MB**——07 美术包里混进了做字体子集用的 Python 虚拟环境 `.venv`（124 MB）与 07 自己画廊的 51 MB 媒体 | 同步脚本跳过垃圾目录；**07 同步范围收敛为只取 `fonts/`**（本馆只用 `art/assets/fonts/`，其余一张未引用）；新增 `scripts/check-dist.mjs` 体积守卫并接为 `postbuild`。**dist 现为 3.93 MB / 113 文件** |
-| **同源无用字体上线** | 07 的 fonts/ 里同源给了 woff2 与 ttf，本馆 `@font-face` 只用 woff2，4 个 ttf（824 KB）白白上线 | 同步脚本新增 `ART_SKIP_FILES` 排除 `.ttf` |
-| **验收脚本把「URL 少个斜杠」误判成站点缺陷** | 首次跑出 **29 条失败 + 102 控制台错误 + 143 网络错误**，全是 404——`acceptance.mjs` 的 base URL 未归一化尾斜杠，浏览器把 `./art/…` 锚定到了上一级目录 | 三个脚本统一归一化 base URL；`serve-subpath.mjs` 增加目录 URL **301 补斜杠**（对齐 GitHub Pages 行为），本地与线上从此一致 |
-| 展签图形仍有字面色值 | `silhouette.js` 写死 `#0D1526`/`#F4EDE0` | 改为 `var(--ds-art-ink)`/`var(--ds-art-paper)`，新增两个 `--ds-art-*` 令牌并备案；已实测确认 SVG 表现属性里的 `var()` 在 Chromium 中生效（`scripts/probe-svg-var.mjs`） |
-| 展厅身份色是死代码 | `exhibits.config.js` 的 5 个展厅色被写进 `--era-accent`，但 `.hall-card` 的 CSS 从不读它 | 改为 `--identity-accent`，由 `.hall-card::before` 的 3px 发丝条消费，与年代门 `.door-light` 同一套用法 |
-| 身份色侵入交互态 | 导览轴**选中项**编号与年代门 **hover** 描边用的是年代专属色 | 按 DESIGN-SPEC §1.1「当前选中用强调色」统一为 `--ds-accent`；年代身份仍由编号文字与 3px 灯条承载 |
 
 ---
 

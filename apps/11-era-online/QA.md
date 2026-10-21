@@ -14,7 +14,7 @@
 | 视口 | 桌面 `1440×900`（dpr 1）+ 移动 `390×844`（dpr 2, isMobile, hasTouch） |
 | 断言数量 | **53 项**，全部为可执行断言（DOM 状态 / 数值 / 存储 / 网络 / 控制台） |
 | 原始结果 | `qa-result.json`（本目录） |
-| 截图 | `screenshots/`（15 张，桌面 + 移动双视口） |
+| 截图 | `screenshots/`（16 张，桌面 + 移动双视口） |
 
 ### 1.1 测试环境注意事项（影响验收脚本，不影响产物）
 
@@ -84,6 +84,25 @@ reduced-motion 归零、运行期零外部请求。逐项结果见 `qa-restyle.j
 > 16 的两个自测脚本也已在本机跑通：`node tools/validate-tokens.mjs` → `errors: 0`；
 > `node tools/verify-preview.mjs` → `errors: 0 | warnings: 0`（首次运行在 load average 105 时
 > 出现一次 `timeout Page.navigate`，重跑即过，属宿主资源问题）。
+
+### 1.6 **作者侧权威验收脚本**（`scripts/ego-verify.mjs` → `qa-ego-verify.json`）
+
+按用户的长期约定，**所有网页访问 / 截图 / 网页调试 / 验收一律走 Ego 浏览器**
+（`/Users/mekzenx2/.local/bin/ego-browser`），不另起 Playwright / Chromium / Chrome。
+因此作者侧的权威验收路径是 `scripts/ego-verify.mjs`（走 Ego 的 TaskSpace / Page API），
+最新一次运行：**40/40 通过**，对应当前构建产物。
+
+| 段 | 覆盖 |
+| --- | --- |
+| 静态 | ds 令牌层与 16 上游逐字节一致 / V.3 令牌一致性 / V.11 字体栈顺序 / V.12 不自造字体栈 / V.13 无规范漂移 / §7 降级写法 + 自有 CSS 不声明 `--ds-dur-*` |
+| 页面 | 四档视口无溢出 / 运行期零外部请求 / ds 资源全 200 / 官方组件类 / `--ds-base` / `aria-current` / **V.11b 渲染层不混排** / 三条诚实声明 / 焦点环 + Tab 不被吞 / 触摸目标 24px + 44px / §4.2 HUD DOM 对比度（展项 A、B 各一遍） / 两展项可切换 / reduced-motion |
+| 功能 | 展项 A 纯键盘建造（`1` + 方向键 + `Enter`）与 `U` 键升级；展项 B 对话说话人 / 来源角标 / 具体年份 / https 可点击外链 |
+
+> §1.1—§1.5 的四个 Playwright 脚本（`acceptance.cjs` / `spotcheck-6.cjs` / `restyle-check.cjs` /
+> `ds-conformance.cjs`）**保留为 headless 复跑工具**，供 13-qa-curation 与 CI 在无 Ego 环境下复跑，
+> 不是作者侧验收路径。其最近一次结果为 53/53 + 7/7 + 20/20 + 14/14；此后源码只改了
+> `src/styles/base.css` 的 `.src` 触摸目标（24px → 25px），该变化已由 Ego 验收独立覆盖
+> （§5.1 触摸目标项在当前构建上通过）。
 
 ---
 
@@ -259,7 +278,7 @@ reduced-motion 归零、运行期零外部请求。逐项结果见 `qa-restyle.j
 | 15 | **NPC 对话的首句既无年份也无来源角标** | 史料角标只挂在对话的中段句上；玩家读到的**第一句**是纯氛围叙述，既无具体年份也无来源链接 | 三位 NPC 的开场白各补一句**带具体年份 + 来源角标**的史实（岑→Xbox Live 2002 / 岚→Steam 2003 / 薇→WoW 2001），沿用既有 `sourceChipEl` 组件与 65 条台账口径，不另造格式 |
 | 16 | **方向键连发延迟过短（0.24s）** | 慢机器上「按下→抬起」间隔一旦超过连发延迟，一次轻点会被当成按住，光标连跳多格（实测跳到 (7,1)） | 连发延迟提到 **0.40s**（常规桌面 UI 量级）：轻点只移动 1 格，真正按住才持续移动 |
 | 17 | **掌机 HUD 的 DOM 文字不达 4.5:1** | `--pocket-d4` (#9a6a74) 作正文在机身底 `#1a1424` 上仅 **4.01:1**、在 `#0d0912` 上仅 **4.40:1**；涉及上屏标签 / 状态栏「地点·体力·回声」/ 碎片计数 / 下屏标签 / 提示行 / 对话日志 / 系统键共 7 处 | 新增 `--pocket-text: #b8848e`（d4 的**提亮同色相**版本：d1 5.75:1 / d2 4.65:1 / ink 6.32:1 / sysbtn 5.27:1），7 处 DOM 文字改用之；**机身色阶与画布点阵色板（`palette.ts` 的 `d4`）一律不动**（§4.2 边界判定第 2 条） |
-| 18 | **来源角标触摸目标仅 20px 高** | `.src` 是可点击外链（全站 104 处），`line-height: 18px` + 上下各 1px 描边 = **20px**，低于 §5.1 的 24px 硬底线（AA 2.5.8） | `.src` 改 `line-height: 22px` + `min-height: 24px` → 实测 43×24；台账密集列表版面无溢出、无破版 |
+| 18 | **来源角标触摸目标仅 20px 高** | `.src` 是可点击外链（全站 104 处），`line-height: 18px` + 上下各 1px 描边 = **20px**，低于 §5.1 的 24px 硬底线（AA 2.5.8） | `.src` 改 `line-height: 23px` + `min-height: 25px` → 实测 43×25（留 1px 余量，避免高分屏/非整数缩放下的亚像素下溢，如 23.993px 被判不足）；台账密集列表版面无溢出、无破版 |
 
 > 缺陷 12–14 是本轮**复跑验收**时新发现并修复的；此前 52 项断言虽全绿，但因机器负载导致验收脚本出现竞态，
 > 才把「按钮静默变灰」「AI 宣布突击但单位不出场」这两个真实的体验/逻辑问题暴露出来。
@@ -268,8 +287,8 @@ reduced-motion 归零、运行期零外部请求。逐项结果见 `qa-restyle.j
 
 ## 6. 截图清单
 
-全部 15 张均为最终一次验收运行重新生成，并逐张目视复核（canvas 已正确合成进视口截图）：
-其中 12 张来自 `scripts/acceptance.cjs`，1 张来自 `scripts/restyle-check.cjs`，2 张为本轮 §9 复核的定点截图。
+全部 16 张均为最终一次验收运行重新生成，并逐张目视复核（canvas 已正确合成进视口截图）：
+其中 12 张来自 `scripts/acceptance.cjs`，1 张来自 `scripts/restyle-check.cjs`，3 张为本轮 §9 复核 / Ego 权威验收的定点截图。
 
 | 文件 | 内容 |
 | --- | --- |
@@ -287,7 +306,8 @@ reduced-motion 归零、运行期零外部请求。逐项结果见 `qa-restyle.j
 | `09-mobile-handheld.png` | 移动端 390×844：展项 B 掌机画面 |
 | `10-restyle-desktop.png` | 改版自检截图：桌面 1440 视口的完整外壳（满宽 sticky `.ds-topbar` 顶栏 + 封面 + 诚实声明区 + 导览区），由 `scripts/restyle-check.cjs` 生成 |
 | `11-handheld-hud.png` | 展项 B 掌机 HUD：上屏点阵画面（画布，色板未动）+ 下屏交互区 + 状态栏 + 控制键；HUD DOM 文字为提亮后的 `--pocket-text` |
-| `12-sources-chips.png` | 史料台账密集列表：104 个来源角标实测 43×24（≥24px），版面无溢出 |
+| `12-sources-chips.png` | 史料台账密集列表：104 个来源角标实测 43×25（≥24px），版面无溢出 |
+| `13-ego-verify-real-browser.png` | **Ego 真实浏览器**下的渲染取证：汉字恒走系统黑体（PingFang SC），无子集混排、无基线错位 |
 
 ---
 
@@ -338,6 +358,9 @@ reduced-motion 归零、运行期零外部请求。逐项结果见 `qa-restyle.j
 | R22 | HUD **DOM** 文字对比度（§4.2 不豁免） | `ds-conformance.cjs` 逐元素计算有效前景/背景 | ✅ 展项 A 57 个 / 展项 B 21 个文字元素全部 ≥4.5:1 |
 | R23 | 触摸目标两档（§5.1） | `ds-conformance.cjs` 实测盒高 | ✅ 全部 ≥24px（82 类）；主控件 ≥44px 无违反项 |
 | R24 | 语义别名层保留（§2.0） | 人工核对 `src/styles/base.css` 的 `:root` | ✅ `--danger` / `--data` / `--dawn` / `--deep` 等 23 个别名全部指向 `--ds-*`，无直取值 |
+| R25 | **Ego 权威验收** | `scripts/ego-verify.mjs`（走 Ego 浏览器） | ✅ **40/40 通过**（静态 + 页面 + 功能三段） |
+| R26 | **V.11b 渲染层不混排** | 逐字渲染比对：页面真实栈 vs 强制系统族 vs 强制子集 | ✅ 全页 **617** 个汉字/全角标点：系统族 617 / 子集 0 / 其它 0 —— **无混排** |
+| R27 | 旧序 vs 新序的影响面量化 | Ego 真实浏览器内按两套字体栈逐字渲染同一批字 | ✅ 617 字中 **444 字**（72%）在旧序下会走子集、新序走系统 —— 证明该条款「真实影响渲染」，也证明本目录已在修正后的顺序上 |
 
 ---
 
@@ -345,6 +368,7 @@ reduced-motion 归零、运行期零外部请求。逐项结果见 `qa-restyle.j
 
 **53 / 53 项自动化断言全部通过**（§9 复核轮修复后复跑，无回归）；定点取证 **7/7**；
 改版自检 `scripts/restyle-check.cjs` **20/20**；§9 规范机械复核 `scripts/ds-conformance.cjs` **14/14**；
+**Ego 权威验收 `scripts/ego-verify.mjs` 40/40**；
 `npm run build` 退出码 0，产出 `dist/index.html`；
 产物为纯静态、相对路径、零运行时依赖、运行期零外部请求、字体全本地。
 

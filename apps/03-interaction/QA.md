@@ -29,12 +29,12 @@
 | 9 | 继续当班 | `state=running`，机台进度恢复推进 |
 | 10 | 班次节奏切换 | 点「紧排」→ `state.tempo=tight` |
 | 11 | 键盘操作 | 点一下界面取得焦点后，方向键把选中机台从「无」移到 `L-01` |
-| 12 | 截图 | `screenshots/01-desktop.png`（完整调度台） |
-| 13 | 截图 | `screenshots/02-desktop-drawer.png`（机台详情抽屉） |
+| 12 | 截图 | `qa/shots/01-desktop.png`（完整调度台，自测产物） |
+| 13 | 截图 | `qa/shots/02-desktop-drawer.png`（机台详情抽屉，自测产物） |
 | 14 | 重置车间 | `state=idle`，订单簿回到 2 张模板订单，toast 提供「撤销」 |
 | 15 | 撤销重置 | 状态回到 `shift=running`，订单簿恢复 4 张 |
 | 16 | 存档恢复 | 刷新后出现「已恢复上次会话 · 2026/10/21 20:46:50」，订单簿 4 张，localStorage 键 `loomdeck.workshop.v1` |
-| 17 | 移动端布局 | 390×844 无横向滚动，页面高 3705px，截图 `screenshots/03-mobile.png` |
+| 17 | 移动端布局 | 390×844 无横向滚动，页面高 3776px，截图 `qa/shots/03-mobile.png`（自测产物） |
 | 18 | 控制台 | 无 error、无未捕获异常 |
 | 19 | **零外部请求** | 运行期没有发出任何跨域请求 |
 
@@ -89,7 +89,7 @@ npm run qa        # 需要本机已安装 Chromium；缺少时执行 npx playwri
         OFL-space-mono-regular.txt, fonts.css, fonts.manifest.json, inter-latin.woff2,
         noto-sans-sc-subset.woff2, space-grotesk-latin.woff2, space-mono-bold.woff2,
         space-mono-regular.woff2
-  产物体积：411.1 KB
+  产物体积：414.0 KB
 ✓ 自检通过：无外部资源引用，字体已本地化，产物中无敏感文件。
 ```
 
@@ -97,9 +97,9 @@ npm run qa        # 需要本机已安装 Chromium；缺少时执行 npx playwri
 | --- | ---: |
 | `dist/index.html` | 14,490 |
 | `dist/assets/index-*.js` | 38,576 |
-| `dist/assets/style-*.css` | 37,602 |
+| `dist/assets/style-*.css` | 38,561 |
 | `dist/fonts/inter-latin.woff2` | 132,684 |
-| `dist/fonts/noto-sans-sc-subset.woff2` | 106,556 |
+| `dist/fonts/noto-sans-sc-subset.woff2` | 107,968 |
 | `dist/fonts/space-grotesk-latin.woff2` | 34,788 |
 | `dist/fonts/space-mono-regular.woff2` | 14,884 |
 | `dist/fonts/space-mono-bold.woff2` | 15,000 |
@@ -111,9 +111,9 @@ npm run qa        # 需要本机已安装 Chromium；缺少时执行 npx playwri
 ### 3.1 字体资产校验（`npm run check:fonts`）
 
 ```
-✓ 清单登记的 5 个字体文件与 5 份 OFL 全文齐备（共 303912 字节）
+✓ 清单登记的 5 个字体文件与 5 份 OFL 全文齐备（共 305324 字节）
 ✓ 五个字体的 name 表族名与 16-design-system FONT-MANIFEST 一致
-✓ Noto Sans SC 子集覆盖本作品全部 565 个汉字/中文标点
+✓ Noto Sans SC 子集覆盖本作品全部 576 个汉字/中文标点
 ✓ Inter 拉丁子集覆盖全部可打印 ASCII
 ✓ 样式与入口 HTML 无外链字体引用（零 CDN）
 ```
@@ -157,6 +157,41 @@ npm run qa        # 需要本机已安装 Chromium；缺少时执行 npx playwri
 | 触摸目标实测 | 主控件 `.ds-btn` **44px**（AAA）、`.ds-btn--sm` 32px（豁免类，仍 ≥24px AA）、表单控件 **44px**、触控端点按目标 44px |
 | 目视复核 | 字体栈顺序与控件尺寸变更后**三张截图全部重拍**并逐张看图：标题不竖排、无横向溢出、无跨面板压盖、无缺字 |
 
+### 3.5 统一外壳与字体栈专项复测（2026-10-22 02:05）
+
+触发原因：15-supervisor 的「接入三步 + G.1—G.7 + 键盘焦点专项 + 四档视口自检」、
+16-design-system 的「`--ds-target-min` 与动效降级隔离」告知，以及用户长期约定
+「浏览器操作一律走 Ego 浏览器」。
+
+| 项 | 结果 |
+| --- | --- |
+| **`npm run check:tokens`**（新增自测） | ✓ **9/9**：V.11 顺序 / V.12 不自造 / V.13 无漂移 / 口径 A 必备 17 项 / 全量 129 项等值 / 降级隔离 / `--ds-target-min` 44px |
+| `16-design-system/tools/ds-audit-tokens.mjs`（只读） | ✓ **🟢**：声明 129 / 必备缺 0 / 必备值差 0 / 全量缺 0 / 值差 0 / 额外 0 / 顺序问题 0 |
+| `npm run build` / `verify` | ✓ 退出码 0；16 个文件 / **414.0 KB**；无外部引用 / 无敏感文件 |
+| `npm run check:fonts` | ✓ 5/5（汉字 **576/576**） |
+| `node scripts/check-contrast.mjs` | ✓ 30 组全部达标 |
+| `npm run qa` | ✓ **19/19** |
+| 批次 harness（13 当前版） | ✓ **28 项：pass 24 / warn 0 / fail 0 / skip 1 → verdict `pass`**；D1 桌面 **0 对**（候选 201）/ 移动 **0 对**（候选 200）；D5 焦点态 **8/8**；D8 子路径全 200 |
+| **Ego 四档视口**（1440×900 / 1280×800 / 768×1024 / 390×844） | ✓ **四档全部零横向溢出、零溢出元素**；页脚高度 42 / 42 / 68 / 87px 且**不压日志带**；页眉 71 / 90 / 242 / 328px |
+| **Ego Tab 与焦点环** | ✓ 40 个可聚焦元素；Tab 前 10 站 `focus-visible` **全部为真**、焦点环**全部可见**（`outline: solid 1.67px rgb(180,67,43)` 或 3px accent-soft 外环）；Tab 序列未被 `preventDefault` 吞掉 |
+| 交付截图 | ✓ 三张全部由 **Ego 浏览器**重出：1440×900（整机台）、1440×900（抽屉态）、390×844（整页 3 876px），均为**首访态**（无恢复横幅）、精确视口、0 溢出 |
+
+**关于 `16-design-system/tools/verify-preview.mjs`**：该工具是 16 的**参考实现**，
+`ROOT` 写死指向 `16-design-system/preview.html`，且断言项包含 `.ds-cover` / `.ds-work` /
+`.ds-detail__title` / `.ds-rail` / `.ds-indicator` / `.ds-canvas-frame canvas`
+等**本作品按设计就不存在**的组件（见 `DESIGN-DIFF.md` §3-A.4）。
+故本轮按其**检查口径**（四档视口无横向溢出 / 零外部请求 / 样式表全部解析 / 焦点可见 /
+对比度 24-44 两档 / reduced-motion 双路径）用 **Ego 浏览器**等价执行，未改 16 的文件，
+也未另起 headless Chrome（用户长期约定）。
+
+> 复现（Ego）：
+> ```bash
+> /Users/mekzenx2/.local/bin/ego-browser skill          # 先取当前版本指南
+> # 脚本见 /tmp/ego-loomdeck-20261022/round-*.mjs
+> # 视口校准要点：Ego 窗口带 90% 缩放，CDP override 的 width 是设备像素；
+> #              且**跨 origin 导航会重置 override** → 必须「先 goto 再设 metrics」。
+> ```
+
 ## 4. 本轮实际修复的缺陷（均为浏览器实测发现，非推测）
 
 ### 4.1 复核结论：移动端 D1「62 对文字压盖」
@@ -189,6 +224,9 @@ npm run qa        # 需要本机已安装 Chromium；缺少时执行 npx playwri
 | 11 | **冒烟断言与 §2.5 调序后的正确行为冲突**（v1.1.1） | 调序后 `npm run qa` 报「本地字体加载 ✗：… Noto Sans SC:unloaded」 | 断言改为两层：①拉丁族必须 `loaded`；②CJK 兜底子集必须**已注册 + 可强制加载成功**（`document.fonts.load('400 16px "Noto Sans SC"')`） | 复跑 **19/19**，实测 `Noto Sans SC:loaded` |
 | 12 | **令牌层与 16 规范有 16 项缺口 + 字体栈顺序违规**（v1.1.1） | `16-design-system/tools/ds-audit-tokens.mjs` 报「必备缺 2（`--ds-canvas-hud-bg` / `--ds-canvas-scrim`）/ 必备值差 1（`--ds-target-min` 24px）/ 顺序问题 2」 | ①补齐必备 2 项 + 规范全集中其余 14 项；②`--ds-target-min` → 44px；③`--ds-font-display` / `--ds-font-text` 按 §2.5 调序（系统 CJK 栈在前） | 复跑审计器 → **🟢**（缺 0 / 值差 0 / 顺序问题 0） |
 | 13 | **控件高度低于 §11.4 的 AAA 档**（v1.1.1） | 规范核对：`.ds-btn` 40px（要求 44px）、`.ds-input` / `.ds-select` 40px + radius-sm（要求 44px + radius-md） | 全部提到 44px、radius 改 `--ds-radius-md`；`.ds-btn--sm` 维持 32px 豁免 | harness D5 焦点态 8/8；390px 无横向溢出、D1 仍 0 对 |
+| 14 | **自有 CSS 手抄了一份 CJK 字族栈**（v1.1.2） | `MIGRATION-NOTES §9` 新增 **V.12「不自造字体栈」**：自有 CSS 只能引用 `var(--ds-font-*)`。本目录的语义别名层里 `--mono` 曾手写「系统 CJK 栈 + Noto 子集」——正是「各目录各自照抄字体栈、顺序漂移」这个缺陷的扩散根因 | `--mono` 改为 `var(--ds-font-mono)`；28 处 `font-family` 全部改为引用 `var(--ds-font-mono)`；新增 `npm run check:tokens` 的 V.12 项永久守住 | 自测 9/9；截图复核：等宽语境中文与正文同源，无宋体混排 |
+| 15 | **降级块漏了 `--ds-entry-duration`**（v1.1.2） | 16 点名「降级值误入 `:root` → 所有用户拿不到动效」的缺陷模式，据此逐处核对本目录：`:root` 一直是规范值（**未中此缺陷**），但降级块原放在组件层且只覆盖 `--ds-dur-*`，**漏了 `--ds-entry-duration`** | 降级块移回令牌层 `src/tokens.css`（与 16 同结构），补齐 `--ds-entry-duration: 1ms`；组件层只保留 `animation/transition` 的 `!important` 压平 | 自测「降级隔离」项通过：`:root` 动效值为规范值，1ms 只出现在 `prefers-reduced-motion` 块内 |
+| 16 | **自测脚本会覆盖交付截图**（v1.1.2） | 用户长期约定「截图一律走 Ego」后，`npm run qa` 仍在写 `screenshots/`，把 Ego 产出的交付图覆盖成 headless 版本 | `qa-smoke.mjs` 的截图输出改到 `qa/shots/`（自测产物，已进 `.gitignore`）；`screenshots/` 只由 Ego 产出 | 重跑 `npm run qa`（19/19）后 `screenshots/` 三张时间戳未变、`qa/shots/` 更新 |
 
 ## 5. 已知限制（实测确认，不是推测）
 
@@ -222,9 +260,9 @@ npm run qa        # 需要本机已安装 Chromium；缺少时执行 npx playwri
 
 | 文件 | 内容 |
 | --- | --- |
-| `screenshots/01-desktop.png` | 1440×900 完整调度台：页眉读数、订单簿 4 张、机台矩阵 12 台、遥测台曲线与负载条、实时日志 |
-| `screenshots/02-desktop-drawer.png` | 同上 + 右侧机台详情抽屉（状态 / 在制订单 / 进度曲线 / 机台操作 / 事件历史） |
-| `screenshots/03-mobile.png` | 390×844 移动端首屏（2 列机台矩阵、整页滚动） |
+| `screenshots/01-desktop.png` | 1440×900 完整调度台：页眉读数、订单簿、机台矩阵 12 台、遥测台曲线与负载条、实时日志、底部来源与许可页脚 —— **Ego 浏览器产出** |
+| `screenshots/02-desktop-drawer.png` | 同上 + 右侧机台详情抽屉（状态 / 在制订单 / 进度曲线 / 机台操作 / 事件历史）—— **Ego 浏览器产出** |
+| `screenshots/03-mobile.png` | 390×844 移动端**整页**（3 876px：2 列机台矩阵 + 订单簿 + 遥测 + 日志 + 页脚）—— **Ego 浏览器产出** |
 
 ## 7. 复现全部验收
 
@@ -234,6 +272,7 @@ npm install
 npm run build                                # 子集化中文字体 + vite 打包 → dist/
 npm run verify                               # 产物自检：无外部引用 / 字体本地化 / 无敏感文件
 npm run check:fonts                          # 字体资产校验：族名 / 许可 / 汉字覆盖 / 无 CDN
+npm run check:tokens                         # 令牌层自测：V.11/V.12/V.13 + 口径 A + 降级隔离 + 阈值
 node scripts/check-contrast.mjs              # 对比度校验：正文 ≥4.5:1、控件边界 ≥3:1
 npm run qa                                   # 自带冒烟测试 → qa/report.json + screenshots/
 node ../16-design-system/tools/ds-audit-tokens.mjs --root ..   # 令牌层与 16 规范的一致性审计（只读）

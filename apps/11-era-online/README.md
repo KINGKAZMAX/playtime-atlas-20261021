@@ -127,10 +127,11 @@ npm run start      # 一键：装依赖 → 构建 → 预览
 │       └── fonts/          fonts.css + 5 款 woff2 + FONT-MANIFEST.json + OFL 许可全文
 ├── scripts/
 │   ├── start.sh               一键启动（安装 → 构建 → 预览）
-│   ├── acceptance.cjs         实机验收脚本（53 项断言，需自行安装 playwright，不参与构建）
-│   ├── spotcheck-6.cjs        定点取证脚本（键盘建造 / 升级 / 对话角标 6 项原始数值）
-│   ├── restyle-check.cjs      改版自检脚本（20 项断言：视口 / ds 资源 / 组件类 / 无障碍）
-│   └── ds-conformance.cjs     §9 规范机械复核（14 项：V.3/V.11/V.12/V.13 + §7 + §4.2 + §5.1）
+│   ├── ego-verify.mjs         **作者侧权威验收**（走 Ego 浏览器，40 项：静态 + 页面 + 功能）
+│   ├── acceptance.cjs         headless 复跑工具（53 项断言，需自行安装 playwright，不参与构建）
+│   ├── spotcheck-6.cjs        headless 复跑工具（键盘建造 / 升级 / 对话角标 6 项原始数值）
+│   ├── restyle-check.cjs      headless 复跑工具（20 项断言：视口 / ds 资源 / 组件类 / 无障碍）
+│   └── ds-conformance.cjs     headless 复跑工具（14 项：V.3/V.11/V.12/V.13 + §7 + §4.2 + §5.1）
 ├── src/
 │   ├── main.ts              应用入口
 │   ├── styles/
@@ -193,6 +194,8 @@ npm run start      # 一键：装依赖 → 构建 → 预览
 5. 本任务**不部署**；上线由 `14-publish` 统一执行。
 6. `public/assets/ds/` 是 16 设计系统的**人工拷贝**，未接构建期自动同步；
    16 后续更新令牌/组件/字体时需要重新拷贝并复跑验收。
-7. 改版自检与 §9 规范复核只跑了 Chromium，未做 Firefox / Safari 实测。
+7. 改版自检与 §9 规范复核只跑了 Chromium/Ego，未做 Firefox / Safari 实测。
 8. 掌机 DOM 文字色 `--pocket-text: #b8848e` 属本批自定（在 `#9a6a74` 基础上同色相提亮，
    目的是满足 §4.2 的 HUD 文字 ≥4.5:1），**非参考站实测值**；机身色阶与画布点阵色板保持原值。
+9. 作者侧权威验收走 **Ego 浏览器**（`scripts/ego-verify.mjs`，40/40）；仓库里的四个 Playwright 脚本
+   保留为 **headless 复跑工具**，供 13-qa-curation 与 CI 在无 Ego 环境复跑。

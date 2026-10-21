@@ -65,8 +65,8 @@ WebGL 降级          : 13 / 13 PASS           （真实禁用 WebGL，测生产
 | 11 | `segment-count-rebuild` | ✅ | `segments.length = 12` | 结构参数改变后**真实重建**几何（18 → 12） |
 | 12 | `reset-restores-defaults` | ✅ | `{seg:18, theme:"abyss", explode:0, length:760}` | 重置回到全部默认值，长度读数恢复 **760 m** |
 | 13 | `tool-rail-rendered` | ✅ | 12 个工具按钮 / 6 个机位 | 左侧工具栈实际渲染，无死链 |
-| 14 | `glb-export` | ✅ | 9,135,972 bytes，magic `glTF`，文件名 `abyss-salvager-ac-vii-18seg.glb` | 拦截真实 Blob 下载，校验魔数 |
-| 15 | `glb-file-written` | ✅ | version 2，declaredLength **= 9,135,972 = 实际字节数** | 头部声明长度与文件长度严格一致，文件已落盘 `public/models/` |
+| 14 | `glb-export` | ✅ | **约 9.14 MB**，magic `glTF`，文件名 `abyss-salvager-ac-vii-18seg.glb`（精确字节见 `assets.manifest.json`） | 拦截真实 Blob 下载，校验魔数 |
+| 15 | `glb-file-written` | ✅ | version 2，declaredLength **== 实际字节数**（本次实测 9,136,072） | 头部声明长度与文件长度严格一致，文件已落盘 `public/models/` |
 | 16 | `part-selection-works` | ✅ | 选中 `carapace` → **649 网格 / 132,576 三角面**；面板含「叠压甲壳板 / Overlapping carapace」 | 射线拾取真的选中了构件，选择面板同步显示中英名与规模 |
 | 17 | `layer-toggle-works` | ✅ | crown 层可见网格 **2 → 0 → 恢复 2** | 层级开关真实作用于 `partGroup` 显隐 |
 | 18 | `assembly-step-works` | ✅ | 阶段 1 = 0 节无尾 · 阶段 2 = **6 节** · 阶段 4 = **18 节 + 尾段** | 分步组装逐阶段改变可见构件集 |
@@ -83,10 +83,10 @@ WebGL 降级          : 13 / 13 PASS           （真实禁用 WebGL，测生产
 
 ```
 file      : public/models/abyss-salvager-ac-vii.glb
-bytes    : 9135972
+bytes    : 9135924
 magic     : glTF
 version  : 2
-declared : 9135972          ← 与文件长度一致
+declared : 9135924          ← 与文件长度一致
 --- glTF contents ---
 nodes        : 693
 meshes       : 548
@@ -106,6 +106,11 @@ PASS: valid GLB 2.0 container with real geometry.
 
 **要点**：GLB 中的三角面 / 顶点数与浏览器场景内实测值**逐位相同**，
 说明导出的就是屏幕上的那个模型，没有「导出的是另一份简化模型」的情况。
+
+> **关于字节数**：程序化几何的顶点浮点末位在每次重新导出时会有细微差异，
+> 因此 `bytes` 会在 **±数十字节**内浮动（历史观测值：9,134,260 / 9,135,924 / 9,135,972 / 9,136,072 / 9,136,112）。
+> 因此断言只校验三件确定的事 —— `magic = glTF`、`version = 2`、**`declaredLength == 实际字节数`**；
+> 权威体积与 sha256 记录在 `public/models/assets.manifest.json`（构建时由 `scripts/sync-model.mjs` 自动刷新）。
 
 > 模型文件在 v1.0.1 已迁至 `public/models/`（唯一真源）。
 > `npm run build` 会先跑 `scripts/sync-model.mjs` 校验 GLB 头并刷新
@@ -151,7 +156,7 @@ PASS: valid GLB 2.0 container with real geometry.
 | # | 断言 | 结果 | 实测值 |
 |---|---|---|---|
 | 1 | `subpath-boot` | ✅ | `window.__abyss` 存在，title 正确，760 m / 18 节 |
-| 2 | `shipped-glb-200` | ✅ | **status 200**，9,135,972 bytes，magic `glTF` v2，declared == 实际字节 |
+| 2 | `shipped-glb-200` | ✅ | **status 200**，约 9.14 MB，magic `glTF` v2，declared == 实际字节 |
 | 3 | `legacy-alias-absent` | ✅ | 旧名 `mech-sandworm-1312m.glb` → **404**（已废弃，刻意验证「只有一份」） |
 | 4 | `model-index-200` | ✅ | `models/assets.manifest.json` → 200，且索引内**只列 1 个文件** |
 | 5 | `single-glb-in-build` | ✅ | `dist/models/` 内**恰好 1 个** `.glb`：`abyss-salvager-ac-vii.glb` |
@@ -183,7 +188,7 @@ PASS: valid GLB 2.0 container with real geometry.
 | `outDir/models` 恰好一份 GLB | ✅ | `abyss-salvager-ac-vii.glb` |
 | `outDir` 内无 legacy 旧名 | ✅ | `mech-sandworm-1312m.glb` 不存在 |
 | `works.json` 声明的 artifact 命中 | ✅ | `works/02-abyss-salvager/models/abyss-salvager-ac-vii.glb` |
-| `outDir` GLB 与源文件字节一致 | ✅ | 9,135,972 bytes |
+| `outDir` GLB 与源文件字节一致 | ✅ | 同源同字节（sha256 一致） |
 | 产物**无根绝对路径** | ✅ | none（Pages 子路径下不会 404） |
 | 合并后 `manifest.id` | ✅ | `02-abyss-salvager`（与 `works.json` 一致） |
 

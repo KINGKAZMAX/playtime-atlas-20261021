@@ -168,6 +168,24 @@ if (existsSync(path.join(ROOT, 'design-tokens.json'))) {
     }
     if (orderProblems.length === 0) ok('字体栈顺序合规：完整系统 CJK 栈在前、Noto Sans SC 子集在后');
     else fail(`字体栈顺序违反 CJK 基线规则：${orderProblems.join('；')}`);
+
+    /* 主色口径：UI 层强调色必须等于 16 的 --ds-accent。
+       07 是 token 源头，16 是规范唯一定义方 —— 两者若不是同一个值，
+       06 / 14 会出现「同一站两种主色」。 */
+    const dsAccent = t.cssVars?.root?.['--ds-accent'];
+    const dsAccentDark = t.cssVars?.dark?.['--ds-accent'];
+    const compatAccent = t.compat?.semantic?.accent;
+    if (dsAccent && compatAccent && dsAccent.toLowerCase() === String(compatAccent).toLowerCase()) {
+      ok(`主色口径一致：--ds-accent = ${dsAccent}（暗色 ${dsAccentDark || '继承'}），compat.semantic.accent 同值`);
+    } else {
+      fail(`主色口径不一致：--ds-accent=${dsAccent} vs compat.semantic.accent=${compatAccent}`);
+    }
+    /* UI 层不得残留旧的写死主色（展品内嵌色只在 --atlas-local-* 里，允许） */
+    const uiCss = readFileSync(path.join(ROOT, 'src', 'styles.css'), 'utf8');
+    const hardCoded = [...uiCss.matchAll(/#[0-9a-fA-F]{6}\b/g)].map((m) => m[0].toUpperCase());
+    const oldOrange = hardCoded.filter((c) => c === '#F0601F');
+    if (oldOrange.length === 0) ok('UI 样式表无写死的旧主色 #F0601F（强调色一律走 --ds-accent）');
+    else fail(`UI 样式表仍写死旧主色 #F0601F（${oldOrange.length} 处）`);
   } else fail('缺少 public/assets/tokens.css');
 } else {
   fail('缺少 design-tokens.json');
@@ -187,6 +205,25 @@ for (const f of fontFiles) mustExist(f, 2048);
 mustExist('fonts/fonts.css', 512);
 for (const lic of ['OFL-space-grotesk.txt', 'OFL-inter.txt', 'OFL-space-mono-regular.txt', 'OFL-noto-sans-sc.txt']) {
   mustExist(`fonts/${lic}`, 1000);
+}
+
+/* 字体档位与 16 一致（族名 / font-style / 字重 / 文件映射）。
+   不一致会让 06 与 07 混用时出现字体跳变。 */
+const fmPath = path.join(ASSETS, 'fonts', 'FONT-MANIFEST.json');
+if (existsSync(fmPath)) {
+  const fm = JSON.parse(readFileSync(fmPath, 'utf8'));
+  if (fm.facesParity?.identical === true) {
+    ok(`字体档位与 16 逐项一致（${fm.facesParity.faceCount} 条 @font-face：族名/style/字重/文件映射）`);
+  } else {
+    fail(`字体档位与 16 不一致：仅本包有 ${(fm.facesParity?.onlyMine || []).join(', ') || '无'}；仅 16 有 ${(fm.facesParity?.onlyDs || []).join(', ') || '无'}`);
+  }
+  if (fm.alignment?.fontsIdentical === true) ok('字体文件与 16 逐字节一致（SHA-256）');
+  else fail('字体文件与 16 不逐字节一致');
+  const badLic = (fm.licenses || []).filter((l) => !l.verified);
+  if (fm.licenses?.length === 5 && !badLic.length) ok('5 份 OFL 授权原文均校验为 SIL OFL 1.1');
+  else fail(`OFL 授权原文校验失败：${badLic.map((l) => l.file).join(', ') || '数量不符'}`);
+} else {
+  fail('缺少 public/assets/fonts/FONT-MANIFEST.json');
 }
 
 /* 3. 图标 */

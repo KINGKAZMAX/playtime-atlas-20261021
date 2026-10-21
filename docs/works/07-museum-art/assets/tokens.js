@@ -1,5 +1,9 @@
 /* 由 scripts/build-tokens.mjs 自动生成，请勿手改。
+ * 对齐 16-design-system design-tokens v1.0.0（对齐时间 2026-10-21T15:14:01.490Z）
  * 依据 16-design-system/design-tokens.json（对齐来源：live:16-design-system）
+ * 主色：--ds-accent = #b4432b（亮色） / #e0684a（暗色）
+ * —— 16 是规范的唯一定义方；本文件消费并登记对齐版本号。
+ * 展品内嵌配色（local.color / --atlas-local-*）是作品自身表达，已烘焙进资产，不随 UI 主题变化。
  */
 export const tokens = {
   "$schema": "https://design-tokens.org/schema.json",

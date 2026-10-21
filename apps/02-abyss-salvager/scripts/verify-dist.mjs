@@ -20,6 +20,7 @@
 
 import { spawn } from 'node:child_process';
 import http from 'node:http';
+import net from 'node:net';
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import { mkdtemp, rm } from 'node:fs/promises';
@@ -31,7 +32,6 @@ const ROOT = path.resolve(HERE, '..');
 const DIST = path.join(ROOT, 'dist');
 const MOUNT = process.argv[2] || '/playtime-atlas-20261021/works/02-abyss-salvager/';
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-const PORT = 9361;
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -48,6 +48,23 @@ const MIME = {
 };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * Ask the OS for a currently free TCP port for Chrome's debugging channel.
+ * A hard-coded port can be taken by another task's leftover headless Chrome,
+ * which shows up as a bogus "DevTools endpoint never came up" failure.
+ */
+async function freePort() {
+  return new Promise((resolve, reject) => {
+    const srv = net.createServer();
+    srv.unref();
+    srv.on('error', reject);
+    srv.listen(0, '127.0.0.1', () => {
+      const { port } = srv.address();
+      srv.close(() => resolve(port));
+    });
+  });
+}
 
 /** Minimal static server that mounts the build under a sub-path. */
 function startStaticServer({ root, mount }) {
@@ -113,6 +130,8 @@ async function main() {
   // A unique profile per run — a fixed one makes Chrome attach to a leftover
   // instance that still holds the debugging port.
   const profileDir = await mkdtemp(path.join(os.tmpdir(), 'abyss-verify-dist-'));
+  // 动态端口：写死端口会被同机其它任务的残留 headless Chrome 抢占
+  const PORT = await freePort();
 
   const chrome = spawn(
     CHROME,
@@ -142,7 +161,8 @@ async function main() {
   // Chrome may bind the debugging port on IPv4 or fall back to IPv6 when the
   // IPv4 socket is taken — probing only 127.0.0.1 then hangs forever.
   const ENDPOINTS = [`http://127.0.0.1:${PORT}/json/list`, `http://[::1]:${PORT}/json/list`];
-  for (let i = 0; i < 80; i++) {
+  // 机器并发负载高时 Chrome 冷启动可能要十几秒，窗口给到 40s 免得假失败
+  for (let i = 0; i < 160; i++) {
     await sleep(250);
     for (const endpoint of ENDPOINTS) {
       try {

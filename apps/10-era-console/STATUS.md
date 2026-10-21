@@ -224,6 +224,12 @@ CSS 与 JS 全部内联）。
 
 完整分组结果、逐条复现命令与已知限制见 **`QA.md`**。
 
+> **浏览器入口边界（2026-10-22 用户长期约定）**：本目录 §5.1 的全部浏览器实测均为
+> **本地离线自测**——只加载 `http://127.0.0.1:4330`（本地 `vite preview`）与 `file://`（本地 `dist/`），
+> 脚本自身断言「无外部网络请求（零 CDN）」，**不访问任何外部站点**。
+> **线上验收（Pages 实际 URL 的核心交互核验）按约定走 Ego 浏览器**，由 14-publish / 13-qa-curation 在发布后执行。
+> 详见 `QA.md` §0.1。
+
 ---
 
 ## 6. 改版批执行记录（15-supervisor `RESTYLE-SPEC.md`）
@@ -250,6 +256,7 @@ CSS 与 JS 全部内联）。
 | `src/styles/main.css` | 本作品自有样式：外壳层全部消费 `--ds-*`；旧变量保留为**语义别名**指向新 token；另含 5 条对 16 组件层的**本地增量覆盖**（见 §6.7.2） |
 | `tools/qa/token-check.mjs` | 令牌与接入自检（拷贝件 sha256 + 与 `design-tokens.json` 逐项等价比对 + 命名空间 + 悬空引用 + 机制保真 + 字体自托管 + 接入三步接线） |
 | `tools/qa/font-coverage.mjs` | Noto Sans SC 子集汉字覆盖率实测（逐字字体归属 + 阳性/阴性对照组） |
+| `tools/qa/viewport-a11y-check.mjs` | 四档视口（1440 / 1280 / 768 / 390）无障碍自检：横向溢出、正文对比度 ≥4.5、焦点环可见、Tab 序列不被吞、两档触摸目标 |
 
 ### 6.3 统一范围与豁免
 
@@ -281,6 +288,9 @@ CSS 与 JS 全部内联）。
 | `node tools/qa/overlap-check.mjs` | 1440×900 与 390×844 全站文字重叠 **0**、badge×标题重叠 **0 / 0** |
 | `node tools/qa/token-check.mjs` | 令牌一致性 **PASS**（拷贝件 sha256 一致 + 与 `design-tokens.json` 逐项等价比对） |
 | `node tools/qa/font-coverage.mjs --rendered` | Noto Sans SC 子集覆盖率：**源文本集 61.4%**、**实际渲染集 70.6%**（对照组通过） |
+| `node tools/qa/viewport-a11y-check.mjs` | 四档视口（1440×900 / 1280×800 / 768×1024 / 390×844）：横向溢出 **0**、正文对比度不足 **0** 处、焦点态可见 **8/8**、Tab 可移动焦点、触摸目标不足 **0** 个；展品面板（覆盖层）同样全绿 |
+| 16 的 `validate-tokens.mjs` / `verify-preview.mjs`（只读借用，临时目录内以**本目录交付的拷贝件**为输入） | **PASS：0 error / 0 warning**；四档视口无横向溢出、对比度 12 项最低 **4.93**、触摸目标 AA/AAA 全达标、5 个自托管字体（含 Noto Sans SC）全部 `loaded`、reduced-motion 生效、深色主题与 16 逐值一致。详见 `QA.md` §4.5 |
+| 16 的 `ds-audit-tokens.mjs`（全库只读审计） | 本目录 **🟢**：必备缺 0 必备值差 0、声明 129 缺 0 值差 0 额外 0、**字体栈顺序问题 0**；令牌文件定位为 `assets/ds/tokens.css`（16 脚本自行定位，非人工指定） |
 | `node tools/qa/browser-check.mjs` | **38 / 38 通过，0 失败**；自动玩家三关全通、**0 次死亡** |
 | 外部请求 / 控制台错误 | **0 / 0**（含 `file://` 离线打开） |
 
@@ -314,7 +324,7 @@ CSS 与 JS 全部内联）。
 保留在 `src/styles/main.css` 的 `:root` 内。**未删除任何既有 CSS 规则**（红线要求），
 只做了增量覆盖。
 
-#### 6.7.2 对 16 组件层的 5 条本地增量覆盖（`src/styles/main.css` §A）
+#### 6.7.2 对 16 组件层的 6 条本地增量覆盖（`src/styles/main.css` §A）
 
 | # | 覆盖 | 原因 |
 | --- | --- | --- |
@@ -323,6 +333,7 @@ CSS 与 JS 全部内联）。
 | A3 | `:lang(zh).ds-shell, :lang(zh) .ds-btn, :lang(zh) .ds-cover__title { letter-spacing: var(--ds-track-cjk) }` | 15 派单红线「不要给中文加负字距」。16 的 `.ds-btn` 有 `-0.01em`、`.ds-cover__title` 有 `--ds-track-display`（`-0.03em`）、`.ds-shell` 有 `--ds-track-body`（`-0.005em`），三者对中文一律归零 |
 | A4 | `html:not(.has-js) .ds-in { opacity: 1; transform: none; filter: none }` | 16 的 `.ds-in` 无条件 `opacity: 0`；本作品要求脚本失效时内容必须可见。`src/main.js` 另加启动异常兜底：捕获错误或未捕获异常时移除 `has-js` |
 | A5 | `body.ds-shell { background: <径向渐变> }` | 16 的 `.ds-shell` 带 flat 底色并会盖掉 `body` 的径向渐变；用 `body.ds-shell`（特异性 0,1,1）覆盖，保留本作品的层次感 |
+| A6 | `.prose a, .exhibit-panel__sources a, .footer__meta a { display: inline-block; padding-block: 2px; min-height: 24px }` | WCAG 2.2 SC 2.5.8（AA，硬性）：全部可交互元素点击区 ≥24×24px。16 的组件层未覆盖正文/面板内的**行内文本链接**，其点击区高度 = 行高（本目录实测 21px）。用 padding 增高点击区，不改变行盒高度与基线对齐 |
 
 #### 6.7.3 `--ds-base` 的两段式处理
 
@@ -356,3 +367,4 @@ CSS 与 JS 全部内联）。
 | 2026-10-21 | **15 派单接入三步重构**：拷贝 16 的 `tokens.css` / `components.css` / `fonts/` 到 `assets/ds/`（sha256 逐字节一致）；`index.html` 注入 `--ds-base`、`<body class="ds-shell">`；`src/main.js` 样式引入顺序改为 assets/ds 在前；删除自建的 `src/styles/tokens.css`、`src/styles/ds.css` 与 `fonts/`（消除双 token 层）；`src/styles/main.css` 增加 5 条对 16 组件层的本地增量覆盖（A1 `--ds-btn-h` 128px→44px、A2 裸 `.ds-btn` 白底、A3 中文负字距归零、A4 `.ds-in` 失效安全、A5 `body.ds-shell` 背景） |
 | 2026-10-21 | 新增 `tools/qa/font-coverage.mjs`：以 CDP 逐字字体归属法实测 Noto Sans SC 子集对本作品用字的覆盖率（**源文本集 61.4%、实际渲染集 70.6%**，阳性/阴性对照组均通过），结论写入 `LICENSES.md` / `README.md` / `STATUS.md` / `QA.md` 的限制节 |
 | 2026-10-21 | 接入重构后复验：`npm test` 33/33、`npm run build` 退出码 0（单文件 **672 KB**，含 Noto 子集 base64）、两断点 badge×标题重叠 **0 / 0**、`token-check` PASS、浏览器验收 **38 / 38** 且自动玩家 **0 死亡** |
+| 2026-10-21 | 新增 `tools/qa/viewport-a11y-check.mjs`（四档视口无障碍自检）：横向溢出 0、正文对比度不足 0 处、焦点态 8/8 可见、Tab 不被吞；据此修掉 **1 处真实 AA 缺陷**（页脚与展品面板的行内链接点击区仅 21px < 24px，补 A6 覆盖） |

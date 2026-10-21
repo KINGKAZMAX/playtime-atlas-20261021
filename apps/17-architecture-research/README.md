@@ -67,8 +67,9 @@ node src/catalog-page/build-catalog-page.mjs     # → dist/catalog.html + dist/
 | V.10 子路径 | ✅ 页面内 5 个相对 URL 全部 200 | 实测报告 |
 | V.12 不自造字体栈 | ✅ 自有 CSS 6 条 `font-family` 零字面字体族（含 `var()` fallback 内） | 校验断言守护 |
 
-实机验证（`scripts/browser_test.mjs`，CDP 驱动本机 Chrome，只访问 127.0.0.1）：**44/44 通过**，
-报告见 `evidence/browser-test-report.json`。
+实机验证（**只走 Ego 浏览器**，用户真实浏览器含扩展与 UI；只访问 127.0.0.1）：
+- 共享工具 `tools/ego-qa/run.mjs`（标准项）：**✅ PASS**，errors 0 / warnings 0，4 档视口精度全对、横向溢出 0、控制台错误 0、关键组件 8 类、样式表 9 张 / 494 条规则、实际渲染字体 PingFang SC、对比度 6 项最低 5.68、触摸目标 24px/44px 全合格、reduced-motion `durBase=1ms`；报告见 `evidence/ego/17-architecture-catalog.json`。
+- 本目录 `scripts/ego_interactions.mjs`（交互类补齐）：**18/18 通过，失败 0，警告 0**；报告见 `evidence/ego-interactions/catalog-interactions.json`。
 
 ---
 
@@ -149,32 +150,49 @@ python3 scripts/validate_catalog.py --json     # 额外写 data/validate-report.
 `build_catalog.py` 是**唯一真相**：所有 JSON 与 Markdown 产物都由它生成，可随时重建。
 改动请改脚本，不要手改 JSON。
 
-### 成果页实机测试
+### 成果页实机测试（**只走 Ego 浏览器**）
 
 ```bash
 # 起本地静态服务
 python3 -m http.server 8899 --bind 127.0.0.1 --directory dist &
 
-# 25 项断言：溢出 / 对比度 / 触达 / 语言切换 / 筛选 / 搜索 / skip link /
-#            reduced-motion / prefers-color-scheme / 控制台 / 网络
-node scripts/browser_test.mjs --url http://127.0.0.1:8899/catalog.html
-# → evidence/browser-test-report.json
+# ① 交互类验收（18 项：中英切换 / 筛选 / 搜索 / skip link / 焦点环 / Tab 序列 /
+#    reduced-motion / prefers-color-scheme / 字体栈顺序 / 子路径相对 URL）
+node scripts/ego_interactions.mjs \
+  --url http://127.0.0.1:8899/catalog.html \
+  --out "$PWD/evidence/ego-interactions" --space "17-architecture ego-interactions"
+# → evidence/ego-interactions/catalog-interactions.json
 
-# 截图（CDP 设备仿真，与测试同一通道）
-node scripts/capture_cdp.mjs http://127.0.0.1:8899/catalog.html \
-  evidence/catalog-desktop-1440x900-light.png 1440 900 desktop light
+# ② 共享工具的标准项（4 档视口 / 溢出 / 对比度 / 触达 / 样式表 / 实际渲染字体 …）
+node ../tools/ego-qa/run.mjs \
+  --url http://127.0.0.1:8899/catalog.html \
+  --space "17-architecture ego-qa" --label 17-architecture-catalog \
+  --out "$PWD/evidence/ego" \
+  --require ".case,.term,.struct,.toolbar,.stat-row,.skip-link,.lang-toggle,.search" \
+  --contrast "标题:.masthead__title,导语:.masthead__lede,正文:.case__block p,次级:.case__block h4,标签:.stat__l,术语:.term__def" \
+  --font-selector ".masthead__title" \
+  --primary-classes "chip,lang-toggle button,search"
+# → evidence/ego/17-architecture-catalog.json
 ```
 
-> ⚠️ `scripts/capture.sh`（`--force-device-scale-factor=2` + `--window-size`）在移动视口下
-> 会产出**被裁切的伪影图**（布局宽于视口后再裁剪）。成果页截图一律用
-> `scripts/capture_cdp.mjs`（`Emulation.setDeviceMetricsOverride`），
-> 它与 `browser_test.mjs` 同通道、度量一致。
+> ⚠️ **共享工具首次运行必须先在同一 TaskSpace 预热**：
+> 否则 Ego 自身的新标签页请求 `chrome-untrusted://new-tab-page/...` 会被计为外部请求，
+> 首个视口必然 FAIL。预热脚本见本文件「已知坑」一节。
+>
+> ⚠️ **截图**一律用 `scripts/ego_capture.mjs`（Ego 唯一截图路径）：
+> ```bash
+> node scripts/ego_capture.mjs --url http://127.0.0.1:8899/catalog.html \
+>   --out "$PWD/evidence/catalog-desktop-1440x900-light.png" --width 1440 --height 900 \
+>   --space "17-architecture ego-capture"
+> ```
+> 该脚本**先删目标文件再截图**，失败即删除残留，**杜绝「旧文件冒充本次截图」**。
 >
 > ⚠️ **浏览器使用约定**（用户长期约定，2026-10-22 起对所有任务生效）：
-> `scripts/browser_test.mjs` 与 `scripts/capture_cdp.mjs` **只访问 127.0.0.1**
-> （本地静态服务 + 本地 CDP 端口），零对外请求，用于**本地构建产物**的回归验证；
-> **对外站点**（参考站 olek.si、机构页面、线上站点）的访问与截图一律走
-> Ego 浏览器（`/Users/mekzenx2/.local/bin/ego-browser`，先运行 `ego-browser skill`）。
+> 网页访问、联网检索、截图、网页调试与线上验收**只走 Ego 浏览器**
+> （`/Users/mekzenx2/.local/bin/ego-browser`，先运行 `ego-browser skill`）。
+> 禁用：内置 Browser 工具、Playwright / Puppeteer / `chromium.launch()`、
+> 本机无头 Chrome + 原生 CDP。目录内的 `browser_test.mjs`、`capture_cdp.mjs`、
+> `capture.sh` **已停用并移除**，由 `scripts/validate_catalog.py` 的「浏览器入口」组断言守护。
 
 ### 重新取证（olek.si）
 
@@ -184,9 +202,14 @@ curl -sS --max-time 40 --retry 2 --retry-delay 3 -A "<UA>" \
   "https://olek.si/assets/index-Cq43OVCY.js" -o research-ref/olek-index.js
 node scripts/extract_tokens.js research-ref/olek-index.js research-ref
 
-# 截图（内置重试 + 递增退避；实测第 1~2 次即可成功）
-CAPTURE_ATTEMPTS=6 bash scripts/capture.sh "https://olek.si" \
-  screenshots/olek-si-desktop-1440x900.png 1440 900 desktop
+# 截图（Ego 浏览器；失败自动删除残留）
+node scripts/ego_capture.mjs --url "https://olek.si" \
+  --out "$PWD/screenshots/olek-si-desktop-1440x900.png" --width 1440 --height 900 \
+  --space "17-architecture ego-ref"
+
+# 16 档视口几何实测（内置重试退避；成功率 <80% 不覆盖既有报告）
+node scripts/ego_ref_metrics.mjs
+# → evidence/ego-ref/olek-si-viewport-metrics.json
 ```
 
 > ⚠️ 本机到 `olek.si` 与 `whc.unesco.org` 存在间歇性 TLS 拦截：
@@ -352,8 +375,10 @@ import groups from './17-architecture-research/handoff/structure-groups.json'
 | L-8 | 无原始测绘数据或点云 | 3D 模型只能做到教学示意，不得声称为复原或测绘成果 |
 | L-9 | 成果页的 3D / 剖面 / 受力能力**未实现** | 本页只做目录与检索；教学示意声明已就位，但 3D 交互由 18/19 承担 |
 | L-10 | 成果页的**英译**为 17 自撰，非官方英文名 | 来源机构有官方英文名的以其为准（见 `sources[].label`） |
-| L-11 | `scripts/capture.sh` 在移动视口下产出**裁切伪影** | 成果页截图改用 `scripts/capture_cdp.mjs`（CDP 设备仿真），与 `browser_test.mjs` 同通道 |
+| L-11 | 旧截图工具 `scripts/capture.sh` 在移动视口下产出**裁切伪影** | 该脚本已按浏览器入口约定**停用并移除**；截图一律走 `scripts/ego_capture.mjs`（Ego），失败自动删除残留 |
 | L-12 | 19 的 `src/data/upstream/catalog.meta.json` 尚未重新 vendor | 19 侧 `SYSTEMS.length === 19`（应为 21），详见 `handoff/FIELD-MAPPING.md` §8.1 |
+| L-13 | 旧记录「olek.si 移动端标题溢出」**已被 Ego 实测推翻** | 真实缺陷在 **768–883px 平板档**（标题单行自然宽 883px 被裁切，且不产生横向滚动）；390px 实测无溢出。详见 `REFERENCE-NOTES.md` §7.1 |
+| L-14 | 本机到 `olek.si` 存在**间歇性** TLS / 代理失败 | Ego 脚本已内置重试退避；`ego_ref_metrics.mjs` 采样成功率 <80% 时拒绝覆盖既有报告并以退出码 1 结束 |
 
 ---
 
@@ -368,14 +393,44 @@ import groups from './17-architecture-research/handoff/structure-groups.json'
 | `scripts/build_field_mapping.py` | 生成 `handoff/field-mapping.json`（枚举分布与 id 清单由数据现算，不手写） |
 | `scripts/build_manifest.py` | 生成本目录清单（角色 / 字节 / sha256）+ 发布契约字段 |
 | `scripts/build_qa.py` | 生成 `QA.md`（注入校验脚本的**实时**输出，非手写） |
-| `scripts/validate_catalog.py` | 交付物校验（**75 项断言**），`--json` 输出机器可读报告 |
+| `scripts/validate_catalog.py` | 交付物校验（**84 项断言**，含「浏览器入口约定」与「Ego 实测证据」两组），`--json` 输出机器可读报告 |
 | `scripts/build-catalog-page.mjs`（在 `src/catalog-page/`） | 构建成果页 `dist/catalog.html` + `dist/catalog.css` + `dist/assets/ds/**` |
-| `scripts/browser_test.mjs` | 成果页实机测试（CDP 驱动本机 Chrome，**44 项断言**，覆盖 16 的 V.1—V.12） |
-| `scripts/capture_cdp.mjs` | 成果页截图（CDP 设备仿真，支持 light / dark） |
-| `scripts/capture.sh` | headless Chrome 截图（内置重试 + 递增退避 + 独立 user-data-dir）。**移动视口会产伪影** |
+| `scripts/ego_interactions.mjs` | 成果页**交互类**验收（**走 Ego 浏览器**，18 项断言，覆盖共享工具不覆盖的中英切换 / 筛选 / 搜索 / skip link / 焦点环 / Tab 序列 / 暗色 / 字体栈顺序 / 子路径 URL） |
+| `scripts/ego_capture.mjs` | **Ego 浏览器唯一截图路径**（http/https/file 任意地址，light/dark，移动 @2x；失败自动删除残留） |
+| `scripts/ego_ref_metrics.mjs` | 参考站**多视口几何实测**（走 Ego，16 档视口，内置重试退避，失败不覆盖既有报告） |
 | `scripts/extract_tokens.js` | 从生产 bundle 提取路由 / 色值 / 字体 / CSS 变量（**只写隔离区**） |
 | `scripts/verify_unesco.js` | UNESCO 编号批量校验（**本机网络不通，实测未生效**） |
 | `scripts/{repair,fix_tuple,normalize,final}_quotes.py` | 中文引号规范化工具链（历史遗留，留作审计痕迹） |
+
+---
+
+## 9. Ego 浏览器实测踩坑（复现者请先读）
+
+| 坑 | 现象 | 处理 |
+| --- | --- | --- |
+| 视口必须 `mobile: true` | `Emulation.setDeviceMetricsOverride` 不带 `mobile: true` 时，Chromium 把 1440 放大成 1600，污染溢出 / 对比度 / 响应式判定 | 三个 Ego 脚本**统一**写 `mobile: true` |
+| `page.evaluate` 回调不能引用模块作用域函数 | 页面内 `ReferenceError` | 页面内辅助函数一律**定义在回调内部** |
+| Ego 的 nodejs 进程无 argv、不继承环境变量 | 拿不到命令行参数与环境变量 | 每个脚本是**普通 Node 包装器**：读 argv → 生成一次性 `.mjs` → 交给 `ego-browser nodejs` |
+| 脚本的 `console.log` 写在 **stderr** | 包装器只读 stdout 会判定「无回报」 | stdout 与 stderr **两个流都要收**再找回报标记 |
+| 共享工具首个视口必 FAIL | Ego 自身的新标签页请求 `chrome-untrusted://new-tab-page/...` 被计为外部请求（工具只挡 `chrome://` 与 `chrome-extension://`） | **先在同一 TaskSpace 预热一次导航并 `await page.events()` 取走缓冲**，再跑共享工具 |
+| `:focus-visible` 不响应程序化 `focus()` | 焦点环会被误判为缺陷 | 必须**真实按 Tab**；且 `blur()` 不重置顺序聚焦起点，需重新导航 |
+| 目标站长时间不触发 `load` | `page.goto` 超时（Lottie / 常驻动画） | 改用 `waitUntil: "domcontentloaded"` + 静置等待 |
+| 旧文件冒充本次截图 | 截图失败但目标路径已有旧文件 → 误报成功 | 截图前**删除目标文件**，失败再删残留；以 Ego 回报的 `ok` 字段判定 |
+
+> 共享工具 `tools/ego-qa/run.mjs` 属他方目录，**只读使用、不修改**。
+> 预热脚本示例：
+> ```bash
+> cat > /tmp/ego-prewarm.mjs <<'EOF'
+> const task = await taskSpace("17-architecture ego-qa");
+> const page = task.page("p1");
+> await page.cdp("Emulation.setDeviceMetricsOverride", { width: 1440, height: 900, deviceScaleFactor: 1, mobile: true });
+> await page.goto("http://127.0.0.1:8899/catalog.html");
+> await page.waitForLoadState("load");
+> await new Promise((r) => setTimeout(r, 600));
+> console.log(JSON.stringify({ spaceId: task.spaceId, drainedEvents: (await page.events()).length }));
+> EOF
+> ego-browser nodejs < /tmp/ego-prewarm.mjs
+> ```
 
 ---
 

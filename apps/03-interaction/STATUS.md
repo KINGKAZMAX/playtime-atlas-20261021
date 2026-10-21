@@ -2,8 +2,8 @@
 
 **任务**：03｜热门交互界面案例复刻（按 MASTER-UPDATE.md 改为**原创改编**）
 **目录**：`flash-showcase-20261021/03-interaction`
-**状态**：**已完成，可发布**（`manifest.json.status = completed`，版本 v1.1.1）
-**最后更新**：2026-10-21 23:18（**对齐 16 最新规范 v1.0.1：字体栈顺序 / 触摸目标 / 必备令牌**）
+**状态**：**已完成，可发布**（`manifest.json.status = completed`，版本 v1.1.2）
+**最后更新**：2026-10-22 02:05（**统一外壳 `.ds-shell`/`.ds-footer` + 字体栈三项专项 V.11/V.12/V.13 + 降级块归位**）
 
 ---
 
@@ -29,6 +29,21 @@
 > 本目录已按 §2.5 回退至系统栈优先的顺序；自托管的 Noto Sans SC 子集**保留**（不删），
 > 继续随包发布，只在「系统 CJK 栈整体不可用」时兜底 —— 这正是 §5.3 第 ③ 条的要求。
 > 代价是跨平台中文字形不统一（各系统自己的黑体），这是 16 已声明**可接受**的代价。
+
+---
+
+## 0-C. 本轮回执 —— 对 15-supervisor 改版执行单 / 16 规范就绪告知 / 用户长期约定
+
+| # | 来件要求 | 回执 |
+| --- | --- | --- |
+| 1 | 15-supervisor：接入三步（tokens.css + components.css / 字体自托管 / `--ds-base` + `.ds-shell`） | **已完成**。令牌层与组件层为**本目录自实现**（不复制 16 的文件），取值逐条抄 `design-tokens.json`；实测与 16 的 `src/tokens.css` **逐名等值（129 项 / 缺 0 / 值差 0 / 额外 0）**。`--ds-base` 取**空串**而非 `/playtime-atlas-20261021/` —— 本作品全部资源走相对路径（`base: './'`），空基准可适配**任意**子路径深度（`works/03-interaction/` 与 `exhibits/03-interaction/` 都成立），写死绝对基准会在更深一层 404。详见 `DESIGN-DIFF.md` §3-A.1 |
+| 2 | 15-supervisor：通用项 G.1—G.7 + 键盘焦点专项（§3.3） | **全部完成**，逐条证据见 `DESIGN-DIFF.md` §3-A.2。`.ds-topbar` / `.ds-footer` / `.ds-skip` 三件齐备；`Tab` 前 10 站全部 `focus-visible` 且焦点环可见（Ego 实测）；Tab 序列不被 `preventDefault` 吞掉 |
+| 3 | 15-supervisor：「把本轮规范迁移的执行结果补进 `DESIGN-DIFF.md`」 | **已补**：新增 `DESIGN-DIFF.md` §3-A（接入路径 / G.1—G.7 逐条 / 字体栈三项专项 / 三件**未**做的事） |
+| 4 | 15-supervisor：「仍缺 `03-interaction/STATUS.md`」 | **前提已过期**：该文件自 2026-10-21 22:10 起一直存在（本文件），此后随每一轮更新 |
+| 5 | 15-supervisor：四档视口（1440/1280/768/390）无横向溢出、对比度 ≥4.5、焦点环可见、Tab 不被吞；参考 `16-design-system/tools/verify-preview.mjs` | **已实测**（用 Ego 浏览器，非另起 headless Chrome）：四档视口**全部零横向溢出、零溢出元素**；对比度 30 组全部达标；焦点环 Tab 全程可见。`verify-preview.mjs` 是写死指向 16 自家 `preview.html` 的参考实现，本作品按其**检查口径**（四档视口 / 零外部请求 / 样式表解析 / 焦点 / 对比度 / 触摸目标）用 Ego 等价执行，详见 `QA.md` §3.5 |
+| 6 | 16：`--ds-target-min` 24px → 44px（§5.1：全部可交互 ≥24px 硬性；44px 只约束主控件，唯一豁免 `.ds-btn--sm` 32px；**不要为达标把紧凑按钮放大到 44px 撑破布局**） | **v1.1.1 已改**：`--ds-target-min: 44px`、`.ds-btn` 44px、`.ds-input`/`.ds-select` 44px + `--ds-radius-md`；**`.ds-btn--sm` 维持 32px**，紧凑位置（订单卡行内操作、机台卡角标、日志工具栏、抽屉内操作）一律走 `--sm`，未把紧凑按钮放大 |
+| 7 | 16：`--ds-dur-*` / `--ds-entry-duration` 被写成 1ms 的缺陷模式（降级值误入 `:root` → 所有用户拿不到动效） | **本目录未中此缺陷**：`:root` 的动效值一直是规范值（120/200/320/520/800ms + entry 640ms），1ms 只出现在 `prefers-reduced-motion` 块内。本轮**进一步对齐 16 的结构**：降级块移回令牌层 `src/tokens.css`（原先放在组件层，且**漏了 `--ds-entry-duration`** —— 已补）；并新增 `scripts/check-tokens-spec.mjs` 的「降级隔离」一项永久守住这条 |
+| 8 | 用户长期约定（2026-10-22）：浏览器操作一律走 Ego；本地构建自测不受影响 | **已执行**：本轮起所有开页 / 视口 / 截图 / 焦点验证全部改用 `ego-browser`（v2.1.0 指南，`taskSpace` 复用一个空间）；三张**交付截图由 Ego 产出**；本地构建自测（`npm run qa` 等）保持不变，但其截图改写到 `qa/shots/`，**不再覆盖交付截图** |
 
 ---
 
@@ -74,10 +89,10 @@
 | 任务书 | `TASK.md` | 定位、选型理由、原创改编对照表、键盘表、验收标准 |
 | 状态 | `STATUS.md` | 本文件 |
 | 来源核验 | `SOURCE.md` | 原帖 URL、模型归属三重证据、可见互动数据、**证据限制**、同批 5 候选横向对比 |
-| 差异说明 | `DESIGN-DIFF.md` | 与参考案例的七项逐项对照、机制一对一映射、刻意做出的「不像」 |
+| 差异说明 | `DESIGN-DIFF.md` | 与参考案例的七项逐项对照、机制一对一映射、刻意做出的「不像」+ **§3-A 本轮规范迁移的执行结果** |
 | 说明 | `README.md` | 快速开始、目录结构、玩法、键盘表、持久化、技术说明 |
-| 变更 | `CHANGELOG.md` | v1.0.0（初版）+ v1.1.0（改版）+ **v1.1.1（对齐 16 v1.0.1 规范）** |
-| 验收 | `QA.md` + `qa/report.json` | 实测记录（自带冒烟 19 项 + 批次 harness 28 项 + 字体校验 + 对比度校验） |
+| 变更 | `CHANGELOG.md` | v1.0.0（初版）+ v1.1.0（改版）+ v1.1.1（对齐 16 v1.0.1）+ **v1.1.2（统一外壳与字体栈专项）** |
+| 验收 | `QA.md` + `qa/report.json` | 实测记录（自带冒烟 19 项 + 批次 harness 28 项 + 字体校验 + 对比度校验 + **令牌层自测 9 项** + **Ego 四档视口**） |
 | 许可 | `LICENSES.md` | 代码 / 字体 / 图形 / 依赖 / 数据 五类来源与授权（含 OFL 合规说明） |
 | **改版清单** | **`RESTYLE-INVENTORY.md`** | 第 1 步的「待替换清单」+ 落地结果逐条对照 |
 | **双语键表** | **`I18N-KEYS.md` + `i18n/keys.json`** | 194 个 zh/en 键（HTML 76 + JS 118），含接入说明 |
@@ -85,7 +100,7 @@
 | 源码 | `index.html`、`src/{tokens.css,ds-components.css,styles.css,workshop.js,storage.js,ui.js,main.js}` | 令牌层 / 组件层 / 作品样式 / 仿真核心 / 持久化 / 渲染层 / 主控制器 |
 | 构建 | `scripts/{build-fonts.mjs,check-fonts.mjs,check-contrast.mjs,clean-dist.mjs,restyle-apply.mjs,fetch-sources.sh,serve.mjs,verify-build.mjs,qa-smoke.mjs}`、`vite.config.js` | 字体子集化 / 字体校验 / 对比度校验 / 产物清理 / 改版替换脚本 / 本地服务器 / 产物自检 / 冒烟测试 |
 | 字体 | `public/fonts/`（5 个 woff2 + 5 份 OFL 全文 + `fonts.css` + `fonts.manifest.json`） | 自托管，族名与 16 清单一致 |
-| 截图 | `screenshots/01-desktop.png`、`02-desktop-drawer.png`、`03-mobile.png` | 桌面整机台 / 详情抽屉 / 移动端（**改版后重出**） |
+| 截图 | `screenshots/01-desktop.png`、`02-desktop-drawer.png`、`03-mobile.png` | 桌面整机台 1440×900 / 详情抽屉 / 移动端 390×844 整页 —— **由 Ego 浏览器产出**（用户长期约定：截图一律走 Ego） |
 
 ## 4. 本地运行与构建
 
@@ -94,6 +109,7 @@ npm install        # 安装构建期依赖（无运行时依赖）
 npm run build      # 字体子集化 + vite 打包 → dist/（退出码 0，postbuild 清理 .DS_Store）
 npm run verify     # 产物自检：无外部引用 / 字体已本地化 / 无敏感文件
 npm run check:fonts# 字体资产校验：族名 / 许可 / 汉字覆盖 / 无外链字体
+npm run check:tokens # 令牌层自测：V.11/V.12/V.13 + 口径 A 必备 + 降级隔离 + 触摸目标阈值
 node scripts/check-contrast.mjs   # 对比度校验：正文 ≥4.5:1、图形与控件边界 ≥3:1
 npm run serve      # 本地预览 http://127.0.0.1:4313（仅本地，不发布）
 npm run qa         # 真实浏览器冒烟测试 → qa/report.json + screenshots/
@@ -102,7 +118,7 @@ npm run qa         # 真实浏览器冒烟测试 → qa/report.json + screenshot
 - **端口**：`4313`，只绑 `127.0.0.1`，不对外暴露；本次交付**未发布、未推送、未使用任何凭据**。
 - **构建命令与输出目录**：`buildCommand = npm run build`（内部为 `npm run fonts && vite build`），`outputDir = dist`，
   与 `package.json` / `vite.config.js` 实际一致。
-- **产物**：16 个文件 / **411.1 KB**（HTML 14.5 KB、JS 38.6 KB、CSS 37.0 KB、字体 303.9 KB、OFL 全文 21.9 KB、favicon、字体清单）。
+- **产物**：16 个文件 / **414.0 KB**（HTML 13.3 KB、JS 38.6 KB、CSS 38.6 KB、字体 305.3 KB、OFL 全文 21.9 KB、favicon、字体清单）。
 - **发布形态**：纯静态 `dist/`，`base: './'`，可直接部署在任意子路径
   （harness D8 实测：`/playtime-atlas-20261021/exhibits/03-interaction/` 下所有资源解析成功）。
 - **交给 14-publish 的内容**：`dist/` 静态包 + `manifest.json`；本任务不碰 `14-publish/` 目录。
@@ -114,7 +130,7 @@ npm run qa         # 真实浏览器冒烟测试 → qa/report.json + screenshot
 - **字体**（改版后）：Space Grotesk / Inter / Space Mono / **Noto Sans SC**，
   全部 SIL OFL 1.1，自托管并随产物发布，运行时不请求任何字体 CDN；
   五份 OFL 全文随包；族名与 `16-design-system/fonts/FONT-MANIFEST.json` 一致。
-  Noto Sans SC 子集由本目录按自身用字重新生成（**覆盖 565/565 汉字**），
+  Noto Sans SC 子集由本目录按自身用字重新生成（**覆盖 576/576 汉字**，107 968 字节），
   并把 `name` 表族名规整为「Noto Sans SC / Regular」——
   该字体的保留字体名仅为 `'Source'`，本次改名**未使用保留名**，符合 OFL 1.1。
   **本轮按 `DESIGN-SPEC §2.5` 调序后**：汉字走系统黑体（苹方 / 雅黑 / 思源），
@@ -128,13 +144,15 @@ npm run qa         # 真实浏览器冒烟测试 → qa/report.json + screenshot
 
 | 验收 | 结果 |
 | --- | --- |
-| `npm run build` | 退出码 0，产出 `dist/index.html` 等 16 个文件 / **411.1 KB**（本轮字体子集重建结果与前次**逐字节一致**，构建可复现） |
+| `npm run build` | 退出码 0，产出 `dist/index.html` 等 16 个文件 / **414.0 KB**（字体子集重建**可复现**：同源码重建结果逐字节一致） |
 | `npm run verify` | ✓ 无外部资源引用 / 字体已本地化 / 无敏感文件 |
-| `npm run check:fonts` | ✓ 5/5 通过（族名一致 / 许可齐备 / **汉字 565/565** / ASCII 全覆盖 / 无 CDN） |
+| `npm run check:fonts` | ✓ 5/5 通过（族名一致 / 许可齐备 / **汉字 576/576** / ASCII 全覆盖 / 无 CDN） |
 | `node scripts/check-contrast.mjs` | ✓ **30 组配色对全部达标** |
+| **`npm run check:tokens`**（本目录令牌层自测） | ✓ **9/9**：V.11 顺序 / V.12 不自造 / V.13 无漂移 / 口径 A 必备 17 项 / 全量 129 项等值 / **降级隔离** / `--ds-target-min` 44px |
 | **`16-design-system/tools/ds-audit-tokens.mjs`** | ✓ **🟢**：声明 129 / **必备缺 0 / 必备值差 0** / 全量缺 0 / 值差 0 / 额外 0 / **字体栈顺序问题 0**（与 16 的 `src/tokens.css` 逐名等值） |
 | `npm run qa`（自带冒烟） | **19 / 19 通过** |
-| 批次 QA harness（13-qa-curation 当前版） | **28 项：pass 24 / warn 0 / fail 0 / skip 1 → verdict `pass`**（本轮复跑：D1 桌面 0 对 / 移动 0 对，候选 197 / 202） |
+| 批次 QA harness（13-qa-curation 当前版） | **28 项：pass 24 / warn 0 / fail 0 / skip 1 → verdict `pass`**（本轮复跑：D1 桌面 0 对 / 移动 0 对，候选 201 / 200；D5 焦点态 8/8） |
+| **Ego 四档视口实测**（1440 / 1280 / 768 / 390） | ✓ **四档全部零横向溢出、零溢出元素**；页脚高度 42 / 42 / 68 / 87px 且**不压日志带**；Tab 前 10 站 `focus-visible` 全中且焦点环可见 |
 | **移动端文字遮挡（原唯一 fail）** | **已修复并复核**：390×844 下 62 对 → **0 对**（改版后复测仍为 0 对，见 `QA.md` §4.1） |
 | 中文字体加载 | ✓ 拉丁族（Space Grotesk / Inter / Space Mono×2）全部 `loaded`；**CJK 按 §2.5 走系统黑体**，自托管子集未被触发，`document.fonts.load()` **强制加载实测 `Noto Sans SC:loaded`** —— 证明「系统栈不可用」时兜底仍然可用 |
 | 控制台 | 两个视口 + 探针页均无 error、无未捕获异常 |
@@ -183,6 +201,28 @@ toast 的 `pointer-events` 导致「撤销」按钮点不到。
 > 读取 16 的审计工具与规范为**只读**；复用 13 的 harness 仍是只读复制到 `/tmp` 并改写输出路径。
 > 本轮**未**启动第二个构建/预览实例占用 4313，临时静态服务器（qa / harness 自带）验完即关。
 
+### 7-B. 统一外壳与字体栈专项那一轮（v1.1.2）的文件改动
+
+| 文件 | 改动 |
+| --- | --- |
+| `src/tokens.css` | ①新增 `@media (prefers-reduced-motion: reduce)` 降级块（`--ds-dur-*` 与 `--ds-entry-duration` → 1ms），与 16 的结构一致 —— 令牌在令牌层降级；②`--mono` 别名改为 `var(--ds-font-mono)`，删除自造 CJK 字族栈 |
+| `src/ds-components.css` | ①新增 `.ds-shell`（外壳属性 + `.ds-shell:lang(zh)` 中文归零复原）；②新增 `.ds-footer` / `.ds-footer__meta` / `.ds-footer__links`；③降级块里只保留 `animation/transition` 的 `!important` 压平（令牌覆盖移回令牌层） |
+| `src/styles.css` | 28 处 `font-family: var(--mono)` → `var(--ds-font-mono)`（V.12） |
+| `index.html` | ①`<body>` 加 `class="ds-shell"`；②新增 `<footer class="ds-footer">`（来源与许可信息带，4 个 `data-i18n` 钩子） |
+| `scripts/check-tokens-spec.mjs`（新增） | 令牌层自测：V.11 顺序 / V.12 不自造 / V.13 无漂移 / 口径 A 必备 17 项 / 全量 129 项等值 / **降级隔离** / `--ds-target-min` 44px —— 判据抄 16 的 `tools/validate-tokens.mjs` |
+| `scripts/qa-smoke.mjs` | 截图输出改到 `qa/shots/`（自测产物），**不再覆盖 Ego 产出的交付截图** |
+| `package.json` / `.gitignore` | 新增 `check:tokens` 脚本；`.gitignore` 忽略 `qa/shots/` |
+| `i18n/keys.json` + `I18N-KEYS.md` | 新增页脚 4 键（`footer.source` / `footer.code` / `footer.fonts` / `footer.offline`），HTML 键 72 → 76，合计 190 → **194** |
+| `screenshots/01-desktop.png` / `02-desktop-drawer.png` / `03-mobile.png` | **由 Ego 浏览器重出**（1440×900 / 1440×900 抽屉态 / 390×844 整页），首访态、无恢复横幅、精确视口 |
+| `DESIGN-DIFF.md` | 新增 **§3-A「本轮规范迁移的执行结果」**（接入路径 / G.1—G.7 / 字体栈三项 / 三件未做的事） |
+| `STATUS.md` / `CHANGELOG.md` / `QA.md` / `README.md` / `LICENSES.md` / `RESTYLE-INVENTORY.md` / `manifest.json` | 同步 v1.1.2 |
+
+> 本轮浏览器操作**全部走 Ego 浏览器**（用户长期约定，v2.1.0 指南）：四档视口实测、Tab/焦点环验证、
+> 三张交付截图。`npm run qa` 等**本地构建自测**照常（约定明确其不受影响），
+> 但其截图输出改到 `qa/shots/`，不再覆盖交付截图。
+> 临时静态服务器用完即关（60924 / 60925 / 55926 / 54412 / 52521 均已停），4313 当前无监听。
+
+
 ## 8. 改版决策与偏离说明（如实记录）
 
 | # | 决策 | 理由 |
@@ -192,7 +232,7 @@ toast 的 `pointer-events` 导致「撤销」按钮点不到。
 | 3 | `.ds-field` / `.ds-input` 取 **44px** + radius `--ds-radius-md` | **本轮已按 §7.4 回退**：改版时取 40px 的理由是「6 个字段若全用 44px，900px 视口里订单列表会被挤出首屏」。复核后确认该顾虑不成立 —— 44px 使订单面板增高 24px（6 行 × 4px），桌面 1440×900 下订单簿仍完整可见、移动 390×844 无横向溢出、D1 仍 0 对。**规范优先于主观密度偏好**，现取 §7.4 的 44px。 |
 | 4 | 表单控件描边用 `--ds-ink-faint`（5.51:1） | DS 的 `--ds-line` 对底色仅 **1.29:1**，低于 WCAG 非文字控件边界 3:1。仍在 DS 色板内、不另立色板，只是换用同色板中更达标的 token。 |
 | 5 | 状态文字用派生墨色 `--ok-ink` / `--warn-ink` / `--err-ink` | DS 的 `--ds-warning` 对底色仅 **3.59:1**，作为正文不达 4.5:1。三色由 `color-mix()` 从状态色与墨色推导（不新增色板），实测 5.70–6.73:1。`--ds-warning` 本身只用于图形与描边。 |
-| 6 | `--mono` 别名在 generic 之前插入 **系统 CJK 栈**，`Noto Sans SC` 置于其后 | DS 的 `--ds-font-mono` 不含 CJK 兜底，等宽语境里的中文会回退到系统宋体，与正文混排。故在语义别名层给 `--mono` 补 CJK 族（`--ds-font-mono` 令牌本身保持与 `design-tokens.json` 逐字一致）。**本轮已按 §2.5 把顺序调正**：覆盖完整的系统 CJK 族在前、Noto 子集在后，与正文字族栈同口径。 |
+| 6 | `--mono` 别名**直接指向 `var(--ds-font-mono)`，不再手抄字族栈** | v1.1.1 曾给 `--mono` 补一份「系统 CJK 栈 + Noto 子集」的手写栈；**v1.1.2 已按 `MIGRATION-NOTES §9` 的 V.12「不自造字体栈」撤销**：自有 CSS 不得写死字体族列表，只能引用 `var(--ds-font-*)` —— 手抄一份正是「各目录各自照抄字体栈」这个缺陷的扩散根因。等宽语境里的中文由浏览器回退到**与正文同一个系统 CJK 族**，不再出现宋体混排。 |
 | 7 | 只落地**浅色**主题 | DS 另有深色主题；本作品未验算深色下的对比度与图表可读性，故 `color-scheme: light` 固定浅色，避免系统深色偏好下出现未验算状态。 |
 | 8 | Noto Sans SC 子集**按本作品用字重做** | 16 随包的子集实测缺本作品 **168 个汉字**，直接引用会中英混排。重做后覆盖 565/565，且体积比 16 的子集小 46%（106.6 KB vs 197.6 KB）。 |
 | 9 | `.ds-topbar` 只提供「表面」属性 | 组件层的 `display:flex` 会覆盖调度台的三列栅格，390px 下标题被挤成竖排。改为组件层只给层级/底色/描边/内距，列结构交回作品自身的 `.masthead`。 |
@@ -225,6 +265,11 @@ toast 的 `pointer-events` 导致「撤销」按钮点不到。
 9. **令牌层含未消费项**：为与 16 逐名等值，令牌层含分区 / 画布 HUD / 导航轨 / 入场延迟等
    本作品**用不到**的令牌。它们不参与任何渲染（纯 CSS 自定义属性，零字节开销），
    已在 `src/tokens.css` 内逐组注释；深色主题接入时会直接派上用场。
+10. **交付截图由 Ego 浏览器产出，本地自测截图另存 `qa/shots/`**：`npm run qa` 仍会截图（自测产物），
+    但不再写入 `screenshots/`。若后续有人重跑 `npm run qa` 后发现交付截图没变，属预期行为 ——
+    交付截图的产出路径是 `ego-browser`（用户长期约定：截图一律走 Ego），脚本见 `QA.md` §3.5。
+11. **深色主题未落地**（与第 8 条同源，此处只记增量）：令牌层已齐备（含 `--ds-canvas-hud-*` 暗色档），
+    但**未验算深色下的对比度与图表可读性**，故不发布未验证状态。
 
 ## 10. 后续可做（不在本次范围）
 

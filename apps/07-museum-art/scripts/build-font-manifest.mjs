@@ -112,6 +112,39 @@ for (const f of files) {
   alignment.files.push({ file: f.file, localSha256: f.sha256, dsSha256: dsSha, identical: same });
 }
 
+/* ---------- 3b. 字体档位与 16 的一致性（族名 / style / 字重 / 文件映射） ---------- */
+/**
+ * 字体族名与字重档位必须与 16 一致，否则 06 / 07 混用会出现字体跳变。
+ * 这里逐条比对 @font-face 的 (family, style, weight, file) 四元组。
+ */
+const parseFaces = (css) =>
+  [...css.matchAll(/@font-face\s*\{([^}]*)\}/g)].map((m) => {
+    const b = m[1];
+    return {
+      family: (b.match(/font-family:\s*["']([^"']+)["']/i) || [])[1] || null,
+      style: ((b.match(/font-style:\s*([^;]+);/i) || [])[1] || 'normal').trim(),
+      weight: ((b.match(/font-weight:\s*([^;]+);/i) || [])[1] || '').trim(),
+      file: (((b.match(/url\(\s*["']?\.?\/?([^"')]+)["']?\s*\)/i) || [])[1]) || '').split('/').pop(),
+    };
+  });
+
+const myFaces = parseFaces(readFileSync(path.join(FONTS_DIR, 'fonts.css'), 'utf8'));
+const dsFacesCss = dsFiles ? path.join(dsFiles, 'fonts.css') : null;
+const dsFaces = dsFacesCss && existsSync(dsFacesCss) ? parseFaces(readFileSync(dsFacesCss, 'utf8')) : [];
+const faceKey = (f) => `${f.family}|${f.style}|${f.weight}|${f.file}`;
+const mySet = new Set(myFaces.map(faceKey));
+const dsSet = new Set(dsFaces.map(faceKey));
+const onlyMine = [...mySet].filter((k) => !dsSet.has(k));
+const onlyDs = [...dsSet].filter((k) => !mySet.has(k));
+const facesParity = {
+  source: '16-design-system/fonts/fonts.css',
+  note: '逐条比对 @font-face 的（族名 / font-style / 字重 / 文件映射）；族名与字重档位不一致会导致混用时字体跳变。',
+  identical: onlyMine.length === 0 && onlyDs.length === 0,
+  faceCount: myFaces.length,
+  onlyMine,
+  onlyDs,
+};
+
 /* ---------- 4. 字体栈（与 tokens.css 的 --ds-font-* 一致） ---------- */
 const tokensCss = readFileSync(path.join(ROOT, 'src', 'tokens.css'), 'utf8');
 const stackOf = (name) => {
@@ -193,6 +226,7 @@ const manifest = {
       : '子集字数待 assets.manifest.json 生成后回填。',
   },
   alignment,
+  facesParity,
 };
 
 writeFileSync(OUT, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
@@ -200,5 +234,7 @@ writeFileSync(OUT, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
 console.log('✓ 字体清单生成完成 → public/assets/fonts/FONT-MANIFEST.json');
 console.log(`  · 字体族 ${FAMILIES.length} 个 · 文件 ${files.length} 个 · 许可原文 ${licenses.length} 份（均已校验为 OFL 1.1）`);
 console.log(`  · 与 16 逐字节一致：${alignment.fontsIdentical ? '是 ✓' : '否 ✗'}`);
+console.log(`  · 与 16 的字体档位一致（族名/字重/文件）：${facesParity.identical ? `是 ✓（${facesParity.faceCount} 条 @font-face）` : `否 ✗ 仅本包有 ${onlyMine.join(', ') || '无'}；仅 16 有 ${onlyDs.join(', ') || '无'}`}`);
 console.log(`  · 中文字形子集：${cjkChars ?? '待回填'} 字`);
 if (!alignment.fontsIdentical) process.exit(1);
+if (!facesParity.identical) process.exit(1);

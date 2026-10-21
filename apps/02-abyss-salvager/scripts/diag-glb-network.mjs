@@ -4,6 +4,7 @@
  */
 import { spawn } from 'node:child_process';
 import http from 'node:http';
+import net from 'node:net';
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import { mkdtemp, rm } from 'node:fs/promises';
@@ -16,8 +17,20 @@ const ROOT = path.resolve(HERE, '..');
 const DIST = path.join(ROOT, 'dist');
 const MOUNT = '/playtime-atlas-20261021/works/02-abyss-salvager/';
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-const PORT = 9367;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** 向操作系统要一个当前空闲的 TCP 端口（写死端口会被同机其它任务的残留 Chrome 抢占）。 */
+async function freePort() {
+  return new Promise((resolve, reject) => {
+    const srv = net.createServer();
+    srv.unref();
+    srv.on('error', reject);
+    srv.listen(0, '127.0.0.1', () => {
+      const { port } = srv.address();
+      srv.close(() => resolve(port));
+    });
+  });
+}
 
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
@@ -51,6 +64,8 @@ const profileDir = await mkdtemp(path.join(os.tmpdir(), 'abyss-diag-'));
 const server = await startServer({ root: DIST, mount: MOUNT });
 console.log('serving', server.url);
 
+const PORT = await freePort();
+
 const chrome = spawn(CHROME, [
   '--headless=new', `--remote-debugging-port=${PORT}`, `--user-data-dir=${profileDir}`,
   '--window-size=1440,900', '--hide-scrollbars', '--no-first-run',
@@ -61,7 +76,7 @@ let chromeErr = '';
 chrome.stderr.on('data', (d) => { chromeErr += d.toString(); });
 
 let target = null;
-for (let i = 0; i < 80; i++) {
+for (let i = 0; i < 160; i++) {
   await sleep(250);
   for (const ep of [`http://127.0.0.1:${PORT}/json/list`, `http://[::1]:${PORT}/json/list`]) {
     try {

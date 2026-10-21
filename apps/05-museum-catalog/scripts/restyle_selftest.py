@@ -6,7 +6,7 @@
 产出三组可复现证据：
   A. 数据侧：catalog.json 条目数 / 必需字段缺失数 / id 唯一性 / 时代与类型分布 / 来源完整性
   B. 页面侧：把 dist/ 按 Pages 子路径形态（/playtime-atlas-20261021/research/catalog.html）
-     起一个临时静态服务，用真实浏览器（headless Chrome + CDP）打开并**真实点击**
+     起一个临时静态服务，用 **Ego 浏览器**（唯一浏览器入口）打开并**真实点击**
      年代/类型筛选与搜索框，记录：控制台错误数、未捕获异常数、404/网络失败数
   C. 线上侧：对 https://kingkazmax.github.io/playtime-atlas-20261021/research/catalog.html
      做一次 HTTP 实探（网络不可达时如实记为 skipped，不算失败）
@@ -356,8 +356,8 @@ def main() -> int:
                 False,
                 "线上返回 404 —— 该页已不在当前发布树中（14-publish 于 2026-10-21 19:59 的第三版发布 "
                 "f9202fb 删除了 docs/research/catalog.html，并从 data/works.json 移除了 05-museum-catalog 条目）。"
-                "**属发布侧范围，不是本页缺陷**（15-supervisor 已将 13 的 CHK[D8] 标为 blocked-by-publish）；"
-                "05 未改动该仓库；恢复发布需 14 决策，源码与产物已在 05 自有 dist/（见 handoff/CATALOG-PAGE-HANDOFF.md）。",
+                "**这是 14 在 `f9202fb` 的发布决定，不是本页缺陷**（15-supervisor 已将 13 的 CHK[D8] 标为 blocked-by-publish，并把「恢复 05 策展目录页作为独立深链」记为首页收敛后随下一次发布执行的清单项）；"
+                "05 未改动该仓库、不做 git 写入，产物已在 05 自有 dist/（见 handoff/CATALOG-PAGE-HANDOFF.md §0.5 / §3）。",
                 level="info",
             )
             report["live"]["classification"] = "published-page-removed"

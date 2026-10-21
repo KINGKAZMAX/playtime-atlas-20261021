@@ -43,15 +43,17 @@ python3 scripts/build_qa.py                # 本文件（注入实时校验输�
 python3 scripts/validate_catalog.py
 python3 scripts/validate_catalog.py --json   # 额外写 data/validate-report.json
 
-# 成果页实机测试（需先起静态服务）
+# 成果页实机测试（需先起静态服务；**只走 Ego 浏览器**）
 python3 -m http.server 8899 --bind 127.0.0.1 --directory dist &
-node scripts/browser_test.mjs --url http://127.0.0.1:8899/catalog.html
+node scripts/ego_interactions.mjs --url http://127.0.0.1:8899/catalog.html \
+  --out "$PWD/evidence/ego-interactions" --space "17-architecture ego-interactions"
 ```
 
 `scripts/validate_catalog.py` 对本目录做 **{N_CHECKS} 项断言**，覆盖：
 文件齐备、目录数据、字段完整性、来源与 UNESCO 编号、边界声明、术语表、交接切片、
 截图证据、**隔离（data/ 无第三方抓取件）**、**教学示意标记**、**发布边界**、文档、文本完整性、清单自洽、元数据、
-**词表对齐（structureTypes 21:21）**、**成果页产物与样式纪律**、**manifest 必需字段**。
+**词表对齐（structureTypes 21:21）**、**成果页产物与样式纪律**、**manifest 必需字段**、
+**浏览器入口约定（Ego-only）**、**Ego 实测证据**。
 
 **证据分级**（与 16 的 `REFERENCE-AUDIT.md` 同口径）：
 
@@ -174,10 +176,15 @@ http://www.ncha.gov.cn/art/2010/5/24/art_1027_106086.html
 
 ---
 
-## 4. 成果页实机测试（实测输出）
+## 4. 成果页实机测试（Ego 浏览器实测输出）
 
-> 由 `scripts/browser_test.mjs` 驱动本机 Chrome（CDP，不引第三方包）生成，
-> 报告落在 `evidence/browser-test-report.json`。**本节在报告缺失时显示为「未运行」。**
+> **浏览器入口约定**：成果页的实机测试**只走 Ego 浏览器**（用户真实浏览器，含扩展与 UI）。
+> 通道一为批次共享工具 `tools/ego-qa/run.mjs`（标准项），
+> 通道二为本目录 `scripts/ego_interactions.mjs`（交互类补齐）；
+> 两份报告分别落在 `evidence/ego/` 与 `evidence/ego-interactions/`。
+> 此前用本机无头 Chrome + 原生 CDP 的 `browser_test.mjs` / `capture_cdp.mjs` / `capture.sh`
+> 已按约定**停用并移除**，其遗留报告 `evidence/browser-test-report.json` 一并删除。
+> **本节在报告缺失时显示为「未运行」。**
 
 {BROWSER_SECTION}
 
@@ -204,7 +211,7 @@ TAIL = """
 | N-3 | 未复用任何第三方代码 | 三个入选改编案例均为 MIT，但本任务只提炼**机制**；实际复用时须按 `LICENSES.md` §2.4 署名 |
 | N-4 | 未复制 19 的抓取文件 | 19 已有 `REFERENCE-AUDIT.md`（证据分级）；本任务用自己的实测，结论可交叉印证，文件不互相搬运 |
 | N-5 | 未发布、未建仓、未 push | 14-publish 是唯一 git 写入者与发布者；本任务只产出 `PUBLISH-EXCLUDE.txt` 供其机械拦截 |
-| N-6 | 未在真实移动设备 / 真实屏幕阅读器上测试 | 实机测试在**本机 headless Chrome + CDP 设备仿真**下完成（桌面 / 平板 / 移动三视口）；未做真机与读屏软件验证 |
+| N-6 | 未在真实移动设备 / 真实屏幕阅读器上测试 | 实机测试在**Ego 浏览器**（用户真实浏览器，含扩展与 UI）下完成（桌面 / 平板 / 移动四档视口）；未做真机与读屏软件验证 |
 | N-7 | 未实现成果页的 3D / 剖面 / 受力视图 | 本页只做目录与检索；教学示意声明已在数据层就位，3D 交互由 18 / 19 承担 |
 | N-8 | 未做无障碍的完全合规审计（如 axe-core 全量扫描） | 实测覆盖对比度、触达、焦点环、skip link、语言切换、reduced-motion、色彩偏好；完整 WCAG 审计留给 13 号复验 |
 
@@ -225,7 +232,9 @@ TAIL = """
 ---
 
 *本文件由 `scripts/build_qa.py` 生成；校验脚本为 `scripts/validate_catalog.py`，结果报告为 `data/validate-report.json`；
-成果页实机测试脚本为 `scripts/browser_test.mjs`，结果报告为 `evidence/browser-test-report.json`。*
+成果页实机测试**只走 Ego 浏览器**：标准项 `tools/ego-qa/run.mjs`（报告 `evidence/ego/`），
+交互类 `scripts/ego_interactions.mjs`（报告 `evidence/ego-interactions/`），
+参考站几何实测 `scripts/ego_ref_metrics.mjs`（报告 `evidence/ego-ref/`）。*
 """
 
 
@@ -289,39 +298,76 @@ def main() -> int:
                     used_ids.append(int(parts[0]))
                     used_cases += len(parts[2].split(","))
 
-    # 4) 成果页实机测试报告（如已运行）
-    browser_path = os.path.join(ROOT, "evidence", "browser-test-report.json")
-    if os.path.exists(browser_path):
-        with open(browser_path, encoding="utf-8") as f:
-            brep = json.load(f)
+    # 4) 成果页实机测试报告（Ego 浏览器：共享工具 + 本目录交互类）
+    ego_shared_path = os.path.join(ROOT, "evidence", "ego", "17-architecture-catalog.json")
+    ego_int_path = os.path.join(ROOT, "evidence", "ego-interactions", "catalog-interactions.json")
+    blines: list[str] = []
+    if os.path.exists(ego_shared_path) and os.path.exists(ego_int_path):
+        with open(ego_shared_path, encoding="utf-8") as f:
+            srep = json.load(f)
+        with open(ego_int_path, encoding="utf-8") as f:
+            irep = json.load(f)
         blines = [
-            f"**结果：{brep['summary']['passed']}/{brep['summary']['total']} 项通过"
-            f"（失败 {brep['summary']['failed']}）。**",
+            f"**结果：共享工具 {srep.get('verdict')}（errors {len(srep.get('errors', []))} /"
+            f" warnings {len(srep.get('warnings', []))}）；"
+            f"交互类 {irep.get('passed')}/{irep.get('total')} 通过，"
+            f"失败 {irep.get('failed')}，警告 {irep.get('warned')}。**",
+            "",
+            f"浏览器：`{srep.get('browser')}`　TaskSpace：`{srep.get('spaceName')}`"
+            f"　生成时间：{srep.get('generatedAt')}",
+            "",
+            "### 4.1 共享工具 `tools/ego-qa/run.mjs`（标准项）",
             "",
             "| | 断言 | 实测 |",
             "| --- | --- | --- |",
         ]
-        for c in brep["checks"]:
-            mark = "✅" if c["pass"] else "❌"
+        for c in srep.get("checks", []):
+            mark = "✅" if c.get("status") == "pass" else ("⚠️" if c.get("status") == "warn" else "❌")
             detail = (c.get("detail") or "").replace("|", "\\|")
-            blines.append(f"| {mark} | {c['name']} | {detail} |")
-        blines.append("")
-        blines.append("视口度量：")
-        blines.append("")
-        blines.append("| 视口 | clientWidth | scrollWidth | 横向溢出 | 可见案例 |")
-        blines.append("| --- | --- | --- | --- | --- |")
-        for v in brep["viewports"]:
-            m = v["metrics"]
+            blines.append(f"| {mark} | {c.get('name')} | {detail} |")
+        blines += [
+            "",
+            "视口度量（横向溢出 / 控制台错误 / 视口精度）：",
+            "",
+            "| 视口 | innerWidth | 横向溢出 | 控制台错误 | 破图 |",
+            "| --- | --- | --- | --- | --- |",
+        ]
+        for v in srep.get("viewports", []):
             blines.append(
-                f"| {v['viewport']} | {m['clientWidth']} | {m['scrollWidth']} | "
-                f"{'是（' + str(m['overflowPx']) + 'px）' if m['horizontalOverflow'] else '无'} | "
-                f"{m['caseVisible']}/{m['caseTotal']} |"
+                f"| {v.get('name')} | {v.get('actualInnerWidth')} | "
+                f"{'是' if v.get('overflow') else '无'} | {v.get('consoleErrors')} | "
+                f"{v.get('media', {}).get('brokenImgCount', 0)} |"
             )
+        a11y = srep.get("a11y", {}).get("samples", [])
+        if a11y:
+            lo = min(a11y, key=lambda s: s.get("ratio", 99))
+            blines += [
+                "",
+                f"对比度：{len(a11y)} 项取样，最低 {lo.get('name')} = **{lo.get('ratio')}:1**"
+                f"（要求 {lo.get('required')}:1）；实际渲染字体 "
+                f"{', '.join(srep.get('platformFonts', {}).get('fallback', [])) or '—'}；"
+                f"reduced-motion `matches={srep.get('reducedMotion', {}).get('matches')}`"
+                f"，基础时长 `{srep.get('reducedMotion', {}).get('durBase')}`。",
+            ]
+        blines += [
+            "",
+            "### 4.2 本目录 `scripts/ego_interactions.mjs`（交互类，共享工具不覆盖项）",
+            "",
+            "| | 断言 | 实测 |",
+            "| --- | --- | --- |",
+        ]
+        for c in irep.get("checks", []):
+            mark = "✅" if c.get("status") == "pass" else ("⚠️" if c.get("status") == "warn" else "❌")
+            detail = (c.get("detail") or "").replace("|", "\\|")
+            blines.append(f"| {mark} | {c.get('name')} | {detail} |")
         browser_section = "\n".join(blines)
     else:
         browser_section = (
-            "> ⚠️ `evidence/browser-test-report.json` 不存在，本节未运行。\n"
-            "> 复现：起静态服务后执行 `node scripts/browser_test.mjs --url http://127.0.0.1:8899/catalog.html`。"
+            "> ⚠️ Ego 实测证据缺失（`evidence/ego/17-architecture-catalog.json` 或\n"
+            "> `evidence/ego-interactions/catalog-interactions.json`），本节未运行。\n"
+            "> 复现：起静态服务后执行\n"
+            "> `node scripts/ego_interactions.mjs --url http://127.0.0.1:8899/catalog.html "
+            "--out \"$PWD/evidence/ego-interactions\" --space \"17-architecture ego-interactions\"`。"
         )
 
     body = HEAD

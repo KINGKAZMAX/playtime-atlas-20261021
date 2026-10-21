@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T17:16:47.333Z",
+  "generatedAt": "2026-10-21T19:19:57.012Z",
   "halls": [
     {
       "id": "origins",
@@ -39,7 +39,7 @@
       "status": "integrated",
       "entryPath": "modern/index.html",
       "note": "已从 ../12-era-modern/dist 复制（可静态部署）",
-      "bytes": 1156595
+      "bytes": 1156607
     }
   ]
 }

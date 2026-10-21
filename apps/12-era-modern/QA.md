@@ -154,8 +154,7 @@
 | 6 | reduced-motion 关闭动效 | ✅ pass | 四条路由 `--ds-dur-base` / `--ds-entry-duration` 均为 **1ms**；最大动效 1ms；回响画布仍可绘制且 HUD 判定文本仍在；中庭图例色块齐全 |
 | 7 | 令牌一致性 | ✅ pass | JSON 令牌 **213** 项 / 可映射 **142** 项 / 实比 **121** 项；`:root` 变量 **129** 个，取值全部一致（大小写 / 空白 / rgba 写法 / `var()` 引用已归一）；无缺失变量、无值不一致 |
 | 8 | 令牌一致性 · 字体栈 | ⚠️ warn | `--ds-font-mono`：CSS = `Space Mono, ui-monospace, SFMono-Regular, Menlo, **Consolas**, monospace`；JSON = `Space Mono, ui-monospace, SFMono-Regular, Menlo, monospace`。**差异源自 16 号 `tokens.css` 本身**，本厅未改；记入 `STATUS.md` L-12，待 16 号确认 |
-| 9 | 字体栈顺序（V.11） | ✅ pass | `Noto Sans SC` 位于所有完整 CJK 族之后：`--ds-font-display = [Space Grotesk · PingFang SC · Hiragino Sans GB · Microsoft YaHei · Source Han Sans SC · **Noto Sans SC** · -apple-system · BlinkMacSystemFont · sans-serif]`；`--ds-font-text` 同序（Inter 起） |
-| 10 | 页面加载与本地资源 | ✅ pass | HTTP 加载正常，hall / pulse / atrium / halo 四路由均已挂载；270 个请求全部本地；样式表 5 份 / 518 条规则 |
+| 9 | 字体栈顺序（V.11） | ✅ pass | `Noto Sans SC` 位于所有完整 CJK 族之后：`--ds-font-display = [Space Grotesk · PingFang SC · Hiragino Sans GB · Microsoft YaHei · Source Han Sans SC · **Noto Sans SC** · -apple-system · BlinkMacSystemFont · sans-serif]`；`--ds-font-text` 同序（Inter 起） || 10 | 页面加载与本地资源 | ✅ pass | HTTP 加载正常，hall / pulse / atrium / halo 四路由均已挂载；270 个请求全部本地；样式表 5 份 / 518 条规则 |
 | 11 | 零外部网络请求 | ✅ pass | 270 个请求全部同源，外部请求 **0**、字体 CDN 请求 **0**、失败请求 **0** |
 | 12 | 字体自托管 | ✅ pass | Space Grotesk / Inter / Space Mono(400) / Space Mono(700) 均 `loaded`；无任何字体 CDN 请求 |
 | 13 | 标题未使用 `nowrap` | ✅ pass | 4 个标题元素 `white-space` 均为 `normal`：`.ds-cover__title`（折光纪）、`.ds-work__title` ×3（脉冲走廊 / 折光阁 / 光环台） |
@@ -178,6 +177,23 @@
 **唯一声明处校验**：本目录 `src/styles/tokens.css` 已剥离全部 **165** 处 `--ds-*` 声明，
 只保留 ①语义别名层 ②`--hc-*` 高对比间接层 ③`--prism-*` 玩法语义色 ④`:lang(zh)` 规则。
 `--ds-*` 取值**只**在 `assets/ds/tokens.css` 一处声明（`MIGRATION-NOTES §0 风险 B`）。
+
+**本目录自有 CSS 的 `--ds-*` 取值声明数 = 0**（与 05-museum-research 的达标口径一致）：
+`grep -rE -- "--ds-[a-z0-9-]+[[:space:]]*:" src/ --include="*.css"` 排除 `var(--ds-…)` 引用后，**无任何命中**。
+本目录只**引用** `--ds-*`，不**定义** `--ds-*`。
+
+**字体栈顺序（V.11）的三方复核记录** —— 本项先后被 16 号与 15-supervisor 各点名一次，
+两次派单引用的都是**第二轮旧状态**的行号与文本，实测结论如下：
+
+| 复核方 | 引用位置 | 实测该位置当前内容 | 生效值来源 | 结论 |
+| --- | --- | --- | --- | --- |
+| 16 号（v1.0.1） | `src/styles/tokens.css:62/:64` + `src/styles/fonts.css:14` | `:62` = `--ink-400: var(--hc-line-strong);`；`:64` = `/* 前景 */`；`src/styles/fonts.css` **已随第三轮删除** | `assets/ds/tokens.css`（16 号原样副本） | ✅ 已合规 |
+| 15-supervisor | `src/styles/tokens.css:62/:64` | 同上 | 同上 | ✅ 已合规 |
+
+生效栈（运行时实测，与 16 号当前源件逐字节一致）：
+`拉丁自托管 → PingFang SC → Hiragino Sans GB → Microsoft YaHei → Source Han Sans SC → Noto Sans SC → -apple-system → BlinkMacSystemFont → sans-serif`
+——`Noto Sans SC` 在所有完整 CJK 族之后，**且 `-apple-system, BlinkMacSystemFont` 也在其后**；
+`noto-sans-sc-subset.woff2`（197 600 B）与 `fonts.css` 的活 `@font-face` **未删未改**，子集仍为「渐进增强兜底」。
 
 ### 1.6.4 14 类 `.ds-*` 组件的落地清单
 
@@ -425,8 +441,9 @@
 | 18 | **字体栈顺序违反 V.11** | 第二轮自写的 `--ds-font-display` 把覆盖有限的 `Noto Sans SC` 子集排在完整覆盖的系统 CJK 族之前 → CSS 按字符回退会混排基线错位 | 随 16 号 `tokens.css` 的原样副本一并修正（拉丁 → 完整系统 CJK 栈 → Noto 子集 → 通用 sans-serif）；由 `verify-ds.mjs` 的「字体栈顺序」断言守护 |
 | 19 | **页脚链接与正文内来源链接的触摸目标只有 19px** | 违反 WCAG 2.2 AA · 2.5.8（目标尺寸最小 24px）；行内文字链接的默认行盒高度不足 | 页脚链接改为内联弹性盒并补 `min-height: 24px`；正文来源链接用 `inline-block` + 纵向内边距（不改变行盒高度，只扩大命中区域） |
 | 20 | **HUD 用渐变背景，机械对比度检查找不到其底色** | HUD 文字是浅色、画布是深色，实际对比度充足；但渐变的 `background-color` 计算值为 `transparent`，检查脚本会一路上溯到**浅色页面底**，得出 1.06:1 的错误结论 | HUD 承载面改为**实底** `var(--ds-canvas-hud-bg)`（仍属深色半透明），使底色可被机械判定；HUD 文字实测对比度 ≥4.5:1 |
-| 21 | **16 号组件层 `.ds-btn` 默认高度 128px** | `--ds-btn-h: var(--ds-space-10)` = 128px，与 `DESIGN-SPEC §7`「控件最小高 40px」相悖；若直接叠加 `.ds-btn` 类，按钮会异常高 | 本目录就地覆盖 `.btn.ds-btn { --ds-btn-h: 44px }`（同时满足 AAA 主控件 44px），**不修改 16 号副本** |
+| 21 | **16 号组件层 `.ds-btn` 默认高度 128px** | `--ds-btn-h: var(--ds-space-10)` = 128px，与 `DESIGN-SPEC §7`「控件最小高 40px」相悖；若直接叠加 `.ds-btn` 类，按钮会异常高 | 本目录就地覆盖为 44px（`.btn.ds-btn:not(.ds-btn--sm) { height: 44px }`，同时满足 AAA 主控件 44px），**不修改 16 号副本** |
 | 22 | **16 号组件层 `.ds-input` 的 `appearance:none` 会抹掉 range 滑块本体** | 校准滑杆若直接叠加 `.ds-input`，`appearance:none` 会让滑块不可见、控件失效 | 滑杆保留浏览器原生外观（`appearance: auto`），只借用 `.ds-input` 的边框 / 圆角 / 焦点环 |
+| 23 | **本地层重设 `--ds-btn-h` 违反 `MIGRATION-NOTES §0 风险 B`** | 缺陷 21 的第一版修法写成 `.btn.ds-btn { --ds-btn-h: 44px; }`——效果正确，但那是**在自有层重设了一个 `--ds-*` 取值**。05-museum-research 的达标口径是「自有 CSS **0** 个 `--ds-*` 声明」 | 改为直接覆盖几何属性 `height`，并用 `:not(.ds-btn--sm)` 排除 16 号自带的 32px 小按钮。复验：`.ds-btn--primary` 实测仍为 **150×44**，触摸目标 AA/AAA 两档 0 个不达标。**本地自有 CSS 的 `--ds-*` 取值声明数现为 0** |
 
 > 说明：缺陷 1、2、3 是**功能性**缺陷，若不做浏览器实测无法暴露；
 > 缺陷 13–15 是**第二轮改版引入 / 暴露**的问题，均为静默降级（不报错、不断言失败），只有专门的字体实测能暴露。

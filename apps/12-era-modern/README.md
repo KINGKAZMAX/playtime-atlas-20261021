@@ -244,12 +244,18 @@ iframe 嵌入母站时不会干扰主站）；进入展项即自动聚焦画面�
 11. **设计系统组件层的两处取值冲突已在本地就地校正**（不修改 16 号副本）：
     ① `.ds-btn` 默认 `--ds-btn-h: var(--ds-space-10)` = 128px，本目录覆盖为 44px；
     ② `.ds-input` 的 `appearance:none` 会抹掉 range 滑块本体，滑杆保留浏览器原生外观。
+    校正只动**普通几何属性**（`height` / `appearance`），**不在自有层重设任何 `--ds-*` 取值** ——
+    本目录自有 CSS 的 `--ds-*` 取值声明数为 **0**。
 12. **`.ds-rail` / `.ds-indicator` / `.ds-diagram` 按「映射既有组件」的方式落地**：
     年份跳转轴、分区进度指示器、折光阁图例面板。设计系统另有「固定导航轨」
     （`.ds-rail` 的 `position:fixed` 默认形态），本目录未采用——固定轨会与 1280px 内容列重叠，
     改用其 `--horizontal` 变体作为面板内的静态横条。
 13. 改版的**可玩性红线**（画布内配色不动、HUD 对比度优先）已守住，但**视觉统一度**由本目录自评，
     仍需 13 号的「风格一致性」验收独立判定。
+14. **设计系统机械验收只覆盖 Chrome**：`scripts/verify-ds.mjs` 使用本机 Chrome 原生 CDP，
+    未在 Safari / Firefox 复跑；`contain: paint` / `isolation: isolate` 的**具体渲染边界**未做跨引擎比对。
+    另：16 号 `verify-preview.mjs` 在本机高负载下会因截图超时误报失败
+    （放宽超时后全绿），本目录的 `verify-ds.mjs` 走同一 CDP 路径但不受影响。
 
 ---
 

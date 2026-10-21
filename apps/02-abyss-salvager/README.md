@@ -17,7 +17,7 @@
 | 体径 | **Ø 41.7 m** |
 | 驱动体节 | **18 节**（可调 8–30） |
 | 几何量 | **104,468 三角面 · 548 网格对象 · 248,706 顶点 · 9 材质槽 · 4 程序化贴图** |
-| 导出 GLB | **9,136,112 bytes**，GLB 2.0（693 nodes / 548 primitives / 8.18 MB BIN），含教学示意声明元数据 |
+| 导出 GLB | **约 9.14 MB**，GLB 2.0（693 nodes / 548 primitives / 8.18 MB BIN），含教学示意声明元数据 |
 | 运行依赖 | `three@0.180.0`、`vite@7.1.5`（均来自 npm） |
 | 视觉语言 | 统一到 `16-design-system` 令牌体系（映射表见 [`RESTYLE-MAP.md`](./RESTYLE-MAP.md)） |
 | 字体 | **自托管** Space Grotesk / Inter / Space Mono（OFL 1.1）+ 汉字系统栈，运行期外部请求 0 |

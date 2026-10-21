@@ -13,7 +13,7 @@
 **D1 文字压盖已按「正常文档流内依次排列」修完**，
 **已按 16-design-system 的 MIGRATION-NOTES 完成设计系统接入三步**
 （`assets/ds/` 的令牌层 / 组件层 / 字体 + `--ds-base` + `.ds-shell` 外壳类），
-浏览器点击断言 **65/65**、DS 接入验收 **18/18** 全绿，
+浏览器点击断言 **65/65**、DS 接入验收 **21/21** 全绿，
 四档视口零溢出，13 张截图已产出；
 产物为纯静态 `dist/`，等待 14-publish 统一发布。
 
@@ -37,7 +37,7 @@
 | 12 | **D1 遮挡自查复核** | ✅ 完成 | 本文件 §5，脚本 + 整页目视双证 |
 | 13 | **D1 文字压盖修复（结构化）** | ✅ 完成 | 三类根因逐条改回正常流；两视口真实压盖归零，见本文件 §5 |
 | 14 | **设计系统接入（MIGRATION-NOTES 三步 + G.1–G.7）** | ✅ 完成 | `public/assets/ds/`（令牌 / 组件 / 字体 + OFL 全文）、令牌层整体替换、`--ds-base` 注入、外壳类接入；见本文件 §6 |
-| 15 | **DS 接入验收自检（V.1–V.11）** | ✅ 完成 | `qa/ds-verify.mjs` 18/18，见本文件 §6.5 |
+| 15 | **DS 接入验收自检（V.1–V.11）** | ✅ 完成 | `qa/ds-verify.mjs` 21/21，见本文件 §6.5 |
 | 16 | 公网发布 | ⏸ 交由 14-publish | 本任务只交付 `dist/` 与 `screenshots/` |
 
 ---
@@ -67,7 +67,7 @@
 | 维度 | 依据 | 本作品落地 |
 |---|---|---|
 | 色板 | `design-tokens.json` → `color.light` / `color.dark` / `color.canvas` | `src/styles/tokens.css` 的 `--ds-*` 层；本作品语义别名（`--ink-*` / `--paper-*` / `--signal-*` / `--pulse` / `--iris`）全部映射到 `--ds-*`，样式表其余部分零改动即可换肤 |
-| 字体 | `typography.family` | Space Grotesk（展示）/ Inter（正文）/ Space Mono（等宽），全部 `@fontsource` 自托管，见 `LICENSES.md` |
+| 字体 | `typography.family` | Space Grotesk（展示）/ Inter（正文）/ Space Mono（等宽），全部自托管（16 vendored 的 OFL 实体文件，随产物发布到 `assets/ds/fonts/`），见 `LICENSES.md` |
 | 字阶 / 行高 / 字距 | `typography.size` / `lineHeight` / `tracking` / `weightCjk` | 42 处字号改为 DS 令牌；中文按 DS §2.3 归零负字距、display 字重降到 500 |
 | 圆角 | `radius` | `--radius` → `--ds-radius-sm`(10px)、`--radius-lg` → `--ds-radius-md`(14px)、2px → `--ds-radius-xs`(6px)；按钮按 §7.1 改胶囊 `--ds-radius-control` |
 | 间距 | `space` | 页面水平内边距改用 `--ds-space-gutter`；区块纵向改 `--ds-space-section-top/bottom` |
@@ -164,20 +164,24 @@
 | **G.3** | 标题禁止 `white-space: nowrap` | ✅ 全页无标题使用 nowrap（断言 G.3）；现存 4 处 nowrap 均在非标题元素（跳转链隐藏态、章节指示 chip、画布说明行、移动端导航项） | §5、§10 红线 |
 | **G.4** | `:lang(zh)` 字距归零、行高 1.85 | ✅ `body.ds-shell` 显式声明 `letter-spacing: var(--ds-track-cjk)`（=0）与 `line-height: 1.85`。**需要显式覆盖的原因**：16 的 `.ds-shell` 给 `<body>` 设了通用 `letter-spacing: -0.005em`（负字距）与 `line-height: 1.6`，同特异性下会盖住 DS 的 `:lang(zh)` 规则 —— §10 红线「禁止给中文加负字距」 | §5、§5.3、§10 红线 |
 | **G.5** | 状态/元信息用 `--ds-font-mono` | ✅ 章节编号、编号轨、读数、来源序号等已是等宽体（本次未新增改动） | §3 |
-| **G.6** | 保留既有功能；风格迁移不得破坏可读性 | ✅ 主回归 `npm run qa` **65/65 通过**（光谱实验台的滑块、模式切换、样本点选、读数重算全部照旧）；DS 自检 **18/18** | §4 K.1–K.6 |
+| **G.6** | 保留既有功能；风格迁移不得破坏可读性 | ✅ 主回归 `npm run qa` **65/65 通过**（光谱实验台的滑块、模式切换、样本点选、读数重算全部照旧）；DS 自检 **21/21** | §4 K.1–K.6 |
 | **G.7** | 资源相对化，适配 `/playtime-atlas-20261021/` 子路径 | ✅ 产物内 **0 个绝对根路径**；DS 三个样式表与 5 个字体文件均为相对引用；`dist/assets/ds/**` 原样发布 | §6 |
 
 ### 6.3 令牌层对齐（§2.6 / §0 风险 A / §5.2 / §5.3）
 
 上一轮落地的是 16 的**旧版快照**（118 个 `--ds-*`），本次按 MIGRATION-NOTES 整体替换为
-`public/assets/ds/tokens.css`（16 的 `src/tokens.css`，130 个 `--ds-*`）：
+`public/assets/ds/tokens.css`（16 的 `src/tokens.css`）：
 
 | 项 | 旧值 | 新值 | 说明 |
 |---|---|---|---|
 | `--ds-ink-faint` | `#a79e97`（**2.54:1，不达 AA**） | `#6e655e`（5.51:1） | §5.2：旧值是本系统自己的历史取值，**不是**参考站的灰（参考站实测为 `#999999`，2.85:1，同样不达标）；本系统的现值是无障碍驱动的规范性偏离 |
 | `--ds-ink-soft` | `#6b625c` | `#59514b` | §2.6 明列 |
-| 缺失令牌 | 缺 `--ds-radius-xs` / `--ds-shadow-1` / `--ds-dur-instant` / `--ds-space-1` / `--ds-font-display` | 已随 16 的令牌层补齐 | §2.6 |
+| 缺失令牌 | 缺 `--ds-target-min` | `44px`（随令牌层整体替换补齐） | §2.6 / §5.1 触摸目标下限 |
 | 中文字体栈顺序 | `Space Grotesk, Noto Sans SC, …, PingFang SC`（子集在前，会混排错位） | `Space Grotesk, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Source Han Sans SC, Noto Sans SC` | §5.3 硬性：覆盖完整的 CJK 族必须排在覆盖有限的子集之前 |
+
+> **16 侧 2026-10-22 更正（已核对落地）**：16 撤回上一条通知中「另缺 `--ds-radius-xs` / `--ds-shadow-1` / `--ds-dur-instant` / `--ds-space-1`」的结论 —— 其首版审计脚本未排除 `@media (prefers-reduced-motion: reduce)` 降级块，把 1ms 降级值误判成 `:root` 默认值。实测这 4 个令牌在 16 的权威令牌层中**本就在位**（`--ds-space-1:4px`、`--ds-radius-xs:6px`、`--ds-shadow-1:0 1px 2px rgba(20,17,15,.05)`、`--ds-dur-instant:120ms`），随整体替换一并进入本目录，**无需额外处理**。仍然成立的三条（`--ds-ink-faint` / `--ds-ink-soft` / `--ds-target-min`）已全部满足。故本次更正是**文档订正，不是代码返工**。
+
+令牌计数口径（供横向对齐时对齐口径，避免 129/130 混用）：权威令牌层共 **129 个 `--ds-*` 唯一名**，全部在 `:root` 根级声明；全文件连同 `[data-ds-theme="dark"]` 与 reduced-motion 降级块共 **184 处声明**。`16-design-system/tools/validate-tokens.mjs` 打印的 `css vars: 130` 是它自己的另一套统计口径，与 129 不矛盾。本目录 `qa/ds-verify.mjs` 的 V.3 按 **129** 逐名逐值比对，与 `ds-audit-tokens.mjs` 一致。
 
 `qa/ds-verify.mjs` 的 V.3 逐名逐值比对**运行期实际生效值**与 16 的令牌层：129 个变量全部一致。
 
@@ -225,6 +229,34 @@
 | 4 | **不采用 DS 的 `.ds-rail` 替换左侧章节索引轨** | 与上一轮同一判断：§3/§14.3 只要求沉浸式作品套 `.ds-rail`；本作品是竖排索引轨，配色与字阶已用 DS 令牌。导航轨在桌面承担章节索引，结构不动 |
 | 5 | **不改 `--ds-base` 的注入方式为构建期注入** | 当前是入口 `<style>` 注入，值为作品路径；本页所有资源走相对路径，该变量不被任何 URL 拼接使用，改成构建期注入的收益仅是「换目录名时少改一行」，暂不引入构建期变量通道 |
 | 6 | **不引入 16 的 `preview.html` 或 `evidence/`** | 前者是 16 的视觉对照物，后者是参考站的观察证据；两者都不是本作品产物，不得进入发布包（§2.1 第 2 条） |
+
+### 6.7 独立复核：用 16 自己的工具审本目录（2026-10-22 00:45–01:20）
+
+派单要求「`node tools/validate-tokens.mjs && node tools/verify-preview.mjs` 两个 0 error 再交」。两个脚本都把 `ROOT` **硬绑定到 `16-design-system/` 自身**（`validate-tokens.mjs:10`、`verify-preview.mjs:28`），且会把报告写进 `16-design-system/evidence/`。本任务边界是「只写 `01-web/`」，因此采用**沙箱副本**方式执行：把 `16-design-system/` 整目录复制到 `/tmp/ds16-sandbox/` 后在副本里跑，仓库内 16 目录零写入。
+
+| 工具 | 指向 | 结果 |
+|---|---|---|
+| `tools/ds-audit-tokens.mjs --root <批次根>` | 全库审计，可定位到 `01-web` 行 | `01-web` 🟢 必备缺 **0** · 必备值差 **0** · 声明 **129** · 缺 **0** · 值差 **0** · 额外 **0** · 字体栈顺序问题 **0** |
+| `tools/validate-tokens.mjs`（沙箱） | 16 自身令牌/字体/preview 一致性 | `errors: 0 \| warnings: 1`（spring easing 的 y 分量越界，规范允许）→ **PASS** |
+| `tools/verify-preview.mjs`（沙箱） | 16 的 `preview.html` 运行验证（`file://`，desktop/tablet/mobile 三档） | `errors: 0 \| warnings: 0` → **PASS**（对比度最低 4.93、触摸目标 24+44 双档、reduced-motion 1ms、深色主题、零外部请求） |
+
+本目录消费的是 16 的**逐字节副本**，故上述结论等价覆盖本作品：
+
+| 文件 | 校验 | 结果 |
+|---|---|---|
+| `public/assets/ds/tokens.css` | `diff` + sha256 `e9595d51…f368` | 与 16 权威**逐字节一致** |
+| `public/assets/ds/components.css` | `diff` | 与 16 权威**逐字节一致** |
+| `public/assets/ds/fonts/`（5 woff2 + `fonts.css` + 5 份 OFL + manifest） | `diff -r` 整目录 | 与 16 权威**完全一致**（`fonts.css` sha256 `ebccba0f…4d76`） |
+
+另用 `grep` 复核 §0 风险 B「令牌只声明一次」：排除 vendored 副本与构建产物后，本目录 CSS 中 `--ds-*` **取值声明 0 处**；`src/styles/tokens.css` 只剩语义别名层与 `--canvas-bg*`。
+
+> 给 16 侧的一处小出入（不影响本目录判定）：`ds-audit-tokens.mjs` 第 33–39 行的 `MUST_HAVE` 数组实为 **17 项**，而第 177 行注释与文件头写「18 项」。本目录这 17 项全中。
+
+### 6.8 QA 健壮性加固（并发争用下的假失败）
+
+首轮三套自检并发跑时，`npm run qa` 在 `#lab-peak` 上报 `locator.innerText: Timeout 30000ms exceeded` 而崩溃；单独复跑则 **65/65 通过**，定位为**并发争用导致的假失败**，非产品回归（`#lab-peak` 是 `index.html:246` 的静态文本）。三个 QA 脚本此前都未设默认超时，一致沿用 Playwright 的 30s。
+
+已为 `qa/verify.mjs`、`qa/ds-verify.mjs`、`qa/d1-overlap.mjs` 补 `page.setDefaultTimeout(60000)` 与 `setDefaultNavigationTimeout(60000)`：只放宽等待上限，**不放松任何断言或测量口径**。在原争用条件（沙箱 Chrome 与 qa 同时跑）下复跑 `npm run qa` → **65/65 通过**，假失败消除。
 
 ---
 

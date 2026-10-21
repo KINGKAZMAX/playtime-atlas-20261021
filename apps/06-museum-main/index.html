@@ -8,13 +8,22 @@
   <meta name="description" content="回响电玩馆 PLAYTIME ATLAS：一座关于电子游戏时间的原创可漫游博物馆主站。十道年代门沿时间长廊排开，含检索筛选、收藏、展品来源与可玩展厅。" />
   <meta name="color-scheme" content="dark" />
   <link rel="icon" type="image/svg+xml" href="./art/mark.svg" />
-  <!-- 自托管字体（OFL-1.1）：由 scripts/generate-art.mjs 从 src/assets/fonts.css 还原到 public/art/assets/fonts/ -->
-  <link rel="stylesheet" href="./art/assets/fonts/fonts.css" />
+  <!--
+    设计系统接入（16-design-system/MIGRATION-NOTES.md §1 接入四步 / §6 Pages 子路径）
+    —— assets/ds/ 下的三份文件由 scripts/sync-exhibits.mjs 从 16-design-system 逐字节复制：
+      assets/ds/tokens.css      130 个 --ds-* 的权威取值（本馆不重复引入，见下方说明）
+      assets/ds/components.css  27 类 .ds-* 组件层，作为**共享基线**先加载
+      assets/ds/fonts/fonts.css 自托管字体权威表（5 个 woff2 与之同目录同路径）
+    本馆自有样式层随后加载并逐条覆盖，故 DS 层只承担"未定义处的统一外观"。
+  -->
+  <link rel="stylesheet" href="./assets/ds/components.css" />
+  <!-- 自托管字体（OFL-1.1）：权威表在 assets/ds/fonts/fonts.css，5 个 woff2 与之同目录 -->
+  <link rel="stylesheet" href="./assets/ds/fonts/fonts.css" />
   <!-- 首屏用到的两个拉丁字体预加载；汉字走系统字体栈（DESIGN-SPEC §2.4 / §10.3） -->
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="./art/assets/fonts/space-grotesk-latin.woff2" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="./art/assets/fonts/inter-latin.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="./assets/ds/fonts/space-grotesk-latin.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="./assets/ds/fonts/inter-latin.woff2" />
 </head>
-<body>
+<body class="ds-shell">
   <a class="skip-link ds-skip" href="#main" data-i18n="skip.toMain">跳到主内容</a>
 
   <header class="topbar ds-topbar">

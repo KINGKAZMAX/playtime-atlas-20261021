@@ -221,7 +221,10 @@
   font-size: var(--ds-type-xs);
   letter-spacing: var(--ds-track-caps);
   text-transform: uppercase;
-  color: var(--lumen-cyan-dim);
+  /* 对比度：--lumen-cyan-dim(#2b7d86) 对画布底 #04060d 只有 4.22:1，
+     不达 AA 的 4.5:1。按 16 的「HUD 文字对比度不豁免」改用画布色板里
+     更亮的 --lumen-cyan(#5ce1e6) —— 仍是画布色板成员，只提高明度。 */
+  color: var(--lumen-cyan);
   margin-bottom: var(--ds-space-3);
 }
 
@@ -258,7 +261,9 @@
   font-family: var(--ds-font-mono);
   font-size: var(--ds-type-xs);
   letter-spacing: var(--ds-track-caps);
-  color: var(--lumen-dim);
+  /* 对比度：--lumen-dim(#3f4c72) 对画布底 #04060d 仅 2.4:1，远不达 4.5:1。
+     改用同属画布色板的 --lumen-slate(#8595b4) —— 6.71:1。 */
+  color: var(--lumen-slate);
   text-transform: uppercase;
 }
 

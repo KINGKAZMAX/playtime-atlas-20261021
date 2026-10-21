@@ -169,8 +169,8 @@
   "qa": {
     "static": {
       "command": "node scripts/validate.mjs",
-      "checks": 38,
-      "passed": 38,
+      "checks": 39,
+      "passed": 39,
       "failed": 0
     },
     "runtime": {
@@ -181,8 +181,8 @@
         "mobile-390",
         "reduced-motion"
       ],
-      "assertions": 41,
-      "passed": 41,
+      "assertions": 43,
+      "passed": 43,
       "failed": 0,
       "report": "evidence/qa/qa-runtime.json"
     },

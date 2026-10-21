@@ -2,11 +2,14 @@
    霜隙远航 · FROSTGAP VOYAGER
    界面样式层（外壳统一到「余晖 / Afterglow」设计系统）
    ------------------------------------------------------------------
-   依据（只读引用，未复制 16 的文件）：
+   令牌层与组件层来自 16-design-system 的**原件拷贝**，不在本文件：
+     · assets/ds/tokens.css       —— --ds-* 令牌（唯一声明处）
+     · assets/ds/components.css   —— .ds-* 组件
+     · assets/ds/fonts/fonts.css  —— 自托管字体 @font-face
+   依据（只读引用）：
      · 16-design-system/design-tokens.json  → 取值唯一来源
      · 16-design-system/DESIGN-SPEC.md      → 成文规范
      · 16-design-system/MIGRATION-NOTES.md  → 逐项替换表 §2.7（04 专属）
-   令牌层在本文件之外：src/styles/tokens.css（--ds-* 的唯一声明处）
 
    改版边界（MIGRATION-NOTES §4 红线）：
      K.1 游戏画布内部配色不动 —— 3D 场景材质、驾驶舱几何、CRT 磷光、
@@ -16,9 +19,6 @@
      K.4 键盘映射与 Tab 焦点遍历不动。
    本文件统一的是**外壳**：页头/封面/面板/按钮/控件/焦点环/动效/字阶/间距。
    ================================================================== */
-
-@import "./fonts/fonts.css";
-@import "./styles/tokens.css";
 
 /* ==================== 语义别名层 ====================
    MIGRATION-NOTES §2 推荐做法：不逐行改 CSS，而是把旧变量**重定向**到新 token。
@@ -859,6 +859,10 @@ body.ds-menu-shell .ds-footer { display: flex; }
 body.ds-menu-shell .ds-lightbox {
   padding-top: 96px;
   padding-bottom: 88px;
+}
+/* 卡片高度也要让出页头页脚，否则高卡片（星图）会顶到页头上 */
+body.ds-menu-shell .menu-card.ds-lightbox__panel {
+  max-height: calc(100dvh - 200px);
 }
 
 /* ---- 中文正文行高 1.85（G.4：正文用 1.85，标题 1.22） ---- */

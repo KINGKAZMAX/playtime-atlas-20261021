@@ -12,14 +12,27 @@
 | --- | --- |
 | 单元 / 逻辑测试 | **33 / 33 通过** |
 | 浏览器实机验收 | **38 / 38 通过，0 失败**（改版批复跑一致） |
-| 自动玩家实机通关 | **三关全部通关，0 失误**，用时 44s / 2617 帧，每关 3/3 色晶 |
-| D1 元素重叠 | 1440×900 与 390×844 均为 **0 处** |
-| 令牌一致性 | `node tools/qa/token-check.mjs` → **PASS**（129 个 `--ds-*` 与 `design-tokens.json` 逐名相等） |
-| 构建 | `npm run build` 退出码 0，产出单文件 `dist/index.html`（约 400 KB，字体已 base64 内联） |
+| 自动玩家实机通关 | **三关全部通关，0 失误**，用时 44s / 2602 帧，每关 3/3 色晶 |
+| D1 元素重叠 | 1440×900 与 390×844 均为 **0 处**；badge×标题 **0 / 0** |
+| 令牌与接入一致性 | `node tools/qa/token-check.mjs` → **PASS**（拷贝件 sha256 一致 + 与 `design-tokens.json` 逐项比对 141 项全等） |
+| 字体覆盖率 | `node tools/qa/font-coverage.mjs --rendered` → 源文本集 **61.4%** / 实际渲染集 **70.6%**（对照组通过） |
+| 构建 | `npm run build` 退出码 0，产出单文件 `dist/index.html`（约 672 KB，5 个 woff2 已 base64 内联） |
 | 离线性 | `dist/index.html` 可直接双击运行，无外部请求、无 JS 错误 |
 | 来源可达性 | 核验时 **26 / 26 返回 HTTP 200**（复测窗口见 §7 的环境限制说明） |
 
 ---
+
+## 0.1 浏览器入口边界（2026-10-22 用户长期约定）
+
+用户已把**「Ego 浏览器是唯一网页入口」**定为长期约定。本目录据此明确区分两类浏览器用途：
+
+| 用途 | 使用的浏览器 | 依据 |
+| --- | --- | --- |
+| **本地离线自测**（本文件 §2—§4 的全部脚本） | **本地无头 Chromium**（Playwright 驱动），只加载 `http://127.0.0.1:4330`（本地 `vite preview`）、`file://`（本地 `dist/index.html`）与 `data:`/`blob:` | 这是**本地零依赖自测，不访问任何外部站点**：`tools/qa/browser-check.mjs` 自身即断言「无外部网络请求（零 CDN）」与「dist 产物无外部请求」；16-design-system 的 `tools/verify-preview.mjs` 头部亦采用同一口径（"不访问任何外部站点 → 不受网页访问一律走 Ego 的约定约束"） |
+| **线上验收 / 网页访问 / 联网检索 / 登录态截图** | **Ego 浏览器**（`ego-browser`，先跑 `ego-browser skill`） | 用户长期约定第 1 条。线上交互验收（含 Pages 实际 URL 的核心交互核验）由 **14-publish / 13-qa-curation** 在发布后执行 |
+
+本目录的 QA 脚本全部通过 `BASE_URL` 环境变量支持指向任意地址，默认值恒为本地 `127.0.0.1:4330`；
+**若需对线上地址做验收，请改用 Ego 浏览器**，不要直接把这些脚本指向线上 URL。
 
 ## 1. 单元 / 逻辑测试（`npm test`）
 
@@ -154,6 +167,29 @@ Node 内置 test runner，30 项 → 本次扩充为 **33 项**，全部通过�
 （用户在区块滑入的瞬间点筛选 chip 可能点错相邻 chip）；
 ② **工具侧**：验收脚本在交互前 `settle()`（等 `document.fonts.ready` + 所有 CSS 过渡/动画结束）。
 
+### 2.5.1 接入三步重构带来的**测量工具侧**新增（2026-10-21 第三轮）
+
+15 派单把 16 的 `fonts/` 整目录（含 **Noto Sans SC 中文子集**）接入本目录，
+随之产生一个必须回答的问题：**这个子集覆盖本作品多少汉字？**
+
+环境约束（三条路都堵死）：
+
+| 尝试 | 结果 |
+| --- | --- |
+| `fonttools` + `brotli`（Python） | 本机未安装，且沙箱 HTTPS 出站被阻断，无法 pip 安装 |
+| Node 内置 `zlib.brotliDecompressSync` 直接解 woff2 | **解不开**：对 5 个字体全部返回 0 字节且不报错（或 `ERR__ERROR_FORMAT_HUFFMAN_SPACE`） |
+| Chromium 的 `DecompressionStream('brotli')` | 该版本**不支持** `'brotli'`（Playwright 的 WebKit / Firefox 未安装） |
+
+最终改用 **CDP 逐字字体归属法**（`CSS.getPlatformFontsForNode`）：把子集注入为 `FontFace`、
+字体列表只列它，逐字查询实际绘制字体。过程中还发现并修正了一个**测量方法本身的假阳性**：
+
+| 尝试 | 缺陷 | 修正 |
+| --- | --- | --- |
+| 朴素像素差（Noto 独渲染 vs 参照字体独渲染） | 不同字体的 `.notdef` 形状不同 → 子集缺字时两者必然不同 → **768 个生僻字样本被全部误判为「覆盖」** | 改用字形归属信号（CDP），并用像素比对**排除 `.notdef`** |
+| CDP 归属 + `.notdef` 基准 | CDP 把「子集缺字时画出的 `.notdef`」也算到被测字体头上 → 扩展 B 区字被误判为「覆盖」 | 补 `.notdef` 像素排除后，阴性对照通过 |
+
+最终结果与方法见 **§4.3**（含阳性/阴性对照组，对照组不通过时脚本直接退出码 1）。
+
 ### 2.6 键盘 / 触控操作细节
 
 `src/platform/input.js` 把键盘与触控统一抽象为 `left / right / jump / restart / back`
@@ -253,13 +289,109 @@ D1 通过：两个视口下均为 0 处重叠。
 **在装有中文字体的系统上不会被启用**，汉字一律由系统黑体绘制、缺字逐字回退，不会出现缺字方框；
 仅当系统完全没有 CJK 字体时才会生效，此时未覆盖字形回退到通用 sans-serif。
 
+### 4.4 四档视口无障碍自检（`node tools/qa/viewport-a11y-check.mjs`）
+
+覆盖 15 派单通用硬性要求中与视口/无障碍相关的四项。只读复用 13 的 `qa-harness`
+（`checkLayout` 横向溢出 / `checkFocus` 焦点与 Tab），对比度与触摸目标在本脚本内实现。
+
+| 视口 | 横向溢出 | 焦点 / Tab | 正文对比度 | 触摸目标 |
+| --- | --- | --- | --- | --- |
+| 1440×900 | 无，溢出元素 **0** | 46 个可聚焦元素，Tab 可移动焦点，**8/8** 焦点态可见 | 344 个文本节点，不足 **0** 处 | 不足 **0** 个 |
+| 1280×800 | 无，溢出元素 **0** | 同上 | 不足 **0** 处 | 不足 **0** 个 |
+| 768×1024 | 无，溢出元素 **0** | 同上 | 不足 **0** 处 | 不足 **0** 个 |
+| 390×844 | 无，溢出元素 **0** | 同上 | 不足 **0** 处 | 不足 **0** 个 |
+| `#/platform` 1440×900 | 溢出 0 | — | 不足 **0** 处 | — |
+| `#/iso` 1440×900 | 溢出 0 | — | 不足 **0** 处 | — |
+| 展品面板（覆盖层）1440×900 / 390×844 | — | — | 不足 **0** 处 | 不足 **0** 个 |
+
+**触摸目标按 16 的两档口径**（MIGRATION-NOTES §5.1，与 16 的 `verify-preview.mjs` 同款）：
+**AA ≥24px** 对全部可交互元素（硬性），**AAA ≥44px** 只对主控件（`.ds-btn` / `.ds-iconbtn` 且非 `.ds-btn--sm`）。
+紧凑变体豁免存在的原因是「为满足 44px 把紧凑按钮放大到 44px 会撑破原布局」（§5.1 明列禁止）。
+
+> **本轮据此查出一处真实 AA 缺陷并修复**：页脚「来源与差异说明」与展品面板内的来源链接，
+> 属正文/面板内的**行内文本链接**，16 的组件层未覆盖，其点击区高度 = 行高（实测 **21px < 24px**）。
+> 已在 `src/styles/main.css` §A6 用 `display:inline-block; padding-block:2px; min-height:24px`
+> 增高点击区（不改变行盒高度与基线对齐），修复后四档视口与覆盖层均归零。
+
+### 4.5 16 的两个自测脚本交叉验证（`validate-tokens.mjs` / `verify-preview.mjs`）
+
+16-design-system 的「规范就绪」告知要求跑 `node tools/validate-tokens.mjs && node tools/verify-preview.mjs`。
+这两个脚本会**把自己的 evidence 写进 16 自己的目录**，而本目录的写入边界只到 `10-era-console/`，
+故采用**只读借用**的方式执行：把 16 的脚本 + `design-tokens.json` + `preview.html` 复制到临时目录，
+并用**本目录实际交付的那份拷贝件**（`assets/ds/tokens.css`、`assets/ds/components.css`、`assets/ds/fonts/`）填充 `src/` 与 `fonts/`，
+再在临时目录里运行 —— 既不写入 16 的目录，又验证的正是我发出去的那批文件。
+
+| 脚本 | 结果 |
+| --- | --- |
+| `tools/validate-tokens.mjs` | **PASS：errors 0 / warnings 1**（213 个 JSON 令牌、130 个 CSS 变量；唯一 warning 是 `motion.easing.spring` 的 y 分量越界 —— 16 自己的规范值） |
+| `tools/verify-preview.mjs` | **PASS：errors 0 / warnings 0** |
+
+`verify-preview.mjs` 的逐项结果（以本目录的拷贝件为 CSS/字体来源渲染 16 的 preview.html）：
+
+| 检查项 | 结果 |
+| --- | --- |
+| 四档视口（1440 / 1280 / 768 / 390） | 封面渲染、**关键组件齐备 12 类**、**无横向溢出**（scrollWidth == viewportWidth）、零外部请求（9 个请求全为本地） |
+| 样式表解析 | `fonts.css:5  tokens.css:20  components.css:167  inline:28`，**CSS 规则 220 条已生效** |
+| 自托管字体加载 | Space Grotesk / Inter / Space Mono×2 / **Noto Sans SC 均 `loaded`** |
+| 文本对比度 | 12 项全达标，**最低 4.93**（≥4.5） |
+| 触摸目标 | **全部 ≥24px（AA）**；主控件与图标按钮**全部 ≥44px（AAA）** |
+| reduced-motion | `dur-base=1ms`、系统 `prefers-reduced-motion` 生效（`matches:true`）、封面过渡 `0.001s` |
+| 深色主题 | `bg=rgb(16,15,14)`、`ink=#f7f4f0`、`accent=#e0684a`（与 16 暗色组逐值一致） |
+| 控制台错误 | **0 条** |
+
+> **首跑出现过一次 `desktop-1280` 的 `FATAL timeout Runtime.evaluate`**，原样重跑即通过。
+> 该错误形态与本目录 QA.md §8 第 7 条记录的**环境性超时**一致（共享机器 swap 42.5/44 GB、load 22–37），
+> 且 16 自己的脚本注释即写明「超时只说明机器负载高，不构成产品缺陷」。
+
+### 4.6 16 的全库 token 审计（`tools/ds-audit-tokens.mjs`）与运行时实测
+
+16-design-system 的「复测确认」通知要求按 V.11–V.13 口径复核字体栈顺序。
+本目录的实测结论（该脚本为只读审计，直接指向本目录）：
+
+```
+10-era-console   🟢   必备缺0 必备值差0 | 全量: 声明 129 缺0 值差0 暗色组0 额外0 | 顺序问题0
+                  10-era-console/assets/ds/tokens.css
+```
+
+> 脚本自己定位到的令牌文件路径就是 `10-era-console/assets/ds/tokens.css`——
+> 因为本目录已按 15 派单「接入三步」改为**拷贝 16 的文件到 `assets/ds/`**，
+> 自建的 `src/styles/tokens.css` 已不存在（见 `STATUS.md` §6.7.1）。
+
+**字体栈顺序（V.11）**：脚本判定 `Noto Sans SC` 的下标必须**晚于**所有系统 CJK 族
+（PingFang SC / Hiragino Sans GB / Microsoft YaHei / Source Han Sans SC），否则报「顺序问题」。
+本目录实际取值（`assets/ds/tokens.css:57-60`，与 16 源文件逐字节一致）：
+
+```css
+--ds-font-display: "Space Grotesk", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+  "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+--ds-font-text: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+  "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+```
+
+**子集未被删除**（V.11 的另一半要求）：`assets/ds/fonts/noto-sans-sc-subset.woff2` 随包分发，
+`@font-face` 保留，`Noto Sans SC` 族名保留在栈中且位于系统 CJK 族之后 ——
+即「系统栈整体不可用」场景的兜底仍在。
+
+**运行时实测**（本目录 `dist/` 产物，Chromium 实测计算值）：
+
+| 项 | 实测值 | 期望 |
+| --- | --- | --- |
+| `<html data-ds-theme>` | `dark` | 暗色主题 |
+| `<body class>` | `ds-shell` | 16 派单接入三步 ③ |
+| `--ds-bg` / `--ds-ink` / `--ds-accent` | `#100f0e` / `#f7f4f0` / `#e0684a` | 与 16 暗色组逐值一致 |
+| `--ds-font-text` / `--ds-font-display` | Noto Sans SC **晚于** 4 个系统 CJK 族 | V.11 合规 |
+| `body` 计算背景 | `rgb(16, 15, 14)` | 16 的 `--ds-bg` |
+| `body` 字距 / 行高 | `normal` / `29.6px`（16px × 1.85） | 中文归零 + 行高 1.85 |
+| `--ds-base`（运行期） | `./` | 相对基准，适配任意子路径与 `file://` |
+| Noto Sans SC 加载状态 | `document.fonts.check(...)` → **true** | 子集可用 |
+
 ## 5. 构建与离线性
 
 ```
 $ npm run build
 vite v5.4.11 building for production...
-✓ built in 1.2s
-dist/index.html   （单文件，约 124 KB，CSS/JS 全内联）
+✓ built in 0.6s
+dist/index.html   （单文件，约 672 KB，CSS/JS + 5 个 woff2 全内联）
 ```
 
 - `dist/` 内**只有** `dist/index.html`，无任何外部引用；

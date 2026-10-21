@@ -64,6 +64,90 @@ REQUIRED_CASE_FIELDS = [
 CJK = re.compile(r"[一-鿿]")
 LATIN = re.compile(r"[A-Za-z]")
 
+# ---------------------------------------------------------------------------
+# 浏览器入口约定（用户长期约定，2026-10-22 起对所有任务生效）
+#   网页访问 / 联网检索 / 截图 / 网页调试 / 线上验收 **只走 Ego 浏览器**。
+#   禁用：内置 Browser 工具、Playwright / Puppeteer / Chromium.launch()、
+#         本机无头 Chrome + 原生 CDP。
+# 下面的断言用于**机器校验**该约定在本目录内确实成立。
+# ---------------------------------------------------------------------------
+
+# 已按约定停用并移除的浏览器脚本（若再出现即视为违规）
+RETIRED_BROWSER_SCRIPTS = [
+    "scripts/browser_test.mjs",
+    "scripts/capture_cdp.mjs",
+    "scripts/capture.sh",
+]
+
+# 必须走 Ego 的网页脚本
+EGO_SCRIPTS = [
+    "scripts/ego_interactions.mjs",
+    "scripts/ego_capture.mjs",
+    "scripts/ego_ref_metrics.mjs",
+]
+
+# 禁用技术的**启动调用**特征（只匹配可执行调用，不会命中文档散文）
+BANNED_BROWSER_CALLS = [
+    (r"chromium\s*\.\s*launch\s*\(", "chromium.launch()"),
+    (r"puppeteer\s*\.\s*launch\s*\(", "puppeteer.launch()"),
+    (r"playwright[\w.]*\s*\(", "playwright() 调用"),
+    (r"require\s*\(\s*['\"]playwright", "require('playwright')"),
+    (r"from\s+['\"]playwright", "import from 'playwright'"),
+    (r"npx\s+playwright", "npx playwright"),
+    (r"require\s*\(\s*['\"]puppeteer", "require('puppeteer')"),
+    (r"--headless", "--headless 启动参数"),
+    (r"--remote-debugging-port", "--remote-debugging-port 启动参数"),
+    (r"devtools/browser", "原生 CDP devtools 端点"),
+    (r"/devtools/page", "原生 CDP devtools 页面端点"),
+    (r"chrome-headless-shell", "chrome-headless-shell"),
+    (r"Google Chrome\.app/Contents/MacOS", "直接启动本机 Chrome 可执行文件"),
+]
+
+# 需要扫描的可执行脚本目录
+BROWSER_SCAN_DIRS = ["scripts", "src"]
+BROWSER_SCAN_EXTS = {".mjs", ".js", ".cjs", ".py", ".sh", ".bash"}
+
+
+def strip_comments(text: str) -> str:
+    """去掉注释与文档串，只留可执行代码，避免散文里的关键词造成误判。"""
+    text = re.sub(r"/\*[\s\S]*?\*/", " ", text)          # /* ... */
+    text = re.sub(r"^\s*//.*$", " ", text, flags=re.M)   # // ...
+    text = re.sub(r"^\s*#(?!!).*$", " ", text, flags=re.M)  # # ...（保留 #!）
+    text = re.sub(r"\"\"\"[\s\S]*?\"\"\"", " ", text)     # Python docstring
+    text = re.sub(r"'''[\s\S]*?'''", " ", text)
+    return text
+
+
+def scan_banned_browser_calls() -> list[str]:
+    """扫描可执行脚本中的禁用浏览器技术启动调用。
+
+    跳过本文件自身：它必须字面写出这些禁用特征作为匹配模式，
+    否则会把自己判为违规（自指误报）。本文件内容由人工审阅。
+    """
+    self_rel = os.path.relpath(os.path.abspath(__file__), ROOT)
+    hits: list[str] = []
+    for d in BROWSER_SCAN_DIRS:
+        base = os.path.join(ROOT, d)
+        if not os.path.isdir(base):
+            continue
+        for dirpath, dirnames, filenames in os.walk(base):
+            dirnames[:] = [x for x in dirnames if not x.startswith(".") and x != "node_modules"]
+            for fn in sorted(filenames):
+                if os.path.splitext(fn)[1].lower() not in BROWSER_SCAN_EXTS:
+                    continue
+                p = os.path.join(dirpath, fn)
+                rel = os.path.relpath(p, ROOT)
+                if rel == self_rel:
+                    continue
+                try:
+                    code = strip_comments(open(p, encoding="utf-8").read())
+                except (OSError, UnicodeDecodeError):
+                    continue
+                for pat, label in BANNED_BROWSER_CALLS:
+                    if re.search(pat, code):
+                        hits.append(f"{rel} → {label}")
+    return hits
+
 
 class Result:
     def __init__(self) -> None:
@@ -142,7 +226,9 @@ def main() -> int:
         "handoff/VERIFIED-VS-ASSUMED.md", "handoff/verification-status.json",
         "src/catalog-page/build-catalog-page.mjs", "src/catalog-page/catalog.css",
         "dist/catalog.html", "dist/catalog.css", "dist/favicon.svg",
-        "scripts/browser_test.mjs", "scripts/build_field_mapping.py",
+        "scripts/build_field_mapping.py",
+        "scripts/ego_interactions.mjs", "scripts/ego_capture.mjs",
+        "scripts/ego_ref_metrics.mjs",
     ]
     missing = [f for f in required_files if not os.path.exists(os.path.join(ROOT, f))]
     res.add("文件齐备", "必备文件全部存在", not missing,
@@ -534,6 +620,87 @@ def main() -> int:
                 "src" in manifest.get("publish", {}).get("excludeDirs", [])
                 and "dist" not in manifest.get("publish", {}).get("excludeDirs", []),
                 f"excludeDirs={manifest.get('publish', {}).get('excludeDirs')}")
+
+    # ------------------------------------------- 16. 浏览器入口约定（Ego-only）
+    retired_present = [f for f in RETIRED_BROWSER_SCRIPTS
+                       if os.path.exists(os.path.join(ROOT, f))]
+    res.add("浏览器入口", "已停用的无头 Chrome / 原生 CDP 脚本确已移除",
+            not retired_present,
+            "残留：" + ", ".join(retired_present) if retired_present
+            else "browser_test.mjs / capture_cdp.mjs / capture.sh 均不存在")
+
+    banned_hits = scan_banned_browser_calls()
+    res.add("浏览器入口", "可执行脚本中无禁用浏览器技术启动调用",
+            not banned_hits,
+            "; ".join(banned_hits[:5]) if banned_hits
+            else "无 Playwright / Puppeteer / chromium.launch / --headless / 原生 CDP 端点")
+
+    ego_missing = [f for f in EGO_SCRIPTS if not os.path.exists(os.path.join(ROOT, f))]
+    res.add("浏览器入口", "Ego 脚本齐备（交互验收 / 截图 / 参考站测量）",
+            not ego_missing,
+            "缺失：" + ", ".join(ego_missing) if ego_missing else f"{len(EGO_SCRIPTS)} 个脚本")
+
+    no_ego_ref = []
+    for f in EGO_SCRIPTS:
+        p = os.path.join(ROOT, f)
+        if not os.path.exists(p):
+            continue
+        code = open(p, encoding="utf-8").read()
+        if "ego-browser" not in code:
+            no_ego_ref.append(f)
+    res.add("浏览器入口", "全部网页脚本均通过 ego-browser 入口",
+            not no_ego_ref,
+            "未引用：" + ", ".join(no_ego_ref) if no_ego_ref else "3/3 走 ego-browser")
+
+    # ------------------------------------------- 17. Ego 实测证据
+    ego_shared = load_json("evidence/ego/17-architecture-catalog.json")
+    if ego_shared is None:
+        res.add("Ego 证据", "共享工具报告存在且可解析", False, "evidence/ego/17-architecture-catalog.json 缺失")
+    else:
+        res.add("Ego 证据", "共享工具报告存在且可解析", True,
+                f"browser={ego_shared.get('browser')}")
+        vps = ego_shared.get("viewports", [])
+        bad_vp = [v.get("name") for v in vps
+                  if v.get("overflow") or v.get("consoleErrors", 0) > 0
+                  or v.get("actualInnerWidth") != v.get("width")]
+        res.add("Ego 证据", "共享工具报告 4 档视口全通过（无溢出 / 无控制台错误 / 视口精确）",
+                len(vps) >= 4 and not bad_vp,
+                "异常视口：" + ", ".join(map(str, bad_vp)) if bad_vp
+                else f"{len(vps)} 档视口全部干净")
+
+    ego_int = load_json("evidence/ego-interactions/catalog-interactions.json")
+    if ego_int is None:
+        res.add("Ego 证据", "交互类报告存在且 verdict = PASS", False,
+                "evidence/ego-interactions/catalog-interactions.json 缺失")
+    else:
+        res.add("Ego 证据", "交互类报告存在且 verdict = PASS",
+                ego_int.get("verdict") == "PASS" and ego_int.get("failed") == 0,
+                f"verdict={ego_int.get('verdict')} 通过 {ego_int.get('passed')}/"
+                f"{ego_int.get('total')} 警告 {ego_int.get('warned')}")
+
+    ego_ref = load_json("evidence/ego-ref/olek-si-viewport-metrics.json")
+    if ego_ref is None:
+        res.add("Ego 证据", "参考站视口测量证据存在", False,
+                "evidence/ego-ref/olek-si-viewport-metrics.json 缺失")
+    else:
+        s = ego_ref.get("summary", {})
+        res.add("Ego 证据", "参考站视口测量证据存在且采样成功率 ≥ 80%",
+                s.get("ok", 0) >= 0.8 * s.get("total", 1) and s.get("failed", 1) == 0,
+                f"{s.get('ok')}/{s.get('total')} 视口；裁切视口 {s.get('clippedViewports')}"
+                f"；横向滚动 {s.get('horizontalScrollAnywhere')}")
+
+    # Ego 截图证据：字节数 > 0
+    ego_shots = []
+    for sub in ("evidence", "evidence/ego/screenshots", "evidence/ego-interactions/screenshots"):
+        d = os.path.join(ROOT, sub)
+        if os.path.isdir(d):
+            ego_shots += [os.path.join(sub, f) for f in sorted(os.listdir(d))
+                          if f.endswith(".png")]
+    zero_shots = [p for p in ego_shots if os.path.getsize(os.path.join(ROOT, p)) <= 0]
+    res.add("Ego 证据", "Ego 截图证据齐全且字节数 > 0",
+            len(ego_shots) >= 8 and not zero_shots,
+            "空文件：" + ", ".join(zero_shots) if zero_shots
+            else f"{len(ego_shots)} 张 PNG 全部非空")
 
     res.dump()
     if "--json" in sys.argv:

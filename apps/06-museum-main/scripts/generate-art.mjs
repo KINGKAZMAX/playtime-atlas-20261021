@@ -285,21 +285,40 @@ function formSvg(kind) {
 
 // ── 自托管字体样式表 ────────────────────────────────────────────────────────
 /**
- * 把 src/assets/fonts.css 复制到 public/art/assets/fonts/。
- * 该文件是本项目自有的 @font-face 清单（字体族名与本项目 CSS 变量一致）。
- * 字体二进制与 OFL 许可全文由 scripts/sync-exhibits.mjs 从 07-museum-art 复制。
- * 放在生成步骤里，是为了让 sync --clean 之后样式表依然会被还原。
+ * 在 public/art/assets/fonts/ 写一份**兼容 shim**，把历史路径接到 DS 权威字体表。
+ *
+ * 背景（2026-10-22 接入 16 的 assets/ds/）：
+ *   字体样式表的**权威**现在是 16-design-system/fonts/fonts.css，
+ *   随包发布在 public/assets/ds/fonts/fonts.css，
+ *   5 个 woff2 与它同目录同路径（MIGRATION-NOTES §6：
+ *   「字体 CSS 必须与 woff2 同目录同路径」）。
+ *   页面只引用这一份（index.html 里 <link href="./assets/ds/fonts/fonts.css">）。
+ *
+ *   但历史路径 `…/art/assets/fonts/fonts.css` 在 MIGRATION-NOTES §6 的
+ *   「发布前必查」清单里（那条曾经 404），线上巡检仍会 curl 它。
+ *   所以这里保留一个 shim：@import 到 DS 的权威表，
+ *   历史路径继续 200，字体字节在产物里**只有一份**（assets/ds/fonts/），
+ *   不会因为两处 @font-face 指向不同 URL 而让浏览器下载两遍。
  */
-async function copyFontStylesheet() {
-  const src = path.join(ROOT, 'src', 'assets', 'fonts.css');
+const FONT_SHIM = `/* 回响电玩馆 / PLAYTIME ATLAS — 字体样式表兼容入口
+ *
+ * 自 2026-10-22 起，字体声明的权威来源是设计系统的
+ *   /assets/ds/fonts/fonts.css （由 16-design-system/fonts/ 逐字节接入）
+ * 5 个 woff2 与它同目录同路径；本文件只做转发，保证历史路径
+ *   /art/assets/fonts/fonts.css
+ * 继续返回 200（16-design-system/MIGRATION-NOTES.md §6「发布前必查」）。
+ *
+ * 字体族：Space Grotesk / Inter / Space Mono / Noto Sans SC
+ * 许可：SIL Open Font License 1.1，全文见本目录 OFL-*.txt
+ * 运行期零外部请求，无 CDN。
+ */
+@import url("../../assets/ds/fonts/fonts.css");
+`;
+
+async function writeFontShim() {
   const dir = path.join(OUT, 'assets', 'fonts');
-  const dst = path.join(dir, 'fonts.css');
-  if (!existsSync(src)) {
-    console.warn('⚠ 缺少 src/assets/fonts.css，跳过字体样式表复制');
-    return false;
-  }
   await mkdir(dir, { recursive: true });
-  await writeFile(dst, await readFile(src, 'utf8'), 'utf8');
+  await writeFile(path.join(dir, 'fonts.css'), FONT_SHIM, 'utf8');
   return true;
 }
 
@@ -315,6 +334,23 @@ async function main() {
         .filter((f) => /^(mark|era-e\d\d-(poster|backdrop)|form-[\w-]+)\.svg$/.test(f))
         .map((f) => unlink(path.join(OUT, f))),
     );
+
+    /*
+     * 清掉**历史遗留**的字体二进制。
+     * 字体权威位置自 2026-10-22 起是 public/assets/ds/fonts/（从 16 接入）。
+     * 这里曾经放过同一批 woff2 的第二份拷贝（从 07 同步而来），
+     * 留着会让产物里同一批字体字节出现两次（+393 KB），
+     * 且万一有人同时引入两张 @font-face 表，浏览器会按不同 URL 各下载一遍。
+     */
+    const fontDir = path.join(OUT, 'assets', 'fonts');
+    if (existsSync(fontDir)) {
+      const fontFiles = await readdir(fontDir);
+      await Promise.all(
+        fontFiles
+          .filter((f) => /\.(woff2|ttf|otf)$/i.test(f))
+          .map((f) => unlink(path.join(fontDir, f))),
+      );
+    }
   }
 
   const written = [];
@@ -331,11 +367,11 @@ async function main() {
     await writeFile(path.join(OUT, name), content, 'utf8');
   }
 
-  const fontsCss = await copyFontStylesheet();
+  const fontsCss = await writeFontShim();
 
   console.log(`✓ 原创美术包已生成：${written.length} 个 SVG → public/art/`);
   console.log(`  · 馆徽 1 · 年代海报 ${ERA_THEME.length} · 年代底纹 ${ERA_THEME.length} · 载体轮廓 ${Object.keys(FORMS).length}`);
-  console.log(`  · 自托管字体样式表：${fontsCss ? '已就位 public/art/assets/fonts/fonts.css' : '未就位'}`);
+  console.log(`  · 字体样式表：${fontsCss ? 'public/art/assets/fonts/fonts.css → 转发至 public/assets/ds/fonts/fonts.css' : '未就位'}`);
 }
 
 main().catch((err) => {

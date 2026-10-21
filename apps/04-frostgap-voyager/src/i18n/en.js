@@ -64,6 +64,10 @@ export default {
 
   /* ---------- Loading / pointer ---------- */
   'load.init': 'Initialising',
+  /* Top bar / footer (G.2 .ds-topbar / .ds-footer) */
+  'menu.tag': 'Playable · 6DOF',
+  'footer.hint': 'Keyboard · Esc pause · M star map · F scan · R dock',
+  'footer.credit': 'Everything generated at runtime · no external requests · self-hosted fonts',
   'load.hint': 'Every asset is generated at runtime · no network requests',
   'pointer.title': 'Click the view',
   'pointer.desc': 'Lock the pointer to fly',

@@ -25,9 +25,13 @@ const URL = "__URL__";
 const OUT_DIR = "__OUT_DIR__";
 
 const VIEWPORTS = [
-  { name: "desktop-1440", width: 1440, height: 900, mobile: false },
-  { name: "desktop-1280", width: 1280, height: 800, mobile: false },
-  { name: "tablet-768", width: 768, height: 1024, mobile: false },
+  // ⚠️ 四档一律 mobile:true —— mobile:false 时 Chromium 按 1/0.9 放大视口，
+  //    2026-10-22 01:5x 用 Ego 实测：请求 1440 → innerWidth 1600、1280 → 1422、
+  //    768 → 853（dpr 0.9），会同时污染横向溢出判定、对比度采样与截图尺寸。
+  //    详见 tools/ego-qa/MIGRATION.md §1③；下方每档都有「视口精度自检」兜底。
+  { name: "desktop-1440", width: 1440, height: 900, mobile: true },
+  { name: "desktop-1280", width: 1280, height: 800, mobile: true },
+  { name: "tablet-768", width: 768, height: 1024, mobile: true },
   { name: "mobile-390", width: 390, height: 844, mobile: true },
 ];
 
@@ -85,12 +89,21 @@ async function main() {
         width: vp.width,
         height: vp.height,
         deviceScaleFactor: 1,
-        mobile: vp.mobile,
+        mobile: true,
       });
       await page.goto(URL);
       await page.waitForLoadState();
 
       const result = await page.evaluate(DS_PAGE_PROBE);
+
+      // 视口精度自检：实测内宽必须 1:1 等于请求宽，否则本档的溢出/对比度/截图判定全部不可信
+      const measuredInnerWidth = result.overflow.innerWidth;
+      const viewportExact = measuredInnerWidth === vp.width;
+      if (!viewportExact) {
+        warnings.push(
+          `视口精度不达标：${vp.name} 请求 ${vp.width} 实测 ${measuredInnerWidth} —— 缺 mobile:true 会被放大 1/0.9`
+        );
+      }
       const events = await page.events();
       const digest = digestEvents(events);
 
@@ -144,6 +157,8 @@ async function main() {
         viewport: vp.name,
         width: vp.width,
         height: vp.height,
+        viewportExact,
+        measuredInnerWidth,
         overflow: result.overflow,
         overflowOffenders: result.overflowOffenders,
         contrast: result.contrast,
@@ -177,10 +192,15 @@ async function main() {
       width: 1440,
       height: 900,
       deviceScaleFactor: 1,
-      mobile: false,
+      mobile: true,
     });
     await page.goto(URL);
     await page.waitForLoadState();
+    const darkInnerWidth = await page.evaluate(`window.innerWidth`);
+    const darkViewportExact = darkInnerWidth === 1440;
+    if (!darkViewportExact) {
+      warnings.push(`视口精度不达标：深色主题请求 1440 实测 ${darkInnerWidth}`);
+    }
     await page.evaluate(`document.documentElement.setAttribute('data-ds-theme', 'dark');`);
     const dark = await page.evaluate(`(() => ({
       bg: getComputedStyle(document.querySelector('.ds-shell') || document.body).backgroundColor,
@@ -195,6 +215,8 @@ async function main() {
       driver: "ego-browser",
       viewports,
       darkTheme: dark,
+      darkViewport: { requested: 1440, measuredInnerWidth: darkInnerWidth, exact: darkViewportExact },
+      allViewportsExact: viewports.every((v) => v.viewportExact) && darkViewportExact,
       styleWarnings: warnings,
     };
     console.log(JSON.stringify(report));

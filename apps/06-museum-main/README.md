@@ -319,6 +319,25 @@ if (h > 15000) {
 10. **关键词检索是「输入即过滤」**：211 条的「过滤 + 重绘」实测最坏 6.1ms，
     因此不做去抖——填完立刻读计数器就是新值（早期版本有 220ms 去抖，
     会让自动化检测读到旧值而误判「搜索没生效」）。中文输入法组字期间不重绘，组字结束补刷。
+11. **线上仍是旧包**：已发布版本仍带 220ms 去抖、`fonts.css` 仍是 1545 B 的旧版；
+    本地源码均已修（检索改为输入即过滤、`fonts.css` 1730 B），
+    **待 14-publish 重新部署后线上才会一致**。Ego 线上实测已记录在「浏览器约定」一节。
+12. **目录页的整页截图未完成**：390px 下页面高 47737px，超出 Chromium 贴图上限，
+    验收记录如实标注「未完成」而非截一张被裁的图（见「整页截图做法」）。
+
+## 拷贝产物判定（`public/data/tokens.css` 与 `public/exhibits/**`）
+
+监工问询的 12 个文件——`public/data/tokens.css` 与
+`public/exhibits/{arcade,console,modern,origins}/**`——**全部是构建/同步产物，不是手工拷贝的静态资源**：
+
+| 文件 | 来源链 | 复核结论 |
+|---|---|---|
+| `public/data/tokens.css` | 16-design-system → 07 的 `sync-ds-tokens.mjs` → 07 的 `build-tokens.mjs` → `07-museum-art/public/assets/tokens.css` → 本目录 `scripts/sync-exhibits.mjs` 拷贝 | 与 16 的深色主题块取值**逐名一致**（129 个 `--ds-*`，0 差异） |
+| `public/exhibits/{arcade,console,modern,origins}/**` | `../08…12/dist` → 本目录 `scripts/sync-exhibits.mjs` 拷贝 | 五个展厅与源 `dist` **逐字节一致**（`diff -rq` 全过） |
+
+本目录**未手改其中任何一个文件**。要改就回到 16 / 07 / 08—12 的源头，
+再重跑 `npm run build`（`prebuild` 自动重新拷贝）。诊断脚本：
+`node scripts/diag-tokens-provenance.mjs`。
 
 ## 给 14-publish 的构建说明
 

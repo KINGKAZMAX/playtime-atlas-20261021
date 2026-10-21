@@ -14,6 +14,14 @@ async function main() {
   const task = await taskSpace("05-catalog-liveprobe");
   const page = await task.newPage();
   try {
+    // 确定性视口：mobile:true 才能 1:1 精确（mobile:false 会被 Chromium 放大 1/0.9）
+    // 见 tools/ego-qa/MIGRATION.md §1③
+    await page.cdp("Emulation.setDeviceMetricsOverride", {
+      width: 1440,
+      height: 900,
+      deviceScaleFactor: 1,
+      mobile: true,
+    });
     const resp = await page.fetch(URL, { timeout: 25_000 });
     const body = resp.body || "";
     const out = {
@@ -30,6 +38,7 @@ async function main() {
     if (resp.ok) {
       await page.goto(URL);
       await page.waitForLoadState();
+      out.measuredInnerWidth = await page.evaluate(`window.innerWidth`);
       out.renderedCards = await page.evaluate(
         `document.querySelectorAll('#catalog-list .ds-catalog__item').length`
       );

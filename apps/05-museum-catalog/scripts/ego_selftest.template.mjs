@@ -60,10 +60,20 @@ async function main() {
       width: 1440,
       height: 900,
       deviceScaleFactor: 1,
-      mobile: false,
+      // ⚠️ 必须 mobile:true —— mobile:false 时 Chromium 按 1/0.9 放大，
+      //    2026-10-22 01:5x 用 Ego 实测：请求 1440 → innerWidth 1600（dpr 0.9）。
+      //    详见 tools/ego-qa/MIGRATION.md §1③。
+      mobile: true,
     });
     await page.goto(URL);
     await page.waitForLoadState();
+
+    // 视口精度自检：实测内宽必须 1:1 等于请求宽
+    const measuredInnerWidth = await page.evaluate('window.innerWidth');
+    const viewportExact = measuredInnerWidth === 1440;
+    if (!viewportExact) {
+      warnings.push(`视口精度不达标：请求 1440 实测 ${measuredInnerWidth} —— 缺 mobile:true 会被放大 1/0.9`);
+    }
 
     const probeExpr = SELFTEST_PAGE_PROBE.replace('__PROBE_TERM__', JSON.stringify(TERM));
     const result = await page.evaluate(probeExpr);
@@ -86,6 +96,8 @@ async function main() {
         url: URL,
         driver: "ego-browser",
         evalError: null,
+        viewportExact,
+        measuredInnerWidth,
         result,
         screenshot,
         consoleErrors: digest.consoleErrors,

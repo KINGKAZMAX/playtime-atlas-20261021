@@ -8,7 +8,7 @@
   "status": "completed",
   "upstream": "03-interaction",
   "subtitle": "浏览器端实时织造排产与机台调度台",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "project": "flash-showcase-20261021/03-interaction",
   "category": "interaction",
   "originality": "original-adaptation",
@@ -89,15 +89,15 @@
     ]
   },
   "restyle": {
-    "step": "RESTYLE-SPEC §4 第 2 步（16 规范就绪后增量改版）—— 已完成；并已对齐 16 v1.0.1（字体栈顺序 / 触摸目标 / 必备令牌）",
+    "step": "RESTYLE-SPEC §4 第 2 步（16 规范就绪后增量改版）—— 已完成；v1.1.1 对齐 16 v1.0.1；v1.1.2 统一外壳 + 字体栈三项专项（V.11/V.12/V.13）",
     "basis": [
       "16-design-system/design-tokens.json",
-      "16-design-system/DESIGN-SPEC.md §2.5 / §7.1 / §7.4 / §11.4",
-      "16-design-system/MIGRATION-NOTES.md §1 / §2.0.1 / §2.7 / §3 / §5.1 / §5.3 / §8 / §10"
+      "16-design-system/DESIGN-SPEC.md §2.5 / §7.1 / §7.4 / §11.4 / §14.3",
+      "16-design-system/MIGRATION-NOTES.md §0 / §1.1 / §2.0.1 / §2.7 / §3 / §5.1 / §5.3 / §7 / §8 / §9 / §10"
     ],
     "method": "增量替换（61 条精确替换脚本 src/styles.css + 语义别名层），未推倒重写，既有选择器全部保留",
-    "tokenLayer": "src/tokens.css（--ds-* 令牌层 129 项，与 16-design-system/src/tokens.css 逐名等值 + 旧变量语义别名层）",
-    "componentLayer": "src/ds-components.css（.ds-skip / .ds-topbar / .ds-btn / .ds-tag / .ds-chip / .ds-field / .ds-input）",
+    "tokenLayer": "src/tokens.css（--ds-* 令牌层 129 项，与 16-design-system/src/tokens.css 逐名等值 + 旧变量语义别名层 + prefers-reduced-motion 降级块）",
+    "componentLayer": "src/ds-components.css（.ds-shell / .ds-skip / .ds-topbar / .ds-footer / .ds-btn / .ds-tag / .ds-chip / .ds-field / .ds-input）",
     "fontFamilies": [
       "Space Grotesk",
       "Inter",
@@ -117,18 +117,23 @@
       "未加 .ds-cover 英雄区：工具型调度台加封面会把调度控件与工单标签挤出首屏",
       "表单控件描边用 --ds-ink-faint（5.51:1）而非 --ds-line（1.29:1）：满足 WCAG 非文字控件边界 3:1，仍在 DS 色板内",
       "状态文字用派生墨色（--ok-ink / --warn-ink / --err-ink）：DS 的 --ds-warning 对底色仅 3.59:1，低于正文 4.5:1",
-      "--mono 别名在 generic 之前插入系统 CJK 族（Noto Sans SC 置于其后）：DS 的 --ds-font-mono 不含 CJK 兜底，中文会回退系统宋体；--ds-font-mono 令牌本身与 design-tokens.json 逐字一致",
+      "--mono 直接指向 var(--ds-font-mono)，不自造字族栈（V.12）：等宽语境的中文回退到与正文同一个系统 CJK 族",
+      ".ds-shell 不设 body 级 letter-spacing（16 的 -0.005em 会覆盖 :lang(zh) 归零口径 → 中文负字距，红线）与 body 级 line-height（密集栅格不接受整体放松）",
+      ".ds-footer 用 12/16px 收窄信息带而非 16 的 48/32px：整屏调度台的页脚体量会挤掉机台矩阵高度",
+      "--ds-base 取空串而非 /playtime-atlas-20261021/：本作品全部资源走相对路径，空基准适配任意子路径深度",
       "令牌层补齐规范全集 129 项，其中画布 HUD / 分区 / 导航轨类令牌本作品不消费（无 canvas、无英雄分区、无导航轨），已逐组注释，零视觉影响"
     ],
     "inventory": "RESTYLE-INVENTORY.md",
     "fontStackOrder": "DESIGN-SPEC §2.5 硬性：拉丁自托管 → PingFang SC → Hiragino Sans GB → Microsoft YaHei → Source Han Sans SC → Noto Sans SC → -apple-system → BlinkMacSystemFont → sans-serif；覆盖完整的系统 CJK 族必须排在有限子集之前",
-    "tokenAudit": "16-design-system/tools/ds-audit-tokens.mjs → 🟢 声明 129 / 必备缺 0 / 必备值差 0 / 全量缺 0 / 值差 0 / 额外 0 / 字体栈顺序问题 0"
+    "tokenAudit": "16-design-system/tools/ds-audit-tokens.mjs → 🟢 声明 129 / 必备缺 0 / 必备值差 0 / 全量缺 0 / 值差 0 / 额外 0 / 字体栈顺序问题 0；本目录 npm run check:tokens → 9/9",
+    "shell": "统一外壳（DESIGN-SPEC §14.3）：<body class=\"ds-shell\"> + .ds-topbar + .ds-footer + .ds-skip；--ds-base 注入在入口（取空串 + base:'./'，适配任意子路径深度）",
+    "fontStackChecks": "V.11 顺序 / V.12 不自造字体栈（自有 CSS 只引用 var(--ds-font-*)）/ V.13 与 design-tokens.json 无漂移 —— npm run check:tokens 9/9"
   },
   "assets": {
     "external": false,
     "images": "全部为运行时生成：SVG 折线图、负载条、迷你趋势柱、原创织机纹样 favicon；无位图素材",
-    "fonts": "自托管 woff2 随产物发布（全部 SIL OFL 1.1）：Space Grotesk 34,788 B + Inter 132,684 B + Space Mono 14,884 B / 15,000 B + Noto Sans SC 子集 106,556 B（覆盖本作品 565/565 汉字）。按 DESIGN-SPEC §2.5，汉字走系统 CJK 栈，该子集作为系统栈不可用时的离线兜底（实测可强制加载）",
-    "buildOutput": "16 个文件 / 411.1 KB",
+    "fonts": "自托管 woff2 随产物发布（全部 SIL OFL 1.1）：Space Grotesk 34,788 B + Inter 132,684 B + Space Mono 14,884 B / 15,000 B + Noto Sans SC 子集 107,968 B（覆盖本作品 576/576 汉字）。按 DESIGN-SPEC §2.5，汉字走系统 CJK 栈，该子集作为系统栈不可用时的离线兜底（实测可强制加载）",
+    "buildOutput": "16 个文件 / 414.0 KB",
     "fontLicenseFiles": "dist/fonts/OFL-*.txt ×5",
     "note": "无游戏 ROM、无商业游戏资源、无品牌视觉；界面与图标为原创设计；字体族名与 16-design-system/fonts/FONT-MANIFEST.json 一致"
   },
@@ -172,11 +177,12 @@
     "smoke": "npm run qa → scripts/qa-smoke.mjs",
     "smokeChecks": 19,
     "smokePassed": 19,
-    "fontCheck": "npm run check:fonts → 5/5 通过（族名 / 许可 / 汉字覆盖 565/565 / ASCII / 无 CDN）",
+    "fontCheck": "npm run check:fonts → 5/5 通过（族名 / 许可 / 汉字覆盖 576/576 / ASCII / 无 CDN）",
     "contrastCheck": "node scripts/check-contrast.mjs → 30 组配色对全部达标（正文 ≥4.5:1，图形与控件边界 ≥3:1）",
     "report": "qa/report.json",
-    "screenshots": "screenshots/",
-    "tokenAudit": "node 16-design-system/tools/ds-audit-tokens.mjs → 🟢 必备缺 0 / 必备值差 0 / 字体栈顺序问题 0"
+    "screenshots": "screenshots/（三张交付截图由 Ego 浏览器产出：桌面 1440×900 / 抽屉态 / 移动端 390×844 整页；npm run qa 的自测截图另存 qa/shots/，不覆盖交付截图）",
+    "tokenAudit": "npm run check:tokens → 9/9（V.11 顺序 / V.12 不自造 / V.13 无漂移 / 口径 A 必备 17 项 / 全量 129 项等值 / 降级隔离 / --ds-target-min 44px）",
+    "egoViewportCheck": "Ego 浏览器实测四档视口 1440×900 / 1280×800 / 768×1024 / 390×844：全部零横向溢出、零溢出元素；页脚 42/42/68/87px 且不压日志带；Tab 前 10 站 focus-visible 全中、焦点环全可见"
   },
-  "notes": "按 MASTER-UPDATE.md 要求，本作品为对公开案例工艺水准的原创改编，非原样复制。证据缺口：参考原帖为未登录状态下的公开页面快照，互动数字会随时间增长；「25 个模拟代理」为作者自述，未见公开源码，无法逐条核验。改版只换视觉语言，作品名 / 文案 / 内容 / 模型形态未变（K.6）。 v1.1.1：按 16 v1.0.1 的硬性条款调正了中文字族栈顺序与触摸目标阈值，并补齐必备令牌；汉字因此走系统黑体（跨平台字形不统一是 16 已声明可接受的代价），自托管 Noto Sans SC 子集降为离线兜底。"
+  "notes": "按 MASTER-UPDATE.md 要求，本作品为对公开案例工艺水准的原创改编，非原样复制。证据缺口：参考原帖为未登录状态下的公开页面快照，互动数字会随时间增长；「25 个模拟代理」为作者自述，未见公开源码，无法逐条核验。改版只换视觉语言，作品名 / 文案 / 内容 / 模型形态未变（K.6）。 v1.1.1：按 16 v1.0.1 的硬性条款调正了中文字族栈顺序与触摸目标阈值，并补齐必备令牌；汉字因此走系统黑体（跨平台字形不统一是 16 已声明可接受的代价），自托管 Noto Sans SC 子集降为离线兜底。 v1.1.2：按 16 与 15-supervisor 的最新要求接入统一外壳（.ds-shell / .ds-footer / .ds-skip）、落实字体栈三项专项（V.11/V.12/V.13，新增 npm run check:tokens 长期守卫）、把动效降级块移回令牌层并补齐 --ds-entry-duration；汉字因此走系统黑体（跨平台字形不统一是 16 已声明可接受的代价），自托管 Noto Sans SC 子集降为离线兜底。浏览器操作与交付截图一律走 Ego 浏览器（用户长期约定），本地构建自测不受影响。"
 }

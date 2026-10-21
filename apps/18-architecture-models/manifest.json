@@ -96,8 +96,36 @@
     "tokensFrom": "16-design-system/design-tokens.json",
     "landedAt": "src/ui/tokens.css",
     "spec": "16-design-system/DESIGN-SPEC.md",
+    "migrationNotes": "16-design-system/MIGRATION-NOTES.md",
     "prefix": "--ds-",
-    "note": "只读引用规范文件本身，令牌值在本目录逐组落地并注明依据小节"
+    "note": "只读引用规范文件本身，令牌值在本目录逐组落地并注明依据小节",
+    "conformance": {
+      "specVersion": "v1.0.1",
+      "tokenParity": "129/129 逐名逐值零差异",
+      "tokenExtras": [
+        "--ds-w-cjk-display",
+        "--ds-w-cjk-body",
+        "--ds-z-debug"
+      ],
+      "fontStackOrder": "系统 CJK 栈在前，Noto Sans SC 子集在后（§2.0.1 / §5.3）",
+      "targetMin": "44px",
+      "base": "构建期注入 import.meta.env.BASE_URL（实测 './'），不写死绝对根路径",
+      "langAttr": [
+        ":lang(zh) 字距归零 / 正文 1.85 / 标题 1.22 / word-break normal / overflow-wrap anywhere"
+      ],
+      "hreflang": [
+        "zh-CN",
+        "en",
+        "x-default"
+      ],
+      "touchTargets": "全部 ≥24px（AA）；主控件 ≥44px（AAA）；紧凑变体 .btn--sm",
+      "diagramClasses": [
+        ".ds-diagram",
+        ".ds-diagram__fill",
+        ".ds-diagram__stroke",
+        ".ds-diagram__dim"
+      ]
+    }
   },
   "models": [
     {
@@ -274,8 +302,9 @@
     "automation": "qa/qa.mjs",
     "automationCommand": "node qa/qa.mjs http://127.0.0.1:4318",
     "browser": "Chromium (Playwright, system Chrome channel)",
-    "assertions": 97,
-    "passed": 97,
+    "visualReviewBrowser": "ego-browser (screenshots/ego-*.png)",
+    "assertions": 125,
+    "passed": 125,
     "failed": 0,
     "screenshots": "screenshots/",
     "groups": [
@@ -293,6 +322,7 @@
       "2D 降级",
       "Pages 子路径",
       "改版一致性",
+      "16 号规范 v1.0.1 复核",
       "移动端"
     ]
   },

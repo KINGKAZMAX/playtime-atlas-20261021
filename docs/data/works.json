@@ -58,7 +58,7 @@
     "buildState": "built",
     "entryExists": true,
     "online": true,
-    "bytes": 10184796,
+    "bytes": 10186509,
     "artifacts": [
       {
         "label": "导出的 GLB 模型（9.1 MB）",
@@ -93,7 +93,7 @@
     "buildState": "built",
     "entryExists": true,
     "online": true,
-    "bytes": 423685
+    "bytes": 423787
   },
   {
     "id": "04-frostgap-voyager",
@@ -128,10 +128,10 @@
     "playable": true,
     "status": "pending",
     "qaState": "pending-reverify",
-    "buildState": "fallback",
+    "buildState": "built",
     "entryExists": true,
     "online": true,
-    "bytes": 676964
+    "bytes": 1157483
   },
   {
     "id": "06-museum-main",
@@ -161,7 +161,7 @@
     "buildState": "built",
     "entryExists": true,
     "online": true,
-    "bytes": 4893052
+    "bytes": 4959590
   },
   {
     "id": "07-museum-art",
@@ -191,7 +191,7 @@
     "buildState": "built",
     "entryExists": true,
     "online": true,
-    "bytes": 56351659
+    "bytes": 56353155
   },
   {
     "id": "08-era-origins",
@@ -220,7 +220,7 @@
     "buildState": "built",
     "entryExists": true,
     "online": true,
-    "bytes": 365147
+    "bytes": 366015
   },
   {
     "id": "09-era-arcade",
@@ -278,7 +278,7 @@
     "buildState": "built",
     "entryExists": true,
     "online": true,
-    "bytes": 685712
+    "bytes": 685818
   },
   {
     "id": "11-era-online",

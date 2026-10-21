@@ -1,0 +1,63 @@
+/* 余晖设计系统 / Afterglow Design System — 自托管字体
+ *
+ * 全部字体为 SIL Open Font License 1.1，已随包附许可文本。
+ * 运行期零外部请求：不引用任何 CDN。
+ *
+ * 字体文件来源：本项目 07-museum-art / 06-museum-core 已 vendored 的同一批 OFL 字体
+ * （仅读取复制，未修改原目录）。详见 FONT-MANIFEST.json。
+ *
+ * CJK 策略：拉丁字体仅覆盖拉丁与数字；中文优先使用系统字体栈（零字节、覆盖完整），
+ * 可选的 Noto Sans SC 子集作为渐进增强。
+ *
+ * ⚠️ 顺序规则（2026-10-21 修正，来源：05-museum-research 的基线错位实测）：
+ *   **覆盖完整的 CJK 族必须排在覆盖有限的子集之前**。CSS 字体回退按字符进行，
+ *   前面的 CJK 字体一旦缺字，浏览器会逐字回退到下一个族，同一段文字就混入两套
+ *   不同度量的字形 —— 表现为混排基线错位（全角标点与常用字不同源时最明显）。
+ *   故正确顺序为：拉丁自托管字体 → 完整覆盖的系统 CJK 栈 → Noto Sans SC 子集 → sans-serif。
+ *   本子集由 07-museum-art 按其自身用字生成，覆盖有限，不得排在系统栈之前。
+ */
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("./space-grotesk-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./inter-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./space-mono-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./space-mono-bold.woff2") format("woff2");
+}
+
+/* 可选渐进增强：Noto Sans SC 子集。仅当页面确有汉字时才真正用到。
+   注意：该子集由 07-museum-art 按其自身用字生成，覆盖范围有限；
+   若全站汉字超出覆盖，需重新子集化（见 FONT-MANIFEST.json → coverage）。
+   ⚠️ 使用约束：该子集**不得**排在任何覆盖完整的 CJK 字体族之前，
+      否则缺字会逐字回退，造成同段文字混排基线错位。 */
+@font-face {
+  font-family: "Noto Sans SC";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./noto-sans-sc-subset.woff2") format("woff2");
+}

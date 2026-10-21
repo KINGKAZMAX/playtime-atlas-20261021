@@ -118,6 +118,7 @@ const S = {
   'labs.prevStep':     ['上一步', 'Previous step'],
   'labs.nextStep':     ['下一步', 'Next step'],
   'labs.step':         ['第 {i} / {n} 步', 'Step {i} of {n}'],
+  'labs.stepIdle':     ['尚未开始装配', 'Not started'],
   'labs.selectPart':   ['点击模型中的构件查看说明，或从下方列表选择。',
                         'Click a part in the model, or pick one from the list.'],
   'labs.pick':         ['选择一个构件', 'Select a part'],

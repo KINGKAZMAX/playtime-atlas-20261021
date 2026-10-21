@@ -78,7 +78,22 @@ export class Annotations {
         this.onSelect(p.id);
       });
       this.host.append(el);
-      this.items.push({ el, part: p });
+      this.items.push({ el, part: p, w: 0, h: 0 });
+    }
+    this._measure();
+    // 字体加载完成后标签宽度会变化，重新量一次（字体多为本地自托管，通常已就绪）
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => this._measure()).catch(() => {});
+    }
+  }
+
+  /** 量取每个标签的真实尺寸 —— 避让必须用真实包围盒，不能用固定估值。 */
+  _measure() {
+    for (const it of this.items) {
+      const w = it.el.offsetWidth;
+      const h = it.el.offsetHeight;
+      if (w > 0) it.w = w;
+      if (h > 0) it.h = h;
     }
   }
 
@@ -111,26 +126,44 @@ export class Annotations {
         el.style.display = 'none';
         continue;
       }
-      placed.push({ el, x, y });
+      placed.push({ el, x, y, ax: x, ay: y, w: it.w || 120, h: it.h || 34 });
     }
 
-    // 2) 简单避让：同屏标签互相压叠时依次下移，保证每个名字都读得到
+    // 2) 贪心避让：只沿**竖直方向**挪动（保持与构件同一条竖线，读者一眼可对应）。
+    //    先试下方、再试上方，取第一个既不与已放置标签相撞、也不出界的位置；
+    //    挪动过的标签会画一条竖向引出线（见 .anno::before）。
+    const GAP = 6;
     const done = [];
     for (const p of placed.sort((a, b) => a.y - b.y)) {
-      for (let guard = 0; guard < 12; guard++) {
-        const clash = done.find(
-          (q) => Math.abs(q.x - p.x) < 104 && Math.abs(q.y - p.y) < 34,
+      const halfW = p.w / 2 + 2;
+      const halfH = p.h / 2 + 2;
+      let finalY = p.y;
+      let dir = '';
+      for (const step of [0, 1, -1, 2, -2, 3, -3, 4, -4, 5, -5, 6, -6, 7, -7, 8, -8]) {
+        const cand = p.y + step * (p.h + GAP);
+        if (cand - halfH < 0 || cand + halfH > height) continue;
+        const box = { x0: p.x - halfW, x1: p.x + halfW, y0: cand - halfH, y1: cand + halfH };
+        const clash = done.some(
+          (q) => box.x0 < q.x1 && box.x1 > q.x0 && box.y0 < q.y1 && box.y1 > q.y0,
         );
-        if (!clash) break;
-        p.y = clash.y + 34;
+        if (clash) continue;
+        finalY = cand;
+        dir = step === 0 ? '' : (step > 0 ? 'down' : 'up');
+        break;
       }
-      done.push(p);
+      p.y = finalY;
+      p.lead = Math.max(0, Math.abs(finalY - p.ay) - halfH);
+      p.dir = dir;
+      done.push({ x0: p.x - halfW, x1: p.x + halfW, y0: finalY - halfH, y1: finalY + halfH });
     }
 
     // 3) 落位
     for (const p of placed) {
       p.el.style.display = '';
       p.el.style.transform = `translate3d(${p.x.toFixed(1)}px, ${p.y.toFixed(1)}px, 0) translate(-50%, -50%)`;
+      p.el.style.setProperty('--anno-lead', `${p.lead.toFixed(1)}px`);
+      if (p.dir) p.el.dataset.lead = p.dir;
+      else p.el.removeAttribute('data-lead');
     }
   }
 }

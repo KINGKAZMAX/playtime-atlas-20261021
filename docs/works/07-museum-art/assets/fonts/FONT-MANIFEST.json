@@ -1,6 +1,6 @@
 {
   "$comment": "回响电玩馆 / PLAYTIME ATLAS — 可自托管字体清单。全部为 SIL Open Font License 1.1，许可原文随包附于本目录。运行期零外部 CDN 请求。",
-  "generatedAt": "2026-10-21T15:14:14.827Z",
+  "generatedAt": "2026-10-21T18:21:10.142Z",
   "version": "1.1.0",
   "policy": {
     "selfHostedOnly": true,
@@ -205,5 +205,13 @@
       }
     ],
     "fontsIdentical": true
+  },
+  "facesParity": {
+    "source": "16-design-system/fonts/fonts.css",
+    "note": "逐条比对 @font-face 的（族名 / font-style / 字重 / 文件映射）；族名与字重档位不一致会导致混用时字体跳变。",
+    "identical": true,
+    "faceCount": 5,
+    "onlyMine": [],
+    "onlyDs": []
   }
 }

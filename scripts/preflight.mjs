@@ -104,6 +104,39 @@ step('凭据类文件检查', () => {
   return true;
 });
 
+/* 5) 主页发布检查 + buildState 不得为 unavailable */
+step('主页发布检查（gallery-check）', () => {
+  const res = run('node', ['scripts/gallery-check.mjs']);
+  const out = res.stdout.trim().split('\n').filter(Boolean).pop() || '';
+  try {
+    const data = JSON.parse(out);
+    if (data.ok) {
+      process.stdout.write(`   ✓ gallery-check 通过（${(data.checks || []).length} 项）\n`);
+    } else {
+      process.stderr.write(`   ✗ gallery-check 未通过：${JSON.stringify(data.errors || []).slice(0, 600)}\n`);
+      return false;
+    }
+  } catch {
+    process.stderr.write(`   ! gallery-check 输出无法解析：${out.slice(0, 300)}\n`);
+    return false;
+  }
+  // buildState 不得出现 unavailable（否则大厅会出现不可用入口）
+  try {
+    const works = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs', 'data', 'works.json'), 'utf8'));
+    const bad = works.filter((w) => w.buildState === 'unavailable' || (w.online === false && w.buildState !== 'fallback'));
+    if (bad.length) {
+      process.stderr.write(`   ✗ 存在 buildState 异常的作品：${bad.map((w) => `${w.id}(${w.buildState})`).join(', ')}\n`);
+      return false;
+    }
+    const states = works.map((w) => w.buildState).join(',');
+    process.stdout.write(`   ✓ ${works.length} 件公开作品的 buildState 正常（${states}）\n`);
+  } catch (e) {
+    process.stderr.write(`   ! 无法读取 docs/data/works.json：${e.message}\n`);
+    return false;
+  }
+  return true;
+});
+
 /* 汇总 */
 process.stdout.write('\n────────────────────────────\n');
 if (problems.length) {

@@ -18,6 +18,7 @@
 | 浏览器实机验收 | `node tools/qa/browser-check.mjs`（Chrome headless） |
 | 令牌一致性自检 | `node tools/qa/token-check.mjs`（拷贝件 sha256 一致 + 与 design-tokens.json 逐项等价比对 + 机制保真） |
 | 字体覆盖率实测 | `node tools/qa/font-coverage.mjs --rendered`（Noto Sans SC 子集对本作品用字的覆盖率，带阳性/阴性对照组） |
+| 四档视口无障碍自检 | `node tools/qa/viewport-a11y-check.mjs`（1440/1280/768/390：横向溢出、对比度 ≥4.5、焦点环、Tab、两档触摸目标） |
 | 部署 | 由 `14-publish` 统一负责，本目录**不含**任何部署动作 |
 
 ---
@@ -152,7 +153,7 @@ npm run verify:sources   # 核验展品来源链接可达性
 │     ├─ icons.js         程序化图标
 │     └─ Overlay.js       通用覆盖层
 ├─ tests/               33 项 Node 内置测试
-├─ tools/qa/            浏览器实机验收（独立依赖，不进 dist）：browser-check / overlap-check / token-check / font-coverage
+├─ tools/qa/            浏览器实机验收（独立依赖，不进 dist）：browser-check / overlap-check / token-check / font-coverage / viewport-a11y-check
 └─ screenshots/         实机截图
 ```
 

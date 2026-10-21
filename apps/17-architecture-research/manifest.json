@@ -144,8 +144,8 @@
     "src/": "成果页源码（构建用；产物在 dist/）",
     "dist/": "成果页构建产物（**应发布**，由 14-publish 以 page 类型接入）"
   },
-  "fileCount": 93,
-  "totalBytes": 4172312,
+  "fileCount": 100,
+  "totalBytes": 4488204,
   "files": [
     {
       "path": "INTERACTION-BRIEF.md",
@@ -168,8 +168,8 @@
         "13",
         "14"
       ],
-      "bytes": 14270,
-      "sha256": "f753b4184f6d323d90290d6a0df4146558991543e0507ef0e2255195cac4da8d"
+      "bytes": 15440,
+      "sha256": "c76f53292cb313e3cb88773a8f8003999de691be0589ae0e5f43fbc6ede09e07"
     },
     {
       "path": "PROMPT.md",
@@ -196,8 +196,8 @@
         "13",
         "14"
       ],
-      "bytes": 22978,
-      "sha256": "d6e6690b682626b48c50e0cb1cb359672ab9604dd257cd600c26ed48aa1766b8"
+      "bytes": 24131,
+      "sha256": "7c03fe7042ed1fdef30a5c5a30df3824f1396c1f29e5abebb6ca011d0d760230"
     },
     {
       "path": "README.md",
@@ -209,8 +209,8 @@
         "13",
         "14"
       ],
-      "bytes": 22099,
-      "sha256": "766f01f2807f1b6b86e232875f7cb946e919657ff3eda573925446e9f3edc705"
+      "bytes": 26972,
+      "sha256": "d89e8da02f7c44fb53603dd6347cee8a1f4fb95b472558263844500d14f03534"
     },
     {
       "path": "REFERENCE-NOTES.md",
@@ -219,8 +219,8 @@
         "16",
         "19"
       ],
-      "bytes": 17753,
-      "sha256": "02ad0e0053e9770e2162ab550bf7f77b155eb3ee63721662391a1cb044b7eed4"
+      "bytes": 21771,
+      "sha256": "7ea4a3a2fe936d6c5f8a7d304f87845a033d7db9e2f7b83ebca70243b3e2d79f"
     },
     {
       "path": "REFERENCES.md",
@@ -252,8 +252,8 @@
         "13",
         "14"
       ],
-      "bytes": 24012,
-      "sha256": "34fde012d94705560da57b5824f90ba94df14b8d8636a45b473125eda97b747a"
+      "bytes": 31877,
+      "sha256": "ffa4ad085fa39c66db6e7b844f039f3e838634b0ba6565b24571f335e37cad9e"
     },
     {
       "path": "TASK.md",
@@ -307,8 +307,8 @@
       "consumers": [
         "13"
       ],
-      "bytes": 12379,
-      "sha256": "233582b0274500da3c6091d3e33a3abf4debf0898e54cabf6018084cb224af91"
+      "bytes": 14154,
+      "sha256": "d7507e225e275d09f86f39a1b00a9a116f46d064c1cae45b8be47d8d58af7dc4"
     },
     {
       "path": "dist/assets/ds/components.css",
@@ -482,22 +482,13 @@
       "sha256": "c15f257baa72e4f15ce1a3ba9559eec8102229425ac1f85b5ecfecd3b45959d5"
     },
     {
-      "path": "evidence/browser-test-report.json",
-      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
-      "consumers": [
-        "13"
-      ],
-      "bytes": 26919,
-      "sha256": "6b8ab85330333f331ffcd2a620969257d1c4b184b6af56a73ec403bb6d240452"
-    },
-    {
       "path": "evidence/catalog-desktop-1440x900-dark.png",
       "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
       "consumers": [
         "13"
       ],
-      "bytes": 111789,
-      "sha256": "7f830626366bf4dc8f93821ff4f292389a445b94ecd970eb201723f0337d90db"
+      "bytes": 110229,
+      "sha256": "9088bd56d33283cf0c46caeb7fe2468a5251e620e5684032d0bea97b6d6c8718"
     },
     {
       "path": "evidence/catalog-desktop-1440x900-light.png",
@@ -505,8 +496,8 @@
       "consumers": [
         "13"
       ],
-      "bytes": 111708,
-      "sha256": "d63239f7301c5babb3e2836181640adf8b19711c37e8f7673cced46bdb9a97e5"
+      "bytes": 111546,
+      "sha256": "128acac798cd2b7a974aff11b6a3d050d8b07adf696546d9b943903c8d7ec64b"
     },
     {
       "path": "evidence/catalog-mobile-390x844-light.png",
@@ -514,8 +505,8 @@
       "consumers": [
         "13"
       ],
-      "bytes": 126435,
-      "sha256": "561cda99d61aa1c6c2dc453c6d741e9c9f8db308e6930748bb5315f691c8e00f"
+      "bytes": 58201,
+      "sha256": "4fe218947c73a5cec555ade22afea4ab4dfdae576cb58da6dbaafd0006bbef48"
     },
     {
       "path": "evidence/catalog-tablet-820x1180-light.png",
@@ -523,8 +514,80 @@
       "consumers": [
         "13"
       ],
-      "bytes": 138906,
-      "sha256": "95a9e7f2eed234fd66af89dc4dcb0d5241ad4d5b39589348db7816fe765630de"
+      "bytes": 137061,
+      "sha256": "5b5291d3860c69fbc7187ac66d600839506a10e89dd352e62522d6701ab85d5a"
+    },
+    {
+      "path": "evidence/ego-interactions/catalog-interactions.json",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 2744,
+      "sha256": "f48606ceb4c2fbd5f374d73680121787d70e7b0281559cca6b7c8fd4d6590828"
+    },
+    {
+      "path": "evidence/ego-interactions/screenshots/catalog-interactions-dark-1440x900.png",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 110229,
+      "sha256": "9088bd56d33283cf0c46caeb7fe2468a5251e620e5684032d0bea97b6d6c8718"
+    },
+    {
+      "path": "evidence/ego-ref/olek-si-viewport-metrics.json",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 21239,
+      "sha256": "fc9909812c58c2e962c3f760168485e3e1fa513a0abb8a545a437e1232be2e32"
+    },
+    {
+      "path": "evidence/ego/17-architecture-catalog.json",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 15160,
+      "sha256": "96832fdc53354c91c81c7f5c8fbdc65b92facd2ce0799bff1d99f5bc4f91e86e"
+    },
+    {
+      "path": "evidence/ego/screenshots/17-architecture-catalog-1280x800.png",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 104293,
+      "sha256": "db9cf1080fc013ec60ebfe799adbd1c8dd76ca804b0cecf2db09f1fe8d1db48e"
+    },
+    {
+      "path": "evidence/ego/screenshots/17-architecture-catalog-1440x900.png",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 110229,
+      "sha256": "9088bd56d33283cf0c46caeb7fe2468a5251e620e5684032d0bea97b6d6c8718"
+    },
+    {
+      "path": "evidence/ego/screenshots/17-architecture-catalog-390x844.png",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 55408,
+      "sha256": "382f29dd05d7bbc13054878a9865e45d764c4268e862e40b5f990f691605e1fd"
+    },
+    {
+      "path": "evidence/ego/screenshots/17-architecture-catalog-768x1024.png",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 119253,
+      "sha256": "ef2833201bb4bc5486677f53f5518e024b7134e373e38903878d21058ce7f4de"
     },
     {
       "path": "glossary.json",
@@ -616,8 +679,8 @@
         "14",
         "13"
       ],
-      "bytes": 32345,
-      "sha256": "fd3c87f89004b255ed6c0e69d078c1d29a26df6f1ec516dade5e5274c0ced028"
+      "bytes": 34793,
+      "sha256": "6d2bcad5a60417b9e46a3cc6ab2f734b990d83b3698d22612c8c461afec1078a"
     },
     {
       "path": "research-ref/README.md",
@@ -679,8 +742,8 @@
       "consumers": [
         "16"
       ],
-      "bytes": 1230,
-      "sha256": "46c4daf093ed7ad70bcc2283f8fe5b4a1020ba34b4ad7601b573d5dada823d19"
+      "bytes": 1260,
+      "sha256": "1c9b779566628d86dc1ed30af736f543010afe67e7b9d043a6dd0cb68d13ec81"
     },
     {
       "path": "screenshots/olek-si-desktop-1440x900.png",
@@ -688,17 +751,17 @@
       "consumers": [
         "16"
       ],
-      "bytes": 44965,
-      "sha256": "609a26f904cda68d122763c93e4db6bd22156da44a10f85a6c9d3237277a8d1d"
+      "bytes": 51822,
+      "sha256": "2f3cc2f30e33abf63db416a3e80937521c4d6faa1691dec0d6ad740a7dbb9a89"
     },
     {
-      "path": "screenshots/olek-si-desktop-hero-browser.png",
+      "path": "screenshots/olek-si-desktop-hero-2560x1440.png",
       "role": "olek.si 实拍截图（内部观察证据，不发布）",
       "consumers": [
         "16"
       ],
-      "bytes": 147003,
-      "sha256": "ef365af542df51417d5738e11fcb4a19d83480451141a9abb050f7954a381a3d"
+      "bytes": 56404,
+      "sha256": "fca587b994854f14936d1d5a02fcf2f95fb40c6a8b3d6325cd2b4a7b1e8e4de3"
     },
     {
       "path": "screenshots/olek-si-desktop-tall-1440x2600.png",
@@ -706,8 +769,8 @@
       "consumers": [
         "16"
       ],
-      "bytes": 85013,
-      "sha256": "1e1961c95ac100f2361d6b80e44a157b61e39f2aa6f608bf06147abc205fdc15"
+      "bytes": 45955,
+      "sha256": "943df83e0e3e730a83690ea7aa62736920d7fccf62138421c08caf17fe18ff0d"
     },
     {
       "path": "screenshots/olek-si-mobile-390x844.png",
@@ -715,8 +778,8 @@
       "consumers": [
         "16"
       ],
-      "bytes": 51373,
-      "sha256": "c1203f6abc51cb52fe1bfef5235559f0a974bfcef8016f81670248cac319e1b2"
+      "bytes": 22506,
+      "sha256": "88f057ce13c893504f6c1727b1ae6b0af6a3fc6a40d7600fda8a06aa5306e164"
     },
     {
       "path": "screenshots/olek-si-tablet-820x1180.png",
@@ -724,17 +787,8 @@
       "consumers": [
         "16"
       ],
-      "bytes": 42417,
-      "sha256": "742ca50d02277f7dadd7f1f70f1931b135f9871ba0cc971b34a8965776418bc9"
-    },
-    {
-      "path": "scripts/browser_test.mjs",
-      "role": "可复现脚本",
-      "consumers": [
-        "—"
-      ],
-      "bytes": 34658,
-      "sha256": "f2abcefcff740d8094d2808b2e15af25573251775a7b5ef5617851b6cd8be34c"
+      "bytes": 41440,
+      "sha256": "2488dea014876a3f37d747c0289a00d927758214c7fb4c5accdd7149914c27e5"
     },
     {
       "path": "scripts/build_catalog.py",
@@ -769,8 +823,8 @@
       "consumers": [
         "—"
       ],
-      "bytes": 16904,
-      "sha256": "c84fcaf76b3316e45179872e2d5a9aaaac5b363b7924a16df074397ed4a203ba"
+      "bytes": 17140,
+      "sha256": "8c87352af11f40d3ab978dd61e0c0dbdc20cb1a712023658062f6d97f0bfe6de"
     },
     {
       "path": "scripts/build_qa.py",
@@ -778,8 +832,8 @@
       "consumers": [
         "—"
       ],
-      "bytes": 16992,
-      "sha256": "16a3f2f81856753dbb9431030e62a7a9e310cd2997ee3ec73dde91662f47b1d0"
+      "bytes": 19987,
+      "sha256": "55edef6b369e0820af5453caf94b88b4d3e700624d9041e475cdc1bfe36f4d88"
     },
     {
       "path": "scripts/build_unesco_verified.py",
@@ -800,22 +854,34 @@
       "sha256": "62e873a461ca47211c2742bc26bc2bcdcabf204b8f2a8d540f935a26cbfec795"
     },
     {
-      "path": "scripts/capture.sh",
-      "role": "headless Chrome 截图脚本（内置重试退避）",
+      "path": "scripts/ego_capture.mjs",
+      "role": "Ego 浏览器截图工具（**唯一**网页截图路径）",
       "consumers": [
-        "—"
+        "16",
+        "13"
       ],
-      "bytes": 2512,
-      "sha256": "8d1ac4e81e0cda625faa399c8de46ef3ac89e17d124abfdc35131b1c8ad213e8"
+      "bytes": 7282,
+      "sha256": "213c62bc80f967af32bac977a7dc4eaab566077d52225f4801f5cc78e9a08e2b"
     },
     {
-      "path": "scripts/capture_cdp.mjs",
-      "role": "可复现脚本",
+      "path": "scripts/ego_interactions.mjs",
+      "role": "成果页交互类验收（**走 Ego 浏览器**）",
       "consumers": [
-        "—"
+        "13",
+        "14"
       ],
-      "bytes": 3906,
-      "sha256": "e961b02496b07ca35b309151981cceec979c86b92655d705822fb2d7a5aa93e2"
+      "bytes": 18138,
+      "sha256": "5aa30d82e76d9bf47838226c3a7373e524f8b07d3610252c8c2cccd0e77fc999"
+    },
+    {
+      "path": "scripts/ego_ref_metrics.mjs",
+      "role": "参考站多视口几何实测（**走 Ego 浏览器**）",
+      "consumers": [
+        "16",
+        "19"
+      ],
+      "bytes": 8386,
+      "sha256": "57e5a739222d5d829ba8b79452696d396aa818f412863b0f0a034fea2f3b9b8e"
     },
     {
       "path": "scripts/extract_tokens.js",
@@ -868,8 +934,8 @@
       "consumers": [
         "—"
       ],
-      "bytes": 1537,
-      "sha256": "9e390a2a6af957659e3beec83bccf49ede05558b46eaccfcdc51829599c997d5"
+      "bytes": 2589,
+      "sha256": "385c127dca8b53e8612f6ace2190a64980cc706a7bb2c6cc3c0920f91519d07c"
     },
     {
       "path": "scripts/validate_catalog.py",
@@ -878,8 +944,8 @@
         "13",
         "14"
       ],
-      "bytes": 31653,
-      "sha256": "d706936603d6249237e112e86facf81261ae2a48e385104a206b6ae10a86dbaa"
+      "bytes": 40009,
+      "sha256": "eeeac8b0e9d83cbfec7fb424bf5ed7cb6da6078d6a67b1f0b0c452e26add287a"
     },
     {
       "path": "scripts/verify_unesco.js",

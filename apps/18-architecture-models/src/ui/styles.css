@@ -153,6 +153,18 @@ button { font-family: inherit; color: inherit; }
 }
 .anno:hover { border-color: var(--ds-accent); }
 .anno:focus-visible { outline: none; box-shadow: var(--ds-focus-ring); }
+/* 竖向引出线：标签被避让挪开时，从标签边缘连回构件锚点 */
+.anno::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  height: var(--anno-lead, 0px);
+  background: var(--ds-line-strong);
+  pointer-events: none;
+}
+.anno[data-lead="down"]::before { top: 100%; }
+.anno[data-lead="up"]::before { bottom: 100%; }
 .anno__main { font-weight: var(--ds-w-medium); }
 .anno__sub {
   font-family: var(--ds-font-mono);

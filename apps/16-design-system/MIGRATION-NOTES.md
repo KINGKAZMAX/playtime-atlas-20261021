@@ -204,7 +204,7 @@ import './styles/tokens.css';
 
 ### 2.0 逐作品迁移清单（00—19，**每件作品一行**）
 
-> **本表为 2026-10-21 23:3x 对各目录 CSS 的只读实测结果**（本轮重测 · **源码级口径**，排除 `dist/` 等构建目录——见 §2.0.1「产物需重建」）。
+> **本表为 2026-10-22 01:1x 对各目录 CSS 的只读实测结果**（本轮重测 · **源码级口径**，排除 `dist/` 等构建目录——见 §2.0.1「产物需重建」）。
 > **判定口径（与此前已发出的通知保持一致）**：
 > - **口径 A · 必备 17 项** —— 与 `tools/validate-tokens.mjs` 的 `mustHave` **同一份**清单。**达标与否以此为准**。
 > - **口径 B · 全量差异** —— 与规范 129 个根级令牌的完整差异，**仅作参考**，不作为派单依据（许多目录按 §1.1-A2 把主题色放进 `[data-ds-theme="dark"]` 块，或保留语义别名层，全量差异属正常）。
@@ -212,43 +212,46 @@ import './styles/tokens.css';
 > **可复现**：`node tools/ds-audit-tokens.mjs`（零依赖、只读、支持 `--json`）。
 
 > ⚠️ **时效性警告（15-supervisor 第 3 节指出，已采纳）**
-> **本清单会随作者执行而失效。** 快照时间 = **2026-10-21 23:3x**；每位作者改完自己的 token 层，**本表即刻过期**。
+> **本清单会随作者执行而失效。** 快照时间 = **2026-10-22 01:1x**；每位作者改完自己的 token 层，**本表即刻过期**。
 > → **请以自测结果为准，不要以本表为准**：
-> `node tools/validate-tokens.mjs`（令牌，含 **V.11–V.13** 字体栈三项）+ `node tools/verify-preview.mjs`（页面）。
+> `node tools/validate-tokens.mjs`（令牌，含 **V.11–V.13** 字体栈三项）+ **Ego 浏览器**跑共享验收工具（页面，见 §9.1 第 ② 步）。
 > → 本表**只用于**：(a) 派单前的初筛；(b) 变更后确认**没有新增**问题。
 > → **不要**把本表当验收结论。验收由 13-qa-curation 按 §9.1 **现场实测**做出。
 > → 已发生过的失效实例（留档以说明本表为何带时间戳）：
 > **10-era-console** 21:50 版记为「尚未接入（0 个 `--ds-*`）」→ 22:5x 实测**已接入 129 个且必备全达标**；
 > **09-era-arcade** 21:50 版记为「暗色主题需改由 `[data-ds-theme="dark"]` 给出」→ 22:5x 实测**已整改完成**（暗色组 20 项已在该块内）；
 > **01-web / 03-interaction / 08 / 12 / 17** 亦在本轮内完成整改或重构。
+> **04-spaceflight** 23:3x 版记为「缺 4 必备 + 命名分叉 + 顺序错」→ **01:1x 实测已全达标**（`--ds-duration-*`→`--ds-dur-*` 已改名、`--ds-target-min: 44px` 已补、字体栈已合规）；
+> **10-era-console** 23:3x 版记为「顺序待改」→ **01:1x 实测顺序已合规**；
+> **18-architecture-models** 23:3x 版记为「缺 2 令牌」→ **01:1x 实测必备已全达标**；
+> **19-architecture-atlas** 23:3x 版记为「🔴 生成区缺 `:root` 包裹」→ **01:1x 实测已修复**（`src/styles/tokens.css:25` 已有 `:root {`）；
+> **09-era-arcade** 01:1x 正式回执确认 `--ds-entry-translate: 24px`（`:124`）与 `--ds-target-min: 44px`（`:155`）**均已补齐并投入使用**（旧表第 ②③ 项已失效）。
 > **教训**：本表半衰期为**分钟级**，任何跨轮次引用都必须带时间戳。
 
-| 目录 / 作品 | 本地 token（实测） | → 规范 token | 当前状态（**23:3x 实测**） | 需人工判断 |
+| 目录 / 作品 | 本地 token（实测） | → 规范 token | 当前状态（**01:1x 实测**） | 需人工判断 |
 | --- | --- | --- | --- | --- |
 | **00-research** | 已有完整 `--ds-*`（129 个），**取值与规范逐名一致** | — | 🟢 **完全一致** | 无须改取值。降级块写法已核验正确（`1ms` 只出现在 `prefers-reduced-motion` 内）。**字体栈顺序已合规**。仅需确认 §9 自测通过 |
 | **01-web**（千色仪） | 已重构为 `public/assets/ds/tokens.css`（129 个 `--ds-*`），**取值与规范逐名一致** | — | 🟢 **完全一致** | **23:3x 实测：全量缺 0、额外 0、顺序合规、必备 17 项全达标。** 原「2 值 + 1 缺 + 顺序错」**全部已解决**——`--ds-ink-faint` 已为 `#6E655E`、`--ds-ink-soft` 已为 `#59514B`、`--ds-target-min` 已补。语义别名层写法正确，请保留 |
 | **02-model**（渊甲拾遗者） | `--ds-*`（129 个）走**暗色主题**；另有 `--accent` `--abyss` `--acc-08/16/28/45` | `--accent`→`--ds-jade`；`--abyss`→`--ds-bg` | 🟢 **取值合法**（20 处差异全是暗色主题组取值，与本系统暗色主题逐值相同） | ① 暗色主题请改由 `[data-ds-theme="dark"]` 选择器给出，勿写死在 `:root`（§1.1-A2）——**实测仍是根级写死暗色值**（`src/styles/tokens.css:21`），浅色覆盖写在 `[data-ds-theme="light"]` 块（`:196`）；② `--acc-08/16/28/45` 用 `color-mix(--ds-accent)` 派生，**保留**；③ 画布内部色板**不动**（§4.2） |
 | **03-interaction** | `--ds-*`（113 个）+ `--accent-ink` | `--accent-ink`→`--ds-accent-ink` | 🟢 **完全一致** | **23:3x 实测：必备 17 项全达标、顺序合规。** 原列的「缺 `--ds-canvas-hud-bg` / `--ds-canvas-scrim`」与「`--ds-target-min: 24px` → 44px」**均已解决**。仅需确认自有 CSS 仍不声明任何 `--ds-*`（V.12） |
-| **04-spaceflight** | `--ds-*`（130 个）暗色主题；**另有 `--ds-duration-*` 命名分叉** | `--ds-duration-*` → **`--ds-dur-*`** | 🟡 **缺 4 必备 + 命名分叉 + 顺序错** | ① `--ds-duration-instant/fast/base/slow/reveal`（5 个）**改名**为 `--ds-dur-*`（值本身正确，只是名字与本系统分叉，会导致 §7 降级块对不上）；② 补 4 项必备：`--ds-dur-base`、`--ds-rail-width`、`--ds-rail-inset`、`--ds-target-min: 44px`；③ `--ds-button-height-md:40px` `--ds-button-icon-only:40px` 建议提到 **44px**（只改高度，勿动布局）；④ **Tab 焦点红线**：不得 `preventDefault` 吞 Tab（§4.1）；⑤ **字体栈顺序仍为旧序** → 见 §2.0.1 || **05-museum-research**（策展目录） | 原 `--ds-space-7/8/34` `--ds-radius-2/3` `--ds-color-*` 命名空间**已清理**；现有 `--ds-*`（129 个）**取值逐名一致** | — | 🟢 **完全一致**（命名空间冲突已解决 + 取值全对 + **字体栈顺序已合规**） | 无须改取值。仅需确认自有变量已全部改为非 `--ds-` 前缀（避免 §0 风险 A 复发）。**其 `.ds-shell` 作用域内的本地调序可回退**，改为直接消费修正后的上游 token（见 §5.3） |
+| **04-spaceflight** | `--ds-*`（129 个）暗色主题；**`--ds-dur-*` 已改名到位** | — | 🟢 **完全一致** | **01:1x 实测：上版「缺 4 必备 + 命名分叉 + 顺序错」已全部解决** —— `--ds-dur-instant/fast/base/slow/reveal` 已改名（`assets/ds/tokens.css:128-132`）、`--ds-target-min: 44px` 已补（`:173`）、字体栈顺序已合规（`:57-58`）。仅余**人工判断**：① `--ds-button-height-md:40px` `--ds-button-icon-only:40px` 是否提到 **44px**（只改高度，勿动布局）；② **Tab 焦点红线**：不得 `preventDefault` 吞 Tab（§4.1）；③ §7 降级块与 §9 自测 |
 | **06-museum-core**（回响电玩馆） | `--ds-*`（130 个）**取值逐名一致**；另有 61 个 `--atlas-*` 变量，**已全部改为语义别名层**（`--atlas-semantic-accent: var(--ds-accent)`） | — | 🟢 **已收拢 · 源码已修** | `--atlas-color-signal-500` 等**已无直取值**，双 token 并存与强调色不一致问题**已解决**。`--atlas-*` 保留作**语义别名层**（写法正确）。**23:3x 实测：源码 `src/styles/tokens.css` 字体栈顺序已合规（22:37 修好）**；但 `public/data/tokens.css` 与 `public/exhibits/**` 共 10 个文件仍含旧序——**全部是生成产物**（`build-tokens.mjs` 生成 / `sync-exhibits.mjs` 复制），**不要手改**，跑 `npm run sync` + `npm run build` 即可（详见 §2.0.1「产物需重建」）。另需确认 §4.1 三条既有缺陷（搜索不过滤 / 390px 溢出 511px / 字体 404） |
 | **07-museum-art**（美术资产包） | 已有完整 `--ds-*`（129 个）**取值逐名一致**；另有 61 个 `--atlas-*` 别名变量指向 `--ds-*` | — | 🟢 **完全一致** | 无须改取值。字体已与本系统一致（Space Grotesk/Inter/Space Mono），**保留**。仅需确认 §4.1 的构建不因非致命错误 exit null |
 | **08-era-origins** | 已有完整 `--ds-*`（129 个）**取值逐名一致** | — | 🟢 **完全一致** | 取值无须改。仅需确认：① §7 降级块写法；② 键盘仅在容器持有焦点时驱动玩法，守卫覆盖**所有**生效路径（§4.1）；③ 画布内部色板不动。**23:3x 实测：字体栈顺序已合规**（原「死代码」口径见 §2.0.1，仍保留） |
-| **09-era-arcade** | `--ds-*`（129 个）暗色主题；`--ds-entry-translate-y` | `--ds-entry-translate-y` → `--ds-entry-translate` | 🟢 **取值合法**（20 处差异全是暗色主题组，**已按 §1.1-A2 整改完成**） | ① **已整改**：暗色主题现已写在 `[data-ds-theme="dark"]` 块（`src/styles/tokens.css:180`），**不再写死在 `:root`**，符合 §1.1-A2；② 仍需补一个同名同义的 `--ds-entry-translate: 24px`（或 `--ds-entry-translate-y` 改名二选一），避免与 §8.2 入场规范分叉；③ `--ds-target-min` 仍缺，若要 44px 见 §5.1 |
-| **10-era-console** | 已接入 `--ds-*`（129 个，浅色 + 暗色两套） | — | 🟡 **已接入 · 必备全达标 · 顺序待改** | **上版记为「尚未接入（0 个 `--ds-*`）」已失效**（22:5x 实测已接入）。仍需：① **字体栈顺序为旧序**（`Noto Sans SC` 在系统栈前）→ 见 §2.0.1，**这是本专项仅剩的 2 个待改目录之一**；② `--coral`/`--mint`/`--sky`/`--sun`/`--violet` 是**游戏色板**，属画布内部 → **豁免不统一**（§4.2）；③ 已知缺陷：badge 与标题重叠 66% → **结构层解决，禁止用 z-index 掩盖**（§4.1） |
+| **09-era-arcade** | `--ds-*`（129 个）暗色主题；`--ds-entry-translate` 已对齐 | — | 🟢 **完全一致** | **01:1x 实测 + 该目录正式回执**：上版第 ②③ 项**已失效** —— `--ds-entry-translate: 24px`（`src/styles/tokens.css:124`）与 `--ds-target-min: 44px`（`:155`）**均已补齐并投入使用**；暗色主题写在 `[data-ds-theme="dark"]` 块，符合 §1.1-A2；字体栈顺序合规。**该目录已把 V.11/V.12/V.13 并入自有 `tests/token-consistency.mjs`（`npm run test:tokens`）**，且四种破坏均做过反例验证。口径 B 的 20 处差异全是暗色主题组，属正常 |
+| **10-era-console** | 已接入 `--ds-*`（129 个，浅色 + 暗色两套） | — | 🟢 **完全一致** | **01:1x 实测：上版「顺序待改」已解决** —— `assets/ds/tokens.css:57-58` 字体栈顺序已合规（本目录不随包分发 Noto 子集）。仍需：① `--coral`/`--mint`/`--sky`/`--sun`/`--violet` 是**游戏色板**，属画布内部 → **豁免不统一**（§4.2）；② 已知缺陷：badge 与标题重叠 66% → **结构层解决，禁止用 z-index 掩盖**（§4.1）；③ §7 降级块与 §9 自测 |
 | **11-era-online** | 已有完整 `--ds-*`（128 个）**取值逐名一致** + 语义别名 `--danger` `--data` `--dawn` `--deep` | `--data`/`--dawn`→`--ds-accent`；`--deep`→`--ds-bg-sunken` | 🟢 **完全一致** | 无须改取值。仅需确认 §7 降级块与 §9 自检；语义别名层写法正确，**保留** |
 | **12-era-modern** | 已有完整 `--ds-*`（129 个）**取值逐名一致** + 别名 `--bad` `--cyan-soft` `--amber-soft` | `--bad`→`--ds-danger` | 🟢 **完全一致** | 无须改取值。仅需确认 §7 降级块与 §9 自检；**保留自研字体 JetBrains Mono 须自托管 + 登记 `LICENSES.md`**，否则改用本系统等宽族。**23:3x 实测：字体栈顺序已合规**（22:44 修好） |
 | **13-qa-curation** | 验收方，非接入方 | — | — | 按 §9.1 复核；脚本见 §9 末 |
 | **14-publish**（作品大厅） | `release/docs/assets/hall.css` 的 22 变量（`--ink` `--ink-2` `--ink-3` `--paper` `--paper-2` `--signal` `--signal-dim` `--cyan` `--violet` `--green` `--amber` `--text` `--text-dim` `--text-faint` `--line` `--line-2` `--radius` `--mono` `--sans` `--maxw`） | 逐项见 §2.1 对照表 | 🔴 **尚未接入（0 个 `--ds-*`）** | ① `--violet` **删除**（全站只允许一个强调色）；② `--cyan` → `--ds-jade`/`--ds-info` 二选一；③ `--maxw:1320px` → `--ds-max-width:1280px`；④ 发布时**排除 `16-design-system/evidence/`**（§2.1 末） |
 | **17-architecture-research** | 已新建 `src/catalog-page/assets/ds/tokens.css`（129 个 `--ds-*`），**取值与规范逐名一致** | — | 🟢 **已新建并接入** | **23:3x 实测：上版记「待新建（尚无 CSS）」已失效**——目录已建、必备 17 项全达标、顺序合规。仅需确认 §7 降级块与 §9 自检 |
-| **18-architecture-models**（结构模型） | 已有 `--ds-*`（118 个）**取值逐名一致** | — | 🟡 **缺 2 令牌** | 补 `--ds-target-min: 44px`（必备 17 项中唯一缺项）与 `--ds-base: "/playtime-atlas-20261021/"`。**23:3x 实测：字体栈顺序已合规**（原「+ 顺序错」已解决） |
-| **19-architecture-atlas**（双语建筑科普主站） | `src/styles/tokens.css` 已有 `--ds-*`，但**生成区缺 `:root` 包裹** | — | 🔴 **接入中 · 生成区块无效** | ⚠️ **实测发现真缺陷**：`src/styles/tokens.css` 的 `DS-TOKENS:BEGIN` 生成区**只有裸声明、缺 `:root {` 包裹**（且有一行重复注释）→ **浏览器会忽略这整段浅色令牌**，页面将回落到暗色组或无令牌状态。请用 `node scripts/sync-ds-tokens.mjs` 重新生成并确认 `:root {` 存在（该文件本轮仍在被修改中，状态可能变化，以你自测为准）。其余边界见 **§11**；双语切换需同时满足 §5 的 `:lang(zh)` 与 `hreflang` 规则 |
+| **18-architecture-models**（结构模型） | 已有 `--ds-*`（132 个）**取值逐名一致** | — | 🟢 **完全一致** | **01:1x 实测：上版「缺 2 令牌」已解决** —— `--ds-target-min: 44px` 已补（`src/ui/tokens.css:215`）。⚠️ **更正上版一处错误**：上版要求补 `--ds-base: "/playtime-atlas-20261021/"` 是**错的** —— 规范规定 `--ds-base` **默认为 `""`**（DESIGN-SPEC §10.2），基准路径由入口注入或构建期 `base` 注入，本目录保持 `--ds-base: ""`（`:226`）**才是正确的**。口径 B 的 3 个额外项属正常 |
+| **19-architecture-atlas**（双语建筑科普主站） | `src/styles/tokens.css` 已有 `--ds-*`（129 个），生成区 `:root` 包裹**已修复** | — | 🟢 **完全一致** | **01:1x 实测：上版「🔴 生成区缺 `:root` 包裹」已解决** —— `src/styles/tokens.css:25` 已有 `:root {`，必备 17 项全达标、顺序合规。其余边界见 **§11**；双语切换需同时满足 §5 的 `:lang(zh)` 与 `hreflang` 规则 |
 
-> **一句话（2026-10-21 23:3x 实测 · 源码级口径）**：本批 13 个作品里，**00 / 01 / 02 / 03 / 05 / 06 / 07 / 08 / 09 / 11 / 12 / 17 已达标**（12 个），
-> **10 差 1 处**（字体栈顺序），
-> **04 差 4 个必备令牌 + 命名分叉 + 顺序**，
-> **18 差 2 个令牌**，
-> **19 接入中（生成区缺 `:root` 包裹）**，**14 尚未接入**。
-> **字体栈顺序**：真缺陷 **0 个**（8 个全修完），潜在风险 **2 个**（**04 / 10**）待改——见 §2.0.1。
+> **一句话（2026-10-22 01:1x 实测 · 源码级口径）**：本批 16 个已接入 `--ds-*` 的作品（00—12 / 16—19）**口径 A 全部达标**——`ds-audit-tokens.mjs` 扫描的 20 个目录里 **17 个达标**（13-qa-curation 为验收方、15-supervisor 为监督方，均非接入方），
+> **只剩 `14-publish` 尚未接入**（0 个 `--ds-*`）——它是**大厅样板**，由 14-publish 本人接入。
+> **字体栈顺序**：真缺陷 **0 个**，潜在风险 **0 个**（**04 / 10 已修好**）——见 §2.0.1。
+> **口径 B（仅参考）**：02 / 09 各 20 处差异全是暗色主题组；06 缺 `--ds-font-display-src` + 额外 2；18 额外 3 —— 均属正常。
 > **所有目录的 `dist/` 产物均可能未随源码刷新** → 各自重跑构建，见 §2.0.1「产物需重建」。
 
 #### 2.0.1 字体栈顺序专项（v1.0.1 新增 · 2026-10-21 · **独立于上表**）
@@ -292,12 +295,12 @@ import './styles/tokens.css';
 > **为什么改完等于「子集不再生效」是好事**：系统栈覆盖完整，汉字恒走系统黑体，子集只在系统栈整体不可用时兜底。子集在本系统里**不是**主力（详见 `DESIGN-SPEC.md` §2.5）。
 > **不要**用「把子集删掉」替代调序——那会让「系统栈不可用」的场景失去兜底。
 
-**⚠️ 潜在风险（子集当前不可用，暂无害，但顺序仍需对齐）— 现存 2 个目录**
+**⚠️ 潜在风险（子集当前不可用，暂无害，但顺序仍需对齐）— 现存 0 个目录 ✅**
 
 | 目录 | 源文件 | 说明 | 状态 |
 | --- | --- | --- | --- |
-| **04-spaceflight** | `src/styles/tokens.css:67` / `:69` | 注释明确「本目录不随包分发该子集」 | ⏳ **待改** |
-| **10-era-console** | `src/styles/tokens.css:60` / `:61` | 已接入 `--ds-*`；不随包分发子集 | ⏳ **待改** |
+| ~~04-spaceflight~~ | `assets/ds/tokens.css:57` / `:58`（**旧表记的 `src/styles/tokens.css` 路径已过时**） | 不随包分发该子集 | ✅ **已修**（01:1x 实测顺序合规） |
+| ~~10-era-console~~ | `assets/ds/tokens.css:57` / `:58`（**旧表记的 `src/styles/tokens.css` 路径已过时**） | 已接入 `--ds-*`；不随包分发子集 | ✅ **已修**（01:1x 实测顺序合规） |
 | ~~01-web~~ | `src/styles/tokens.css` | 23:08:40 补进 woff2 后曾升级为真缺陷，随后修好 | ✅ **已修** |
 | ~~08-era-origins~~ | `assets/ds/tokens.css:47` / `:49` | `@font-face` 被注释（「本目录未采用」），无 woff2 实体 | ✅ **已修**（顺序仍合规；**死代码口径保留**，见上方说明） |
 | ~~12-era-modern~~ | `src/styles/tokens.css:62` / `:64` | 不随包分发子集 | ✅ **已修**（22:44） |
@@ -321,9 +324,10 @@ import './styles/tokens.css';
 
 **通用建议**：任何目录改完 `src/` 下的 token 层后，**必须重跑自己的构建**，否则线上仍是旧值。
 
-**为什么仍要改这 5 个**：它们一旦将来放开子集（或从别处复制到子集文件），**立刻**中招且无人记得原因。一次性对齐，全库零隐患。
+> **01:1x 复测**：潜在风险 **2 个 → 0 个** —— 04 与 10 的 token 层已迁到 `assets/ds/tokens.css`（旧表记的 `src/styles/tokens.css` 路径**已过时**），字体栈顺序实测均已合规。
+> **为什么当初要改这 5 个（留档）**：它们一旦将来放开子集（或从别处复制到子集文件），**立刻**中招且无人记得原因。一次性对齐，全库零隐患。
 
-**`02-model` / `19-architecture-atlas`**：不涉及（前者无子集、后者尚未接入）。
+**`02-model` / `19-architecture-atlas`**：不涉及（前者无子集；后者 01:1x 实测已接入且顺序合规）。
 
 **新增验收项**：见 §9 的 **V.11** 与 §9.1 的**第 ④ 步**。
 
@@ -760,7 +764,7 @@ import './styles/tokens.css';
 | **禁止**的做法 | ❌ 为满足 44px 把紧凑按钮放大到 44px，导致原布局被撑破。**若空间不足，正确做法是保留 32px 紧凑变体**，而不是放大 |
 | 落地方式 | 紧凑位置用 `<button class="ds-btn ds-btn--sm">`；主位置用 `<button class="ds-btn ds-btn--primary">` |
 
-> 本系统自带校验脚本 `tools/verify-preview.mjs` 已按此口径实现：
+> 共享验收工具 `../tools/ego-qa/run.mjs`（走 Ego 浏览器）已按此口径实现：
 > `isPrimary = (含 ds-btn 或 ds-iconbtn) && !含 ds-btn--sm` —— **44px 只对主控件判定**，24px 对全部判定。
 > 作者可直接复制该判定逻辑到自己的自测。
 
@@ -930,7 +934,8 @@ import './styles/tokens.css';
 > **V.12 与 V.13 来自 05-museum-research 的实践**（其自检脚本 `scripts/ds_duration_audit.py` 的 A.11 / A.12 判据）。前者防「各目录各自照抄一份字体栈」（正是本轮字体栈缺陷扩散的根因），后者防「规范与实现分叉」——**值相同但顺序不同**也算漂移。
 > **V.11—V.13 三项已由 `16-design-system/tools/validate-tokens.mjs` 实现**，各目录可直接复制该脚本执行，无需自行重写。
 
-**本目录已提供零依赖参考实现**：`tools/validate-tokens.mjs`、`tools/verify-preview.mjs`（只用 Node 内置模块 + 本机 Chrome 的 CDP，可直接复制进 13 的 harness）。
+**本目录已提供零依赖参考实现**：`tools/validate-tokens.mjs`（令牌，纯本地）+ **共享 Ego 验收工具** `../tools/ego-qa/run.mjs`（页面，走 Ego 浏览器；13-qa-curation 已建好并全批复用，见 `../tools/ego-qa/MIGRATION.md`）。
+> ⚠️ 本目录自带的 `tools/verify-preview.mjs`（自启本机无头 Chrome）**已作废并加硬门禁**（默认 exit 2）——「本地 `file://` 自测豁免」是过宽解读，约定禁的是**浏览器入口**而非目标类型。**不要复制它。**
 
 ### 9.1 13-qa-curation 的复核方式（作者据此自测）
 
@@ -939,7 +944,7 @@ import './styles/tokens.css';
 | 步 | 动作 | 判定 |
 | --- | --- | --- |
 | ① **令牌一致性** | 解析作者目录的 `:root`，与 `16-design-system/design-tokens.json` 逐名比对 | 值必须**完全相等**（大小写不敏感、去空格）。深色主题目录（02/04/06/09）比对**暗色主题组**取值 |
-| ② **页面机械检查** | 用 `tools/verify-preview.mjs` 的同款 CDP 脚本跑作者页面 | 四档视口 1440/1280/768/390：`scrollWidth ≤ innerWidth`；对比度 12 项；触摸目标 24/44 两档；reduced-motion 双路径；控制台 0 错误；外部请求 0 |
+| ② **页面机械检查** | 用共享 Ego 验收工具跑作者页面（`node ../tools/ego-qa/run.mjs --url <本地预览地址> --space "<目录名> ego-qa" --label <目录名> --out "$PWD/evidence/ego"`） | 四档视口 1440/1280/768/390：`scrollWidth ≤ innerWidth`；对比度 12 项；触摸目标 24/44 两档；reduced-motion 双路径；控制台 0 错误；外部请求 0 |
 | ③ **红线核对** | 人工核对 §4 的 K.1–K.6 与 §4.1 缺陷表 | 画布内部**未被改动**（diff 检查 canvas 相关 CSS）；焦点环未被 `outline:none` 移除 |
 | ④ **字体栈三项** | ① **顺序**（V.11）：解析 `:root` 的 `--ds-font-display` / `--ds-font-text`，取 `Noto Sans SC` 与各系统 CJK 族的下标 | `Noto Sans SC` 下标**必须大于**所有系统 CJK 族下标（排在系统栈**之后**）。违反即 ❌ 不通过——这是**规范源头**已修正的硬性项（`DESIGN-SPEC.md` §2.5），曾导致 8 个目录集体出现中文基线错位<br>② **不自造**（V.12）：扫描自有 CSS 的 `font-family` 声明 | 只能引用 `var(--ds-font-*)`；出现字面 CJK 字体族列表即 ❌（说明该目录自己照抄了一份字体栈）<br>③ **无漂移**（V.13）：把 `tokens.css` 的字体族序列与 `design-tokens.json → typography.family` 逐项比较 | 序列必须**逐项相等（含顺序）**；值同序不同也算漂移 |
 
@@ -955,10 +960,10 @@ import './styles/tokens.css';
 
 > **13 可直接复用的零依赖脚本**（只用 Node 内置模块 + 本机 Chrome 的 CDP，无 npm 依赖）：
 > `16-design-system/tools/validate-tokens.mjs`（令牌一致性 + **V.11/V.12/V.13** 字体栈三项）、
-> `16-design-system/tools/verify-preview.mjs`（页面机械检查，含对比度/触摸目标/reduced-motion/无外部请求断言）。
+> **共享工具** `../tools/ego-qa/run.mjs`（页面机械检查，含对比度/触摸目标/reduced-motion/无外部请求断言 + 渲染字体 + 破图检测；走 Ego 浏览器）。
 > 复制进 13 的 harness 即可，**不必**自行重写。
 > `16-design-system/tools/ds-audit-tokens.mjs`（全库 token 层只读审计，`--json` 可选）、
-> `16-design-system/tools/selftest-verify-preview.mjs`（**验证 verify-preview 自身行为**的 6 条断言）。
+> `16-design-system/tools/check-browser-entry.mjs`（**浏览器入口约定守卫**：扫本目录是否有人另起浏览器 / import playwright / 引用外部站点）+ `selftest-check-browser-entry.mjs`（其负向测试）。
 
 #### harness 与产品缺陷必须分开记账（2026-10-22 由 05-museum-research 提议，已采纳）
 
@@ -975,14 +980,17 @@ import './styles/tokens.css';
 > 脚本形态 `ego-browser nodejs <<'EOF' … EOF`；每个目标**复用一个 TaskSpace**，保留用户标签页与登录状态，**不清 cookies**）。
 > **禁止**另起 Playwright / Chromium / Chrome 或任何其他浏览器路径；Ego 故障时**诊断并如实报告**，不静默换浏览器。
 > 此前用本地无头 Chrome 做的验收**仍然有效**，但**今后**的线上验收应改用 Ego。
-> ⚠️ 注意：`16-design-system/tools/verify-preview.mjs` 加载的是**本地 `file://` 样例页**、不访问任何站点，属**本地自测**，**不受**此约定约束。
+> ⚠️ **更正（2026-10-22 01:5x，16-design-system 自查）**：此前这里写「`verify-preview.mjs` 加载本地 `file://` 样例页、不访问任何站点 → 属本地自测，**不受**此约定约束」——**这个豁免是过宽解读，现已作废**。
+> 约定禁的是**浏览器入口**，不是目标是不是网站：**自启无头 Chrome 本身就是「另起 Chromium / Chrome」**。
+> 13-qa-curation 已实测 Ego 可直接加载 `file://` 页面（`00-research/index.html` 验证通过），**技术上不存在豁免必要**。
+> → 现在统一走 Ego；本目录 `verify-preview.mjs` 已**加硬门禁（默认 exit 2）**，不再作为任何验收依据。
 
-**为什么必须分开**：本批的 `verify-preview.mjs` 曾因「`Page.navigate` 后固定 `sleep(1500)` 就读 `getComputedStyle`」产生**假失败**——样式表未解析完时读到空值，被误判为「系统 prefers-reduced-motion 生效」失败，且**首跑 FAIL / 复跑 PASS**。若直接采信首跑结果，一个本来通过的目录会被判成 ❌。
+**为什么必须分开**：本批的 `verify-preview.mjs`（**已作废**）曾三次产生**假失败**，全部是**探针自己的问题**、不是页面缺陷：① 「`Page.navigate` 后固定 `sleep(1500)` 就读 `getComputedStyle`」→ 样式表未解析完时读到空值，**首跑 FAIL / 复跑 PASS**；② 「单次求值走默认 45s」把 8s 总上限撑破；③ **最隐蔽的一条**：「导航提交前的求值仍在**旧文档**执行，而旧文档同样满足就绪判据」→ 状态被打在旧文档上、新文档覆盖它 → **隔离跑 6 次全过、并发负载下偶发 FAIL**。三条在 **Ego 迁移后依然适用**（`ego-qa/MIGRATION.md` §6 已列「页面未加载完就读到空值」）——所以**共用验收工具，而不是各写各的**。若直接采信探针首跑结果，一个本来通过的目录会被判成 ❌。
 
 > 口径与 13 对 03 / 04 / 12 的判定一致，也与 05 的 `blockedByHarness` / `classification: harness-timeout` 一致。
 
-**作者自测的最短路径**：改完 → 跑 `node tools/validate-tokens.mjs` → 跑 `node tools/verify-preview.mjs` → 两项 0 error 再交。
-**若怀疑是假失败**：先跑 `node tools/selftest-verify-preview.mjs`（确认脚本自身无回归），再**原样重跑** `verify-preview.mjs`；两次结果不一致时，以**重跑结果**为准并记录。
+**作者自测的最短路径**：改完 → 跑 `node tools/validate-tokens.mjs` → 跑共享 Ego 验收工具（`node ../tools/ego-qa/run.mjs --url <本地预览地址> --space "<目录名> ego-qa" --label <目录名> --out "$PWD/evidence/ego"`）→ 两项 0 error 再交。
+**若怀疑是假失败**：**先原样重跑**同一命令；两次结果不一致时，以**重跑结果**为准并记录，并**区分探针故障与产品缺陷**（探针超时记 `harness-timeout` / `blockedByHarness`，**不计产品失败**）。⚠️ **不要再自写 CDP / Playwright 脚本**——统一用共享工具，避免各自踩一遍「等错对象」「视口被放大 1/0.9」这类坑。
 
 
 ---
@@ -1028,4 +1036,4 @@ import './styles/tokens.css';
 
 ## 12. 给作者的一句话入口
 
-> **打开 `16-design-system/preview.html` 看成品 → 打开 `design-tokens.json` 取值 → 用「旧变量 → 新 token」重定向表（第 2 节）替换自己的 `:root` → 把外壳换成 `.ds-*` 类 → 动完用 `tools/verify-preview.mjs` 的同款检查自测。游戏画面内部不要动。**
+> **打开 `16-design-system/preview.html` 看成品 → 打开 `design-tokens.json` 取值 → 用「旧变量 → 新 token」重定向表（第 2 节）替换自己的 `:root` → 把外壳换成 `.ds-*` 类 → 动完用共享 Ego 验收工具自测（`node ../tools/ego-qa/run.mjs …`，见 §9.1 第 ② 步）。游戏画面内部不要动。**

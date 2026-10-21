@@ -10,13 +10,19 @@
 | 项 | 值 |
 | --- | --- |
 | 操作系统 | macOS（darwin 25.2.0, arm64） |
-| 浏览器 | Google Chrome 155.0.8059.85（`--headless=new`，真实 Chromium 内核） |
-| 驱动方式 | 自研 CDP 客户端（`tests/lib/harness.mjs`，零第三方依赖） |
+| 浏览器 | **Ego 浏览器**（`/Users/mekzenx2/.local/bin/ego-browser`，ego-lite；指南 v2.1.0）——用户真实浏览器，复用登录态与标签页 |
+| 驱动方式 | `ego-browser nodejs`（`tests/lib/ego-harness.mjs` 调起 + `tests/ego/*.mjs` 在 Ego 运行时内执行） |
+| 浏览器启动路径 | **零** ——本目录不 spawn 任何浏览器，无 playwright / puppeteer / 无头 Chrome / 原生 CDP |
 | Node | v24.13.0 |
 | 构建 | vite 5.4.11 |
 | 静态服务 | Node 内置 `http` 伺服 `dist/`（端口由系统分配，用完即关） |
+| 证据 | `evidence/ego/`（各套件 JSON 报告 + 每档截图） |
 
-> 未使用 `13-qa-curation/qa-harness` 做判定性验收：其 `probe-09.mjs` 用 playwright-core 统计 `pageerror`，
+> **为什么不用本机无头 Chrome**：按用户 2026-10-22 长期约定，所有浏览器操作一律走 Ego 浏览器；
+> 且 Ego 能直接加载本地 `file://` 页面，**不存在「本地自测豁免」的技术必要**。
+> 改造前的自研 CDP 客户端（`tests/lib/harness.mjs`）已整体删除。
+>
+> 仍**未**使用 `13-qa-curation/qa-harness` 做判定性验收：其 `probe-09.mjs` 用 playwright-core 统计 `pageerror`，
 > 适合做「有没有异常」的粗筛；但本任务需要**方向敏感的输入断言**与**修复前后异常数对比**，
 > 因此自建了可复现、可控时长的夹具。harness 仅作只读参考，未做任何修改。
 

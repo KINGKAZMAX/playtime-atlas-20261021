@@ -28,10 +28,43 @@ function hreflangAlternates() {
   };
 }
 
-export default defineConfig({
+/**
+ * 运行时基准路径 `--ds-base`
+ * （16-design-system/MIGRATION-NOTES.md §1 接入四步第 ④ 步、§6 Pages 子路径资源拼接）
+ *
+ * 规范要求由**构建**注入，不得写死：
+ *   构建产物 → "/playtime-atlas-20261021/"（批次根，作品页在其下 works/<id>/）
+ *   本地预览 → ""（空串即当前目录）
+ * 本馆页面内的资源一律走相对路径（base: './'），--ds-base 只是把规范变量交出去，
+ * 供 14-publish 的大厅等以绝对基准拼接时使用。
+ *
+ * 注入时机与 hreflang 相同：order: 'post'，在 Vite 的资源处理之后，
+ * 避免被当成待处理资源。
+ */
+function dsBaseVar(command) {
+  const base = command === 'build' ? '/playtime-atlas-20261021/' : '';
+  return {
+    name: 'ptatlas-ds-base',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html) {
+        return html.replace(
+          '</head>',
+          [
+            '  <!-- 运行时基准路径（16 MIGRATION-NOTES §1④ / §6）：构建注入，不写死 -->',
+            `  <style>:root { --ds-base: "${base}"; }</style>`,
+            '</head>',
+          ].join('\n'),
+        );
+      },
+    },
+  };
+}
+
+export default defineConfig(({ command }) => ({
   // 相对基址：兼容 GitHub Pages 子路径、iframe 嵌入与本地 file 预览
   base: './',
-  plugins: [hreflangAlternates()],
+  plugins: [hreflangAlternates(), dsBaseVar(command)],
   server: {
     host: '127.0.0.1',
     port: 4326,
@@ -57,4 +90,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));

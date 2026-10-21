@@ -16,10 +16,7 @@
   "qaReport": "qa/report.json",
   "screenshots": "screenshots/",
   "runtimeDependencies": [
-    "three@0.186.1",
-    "@fontsource/space-grotesk@5.3.0",
-    "@fontsource/inter@5.3.0",
-    "@fontsource/space-mono@5.3.0"
+    "three@0.186.1"
   ],
   "devDependencies": [
     "vite@7.1.7",
@@ -48,7 +45,7 @@
     "note": "TOP3.md 建议的改编作品为「NIMBUS·7 桌面气象站」；本作品未采用该规格，另做「CHROMA S1 · 千色仪」，七项强制维度互不相同，详见 DIFF-vs-SOURCE.md 第 6 节。"
   },
   "notes": "按 MASTER-UPDATE.md 要求，本作品为对公开案例工艺水准的原创改编，非原样复制；作品名、文案、字体、配色、布局与产品形态均重新设计。2026-10-21 起接入批次统一设计系统（16-design-system / 余晖），只改视觉语言，不改内容。证据缺口：参考原帖的转发数与收藏数未能核到，已在 SOURCES.md 标注。2026-10-21 23:xx 按 16-design-system/MIGRATION-NOTES.md 完成设计系统接入三步（assets/ds/ 资产 + --ds-base + ds-shell 外壳类），令牌层整体替换为 16 权威值（中文字体栈按 §5.3 调序），字体改用 16 vendored 的 OFL 实体文件。",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "fonts": {
     "display": "Space Grotesk（OFL-1.1，随 16-design-system/fonts vendored 的实体文件自托管）",
     "text": "Inter（OFL-1.1，同上）",
@@ -106,9 +103,15 @@
     "d1OverlapAudit": "qa/d1-final.json",
     "d1OverlapAuditScroll0": "qa/d1-scroll0.json",
     "d1MeasureLib": "qa/lib/overlap-measure.mjs",
-    "notes": "D1 文字压盖：与 13-qa-curation 同判定口径（字形行盒求交 + 祖先 overflow 裁剪）。13 的测量位置（滚动 0）desktop 0 / mobile 0；多滚动位置采样（更严）真实压盖 desktop 0 / mobile 0，余下均为 DS §4.2 规定的粘性顶栏压滚动内容，单独归类不计。 设计系统接入自检：npm run qa:ds → 18/18（V.1 四档视口零溢出 / V.2 对比度最低 4.68:1 / V.3 129 个 --ds-* 逐名逐值一致 / V.4 无重复声明 / V.5 焦点环与 Tab 序列 / V.6 触摸目标 24·44 两档 / V.7 降级 / V.8 零外部请求 / V.9 字体本地 / V.11 中文字体栈顺序）。",
+    "notes": "D1 文字压盖：与 13-qa-curation 同判定口径（字形行盒求交 + 祖先 overflow 裁剪）。13 的测量位置（滚动 0）desktop 0 / mobile 0；多滚动位置采样（更严）真实压盖 desktop 0 / mobile 0，余下均为 DS §4.2 规定的粘性顶栏压滚动内容，单独归类不计。 设计系统接入自检：npm run qa:ds → 21/21（V.1 四档视口零溢出 / V.2 对比度最低 4.68:1 / V.3 129 个 --ds-* 逐名逐值一致 / V.4 无重复声明 / V.5 焦点环与 Tab 序列 / V.6 触摸目标 24·44 两档 / V.7 降级 / V.8 零外部请求 / V.9 字体本地 / V.11 中文字体栈顺序 / V.11b -apple-system 位置 / 派单三项 token / 派单红线 Noto 子集保留 / G.1–G.7 通用项）。",
     "dsAssertions": 21,
-    "dsReport": "qa/ds-report.json"
+    "dsReport": "qa/ds-report.json",
+    "independentAudit": {
+      "tool": "../16-design-system/tools/ds-audit-tokens.mjs --root <批次根>",
+      "result": "01-web 🟢 必备缺 0 · 必备值差 0 · 声明 129 · 缺 0 · 值差 0 · 额外 0 · 字体栈顺序问题 0",
+      "sandboxRuns": "validate-tokens.mjs errors 0 / warnings 1（规范允许）；verify-preview.mjs errors 0 / warnings 0 → PASS（16 整目录复制到 /tmp 沙箱运行，仓库内 16 目录零写入）",
+      "byteIdentity": "public/assets/ds/{tokens.css,components.css,fonts/**} 与 16-design-system 权威源 diff 无差异"
+    }
   },
   "licenses": "LICENSES.md"
 }

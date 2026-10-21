@@ -24,7 +24,7 @@
 | D1 文字重叠复核 | ✅ **桌面 3 → 0、移动 2 → 0**（与 13 同口径、直接测生产构建；详见 §2.5） |
 | console error | ✅ 0（dev 态）· 0（生产包，除 1 条**故意**旧名 404 探测的浏览器回声） |
 | uncaught exception | ✅ 0 |
-| GLB 导出 | ✅ 9,135,972 bytes，GLB 2.0，含 `asset.extras` 教学示意声明元数据 |
+| GLB 导出 | ✅ 约 9.14 MB，GLB 2.0，含 `asset.extras` 教学示意声明元数据 |
 | 静态构建 | ✅ `npm run build` → `dist/`，**内含 GLB**（见 §3） |
 | 子路径部署 | ✅ 在 `/playtime-atlas-20261021/works/02-abyss-salvager/` 下实测通过 |
 | 交付文档 | ✅ TASK / STATUS / README / QA / SOURCE / CHANGELOG / LICENSES / **RESTYLE-MAP** / manifest.json |
@@ -385,8 +385,8 @@ URL 怎么拼、发布清单怎么写、能不能真的部署」这四件事。
 | 问题 | 结论 |
 |---|---|
 | **迁移后模型所在路径** | 源：`public/models/abyss-salvager-ac-vii.glb`（唯一真源）<br>构建：`dist/models/abyss-salvager-ac-vii.glb`<br>线上：`works/02-abyss-salvager/models/abyss-salvager-ac-vii.glb` |
-| **dist 内是否含 GLB** | **含**。`npm run build` 后 `dist/models/` 恰好 **1 份** GLB（9,135,972 bytes），与 `works.json` 声明的 artifact 路径**逐字一致**；旧名 legacy 不再出现 |
-| **子路径下请求状态码** | 随包 GLB **200**（9,135,972 bytes，magic=`glTF` v2 declared 一致）；模型索引 `assets.manifest.json` **200**；页面自身对 GLB 的请求也是 **200**；旧名 `mech-sandworm-1312m.glb` **404**（已废弃，刻意验证）；其余资源**无 404**、无网络失败、无 console error、无异常 |
+| **dist 内是否含 GLB** | **含**。`npm run build` 后 `dist/models/` 恰好 **1 份** GLB（约 9.14 MB），与 `works.json` 声明的 artifact 路径**逐字一致**；旧名 legacy 不再出现 |
+| **子路径下请求状态码** | 随包 GLB **200**（约 9.14 MB，magic=`glTF` v2 declared 一致）；模型索引 `assets.manifest.json` **200**；页面自身对 GLB 的请求也是 **200**；旧名 `mech-sandworm-1312m.glb` **404**（已废弃，刻意验证）；其余资源**无 404**、无网络失败、无 console error、无异常 |
 | **id 字段结论** | `manifest.json` 的 `id` = **`02-abyss-salvager`**，与 `works.json` 一致，避免 sync-apps 合并时 `...existing` 覆盖造成 id 冲突 |
 | **改版依据** | `16-design-system` 的 `RESTYLE-SPEC.md` / `MIGRATION-NOTES.md` / `design-tokens.json`；**只读引用未复制**，映射表见 `RESTYLE-MAP.md` |
 | **声明三处落点** | 模型内 3D 铭牌 · 说明页 `notes.html` · 导出 GLB `asset.extras`（唯一真源 `src/model/disclaimer.js`） |
@@ -455,7 +455,7 @@ URL 怎么拼、发布清单怎么写、能不能真的部署」这四件事。
 | 网格对象 | 548 |
 | 顶点 | 248,706 |
 | 材质槽 | 9 |
-| GLB 体积 | 9,135,972 bytes（8.71 MB） |
+| GLB 体积 | 约 **9.14 MB**（程序化几何的顶点浮点末位差异使每次重新导出有 ±数十字节浮动，精确值与 sha256 以 `public/models/assets.manifest.json` 为准） |
 | 默认体长读数 | 760 m（与几何严格一致） |
 | 默认体径读数 | Ø 41.7 m |
 | QA 断言 | **24 / 24 通过**（开发态）· **13 / 13 通过**（生产包子路径态）· **13 / 13 通过**（WebGL 降级态）· **D1 压盖 0 / 0**（两视口） |

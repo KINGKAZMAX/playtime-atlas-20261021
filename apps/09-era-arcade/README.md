@@ -66,11 +66,15 @@ npm start       # 等价于 npm run dev
 ```bash
 npm test               # 逻辑验收（32 项，零依赖 Node）
 npm run test:tokens    # 令牌一致性（129 个变量逐名对照 16 规范暗色组）+ 字体栈三项（V.11 顺序 / V.12 不自造 / V.13 无漂移）
-npm run test:compliance # 设计系统机械合规（17 项：溢出 / 对比度 / 画布 HUD 对比度 / 焦点 / 触摸目标 / 降级）
-npm run test:probe     # 13 探针契约（10 项，按 13 的 D3 / D5 判定口径复刻）
-npm run test:e2e       # 浏览器实机验收（48 项，真实 Chromium + 生产构建）
+npm run test:compliance # 设计系统机械合规（批次共享 Ego 工具 + 本目录 16 口径：溢出 / 对比度 / 画布 HUD 对比度 / 焦点 / 触摸目标 / 降级 / 面板态）
+npm run test:probe     # 13 探针契约（11 项，按 13 的 D3 / D5 判定口径复刻）
+npm run test:e2e       # 浏览器实机验收（48 项）
 npm run test:audio     # 音频运行时验收（7 项，统计未捕获异常）
 npm run verify         # build + 以上六项（退出码 0，正常退出不挂起）
+
+> 浏览器相关套件一律走**用户的 Ego 浏览器**（`ego-browser nodejs`），
+> 本目录**不启动任何浏览器**，也不含 playwright / puppeteer / 无头 Chrome 路径。
+> 验收证据落在 `evidence/ego/`（JSON 报告 + 每档截图）。
 ```
 
 自动化验收会自启临时静态服务器与 headless Chrome，**用完即关闭**，不占用 4329 端口、不留常驻进程。
@@ -131,13 +135,20 @@ npm run verify         # build + 以上六项（退出码 0，正常退出不挂
 ├── tests/
 │   ├── logic.test.mjs      # 逻辑验收（32 项）
 │   ├── token-consistency.mjs   # 令牌一致性（V.3 / V.4，对照 16 规范暗色组）+ 字体栈三项（V.11 / V.12 / V.13）
-│   ├── ds-compliance.mjs   # 设计系统机械合规（V.1 / V.2 / V.5 / V.6 / V.7）
+│   ├── ds-compliance.mjs   # 设计系统机械合规（驱动：批次共享工具 + 本目录 16 口径）
 │   ├── probe-contract.mjs  # 13 探针契约自测（D3 / D5 口径）
-│   ├── browser-smoke.mjs   # 浏览器实机验收（48 项，CDP 驱动真实 Chromium）
+│   ├── browser-smoke.mjs   # 浏览器实机验收（48 项）
 │   ├── audio-runtime-check.mjs  # 音频运行时验收（7 项）
-│   └── lib/harness.mjs     # 共享夹具：CDP 客户端 / 静态服务器 / Chrome 启动 / 彻底收尾
+│   ├── lib/ego-harness.mjs # Ego 驱动：静态服务器 / 调用 Ego / 读报告（不启动任何浏览器）
+│   └── ego/                # Ego 侧脚本（在 ego-browser nodejs 运行时里执行）
+│       ├── _lib.mjs        # 视口 / 导航 / 点击 / 按键 / 事件收集 + 页面内断言
+│       ├── smoke.mjs       # 端到端冒烟（48 项）
+│       ├── probe.mjs       # 探针契约（11 项）
+│       ├── audio.mjs       # 音频运行时（7 项）
+│       └── compliance.mjs  # 16 规范口径（V.1 / V.2 / V.5 / V.6 / V.7 + 面板态）
 ├── fonts/                  # 4 份 OFL 1.1 许可全文（随包分发要求）
 ├── screenshots/            # 验收截图（01–06）
+├── evidence/ego/           # Ego 验收证据：JSON 报告 + 每档截图
 ├── dist/                   # 生产构建产物（base './'，可直接部署）
 ├── manifest.json           # 交付元数据
 ├── SOURCES.md              # 纪年面板逐条来源与核验记录

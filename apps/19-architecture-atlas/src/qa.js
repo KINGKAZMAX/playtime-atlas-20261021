@@ -30,6 +30,27 @@ export async function runRuntimeQA() {
   const qa = (sel) => Array.from(document.querySelectorAll(sel));
   const lang = () => document.documentElement.lang;
 
+  // Uncaught errors are invisible to the DOM, so a click handler that throws
+  // looks exactly like a button that does nothing. Collect them for the
+  // whole run: the assembly play button threw on its first tick once, and
+  // the only symptom was "the model never moved".
+  const runtimeErrors = [];
+  const noteError = (msg) => runtimeErrors.push(String(msg));
+  window.addEventListener('error', (e) => noteError(e.message || e.error || 'error'));
+  window.addEventListener('unhandledrejection', (e) => noteError(e.reason || 'rejection'));
+
+  /**
+   * Guard against a whole class of rendering bug: an element being handed to
+   * `text:` instead of being inserted as a child, which renders the literal
+   * string "[object HTMLOutputElement]". One real instance of this shipped
+   * once (the assembly-step readout), so it gets a permanent check.
+   */
+  const artifacts = [];
+  const assertNoObjectArtifacts = (where) => {
+    const hits = (document.body.innerText.match(/\[object [A-Za-z]+\]/g) || []);
+    if (hits.length) artifacts.push(`${where}: ${[...new Set(hits)].join(', ')}`);
+  };
+
   // ---- 0. the shell mounted ------------------------------------------
   check('shell.topbar', Boolean(q('.topbar .brand')), 'brand present');
   check('shell.footer', Boolean(q('.footer-inner')), 'footer present');
@@ -126,20 +147,104 @@ export async function runRuntimeQA() {
   check('route.case', Boolean(q('.detail-title')), q('.detail-title')?.textContent || 'no detail');
   check('route.case.sources', qa('.source-list li').length > 0, `${qa('.source-list li').length} sources`);
   check('route.case.figures', Boolean(q('.detail-figure svg')), 'schematic drawing present');
+  assertNoObjectArtifacts('case');
 
   await navigate('#/labs');
   check('route.labs', qa('.lab-card').length === 6, `labs=${qa('.lab-card').length}`);
 
   await navigate('#/lab/dougong');
-  await settle(900);
+  // The lab loads three.js and the model chunk on demand, then builds the
+  // geometry. A fixed sleep is a race — on a phone-width viewport the chunk
+  // fetch alone can outlast it. Wait for the stage to actually appear.
+  let stageReady = false;
+  for (let i = 0; i < 60 && !stageReady; i += 1) {
+    await settle(250);
+    stageReady = Boolean(q('.lab-canvas-wrap canvas') || q('.lab-fallback:not([hidden])'));
+  }
   const hasCanvas = Boolean(q('.lab-canvas-wrap canvas'));
   const hasFallback = Boolean(q('.lab-fallback:not([hidden])'));
-  check('route.lab.stage', hasCanvas || hasFallback, `canvas=${hasCanvas} fallback=${hasFallback}`);
+  check('route.lab.stage', stageReady && (hasCanvas || hasFallback), `canvas=${hasCanvas} fallback=${hasFallback}`);
   check('route.lab.panel', qa('.part-list button').length > 0, `${qa('.part-list button').length} parts listed`);
   check('route.lab.notice', /教学示意/.test(document.body.innerText) || /Teaching schematic/.test(document.body.innerText), 'teaching notice shown');
+  assertNoObjectArtifacts('lab');
+
+  // ---- 3b. assembly steps ----------------------------------------------
+  // Three defects shipped here once and none of them is visible in a
+  // screenshot of a static model: the readout showed "Step 6 of 5" (index
+  // past the end of the list), "Play assembly" threw on its first tick, and
+  // the assembly target was one step too high so the NEXT step's parts
+  // appeared early. All three are asserted here.
+  const readout = () => (q('.step-readout')?.textContent || '').trim();
+  const parseStep = (s) => {
+    const m = /(\d+)\s*(?:\/|of|、)\s*(\d+)/.exec(s);
+    return m ? { i: Number(m[1]), n: Number(m[2]) } : null;
+  };
+  const stepItems = qa('.step-assembly li');
+  const stepCount = stepItems.length;
+  const atRest = parseStep(readout());
+  check('lab.stepListPresent', stepCount >= 4 && stepCount <= 6, `steps=${stepCount}`);
+  check('lab.stepReadoutInRange',
+    Boolean(atRest) && atRest.i >= 1 && atRest.i <= atRest.n && atRest.n === stepCount,
+    `readout="${readout()}" steps=${stepCount}`);
+  check('lab.initialStepIsLast', Boolean(atRest) && atRest.i === stepCount,
+    `readout="${readout()}" of ${stepCount}`);
+
+  const prevBtn = qa('.lab-panel button').find((b) => /previous|上一步/i.test(b.getAttribute('aria-label') || ''));
+  const nextBtn = qa('.lab-panel button').find((b) => /next|下一步/i.test(b.getAttribute('aria-label') || ''));
+  const errBefore = runtimeErrors.length;
+  if (prevBtn) {
+    const before = readout();
+    prevBtn.click();
+    await settle(160);
+    const afterPrev = parseStep(readout());
+    check('lab.prevStepDecrements', Boolean(afterPrev) && Boolean(atRest) && afterPrev.i === atRest.i - 1,
+      `"${before}" → "${readout()}"`);
+  } else {
+    check('lab.prevStepDecrements', false, 'previous-step button not found');
+  }
+  if (nextBtn) {
+    nextBtn.click();
+    await settle(160);
+    const afterNext = parseStep(readout());
+    check('lab.nextStepRestores', Boolean(afterNext) && Boolean(atRest) && afterNext.i === atRest.i,
+      `readout="${readout()}"`);
+  } else {
+    check('lab.nextStepRestores', false, 'next-step button not found');
+  }
+
+  // Play the whole assembly and watch the readout. It must never leave
+  // 1..n, and it must walk forward through the steps.
+  const playBtn = qa('.lab-panel button').find((b) => /play assembly|播放组装/i.test(b.textContent || ''));
+  const seenSteps = new Set();
+  const badReadouts = [];
+  if (playBtn) {
+    playBtn.click();
+    for (let i = 0; i < 70; i += 1) {
+      await settle(200);
+      const txt = readout();
+      const r = parseStep(txt);
+      if (r) {
+        seenSteps.add(r.i);
+        if (r.i < 1 || r.i > r.n) badReadouts.push(txt);
+      } else if (!/not started|尚未开始/i.test(txt)) {
+        badReadouts.push(txt);
+      }
+      if (!/pause|暂停/i.test(playBtn.textContent || '')) break;
+    }
+    check('lab.playNeverOutOfRange', badReadouts.length === 0,
+      badReadouts.slice(0, 3).join(' | ') || `walked ${[...seenSteps].join(',')}`);
+    check('lab.playReachesLastStep', seenSteps.has(stepCount),
+      `walked ${[...seenSteps].join(',')} of ${stepCount}`);
+  } else {
+    check('lab.playNeverOutOfRange', false, 'play button not found');
+    check('lab.playReachesLastStep', false, 'play button not found');
+  }
+  check('lab.playNoUncaughtError', runtimeErrors.length === errBefore,
+    runtimeErrors.slice(errBefore).join(' | ') || 'no uncaught error while playing the assembly');
 
   await navigate('#/glossary');
   check('route.glossary', qa('.gloss-item').length >= 40, `terms=${qa('.gloss-item').length}`);
+  assertNoObjectArtifacts('glossary');
 
   await navigate('#/quiz');
   check('route.quiz', Boolean(q('.quiz-shell')), 'quiz shell present');
@@ -155,6 +260,7 @@ export async function runRuntimeQA() {
 
   await navigate('#/sources');
   check('route.sources', qa('.src-card').length > 0, `${qa('.src-card').length} source cards`);
+  assertNoObjectArtifacts('sources');
 
   // ---- 9. favourites persist -------------------------------------------
   await navigate('#/catalog');
@@ -194,6 +300,10 @@ export async function runRuntimeQA() {
 
   await navigate('#/');
   await settle(300);
+  assertNoObjectArtifacts('home');
+
+  check('render.noObjectArtifacts', artifacts.length === 0,
+    artifacts.length ? artifacts.join(' | ') : 'no [object ...] artifacts on any route');
 
   const passed = results.filter((r) => r.pass).length;
   return { passed, total: results.length, results };

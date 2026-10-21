@@ -829,6 +829,17 @@ kbd {
   margin-bottom: 0.15em;
 }
 .exhibit-panel__sources a { word-break: break-all; }
+
+/* A6. 行内文本链接的触摸目标 ≥24px（WCAG 2.2 SC 2.5.8，AA 硬性；MIGRATION-NOTES §5.1）
+   16 的组件层没有覆盖正文/面板内的行内链接，其点击区高度 = 行高（<24px）。
+   用 padding + min-height 增高点击区，不改变行盒高度与基线对齐。 */
+.prose a,
+.exhibit-panel__sources a,
+.footer__meta a {
+  display: inline-block;
+  padding-block: 2px;
+  min-height: 24px;
+}
 .exhibit-panel__license {
   font-family: var(--ds-font-mono);
   font-size: var(--ds-type-xs);

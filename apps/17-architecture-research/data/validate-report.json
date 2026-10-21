@@ -1,14 +1,14 @@
 {
   "checkedAt": "2026-10-21",
-  "total": 75,
-  "passed": 75,
+  "total": 84,
+  "passed": 84,
   "failed": 0,
   "items": [
     {
       "group": "文件齐备",
       "name": "必备文件全部存在",
       "status": "PASS",
-      "detail": "30 个必备文件"
+      "detail": "32 个必备文件"
     },
     {
       "group": "目录数据",
@@ -200,7 +200,7 @@
       "group": "截图证据",
       "name": "每张截图字节数 > 0",
       "status": "PASS",
-      "detail": "olek-si-desktop-1440x900.png=44965B, olek-si-desktop-hero-browser.png=147003B, olek-si-desktop-tall-1440x2600.png=85013B, olek-si-mobile-390x844.png=51373B, olek-si-tablet-820x1180.png=42417B"
+      "detail": "olek-si-desktop-1440x900.png=51822B, olek-si-desktop-hero-2560x1440.png=56404B, olek-si-desktop-tall-1440x2600.png=45955B, olek-si-mobile-390x844.png=22506B, olek-si-tablet-820x1180.png=41440B"
     },
     {
       "group": "截图证据",
@@ -260,19 +260,19 @@
       "group": "文档",
       "name": "README.md 存在且非空",
       "status": "PASS",
-      "detail": "22099 B"
+      "detail": "26972 B"
     },
     {
       "group": "文档",
       "name": "LICENSES.md 存在且非空",
       "status": "PASS",
-      "detail": "14270 B"
+      "detail": "15440 B"
     },
     {
       "group": "文档",
       "name": "QA.md 存在且非空",
       "status": "PASS",
-      "detail": "21659 B"
+      "detail": "24131 B"
     },
     {
       "group": "文档",
@@ -284,7 +284,7 @@
       "group": "文档",
       "name": "STATUS.md 存在且非空",
       "status": "PASS",
-      "detail": "24012 B"
+      "detail": "31877 B"
     },
     {
       "group": "文本完整性",
@@ -296,19 +296,19 @@
       "group": "清单",
       "name": "manifest.json 可解析",
       "status": "PASS",
-      "detail": "93 个条目"
+      "detail": "100 个条目"
     },
     {
       "group": "清单",
       "name": "manifest 记录与磁盘一致（manifest.json / validate-report.json 自身除外，自引用不可校验）",
       "status": "PASS",
-      "detail": "92 个条目一致"
+      "detail": "99 个条目一致"
     },
     {
       "group": "清单",
       "name": "磁盘文件全部登记在 manifest",
       "status": "PASS",
-      "detail": "93 个文件全部登记"
+      "detail": "100 个文件全部登记"
     },
     {
       "group": "元数据",
@@ -453,6 +453,60 @@
       "name": "发布排除清单含 src/ 且不含 dist/",
       "status": "PASS",
       "detail": "excludeDirs=['research-ref', 'screenshots', 'evidence', 'scripts', 'handoff', 'data', 'src']"
+    },
+    {
+      "group": "浏览器入口",
+      "name": "已停用的无头 Chrome / 原生 CDP 脚本确已移除",
+      "status": "PASS",
+      "detail": "browser_test.mjs / capture_cdp.mjs / capture.sh 均不存在"
+    },
+    {
+      "group": "浏览器入口",
+      "name": "可执行脚本中无禁用浏览器技术启动调用",
+      "status": "PASS",
+      "detail": "无 Playwright / Puppeteer / chromium.launch / --headless / 原生 CDP 端点"
+    },
+    {
+      "group": "浏览器入口",
+      "name": "Ego 脚本齐备（交互验收 / 截图 / 参考站测量）",
+      "status": "PASS",
+      "detail": "3 个脚本"
+    },
+    {
+      "group": "浏览器入口",
+      "name": "全部网页脚本均通过 ego-browser 入口",
+      "status": "PASS",
+      "detail": "3/3 走 ego-browser"
+    },
+    {
+      "group": "Ego 证据",
+      "name": "共享工具报告存在且可解析",
+      "status": "PASS",
+      "detail": "browser=ego-browser (ego-lite)"
+    },
+    {
+      "group": "Ego 证据",
+      "name": "共享工具报告 4 档视口全通过（无溢出 / 无控制台错误 / 视口精确）",
+      "status": "PASS",
+      "detail": "4 档视口全部干净"
+    },
+    {
+      "group": "Ego 证据",
+      "name": "交互类报告存在且 verdict = PASS",
+      "status": "PASS",
+      "detail": "verdict=PASS 通过 18/18 警告 0"
+    },
+    {
+      "group": "Ego 证据",
+      "name": "参考站视口测量证据存在且采样成功率 ≥ 80%",
+      "status": "PASS",
+      "detail": "16/16 视口；裁切视口 [800, 820, 840, 880]；横向滚动 False"
+    },
+    {
+      "group": "Ego 证据",
+      "name": "Ego 截图证据齐全且字节数 > 0",
+      "status": "PASS",
+      "detail": "9 张 PNG 全部非空"
     }
   ]
 }

@@ -12,6 +12,7 @@
 import { spawn } from 'node:child_process';
 import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { createServer as createNetServer } from 'node:net';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
@@ -20,9 +21,25 @@ const BASE = process.argv[2] || 'http://127.0.0.1:4312/';
 const OUT = process.argv[3] || path.resolve('screenshots');
 const WIDTH = 1680;
 const HEIGHT = 1050;
-const PORT = 9333;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * 向操作系统要一个当前空闲的 TCP 端口给 Chrome 的调试通道。
+ * 写死端口会被同机其它任务的残留 headless Chrome 抢占，
+ * 表现为 "DevTools endpoint never came up" 的假失败。
+ */
+async function freePort() {
+  return new Promise((resolve, reject) => {
+    const srv = createNetServer();
+    srv.unref();
+    srv.on('error', reject);
+    srv.listen(0, '127.0.0.1', () => {
+      const { port } = srv.address();
+      srv.close(() => resolve(port));
+    });
+  });
+}
 
 async function main() {
   if (!existsSync(CHROME)) {
@@ -35,11 +52,12 @@ async function main() {
   // attach to a leftover instance that still holds the debugging port, which
   // is the usual cause of "bind() failed: Address already in use".
   const userDir = await mkdtemp(path.join(tmpdir(), 'abyss-capture-'));
+  const port = await freePort();
   const chrome = spawn(
     CHROME,
     [
       '--headless=new',
-      `--remote-debugging-port=${PORT}`,
+      `--remote-debugging-port=${port}`,
       `--user-data-dir=${userDir}`,
       `--window-size=${WIDTH},${HEIGHT}`,
       '--hide-scrollbars',
@@ -71,8 +89,9 @@ async function main() {
   // ([::1]) when the IPv4 socket is taken by a leftover process — polling only
   // 127.0.0.1 then hangs forever even though DevTools is up. Probe both.
   let target = null;
-  const ENDPOINTS = [`http://127.0.0.1:${PORT}/json/list`, `http://[::1]:${PORT}/json/list`];
-  for (let i = 0; i < 60; i++) {
+  const ENDPOINTS = [`http://127.0.0.1:${port}/json/list`, `http://[::1]:${port}/json/list`];
+  // 机器并发负载高时 Chrome 冷启动可能要十几秒，窗口给到 40s 免得假失败。
+  for (let i = 0; i < 160 && !target; i++) {
     await sleep(250);
     for (const endpoint of ENDPOINTS) {
       try {

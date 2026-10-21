@@ -52,6 +52,7 @@ function parseCss(css) {
   css = css.replace(/\/\*[\s\S]*?\*\//g, '');
   const root = {};
   const reduced = {};
+  const dark = {};
   let i = 0;
   const stack = [];
   let buf = '';
@@ -60,9 +61,13 @@ function parseCss(css) {
     const p = pre.trim();
     if (/^@media/i.test(p)) {
       if (/prefers-reduced-motion/i.test(p)) return 'reduced';
+      if (/prefers-color-scheme\s*:\s*light/i.test(p)) return 'light';
+      if (/prefers-color-scheme\s*:\s*dark/i.test(p)) return 'dark';
       return 'other';
     }
     if (/\[data-rm/i.test(p)) return 'reduced';
+    if (/data-ds-theme\s*=\s*["']?dark/i.test(p)) return 'dark';
+    if (/data-ds-theme\s*=\s*["']?light/i.test(p)) return 'light';
     return 'selector';
   };
 
@@ -78,13 +83,15 @@ function parseCss(css) {
       const val = m[2].replace(/\s+/g, ' ').trim();
       const conds = stack.filter((k) => k !== 'selector');
       if (conds.includes('reduced')) { if (!(name in reduced)) reduced[name] = val; continue; }
-      if (conds.length) continue;           // 其它条件块 → 忽略
-      if (stack.length === 0) { if (!(name in root)) root[name] = val; }
+      if (conds.includes('light')) continue;
+      if (conds.includes('dark')) { if (!(name in dark)) dark[name] = val; continue; }
+      if (conds.includes('other')) continue;     // 其它条件块 → 忽略
+      if (!(name in root)) root[name] = val;
       continue;
     }
     buf += ch; i++;
   }
-  return { root, reduced };
+  return { root, reduced, dark };
 }
 
 const famIndex = (stack, fam) => {
@@ -99,7 +106,13 @@ const eq = (a, b) => String(a).replace(/\s+/g, ' ').trim().toLowerCase()
 const tokenFile = path.join(ROOT, 'src/tokens.css');
 const ownFiles = [path.join(ROOT, 'src/styles.css'), path.join(ROOT, 'src/ds-components.css')];
 const tokenCss = fs.readFileSync(tokenFile, 'utf8');
-const { root, reduced } = parseCss(tokenCss);
+const { root, reduced: reducedToken, dark } = parseCss(tokenCss);
+// 降级块可能分布在令牌层与组件层（16 的结构：令牌在令牌层降级，
+// 组件层把 animation/transition 整体压到 1ms）→ 合并全部自有文件的降级声明
+const reduced = { ...reducedToken };
+for (const f of ownFiles) {
+  Object.assign(reduced, parseCss(fs.readFileSync(f, 'utf8')).reduced);
+}
 
 /* ---------- 1. V.11 字体栈顺序 ---------- */
 for (const v of ['--ds-font-display', '--ds-font-text']) {

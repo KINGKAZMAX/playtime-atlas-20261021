@@ -1,249 +1,36 @@
 /*
- * 回响电玩馆 / PLAYTIME ATLAS — 设计令牌层
+ * 回响电玩馆 / PLAYTIME ATLAS —— 本馆自有令牌层（**增量层**）
+ * ============================================================================
+ * 依据：16-design-system/MIGRATION-NOTES.md
+ *   §0 风险 A / 风险 B —— `--ds-` 是设计系统的命名空间
+ *   §1 接入四步 ①「落地 token 层」/ §1.1 路径 B / 路径 C
+ *   §2 逐项替换对照 §2.2「06-museum-core 回响电玩馆」
+ *   §6 Pages 子路径资源拼接
  *
- * 依据：16-design-system/design-tokens.json ＋ 16-design-system/DESIGN-SPEC.md
- *   §1 色彩      → 本文件「设计系统令牌」段
- *   §2 字体      → 本文件「设计系统令牌 · 字体」段
- *   §3.3 容器栅格 → --ds-max-width / --ds-space-gutter / --ds-grid-gap
- *   §7 按钮控件  → --ds-radius-control / --ds-target-min / --ds-focus-ring
- *   §8 动效      → --ds-dur-* / --ds-ease-*
- *   §11 无障碍   → --ds-contrast-* / --ds-focus-width / --ds-focus-offset
- *   §10.2 基准   → --ds-base
- * 只读引用 16 的取值，未复制其文件；本文件为本馆自落地实现。
+ * ── 令牌取值的唯一声明处在哪 ────────────────────────────────────────────────
+ * **不在本文件**。130 个 `--ds-*` 的取值由设计系统权威层唯一声明：
+ *   index.html → <link rel="stylesheet" href="./assets/ds/tokens.css" />
+ * 该文件由 scripts/sync-exhibits.mjs 从
+ *   ../16-design-system/src/tokens.css 逐字节复制而来
+ * （与 11-era-online / 12-era-modern 采用同一约定）。
  *
- * 本馆采用**深色主题**（博物馆夜景）：<html data-ds-theme="dark">。
- * 站点统一交互强调色为 --ds-accent（朱砂），全站只此一个强调色。
+ * 本目录**不重复声明**任何一个 `--ds-*` 的取值 —— 同名变量声明两遍就是
+ * 「后加载者胜」，纯靠加载顺序决定成败（风险 B）。
  *
- * 命名空间：本目录不声明任何与 16 同名不同义的 --ds-* 变量；
- * 下方「本馆语义别名」段只做 var() 指向，不重新定义 --ds-* 取值。
- */
+ * ── 本文件负责什么 ──────────────────────────────────────────────────────────
+ *   ① 语义别名层：既有 CSS 全部走 --ink / --bg / --accent 这类别名，
+ *      别名一律 var() 指向 --ds-*，因此改版只改设计系统一处即可全站生效；
+ *   ② 本馆专属令牌：展签插画专用色、年代身份色；
+ *   ③ 本馆对设计系统的**增量覆盖**：中文全大写修正、入场动效降级补充。
+ *
+ * ── 为什么仍保留本文件而不是直接用 DS 的 ────────────────────────────────────
+ *   别名层承载了本馆全部既有 CSS 的语义映射（MIGRATION-NOTES §2.2 的
+ *   「旧变量 → 新 token」重定向表）。删掉它就要把全站 CSS 逐行重写，
+ *   既违反「不要删除既有 CSS」，也会让 diff 淹没真正的视觉改动。
+ * ========================================================================== */
 
 /* ==========================================================================
-   一、设计系统令牌（取值与 16-design-system/design-tokens.json 一一对应）
-   ========================================================================== */
-
-:root {
-  /* ---------- 色彩 · 浅色主题（默认，站内未启用，仅作兜底） ---------- */
-  --ds-bg: #fcfbf9;
-  --ds-bg-raised: #ffffff;
-  --ds-bg-sunken: #f2eee9;
-  --ds-ink: #14110f;
-  --ds-ink-soft: #59514b;
-  --ds-ink-faint: #6e655e;
-  --ds-line: #e4ded7;
-  --ds-line-strong: #cfc6bc;
-  --ds-surface: #f2eee9;
-  --ds-accent: #b4432b;
-  --ds-accent-hover: #97361f;
-  --ds-accent-soft: #f6e9e4;
-  --ds-accent-ink: #ffffff;
-  --ds-jade: #2e6a5e;
-  --ds-jade-soft: #e4eeeb;
-  --ds-overlay: rgba(20, 17, 15, 0.44);
-
-  /* ---------- 色彩 · 分区（tone-aware） ---------- */
-  --ds-section-ink: var(--ds-ink);
-  --ds-section-soft: rgba(20, 17, 15, 0.62);
-  --ds-section-faint: rgba(20, 17, 15, 0.38);
-  --ds-section-bg: var(--ds-bg);
-  --ds-tone-fade: #edeae5;
-  --ds-glow: var(--ds-bg);
-  --ds-section-radius-scale: 1;
-
-  /* ---------- 色彩 · 画布 / HUD ---------- */
-  --ds-canvas-hud-bg: rgba(16, 15, 14, 0.72);
-  --ds-canvas-hud-ink: #f7f4f0;
-  --ds-canvas-hud-line: rgba(247, 244, 240, 0.24);
-  --ds-canvas-scrim: rgba(16, 15, 14, 0.55);
-  --ds-danger: #c2452b;
-  --ds-success: #3f7a4e;
-  --ds-warning: #b07a1e;
-  --ds-info: #2c5c8f;
-
-  /* ---------- 字体 ---------- */
-  /* CJK 回落顺序跟随设计系统：中文字体（PingFang SC / Hiragino Sans GB /
-     Microsoft YaHei / Source Han Sans SC）排在自托管 Noto Sans SC 之前——
-     多数中文系统已自带可用中文字体，就不必为中文额外下载 200 KB 子集；
-     Noto Sans SC 退到最后兜底，保证字形一致性与可移植性。 */
-  --ds-font-display: "Space Grotesk", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-    "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
-  --ds-font-text: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-    "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
-  --ds-font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-
-  --ds-type-display: clamp(40px, 6.6vw, 84px);
-  --ds-type-h1: clamp(30px, 4.2vw, 52px);
-  --ds-type-h2: clamp(22px, 2.6vw, 32px);
-  --ds-type-h3: 20px;
-  --ds-type-h4: 17px;
-  --ds-type-lead: 19px;
-  --ds-type-body: 16px;
-  --ds-type-sm: 14px;
-  --ds-type-xs: 12.5px;
-  --ds-type-mono: 13px;
-
-  --ds-lh-display: 1.08;
-  --ds-lh-tight: 1.22;
-  --ds-lh-snug: 1.35;
-  --ds-lh-normal: 1.6;
-  --ds-lh-relaxed: 1.75;
-  --ds-lh-mono: 1.45;
-
-  --ds-w-regular: 400;
-  --ds-w-medium: 500;
-  --ds-w-semibold: 600;
-  --ds-w-bold: 700;
-
-  --ds-track-display: -0.03em;
-  --ds-track-body: -0.005em;
-  --ds-track-cjk: 0;
-  --ds-track-mono: 0.02em;
-  --ds-track-caps: 0.08em;
-
-  /* ---------- 间距 ---------- */
-  --ds-space-1: 4px;
-  --ds-space-2: 8px;
-  --ds-space-3: 12px;
-  --ds-space-4: 16px;
-  --ds-space-5: 24px;
-  --ds-space-6: 32px;
-  --ds-space-7: 48px;
-  --ds-space-8: 64px;
-  --ds-space-9: 96px;
-  --ds-space-10: 128px;
-  --ds-space-gutter: clamp(16px, 4vw, 48px);
-  --ds-space-rail-gap: 12px;
-  --ds-space-section-top: clamp(56px, 9vh, 104px);
-  --ds-space-section-bottom: clamp(40px, 8vh, 88px);
-
-  /* ---------- 圆角 ---------- */
-  --ds-radius-xs: 6px;
-  --ds-radius-sm: 10px;
-  --ds-radius-md: 14px;
-  --ds-radius-lg: 20px;
-  --ds-radius-xl: 28px;
-  --ds-radius-pill: 999px;
-  --ds-radius-media: clamp(16px, 2vw, 28px);
-  --ds-radius-control: 999px;
-
-  /* ---------- 阴影 ---------- */
-  --ds-shadow-1: 0 1px 2px rgba(20, 17, 15, 0.05);
-  --ds-shadow-2: 0 4px 16px rgba(20, 17, 15, 0.07);
-  --ds-shadow-3: 0 12px 40px rgba(20, 17, 15, 0.1);
-  --ds-shadow-4: 0 24px 80px rgba(20, 17, 15, 0.16);
-  --ds-ring: inset 0 0 0 1px var(--ds-line);
-  --ds-ring-strong: inset 0 0 0 1px var(--ds-line-strong);
-  --ds-focus-ring: 0 0 0 2px var(--ds-bg), 0 0 0 4px var(--ds-accent);
-
-  /* ---------- 动效 ---------- */
-  --ds-dur-instant: 120ms;
-  --ds-dur-fast: 200ms;
-  --ds-dur-base: 320ms;
-  --ds-dur-slow: 520ms;
-  --ds-dur-reveal: 800ms;
-  --ds-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ds-ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
-  --ds-ease-veil: cubic-bezier(0.4, 0, 0.2, 1);
-  --ds-ease-spring: cubic-bezier(0.34, 1.42, 0.64, 1);
-  --ds-ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
-  --ds-stagger-step: 60ms;
-  --ds-entry-translate: 24px;
-  --ds-entry-blur: 6px;
-  --ds-entry-duration: 640ms;
-  --ds-in-delay: 0ms;
-
-  /* ---------- 层级 ---------- */
-  --ds-z-base: 0;
-  --ds-z-raised: 10;
-  --ds-z-sticky: 100;
-  --ds-z-rail: 200;
-  --ds-z-overlay: 300;
-  --ds-z-modal: 400;
-  --ds-z-toast: 500;
-
-  /* ---------- 布局 ---------- */
-  --ds-max-width: 1280px;
-  --ds-max-width-wide: 1600px;
-  --ds-read-width: 68ch;
-  --ds-rail-width: 132px;
-  --ds-rail-inset: 24px;
-  --ds-section-height: 100dvh;
-  --ds-grid-gutter: var(--ds-space-gutter);
-  --ds-grid-gap: var(--ds-space-5);
-  --ds-rail-scale: 1;
-  --ds-rail-blur: 0px;
-  --ds-work-dim: rgba(128, 128, 128, 0.3);
-
-  /* ---------- 无障碍 ---------- */
-  --ds-contrast-text: 4.5;
-  --ds-contrast-large: 3;
-  --ds-contrast-ui: 3;
-  --ds-target-min: 44px;
-  --ds-focus-width: 2px;
-  --ds-focus-offset: 2px;
-
-  /* ---------- 资源 ---------- */
-  /* Pages 线上基准：/playtime-atlas-20261021/ ；本地预览留空即可。
-     本站全部资源走相对路径，--ds-base 仅供需要绝对基准的场合使用。 */
-  --ds-base: "";
-}
-
-/* ---------- 深色主题（本馆启用：博物馆夜景） ---------- */
-[data-ds-theme="dark"] {
-  --ds-bg: #100f0e;
-  --ds-bg-raised: #1a1917;
-  --ds-bg-sunken: #0b0a09;
-  --ds-ink: #f7f4f0;
-  --ds-ink-soft: #c0b7b0;
-  --ds-ink-faint: #9a918a;
-  --ds-line: #2b2926;
-  --ds-line-strong: #453f39;
-  --ds-surface: #1e1d1b;
-  --ds-accent: #e0684a;
-  --ds-accent-hover: #ee8266;
-  --ds-accent-soft: #331c15;
-  --ds-accent-ink: #17110f;
-  --ds-jade: #5fa99a;
-  --ds-jade-soft: #16211e;
-  --ds-overlay: rgba(8, 7, 6, 0.62);
-
-  --ds-section-ink: #f7f4f0;
-  --ds-section-soft: rgba(247, 244, 240, 0.78);
-  --ds-section-faint: rgba(247, 244, 240, 0.46);
-  --ds-tone-fade: #141311;
-  --ds-canvas-hud-bg: rgba(8, 7, 6, 0.78);
-}
-
-/* ---------- 分区色调（tone-aware sections） ---------- */
-.ds-section[data-ds-tone="dark"] {
-  --ds-section-ink: var(--ds-bg);
-  --ds-section-soft: rgba(255, 255, 255, 0.78);
-  --ds-section-faint: rgba(255, 255, 255, 0.46);
-  --ds-section-bg: #101010;
-}
-.ds-section[data-ds-tone="light"] {
-  --ds-section-ink: #14110f;
-  --ds-section-soft: rgba(20, 17, 15, 0.62);
-  --ds-section-faint: rgba(20, 17, 15, 0.38);
-  --ds-section-bg: #fcfbf9;
-}
-
-/* ---------- 展签图形（实物插画）专用色 ---------- */
-/*
- * 展签图形画的是「实物本身」——白色塑料机身、深色屏幕、年代色指示灯。
- * 它不是界面表面，所以不跟随主题的 ink/bg 语义反转：
- * 在浅色主题下机身也仍是浅色（真实机器就是浅色），只把取色对齐到 DS 深色阶。
- *
- * 取值来源：--ds-ink(暗) #f7f4f0 / --ds-bg-raised(暗) #1a1917
- * 与 scripts/generate-art.mjs 的美术包同一套色阶，两处观感一致。
- */
-:root {
-  --ds-art-paper: #f7f4f0;
-  --ds-art-ink: #1a1917;
-}
-
-/* ==========================================================================
-   二、本馆语义别名层
+   一、本馆语义别名层
    既有 CSS 全部走这些别名；别名指向 --ds-*，因此改版只改本层即可全站生效。
    （依据 16-design-system/MIGRATION-NOTES.md §2.2 的「旧变量 → 新 token」重定向表）
    ========================================================================== */
@@ -347,10 +134,25 @@
   --z-panel: var(--ds-z-overlay);
   --z-modal: var(--ds-z-modal);
   --z-toast: var(--ds-z-toast);
+
+  /* ==========================================================================
+     展签图形（实物插画）专用色
+     --------------------------------------------------------------------------
+     展签图形画的是「实物本身」——白色塑料机身、深色屏幕、年代色指示灯。
+     它不是界面表面，所以不跟随主题的 ink/bg 语义反转：
+     在浅色主题下机身也仍是浅色（真实机器就是浅色），只把取色对齐到 DS 深色阶。
+     取值来源：--ds-ink(暗) #f7f4f0 / --ds-bg-raised(暗) #1a1917
+     与 scripts/generate-art.mjs 的美术包同一套色阶，两处观感一致。
+
+     命名说明：**不占 --ds- 前缀**。--ds- 是设计系统的命名空间（风险 A/B），
+     本目录新增的令牌一律用自有前缀，避免与后续设计系统升级撞名。
+     ========================================================================== */
+  --art-paper: #f7f4f0;
+  --art-ink: #1a1917;
 }
 
 /* ==========================================================================
-   三、年代身份色
+   二、年代身份色
    这不是 UI 强调色，而是**展柜身份标识**：只允许出现在年代编号、展柜描边、
    导览轴的年代色点与 3D 展厅的柜体色带上。
    禁止用于按钮、链接、焦点环、选中态或大面积背景（DESIGN-SPEC §1.1）。
@@ -368,125 +170,25 @@
 [data-era="e10"] { --era-accent: #A8E063; }
 
 /* ==========================================================================
-   四、排版基类与降级
+   三、对设计系统的增量覆盖
+   只写设计系统**没有**或本馆需要**改**的部分；
+   排版基类（.ds-display / .ds-h1 / .ds-h2 / .ds-h3 / .ds-lead / .ds-body /
+   .ds-sm / .ds-xs / .ds-mono / .ds-caps）、`:lang(zh)` 字距归零与行高 1.85、
+   以及 reduced-motion 的通用降级，全部由 assets/ds/tokens.css 提供，
+   本文件不重复声明。
    ========================================================================== */
 
-.ds-display {
-  font-family: var(--ds-font-display);
-  font-size: var(--ds-type-display);
-  line-height: var(--ds-lh-display);
-  font-weight: var(--ds-w-medium);
-  letter-spacing: var(--ds-track-display);
-  color: var(--ds-ink);
-}
-.ds-h1 {
-  font-family: var(--ds-font-display);
-  font-size: var(--ds-type-h1);
-  line-height: var(--ds-lh-tight);
-  font-weight: var(--ds-w-medium);
-  letter-spacing: var(--ds-track-display);
-  color: var(--ds-ink);
-}
-.ds-h2 {
-  font-family: var(--ds-font-display);
-  font-size: var(--ds-type-h2);
-  line-height: var(--ds-lh-tight);
-  font-weight: var(--ds-w-medium);
-  letter-spacing: var(--ds-track-display);
-  color: var(--ds-ink);
-}
-.ds-h3 {
-  font-family: var(--ds-font-display);
-  font-size: var(--ds-type-h3);
-  line-height: var(--ds-lh-snug);
-  font-weight: var(--ds-w-medium);
-  color: var(--ds-ink);
-}
-.ds-lead {
-  font-size: var(--ds-type-lead);
-  line-height: var(--ds-lh-normal);
-  color: var(--ds-ink-soft);
-}
-.ds-body {
-  font-size: var(--ds-type-body);
-  line-height: var(--ds-lh-normal);
-  color: var(--ds-ink-soft);
-}
-.ds-sm {
-  font-size: var(--ds-type-sm);
-  line-height: var(--ds-lh-normal);
-  color: var(--ds-ink-soft);
-}
-.ds-xs {
-  font-size: var(--ds-type-xs);
-  line-height: var(--ds-lh-normal);
-  color: var(--ds-ink-faint);
-}
-.ds-mono {
-  font-family: var(--ds-font-mono);
-  font-size: var(--ds-type-mono);
-  line-height: var(--ds-lh-mono);
-  letter-spacing: var(--ds-track-mono);
-  color: var(--ds-ink-soft);
-}
-.ds-caps {
-  font-size: var(--ds-type-xs);
-  letter-spacing: var(--ds-track-caps);
-  text-transform: uppercase;
-  font-weight: var(--ds-w-semibold);
-  color: var(--ds-ink-faint);
-}
-
-/* 中文排版：负字距会压垮汉字字面，中文归零；正文行高放宽到 1.85 */
-:lang(zh),
-:lang(zh-CN),
-:lang(zh-Hans) {
-  letter-spacing: var(--ds-track-cjk);
-  line-height: var(--ds-lh-relaxed);
-  word-break: normal;
-  overflow-wrap: anywhere;
-}
-:lang(zh) .ds-display,
-:lang(zh) .ds-h1,
-:lang(zh) .ds-h2,
-:lang(zh) .ds-h3 {
-  font-weight: var(--ds-w-medium);
-  line-height: var(--ds-lh-tight);
-}
-:lang(zh) .ds-body,
-:lang(zh) .ds-lead,
-:lang(zh) .ds-sm {
-  line-height: 1.85;
-}
-:lang(zh) .ds-mono {
-  letter-spacing: var(--ds-track-cjk);
-}
+/* 中文不做全大写（DS 的 .ds-caps 默认 text-transform: uppercase） */
 :lang(en) .ds-caps { text-transform: uppercase; }
 :lang(zh) .ds-caps { text-transform: none; }
 
-/* 减少动态效果：入场位移与模糊归零，焦点环保留 */
+/* 减少动态效果：本馆在 DS 通用降级之上的补充
+   —— 旧的 --dur-* 别名归零，以及本馆特有的入场位移/模糊归零 */
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --ds-dur-instant: 1ms;
-    --ds-dur-fast: 1ms;
-    --ds-dur-base: 1ms;
-    --ds-dur-slow: 1ms;
-    --ds-dur-reveal: 1ms;
-    --ds-entry-duration: 1ms;
     --dur-1: 1ms;
     --dur-2: 1ms;
     --dur-3: 1ms;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 1ms !important;
-    scroll-behavior: auto !important;
-  }
-  html {
-    scroll-behavior: auto !important;
   }
   .ds-in {
     opacity: 1;

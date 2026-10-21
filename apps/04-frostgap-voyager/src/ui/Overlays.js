@@ -287,6 +287,14 @@ export class Overlays {
     const el = this._panels[name];
     if (el) {
       el.classList.remove('hidden');
+      // .ds-lightbox 的可见态：data-open 同时负责 opacity/visibility 与面板 transform 复位
+      el.setAttribute('data-open', 'true');
+      // .ds-in 的入场：16 的组件要求 .is-visible 才显示，先复位再下一帧点亮
+      const animated = el.querySelector('.ds-in');
+      if (animated) {
+        animated.classList.remove('is-visible');
+        requestAnimationFrame(() => animated.classList.add('is-visible'));
+      }
       const first = this._focusables(el)[0];
       if (first) {
         try {
@@ -322,6 +330,9 @@ export class Overlays {
       this.el.helpPanel, this.el.journalPanel, this.el.scanResult,
     ]) {
       el.classList.add('hidden');
+      el.removeAttribute('data-open');
+      const animated = el.querySelector('.ds-in');
+      if (animated) animated.classList.remove('is-visible');
     }
   }
 
