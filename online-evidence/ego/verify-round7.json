@@ -1,0 +1,117 @@
+{
+  "ranAt": "2026-10-21T20:54:59.949Z",
+  "taskSpaceId": 196,
+  "hall": {
+    "before": {
+      "entries": 0,
+      "covers": 11,
+      "controls": [
+        {
+          "text": "全部",
+          "tag": "BUTTON"
+        },
+        {
+          "text": "独立作品",
+          "tag": "BUTTON"
+        },
+        {
+          "text": "博物馆主站",
+          "tag": "BUTTON"
+        },
+        {
+          "text": "年代展厅",
+          "tag": "BUTTON"
+        },
+        {
+          "text": "体验",
+          "tag": "BUTTON"
+        },
+        {
+          "text": "千色仪",
+          "tag": "BUTTON"
+        },
+        {
+          "text": "体验",
+          "tag": "BUTTON"
+        },
+        {
+          "text": "渊甲拾遗者",
+          "tag": "BUTTON"
+        },
+        {
+          "text": "体验",
+          "tag": "BUTTON"
+        },
+        {
+          "text": "织造车间调度台",
+          "tag": "BUTTON"
+        },
+        {
+          "text": "体验",
+          "tag": "BUTTON"
+        },
+        {
+          "text": "霜隙远航",
+          "tag": "BUTTON"
+        }
+      ]
+    },
+    "switched": {
+      "activeTag": "BUTTON",
+      "activeText": "全部",
+      "hasFocusRing": false,
+      "entries": 0
+    },
+    "after": {
+      "entries": 0,
+      "covers": 11,
+      "brokenCovers": 0,
+      "anchors": 2
+    },
+    "consoleErrors": [],
+    "http4xx5xx": [],
+    "screenshot": "/Users/mekzenx2/Documents/ChatGPT/mavis-14-v3/online-evidence/ego/hall-category-switch.png"
+  },
+  "paths": [
+    {
+      "path": "qa/",
+      "status": 200
+    },
+    {
+      "path": "research/catalog.html",
+      "status": 200
+    },
+    {
+      "path": "works/00-research-dossier/",
+      "status": 200
+    },
+    {
+      "path": "works/16-design-system/",
+      "status": 200
+    },
+    {
+      "path": "works/17-architecture-research/",
+      "status": 200
+    },
+    {
+      "path": "works/18-architecture-models/",
+      "status": 200
+    },
+    {
+      "path": "favicon.ico",
+      "status": 200
+    },
+    {
+      "path": "assets/ds/tokens.css",
+      "status": 200
+    },
+    {
+      "path": "works/06-museum-main/art/assets/fonts/fonts.css",
+      "status": 200
+    },
+    {
+      "path": "data/works.json",
+      "status": 200
+    }
+  ]
+}
