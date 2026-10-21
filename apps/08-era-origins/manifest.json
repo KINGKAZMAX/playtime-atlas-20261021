@@ -1,21 +1,153 @@
 {
   "id": "08-era-origins",
-  "title": "光点年代",
-  "description": "早期电子实验与街机机制展厅：双人 / AI 光点球与轨道引力对决，含开始、暂停、重开、计分、难度与触屏支持。",
-  "entry": "works/08-era-origins/index.html",
+  "title": "光点年代 · 1950—1970s 早期可玩展厅 / LUMEN ERA",
+  "description": "「光点年代 / LUMEN ERA」是一间自包含的早期电子时代可玩展厅：以 1958 年 Brookhaven 的 Tennis for Two（示波器上的一个亮点与拖影）到 1979 年 Asteroids（矢量飞船）之间的公开机制为参照，重新演绎两款完整小游戏 —— 展品 08-A「辉点对拉 / LUMEN RALLY」（双人 / AI 光点球，含蓄力重击与偏心回弹两条原创规则）与展品 08-B「引力双星 / GRAVITY DUO」（轨道引力对决，含「光迹即武器」与相位脉冲两条原创规则）。展厅叙事（1948—1979 年代长廊 12 站、17 条可核验来源、逐项差异说明）全部附可点击出处。全部代码 100% 手写，全部美术为 Canvas 程序化绘制，全部音效为 WebAudio 实时合成，运行期零 CDN / 零在线接口 / 零外部字体与素材；作品名、文案、字体、配色、版式与规则均为本批原创，不复制任何 ROM、商业资源、商标或品牌视觉。",
+  "entry": "index.html",
   "buildCommand": "npm run build",
-  "outputDir": "docs/works/08-era-origins",
+  "outputDir": "dist",
   "status": "ready",
   "upstream": "08-era-origins",
-  "license": {
-    "code": "MIT",
-    "assets": "几何图形与音效代码合成，零外部素材"
+  "$schema": "https://json.schemastore.org/manifest.json",
+  "task": "08",
+  "batch": "flash-showcase-20261021",
+  "model": {
+    "name": "MiniMax-M3.1-Flash",
+    "effort": "max",
+    "note": "史料检索与核验、展厅叙事、两款游戏的规则设计与实现、程序化美术与音效、自动化测试、构建与实机验收，全部由 MiniMax Code M3.1-Flash / max 完成"
   },
-  "sources": [
+  "observedAt": "2026-10-21",
+  "pages": [
     {
-      "title": "时代史料来源（随展厅交付）",
-      "url": "",
-      "note": "展厅内附史料来源链接。"
+      "id": "08-era-origins/index.html",
+      "path": "index.html",
+      "title": "展厅主站（序厅 / 导览 / 年代长廊 / 来源与差异 / 操作与无障碍）"
+    },
+    {
+      "id": "08-era-origins/rally.html",
+      "path": "rally.html",
+      "title": "展品 08-A 辉点对拉 / LUMEN RALLY"
+    },
+    {
+      "id": "08-era-origins/gravity.html",
+      "path": "gravity.html",
+      "title": "展品 08-B 引力双星 / GRAVITY DUO"
     }
+  ],
+  "artifacts": [
+    {
+      "id": "08-era-origins/TASK.md",
+      "title": "任务契约",
+      "type": "doc",
+      "path": "TASK.md",
+      "description": "交付目标、版权红线、叙事要求、玩法要求与验收标准。",
+      "status": "ready"
+    },
+    {
+      "id": "08-era-origins/STATUS.md",
+      "title": "执行状态",
+      "type": "doc",
+      "path": "STATUS.md",
+      "description": "阶段状态、已知限制与变更日志。",
+      "status": "ready"
+    },
+    {
+      "id": "08-era-origins/README.md",
+      "title": "项目说明",
+      "type": "doc",
+      "path": "README.md",
+      "description": "运行方式、页面结构、操作手册、集成说明与限制声明。",
+      "status": "ready"
+    },
+    {
+      "id": "08-era-origins/SOURCES.md",
+      "title": "来源台账",
+      "type": "doc",
+      "path": "SOURCES.md",
+      "description": "17 条来源逐条列出机构、标题、可点击 URL、取证方式与所支撑的具体史实陈述。",
+      "status": "ready"
+    },
+    {
+      "id": "08-era-origins/DIFFERENCES.md",
+      "title": "逐项差异说明",
+      "type": "doc",
+      "path": "DIFFERENCES.md",
+      "description": "本作品与参考作品在题材、机制、视觉、音效、字体、排版、所有权与无障碍八个维度的逐项对照。",
+      "status": "ready"
+    },
+    {
+      "id": "08-era-origins/LICENSES.md",
+      "title": "许可说明",
+      "type": "doc",
+      "path": "LICENSES.md",
+      "description": "参考内容与图片许可状态、本目录素材授权，以及「引用 ≠ 授权」声明。",
+      "status": "ready"
+    },
+    {
+      "id": "08-era-origins/QA.md",
+      "title": "验收记录",
+      "type": "doc",
+      "path": "QA.md",
+      "description": "自动化测试结果、构建产物核验、浏览器实机自测、来源可达性抽样与限制声明。",
+      "status": "ready"
+    },
+    {
+      "id": "08-era-origins/src",
+      "title": "源码",
+      "type": "code",
+      "path": "src/",
+      "description": "core（音频 / 焦点门控 / 主循环 / 输入 / 存档 / 绘制）、games（两款玩法）、data（叙事与来源）、ui（展厅动画）、styles（样式）。",
+      "status": "ready"
+    },
+    {
+      "id": "08-era-origins/tests",
+      "title": "自动化测试",
+      "type": "test",
+      "path": "tests/",
+      "description": "Node 内置测试运行器 + 极简 DOM/Canvas 垫片，54 个用例覆盖两作的状态机、碰撞、计分、难度、存档与键盘焦点作用域。",
+      "status": "ready"
+    },
+    {
+      "id": "08-era-origins/handoff",
+      "title": "交接说明",
+      "type": "doc",
+      "path": "handoff/",
+      "description": "给 06-museum-core 的 iframe 集成说明与给 14-publish 的构建发布说明。",
+      "status": "ready"
+    },
+    {
+      "id": "08-era-origins/screenshots",
+      "title": "实机截图",
+      "type": "media",
+      "path": "screenshots/",
+      "description": "展厅主站与两款游戏的真实浏览器截图。",
+      "status": "ready"
+    }
+  ],
+  "technical": {
+    "stack": "Vite 5.4.11（npm 本地安装）+ 原生 ES 模块 + Canvas 2D + WebAudio",
+    "runtimeDependencies": [],
+    "externalRequests": 0,
+    "assets": "100% 程序化生成（Canvas 绘制 + WebAudio 合成），无图片 / 音频 / 字体文件",
+    "basePath": "./",
+    "subpathCompatible": true,
+    "iframeCompatible": true,
+    "port": 4328
+  },
+  "scope": {
+    "writeOnly": "08-era-origins/",
+    "note": "本任务只写本目录；未修改任何同级成果目录，未执行 GitHub 写入或部署。",
+    "deploy": "本任务不部署；线上发布与子路径挂载由 14-publish 负责。"
+  },
+  "publish": {
+    "authorizedByUser": true,
+    "deployOwner": "14-publish",
+    "note": "用户已授权本批成果发布到其已登录 GitHub 并在线体验；本任务只交付可静态构建的产物包，不上传凭据、不含日志或私有文件。"
+  },
+  "limitations": [
+    "展厅为代表性选样，不宣称覆盖 1950—1979 全部电子游戏作品。",
+    "本作品是原创重新演绎，不是任何历史作品的复刻或可运行副本。",
+    "bnl.gov 在本次沙箱内直连被拦截，其正文经搜索索引完整取回并逐条比对，来源表中已标注取证方式。",
+    "触屏手势基于 Chromium 模拟上下文验证，未在真机 Safari / iOS 上实测。",
+    "音频只验证了 AudioContext 可在用户手势后启动与无控制台报错，未做主观音质评估。"
   ]
 }

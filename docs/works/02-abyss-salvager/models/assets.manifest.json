@@ -22,12 +22,12 @@
       "file": "./abyss-salvager-ac-vii.glb",
       "publicPath": "public/models/abyss-salvager-ac-vii.glb",
       "buildPath": "models/abyss-salvager-ac-vii.glb",
-      "bytes": 9134284,
-      "sha256": "fc90a8525536a31e747e4fc715ff33d6bbf0a40e2d0e51a67dfb5273c8c99a69",
+      "bytes": 9135924,
+      "sha256": "cd3816ad4153916cba663f211724396535921d7f822ae630b36056c73c441d92",
       "glb": {
         "magic": "glTF",
         "version": 2,
-        "declaredLength": 9134284
+        "declaredLength": 9135924
       },
       "description": "《渊甲拾遗者》默认参数（18 驱动体节）导出的完整模型。"
     }

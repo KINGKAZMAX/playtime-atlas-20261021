@@ -7,67 +7,106 @@
    Buttons
  * ------------------------------------------------------------------ */
 
+/* 按钮
+   依据 16-design-system → DESIGN-SPEC §7.1 / §7.2 + components.css `.ds-btn`
+   胶囊圆角、最小高 40px（sm 32px / lg 48px）、hover 背景加深、active scale(.985) */
 .btn {
   --btn-bg: transparent;
-  --btn-fg: var(--paper);
-  --btn-bd: var(--line-hi);
+  --btn-fg: var(--ds-ink);
+  --btn-bd: transparent;
+  appearance: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 13px 22px;
+  gap: var(--ds-space-2);
+  /* DS §5.1：主控件 ≥44px（AAA 2.5.5）；紧凑变体 .btn--sm 为唯一豁免（32px ≥24px AA）。 */
+  min-height: var(--ds-target-min);
+  padding: 0 var(--ds-space-4);
   background: var(--btn-bg);
   color: var(--btn-fg);
   border: 1px solid var(--btn-bd);
-  border-radius: var(--radius);
-  font-family: var(--f-body);
-  font-weight: 500;
-  font-size: 14.5px;
-  letter-spacing: 0.01em;
+  border-radius: var(--ds-radius-control);
+  font-family: var(--ds-font-text);
+  font-weight: var(--ds-w-medium);
+  font-size: var(--ds-type-body);
+  letter-spacing: var(--ds-track-body);
+  text-decoration: none;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   transition:
-    transform var(--t-fast) var(--ease),
-    border-color var(--t-fast) var(--ease),
-    background var(--t-fast) var(--ease),
-    color var(--t-fast) var(--ease);
+    background-color var(--ds-dur-fast) var(--ds-ease-veil),
+    color var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    transform var(--ds-dur-fast) var(--ds-ease-spring);
 }
 
 .btn:hover {
   transform: translateY(-1px);
-  border-color: var(--paper-3);
+  border-color: var(--ds-line-strong);
 }
 
 .btn:active {
-  transform: translateY(0);
+  transform: scale(0.985);
+}
+
+.btn:focus-visible {
+  box-shadow: var(--ds-focus-ring);
 }
 
 .btn--primary {
-  --btn-bg: var(--signal);
-  --btn-fg: var(--ink-950);
-  --btn-bd: var(--signal);
-  font-weight: 700;
+  --btn-bg: var(--ds-accent);
+  --btn-fg: var(--ds-accent-ink);
+  --btn-bd: var(--ds-accent);
+  font-weight: var(--ds-w-semibold);
 }
 
 .btn--primary:hover {
-  --btn-bg: var(--signal-2);
-  --btn-bd: var(--signal-2);
+  --btn-bg: var(--ds-accent-hover);
+  --btn-bd: var(--ds-accent-hover);
+}
+
+.btn--secondary {
+  --btn-bg: var(--ds-surface);
+  --btn-fg: var(--ds-ink);
+  --btn-bd: transparent;
+}
+
+.btn--secondary:hover {
+  --btn-bg: var(--ds-bg-sunken);
 }
 
 .btn--ghost {
-  --btn-bd: var(--line-hi);
-  color: var(--paper-2);
+  --btn-bd: var(--ds-line);
+  --btn-fg: var(--ds-ink);
+  box-shadow: var(--ds-ring);
 }
 
 .btn--ghost:hover {
-  color: var(--paper);
-  background: rgba(236, 233, 226, 0.04);
+  --btn-bg: var(--ds-surface);
+  --btn-bd: var(--ds-line-strong);
+  box-shadow: var(--ds-ring-strong);
 }
 
 .btn--sm {
-  padding: 9px 16px;
-  font-size: 13px;
+  min-height: 32px;
+  padding: 0 var(--ds-space-3);
+  font-size: var(--ds-type-sm);
+}
+
+.btn--lg {
+  min-height: 48px;
+  padding: 0 var(--ds-space-5);
+}
+
+/* DS §11.1：主按钮与图标按钮 ≥ 44×44（触摸目标）。封面的两个动作用一档。 */
+.hero__actions .btn {
+  min-height: 44px;
+}
+
+.hero__actions .btn--primary {
+  min-height: 48px;
+  padding: 0 var(--ds-space-5);
 }
 
 .btn--block {
@@ -80,7 +119,9 @@
  * ------------------------------------------------------------------ */
 
 .panel {
-  background: linear-gradient(165deg, var(--ink-850), var(--ink-900));
+  background: var(--ds-bg-raised);
+  border: 1px solid var(--ds-line);
+  box-shadow: var(--ds-shadow-1);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -93,21 +134,22 @@
   gap: 16px;
   padding: 12px 18px;
   border-bottom: 1px solid var(--line);
-  background: rgba(5, 7, 10, 0.5);
+  background: var(--ds-bg-raised);
 }
 
 .panel__title {
   font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  color: var(--paper-3);
-  text-transform: uppercase;
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
+  color: var(--ds-ink-soft);
+  font-weight: var(--ds-w-medium);
+  text-transform: none;
 }
 
 .panel__meta {
   font-family: var(--f-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
   color: var(--signal);
 }
 
@@ -117,8 +159,8 @@
   border-radius: var(--radius);
   padding: 5px 12px;
   font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
   color: var(--paper-2);
   cursor: pointer;
   transition:
@@ -133,7 +175,7 @@
 }
 
 .panel__action[aria-pressed='true'] {
-  color: var(--ink-950);
+  color: var(--ds-accent-ink);
   background: var(--signal);
   border-color: var(--signal);
 }
@@ -151,7 +193,7 @@
 .readout--block {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(5, 7, 10, 0.55);
+  background: var(--ds-bg-raised);
   padding: 14px 16px;
 }
 
@@ -164,21 +206,21 @@
 }
 
 .readout__row + .readout__row {
-  border-top: 1px dashed rgba(236, 233, 226, 0.07);
+  border-top: 1px dashed var(--ds-line);
 }
 
 .readout__k {
   font-family: var(--f-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  color: var(--paper-4);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
+  color: var(--ds-ink-faint);
 }
 
 .readout__v {
   font-family: var(--f-mono);
-  font-size: 13px;
+  font-size: var(--ds-type-mono);
   font-variant-numeric: tabular-nums;
-  color: var(--paper);
+  color: var(--ds-ink);
 }
 
 .readout__swatch {
@@ -192,15 +234,29 @@
 
 .stage__readout {
   position: absolute;
-  top: 42px;
-  right: 42px;
-  width: 168px;
+  top: 24px;
+  right: 24px;
+  width: 164px;
   padding: 12px 13px;
-  background: rgba(5, 7, 10, 0.66);
-  border: 1px solid var(--line);
+  background: var(--ds-canvas-hud-bg);
+  border: 1px solid var(--ds-canvas-hud-line);
   border-radius: var(--radius);
   backdrop-filter: blur(8px);
   pointer-events: none;
+  color: var(--ds-canvas-hud-ink);
+}
+
+/* 浮层压在三维画布上：文字与描边必须用 canvas 墨色，不能用浅色主题的墨色。 */
+.stage__readout .readout__k {
+  color: color-mix(in srgb, var(--ds-canvas-hud-ink) 62%, transparent);
+}
+
+.stage__readout .readout__v {
+  color: var(--ds-canvas-hud-ink);
+}
+
+.stage__readout .readout__row + .readout__row {
+  border-top-color: var(--ds-canvas-hud-line);
 }
 
 /* ------------------------------------------------------------------ *
@@ -218,13 +274,13 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  font-size: 13.5px;
+  font-size: var(--ds-type-sm);
   color: var(--paper-2);
 }
 
 .ctl__out {
   font-family: var(--f-mono);
-  font-size: 12.5px;
+  font-size: var(--ds-type-mono);
   color: var(--signal);
   font-variant-numeric: tabular-nums;
 }
@@ -233,8 +289,8 @@
   display: flex;
   justify-content: space-between;
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
   color: var(--paper-4);
 }
 
@@ -242,7 +298,9 @@ input[type='range'] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 22px;
+  /* DS §5.1：主控件触摸目标 ≥44px。视觉轨道仍是 2px 发丝线，
+     高度只用来扩大命中区（实验台在手机上要能稳稳拖动）。 */
+  height: 44px;
   background: transparent;
   cursor: pointer;
   margin: 0;
@@ -251,13 +309,13 @@ input[type='range'] {
 input[type='range']::-webkit-slider-runnable-track {
   height: 2px;
   background: var(--line-2);
-  border-radius: 2px;
+  border-radius: var(--ds-radius-xs);
 }
 
 input[type='range']::-moz-range-track {
   height: 2px;
   background: var(--line-2);
-  border-radius: 2px;
+  border-radius: var(--ds-radius-xs);
 }
 
 input[type='range']::-webkit-slider-thumb {
@@ -268,7 +326,7 @@ input[type='range']::-webkit-slider-thumb {
   margin-top: -6px;
   border-radius: 50%;
   background: var(--signal);
-  border: 2px solid var(--ink-900);
+  border: 2px solid var(--ds-bg-raised);
   box-shadow: 0 0 0 1px var(--signal);
   transition: transform var(--t-fast) var(--ease);
 }
@@ -278,7 +336,7 @@ input[type='range']::-moz-range-thumb {
   height: 14px;
   border-radius: 50%;
   background: var(--signal);
-  border: 2px solid var(--ink-900);
+  border: 2px solid var(--ds-bg-raised);
   box-shadow: 0 0 0 1px var(--signal);
 }
 
@@ -297,15 +355,15 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--ds-radius-control);
   overflow: hidden;
 }
 
 .mode {
-  background: var(--ink-850);
+  background: var(--ds-bg-raised);
   border: 0;
   padding: 11px 6px;
-  font-size: 13px;
+  font-size: var(--ds-type-sm);
   color: var(--paper-3);
   cursor: pointer;
   transition:
@@ -314,20 +372,20 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
 }
 
 .mode:hover {
-  background: var(--ink-800);
-  color: var(--paper);
+  background: var(--ds-bg-raised);
+  color: var(--ds-ink);
 }
 
 .mode.is-active {
   background: var(--signal);
-  color: var(--ink-950);
+  color: var(--ds-accent-ink);
   font-weight: 600;
 }
 
 .lab__note {
   font-family: var(--f-mono);
-  font-size: 11.5px;
-  line-height: 1.7;
+  font-size: var(--ds-type-xs);
+  line-height: 1.75;
   color: var(--paper-4);
   border-left: 2px solid var(--signal-line);
   padding-left: 12px;
@@ -383,11 +441,11 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
 .strip {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  background: var(--ink-850);
+  background: var(--ds-bg-raised);
   overflow: hidden;
   padding: 13px 0;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, var(--ds-bg) 6%, var(--ds-bg) 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, var(--ds-bg) 6%, var(--ds-bg) 94%, transparent);
 }
 
 .strip__track {
@@ -406,8 +464,8 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
   gap: 10px;
   padding: 0 30px;
   font-family: var(--f-mono);
-  font-size: 12.5px;
-  letter-spacing: 0.1em;
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
   color: var(--paper-3);
   white-space: nowrap;
 }
@@ -443,8 +501,8 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
 
 .field label {
   font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
   color: var(--paper-3);
   text-transform: uppercase;
 }
@@ -459,12 +517,13 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
 .field textarea,
 .field select {
   width: 100%;
-  padding: 12px 14px;
-  background: rgba(5, 7, 10, 0.7);
-  border: 1px solid var(--line-2);
-  border-radius: var(--radius);
-  font-size: 14.5px;
-  color: var(--paper);
+  min-height: 44px;
+  padding: var(--ds-space-3) var(--ds-space-4);
+  background: var(--ds-bg-raised);
+  border: 1px solid var(--ds-line-strong);
+  border-radius: var(--ds-radius-md);
+  font-size: var(--ds-type-body);
+  color: var(--ds-ink);
   transition:
     border-color var(--t-fast) var(--ease),
     background var(--t-fast) var(--ease);
@@ -491,20 +550,21 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
 .field textarea:focus,
 .field select:focus {
   outline: none;
-  border-color: var(--signal);
-  background: rgba(5, 7, 10, 0.9);
+  border-color: var(--ds-accent);
+  background: var(--ds-bg-raised);
+  box-shadow: 0 0 0 3px var(--ds-accent-soft);
 }
 
 .field.has-error input,
 .field.has-error textarea,
 .field.has-error select {
-  border-color: #ff5a5a;
+  border-color: var(--ds-danger);
 }
 
 .field__err {
   font-family: var(--f-mono);
-  font-size: 11.5px;
-  color: #ff7a7a;
+  font-size: var(--ds-type-xs);
+  color: var(--ds-danger);
   min-height: 0;
   opacity: 0;
   transform: translateY(-3px);
@@ -542,20 +602,20 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
 
 .reserve__status {
   font-family: var(--f-mono);
-  font-size: 12.5px;
+  font-size: var(--ds-type-sm);
   line-height: 1.6;
   min-height: 18px;
   color: var(--pulse);
 }
 
 .reserve__status.is-error {
-  color: #ff7a7a;
+  color: var(--ds-danger);
 }
 
 .reserve__note {
   font-family: var(--f-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.06em;
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-body);
   color: var(--paper-4);
   line-height: 1.6;
 }
@@ -591,4 +651,193 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
 
 .reveal[data-delay='3'] {
   --reveal-delay: 270ms;
+}
+
+
+/* ------------------------------------------------------------------ *
+   Sources & licences
+   DS §6.2：来源与许可必须在页面内可见（折叠但可展开），不得只放页脚
+ * ------------------------------------------------------------------ */
+
+.sources__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+  max-width: var(--ds-read-width);
+}
+
+.source-item {
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-bg-raised);
+  overflow: hidden;
+}
+
+.source-item__head {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr auto;
+  align-items: baseline;
+  gap: var(--ds-space-3);
+  padding: var(--ds-space-4);
+  cursor: pointer;
+  list-style: none;
+  transition: background var(--ds-dur-fast) var(--ds-ease-veil);
+}
+
+.source-item__head::-webkit-details-marker {
+  display: none;
+}
+
+.source-item__head:hover {
+  background: var(--ds-surface);
+}
+
+.source-item__idx {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  font-weight: var(--ds-w-bold);
+  color: var(--ds-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.source-item__name {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h4);
+  font-weight: var(--ds-w-medium);
+  color: var(--ds-ink);
+}
+
+.source-item__hint {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-faint);
+  text-align: right;
+}
+
+.source-item[open] .source-item__hint::after {
+  content: ' · 已展开';
+}
+
+.source-item__body {
+  padding: 0 var(--ds-space-4) var(--ds-space-4);
+  border-top: 1px solid var(--ds-line);
+  padding-top: var(--ds-space-4);
+  color: var(--ds-ink-soft);
+  font-size: var(--ds-type-body);
+  line-height: 1.85;
+}
+
+.source-kv {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 9rem) 1fr;
+  gap: var(--ds-space-3) var(--ds-space-4);
+}
+
+.source-kv dt {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
+  color: var(--ds-ink-faint);
+  padding-top: 0.25em;
+}
+
+.source-kv dd {
+  margin: 0;
+  color: var(--ds-ink-soft);
+}
+
+.source-kv dd b {
+  color: var(--ds-ink);
+  font-weight: var(--ds-w-medium);
+}
+
+.source-item__warn {
+  display: inline-block;
+  margin-top: var(--ds-space-2);
+  padding: var(--ds-space-2) var(--ds-space-3);
+  border-left: 2px solid var(--ds-warning);
+  background: var(--ds-bg-sunken);
+  color: var(--ds-ink-soft);
+  font-size: var(--ds-type-sm);
+}
+
+.source-item__warn b {
+  color: var(--ds-ink);
+}
+
+.source-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+}
+
+.source-list li {
+  position: relative;
+  padding-left: var(--ds-space-4);
+}
+
+.source-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 10px;
+  height: 1px;
+  background: var(--ds-accent);
+}
+
+.source-list b {
+  color: var(--ds-ink);
+  font-weight: var(--ds-w-medium);
+}
+
+.source-item code,
+.source-kv code {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  padding: 1px 5px;
+  border-radius: var(--ds-radius-xs);
+  background: var(--ds-bg-sunken);
+  color: var(--ds-ink);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 860px) {
+  /* 画布 HUD 必须完整落在画布内：面板比画布高时，底部读数会被
+     .stage 的 overflow:hidden 裁掉（移动端 ΔE00 行曾整行消失），
+     且溢出的面板会压到画布下方的操作提示行（D1 文字压盖）。 */
+  .stage__readout {
+    top: 14px;
+    right: 14px;
+    padding: 9px 11px;
+  }
+
+  .stage__readout .readout__row {
+    padding: 3px 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .source-item__head {
+    grid-template-columns: 2rem 1fr;
+  }
+
+  .source-item__hint {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .source-kv {
+    grid-template-columns: 1fr;
+    gap: var(--ds-space-1) 0;
+  }
+
+  .source-kv dd {
+    margin-bottom: var(--ds-space-3);
+  }
+
+  /* 手机上画布只有 ~120–155px 高，色块让位，读数三行必须完整可见 */
+  .stage__readout .readout__swatch {
+    display: none;
+  }
 }

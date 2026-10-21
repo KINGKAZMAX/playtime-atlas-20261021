@@ -20,7 +20,7 @@
     },
     {
       "id": "04-frostgap-voyager",
-      "buildState": "built",
+      "buildState": "fallback",
       "entryExists": true,
       "online": true
     },
@@ -67,12 +67,12 @@
       "online": true
     }
   ],
-  "builtAt": "2026-10-21T12:27:23.345Z",
+  "builtAt": "2026-10-21T17:17:08.498Z",
   "totals": {
-    "total": 11,
-    "built": 11,
-    "fallback": 0,
+    "total": 15,
+    "built": 14,
+    "fallback": 1,
     "unavailable": 0,
-    "bytes": 125357042
+    "bytes": 80274053
   }
 }

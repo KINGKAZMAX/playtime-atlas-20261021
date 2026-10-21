@@ -1,23 +1,12 @@
 {
   "id": "13-qa-curation",
   "title": "全作品试玩验收与差异审计",
-  "description": "对 00—12 号任务的产物做独立验收：只读他人目录，在真实 Chromium 中对每件可运行作品做桌面(1440×900)与移动端(390×844)双视口实测，覆盖开始/暂停/重置状态机、存档跨刷新往返、键盘焦点可达性与作用域、console 错误、同源资源 404、GitHub Pages 子路径部署、3D 模型导出（GLB 容器头校验）九个必测维度；另做原创差异与来源许可审计。缺失产物一律记为 not-delivered / in-progress，不计通过。产出可复现的 Playwright 验收方案（qa-harness/）、证据 JSON、截图、机器可读问题清单与给发布任务的三类名单（可上线 / 需修复后上线 / 暂不上线）。",
+  "description": "对 00—12 号任务的产物做独立验收：只读他人目录，在真实 Chromium 中对每件可运行作品做桌面(1440×900)与移动端(390×844)双视口实测，覆盖开始/暂停/重置状态机、存档跨刷新往返、键盘焦点可达性与作用域、console 错误、同源资源 404、GitHub Pages 子路径部署、3D 模型导出（GLB 容器头校验）九个必测维度；另做原创差异与来源许可审计。缺失产物一律记为 not-delivered / in-progress，不计通过。最终结果：13 件全部完成实测，共 330 条浏览器断言（pass 252 / warn 12 / fail 4 / info 35 / skip 27），结论为 pass 6 / pass-with-warnings 5 / fail 2；13 条问题记录在 issues.json（critical 1 / major 1 / minor 4 / info 7）。",
   "entry": "QA-MATRIX.md",
   "buildCommand": "cd qa-harness && npm install && node run-qa.mjs && node build-reports.mjs",
   "outputDir": ".",
   "status": "ready",
   "upstream": "13-qa-curation",
-  "license": {
-    "code": "MIT",
-    "assets": "自有测试截图与结论"
-  },
-  "sources": [
-    {
-      "title": "13-qa-curation 实机测试记录",
-      "url": "",
-      "note": "缺失项记为未通过，不记为通过。"
-    }
-  ],
   "task": "13",
   "batch": "flash-showcase-20261021",
   "model": {
@@ -122,7 +111,7 @@
       "title": "执行状态",
       "type": "doc",
       "path": "STATUS.md",
-      "description": "进度、关键判定记录、已确认缺陷与通过情况。",
+      "description": "本轮结论：verdict 计数、每条 fail 的明细与责任归属（真实缺陷 / 检测器假阳性 / 改名·时序假阳性）、05 实跑结论、未自动验证项清单、已关闭的历史缺陷。",
       "status": "ready"
     },
     {
@@ -170,7 +159,7 @@
       "title": "给发布任务的行动清单",
       "type": "spec",
       "path": "HANDOFF-14.md",
-      "description": "可上线 / 需修复后上线 / 暂不上线三类名单 + 4 条发布红线 + 部署后复验清单。",
+      "description": "可上线 / 建议修完再上线 / 必须先修再上线 三类名单 + 5 条发布红线 + 部署后 11 项复验清单。",
       "status": "ready"
     },
     {
@@ -194,7 +183,7 @@
       "title": "验收原始证据",
       "type": "evidence",
       "path": "evidence/",
-      "description": "每件作品一次验收的 JSON：构建日志、逐项检查结论、console/网络记录。",
+      "description": "每件作品一次验收的 JSON：构建日志、逐项检查结论、console/网络记录；summary.json 为批次级索引（由证据反向重建，始终全量）。",
       "status": "ready"
     },
     {
@@ -208,10 +197,11 @@
   ],
   "method": {
     "browser": "playwright-core 1.64.1 + 本机缓存 chromium-1248（channel:'chromium'），不下载浏览器",
-    "buildIsolation": "源码复制到系统临时目录后构建，node_modules 以符号链接复用；实现者目录零写入",
+    "buildIsolation": "源码以 fsp.cp + dereference 复制到系统临时目录后构建并校验入口文件（失败自动重试一次）；实现者目录零写入",
     "subpath": "自建可挂载前缀的静态服务器，复现 /<repo>/exhibits/<id>/ 形态",
     "readinessGate": "入口文件与 vite 多页入口缺失时判为 in-progress，既不计通过也不计失败",
-    "dedup": "issues.json 按 (作品, 维度, 检查名) 去重，并记录 occurrences"
+    "dedup": "issues.json 按 (作品, 维度, 检查名) 去重，并记录 occurrences",
+    "d1Detector": "只取元素直属文本节点的字形行盒；排除 content-visibility:hidden、祖先 opacity:0、被 overflow:hidden/clip 裁剪的行；测量前冻结 transition/animation。每条命中必须经裁剪截图 + elementsFromPoint 绘制层级复核"
   },
   "limitations": [
     "触屏手势（滑动、双指）未在真机验证；触控结论基于 Chromium 模拟上下文与命中区域尺寸检查。",
@@ -225,5 +215,52 @@
     "authorizedByUser": true,
     "deployOwner": "14-publish",
     "note": "用户已授权本批成果发布到其已登录 GitHub 并在线体验；本任务只交付验收结论与可复现的验收方案，不上传凭据、不含日志/私有文件、不另建仓库、不写 GitHub。"
+  },
+  "results": {
+    "observedAt": "2026-10-21T14:40:00Z",
+    "targets": 13,
+    "assertions": 330,
+    "verdicts": {
+      "pass": 6,
+      "pass-with-warnings": 5,
+      "fail": 2,
+      "not-delivered": 0,
+      "in-progress": 0
+    },
+    "issues": {
+      "critical": 1,
+      "major": 1,
+      "minor": 4,
+      "info": 7
+    },
+    "pass": [
+      "01-web",
+      "03-interaction",
+      "04-spaceflight",
+      "05-museum-research",
+      "08-era-origins",
+      "12-era-modern"
+    ],
+    "passWithWarnings": [
+      "00-research",
+      "06-museum-core",
+      "09-era-arcade",
+      "10-era-console",
+      "11-era-online"
+    ],
+    "fail": [
+      "02-model",
+      "07-museum-art"
+    ],
+    "blocking": [
+      {
+        "target": "07-museum-art",
+        "severity": "critical",
+        "dimension": "D6",
+        "summary": "applyI18n() 用 textContent 覆盖含子元素的 [data-i18n] 节点，抹掉 #cjk-count 后 main.js:176 对 null 赋值抛 TypeError，整条渲染链中断，字体/图标/海报/封面/模型/降级/案例七个区块全部空白。",
+        "issue": "issues.json → QA-006"
+      }
+    ],
+    "note": "结论只对「验收时刻」成立；上游在验收期间持续被改写，发布前应重跑 `node qa-harness/run-qa.mjs` 并核对 evidence/summary.json 的 counts。"
   }
 }

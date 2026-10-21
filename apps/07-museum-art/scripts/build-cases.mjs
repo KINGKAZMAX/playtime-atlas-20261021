@@ -30,6 +30,9 @@ function buildCase(model, index) {
   const hasPng = existsSync(path.join(ROOT, 'public', 'assets', 'models', `model-${model.id}.png`));
   const copy = caseCopy[model.id] || { label: model.name, blurb: model.story };
 
+  /* 玻璃罩几何 */
+  const GX = 56, GY = 56, GW = W - 112, GH = 828;
+
   const defs = [
     linearGradient('case-bg', [
       { offset: '0%', color: C.ink[800] },
@@ -53,17 +56,35 @@ function buildCase(model, index) {
       { offset: '0%', color: C.paper[50], opacity: 0.2 },
       { offset: '100%', color: C.paper[50], opacity: 0 },
     ]),
+    /* 展品图的柔化遮罩：让渲染图的硬边融进柜内 */
+    radialGradient('fade-grad', [
+      { offset: '0%', color: '#FFFFFF' },
+      { offset: '62%', color: '#FFFFFF' },
+      { offset: '88%', color: '#8A8A8A' },
+      { offset: '100%', color: '#000000' },
+    ]),
     dotPattern('case-dots', { size: 18, r: 1.4, color: C.paper[50], opacity: 0.12 }),
     halftonePattern('case-half', { size: 14, color: C.ink[900], opacity: 0.12, maxR: 2.2 }),
     grainFilter('case-grain', { freq: 0.9, opacity: 0.13, seed: 5 + index }),
   ];
+
+  /* 展品图尺寸与位置（用于遮罩区域） */
+  const IMG_X = GX + 40;
+  const IMG_Y = GY + 44;
+  const IMG_W = GW - 80;
+  const IMG_H = GW - 80;
+
+  defs.push(
+    `<mask id="case-fade" maskUnits="userSpaceOnUse" x="${IMG_X - 20}" y="${IMG_Y - 20}" width="${IMG_W + 40}" height="${IMG_H + 40}">` +
+      `<rect x="${IMG_X - 20}" y="${IMG_Y - 20}" width="${IMG_W + 40}" height="${IMG_H + 40}" fill="url(#fade-grad)"/>` +
+      `</mask>`,
+  );
 
   const body = [];
   body.push(rect(0, 0, W, H, { fill: 'url(#case-bg)' }));
   body.push(rect(0, 0, W, H, { fill: 'url(#case-half)', opacity: 0.5 }));
 
   /* ---- 玻璃罩 ---- */
-  const GX = 56, GY = 56, GW = W - 112, GH = 828;
   body.push(rect(GX, GY, GW, GH, { fill: C.ink[900], opacity: 0.55 }));
   body.push(circle(GX + GW / 2, GY + 300, 330, { fill: 'url(#case-spot)' }));
   body.push(rect(GX, GY, GW, GH, { fill: 'url(#case-dots)', opacity: 0.5 }));
@@ -71,8 +92,8 @@ function buildCase(model, index) {
   /* 柜内展品 */
   if (hasPng) {
     body.push(
-      `<image href="${modelPng}" x="${GX + 40}" y="${GY + 44}" width="${GW - 80}" height="${GW - 80}" ` +
-        `preserveAspectRatio="xMidYMid meet"/>`,
+      `<image href="${modelPng}" x="${IMG_X}" y="${IMG_Y}" width="${IMG_W}" height="${IMG_H}" ` +
+        `preserveAspectRatio="xMidYMid meet" mask="url(#case-fade)"/>`,
     );
   } else {
     body.push(

@@ -4,26 +4,78 @@
   "titleCn": "回响电玩馆",
   "titleLatin": "PLAYTIME ATLAS",
   "subtitle": "电子游戏硬件年代馆 · 美术资产包",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "generated": "2026-10-21",
   "scheme": {
-    "name": "深墨蓝 + 暖纸白 + 信号橙",
-    "ink": "#0C1726",
-    "paper": "#FBF7EF",
-    "signal": "#F0601F"
+    "name": "UI：余晖设计系统深色主题；展品内嵌：深墨蓝 + 暖纸白 + 信号橙",
+    "uiBackground": "#100F0E",
+    "uiAccent": "#E0684A",
+    "exhibitInk": "#0C1726",
+    "exhibitPaper": "#FBF7EF",
+    "exhibitSignal": "#F0601F"
   },
   "license": {
     "artwork": "CC0-1.0（本馆原创）",
     "fonts": "SIL Open Font License 1.1",
     "thirdParty": "无"
   },
+  "alignment": {
+    "designSystem": "余晖设计系统",
+    "designSystemEn": "Afterglow Design System",
+    "designSystemId": "afterglow-ds",
+    "designSystemVersion": "1.0.0",
+    "alignedTo": "16-design-system/design-tokens.json",
+    "alignedToCss": "16-design-system/src/tokens.css",
+    "spec": "16-design-system/DESIGN-SPEC.md",
+    "audit": "16-design-system/REFERENCE-AUDIT.md",
+    "migration": "16-design-system/MIGRATION-NOTES.md §2.3",
+    "source": "live:16-design-system",
+    "alignedAt": "2026-10-21T15:14:01.490Z",
+    "cssVariablePrefix": "--ds-",
+    "tokenFile": "./design-tokens.json",
+    "fingerprints": {
+      "designTokensSha256": "042a38a36707e8cea6584dcb0462ef1ca442d66fad5c42c1ffefcf71034f82f4",
+      "tokensCssSha256": "e9595d51336fac6a2cb013095b8863c72022bb20e545fa46867c129e9addf368",
+      "fontsSha256": {
+        "inter-latin.woff2": "98342e4c9d04d96ee10270f855930ecc1adc34dc6273134d80a3c385dc530fe0",
+        "noto-sans-sc-subset.woff2": "0a0b62b40f8b359d0714d47fd3e293d2ca871d0ee21acb200c0b31ebc667fe4b",
+        "space-grotesk-latin.woff2": "4212a294d495570baaa60d085f3b6a72b6790b5b1d13471630721ceb9c2babcf",
+        "space-mono-bold.woff2": "d09323c39cee214f6472155bb71d374a89726805f7e6313d656f3947b16ccf6c",
+        "space-mono-regular.woff2": "2bd76ba5ecee41cdbde94aa862f0c998a6f85ee7e70b8142d19e9e8eb364eb27"
+      },
+      "localFontsSha256": {
+        "inter-latin.woff2": "98342e4c9d04d96ee10270f855930ecc1adc34dc6273134d80a3c385dc530fe0",
+        "noto-sans-sc-subset.woff2": "0a0b62b40f8b359d0714d47fd3e293d2ca871d0ee21acb200c0b31ebc667fe4b",
+        "space-grotesk-latin.woff2": "4212a294d495570baaa60d085f3b6a72b6790b5b1d13471630721ceb9c2babcf",
+        "space-mono-bold.woff2": "d09323c39cee214f6472155bb71d374a89726805f7e6313d656f3947b16ccf6c",
+        "space-mono-regular.woff2": "2bd76ba5ecee41cdbde94aa862f0c998a6f85ee7e70b8142d19e9e8eb364eb27"
+      },
+      "fontsIdentical": true
+    },
+    "drift": [
+      {
+        "variable": "--ds-font-mono",
+        "kind": "value-differs",
+        "css": "\"Space Mono\", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+        "json": "'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
+        "jsonPath": "typography.family.mono",
+        "inherited": true,
+        "note": "16 的 src/tokens.css 与 design-tokens.json 在此项上本身不一致（跨层差异，源自 16）。本包 CSS 层照抄 16 的 CSS 取值、JSON 层照抄 16 的 JSON 取值，两层均未做任何取舍或改写。"
+      }
+    ],
+    "note": "本资产包的 UI 令牌与字体清单已对齐 16-design-system（余晖设计系统 v1.0.0）。fonts 下的 5 个 woff2 与 16 的字体清单逐字节一致（fingerprints.fontsIdentical）。展品内嵌配色（scheme.exhibit*）是海报/封面/展柜/GLB 已烘焙的取色，不随 UI 主题变化。"
+  },
   "tokens": {
     "json": "./design-tokens.json",
     "css": "./assets/tokens.css",
-    "js": "./assets/tokens.js"
+    "js": "./assets/tokens.js",
+    "cssVariablePrefix": "--ds-",
+    "designSystem": "afterglow-ds",
+    "designSystemVersion": "1.0.0"
   },
   "fonts": {
     "stylesheet": "./assets/fonts/fonts.css",
+    "manifest": "./assets/fonts/FONT-MANIFEST.json",
     "families": [
       {
         "family": "Space Grotesk",
@@ -54,55 +106,69 @@
       {
         "file": "./fonts/inter-latin.ttf",
         "bytes": 329028,
-        "format": "ttf"
+        "format": "ttf",
+        "sha256": "f9de7f89326530964f557a8b610ec2083e95c5fcfc5ee02670feeed7dcef9549"
       },
       {
         "file": "./fonts/inter-latin.woff2",
         "bytes": 132684,
-        "format": "woff2"
+        "format": "woff2",
+        "sha256": "98342e4c9d04d96ee10270f855930ecc1adc34dc6273134d80a3c385dc530fe0"
       },
       {
         "file": "./fonts/noto-sans-sc-subset.ttf",
         "bytes": 333512,
-        "format": "ttf"
+        "format": "ttf",
+        "sha256": "aef9389afc01101dfc97ba1e014752303449fb27fe97c4656a4412a909f48b6e"
       },
       {
         "file": "./fonts/noto-sans-sc-subset.woff2",
         "bytes": 197600,
-        "format": "woff2"
+        "format": "woff2",
+        "sha256": "0a0b62b40f8b359d0714d47fd3e293d2ca871d0ee21acb200c0b31ebc667fe4b"
       },
       {
         "file": "./fonts/space-grotesk-latin.ttf",
         "bytes": 91924,
-        "format": "ttf"
+        "format": "ttf",
+        "sha256": "87d9d499dbcad29b581835e1a1cb3b1cb1020694f358565a6d96c29ffb6fa17f"
       },
       {
         "file": "./fonts/space-grotesk-latin.woff2",
         "bytes": 34788,
-        "format": "woff2"
+        "format": "woff2",
+        "sha256": "4212a294d495570baaa60d085f3b6a72b6790b5b1d13471630721ceb9c2babcf"
       },
       {
         "file": "./fonts/space-mono-bold.ttf",
         "bytes": 39412,
-        "format": "ttf"
+        "format": "ttf",
+        "sha256": "d5bfda5eb09fb01fb416ae46d59127d7cbdbe6471df7814533bd2af8cb7d84a8"
       },
       {
         "file": "./fonts/space-mono-bold.woff2",
         "bytes": 15000,
-        "format": "woff2"
+        "format": "woff2",
+        "sha256": "d09323c39cee214f6472155bb71d374a89726805f7e6313d656f3947b16ccf6c"
       },
       {
         "file": "./fonts/space-mono-regular.ttf",
         "bytes": 40044,
-        "format": "ttf"
+        "format": "ttf",
+        "sha256": "2a0616d95b0ebbde8b3928e2a0cbec44f26ce8c161db09e0fd2d3e498a61a0b9"
       },
       {
         "file": "./fonts/space-mono-regular.woff2",
         "bytes": 14884,
-        "format": "woff2"
+        "format": "woff2",
+        "sha256": "2bd76ba5ecee41cdbde94aa862f0c998a6f85ee7e70b8142d19e9e8eb364eb27"
       }
     ],
-    "totalBytes": 1228876
+    "totalBytes": 1228876,
+    "cjkChars": 746,
+    "alignedTo": "16-design-system/fonts/FONT-MANIFEST.json",
+    "alignedDesignSystem": "1.0.0",
+    "fontsIdentical": true
   },
   "icons": {
     "sprite": "./assets/icons/icons.svg",
@@ -891,7 +957,7 @@
       "png": "./assets/models/model-cabinet-01.png",
       "techSvg": "./assets/models/model-cabinet-01.tech.svg",
       "json": "./assets/models/model-cabinet-01.json",
-      "glbBytes": 68080
+      "glbBytes": 68088
     },
     {
       "id": "console-02",
@@ -947,7 +1013,7 @@
       "png": "./assets/models/model-console-02.png",
       "techSvg": "./assets/models/model-console-02.tech.svg",
       "json": "./assets/models/model-console-02.json",
-      "glbBytes": 84452
+      "glbBytes": 84448
     },
     {
       "id": "console-03",
@@ -1002,7 +1068,7 @@
       "png": "./assets/models/model-console-03.png",
       "techSvg": "./assets/models/model-console-03.tech.svg",
       "json": "./assets/models/model-console-03.json",
-      "glbBytes": 105612
+      "glbBytes": 105596
     },
     {
       "id": "handheld-04",
@@ -1092,7 +1158,7 @@
       "png": "./assets/models/model-hybrid-05.png",
       "techSvg": "./assets/models/model-hybrid-05.tech.svg",
       "json": "./assets/models/model-hybrid-05.json",
-      "glbBytes": 82408
+      "glbBytes": 82404
     },
     {
       "id": "modern-06",
@@ -1151,7 +1217,7 @@
       "png": "./assets/models/model-modern-06.png",
       "techSvg": "./assets/models/model-modern-06.tech.svg",
       "json": "./assets/models/model-modern-06.json",
-      "glbBytes": 67972
+      "glbBytes": 67940
     }
   ],
   "fallback": [

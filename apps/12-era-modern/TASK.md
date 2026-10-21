@@ -41,13 +41,23 @@
 ├── TASK.md            # 本文件
 ├── STATUS.md          # 阶段状态 / 变更日志
 ├── README.md          # 项目说明、运行方式、操作手册、限制声明
+├── RESTYLE-INVENTORY.md  # 第二轮「待替换清单」+ §9 执行结果对齐说明 + §10 第三轮对齐说明
 ├── SOURCES.md         # 史料来源台账（逐条可点击 URL + 核验时间）
 ├── LICENSES.md        # 资产与许可（字体、程序化美术、参考边界）
 ├── QA.md              # 验收记录（浏览器实测结果）
 ├── manifest.json      # id,title,description,entry,buildCommand,outputDir,status
 ├── package.json / vite.config.js / index.html
+├── public/assets/ds/  # 16 号设计系统原样副本（tokens.css / components.css / fonts/）
 ├── src/               # 源码
+│   ├── core/i18n/     # zh/en 文案骨架（zh.js / en.js / index.js，162 键）
+│   ├── core/debug-state.js  # 唯一 __ 前缀可观测状态 window.__eraGame
+│   ├── core/tokens.js # readToken() / readTokenRgba()，供 Canvas / Three.js 读 CSS 令牌
+│   └── styles/        # tokens.css（语义别名层）/ cjk.css（中文排版，最后导入）/ 各页样式
 ├── scripts/start.sh   # 一键启动
+├── scripts/check-i18n.mjs  # 文案骨架对等性自检
+├── scripts/test-levels.mjs # 关卡可解性自检
+├── scripts/verify-ds.mjs   # 设计系统机械验收（14 组检查，零第三方依赖）
+├── evidence/          # 设计系统验收机读结果与截图
 ├── screenshots/       # 实机截图
 ├── handoff/           # 给 06（嵌入）与 14（发布）的接入说明 + 切片数据
 └── dist/              # 已构建静态产物（供 06/14 直接复制）
@@ -149,3 +159,130 @@
 - 解谜的「作者解法」用于提示系统；若玩家找到其他解法，提示可能指向非唯一解 —— 已在 UI 注明「提示基于推荐解法」。
 - 光环台**不是** WebXR 应用；不实现立体渲染与手柄追踪，如实标注为桌面演示。
 - 本展厅视觉体系与 07-museum-art 的母馆视觉保持协调但**独立命名与配色**，避免与主站混淆。
+
+---
+
+## 8. 第二轮派单（15-supervisor · 改版）执行记录
+
+> 本节为第二轮追加，**不修改上面第 0–7 节的第一轮派单原文**（保留为历史记录）。
+> 派单来源：`15-supervisor/RESTYLE-SPEC.md`。
+
+### 8.1 派单要求与完成情况
+
+| # | 派单要求 | 完成情况 |
+| --- | --- | --- |
+| 1 | 清点本目录字体 / 色值 / 圆角 / 间距使用点，产出「待替换清单」（文件 + 选择器 + 旧值 → 16 token 候选路径） | ✅ `RESTYLE-INVENTORY.md`（22 KB）：字体 34 处 / 色值 96 处 / 圆角 34 处 / 间距 128 处 / 阴影 7 处 / 过渡 12 处 |
+| 2 | 准备 zh/en 文案 key 骨架（**先不切语言**） | ✅ `src/core/i18n/`（zh.js / en.js / index.js / README.md），**162 键**，`scripts/check-i18n.mjs` 校验 162/162 通过。界面默认中文，**未启用切换入口** |
+| 3 | 修完 13-qa-curation 针对本目录的 4 条问题（QA-036/037/038/039） | ✅ 全部修复并留证（见 `QA.md` §1.5.1）。顺带修掉 2 个真实功能缺陷（工具栏按钮未绑事件、遮罩关闭焦点丢失） |
+| 4 | 读 16 的 `DESIGN-SPEC.md` + `design-tokens.json` + `preview.html` + `MIGRATION-NOTES.md`，按清单逐项替换 token，**不推倒重写页面结构** | ✅ 落地 `--ds-*` 全量令牌 + 语义别名层；5 个样式文件重写为设计系统语言；**DOM 结构未推倒重建**，既有选择器与 QA 契约全部保留 |
+| 5 | 统一导航 / 封面 / 详情 / 按钮 / 过渡 | ✅ 五类统一（只换视觉绑定） |
+| 6 | 新增字体自托管并登记 `LICENSES.md` | ✅ 4 款 woff2 + 4 份 OFL 全文；`@fontsource-variable/*` 已卸载；`LICENSES.md` 已重写 |
+| 7 | 落实 `prefers-reduced-motion` 降级且不丢失可玩信息 | ✅ 实测：reduced-motion 下 58 项抽样最大动效 0.001s，拍点标尺与下行光带仍在 |
+| 8 | 玩法画面优先：节奏提示清晰 / 解谜线索可辨 / 控件可点 | ✅ 三项均通过（见 `QA.md` §1.5.3 与下表） |
+| 9 | 保持既定原创身份（作品名 / 文案 / 音乐 / 关卡 / 史料不动），只改视觉语言 | ✅ 全部保持；仅视觉层与页面层装饰色调整 |
+| 10 | 产物可部署到 Pages **子路径** | ✅ `base: './'`；产物 CSS 内字体为 `url(./<name>-<hash>.woff2)`，**无绝对根路径** |
+
+### 8.2 玩法可读性复验结论
+
+| 项 | 结论 | 实测值 |
+| --- | --- | --- |
+| 节奏提示仍清晰 | ✅ 通过 | 拍点标尺 + 下行光带 + 收缩节拍环三者在新色板下仍可区分；reduced-motion 下最大动效 0.001s 而提示仍在 |
+| 解谜线索仍可辨认 | ✅ 通过 | 折光阁 HUD 图例色样实测仍为 `rgb(79,227,208) / rgb(255,95,162) / rgb(157,123,255)`，与改版前逐位一致 |
+| 控件仍可点 | ✅ 通过 | HUD 按钮命中区 51×32 ~ 76×32；触摸目标最小 32px |
+| 对比度 | ✅ 通过 | 30 个选择器关键文本最低 4.68:1（要求 ≥4.5:1） |
+| 零外链 | ✅ 通过 | 运行期外部请求 0；4 款字体全部自托管并随 `dist/assets/` 一起发布 |
+
+### 8.3 本轮被**推翻**的第一轮派单条目（如实记录）
+
+第 3.1 节「原创视觉识别：夜蓝墨底 `#070B1E` + 棱镜三色」与第 5 节
+「字体：Space Grotesk Variable / JetBrains Mono Variable（npm 本地打包）」
+在第二轮被 16 号设计系统**取代**，理由与限制如下：
+
+- 视觉层改用 16 号浅色设计系统（`--ds-bg #FCFBF9` / `--ds-accent #B4432B`），
+  画布内玩法配色**按红线 K.1 保持原值**不动。
+- 字体改用 16 号交付的自托管 woff2（Space Grotesk / Inter / Space Mono Regular + Bold）。
+- **棱镜三色并未消失**：它们从「页面层视觉主色」降级为「玩法 / 身份语义色」
+  （`--prism-cyan/amber/violet/magenta/blue`），在三个展项的画面内原样保留。
+
+详见 `RESTYLE-INVENTORY.md` §9、`STATUS.md` 限制节 L-2 / L-4 / L-5。
+
+---
+
+## 9. 第三轮派单（15-supervisor · 接入 16 号规范）执行记录
+
+> 本节为第三轮追加，**不修改上面第 0–8 节的历史派单原文**（保留为历史记录）。
+> 派单来源：`15-supervisor` 第三轮派单（改版执行 · 规范已就绪）；
+> 规范依据：`16-design-system/MIGRATION-NOTES.md`（§0 三前置风险 / §1 接入四步 / §2.8 本目录专属行 /
+> §3 组件映射 / §4 红线 K.1–K.6 / §6 Pages 子路径 / §7 reduced-motion / §8 字体许可 /
+> §9 V.1–V.11 验收清单 / §10 红线）。
+
+### 9.1 接入四步（`MIGRATION-NOTES §1`）
+
+| 步 | 规范要求 | 完成情况 |
+| --- | --- | --- |
+| ① 令牌层 | `tokens.css` 进入本厅 | ✅ `public/assets/ds/tokens.css` = 16 号 `src/tokens.css` **逐字节原样副本**（仅追加来源说明头；原文件 sha256 `e9595d51…f368`）。**本目录的 `--ds-*` 取值只此一处声明**（§0 风险 B） |
+| ② 字体 | `fonts/fonts.css` + 自托管 woff2 | ✅ `public/assets/ds/fonts/`：5 款 woff2（Space Grotesk / Inter / Space Mono Regular / Space Mono Bold / Noto Sans SC 子集）+ `fonts.css` + 5 份 OFL 全文 + `FONT-MANIFEST.json`。第二轮自建的 `src/styles/fonts.css` 与 `src/fonts/` 已删除（避免重复声明） |
+| ③ 换外壳 | `components.css` + `.ds-shell` | ✅ `public/assets/ds/components.css` = 16 号原样副本（sha256 `a602f414…0f51`）；`<body class="ds-shell">`；`.ds-skip` 跳转链接置于 `<body>` 首位 |
+| ④ 注入 `--ds-base` | 由构建注入站点基准路径 | ✅ `index.html` 内 `<style>:root{--ds-base:"/playtime-atlas-20261021/";}</style>`，取值来自 `design-tokens.json → meta.basePathVar`。本厅产物自包含、不引用任何站点级资源，自身资源**全相对路径** |
+
+**层叠顺序**：构建产物中 DS 的三份 `<link>` 在前、Vite 注入的本厅 CSS 在后 → 本厅规则层叠优先，
+组件类冲突可就地校正（**不修改** 16 号副本）。
+
+### 9.2 派单逐项结论
+
+| 项 | 要求 | 结论 |
+| --- | --- | --- |
+| G.1 | 引入 tokens + components | ✅ 三份副本落盘并在 `index.html` 以**相对路径** `<link>` 引入；本厅 `src/styles/tokens.css` 已剥离全部 **165** 处 `--ds-*` 声明，退为「语义别名层 + `--hc-*` 高对比间接层 + `--prism-*` 玩法语义色 + `:lang(zh)` 规则」 |
+| G.2 | `.ds-topbar` / `.ds-footer` / `.ds-skip` | ✅ 三者四路由均已渲染且可见（实测 `.ds-topbar` 1440×86、`.ds-footer` 1440×235、`.ds-skip` 112×54，Tab 第一个可达） |
+| G.3 | 标题禁 `nowrap` | ✅ 4 个标题元素 `white-space` 全为 `normal`（`.ds-cover__title` + 3 × `.ds-work__title`） |
+| G.4 | `:lang(zh)` 字距归零 + 行高 1.85 | ✅ 新增 `src/styles/cjk.css`（**`src/main.js` 中最后导入**）：254 个中文元素字距全为 `0px`、行高全部 ≥1.85，违规 0。6 条特异度更高的既有规则改用 `var(--ds-track-cjk)` |
+| G.5 | 元信息 `--ds-font-mono` | ✅ `--ds-font-mono` 指向 Space Mono；Canvas 文本测量宽度 161.57 vs 不存在族名 158.43，证明真实生效 |
+| G.6 | 保留功能不破坏可玩性 | ✅ 自建 QA **49/49**、13 号探针 **pass 8 / warn 0 / fail 0 / skip 1**、关卡 **4/4**；画布内配色逐位未变（图例色样仍为 `rgb(79,227,208)` / `rgb(255,95,162)` / `rgb(157,123,255)`） |
+| G.7 | 资源相对化适配子路径 | ✅ `dist/assets/ds/**` 全部相对引用，`/repo/prism-era/` 子路径下 HTTP 200，**产物内无 `url(/...)` 绝对根路径** |
+| I.1 | 画布用 `.ds-canvas-frame` | ✅ 三个舞台全部加上 `.ds-canvas-frame`（`contain: paint` + `isolation: isolate`，由 16 号组件层直接提供）+ `.ds-canvas-frame__hud` |
+
+### 9.3 reduced-motion 的两条路径
+
+| 路径 | 机制 |
+| --- | --- |
+| 系统偏好 | 16 号 `tokens.css` / `components.css` 的 `@media (prefers-reduced-motion: reduce)` 标准块 |
+| 设置开关 | 设置面板「减少动效」直接切 **16 号自带的 `[data-rm="reduce"]`** |
+
+本目录**不再自写** reduced-motion 的 `!important` 降级块（既合规，又避免与组件类打架）。
+两条路径均实测：四路由最大动效 **1ms**，回响画布仍在绘制、HUD 判定文本仍在、折光阁图例三色块齐全。
+
+### 9.4 本轮新增的外壳层功能（不触碰玩法 / 文案 / 关卡 / 史料）
+
+时间轴线索筛选（`.ds-chip` ×6，`aria-pressed` + `aria-live` 计数）、关键词搜索（`.ds-field` + `.ds-input`）、
+年份跳转轴（`.ds-rail--horizontal`，`aria-current`）、分区进度指示器（`.ds-indicator`）。
+
+### 9.5 新增验收脚本
+
+`scripts/verify-ds.mjs`（**零第三方依赖**：Node 内置模块 + 本机 Chrome 原生 CDP over WebSocket），
+镜像 16 号 `tools/verify-preview.mjs` 的断言集并扩展到 **14 组检查**（四路由 × 四视口）。
+输出 `evidence/ds-verification.json` + `evidence/ds/`（16 张截图）。
+服务不可达时以退出码 **2** 结束并给中文提示。
+
+### 9.6 复验结论
+
+| 套件 | 结果 |
+| --- | --- |
+| `scripts/verify-ds.mjs` | 14 组：**13 pass / 1 warn / 0 fail / 0 error**，`verdict = PASS` |
+| 自建浏览器 QA | **49 / 49**，0 控制台错误，0 失败请求 |
+| 13 号原版探针 `probeEraGame` | **pass 8 / warn 0 / fail 0 / skip 1** |
+| 无障碍与 reduced-motion | **11 / 11** |
+| 自托管字体落地专项 | **11 / 11** |
+| 关卡可解性 `scripts/test-levels.mjs` | **4 / 4** |
+| 文案骨架 `scripts/check-i18n.mjs` | **162 / 162** |
+| `npx vite build` | 退出码 0；`dist/` ≈ 1.14 MB |
+
+唯一 warn：`--ds-font-mono` 比 `design-tokens.json` 多一个 `Consolas`——差异源自 16 号 `tokens.css` 本身，
+本厅按红线未改副本，记入 `STATUS.md` L-12，待 16 号确认。
+
+### 9.7 第三轮**没有**做的事（红线）
+
+- 未删除任何既有 CSS（§10 红线）：一律在既有类名之上**叠加** `.ds-*` 类名。
+- 未用 `z-index` 修重叠：一律改几何（padding / min-height / 静态横条 / fixed 定位）。
+- 未把 16 号规范改名成参考站作品名或文案；未拷贝参考站任何图片 / 视频 / 字体。
+- 未引入 CDN 字体或脚本；未新增运行期外部 API。
+- 未改动作品名、URL、关卡、史料与玩法色板。

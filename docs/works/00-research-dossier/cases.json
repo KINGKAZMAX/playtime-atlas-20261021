@@ -1,0 +1,6263 @@
+{
+ "meta": {
+  "title": "MiniMax M3.1 Flash 全球公开案例库",
+  "generated_at": "2026-10-21T16:50:42Z",
+  "observation_date": "2026-10-21",
+  "model": {
+   "name": "MiniMax M3.1 Flash",
+   "final_release": "2026-10-19（晚间，中国时间；MiniMax 官方视频『Welcome back, SpaceBunny』认领 Space Bunny）",
+   "final_model_id": "MiniMax-M3.1-Flash",
+   "preview_release": "2026-09-27（MiniMax Code / Token Plan）",
+   "preview_model_id": "MiniMax-M3.1-Flash-Preview",
+   "official_spec": {
+    "context": "1,000,000 tokens",
+    "speed": "200+ TPS 日常输出，P50 170+",
+    "price_cny_per_1m": {
+     "input": 1,
+     "output": 4,
+     "cache_read": 0.1
+    },
+    "price_usd_per_1m": {
+     "input": 0.15,
+     "output": 0.6,
+     "cache_read": 0.015
+    },
+    "thinking": "always-on adaptive thinking，effort: low/medium/high/xhigh/max（默认 max，不可关闭）",
+    "params": "428B 总参数 / 约 23B 激活（稀疏注意力）"
+   },
+   "attribution_rule": "仅当作者正文、画面水印或官方文档明确写出 M3.1 Flash / M3.1-Flash 时才计为 M3.1 Flash。M3、M2.7、M2.5、Space Bunny 匿名期一律单独标注，不混入正式版统计。"
+  },
+  "methodology": [
+   "X：GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en（公开端点，无凭据），逐条取回正文/作者/时间/点赞/回复，并下载媒体用 ffmpeg 抽帧目视复核。",
+   "B站：GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=...（公开接口），取回标题/UP主/播放/点赞/收藏/弹幕/评论。",
+   "YouTube：GET https://www.youtube.com/results?search_query=... 解析 ytInitialData，取回标题/频道/观看数/发布时间。",
+   "GitHub：GET https://api.github.com/search/repositories?q=minimax+m3.1+flash&sort=stars（未认证），取回 description/topics/created_at/pushed_at/stars/forks/license。",
+   "媒体与官方：web_search / web_fetch 抓取澎湃、中证、上证、每经、新智元、Indicia、APPSO、品玩、minimax.io、Artificial Analysis 等。",
+   "小红书：内置浏览器实测 + 必应/百度 site: 检索（见该条不可见项说明）。"
+  ],
+  "platform_metric_comparability": {
+   "warning": "各平台指标口径不同，禁止横向相加或直接比较排名。本表所有 rank_within_platform 仅代表同平台内相对排序。",
+   "x_visible": [
+    "点赞",
+    "回复"
+   ],
+   "x_invisible": [
+    "转发",
+    "书签",
+    "浏览量",
+    "粉丝数"
+   ],
+   "bilibili_visible": [
+    "播放",
+    "点赞",
+    "收藏",
+    "弹幕",
+    "评论"
+   ],
+   "bilibili_invisible": [
+    "转发",
+    "投币",
+    "完播率"
+   ],
+   "youtube_visible": [
+    "观看次数"
+   ],
+   "youtube_invisible": [
+    "点赞",
+    "评论",
+    "订阅者增量"
+   ],
+   "github_visible": [
+    "stars",
+    "forks",
+    "last_push"
+   ],
+   "github_invisible": [
+    "克隆数",
+    "PR/Issue 参与度"
+   ],
+   "no_global_first_claim": "本数据集不支持『全网第一』的结论；所有『最高』均限定在单一平台内。"
+  },
+  "counts": {
+   "total_cases": 134,
+   "x_verified": 51,
+   "x_unverified": 4,
+   "bilibili": 19,
+   "youtube": 31,
+   "github": 10,
+   "media": 12,
+   "official": 6,
+   "platforms_attempted": [
+    "X",
+    "B站",
+    "YouTube",
+    "GitHub",
+    "小红书",
+    "中文媒体",
+    "官方文档/基准站"
+   ],
+   "platforms_with_verified_data": [
+    "X",
+    "B站",
+    "YouTube",
+    "GitHub",
+    "中文媒体",
+    "官方文档/基准站"
+   ],
+   "platforms_blocked": [
+    "小红书（登录墙）"
+   ]
+  },
+  "top3": [
+   {
+    "rank": 1,
+    "id": "X-M48",
+    "slug": "tiny-pocket-landing",
+    "title": "TINY//POCKET 掌机新品落地页",
+    "dimension": "web",
+    "adapted_title": "NIMBUS·7 桌面气象站"
+   },
+   {
+    "rank": 2,
+    "id": "X-M02",
+    "slug": "webgpu-realistic-water",
+    "title": "WebGPU 写实海面 + 漂浮相机",
+    "dimension": "3d/interactive",
+    "adapted_title": "TIDAL DRIFT 潮汐漂移"
+   },
+   {
+    "rank": 3,
+    "id": "X-M09",
+    "slug": "monstera-3d-viewer",
+    "title": "MONSTERA STUDY 3D 模型查看器",
+    "dimension": "web/3d/interactive",
+    "adapted_title": "HELIOS SPECIMEN 日轮标本台"
+   }
+  ],
+  "raw_evidence_dir": "raw/  (含 53 份 X syndication 原始 JSON、平台原始响应、13 段原始视频、27 张抽帧)",
+  "references_dir": "references/mia-100-html/  (克隆自 MiaAI-Lab/MiniMax-M3.1-Flash-100-HTML-Files，**无 LICENSE，仅作参考不得复制**)"
+ },
+ "cases": [
+  {
+   "id": "X-M01",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 22,
+   "title": "SVG 鹈鹕动画",
+   "title_en": "SVG pelican animation generated with MiniCode",
+   "author": "Leo · Building w/ AI",
+   "author_handle": "leo114119",
+   "author_verified": true,
+   "url": "https://x.com/leo114119/status/2112134450926739599",
+   "published_at": "2026-10-19T10:51:09.000Z",
+   "category": "2D/SVG 动效",
+   "dimensions": [
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "minimax m3.1 flash + minicode 生成的svg鹈鹕动画",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "minimax m3.1 flash + minicode 生成的svg鹈鹕动画\n\n老实说，原创度还挺高的，虽然不是很精致，但不差\n\n谁说能打过deepseek v4.1 flash 1017的。。。\n\n另外minimax m3.1 flash速度挺快的。。。 https://t.co/barQYUTcfb",
+   "metrics": {
+    "likes": 46,
+    "replies": 17,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 0,
+    "video_duration_ms": []
+   }
+  },
+  {
+   "id": "X-M02",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 16,
+   "title": "WebGPU 写实水面与漂浮相机",
+   "title_en": "Realistic water scene in WebGPU with floating camera",
+   "author": "Ivan Fioravanti",
+   "author_handle": "ivanfioravanti",
+   "author_verified": true,
+   "url": "https://x.com/ivanfioravanti/status/2112212819395432700",
+   "published_at": "2026-10-19T16:02:33.000Z",
+   "category": "3D 场景 + WebGPU 交互",
+   "dimensions": [
+    "3d",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "My first experiment with omp + MiniMax M3.1 Flash",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "My first experiment with omp + MiniMax M3.1 Flash\nI will now try the same with MiniMax Code to see if there are differences.\n\nPrompt: make the most realistic water scene it could, in WebGPU, with a floating camera.\n\nAverage of ~100 t/s  prose slower, code faster. https://t.co/pxesbDUm2E",
+   "metrics": {
+    "likes": 76,
+    "replies": 12,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M02.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M02_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M02_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     12560
+    ]
+   }
+  },
+  {
+   "id": "X-M03",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 8,
+   "title": "糖果小熊视觉测试",
+   "title_en": "Gummy bears generated with MiniMax-M3.1-Flash",
+   "author": "Mia",
+   "author_handle": "MiaAI_lab",
+   "author_verified": true,
+   "url": "https://x.com/MiaAI_lab/status/2112217267513499850",
+   "published_at": "2026-10-19T16:20:14.000Z",
+   "category": "2D 角色动效",
+   "dimensions": [
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax-M3.1-Flash tries to do Gummy Bears 😐 https://t.co/Ym5tT52Jkc",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax-M3.1-Flash tries to do Gummy Bears 😐 https://t.co/Ym5tT52Jkc",
+   "metrics": {
+    "likes": 188,
+    "replies": 42,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M03.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M03_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M03_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     30750
+    ]
+   }
+  },
+  {
+   "id": "X-M04",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 20,
+   "title": "霓虹赛车：原目标为极品飞车",
+   "title_en": "A neon racing game generated by MiniMax",
+   "author": "kepo",
+   "author_handle": "kepochnik",
+   "author_verified": true,
+   "url": "https://x.com/kepochnik/status/2112201323106222579",
+   "published_at": "2026-10-19T15:16:52.000Z",
+   "category": "浏览器赛车游戏",
+   "dimensions": [
+    "game",
+    "3d",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash cooked Need for Speed: Most Wanted",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash cooked Need for Speed: Most Wanted\n\nyes, it's just a neon race, but the original promt was for this game\n\nperhaps this model is not the best for creating games\n\nbut still MiniMax has created a nice and a great model https://t.co/ZfKZn3oBFi",
+   "metrics": {
+    "likes": 52,
+    "replies": 21,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     89566
+    ]
+   }
+  },
+  {
+   "id": "X-M05",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 21,
+   "title": "Among Us 浏览器游戏改作",
+   "title_en": "Among Us game remake built with MiniMax",
+   "author": "Yohaku",
+   "author_handle": "yohakujpn",
+   "author_verified": true,
+   "url": "https://x.com/yohakujpn/status/2112187468141465864",
+   "published_at": "2026-10-19T14:21:49.000Z",
+   "category": "Among Us 浏览器游戏改作",
+   "dimensions": [
+    "game",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash just created Among Us game version",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash just created Among Us game version\n\njust bought myself 5,000 credits and a new Minimax model created this game in 40 minutes\n\nand the cool thing is, I saved more than half of the credits\n\na great model https://t.co/smct6gXGWP",
+   "metrics": {
+    "likes": 49,
+    "replies": 18,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M05.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M05_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M05_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     69900
+    ]
+   }
+  },
+  {
+   "id": "X-M06",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 32,
+   "title": "40秒录屏复刻落地页：Space Bunny旧案例",
+   "title_en": "Rebuilding a landing page from screen recording",
+   "author": "Prajwal Tomar",
+   "author_handle": "PrajwalTomar_",
+   "author_verified": true,
+   "url": "https://x.com/PrajwalTomar_/status/2112178619120534014",
+   "published_at": "2026-10-19T13:46:39.000Z",
+   "category": "落地页复刻（录屏驱动）",
+   "dimensions": [
+    "web"
+   ],
+   "model_attribution": {
+    "stage": "Space Bunny 早期版本（作者回顾）",
+    "attributed_to_m31_flash": false,
+    "evidence_quote": "Last month a stealth model called Space Bunny rebuilt a whole landing page for me just by watching a 40 second screen recording.",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "非正式版/混合模型/未核实，不计入 M3.1 Flash 正式版统计"
+   },
+   "post_text": "wait. I already tested this model and didn't even know it 💀\n\nLast month a stealth model called Space Bunny rebuilt a whole landing page for me just by watching a 40 second screen recording.\n\nMiniMax just confirmed that was an early M3.1 Flash.\n\nNow it scores 74% on DeepSWE for https://t.co/gfBgDzEuse",
+   "metrics": {
+    "likes": 15,
+    "replies": 1,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     42866
+    ]
+   }
+  },
+  {
+   "id": "X-M07",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 48,
+   "title": "3D 自行车运动测试",
+   "title_en": "Three-dimensional bicycle riding animation test",
+   "author": "鸡骑猫",
+   "author_handle": "mspd4100",
+   "author_verified": true,
+   "url": "https://x.com/mspd4100/status/2112181307111555498",
+   "published_at": "2026-10-19T13:57:20.000Z",
+   "category": "3D 骑行场景",
+   "dimensions": [
+    "3d"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "我就不信了，让M3.1 Flash再来个3D版的",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "我就不信了，让M3.1 Flash再来个3D版的\n\n视觉上是更优雅了\n\n可兄弟，你这骑车方向不对啊 https://t.co/5irF0kyWwt",
+   "metrics": {
+    "likes": 5,
+    "replies": 3,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     6301
+    ]
+   }
+  },
+  {
+   "id": "X-M08",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 50,
+   "title": "前端界面审美对照",
+   "title_en": "Front-end UI design by MiniMax M3.1 Flash",
+   "author": "傲慢",
+   "author_handle": "bei351009016",
+   "author_verified": true,
+   "url": "https://x.com/bei351009016/status/2112206475968086093",
+   "published_at": "2026-10-19T15:37:21.000Z",
+   "category": "前端界面/落地页",
+   "dimensions": [
+    "web"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Minimax M3.1 flash的前端审美同样出色啊",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "Minimax M3.1 flash的前端审美同样出色啊，\n\n说实话我没有看出他和deepseek制作的有什么太大的差别\n\n国产模型现在都这么能打吗？性价比太高了。 https://t.co/YHbOIAHNGW",
+   "metrics": {
+    "likes": 4,
+    "replies": 1,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     13605
+    ]
+   }
+  },
+  {
+   "id": "X-M09",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 10,
+   "title": "Three.js 花盆与模型查看器",
+   "title_en": "A 3D flower pot viewer in Three.js",
+   "author": "AJ",
+   "author_handle": "ItsmeAjayKV",
+   "author_verified": true,
+   "url": "https://x.com/ItsmeAjayKV/status/2112111033359933516",
+   "published_at": "2026-10-19T09:18:06.000Z",
+   "category": "Three.js 3D 模型查看器页",
+   "dimensions": [
+    "web",
+    "3d",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "First test results for @MiniMax_AI MiniMax-M3.1-Flash",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "First test results for @MiniMax_AI MiniMax-M3.1-Flash\n\nAsked it to generate a 3d model flower pot, using Three.js, in a 3d model viewer style page.\n\nGood result actually, considering this is one-shot without harness and no extra turns.\n\nBut text and buttons looks like its from https://t.co/lktNcndjoW",
+   "metrics": {
+    "likes": 184,
+    "replies": 4,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M09.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M09_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M09_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     31916
+    ]
+   }
+  },
+  {
+   "id": "X-M10",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 5,
+   "title": "单轮生成3D宝塔",
+   "title_en": "A 3D pagoda rendered in one shot",
+   "author": "AJ",
+   "author_handle": "ItsmeAjayKV",
+   "author_verified": true,
+   "url": "https://x.com/ItsmeAjayKV/status/2112121327285084300",
+   "published_at": "2026-10-19T09:59:00.000Z",
+   "category": "Three.js 3D 宝塔场景",
+   "dimensions": [
+    "3d"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax-M3.1-Flash just build be the most visually stunning Pagoda out of all other models i have tested.",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "WTH\n\nLooks like @MiniMax_AI cooked with this release.\n\nMiniMax-M3.1-Flash just build be the most visually stunning Pagoda out of all other models i have tested.\n\nThis result is better than DeepSeek-v4.1-flash \n\nIt's also one-shot, without any extra turns or tool calls, all https://t.co/3HZ8RmpjaB",
+   "metrics": {
+    "likes": 343,
+    "replies": 27,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M10.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M10_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M10_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     50616
+    ]
+   }
+  },
+  {
+   "id": "X-M11",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 51,
+   "title": "Three.js 互动水上飞机",
+   "title_en": "Interactive seaplane built with Three.js",
+   "author": "Jigs",
+   "author_handle": "debugsenpai",
+   "author_verified": true,
+   "url": "https://x.com/debugsenpai/status/2112207157177561460",
+   "published_at": "2026-10-19T15:40:03.000Z",
+   "category": "Three.js 互动水上飞机",
+   "dimensions": [
+    "3d",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Just built an interactive seaplane with MiniMax M3.1 Flash and Three.js.",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "Just built an interactive seaplane with MiniMax M3.1 Flash and Three.js.\n\nMade it completely free using OpenRouter's free endpoint.\n\nIs model worth it or not? https://t.co/gC4Lh0PaHt",
+   "metrics": {
+    "likes": 4,
+    "replies": 0,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     25820
+    ]
+   }
+  },
+  {
+   "id": "X-M12",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 44,
+   "title": "埃菲尔塔/鱼/胖猫三场景：有失败",
+   "title_en": "Three 3D scenes tested on MiniMax M3.1 Flash",
+   "author": "Dominique Silvestre",
+   "author_handle": "domsilvestre",
+   "author_verified": true,
+   "url": "https://x.com/domsilvestre/status/2112257677543829665",
+   "published_at": "2026-10-19T19:00:48.000Z",
+   "category": "三场景 3D（埃菲尔/鱼/胖猫）",
+   "dimensions": [
+    "3d"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax just shipped M3.1 Flash: 3x faster and 70% cheaper than M3, they say.",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax just shipped M3.1 Flash: 3x faster and 70% cheaper than M3, they say.\n\nSame 3D prompts as my Oct 6 challenge. One shot, no fixes.\n\nEiffel Tower: a blinding pillar of light. M3 did better.\nFish and chonky cat: solid.\n\n3 scenes: $0.19. Claude Opus 5.5: $13.83. https://t.co/wZdpVOifaB",
+   "metrics": {
+    "likes": 6,
+    "replies": 0,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     34533
+    ]
+   }
+  },
+  {
+   "id": "X-M13",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 9,
+   "title": "API输出速度初试",
+   "title_en": "API test of MiniMax M3.1 Flash",
+   "author": "Ivan Fioravanti",
+   "author_handle": "ivanfioravanti",
+   "author_verified": true,
+   "url": "https://x.com/ivanfioravanti/status/2112115396434084243",
+   "published_at": "2026-10-19T09:35:26.000Z",
+   "category": "API 速度实测",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Testing MiniMax-M3.1-Flash through API.",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "Testing MiniMax-M3.1-Flash through API.\nFast is fast! Let's see what it cooks. https://t.co/iUvzwNTRhh",
+   "metrics": {
+    "likes": 187,
+    "replies": 14,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M13.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M13_hero.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     5886
+    ]
+   }
+  },
+  {
+   "id": "X-M14",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 25,
+   "title": "赛博鹈鹕骑车：复杂SVG",
+   "title_en": "Cyberpunk pelican riding a bicycle",
+   "author": "Leo · Building w/ AI",
+   "author_handle": "leo114119",
+   "author_verified": true,
+   "url": "https://x.com/leo114119/status/2112149035259973835",
+   "published_at": "2026-10-19T11:49:06.000Z",
+   "category": "赛博鹈鹕骑车 SVG",
+   "dimensions": [
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "minimax m3.1 Flash max+minicode 赛博版鹈鹕骑车",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "minimax m3.1 Flash max+minicode 赛博版鹈鹕骑车\n（超精细版）\n怎么说了，好像战损版的样子。。。。 https://t.co/zhPxAHKLsr",
+   "metrics": {
+    "likes": 33,
+    "replies": 26,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 0,
+    "video_duration_ms": []
+   }
+  },
+  {
+   "id": "X-M15",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 41,
+   "title": "香蕉绘制测试",
+   "title_en": "Banana drawing test",
+   "author": "Adam Holter",
+   "author_handle": "AdamHoltererer",
+   "author_verified": true,
+   "url": "https://x.com/AdamHoltererer/status/2112166611805229452",
+   "published_at": "2026-10-19T12:58:57.000Z",
+   "category": "香蕉 SVG 绘制",
+   "dimensions": [
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash: Banana Test https://t.co/9Z8aYNWDcY",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash: Banana Test https://t.co/9Z8aYNWDcY",
+   "metrics": {
+    "likes": 7,
+    "replies": 1,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     12040
+    ]
+   }
+  },
+  {
+   "id": "X-M16",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 45,
+   "title": "模型可视化展示：内容待视觉复核",
+   "title_en": "MiniMax-M3.1-Flash model demonstration",
+   "author": "Rich · Atom Tan Studio",
+   "author_handle": "atomtanstudio",
+   "author_verified": true,
+   "url": "https://x.com/atomtanstudio/status/2112178844715381059",
+   "published_at": "2026-10-19T13:47:33.000Z",
+   "category": "模型可视化展示",
+   "dimensions": [
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Here is MiniMax-M3.1-Flash https://t.co/LvqK2OkNRb",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "Here is MiniMax-M3.1-Flash https://t.co/LvqK2OkNRb",
+   "metrics": {
+    "likes": 6,
+    "replies": 0,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     16618
+    ]
+   }
+  },
+  {
+   "id": "X-M17",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 30,
+   "title": "max档12分45秒生成测试",
+   "title_en": "Performance test of M3.1-Flash max",
+   "author": "无能的艾薇娜",
+   "author_handle": "klarkxy",
+   "author_verified": true,
+   "url": "https://x.com/klarkxy/status/2112179818192408617",
+   "published_at": "2026-10-19T13:51:25.000Z",
+   "category": "max 档生成测试",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "12分45秒，142 tok/s，M3.1-Flash max",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "12分45秒，142 tok/s，M3.1-Flash max。\n😋😋😋 https://t.co/MDyIW2nwN7",
+   "metrics": {
+    "likes": 21,
+    "replies": 7,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     15000
+    ]
+   }
+  },
+  {
+   "id": "X-M18",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 52,
+   "title": "动态作品：原帖未读待核实",
+   "title_en": "Video generated by MiniMax M3.1 Flash",
+   "author": "AISuperDomain",
+   "author_handle": null,
+   "author_verified": null,
+   "url": "https://x.com/AISuperDomain/status/2112185206387970065",
+   "published_at": null,
+   "category": "（原帖已删除/不可见）",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "未核实（原帖端点不可达/已删除）",
+    "attributed_to_m31_flash": null,
+    "evidence_quote": null,
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "未实时核验：线索文件标注为 未核实，但本次端点未返回正文，**不计入统计**"
+   },
+   "post_text": null,
+   "metrics": {
+    "likes": null,
+    "replies": null,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "原帖已删除或受保护（TweetTombstone）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": null,
+    "videos": null,
+    "video_duration_ms": null
+   }
+  },
+  {
+   "id": "X-M19",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 46,
+   "title": "低价动态作品展示",
+   "title_en": "Demo generated with MiniMax M3.1 Flash",
+   "author": "Quadcode AI ⚡",
+   "author_handle": "quadcode_ai",
+   "author_verified": true,
+   "url": "https://x.com/quadcode_ai/status/2112194493793333657",
+   "published_at": "2026-10-19T14:49:44.000Z",
+   "category": "低价动态作品",
+   "dimensions": [
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash just dropped",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash just dropped\n\nIs this good enough for $0.15/M?\n\nMade with https://t.co/DS8hSC4TJq https://t.co/Ga7Nd8qMY2",
+   "metrics": {
+    "likes": 6,
+    "replies": 0,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     23995
+    ]
+   }
+  },
+  {
+   "id": "X-M20",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 34,
+   "title": "鹈鹕马拉松：工具链需复核",
+   "title_en": "A pelican running a marathon",
+   "author": "Geek",
+   "author_handle": "geekbb",
+   "author_verified": true,
+   "url": "https://x.com/geekbb/status/2112200254590447641",
+   "published_at": "2026-10-19T15:12:38.000Z",
+   "category": "鹈鹕跑马拉松 SVG",
+   "dimensions": [
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Claude + MiniMax M3.1 Flash Free",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "Claude + MiniMax M3.1 Flash Free\n\n下次记得优化一下鹈鹕跑马拉松 https://t.co/ZdHe7oas7I",
+   "metrics": {
+    "likes": 14,
+    "replies": 5,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     10766
+    ]
+   }
+  },
+  {
+   "id": "X-M21",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 36,
+   "title": "鹈鹕骑摩托：M3.1与H3混合",
+   "title_en": "Pelican riding a motorcycle hands free",
+   "author": "木马人",
+   "author_handle": "cnyzgkc",
+   "author_verified": true,
+   "url": "https://x.com/cnyzgkc/status/2112225953472741531",
+   "published_at": "2026-10-19T16:54:45.000Z",
+   "category": "鹈鹕骑摩托",
+   "dimensions": [
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash + H3 混合（非单模型）",
+    "attributed_to_m31_flash": false,
+    "evidence_quote": "鹈鹕脱把骑摩托车，MiniMax M3.1 Flash + H3实现~ https://t.co/pNUadmio8h",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "非正式版/混合模型/未核实，不计入 M3.1 Flash 正式版统计"
+   },
+   "post_text": "鹈鹕脱把骑摩托车，MiniMax M3.1 Flash + H3实现~ https://t.co/pNUadmio8h",
+   "metrics": {
+    "likes": 11,
+    "replies": 4,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     10125
+    ]
+   }
+  },
+  {
+   "id": "X-M22",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 26,
+   "title": "孔雀SVG卡通动画：形体有缺陷",
+   "title_en": "Peacock SVG animated into a children&#x27;s cartoon",
+   "author": "Sahil Panhotra | Indie Builder",
+   "author_handle": "SahilPanhotra",
+   "author_verified": true,
+   "url": "https://x.com/SahilPanhotra/status/2112241373961416717",
+   "published_at": "2026-10-19T17:56:01.000Z",
+   "category": "孔雀 SVG 卡通",
+   "dimensions": [
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "tested MiniMax M3.1 Flash on my peacock SVG test.",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "tested MiniMax M3.1 Flash on my peacock SVG test.\n\nbro made a whole children's cartoon 😭\n\nthe animation is pretty smooth, the bicycle looks decent, and the colors are nice.\n\nbut the legs are basically sticks, one wing turned into an arm, and the tail barely moves.\n\nnot bad tbh. https://t.co/yRtgQu6qrM",
+   "metrics": {
+    "likes": 31,
+    "replies": 21,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     10000
+    ]
+   }
+  },
+  {
+   "id": "X-M23",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 47,
+   "title": "Keygen Bench：作者负面评价",
+   "title_en": "MiniMax M3.1 Flash tested on Keygen Bench",
+   "author": "μck ٤:",
+   "author_handle": "JustMicrock",
+   "author_verified": true,
+   "url": "https://x.com/JustMicrock/status/2112275978097480186",
+   "published_at": "2026-10-19T20:13:32.000Z",
+   "category": "Keygen Bench（负面）",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash on Keygen Bench",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash on Keygen Bench\n\ndisappointing. bad small model smell https://t.co/AFIWuLVjtK",
+   "metrics": {
+    "likes": 6,
+    "replies": 1,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     18000
+    ]
+   }
+  },
+  {
+   "id": "X-M24",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 40,
+   "title": "Moonfall Bastion游戏测试",
+   "title_en": "Moonfall Bastion game test",
+   "author": "Adam Holter",
+   "author_handle": "AdamHoltererer",
+   "author_verified": true,
+   "url": "https://x.com/AdamHoltererer/status/2112166543899378130",
+   "published_at": "2026-10-19T12:58:40.000Z",
+   "category": "Moonfall Bastion 游戏",
+   "dimensions": [
+    "game"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash: Game Test https://t.co/JU7WZgJa9h",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash: Game Test https://t.co/JU7WZgJa9h",
+   "metrics": {
+    "likes": 8,
+    "replies": 0,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     23160
+    ]
+   }
+  },
+  {
+   "id": "X-M25",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 24,
+   "title": "SkyGarden：Space Bunny旧案例",
+   "title_en": "SkyGarden browser game built with one prompt",
+   "author": "Aman",
+   "author_handle": "Amank1412",
+   "author_verified": true,
+   "url": "https://x.com/Amank1412/status/2112220100300513770",
+   "published_at": "2026-10-19T16:31:29.000Z",
+   "category": "SkyGarden 浏览器游戏",
+   "dimensions": [
+    "game",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "Space Bunny 早期版本（作者回顾）",
+    "attributed_to_m31_flash": false,
+    "evidence_quote": "i tried Space Bunny on OpenCode and built SkyGarden a full browser game with just one prompt in a few minutes.",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "非正式版/混合模型/未核实，不计入 M3.1 Flash 正式版统计"
+   },
+   "post_text": "i tried Space Bunny on OpenCode and built SkyGarden a full browser game with just one prompt in a few minutes.\n\ngenuinely didn’t expect it to turn out this good \n\nturns out it was MiniMax M3.1 Flash.\n\n3x faster than M3 at 1/3 the cost with $0.15/M input and $0.60/M output tokens.",
+   "metrics": {
+    "likes": 34,
+    "replies": 5,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 0,
+    "video_duration_ms": []
+   }
+  },
+  {
+   "id": "X-M26",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 33,
+   "title": "纯代码Three.js第一人称竞技场",
+   "title_en": "First person arena FPS game in Three.js",
+   "author": "Leo · Building w/ AI",
+   "author_handle": "leo114119",
+   "author_verified": true,
+   "url": "https://x.com/leo114119/status/2112223208338592187",
+   "published_at": "2026-10-19T16:43:50.000Z",
+   "category": "第一人称竞技场 FPS（纯代码）",
+   "dimensions": [
+    "game",
+    "3d",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax-M3.1-Flash ：一个第一人称竞技场 FPS 游戏，没有使用任何外部资源，一切都用代码制作，使用了 three.js",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax-M3.1-Flash ：一个第一人称竞技场 FPS 游戏，没有使用任何外部资源，一切都用代码制作，使用了 three.js。\n\n能出来这个效果，不可否认还是进步了很多的。。。。\n\n分肯定还是刷了，但实际进步是明显的。。。\n\n https://t.co/4qrrYIdktK",
+   "metrics": {
+    "likes": 15,
+    "replies": 5,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M26.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M26_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M26_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     103189
+    ]
+   }
+  },
+  {
+   "id": "X-M27",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 49,
+   "title": "单轮网站生成",
+   "title_en": "A website generated in one shot",
+   "author": "Mike Gannotti 🔳",
+   "author_handle": "MichaelGannotti",
+   "author_verified": true,
+   "url": "https://x.com/MichaelGannotti/status/2112160831118983171",
+   "published_at": "2026-10-19T12:35:58.000Z",
+   "category": "单轮网站生成",
+   "dimensions": [
+    "web"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Check out the beautiful oneshot generated by @aionaedge using @MiniMax_AI M3.1 Flash",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "Wow! Check out the beautiful oneshot generated by @aionaedge using @MiniMax_AI M3.1 Flash! I may use it to do a redo on some of my websites. https://t.co/Ru3f60vL66",
+   "metrics": {
+    "likes": 5,
+    "replies": 0,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     71033
+    ]
+   }
+  },
+  {
+   "id": "X-M28",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 28,
+   "title": "MiniMax Code与模型介绍动效",
+   "title_en": "Introduction video for MiniMax Code and model",
+   "author": "无能的艾薇娜",
+   "author_handle": "klarkxy",
+   "author_verified": true,
+   "url": "https://x.com/klarkxy/status/2112198804128895153",
+   "published_at": "2026-10-19T15:06:52.000Z",
+   "category": "MiniMax Code 介绍动效",
+   "dimensions": [
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "尽你最大的能力，做一个介绍你自己（M3.1-Flash）和Minimax Code的视频",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "41分27秒，使用了minimax code自己带的生图、音乐能力。\n\n提示词：\n尽你最大的能力，做一个介绍你自己（M3.1-Flash）和Minimax Code的视频。越酷炫、越惊艳越好 https://t.co/6kJ6XKv7Kz",
+   "metrics": {
+    "likes": 24,
+    "replies": 8,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     78000
+    ]
+   }
+  },
+  {
+   "id": "X-M29",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 2,
+   "title": "MiniMax与DeepSeek输出对比",
+   "title_en": "Comparison between MiniMax M3.1 and DeepSeek V4.1",
+   "author": "Iam_",
+   "author_handle": "SPAC89",
+   "author_verified": true,
+   "url": "https://x.com/SPAC89/status/2112125242415956183",
+   "published_at": "2026-10-19T10:14:33.000Z",
+   "category": "同题对比",
+   "dimensions": [
+    "compare"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "M3.1-Flash Max vs DeepSeek V4.1 Flash-1017, I think MiniMax takes the win here",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "M3.1-Flash Max vs DeepSeek V4.1 Flash-1017, I think MiniMax takes the win here! First of all, the speed is impressive, I'm currently using it through my MiniMax M Plan subscription and getting around 200 tokens per second, pretty close to DeepSeek. Both models finished the test https://t.co/yRrCfy1cOG",
+   "metrics": {
+    "likes": 661,
+    "replies": 14,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M29.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M29_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M29_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     30000
+    ]
+   }
+  },
+  {
+   "id": "X-M30",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 42,
+   "title": "MiniMax与DeepSeek视觉对比",
+   "title_en": "Output comparison between MiniMax and DeepSeek",
+   "author": "Neurobin",
+   "author_handle": "bbfu0382",
+   "author_verified": true,
+   "url": "https://x.com/bbfu0382/status/2112133888613224558",
+   "published_at": "2026-10-19T10:48:55.000Z",
+   "category": "视觉对比",
+   "dimensions": [
+    "compare"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "M3.1-Flash Max vs. DeepSeek V4.1 Flash-1017 🔥",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "M3.1-Flash Max vs. DeepSeek V4.1 Flash-1017 🔥\nMiniMax takes the win for me in this round.\nBoth models completed the test in exactly 38 minutes, but I preferred the overall quality of M3.1-Flash Max’s result.\nThe speed is equally impressive: I’m getting close to 200 tokens per https://t.co/yT6f7G0iB6",
+   "metrics": {
+    "likes": 7,
+    "replies": 0,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     30058
+    ]
+   }
+  },
+  {
+   "id": "X-M31",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 17,
+   "title": "3D机甲组装与发射分镜",
+   "title_en": "3D mech assembly and launch sequence comparison",
+   "author": "aloha",
+   "author_handle": "alohaproxy",
+   "author_verified": true,
+   "url": "https://x.com/alohaproxy/status/2112159579060486212",
+   "published_at": "2026-10-19T12:31:00.000Z",
+   "category": "3D 机甲组装分镜",
+   "dimensions": [
+    "3d"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash is absolutely insane🤯",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash is absolutely insane🤯\n\nI tested it against Muse Wonder using the exact same prompt to build a 3D mech assembly + launch sequence via AiHubMix\n\n&gt;MiniMax M3.1 Flash: 71,038 output tokens · 10m 17s\n &gt;Muse Wonder: 12,488 output tokens · 1m 33s\n\nHere's how they https://t.co/ZU5angsM7u",
+   "metrics": {
+    "likes": 69,
+    "replies": 36,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     34300
+    ]
+   }
+  },
+  {
+   "id": "X-M32",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 4,
+   "title": "像素城市模型对比",
+   "title_en": "Pixel city: MiniMax vs DeepSeek",
+   "author": "J A Z I I",
+   "author_handle": "notjazii",
+   "author_verified": true,
+   "url": "https://x.com/notjazii/status/2112168890600149125",
+   "published_at": "2026-10-19T13:08:00.000Z",
+   "category": "像素城市对比",
+   "dimensions": [
+    "compare",
+    "3d"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash vs DeepSeek v4.1-1017 Flash",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash vs DeepSeek v4.1-1017 Flash\n\ntested both models with same prompt at highest reasoning available and results came out really different\n\n&gt; minimax took 40 mins and cost $0\n&gt; deepseek took 50 mins and cost $0.4\n\nreally surprised by how well minimax did. old m3 https://t.co/iVYNJwHiAM",
+   "metrics": {
+    "likes": 445,
+    "replies": 64,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 0,
+    "video_duration_ms": []
+   }
+  },
+  {
+   "id": "X-M33",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 31,
+   "title": "四模型鹈鹕测试",
+   "title_en": "Four AI models benchmark comparison in Pelican Test",
+   "author": "SandBase",
+   "author_handle": "SandbaseAI",
+   "author_verified": true,
+   "url": "https://x.com/SandbaseAI/status/2112173892546834486",
+   "published_at": "2026-10-19T13:27:52.000Z",
+   "category": "四模型鹈鹕测试",
+   "dimensions": [
+    "compare"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Space Bunny just landed. Time to put it to the test",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "Space Bunny just landed. Time to put it to the test! \n\nWe put @MiniMax_AI's M3.1 Flash head-to-head with Kimi K3, DeepSeek V4.1 Flash, and GLM-5.3 in Pelican Test.\n\nOne prompt. Four models. Endless possibilities.\nBuilt and tested on SandBase https://t.co/MbkTGzuhuQ",
+   "metrics": {
+    "likes": 16,
+    "replies": 13,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     45018
+    ]
+   }
+  },
+  {
+   "id": "X-M34",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 12,
+   "title": "Bowser角色代码绘制对比",
+   "title_en": "MiniMax and DeepSeek Bowser character comparison",
+   "author": "Ivana",
+   "author_handle": "ivanainai",
+   "author_verified": true,
+   "url": "https://x.com/ivanainai/status/2112186946210668839",
+   "published_at": "2026-10-19T14:19:45.000Z",
+   "category": "Bowser 角色代码对比",
+   "dimensions": [
+    "compare"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash vs. DeepSeek V4.1 Flash 1017",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash vs. DeepSeek V4.1 Flash 1017\n\nWelllll, you get what you pay for 🤷‍♀️\n\nMiniMax M3.1 Flash: $0 and the better Bowser\nDeepSeek V4.1 Flash: $0.06 and somehow worse https://t.co/heEMdN3JlO",
+   "metrics": {
+    "likes": 133,
+    "replies": 8,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     14450
+    ]
+   }
+  },
+  {
+   "id": "X-M35",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 37,
+   "title": "飞行Roadster：同参考图对照",
+   "title_en": "Flying Roadster comparison between MiniMax and Claude",
+   "author": "Ryō",
+   "author_handle": "narushima_",
+   "author_verified": true,
+   "url": "https://x.com/narushima_/status/2112192337925521881",
+   "published_at": "2026-10-19T14:41:10.000Z",
+   "category": "飞行 Roadster 同参考图对照",
+   "dimensions": [
+    "compare",
+    "3d"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash: $0.71",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax just dropped a new AI model that's 16x CHEAPER than Claude...\n\nSo I made both of them build Elon's new flying Roadster. Same prompt, same reference photos, zero edits.\n\nMiniMax M3.1 Flash: $0.71\nClaude Opus 5.5: $11.27\n\nOpus still wins on realism. But MiniMax got most of https://t.co/4pMk12oYTl",
+   "metrics": {
+    "likes": 9,
+    "replies": 0,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     25000
+    ]
+   }
+  },
+  {
+   "id": "X-M36",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 7,
+   "title": "Three.js与电脑操作初体验",
+   "title_en": "Testing MiniMax against DeepSeek in Three.js",
+   "author": "J A Z I I",
+   "author_handle": "notjazii",
+   "author_verified": true,
+   "url": "https://x.com/notjazii/status/2112200201507311699",
+   "published_at": "2026-10-19T15:12:25.000Z",
+   "category": "Three.js 初体验",
+   "dimensions": [
+    "compare",
+    "3d"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "first impression of minimax m3.1 flash",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "first impression of minimax m3.1 flash\n\nbeen using model for the last few hours and it's a huge step up from m3. pretty good for flash model\n\n&gt; some outputs really surprised me\n&gt; computer use is really good\n&gt; does well in threejs, even beat latest deepseek on first try in some https://t.co/pWoC9zHZah",
+   "metrics": {
+    "likes": 191,
+    "replies": 24,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     26533
+    ]
+   }
+  },
+  {
+   "id": "X-M37",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 27,
+   "title": "Pelican Dream同题对照",
+   "title_en": "MiniMax and DeepSeek Pelican Dream comparison",
+   "author": "VulKan",
+   "author_handle": "VulKan42069",
+   "author_verified": true,
+   "url": "https://x.com/VulKan42069/status/2112201004917940321",
+   "published_at": "2026-10-19T15:15:37.000Z",
+   "category": "Pelican Dream 同题对照",
+   "dimensions": [
+    "compare"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash VS DeepSeek V4.1 Flash 1017",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash VS DeepSeek V4.1 Flash 1017\n[Pelican Dream] - OneShot\n\nKing Deepseek 🍹 https://t.co/ItTSM3JOad",
+   "metrics": {
+    "likes": 30,
+    "replies": 6,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     44916
+    ]
+   }
+  },
+  {
+   "id": "X-M38",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 29,
+   "title": "糖果小熊：57分钟效果差距",
+   "title_en": "MiniMax and DeepSeek gummy bear test comparison",
+   "author": "Leo · Building w/ AI",
+   "author_handle": "leo114119",
+   "author_verified": true,
+   "url": "https://x.com/leo114119/status/2112201041198620823",
+   "published_at": "2026-10-19T15:15:45.000Z",
+   "category": "糖果小熊 57 分钟对照",
+   "dimensions": [
+    "compare"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash 糖果小熊测试对比",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash 糖果小熊测试对比\n右边是deepseek v4.1 flash 1017......\n\n花了 57 分钟做出来的，客观来讲，是能干活的\n但效果是差一截的。。。\n\n老老实实对比m3，不要碰瓷Deepseek v4.1 Flash 1017吧。。 https://t.co/pziuxgCqNY",
+   "metrics": {
+    "likes": 23,
+    "replies": 12,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 0,
+    "video_duration_ms": []
+   }
+  },
+  {
+   "id": "X-M39",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 19,
+   "title": "海底城市潜艇追逐：四阶段任务",
+   "title_en": "Submarine chase in underwater city comparison",
+   "author": "thehype.",
+   "author_handle": "thehypedotnews",
+   "author_verified": true,
+   "url": "https://x.com/thehypedotnews/status/2112206241137054071",
+   "published_at": "2026-10-19T15:36:25.000Z",
+   "category": "海底城市潜艇追逐（单 HTML 四阶段）",
+   "dimensions": [
+    "3d",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "new minimax m3.1 flash built a submarine chase 7x cheaper than gemini and 1.8x cheaper than deepseek",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "new minimax m3.1 flash built a submarine chase 7x cheaper than gemini and 1.8x cheaper than deepseek\n\nfour flash models, one brief: a submarine fleeing through a city on the sea floor, one html file, four stages and rounds of fixes\n\n- minimax m3.1 flash – ~$0.21, 29m 24s\n- https://t.co/WwLFMoueXR",
+   "metrics": {
+    "likes": 54,
+    "replies": 8,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M39.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M39_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M39_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     30000
+    ]
+   }
+  },
+  {
+   "id": "X-M40",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 38,
+   "title": "1986迈阿密霓虹跑车场景",
+   "title_en": "Opus 5.5 and MiniMax M3.1 Flash comparison",
+   "author": "Davit yan",
+   "author_handle": "davit__yan",
+   "author_verified": true,
+   "url": "https://x.com/davit__yan/status/2112207066819375397",
+   "published_at": "2026-10-19T15:39:42.000Z",
+   "category": "1986 迈阿密霓虹跑车",
+   "dimensions": [
+    "3d"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Gave Opus 5.5 and the new MiniMax M3.1 Flash the same task: take me back to 1986 Miami.",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "Gave Opus 5.5 and the new MiniMax M3.1 Flash the same task: take me back to 1986 Miami.\nNeon, palm trees, a white sports car on Ocean Drive.\nI was sure Opus would win easily.\nThen Flash came back, way cheaper, and honestly, it held up.\nTo be honest, I expected more from Opus 😅 https://t.co/9fEIaL2NLQ",
+   "metrics": {
+    "likes": 9,
+    "replies": 4,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     24532
+    ]
+   }
+  },
+  {
+   "id": "X-M41",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 3,
+   "title": "同题时间/token/价格对照",
+   "title_en": "DeepSeek and MiniMax benchmark comparison",
+   "author": "Rubens Soto | AI & SaaS",
+   "author_handle": "rubenssoto_ai",
+   "author_verified": true,
+   "url": "https://x.com/rubenssoto_ai/status/2112211798493397408",
+   "published_at": "2026-10-19T15:58:30.000Z",
+   "category": "同题时间/token/价格对照",
+   "dimensions": [
+    "compare"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "DeepSeek V4.1 Flash 1017 vs Minimax M3.1 Flash",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "DeepSeek V4.1 Flash 1017 vs Minimax M3.1 Flash\n\nSame prompt.  Same task.\n\nDeepseek\nTime: 1 h 28 min 27 s\nTokens: 89.487.454\nCost: $0,54\n\nMinimax\nTime: 1 h 6 min 51 s\nTokens: 8.120.000\nCost: $0,22\n\nWhich one is better? https://t.co/LhCtsDB3mA",
+   "metrics": {
+    "likes": 543,
+    "replies": 81,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M41.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M41_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M41_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     30000
+    ]
+   }
+  },
+  {
+   "id": "X-M42",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 23,
+   "title": "长耗时同题成本对照",
+   "title_en": "Comparison between MiniMax and DeepSeek flash models",
+   "author": "Marcel",
+   "author_handle": "marcthecreatorr",
+   "author_verified": true,
+   "url": "https://x.com/marcthecreatorr/status/2112214607607562377",
+   "published_at": "2026-10-19T16:09:40.000Z",
+   "category": "长耗时同题成本对照",
+   "dimensions": [
+    "compare"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash vs DeepSeek V4.1 Flash-1017",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash vs DeepSeek V4.1 Flash-1017\n\ntested both with the same prompt, and the results came out very different.\n\n&gt; MiniMax took 1hr 30mins and cost about $0.50\n&gt; DeepSeek took 80mins and cost $1.15\n\nminimax went for a simpler design at less than half the cost, but both https://t.co/fKOLwo82CN",
+   "metrics": {
+    "likes": 37,
+    "replies": 12,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     59300
+    ]
+   }
+  },
+  {
+   "id": "X-M43",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 14,
+   "title": "FAWNBENCH：低成本仍需看成品",
+   "title_en": "MiniMax M3.1 Flash versus DeepSeek V4.1 Flash",
+   "author": "fawn",
+   "author_handle": "fawnunwrap",
+   "author_verified": true,
+   "url": "https://x.com/fawnunwrap/status/2112217467775062514",
+   "published_at": "2026-10-19T16:21:02.000Z",
+   "category": "FAWNBENCH 对照",
+   "dimensions": [
+    "compare"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash VS DeepSeek V4.1 Flash 1017",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash VS DeepSeek V4.1 Flash 1017 \n\nFAWNBENCH🦌\n\nDeepSeek costed $0.067 and took about 5 minutes. It didn’t do bad for the price\n\nMinimax costed $0.029 and took abt 3 minutes for… this. Wow. https://t.co/lg2JABaKGC",
+   "metrics": {
+    "likes": 114,
+    "replies": 22,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     16000
+    ]
+   }
+  },
+  {
+   "id": "X-M44",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 13,
+   "title": "四个并行Agent执行多任务",
+   "title_en": "Comparing MiniMax M3.1 Flash and Opus coding agents",
+   "author": "JUMPERZ",
+   "author_handle": "jumperz",
+   "author_verified": true,
+   "url": "https://x.com/jumperz/status/2112226308868436154",
+   "published_at": "2026-10-19T16:56:09.000Z",
+   "category": "4 个并行 Agent 多任务",
+   "dimensions": [
+    "agentic",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "i’ve been testing the new minimax m3.1 flash against opus 5.5 high..",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "i’ve been testing the new minimax m3.1 flash against opus 5.5 high..\n\nits big draw is coding + agent work per dollar.. so i gave both the same 4 jobs in their native apps.\n\n&gt; 4 parallel agents each\n&gt; both came back with bug fixes, an expense splitter, startup research + a cleaned https://t.co/LuSteUZkpN",
+   "metrics": {
+    "likes": 119,
+    "replies": 8,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     40466
+    ]
+   }
+  },
+  {
+   "id": "X-M45",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 18,
+   "title": "瀑布锦鲤池与投喂交互",
+   "title_en": "Comparing Three.js koi ponds by MiniMax and DeepSeek",
+   "author": "agim𓍯",
+   "author_handle": "aGim_asf",
+   "author_verified": true,
+   "url": "https://x.com/aGim_asf/status/2112227205300564211",
+   "published_at": "2026-10-19T16:59:43.000Z",
+   "category": "锦鲤池 + 投喂交互（Three.js）",
+   "dimensions": [
+    "3d",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash vs DeepSeek V4.1 1017",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash vs DeepSeek V4.1 1017\n\nTask: living koi pond in Three.js with a waterfall, swimming koi and a \"feed the koi\" button\n\n•MiniMax: 3.3 mins, $0\n•DeepSeek: 1h 40m, $0.9\n\ndeepseek built the prettier pond, minimax fish could use some work\n\nwhat do you think? https://t.co/GY8MfWKS8P",
+   "metrics": {
+    "likes": 61,
+    "replies": 6,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M45.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M45_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M45_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     22000
+    ]
+   }
+  },
+  {
+   "id": "X-M46",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 15,
+   "title": "无Harness单轮对照含修复",
+   "title_en": "Comparison between MiniMax M3.1 Flash and DeepSeek 1017",
+   "author": "Loktar 🇺🇸",
+   "author_handle": "loktar00",
+   "author_verified": true,
+   "url": "https://x.com/loktar00/status/2112233437574914132",
+   "published_at": "2026-10-19T17:24:29.000Z",
+   "category": "无 Harness 单轮对照含修复",
+   "dimensions": [
+    "compare"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash versus Deepseek 1017.",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax M3.1 Flash versus Deepseek 1017.\n\nNo harness, 0 shot, 1 turn (minimax had a console error I had it fix).\n\nThis may be an unfair test, or it may be completely fair, hard to know without knowing Minimax parameter count. \n\nDeepseek Flash is a monster though with much better https://t.co/W7juEhVoac",
+   "metrics": {
+    "likes": 88,
+    "replies": 6,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     105000
+    ]
+   }
+  },
+  {
+   "id": "X-M47",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 39,
+   "title": "NBA Jam街机游戏改作",
+   "title_en": "Comparison of NBA Jam arcade game remakes",
+   "author": "Rich · Atom Tan Studio",
+   "author_handle": "atomtanstudio",
+   "author_verified": true,
+   "url": "https://x.com/atomtanstudio/status/2112238012117680396",
+   "published_at": "2026-10-19T17:42:40.000Z",
+   "category": "NBA Jam 街机改作",
+   "dimensions": [
+    "game",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "using deepseek-v4.1-flash-1017 and MiniMax-M3.1-Flash. The Deepseek version was generated inside ZCode using my @alibaba_cloud account and the Minimax version was using Minimax Code. As you can see, Minimax did not complete the https://t.co/Qempble2nR",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "Here is a remake of the classic arcade game NBA Jam! using deepseek-v4.1-flash-1017 and MiniMax-M3.1-Flash. The Deepseek version was generated inside ZCode using my @alibaba_cloud account and the Minimax version was using Minimax Code. As you can see, Minimax did not complete the https://t.co/Qempble2nR",
+   "metrics": {
+    "likes": 9,
+    "replies": 1,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 2,
+    "video_duration_ms": [
+     64597,
+     30677
+    ]
+   }
+  },
+  {
+   "id": "X-M48",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 1,
+   "title": "硬件新品发布页：成本与时间对照",
+   "title_en": "Landing page designs for a hardware launch",
+   "author": "Hassan",
+   "author_handle": "nutlope",
+   "author_verified": true,
+   "url": "https://x.com/nutlope/status/2112238098147135880",
+   "published_at": "2026-10-19T17:43:00.000Z",
+   "category": "硬件新品发布落地页",
+   "dimensions": [
+    "web"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "I asked M3.1 Flash (left) and Opus 5.5 (right) to build me a landing page for a hardware device launch.",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "This model is insane at design. And 88x cheaper than Claude Opus 5.5 on my test!\n\nI asked M3.1 Flash (left) and Opus 5.5 (right) to build me a landing page for a hardware device launch.\n\nMiniMax cost just $0.014 vs $1.22 for Opus, while being 4x faster and more token efficient. https://t.co/tJVmFPFOiq",
+   "metrics": {
+    "likes": 1416,
+    "replies": 84,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M48.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M48_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M48_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     11300
+    ]
+   }
+  },
+  {
+   "id": "X-M49",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 11,
+   "title": "鹈鹕生成效果与收费对照",
+   "title_en": "Pelican generation comparison between two models",
+   "author": "Hugo Plat",
+   "author_handle": "hug0_plat",
+   "author_verified": true,
+   "url": "https://x.com/hug0_plat/status/2112238502305804542",
+   "published_at": "2026-10-19T17:44:37.000Z",
+   "category": "鹈鹕生成效果与收费对照",
+   "dimensions": [
+    "compare"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash: free",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "MiniMax cooked DeepSeek on the pelican benchmark \n\nprice:\nMiniMax M3.1 Flash: free\nDeepSeek V4.1 Flash 1017: $0.24\n\nMiniMax's pelican looks more realistic, while DeepSeek's looks like a goose :) https://t.co/mcJD3FtaXh",
+   "metrics": {
+    "likes": 139,
+    "replies": 1,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     10000
+    ]
+   }
+  },
+  {
+   "id": "X-M50",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 43,
+   "title": "超现实海滩多对象场景",
+   "title_en": "Surreal beach scene compared across four models",
+   "author": "Jan 🌕",
+   "author_handle": "jan_volad",
+   "author_verified": true,
+   "url": "https://x.com/jan_volad/status/2112245037224382556",
+   "published_at": "2026-10-19T18:10:35.000Z",
+   "category": "超现实海滩多对象场景",
+   "dimensions": [
+    "3d"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "DeepSeek V4.1 Flash 1017 vs MiniMax M3.1 Flash vs GPT-6 Luna vs Claude Haiku 5.5, one shot each https://t.co/jP5tg6nil6",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "A PS5 controller waddling down a beach, a pelican standing on it, and the Mona Lisa riding a bicycle on the pelican's back\n\nDeepSeek V4.1 Flash 1017 vs MiniMax M3.1 Flash vs GPT-6 Luna vs Claude Haiku 5.5, one shot each https://t.co/jP5tg6nil6",
+   "metrics": {
+    "likes": 7,
+    "replies": 4,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     15000
+    ]
+   }
+  },
+  {
+   "id": "X-M51",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 6,
+   "title": "Tesla第一人称驾驶：负面上限参照",
+   "title_en": "Tesla Roadster POV drive coded by four models",
+   "author": "Rafa",
+   "author_handle": "RafaCrackYT",
+   "author_verified": true,
+   "url": "https://x.com/RafaCrackYT/status/2112247645955895455",
+   "published_at": "2026-10-19T18:20:57.000Z",
+   "category": "Tesla Roadster 第一人称驾驶",
+   "dimensions": [
+    "3d",
+    "game"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash: ~$1.37 · 3h11m",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "🚗 ONE-SHOT: 4 models, a Tesla Roadster POV drive, in 100% code. 🚗\n\nOpus 5.5: ~$110 · 5h43m\nDeepSeek V4.1 1017: $0.66 · 1h12m\nMiniMax M3.1 Flash: ~$1.37 · 3h11m\nGemini 4 Argon: ~$4.50 · 49m\n\nOpus 5.5 is the quality winner, MiniMax is the worst visually, but what do YOU think? 👇 https://t.co/a7INob3ha3",
+   "metrics": {
+    "likes": 243,
+    "replies": 25,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [
+    {
+     "path": "media/M51.mp4",
+     "type": "原始视频 MP4"
+    },
+    {
+     "path": "frames/M51_hero.jpg",
+     "type": "抽帧参考图"
+    },
+    {
+     "path": "frames/M51_sheet.jpg",
+     "type": "抽帧参考图"
+    }
+   ],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     30000
+    ]
+   }
+  },
+  {
+   "id": "X-M52",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 53,
+   "title": "MiniMax第二次生成表现",
+   "title_en": "MiniMax m3.1 Flash generation test",
+   "author": "Loktar 🇺🇸",
+   "author_handle": null,
+   "author_verified": null,
+   "url": "https://x.com/loktar00/status/2112247670760951990",
+   "published_at": null,
+   "category": "（端点不可达，未核实）",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "未核实（原帖端点不可达/已删除）",
+    "attributed_to_m31_flash": null,
+    "evidence_quote": null,
+    "evidence_source": null,
+    "note": "未实时核验：线索文件标注为 未核实，但本次端点未返回正文，**不计入统计**"
+   },
+   "post_text": null,
+   "metrics": {
+    "likes": null,
+    "replies": null,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "端点未返回（HTTP 无内容）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": null,
+    "videos": null,
+    "video_duration_ms": null
+   }
+  },
+  {
+   "id": "X-M53",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 35,
+   "title": "Connect Four博弈与思考延迟",
+   "title_en": "MiniMax and DeepSeek playing Connect Four",
+   "author": "Farhan",
+   "author_handle": "mhdfaran",
+   "author_verified": true,
+   "url": "https://x.com/mhdfaran/status/2112249487918047629",
+   "published_at": "2026-10-19T18:28:16.000Z",
+   "category": "Connect Four 博弈",
+   "dimensions": [
+    "game",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "i put MiniMax M3.1 Flash against DeepSeek V4.1 Flash in Connect Four.",
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "作者正文直接署名 MiniMax-M3.1-Flash"
+   },
+   "post_text": "i put MiniMax M3.1 Flash against DeepSeek V4.1 Flash in Connect Four.\n\n3-3 after 6 games, but MiniMax took much less time.\n\nMedian thinking time was 9.5s vs 74.4s. https://t.co/419ZxDIy9R",
+   "metrics": {
+    "likes": 14,
+    "replies": 1,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "已核验（正文/作者/时间/点赞/回复）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": 0,
+    "videos": 1,
+    "video_duration_ms": [
+     36033
+    ]
+   }
+  },
+  {
+   "id": "X-M54",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 54,
+   "title": "Tesla警车追逐：原帖未读待核实",
+   "title_en": "Tesla Roadster police chase scene comparison",
+   "author": "atomic_chat_hq",
+   "author_handle": null,
+   "author_verified": null,
+   "url": "https://x.com/atomic_chat_hq/status/2112254600925352136",
+   "published_at": null,
+   "category": "（原帖已删除/不可见）",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "未核实（原帖端点不可达/已删除）",
+    "attributed_to_m31_flash": null,
+    "evidence_quote": null,
+    "evidence_source": "X 公开 syndication 端点取回的作者原帖正文",
+    "note": "未实时核验：线索文件标注为 未核实，但本次端点未返回正文，**不计入统计**"
+   },
+   "post_text": null,
+   "metrics": {
+    "likes": null,
+    "replies": null,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "原帖已删除或受保护（TweetTombstone）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": null,
+    "videos": null,
+    "video_duration_ms": null
+   }
+  },
+  {
+   "id": "X-M55",
+   "platform": "X (Twitter)",
+   "rank_within_platform": 55,
+   "title": "Tesla警车追逐模型对比",
+   "title_en": "Tesla Roadster police chase scene model comparison",
+   "author": "atomic.chat",
+   "author_handle": null,
+   "author_verified": null,
+   "url": "https://x.com/atomic_chat_hq/status/2112263410301964712",
+   "published_at": null,
+   "category": "Tesla 警车追逐模型对比",
+   "dimensions": [
+    "compare",
+    "3d"
+   ],
+   "model_attribution": {
+    "stage": "未核实（原帖端点不可达/已删除）",
+    "attributed_to_m31_flash": null,
+    "evidence_quote": null,
+    "evidence_source": null,
+    "note": "未实时核验：线索文件标注为 M3.1 Flash 正式版，但本次端点未返回正文，**不计入统计**"
+   },
+   "post_text": null,
+   "metrics": {
+    "likes": null,
+    "replies": null,
+    "views": null,
+    "favorites": null,
+    "retweets": null,
+    "shares": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "书签数",
+    "浏览/曝光数",
+    "作者粉丝数",
+    "视频播放量"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://cdn.syndication.twimg.com/tweet-result?id=<id>&lang=en",
+    "status": "端点未返回（HTTP 无内容）"
+   },
+   "local_assets": [],
+   "media": {
+    "photos": null,
+    "videos": null,
+    "video_duration_ms": null
+   }
+  },
+  {
+   "id": "BI-BV13UJR6oEtY",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 1,
+   "title": "MiniMax M3.1 Flash 正式发布，斩杀 DeepSeek V4.1-Flash-1017？来看基准测试和输出示例！",
+   "author": "渐近自由JJZY",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV13UJR6oEtY",
+   "published_at": "2026-10-19 08:37:53 UTC",
+   "category": "模型发布/基准",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「MiniMax M3.1 Flash 正式发布，斩杀 DeepSeek V4.1-Flash-1017？来看基准测试和输出示例！」；标题与标签直接写明 MiniMax M3.1 Flash，标签含 'MiniMax M3.1 Flash'",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "文字版，微信公众号同名：渐近自由JJZY"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 46700,
+    "likes": 415,
+    "favorites": 93,
+    "danmaku": 98,
+    "comments": 272,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV162J96uERq",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 2,
+   "title": "依旧把Kimi K3当减速带，Minimax M3.1 Flash 发布，价格堪比 Deepseek（缓存命中贵5倍）",
+   "author": "究委会",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV162J96uERq",
+   "published_at": "2026-10-19 10:11:31 UTC",
+   "category": "模型发布/评论",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「依旧把Kimi K3当减速带，Minimax M3.1 Flash 发布，价格堪比 Deepseek（缓存命中贵5倍）」；标题直接写 Minimax M3.1 Flash 发布；标签 Minimax3.1Flash",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": null
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 21816,
+    "likes": 393,
+    "favorites": 121,
+    "danmaku": 30,
+    "comments": 277,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1gBnn68E7C",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 3,
+   "title": "核弹降临！DeepSeek双榜开源登顶，MiniMax M3.1 Flash 正式上线！",
+   "author": "Al早知道",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1gBnn68E7C",
+   "published_at": "2026-10-19 03:08:47 UTC",
+   "category": "资讯日报",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「核弹降临！DeepSeek双榜开源登顶，MiniMax M3.1 Flash 正式上线！」；标题写明 MiniMax M3.1 Flash 正式上线",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "AI 早知道 2026-10-19"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 25303,
+    "likes": 183,
+    "favorites": 42,
+    "danmaku": 3,
+    "comments": 74,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1n2nA6cETV",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 4,
+   "title": "DeepSeek V4.1 Flash 对比 MiniMax M3.1 Flash，谁更值得用，性价比更高？",
+   "author": "塔斯海Tasihi",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1n2nA6cETV",
+   "published_at": "2026-10-20 09:05:01 UTC",
+   "category": "对比实测",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "见 evidence_quote",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「DeepSeek V4.1 Flash 对比 MiniMax M3.1 Flash，谁更值得用，性价比更高？」；标题含 MiniMax M3.1 Flash；简介自述场景细节/交互效果/游戏完成度",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "两轮实测"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 12428,
+    "likes": 124,
+    "favorites": 43,
+    "danmaku": 11,
+    "comments": 108,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1hEnc6rEU9",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 5,
+   "title": "稀宇科技发布 MiniMax M3.1 Flash 看起来幻觉不少要小心喵~",
+   "author": "图灵坐标",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1hEnc6rEU9",
+   "published_at": "2026-10-19 22:22:49 UTC",
+   "category": "评测/雷达图",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「稀宇科技发布 MiniMax M3.1 Flash 看起来幻觉不少要小心喵~」；标题+标签 'minimax m3.1 flash'",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "浪浪妈雷达图"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 9493,
+    "likes": 287,
+    "favorites": 42,
+    "danmaku": 62,
+    "comments": 71,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1y1JZ6xE97",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 6,
+   "title": "【刷到天昏地暗】MinimaxM3.1F 正式版 工程|三维|Agentic 表现速览",
+   "author": "小小小名不是小明",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1y1JZ6xE97",
+   "published_at": "2026-10-19 10:49:40 UTC",
+   "category": "评测/工程+三维",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「【刷到天昏地暗】MinimaxM3.1F 正式版 工程|三维|Agentic 表现速览」；简介写明『模型ID为 minimax-m3.1-flash』『使用 Minimax code 桌面端』",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "负面评价为主：速度极慢、幻觉率AA榜最高"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 5802,
+    "likes": 85,
+    "favorites": 21,
+    "danmaku": 0,
+    "comments": 57,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1WWJo6QELA",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 7,
+   "title": "Minimax M3.1 Flash 专武测评！表现会好点吗？",
+   "author": "AI产品狙击手",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1WWJo6QELA",
+   "published_at": "2026-10-19 15:50:00 UTC",
+   "category": "测评/负面",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "见 evidence_quote",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「Minimax M3.1 Flash 专武测评！表现会好点吗？」；标签 minimaxm31flash；简介讲专武版翻车细节",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "负面：3D赛车全程黑屏撞墙"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 3315,
+    "likes": 57,
+    "favorites": 12,
+    "danmaku": 3,
+    "comments": 44,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1ksJR6VEvb",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 8,
+   "title": "Minimax M3.1 Flash 测评报告！还是那么拉胯吗？",
+   "author": "AI产品狙击手",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1ksJR6VEvb",
+   "published_at": "2026-10-19 08:53:42 UTC",
+   "category": "测评/负面",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "见 evidence_quote",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「Minimax M3.1 Flash 测评报告！还是那么拉胯吗？」；标签 minimaxm31flash",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "负面：鹈鹕骑车SVG翻车、3D赛车障碍物隐形"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 6550,
+    "likes": 108,
+    "favorites": 7,
+    "danmaku": 4,
+    "comments": 61,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1zenJ6VERT",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 9,
+   "title": "【两分钟模型速测】MiniMax M3.1 Flash 正式发布！小大老师成国模前端TOP了！？附其他实力国模模型对比！",
+   "author": "小佛懒羊",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1zenJ6VERT",
+   "published_at": "2026-10-19 06:53:48 UTC",
+   "category": "前端测评",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「【两分钟模型速测】MiniMax M3.1 Flash 正式发布！小大老师成国模前端TOP了！？附其他实力国模模型对比！」；标题+标签 'Minimax M3.1 Flash'；前端测评类目",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "107 弹幕，互动密度最高的测评类之一"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 6655,
+    "likes": 74,
+    "favorites": 26,
+    "danmaku": 107,
+    "comments": 64,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1sLnP63Egc",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 10,
+   "title": "不看跑分，看实测：MiniMax M3.1 Flash 真实体验",
+   "author": "kate人不错",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1sLnP63Egc",
+   "published_at": "2026-10-20 07:25:01 UTC",
+   "category": "实测/6任务",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "见 evidence_quote",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「不看跑分，看实测：MiniMax M3.1 Flash 真实体验」；标题+简介『MiniMax M3.1 Flash 正式发布』『在 MiniMax Code 里把推理程度设为 Max』",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "6 任务：操作真实App做封面/乐高积木/代码画动画/3D闯关游戏/Godot平台跳跃/清明上河图3D场景"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 5618,
+    "likes": 237,
+    "favorites": 61,
+    "danmaku": 17,
+    "comments": 69,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1p1nN6zEG6",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 11,
+   "title": "🚀MiniMax M3.1 Flash 客观深度实测！我用OpenCode挑战3个长程开发任务，最难一项耗时5小时",
+   "author": "AI超元域",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1p1nN6zEG6",
+   "published_at": "2026-10-20 11:26:06 UTC",
+   "category": "长程开发实测",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "见 evidence_quote",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「🚀MiniMax M3.1 Flash 客观深度实测！我用OpenCode挑战3个长程开发任务，最难一项耗时5小时」；标题+简介『MiniMax M3.1 Flash 刚发布，我就把它接入 OpenCode』",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "8.95亿Token；macOS原生音乐播放器 / 极光号飞船 / 巴塞罗那圣家堂；耗时 2h40m / 3h32m / 5h51m"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 4257,
+    "likes": 87,
+    "favorites": 24,
+    "danmaku": 5,
+    "comments": 39,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1ZMnv6jEHs",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 12,
+   "title": "MiniMax M3.1 Flash：究竟是面向测试集，还是真的有实力？ | AI 前端/3D 能力测试",
+   "author": "无机酸-_-",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1ZMnv6jEHs",
+   "published_at": "2026-10-21 07:41:06 UTC",
+   "category": "前端/3D 双盲测试",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "见 evidence_quote",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「MiniMax M3.1 Flash：究竟是面向测试集，还是真的有实力？ | AI 前端/3D 能力测试」；标题+标签 'MiniMax M3.1 Flash'；简介给出公开测试图库地址",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "★ 可浏览公开图库 https://gallery.arenaofbias.icu/ —— 收录可运行前端作品+截图+提示词，支持并排对比与匿名盲评"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 3675,
+    "likes": 114,
+    "favorites": 13,
+    "danmaku": 7,
+    "comments": 36,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1pYJf6WEyH",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 13,
+   "title": "【小区大区？】Minimax M3.1 Flash 前端表现速览，还是惊天大区？",
+   "author": "荡殇永魔",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1pYJf6WEyH",
+   "published_at": "2026-10-19 14:19:41 UTC",
+   "category": "前端速览",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "见 evidence_quote",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「【小区大区？】Minimax M3.1 Flash 前端表现速览，还是惊天大区？」；标题写明 Minimax M3.1 Flash",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": null
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 3623,
+    "likes": 42,
+    "favorites": 10,
+    "danmaku": 2,
+    "comments": 6,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1LyJo6MEST",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 14,
+   "title": "国产Flash双子星杀疯了!DeepSeek第一，MiniMax 第二！",
+   "author": "村长聊AI",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1LyJo6MEST",
+   "published_at": "2026-10-19 11:03:18 UTC",
+   "category": "横评",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "见 evidence_quote",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「国产Flash双子星杀疯了!DeepSeek第一，MiniMax 第二！」；标题+简介『MiniMax M3.1 Flash 刚刚正式发布』",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": null
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 4816,
+    "likes": 51,
+    "favorites": 32,
+    "danmaku": 1,
+    "comments": 15,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1NNJZ69EJA",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 15,
+   "title": "神鬼两相性！MiniMax-M3.1-Flash vs Space-Bunny｜鹈鹕骑车实测",
+   "author": "gt15713",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1NNJZ69EJA",
+   "published_at": "2026-10-20 02:45:47 UTC",
+   "category": "正式版 vs 匿名期对照",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "见 evidence_quote",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「神鬼两相性！MiniMax-M3.1-Flash vs Space-Bunny｜鹈鹕骑车实测」；简介明确区分左侧 MiniMax-M3.1-Flash（2026-10-20，41分钟）与右侧 Space-Bunny（2026-10-07，49分钟）",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "★ 罕见的『正式版 vs Space Bunny 匿名期』同题对照"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 600,
+    "likes": 8,
+    "favorites": 1,
+    "danmaku": 0,
+    "comments": 3,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1K2pY68Ej7",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 16,
+   "title": "量大管饱但干活不行？MiniMax M3.1 Flash 对比实测",
+   "author": "实验式",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1K2pY68Ej7",
+   "published_at": "2026-10-07 18:42:10 UTC",
+   "category": "Preview 期实测",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "见 evidence_quote",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「量大管饱但干活不行？MiniMax M3.1 Flash 对比实测」；简介『MiniMax M3.1 Flash，428B 总参数、23B 激活参数』",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "★ 发布于正式版之前，属 Preview 期，标注需与正式版区分"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 5289,
+    "likes": 43,
+    "favorites": 18,
+    "danmaku": 2,
+    "comments": 19,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1tunB6VERG",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 17,
+   "title": "MiniMax M3.1 Flash 正式版实测：Spacebunny 终于亮牌，七题硬碰 DeepSeek",
+   "author": "我是张大宁",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1tunB6VERG",
+   "published_at": "2026-10-21 10:41:44 UTC",
+   "category": "正式版七题实测",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「MiniMax M3.1 Flash 正式版实测：Spacebunny 终于亮牌，七题硬碰 DeepSeek」；标题+简介『曾经的匿名模型 Spacebunny 终于正式亮牌，成为 MiniMax M3.1 Flash』",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "七题：动态图形/海报编辑器/复杂推理/游戏开发等"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 416,
+    "likes": 3,
+    "favorites": 4,
+    "danmaku": 3,
+    "comments": 5,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1yBnA6iEhQ",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 18,
+   "title": "有点猛！MiniMax M3.1 Flash 发布，Agent Last Exam 评测拿下国模第一",
+   "author": "科技最前线-V",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1yBnA6iEhQ",
+   "published_at": "2026-10-20 14:02:01 UTC",
+   "category": "资讯",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「有点猛！MiniMax M3.1 Flash 发布，Agent Last Exam 评测拿下国模第一」；标题+标签 SpaceBunny/MiniMax",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": null
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 249,
+    "likes": 1,
+    "favorites": 0,
+    "danmaku": 0,
+    "comments": 2,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "BI-BV1zcJf6LEPe",
+   "platform": "B站 (bilibili)",
+   "rank_within_platform": 19,
+   "title": "DeepSeekV4.1 Flash 1017，距1024一步之遥｜屎山考核",
+   "author": "Token就是词元",
+   "author_handle": "None",
+   "url": "https://www.bilibili.com/video/BV1zcJf6LEPe",
+   "published_at": "2026-10-19 15:08:18 UTC",
+   "category": "对照基线(DeepSeek)",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "见 evidence_quote",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "标题「DeepSeekV4.1 Flash 1017，距1024一步之遥｜屎山考核」；★ 对照基线视频 —— 同题同构，用于评估 M3.1 Flash 相对水平；本身不是 M3.1 Flash 产出",
+    "evidence_source": "B站官方搜索 API 公开返回的标题/简介/标签",
+    "note": "播放量最高的同赛制视频，是 M3.1 Flash 对照组的最佳参照物"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": 158244,
+    "likes": 5304,
+    "favorites": 832,
+    "danmaku": 475,
+    "comments": 2068,
+    "shares": null,
+    "coins": null
+   },
+   "metrics_invisible": [
+    "转发数",
+    "投币数",
+    "关注者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=MiniMax%20M3.1%20Flash&page=1",
+    "status": "已核验（标题/UP主/播放/点赞/收藏/弹幕/评论）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-2BXktpaCEN4",
+   "platform": "YouTube",
+   "rank_within_platform": 1,
+   "title": "HUGE GPT-6.5 LEAK! NEW Claude Fable 5.5, Gemini 4 Carbon, MiniMax M3.1 Flash & Kimi K3.1! AI NEWS",
+   "author": "WorldofAI",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=2BXktpaCEN4",
+   "published_at": "1d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "HUGE GPT-6.5 LEAK! NEW Claude Fable 5.5, Gemini 4 Carbon, MiniMax M3.1 Flash & Kimi K3.1! AI NEWS",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 139243,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-9zVYS00N6mg",
+   "platform": "YouTube",
+   "rank_within_platform": 2,
+   "title": "MiniMax M3.1 Flash IS REALLY GOOD! INSANELY FAST & FREE! (Fully Tested)",
+   "author": "WorldofAI",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=9zVYS00N6mg",
+   "published_at": "2w ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash IS REALLY GOOD! INSANELY FAST & FREE! (Fully Tested)",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 71963,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-0XHsS0LtWoI",
+   "platform": "YouTube",
+   "rank_within_platform": 3,
+   "title": "This Cheap AI Almost Beat Opus 5.5 (MiniMax M3.1 Flash)",
+   "author": "NetworkCoder",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=0XHsS0LtWoI",
+   "published_at": "8d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "This Cheap AI Almost Beat Opus 5.5 (MiniMax M3.1 Flash)",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 26662,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-acPS3TGflXU",
+   "platform": "YouTube",
+   "rank_within_platform": 4,
+   "title": "Minimax M3.1 Flash (Fully Tested): Okay, this MODEL is PRETTY GOOD!",
+   "author": "AICodeKing",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=acPS3TGflXU",
+   "published_at": "3w ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Minimax M3.1 Flash (Fully Tested): Okay, this MODEL is PRETTY GOOD!",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 13627,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-BNfnfYpvawM",
+   "platform": "YouTube",
+   "rank_within_platform": 5,
+   "title": "🚀MiniMax M3.1 Flash客观深度实测！我用OpenCode挑战3个长程开发任务，最难一项耗时5小时，性能与细节能否经得起检验？能否超越DeepSeek V4.1 Flash？还能生成动画",
+   "author": "AI超元域",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=BNfnfYpvawM",
+   "published_at": "17h ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "🚀MiniMax M3.1 Flash客观深度实测！我用OpenCode挑战3个长程开发任务，最难一项耗时5小时，性能与细节能否经得起检验？能否超越DeepSeek V4.1 Flash？还能生成动画",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 12009,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-zlLCD1I742E",
+   "platform": "YouTube",
+   "rank_within_platform": 6,
+   "title": "Space Bunny Is MiniMax M3.1 Flash — High Speed For Code & Agentic Work",
+   "author": "Codedigipt",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=zlLCD1I742E",
+   "published_at": "1d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Space Bunny Is MiniMax M3.1 Flash — High Speed For Code & Agentic Work",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 6733,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-Lep8FrHLNKM",
+   "platform": "YouTube",
+   "rank_within_platform": 7,
+   "title": "MiniMax M3.1 Flash (Space Bunny) First Test | Beats DeepSeek V4.1 Flash? | Coding, Frontend, Backend",
+   "author": "Venelin Valkov",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=Lep8FrHLNKM",
+   "published_at": "1d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash (Space Bunny) First Test | Beats DeepSeek V4.1 Flash? | Coding, Frontend, Backend",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 6377,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-EahrAkq94UQ",
+   "platform": "YouTube",
+   "rank_within_platform": 8,
+   "title": "MiniMax M3.1 Flash Just Dropped! Local Weights Oct 23 | Deepseek V4.1 Flash and More !",
+   "author": "Tech2WiLD",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=EahrAkq94UQ",
+   "published_at": "1d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash Just Dropped! Local Weights Oct 23 | Deepseek V4.1 Flash and More !",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 6229,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-sQFIhViy4Uk",
+   "platform": "YouTube",
+   "rank_within_platform": 9,
+   "title": "MiniMax M3.1 Flash JUST DROPPED… I Tested 302 Tasks!",
+   "author": "AI WITH Rithesh",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=sQFIhViy4Uk",
+   "published_at": "1d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash JUST DROPPED… I Tested 302 Tasks!",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 2980,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-CLkbv1JM0G4",
+   "platform": "YouTube",
+   "rank_within_platform": 10,
+   "title": "0成本免费用！MiniMax M3.1-Flash-Preview 本地部署实测｜鹈鹕骑车、游戏 bug 修复",
+   "author": "X超哥",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=CLkbv1JM0G4",
+   "published_at": "3w ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "0成本免费用！MiniMax M3.1-Flash-Preview 本地部署实测｜鹈鹕骑车、游戏 bug 修复",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 2944,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-iNgJ91YVvHU",
+   "platform": "YouTube",
+   "rank_within_platform": 11,
+   "title": "不看跑分，看实测：MiniMax M3.1 Flash 真实体验",
+   "author": "NiceKate AI",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=iNgJ91YVvHU",
+   "published_at": "21h ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "不看跑分，看实测：MiniMax M3.1 Flash 真实体验",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 2708,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-KNeXPV0QqSY",
+   "platform": "YouTube",
+   "rank_within_platform": 12,
+   "title": "MiniMax M3.1 Flash Makes AI Agents 3X Faster!",
+   "author": "Julian Goldie SEO",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=KNeXPV0QqSY",
+   "published_at": "1d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash Makes AI Agents 3X Faster!",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 2109,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-slawebzyoD8",
+   "platform": "YouTube",
+   "rank_within_platform": 13,
+   "title": "MiniMax M3.1 Flash Review: Doing the Same Task for 20x the Price Difference",
+   "author": "三少科技",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=slawebzyoD8",
+   "published_at": "1d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash Review: Doing the Same Task for 20x the Price Difference",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 1881,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-nKO1994QX3I",
+   "platform": "YouTube",
+   "rank_within_platform": 14,
+   "title": "MiniMax M3.1 Is Here — AI Worlds, Game Demos & GPT-6 Updates",
+   "author": "MODEL CURRENT",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=nKO1994QX3I",
+   "published_at": "3w ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Is Here — AI Worlds, Game Demos & GPT-6 Updates",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 1808,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-pJoiRJxNepY",
+   "platform": "YouTube",
+   "rank_within_platform": 15,
+   "title": "MiniMax M3.1 Flash Is UNLIMITED & FREE for 3 Days!",
+   "author": "Code With Yousaf",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=pJoiRJxNepY",
+   "published_at": "18h ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash Is UNLIMITED & FREE for 3 Days!",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 1699,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT--KMg8Q7yTM0",
+   "platform": "YouTube",
+   "rank_within_platform": 16,
+   "title": "Minimax M3 1 Flash 测评！究竟有多不能打？#ai",
+   "author": "AI产品狙击手 kzhu",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=-KMg8Q7yTM0",
+   "published_at": "3w ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Minimax M3 1 Flash 测评！究竟有多不能打？#ai",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 1458,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-T01AiVYoYIs",
+   "platform": "YouTube",
+   "rank_within_platform": 17,
+   "title": "MiniMax M3.1 Flash Hits 74% DeepSWE at 3X the Speed!",
+   "author": "Julian Goldie SEO",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=T01AiVYoYIs",
+   "published_at": "10h ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash Hits 74% DeepSWE at 3X the Speed!",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 1131,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-3zd9Vj96_nk",
+   "platform": "YouTube",
+   "rank_within_platform": 18,
+   "title": "I Tested NEW MiniMax-M3.1-Flash on 27 Coding Prompts",
+   "author": "AI Coding Daily",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=3zd9Vj96_nk",
+   "published_at": "3h ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "I Tested NEW MiniMax-M3.1-Flash on 27 Coding Prompts",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 1130,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-xjXTEo76ij8",
+   "platform": "YouTube",
+   "rank_within_platform": 19,
+   "title": "MiniMax M3.1 Flash: Space Bunny Alpha Revealed",
+   "author": "Jigs Dev",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=xjXTEo76ij8",
+   "published_at": "21h ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash: Space Bunny Alpha Revealed",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 932,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-tm2WeLjRQ8c",
+   "platform": "YouTube",
+   "rank_within_platform": 20,
+   "title": "Minimax M3 1 Flash 测评报告！还是那么烂吗？#ai",
+   "author": "AI产品狙击手 kzhu",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=tm2WeLjRQ8c",
+   "published_at": "1d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Minimax M3 1 Flash 测评报告！还是那么烂吗？#ai",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 923,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-hYooPbI95zA",
+   "platform": "YouTube",
+   "rank_within_platform": 21,
+   "title": "- I Tested MiniMax M3.1 for FREE — 3D Games, Websites & More!",
+   "author": "NextGen AI",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=hYooPbI95zA",
+   "published_at": "2w ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "- I Tested MiniMax M3.1 for FREE — 3D Games, Websites & More!",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 758,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-yMG9iBPDcwc",
+   "platform": "YouTube",
+   "rank_within_platform": 22,
+   "title": "DeepSeek 4.1 flash vs Minimax m3.1 Flash Review Free Week",
+   "author": "Dracon Dev",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=yMG9iBPDcwc",
+   "published_at": "1d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "DeepSeek 4.1 flash vs Minimax m3.1 Flash Review Free Week",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 725,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-hY7Aw4uyW5I",
+   "platform": "YouTube",
+   "rank_within_platform": 23,
+   "title": "MiniMax M3.1-Flash Free: Setup, Reddit Reactions & Full Suite",
+   "author": "Code Scrapper (English)",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=hY7Aw4uyW5I",
+   "published_at": "3w ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1-Flash Free: Setup, Reddit Reactions & Full Suite",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 437,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-K5nIIMDfAK0",
+   "platform": "YouTube",
+   "rank_within_platform": 24,
+   "title": "MiniMax M3.1 Flash (Space Bunny): Is It Really That Good?",
+   "author": "Berzaf | AI Automation",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=K5nIIMDfAK0",
+   "published_at": "1d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash (Space Bunny): Is It Really That Good?",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 349,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-T3fbulYSkcc",
+   "platform": "YouTube",
+   "rank_within_platform": 25,
+   "title": "Minimax M3.1 Flash: The Free AI That's Embarrassing Paid Models",
+   "author": "Maxemum AI",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=T3fbulYSkcc",
+   "published_at": "2w ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Minimax M3.1 Flash: The Free AI That's Embarrassing Paid Models",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 340,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-rsJyVZhr_mY",
+   "platform": "YouTube",
+   "rank_within_platform": 26,
+   "title": "MiniMax M3.1 Flash Is REALLY Impressive! Insanely Fast & FREE",
+   "author": "AI Quantum",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=rsJyVZhr_mY",
+   "published_at": "2w ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash Is REALLY Impressive! Insanely Fast & FREE",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 333,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-0ozLHW03GRU",
+   "platform": "YouTube",
+   "rank_within_platform": 27,
+   "title": "MiniMax M3.1 Flash Is Seriously Fast — Full AI Test!",
+   "author": "AI Insider",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=0ozLHW03GRU",
+   "published_at": "2w ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash Is Seriously Fast — Full AI Test!",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 326,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-uoycCPm8Lb8",
+   "platform": "YouTube",
+   "rank_within_platform": 28,
+   "title": "MiniMax M3.1 Flash (Space Bunny) Released ",
+   "author": "Data Science in your pocket",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=uoycCPm8Lb8",
+   "published_at": "1d ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash (Space Bunny) Released ",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 326,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-G6F1ASwMEUU",
+   "platform": "YouTube",
+   "rank_within_platform": 29,
+   "title": "Tern Terminal + MiniMax M3.1 Flash: Free AI Review",
+   "author": "WEBdoze",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=G6F1ASwMEUU",
+   "published_at": "20h ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "Tern Terminal + MiniMax M3.1 Flash: Free AI Review",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 242,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-LRAWdX4JUzY",
+   "platform": "YouTube",
+   "rank_within_platform": 30,
+   "title": "MiniMax M3.1 Flash vs DeepSeek V4.1 Flash 1017 – Which is Better in 2026?",
+   "author": "Comparisons Facts",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=LRAWdX4JUzY",
+   "published_at": "19h ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "MiniMax M3.1 Flash vs DeepSeek V4.1 Flash 1017 – Which is Better in 2026?",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 174,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "YT-DGZCLgTZlNc",
+   "platform": "YouTube",
+   "rank_within_platform": 31,
+   "title": "DeepSeek V4.1 Flash vs MiniMax M3.1 Flash Build a 3D Rubik’s Cube🪄",
+   "author": "ALwith",
+   "author_handle": null,
+   "url": "https://www.youtube.com/watch?v=DGZCLgTZlNc",
+   "published_at": "16h ago",
+   "category": "评测/演示",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash（含 Preview 期视频，已在 title 区分）",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "DeepSeek V4.1 Flash vs MiniMax M3.1 Flash Build a 3D Rubik’s Cube🪄",
+    "evidence_source": "YouTube 搜索结果页 ytInitialData 公开字段",
+    "note": ""
+   },
+   "post_text": "",
+   "metrics": {
+    "views": 51,
+    "likes": null,
+    "comments": null,
+    "retweets": null,
+    "favorites": null
+   },
+   "metrics_invisible": [
+    "点赞数",
+    "评论数",
+    "订阅者增量",
+    "完播率"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://www.youtube.com/results?search_query=MiniMax+M3.1+Flash&hl=en (解析 ytInitialData)",
+    "status": "已核验（标题/频道/观看数/发布时间）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "gh-mia-100-html",
+   "platform": "GitHub",
+   "rank_within_platform": null,
+   "title": "100 self-contained HTML studies generated with MiniMax-M3.1-Flash",
+   "author": "MiaAI-Lab",
+   "author_handle": "MiaAI-Lab",
+   "url": "https://github.com/MiaAI-Lab/MiniMax-M3.1-Flash-100-HTML-Files",
+   "published_at": "2026-10-19T14:29:20Z",
+   "category": "网页/交互 100 例",
+   "dimensions": [
+    "web",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "仓库描述直接写明 generated with MiniMax-M3.1-Flash；100 个 .txt 含每例完整原始生成提示词",
+    "evidence_source": "GitHub API 仓库元数据（description / topics）",
+    "note": "★ 全网规模最大的 M3.1 Flash 公开作品库；100 个单文件 HTML 全部零外部素材（0 个 http 资源引用，0 个 CDN）"
+   },
+   "post_text": "100 self-contained HTML studies generated with MiniMax-M3.1-Flash",
+   "metrics": {
+    "stars": 2,
+    "forks": 1,
+    "views": null,
+    "likes": null,
+    "last_push": "2026-10-19T14:43:41Z",
+    "language": "HTML"
+   },
+   "metrics_invisible": [
+    "克隆数",
+    "Issues 参与度",
+    "PR 数",
+    "贡献者数"
+   ],
+   "license": "未声明（GitHub API license=null → 默认保留所有权利）",
+   "license_note": "无 LICENSE 文件 → 默认保留所有权利，仅可作参考，不得复制",
+   "homepage": "https://miaai-lab.github.io/MiniMax-M3.1-Flash-100-HTML-Files/",
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.github.com/repos/<full>（未认证，60 req/h）",
+    "status": "已核验（描述/建仓时间/更新时间/stars/forks/license）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "gh-sandbase-awesome",
+   "platform": "GitHub",
+   "rank_within_platform": null,
+   "title": "Awesome MiniMax M3.1 Flash: curated videos, prompts and examples (Three.js, WebGL, SVG, games)",
+   "author": "sandbase-lab",
+   "author_handle": "sandbase-lab",
+   "url": "https://github.com/sandbase-lab/awesome-minimax-m3-1-flash",
+   "published_at": "2026-10-20T04:58:30Z",
+   "category": "案例汇编",
+   "dimensions": [
+    "3d",
+    "web",
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "仓库描述 + topics 直接写明 minimax-m3-1-flash",
+    "evidence_source": "GitHub API 仓库元数据（description / topics）",
+    "note": "每日同步的案例/提示词库"
+   },
+   "post_text": "Awesome MiniMax M3.1 Flash: curated videos, prompts and examples (Three.js, WebGL, SVG, games)",
+   "metrics": {
+    "stars": 0,
+    "forks": 0,
+    "views": null,
+    "likes": null,
+    "last_push": "2026-10-21T01:39:05Z",
+    "language": "Python"
+   },
+   "metrics_invisible": [
+    "克隆数",
+    "Issues 参与度",
+    "PR 数",
+    "贡献者数"
+   ],
+   "license": "Other (NOASSERTION)",
+   "license_note": "Other / NOASSERTION",
+   "homepage": "https://www.sandbase.ai/lab/ai-videos/minimax-m3-1-flash",
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.github.com/repos/<full>（未认证，60 req/h）",
+    "status": "已核验（描述/建仓时间/更新时间/stars/forks/license）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "gh-cheercheung-guide",
+   "platform": "GitHub",
+   "rank_within_platform": null,
+   "title": "MiniMax M3.1 Flash guide and use cases: 53 tasks, 31 supplied prompts, 7 guides, 11 languages",
+   "author": "cheercheung",
+   "author_handle": "cheercheung",
+   "url": "https://github.com/cheercheung/awesome-minimax-m3-1-guide",
+   "published_at": "2026-10-19T09:31:18Z",
+   "category": "提示词/指南",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "仓库描述 + topic minimax-m3-1",
+    "evidence_source": "GitHub API 仓库元数据（description / topics）",
+    "note": "53 任务 / 31 条提示词 / 7 份指南 / 11 种语言"
+   },
+   "post_text": "MiniMax M3.1 Flash guide and use cases: 53 tasks, 31 supplied prompts, 7 guides, 11 languages",
+   "metrics": {
+    "stars": 2,
+    "forks": 0,
+    "views": null,
+    "likes": null,
+    "last_push": "2026-10-20T07:16:57Z",
+    "language": "Python"
+   },
+   "metrics_invisible": [
+    "克隆数",
+    "Issues 参与度",
+    "PR 数",
+    "贡献者数"
+   ],
+   "license": "CC-BY-4.0",
+   "license_note": "CC-BY-4.0（唯一明确标注可复用的许可）",
+   "homepage": null,
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.github.com/repos/<full>（未认证，60 req/h）",
+    "status": "已核验（描述/建仓时间/更新时间/stars/forks/license）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "gh-pelican-ride-3d",
+   "platform": "GitHub",
+   "rank_within_platform": null,
+   "title": "PELICAN · RIDE — 鹈鹕公路：单文件 Three.js 3D 互动网页，100% built with MiniMax M3.1 Flash",
+   "author": "AvaterXXX",
+   "author_handle": "AvaterXXX",
+   "url": "https://github.com/AvaterXXX/pelican-ride-3d-minimaxM3.1-flash",
+   "published_at": "2026-10-19T14:14:41Z",
+   "category": "3D + 交互",
+   "dimensions": [
+    "3d",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "仓库描述写明 100% built with MiniMax M3.1 Flash",
+    "evidence_source": "GitHub API 仓库元数据（description / topics）",
+    "note": "★ 源码公开，可直接运行：骑上→下车→上车→飙车，6 机位 + X 射线"
+   },
+   "post_text": "PELICAN · RIDE — 鹈鹕公路：单文件 Three.js 3D 互动网页，100% built with MiniMax M3.1 Flash",
+   "metrics": {
+    "stars": 0,
+    "forks": 0,
+    "views": null,
+    "likes": null,
+    "last_push": "2026-10-19T14:15:33Z",
+    "language": "HTML"
+   },
+   "metrics_invisible": [
+    "克隆数",
+    "Issues 参与度",
+    "PR 数",
+    "贡献者数"
+   ],
+   "license": "未声明（GitHub API license=null → 默认保留所有权利）",
+   "license_note": "无 LICENSE 文件 → 默认保留所有权利",
+   "homepage": null,
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.github.com/repos/<full>（未认证，60 req/h）",
+    "status": "已核验（描述/建仓时间/更新时间/stars/forks/license）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "gh-billoon-fps",
+   "platform": "GitHub",
+   "rank_within_platform": null,
+   "title": "气球人爆破队 · 零外部素材的浏览器 FPS（贴图/角色/武器/地图/特效/音效/音乐全部由代码生成）",
+   "author": "Bill-666code",
+   "author_handle": "Bill-666code",
+   "url": "https://github.com/Bill-666code/balloon-fps-minimax-M3.1-Flash-Preview",
+   "published_at": "2026-09-29T08:38:27Z",
+   "category": "交互/3D 游戏",
+   "dimensions": [
+    "game",
+    "3d",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "仓库描述写明 by minimax-M3.1-Flash-Preview",
+    "evidence_source": "GitHub API 仓库元数据（description / topics）",
+    "note": "★ 源码公开的纯代码 FPS"
+   },
+   "post_text": "气球人爆破队 · 零外部素材的浏览器 FPS（贴图/角色/武器/地图/特效/音效/音乐全部由代码生成）",
+   "metrics": {
+    "stars": 0,
+    "forks": 0,
+    "views": null,
+    "likes": null,
+    "last_push": "2026-09-29T08:56:11Z",
+    "language": "HTML"
+   },
+   "metrics_invisible": [
+    "克隆数",
+    "Issues 参与度",
+    "PR 数",
+    "贡献者数"
+   ],
+   "license": "未声明（GitHub API license=null → 默认保留所有权利）",
+   "license_note": "无 LICENSE 文件；且属 M3.1-Flash-Preview（非正式版）",
+   "homepage": null,
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.github.com/repos/<full>（未认证，60 req/h）",
+    "status": "已核验（描述/建仓时间/更新时间/stars/forks/license）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "gh-terraria",
+   "platform": "GitHub",
+   "rank_within_platform": null,
+   "title": "Terra Nova · 泰拉式 2D 侧视沙盒生存（纯前端/零依赖/像素风）",
+   "author": "Bill-666code",
+   "author_handle": "Bill-666code",
+   "url": "https://github.com/Bill-666code/terraria-like-MiniMax-M3.1-Flash-Preview",
+   "published_at": "2026-09-29T14:11:36Z",
+   "category": "2D 沙盒游戏",
+   "dimensions": [
+    "game",
+    "interactive"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "仓库描述写明 MiniMax-M3.1-Flash-Preview 生成",
+    "evidence_source": "GitHub API 仓库元数据（description / topics）",
+    "note": "源码公开的 2D 沙盒"
+   },
+   "post_text": "Terra Nova · 泰拉式 2D 侧视沙盒生存（纯前端/零依赖/像素风）",
+   "metrics": {
+    "stars": 0,
+    "forks": 0,
+    "views": null,
+    "likes": null,
+    "last_push": "2026-09-29T14:14:34Z",
+    "language": "JavaScript"
+   },
+   "metrics_invisible": [
+    "克隆数",
+    "Issues 参与度",
+    "PR 数",
+    "贡献者数"
+   ],
+   "license": "未声明（GitHub API license=null → 默认保留所有权利）",
+   "license_note": "无 LICENSE 文件；且属 M3.1-Flash-Preview（非正式版）",
+   "homepage": null,
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.github.com/repos/<full>（未认证，60 req/h）",
+    "status": "已核验（描述/建仓时间/更新时间/stars/forks/license）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "gh-llm-hype-tests",
+   "platform": "GitHub",
+   "rank_within_platform": null,
+   "title": "MiniMax M3.1 Flash vs DeepSeek V4.1 Flash vs Claude Opus 5.5: 20 balls in a spinning heptagon + pelican on a bicycle (SVG)",
+   "author": "neurostack-lab",
+   "author_handle": "neurostack-lab",
+   "url": "https://github.com/neurostack-lab/llm-hype-tests",
+   "published_at": "2026-10-19T13:55:28Z",
+   "category": "对比测试集",
+   "dimensions": [
+    "compare",
+    "motion"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "仓库描述写明 MiniMax M3.1 Flash vs …",
+    "evidence_source": "GitHub API 仓库元数据（description / topics）",
+    "note": "可直接访问的对比测试页"
+   },
+   "post_text": "MiniMax M3.1 Flash vs DeepSeek V4.1 Flash vs Claude Opus 5.5: 20 balls in a spinning heptagon + pelican on a bicycle (SVG)",
+   "metrics": {
+    "stars": 0,
+    "forks": 0,
+    "views": null,
+    "likes": null,
+    "last_push": "2026-10-19T13:55:37Z",
+    "language": "HTML"
+   },
+   "metrics_invisible": [
+    "克隆数",
+    "Issues 参与度",
+    "PR 数",
+    "贡献者数"
+   ],
+   "license": "Other (NOASSERTION)",
+   "license_note": "Other / NOASSERTION",
+   "homepage": "https://neurostack-lab.github.io/llm-hype-tests/",
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.github.com/repos/<full>（未认证，60 req/h）",
+    "status": "已核验（描述/建仓时间/更新时间/stars/forks/license）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "gh-realhacker-tests",
+   "platform": "GitHub",
+   "rank_within_platform": null,
+   "title": "Tests for minimax-m3.1-flash",
+   "author": "RealHacker",
+   "author_handle": "RealHacker",
+   "url": "https://github.com/RealHacker/minimax-m3.1-flash-tests",
+   "published_at": "2026-10-01T09:22:50Z",
+   "category": "测试集",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "仓库描述写明 minimax-m3.1-flash",
+    "evidence_source": "GitHub API 仓库元数据（description / topics）",
+    "note": "Preview 期（10-01）测试代码"
+   },
+   "post_text": "Tests for minimax-m3.1-flash",
+   "metrics": {
+    "stars": 0,
+    "forks": 0,
+    "views": null,
+    "likes": null,
+    "last_push": "2026-10-01T09:28:54Z",
+    "language": "C"
+   },
+   "metrics_invisible": [
+    "克隆数",
+    "Issues 参与度",
+    "PR 数",
+    "贡献者数"
+   ],
+   "license": "未声明（GitHub API license=null → 默认保留所有权利）",
+   "license_note": "无 LICENSE 文件；属 Preview 期",
+   "homepage": null,
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.github.com/repos/<full>（未认证，60 req/h）",
+    "status": "已核验（描述/建仓时间/更新时间/stars/forks/license）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "gh-pi-minimax",
+   "platform": "GitHub",
+   "rank_within_platform": null,
+   "title": "MiniMax-M3.1-Flash-Preview in Pi, without video",
+   "author": "johnlam1968",
+   "author_handle": "johnlam1968",
+   "url": "https://github.com/johnlam1968/pi-minimax-m31",
+   "published_at": "2026-10-19",
+   "category": "工具集成",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1-Flash-Preview",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "仓库描述写明 MiniMax-M3.1-Flash-Preview",
+    "evidence_source": "GitHub API 仓库元数据（description / topics）",
+    "note": "把 M3.1 Flash 接入 Pi 的插件"
+   },
+   "post_text": "MiniMax-M3.1-Flash-Preview in Pi, without video",
+   "metrics": {
+    "stars": 0,
+    "forks": 0,
+    "views": null,
+    "likes": null,
+    "last_push": "2026-10-19",
+    "language": "TypeScript"
+   },
+   "metrics_invisible": [
+    "克隆数",
+    "Issues 参与度",
+    "PR 数",
+    "贡献者数"
+   ],
+   "license": "未声明（GitHub API license=null → 默认保留所有权利）",
+   "license_note": "无 LICENSE 文件；属 Preview 期",
+   "homepage": null,
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.github.com/repos/<full>（未认证，60 req/h）",
+    "status": "已核验（描述/建仓时间/更新时间/stars/forks/license）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "gh-eve-film-studio",
+   "platform": "GitHub",
+   "rank_within_platform": null,
+   "title": "A MiniMax M3.1 Flash and H3 film studio built with Vercel eve",
+   "author": "Victor-Su-Ortiz",
+   "author_handle": "Victor-Su-Ortiz",
+   "url": "https://github.com/Victor-Su-Ortiz/minimax-eve-film-studio",
+   "published_at": "2026-10-19T19:24:24Z",
+   "category": "工具/工作流",
+   "dimensions": [
+    "agentic"
+   ],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "仓库描述写明 MiniMax M3.1 Flash and H3",
+    "evidence_source": "GitHub API 仓库元数据（description / topics）",
+    "note": "参考分析 + 专家子 agent + 视频生成 + MP4 导出"
+   },
+   "post_text": "A MiniMax M3.1 Flash and H3 film studio built with Vercel eve",
+   "metrics": {
+    "stars": 0,
+    "forks": 0,
+    "views": null,
+    "likes": null,
+    "last_push": "2026-10-20T21:16:15Z",
+    "language": "TypeScript"
+   },
+   "metrics_invisible": [
+    "克隆数",
+    "Issues 参与度",
+    "PR 数",
+    "贡献者数"
+   ],
+   "license": "未声明（GitHub API license=null → 默认保留所有权利）",
+   "license_note": "无 LICENSE 文件",
+   "homepage": null,
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "GET https://api.github.com/repos/<full>（未认证，60 req/h）",
+    "status": "已核验（描述/建仓时间/更新时间/stars/forks/license）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-thepaper",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "MiniMax M3.1 Flash上线，性能全面加强，速度提升3倍，价格降低70%",
+   "author": "澎湃新闻",
+   "author_handle": null,
+   "url": "https://www.thepaper.cn/newsDetail_forward_34283048",
+   "published_at": "2026-10-19",
+   "category": "官方发布通稿",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「MiniMax M3.1 Flash上线，性能全面加强，速度提升3倍，价格降低70%」；官方口径：428B/23B 稀疏注意力、200+ TPS、P50 170+、Agent 任务成本降 70%、每百万 token 输入1元/输出4元/缓存0.1元",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "官方口径：428B/23B 稀疏注意力、200+ TPS、P50 170+、Agent 任务成本降 70%、每百万 token 输入1元/输出4元/缓存0.1元",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-cnstock",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "MiniMax最新模型M3.1-Flash-Preview上线",
+   "author": "中国证券网/上证报",
+   "author_handle": null,
+   "url": "https://www.cnstock.com/commonDetail/796059",
+   "published_at": "2026-09-28",
+   "category": "Preview 发布 + Space Bunny 关联",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1-Flash-Preview / 官方口径",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「MiniMax最新模型M3.1-Flash-Preview上线」；记录 Space Bunny 匿名期登上 OpenRouter/OpenCode 日调用量榜首；分词器指纹指向 MiniMax",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "记录 Space Bunny 匿名期登上 OpenRouter/OpenCode 日调用量榜首；分词器指纹指向 MiniMax",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-cs",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "MiniMax上线文本模型M3.1-Flash-Preview并开启公测",
+   "author": "中证网",
+   "author_handle": null,
+   "url": "https://www.cs.com.cn/ssgs/01/2026/09/29/detail_2026092910042251.html",
+   "published_at": "2026-09-28",
+   "category": "Preview 公测通稿",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1-Flash-Preview / 官方口径",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「MiniMax上线文本模型M3.1-Flash-Preview并开启公测」；1M 上下文、原生多模态、always-on thinking",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "1M 上下文、原生多模态、always-on thinking",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-qq-nbd",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "MiniMax'杀'回来了！M3.1 Flash 继 DeepSeek 后登场，国产Flash'双子星'72 小时竞速上线",
+   "author": "每日经济新闻（腾讯新闻转载）",
+   "author_handle": null,
+   "url": "https://www.toutiao.com/article/7698401053502439945",
+   "published_at": "2026-10-19",
+   "category": "发布解读",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「MiniMax'杀'回来了！M3.1 Flash 继 DeepSeek 后登场，国产Flash'双子星'72 小时竞速上线」；★ 官方 10-19 视频认领 Space Bunny（胡萝卜火箭升空，'Welcome back, SpaceBunny'）；Automation-Bench 62.8、BankerToolBench 76.2、OSWorld V2 61.7、ALE 29.6、CyberGym 82.2、DeepSWE v1.1 73.7",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "★ 官方 10-19 视频认领 Space Bunny（胡萝卜火箭升空，'Welcome back, SpaceBunny'）；Automation-Bench 62.8、BankerToolBench 76.2、OSWorld V2 61.7、ALE 29.6、CyberGym 82.2、DeepSWE v1.1 73.7",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-sohu-indicia",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "MiniMax官方认领太空兔，于是我们给它出了几道难题",
+   "author": "新智元（搜狐/Indicia 转载）",
+   "author_handle": null,
+   "url": "https://qq61685253@game.sohu.com/a/1090339235_121160979",
+   "published_at": "2026-10-20",
+   "category": "正式版实测",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「MiniMax官方认领太空兔，于是我们给它出了几道难题」；428B 总参/23B 激活；首 token 延迟 1.95s→1.22s；错误率 1.4%→0.7%；权重将于 10-23 开源；Pro 版即将推出；测试直接打在 Space Bunny 匿名期的社区项目上",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "428B 总参/23B 激活；首 token 延迟 1.95s→1.22s；错误率 1.4%→0.7%；权重将于 10-23 开源；Pro 版即将推出；测试直接打在 Space Bunny 匿名期的社区项目上",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-indicia-cn",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "证实MiniMax官方认领'太空兔'，于是我们给它出了几道难题",
+   "author": "Indicia",
+   "author_handle": null,
+   "url": "http://www.indicia.com.cn/news/206492.shtml",
+   "published_at": "2026-10-21",
+   "category": "正式版实测",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「证实MiniMax官方认领'太空兔'，于是我们给它出了几道难题」；匿名期传播数据：官方口径 Space Bunny 累计处理超 200 万亿 token；OpenRouter 显示连续 10 天第一、单平台 56.7 万亿 token",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "匿名期传播数据：官方口径 Space Bunny 累计处理超 200 万亿 token；OpenRouter 显示连续 10 天第一、单平台 56.7 万亿 token",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-wqu-sandworm",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "用 MiniMax M3.1-Flash 复刻《沙丘》机械沙虫 3D 网页",
+   "author": "wqu.guru",
+   "author_handle": null,
+   "url": "https://wqu.guru/i/01M3P30Q86B33N2JYBG3CK7ZJW",
+   "published_at": "2026-09-29",
+   "category": "3D 网页（Preview 期）",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1-Flash-Preview / 官方口径",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「用 MiniMax M3.1-Flash 复刻《沙丘》机械沙虫 3D 网页」；★ 单文件 HTML + Three.js CDN，1312 米长机械沙虫，纯代码；6 机位切换、一键 X 射线、阿拉基斯地形图 + 头部截面 + 24 节蠕动驱动纵剖面；7 轮对话 / 4 小时以上",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "★ 单文件 HTML + Three.js CDN，1312 米长机械沙虫，纯代码；6 机位切换、一键 X 射线、阿拉基斯地形图 + 头部截面 + 24 节蠕动驱动纵剖面；7 轮对话 / 4 小时以上",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-lengyi",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "我用 M3.1 Flash 做视频，这效果直接起飞了 附全部提示词",
+   "author": "冷逸（腾讯新闻）",
+   "author_handle": null,
+   "url": "https://new.qq.com/rain/a/20261021A080PZ00",
+   "published_at": "2026-10-21",
+   "category": "★ 代码生成视频工作流（正式版）",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「我用 M3.1 Flash 做视频，这效果直接起飞了 附全部提示词」；LLM 写确定性渲染函数 → Three.js/Canvas/CSS/SVG → 无头浏览器按 t=帧号/fps 逐帧截图 → FFmpeg 编码 MP4；35 分钟产出 2 分钟成片；消耗周额度 1%",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "LLM 写确定性渲染函数 → Three.js/Canvas/CSS/SVG → 无头浏览器按 t=帧号/fps 逐帧截图 → FFmpeg 编码 MP4；35 分钟产出 2 分钟成片；消耗周额度 1%",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-apso",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "和 Opus 5.5 同题交卷，MiniMax M3.1 让 Flash 开始超纲了",
+   "author": "APPSO（腾讯新闻）",
+   "author_handle": null,
+   "url": "https://news.qq.com/rain/a/20261002A05LII00",
+   "published_at": "2026-10-02",
+   "category": "前端创作实测（Preview 期）",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1-Flash-Preview / 官方口径",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「和 Opus 5.5 同题交卷，MiniMax M3.1 让 Flash 开始超纲了」；前端同题：配色/排版/动画/交互并排对比",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "前端同题：配色/排版/动画/交互并排对比",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-pingwest",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "MiniMax 杀进 Flash 混战，我拿五个项目试了试",
+   "author": "品玩（腾讯新闻）",
+   "author_handle": null,
+   "url": "https://news.qq.com/rain/a/20260930A091UO00",
+   "published_at": "2026-09-30",
+   "category": "五项目实测（Preview 期）",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1-Flash-Preview / 官方口径",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「MiniMax 杀进 Flash 混战，我拿五个项目试了试」；三联动 SVG 赛车（实体键盘/屏幕键盘/手柄共享一套游戏状态）、地球宇宙沙盒、手绘地图转 3D 导图、NASA 维修手册（视频输入）、金融可视化核验工具",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "三联动 SVG 赛车（实体键盘/屏幕键盘/手柄共享一套游戏状态）、地球宇宙沙盒、手绘地图转 3D 导图、NASA 维修手册（视频输入）、金融可视化核验工具",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-163",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "大肥鱼遇劲敌：MiniMax M3.1 Flash 拿下 Agent 任务第一，我们实测了",
+   "author": "网易科技（AI科技评论）",
+   "author_handle": null,
+   "url": "https://www.163.com/dy/article/L9NNE5FE0511DPVD.html",
+   "published_at": "2026-10-21",
+   "category": "正式版实测",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「大肥鱼遇劲敌：MiniMax M3.1 Flash 拿下 Agent 任务第一，我们实测了」；Automation-Bench 复杂 Agent 任务对比中位居第一；BankerToolBench 与 Opus 5 并列",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "Automation-Bench 复杂 Agent 任务对比中位居第一；BankerToolBench 与 Opus 5 并列",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "md-163-yk",
+   "platform": "中文媒体 / 官方案例",
+   "rank_within_platform": null,
+   "title": "MiniMax发布M3.1 Flash：推理速度提升近3倍，Agent任务成本降低70%",
+   "author": "网易",
+   "author_handle": null,
+   "url": "https://www.163.com/tech/article/L9KL14TD00098IEO.html",
+   "published_at": "2026-10-19",
+   "category": "发布通稿",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "M3.1 Flash 正式版",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "报道标题「MiniMax发布M3.1 Flash：推理速度提升近3倍，Agent任务成本降低70%」；已上线 MiniMax API / M Plan / MiniMax Code；DeepSWE v1.1 73.7%、OSWorld V2 61.7、ALE 29.6 均列国产模型第一",
+    "evidence_source": "报道标题与正文",
+    "note": null
+   },
+   "post_text": "已上线 MiniMax API / M Plan / MiniMax Code；DeepSWE v1.1 73.7%、OSWorld V2 61.7、ALE 29.6 均列国产模型第一",
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "阅读量",
+    "互动量",
+    "转发数"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_search / web_fetch 抓取正文",
+    "status": "已核验（标题/日期/正文关键事实）"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "of-models",
+   "platform": "官方 / 基准 / 案例库",
+   "rank_within_platform": null,
+   "title": "Models 列表：MiniMax-M3.1-Flash-Preview / MiniMax-M3 / M2.7 / M2.7-highspeed",
+   "author": "MiniMax API Docs",
+   "author_handle": null,
+   "url": "https://minimax.io/platform",
+   "published_at": "2026-10-21 观测",
+   "category": "官方模型页",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "官方口径",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "页面标题「Models 列表：MiniMax-M3.1-Flash-Preview / MiniMax-M3 / M2.7 / M2.7-highspeed」；MiniMax-M3.1-Flash-Preview：Frontier multimodal coding model with 1M context window and tunable thinking depth；M2.5/M2.7 自 2026-10-19 起对新用户关闭、11-18 退役；M Plan/Token Plan 用户自 10-19 起 M2.5/M2.7 请求自动路由到 M3.1 Flash Preview",
+    "evidence_source": "官方文档 / 第三方基准站 标题与正文",
+    "note": null
+   },
+   "post_text": "MiniMax-M3.1-Flash-Preview：Frontier multimodal coding model with 1M context window and tunable thinking depth；M2.5/M2.7 自 2026-10-19 起对新用户关闭、11-18 退役；M Plan/Token Plan 用户自 10-19 起 M2.5/M2.7 请求自动路由到 M3.1 Flash Preview",
+   "metrics": {
+    "views": null,
+    "likes": null
+   },
+   "metrics_invisible": [
+    "全部互动指标"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_fetch / web_search",
+    "status": "已核验"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "of-artificialanalysis",
+   "platform": "官方 / 基准 / 案例库",
+   "rank_within_platform": null,
+   "title": "MiniMax-M3.1-Flash 智能、性能与价格分析",
+   "author": "Artificial Analysis",
+   "author_handle": null,
+   "url": "https://artificialanalysis.ai/zh/models/minimax-m3-1-flash",
+   "published_at": "2026-10-21 观测",
+   "category": "第三方独立评测",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "官方口径",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "页面标题「MiniMax-M3.1-Flash 智能、性能与价格分析」；AA Intelligence Index 得分 43（同类中位数 13）；每任务约 $0.22；不确定性时幻觉率偏高（93%）——第三方口径，与官方口径分开记录",
+    "evidence_source": "官方文档 / 第三方基准站 标题与正文",
+    "note": null
+   },
+   "post_text": "AA Intelligence Index 得分 43（同类中位数 13）；每任务约 $0.22；不确定性时幻觉率偏高（93%）——第三方口径，与官方口径分开记录",
+   "metrics": {
+    "views": null,
+    "likes": null
+   },
+   "metrics_invisible": [
+    "全部互动指标"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_fetch / web_search",
+    "status": "已核验"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "of-llm-releases",
+   "platform": "官方 / 基准 / 案例库",
+   "rank_within_platform": null,
+   "title": "MiniMax M3.1 model releases 时间线",
+   "author": "LLM Releases",
+   "author_handle": null,
+   "url": "https://www.llm-releases.com/families/minimax-m3-1",
+   "published_at": "2026-10-21 观测",
+   "category": "发布记录",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "官方口径",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "页面标题「MiniMax M3.1 model releases 时间线」；MiniMax-M3.1-Flash-Preview 于 2026-09-27 在 MiniMax Code 内低调发布，OpenAI 兼容 + Anthropic 兼容双端点，1M 上下文，5 档 effort（默认 max），闭源无公开 model card",
+    "evidence_source": "官方文档 / 第三方基准站 标题与正文",
+    "note": null
+   },
+   "post_text": "MiniMax-M3.1-Flash-Preview 于 2026-09-27 在 MiniMax Code 内低调发布，OpenAI 兼容 + Anthropic 兼容双端点，1M 上下文，5 档 effort（默认 max），闭源无公开 model card",
+   "metrics": {
+    "views": null,
+    "likes": null
+   },
+   "metrics_invisible": [
+    "全部互动指标"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_fetch / web_search",
+    "status": "已核验"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "of-llmgateway",
+   "platform": "官方 / 基准 / 案例库",
+   "rank_within_platform": null,
+   "title": "When every LLM was released — 时间线",
+   "author": "LLM Gateway",
+   "author_handle": null,
+   "url": "https://llmgateway.io/timeline",
+   "published_at": "2026-10-21 观测",
+   "category": "发布记录",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "官方口径",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "页面标题「When every LLM was released — 时间线」；MiniMax M3.1 Flash 于 2026-10-19 发布并当日接入；模型 id minimax-m3.1-flash",
+    "evidence_source": "官方文档 / 第三方基准站 标题与正文",
+    "note": null
+   },
+   "post_text": "MiniMax M3.1 Flash 于 2026-10-19 发布并当日接入；模型 id minimax-m3.1-flash",
+   "metrics": {
+    "views": null,
+    "likes": null
+   },
+   "metrics_invisible": [
+    "全部互动指标"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_fetch / web_search",
+    "status": "已核验"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "of-sandbase",
+   "platform": "官方 / 基准 / 案例库",
+   "rank_within_platform": null,
+   "title": "awesome-minimax-m3-1-flash 案例库主页",
+   "author": "SandBase Lab",
+   "author_handle": null,
+   "url": "https://www.sandbase.ai/lab/ai-videos/minimax-m3-1-flash",
+   "published_at": "2026-10-21 观测",
+   "category": "社区案例库",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "官方口径",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "页面标题「awesome-minimax-m3-1-flash 案例库主页」；仓库与页面名 awesome-minimax-m3-1-flash（MiniMax M3.1 Flash 案例库）；Three.js / WebGL / SVG / games 案例与提示词，每日同步",
+    "evidence_source": "官方文档 / 第三方基准站 标题与正文",
+    "note": null
+   },
+   "post_text": "仓库与页面名 awesome-minimax-m3-1-flash（MiniMax M3.1 Flash 案例库）；Three.js / WebGL / SVG / games 案例与提示词，每日同步",
+   "metrics": {
+    "views": null,
+    "likes": null
+   },
+   "metrics_invisible": [
+    "全部互动指标"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_fetch / web_search",
+    "status": "已核验"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "of-arena",
+   "platform": "官方 / 基准 / 案例库",
+   "rank_within_platform": null,
+   "title": "同一提示词、不同模型的答案并排陈列（可运行 + 截图 + 提示词）",
+   "author": "亿模亿样 ArenaGalleri",
+   "author_handle": null,
+   "url": "https://gallery.arenaofbias.icu/",
+   "published_at": "2026-10-21 观测",
+   "category": "★ 可浏览的前端/3D 双盲测试图库",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "官方口径",
+    "attributed_to_m31_flash": true,
+    "evidence_quote": "页面标题「同一提示词、不同模型的答案并排陈列（可运行 + 截图 + 提示词）」；MiniMax M3.1 Flash 的前端/3D 双盲测试图库：收录各模型可运行前端作品、截图与提示词，支持并排对比与匿名盲评；B站『无机酸-_-』的 M3.1 Flash 前端/3D 能力测试即引用此图库",
+    "evidence_source": "官方文档 / 第三方基准站 标题与正文",
+    "note": null
+   },
+   "post_text": "MiniMax M3.1 Flash 的前端/3D 双盲测试图库：收录各模型可运行前端作品、截图与提示词，支持并排对比与匿名盲评；B站『无机酸-_-』的 M3.1 Flash 前端/3D 能力测试即引用此图库",
+   "metrics": {
+    "views": null,
+    "likes": null
+   },
+   "metrics_invisible": [
+    "全部互动指标"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "web_fetch / web_search",
+    "status": "已核验"
+   },
+   "local_assets": []
+  },
+  {
+   "id": "XHS-blocked",
+   "platform": "小红书",
+   "rank_within_platform": null,
+   "title": "MiniMax M3.1 Flash（关键词检索）",
+   "author": null,
+   "author_handle": null,
+   "url": "https://www.xiaohongshu.com/search_result?keyword=MiniMax%20M3.1%20Flash",
+   "published_at": null,
+   "category": "平台检索受限",
+   "dimensions": [],
+   "model_attribution": {
+    "stage": "未能核验",
+    "attributed_to_m31_flash": null,
+    "evidence_quote": "页面返回『登录后查看搜索结果』（浏览器实测 2026-10-21）",
+    "evidence_source": "内置浏览器实测 + 必应/百度 site: 检索",
+    "note": "★ 已尝试 6 种路径：内置浏览器搜索页、explore 公开信息流、必应 site:xiaohongshu.com 检索、必应 RSS、百度 site: 检索、web_search 关键词检索。结论：小红书『搜索』需登录后才返回结果，公开检索无法取得可核验的 M3.1 Flash 笔记数据；explore 公开信息流可读到笔记标题与点赞数，但不支持按关键词过滤。任务禁止访问凭据，故不做登录尝试。"
+   },
+   "post_text": null,
+   "metrics": {
+    "views": null,
+    "likes": null,
+    "favorites": null,
+    "comments": null
+   },
+   "metrics_invisible": [
+    "全部指标（登录墙）"
+   ],
+   "observed_at": "2026-10-21",
+   "verification": {
+    "method": "内置浏览器 + 必应/百度 site: 检索",
+    "status": "平台登录墙，未取得数据（已记录为不可见项）"
+   },
+   "local_assets": []
+  }
+ ]
+}

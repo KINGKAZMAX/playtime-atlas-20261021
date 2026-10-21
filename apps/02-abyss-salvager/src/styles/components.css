@@ -1,0 +1,307 @@
+/* ==========================================================================
+   余晖设计系统 / Afterglow Design System — 组件层（本项目落地）
+   --------------------------------------------------------------------------
+   依据：
+     · 16-design-system/src/components.css  —— 上游实现（**只读参考，未复制**）
+     · 16-design-system/DESIGN-SPEC.md       —— 组件规范
+     · 16-design-system/MIGRATION-NOTES.md §3 —— 对 02 的派单条目
+        （G.1 引入令牌 / G.2 页头页脚 + 跳转链接 / G.3 标题禁 nowrap /
+         G.5 元信息用 mono / I.1 画布用 .ds-canvas-frame /
+         I.2 HUD 文字 ≥12.5px 且对比度 ≥4.5:1 / I.4 导航轴 .ds-rail）
+
+   本文件是本项目**自行编写**的组件实现，只落地本作用到的类名，
+   并针对「全画布沉浸式 3D 查看器」做了结构调整：
+     · .ds-topbar 由 sticky 改为绝对定位覆盖层（本作无滚动文档流）
+     · .ds-rail 为左侧竖排工具轴（不 fixed 占位，避免压缩画布）
+     · .ds-canvas-frame / .ds-canvas-frame__hud 承载 3D 画布与 HUD
+   ========================================================================== */
+
+/* ------------------------------------------------------------------ shell */
+
+.ds-shell {
+  min-height: 100dvh;
+  background: var(--ds-bg);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-body);
+  line-height: var(--ds-lh-normal);
+  letter-spacing: var(--ds-track-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+}
+
+/* -------------------------------------------------------------- skip link */
+
+.ds-skip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: var(--ds-z-modal);
+  transform: translateY(-120%);
+  padding: var(--ds-space-3) var(--ds-space-4);
+  background: var(--ds-accent);
+  color: var(--ds-accent-ink);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-sm);
+  font-weight: var(--ds-w-semibold);
+  text-decoration: none;
+  border-radius: 0 0 var(--ds-radius-sm) 0;
+  transition: transform var(--ds-dur-fast) var(--ds-ease-out);
+}
+.ds-skip:focus {
+  transform: translateY(0);
+}
+
+/* ------------------------------------------------------------- topbar */
+
+.ds-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--ds-z-sticky);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-4);
+  padding: var(--ds-space-3) var(--ds-space-gutter);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ds-bg) 88%, transparent) 0%,
+    color-mix(in srgb, var(--ds-bg) 0%, transparent) 100%
+  );
+  backdrop-filter: blur(12px);
+  pointer-events: none;
+}
+.ds-topbar > * {
+  pointer-events: auto;
+}
+
+.ds-topbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  min-height: var(--ds-target-min);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-sm);
+  font-weight: var(--ds-w-semibold);
+  letter-spacing: var(--ds-track-caps);
+  text-transform: uppercase;
+  color: var(--ds-ink);
+  text-decoration: none;
+}
+
+/* ------------------------------------------------------------ canvas frame */
+
+.ds-canvas-frame {
+  position: absolute;
+  inset: 0;
+  contain: paint;
+  isolation: isolate;
+  background: var(--ds-bg);
+}
+
+.ds-canvas-frame__hud {
+  position: absolute;
+  inset: 0;
+  z-index: var(--ds-z-raised);
+  color: var(--ds-canvas-hud-ink);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-xs);
+  line-height: var(--ds-lh-snug);
+}
+.ds-canvas-frame__hud .ds-mono,
+.ds-canvas-frame__hud .ds-xs {
+  color: var(--ds-canvas-hud-ink);
+}
+
+/* HUD 上承载正文时必须加遮罩（I.3） */
+.ds-canvas-frame__scrim {
+  background: var(--ds-canvas-scrim);
+}
+
+/* ------------------------------------------------------------------ rail */
+
+.ds-rail {
+  position: absolute;
+  z-index: var(--ds-z-rail);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-rail-gap);
+  pointer-events: none;
+}
+.ds-rail > * {
+  pointer-events: auto;
+}
+
+.ds-rail__item {
+  pointer-events: auto;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: var(--ds-space-2) var(--ds-space-3);
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-sm);
+  color: var(--ds-ink-faint);
+  cursor: pointer;
+  border-radius: var(--ds-radius-xs);
+  transition: color var(--ds-dur-fast) var(--ds-ease-veil),
+    background var(--ds-dur-fast) var(--ds-ease-veil);
+}
+.ds-rail__item:hover {
+  color: var(--ds-ink);
+}
+.ds-rail__item[aria-current="true"],
+.ds-rail__item[aria-current="page"],
+.ds-rail__item[aria-pressed="true"] {
+  color: var(--ds-ink);
+  font-weight: var(--ds-w-medium);
+}
+
+/* -------------------------------------------------------------- indicator */
+
+.ds-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-1);
+  padding: var(--ds-space-1);
+  border-radius: var(--ds-radius-control);
+  background: color-mix(in srgb, var(--ds-bg-raised) 88%, transparent);
+  border: 1px solid var(--ds-line);
+}
+.ds-indicator__step {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: var(--ds-space-1) var(--ds-space-3);
+  min-height: 28px;
+  border-radius: var(--ds-radius-control);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-mono);
+  color: var(--ds-ink-faint);
+  cursor: pointer;
+  transition: background var(--ds-dur-fast) var(--ds-ease-veil),
+    color var(--ds-dur-fast) var(--ds-ease-veil);
+}
+.ds-indicator__step[aria-pressed="true"],
+.ds-indicator__step[aria-current="true"] {
+  background: var(--ds-accent);
+  color: var(--ds-accent-ink);
+}
+.ds-indicator__step:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ------------------------------------------------------------------ button */
+
+.ds-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-2);
+  min-height: 40px;
+  padding-inline: var(--ds-space-4);
+  border: 1px solid var(--ds-line-strong);
+  border-radius: var(--ds-radius-control);
+  background: var(--ds-bg-raised);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-sm);
+  font-weight: var(--ds-w-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    color var(--ds-dur-fast) var(--ds-ease-veil);
+}
+.ds-btn:hover {
+  background: var(--ds-surface);
+  border-color: var(--ds-accent);
+}
+.ds-btn--primary {
+  background: var(--ds-accent);
+  border-color: var(--ds-accent);
+  color: var(--ds-accent-ink);
+}
+.ds-btn--primary:hover {
+  background: var(--ds-accent-hover);
+  border-color: var(--ds-accent-hover);
+}
+.ds-btn--ghost {
+  background: transparent;
+  border-color: var(--ds-line);
+}
+.ds-btn:disabled,
+.ds-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+/* ------------------------------------------------------------------- chip */
+
+.ds-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-1);
+  padding: var(--ds-space-1) var(--ds-space-2);
+  min-height: 24px;
+  border-radius: var(--ds-radius-sm);
+  border: 1px solid var(--ds-line);
+  background: color-mix(in srgb, var(--ds-bg-raised) 80%, transparent);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-mono);
+  color: var(--ds-ink-soft);
+}
+
+/* -------------------------------------------------------------------- tag */
+
+.ds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-1);
+  padding: 2px var(--ds-space-2);
+  border-radius: var(--ds-radius-xs);
+  background: var(--ds-accent-soft);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
+  text-transform: uppercase;
+}
+.ds-tag--jade {
+  background: var(--ds-jade-soft);
+}
+
+/* ----------------------------------------------------------------- footer */
+
+.ds-footer {
+  position: absolute;
+  left: var(--ds-space-gutter);
+  right: var(--ds-space-gutter);
+  bottom: var(--ds-space-2);
+  z-index: var(--ds-z-sticky);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-4);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-faint);
+}
+
+/* ------------------------------------------------------------ focus ring */
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: var(--ds-focus-width) solid var(--ds-accent);
+  outline-offset: var(--ds-focus-offset);
+  border-radius: var(--ds-radius-xs);
+}

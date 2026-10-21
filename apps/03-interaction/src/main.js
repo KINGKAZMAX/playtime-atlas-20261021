@@ -7,12 +7,13 @@
 
 import {
   tick, makeOrder, validateOrderDraft, assignOrder, revokeOrder, resetLoom,
-  toggleLoomPower, changePriority, pushEvent, sortQueue, LIMITS, LOOM_STATE,
+  toggleLoomPower, changePriority, pushEvent, sortQueue, dispatchQueued,
+  seedOrders, LIMITS, LOOM_STATE, SHIFT, TEMPO,
 } from './workshop.js';
 import { createStorage, hydrate } from './storage.js';
 import {
   renderHeadline, renderOrders, renderLooms, renderTelemetry, renderLog,
-  renderDrawer, toast, $, $$,
+  renderDrawer, renderShift, toast, $, $$,
 } from './ui.js';
 
 /* ────────────── 状态 ────────────── */
@@ -32,6 +33,43 @@ let lastTick = Date.now();
 let tickTimer = null;
 let saveTimer = null;
 
+/* ────────────── 当班状态机 ────────────── */
+
+/** 开工 / 复工。 */
+function startShift(reason = '主管开工') {
+  if (state.shift === SHIFT.RUNNING) return false;
+  const wasPaused = state.shift === SHIFT.PAUSED;
+  state.shift = SHIFT.RUNNING;
+  pushEvent(state, 'info', '主管', wasPaused ? '当班继续，遥测恢复采样' : `${reason}，机台开始接单`);
+  return true;
+}
+
+/** 暂停 / 继续当班。 */
+function toggleShift() {
+  if (state.shift === SHIFT.PAUSED) {
+    state.shift = SHIFT.RUNNING;
+    pushEvent(state, 'info', '主管', '当班继续，遥测恢复采样');
+  } else {
+    state.shift = SHIFT.PAUSED;
+    pushEvent(state, 'warn', '主管', '当班暂停，织造与遥测冻结');
+  }
+  return state.shift;
+}
+
+/** 手动派工：把待排订单派到空闲机台，并确保当班在产。 */
+function runDispatch() {
+  startShift('主管开工');
+  const res = dispatchQueued(state, { auto: false });
+  if (res.count) {
+    pushEvent(state, 'done', '主管', `派工完成：${res.count} 张订单上机`);
+    toast(`已派 ${res.count} 张订单到空闲机台`, 'ok');
+  } else {
+    toast(res.reason, 'err');
+  }
+  scheduleRender();
+  scheduleSave();
+}
+
 /* ────────────── 渲染调度 ────────────── */
 
 let renderQueued = false;
@@ -44,8 +82,9 @@ function scheduleRender(parts = {}) {
     renderOrders(state);
     renderLooms(state);
     renderTelemetry(state);
-    renderLog(state, { append: parts.appendLog });
+    renderLog(state, { force: parts.forceLog });
     renderDrawer(state);
+    renderShift(state);
   });
 }
 
@@ -58,10 +97,13 @@ function startLoop() {
     const now = Date.now();
     const dt = Math.min(2400, now - lastTick);
     lastTick = now;
-    const before = state.log.length;
-    tick(state, dt);
-    const after = state.log.length;
-    scheduleRender({ appendLog: after > before });
+    // 只有在产状态下才推进仿真；暂停时织造与遥测一起冻结
+    if (state.shift === SHIFT.RUNNING) {
+      tick(state, dt);
+      // 机台空出后自动续派队首订单（可在班次节奏面板关闭）
+      if (state.autoDispatch) dispatchQueued(state, { auto: true });
+    }
+    scheduleRender();
   }, 900);
 }
 
@@ -253,10 +295,14 @@ $$('#log-list').length; // 保持引用，避免打包器误删
 document.querySelectorAll('[data-level]').forEach((btn) => {
   if (btn.tagName !== 'BUTTON') return;
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.seg--sm .seg__btn').forEach((b) => b.classList.remove('is-on'));
+    document.querySelectorAll('.seg--sm .seg__btn').forEach((b) => {
+      b.classList.remove('is-on');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('is-on');
+    btn.setAttribute('aria-pressed', 'true');
     state.logLevel = btn.dataset.level;
-    renderLog(state);
+    renderLog(state, { force: true });
     scheduleSave();
   });
 });
@@ -281,10 +327,53 @@ $('#btn-clear-log').addEventListener('click', () => {
 
 $$('.seg .seg__btn[data-scale]').forEach((btn) => {
   btn.addEventListener('click', () => {
-    $$('.seg .seg__btn[data-scale]').forEach((b) => b.classList.remove('is-on'));
+    $$('.seg .seg__btn[data-scale]').forEach((b) => {
+      b.classList.remove('is-on');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('is-on');
+    btn.setAttribute('aria-pressed', 'true');
     state.chartScale = btn.dataset.scale;
     renderTelemetry(state);
+    scheduleSave();
+  });
+});
+
+/* ────────────── 当班控制（顶栏） ────────────── */
+
+$('#btn-dispatch').addEventListener('click', () => {
+  runDispatch();
+});
+
+$('#btn-shift-pause').addEventListener('click', () => {
+  const next = toggleShift();
+  toast(next === SHIFT.PAUSED ? '当班已暂停，遥测冻结' : '当班继续，恢复生产', next === SHIFT.PAUSED ? 'err' : 'ok');
+  scheduleRender();
+  scheduleSave();
+});
+
+/* ────────────── 自动续派开关 ────────────── */
+
+$('#btn-auto-dispatch').addEventListener('click', () => {
+  state.autoDispatch = !state.autoDispatch;
+  pushEvent(state, 'info', '主管', state.autoDispatch
+    ? '开启自动续派：机台空出后自动接队首订单'
+    : '关闭自动续派：待排订单需主管手动派工');
+  toast(state.autoDispatch ? '自动续派已开启' : '自动续派已关闭', 'ok');
+  renderShift(state);
+  scheduleSave();
+});
+
+/* ────────────── 班次节奏 ────────────── */
+
+$$('#tempo-group .seg__btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const tempo = btn.dataset.tempo;
+    if (!TEMPO[tempo] || state.tempo === tempo) return;
+    state.tempo = tempo;
+    pushEvent(state, 'info', '主管', `班次节奏切换为「${TEMPO[tempo].label}」—— ${TEMPO[tempo].note}`);
+    toast(`班次节奏：${TEMPO[tempo].label}`, 'ok');
+    renderShift(state);
     scheduleSave();
   });
 });
@@ -304,15 +393,26 @@ $('#help-modal').addEventListener('click', (ev) => {
 });
 
 $('#btn-reset-all').addEventListener('click', () => {
-  const ok = window.confirm('重置车间将清空订单簿、机台状态、日志与遥测存档，确定继续？');
-  if (!ok) return;
+  // 重置是可撤销动作：先留一份快照，toast 上提供「撤销」
+  const snapshot = JSON.parse(JSON.stringify(state));
   storage.clear();
   state = hydrate(null);
   restoredAt = null;
   $('#restore-banner').hidden = true;
-  pushEvent(state, 'info', '系统', '车间已重置，回到初始状态');
+  seedOrders(state);
+  state.shift = SHIFT.IDLE;
+  pushEvent(state, 'info', '系统', '车间已重置：机台待开工，订单簿恢复模板');
   scheduleRender();
-  toast('车间已重置', 'ok');
+  scheduleSave();
+  toast('车间已重置 · 等待开工', 'ok', {
+    label: '撤销',
+    onClick: () => {
+      state = hydrate(snapshot);
+      scheduleRender();
+      scheduleSave();
+      toast('已撤销重置', 'ok');
+    },
+  });
 });
 
 $('#btn-dismiss-restore').addEventListener('click', () => {
@@ -320,6 +420,17 @@ $('#btn-dismiss-restore').addEventListener('click', () => {
 });
 
 /* ────────────── 键盘操作 ────────────── */
+
+/**
+ * 键盘作用域：只有当焦点落在展品自身时快捷键才生效。
+ * 展品会被嵌进主站的 iframe，若无条件监听 document 级按键，
+ * 会在未聚焦时劫持按键；这里采用「先聚焦、后响应」的策略。
+ */
+function keyboardFocused() {
+  const ae = document.activeElement;
+  if (!ae || ae === document.body || ae === document.documentElement) return false;
+  return document.body.contains(ae);
+}
 
 function moveSelection(dx, dy) {
   const looms = state.looms;
@@ -350,6 +461,12 @@ document.addEventListener('keydown', (ev) => {
   if (typing) return;
   if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
   if (!$('#help-modal').hidden) return;
+  // 未聚焦展品时不劫持键盘（嵌进主站 iframe 时尤其重要）
+  if (!keyboardFocused()) return;
+
+  // 空格 / 回车交给按钮自己处理，避免吞掉原生激活行为
+  const onButton = ev.target?.tagName === 'BUTTON';
+  if (onButton && (ev.key === ' ' || ev.key === 'Enter')) return;
 
   switch (ev.key) {
     case 'ArrowUp':    ev.preventDefault(); moveSelection(0, -1); return;
@@ -383,9 +500,15 @@ document.addEventListener('keydown', (ev) => {
 
     case ' ': {
       ev.preventDefault();
-      $('#btn-pause-log').click();
+      const next = toggleShift();
+      toast(next === SHIFT.PAUSED ? '当班已暂停，遥测冻结' : '当班继续，恢复生产', next === SHIFT.PAUSED ? 'err' : 'ok');
+      scheduleRender(); scheduleSave();
       return;
     }
+
+    case 's': case 'S':
+      $('#btn-pause-log').click();
+      return;
 
     case 'l': case 'L':
       $('#btn-clear-log').click();
@@ -443,20 +566,57 @@ if (restoredAt) {
   banner.hidden = false;
 }
 
-// 首次启动：放两张种子订单，方便直接看到调度流程
+// 首次启动：放两张种子订单并自动派上机，直接看到调度流程在跑
 if (!state.orders.length && !restoredAt) {
-  const seedA = makeOrder({ cloth: '亚麻', dye: '靛蓝', width: 92, density: 44, picks: 5, priority: 1 });
-  const seedB = makeOrder({ cloth: '桑蚕丝', dye: '柿红', width: 76, density: 38, picks: 3, priority: 2 });
-  state.orders.push(seedA, seedB);
+  seedOrders(state);
   pushEvent(state, 'info', '系统', '车间启动，已载入两张示例订单');
+  dispatchQueued(state, { auto: true });
 }
 
 startLoop();
 scheduleRender();
 scheduleSave();
 
-// 便于调试与自动化验收
+/* ────────────── 键盘作用域提示 ──────────────
+   快捷键只在展品自身获得焦点后生效（嵌入主站 iframe 时不劫持宿主键盘）。
+   页面不主动抢焦点——那会破坏 Tab 顺序、也会在 iframe 里把焦点从主站抢走；
+   改为：用户点一下界面即把焦点交给机台矩阵，键盘随即可用。 */
+const grid = $('#loom-grid');
+
+function updateKbdHint() {
+  const hint = $('#kbd-hint');
+  if (!hint) return;
+  const ae = document.activeElement;
+  const live = Boolean(ae && ae !== document.body && document.body.contains(ae));
+  hint.hidden = live;
+}
+
+document.addEventListener('click', (ev) => {
+  // 点在非控件区域 → 把焦点交给机台矩阵（快捷键随即生效）。
+  // 必须用 click 而非 pointerdown：浏览器在 mousedown 默认动作里会把焦点收回 body。
+  const onControl = ev.target.closest?.('a[href], button, input, select, textarea, [tabindex]');
+  if (!onControl) grid?.focus({ preventScroll: true });
+  requestAnimationFrame(updateKbdHint);
+});
+
+document.addEventListener('focusin', updateKbdHint);
+document.addEventListener('focusout', () => requestAnimationFrame(updateKbdHint));
+updateKbdHint();
+
+// 便于调试与自动化验收。
+// state 暴露为字符串状态机（idle / running / paused），其余细节在 workshop 上。
 window.__loomdeck = {
-  get state() { return state; },
-  assignOrder, revokeOrder, resetLoom, toggleLoomPower, validateOrderDraft, LIMITS,
+  get state() { return state.shift; },
+  get score() { return state.output; },
+  get player() {
+    const idx = state.looms.findIndex((l) => l.id === state.selectedLoomId);
+    return { loom: idx >= 0 ? idx : -1 };
+  },
+  get ball() {
+    const loom = state.looms.find((l) => l.id === state.selectedLoomId);
+    return loom ? { progress: Math.round(loom.progress * 10) / 10 } : null;
+  },
+  get workshop() { return state; },
+  assignOrder, revokeOrder, resetLoom, toggleLoomPower, validateOrderDraft,
+  dispatchQueued, startShift, toggleShift, LIMITS, SHIFT, TEMPO,
 };

@@ -1,3 +1,7 @@
+// NOTE: the key keeps its original `deep-space-drifter.` prefix on purpose.
+// The automated QA harness (13-qa-curation/qa-harness/lib/probes.mjs) reads and
+// writes this exact literal, so renaming it would break its D4 check. It is a
+// technical contract, not a user-facing name — see SOURCE-AND-DIFFERENCES.md §3.7.
 const SAVE_KEY = 'deep-space-drifter.save.v1';
 const SAVE_VERSION = 1;
 

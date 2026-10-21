@@ -1,8 +1,8 @@
 {
   "name": "minimax-m31-flash-case-index",
-  "version": "1.0.0",
+  "version": "1.3.2",
   "private": true,
-  "description": "Task 00 · MiniMax M3.1 Flash 全球公开案例索引 —— 134 条可核验案例 + TOP3 原创改编规格",
+  "description": "Task 00 · MiniMax M3.1 Flash 全球公开案例索引 —— 134 条可核验案例 + TOP3 原创改编规格（改版第 2 步：接入 16 余晖设计系统，自托管 OFL 字体，零外部请求）",
   "license": "SEE LICENSE IN LICENSE.md",
   "type": "module",
   "scripts": {
@@ -11,6 +11,7 @@
     "build:index": "python3 build_index.py",
     "build:ranking": "python3 gen_ranking.py",
     "verify": "python3 verify.py",
+    "package": "python3 make_release_package.py",
     "serve": "python3 -m http.server 8080",
     "clean": "rm -rf data/case-index.json"
   },

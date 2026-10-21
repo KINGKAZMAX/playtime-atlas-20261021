@@ -1,138 +1,66 @@
 /**
- * 主题接入 · 把 07-museum-art 的设计令牌与自托管字体接入主站
+ * 美术包接入探测
  *
- * 07 交付 `design-tokens.json` 与 `tokens.css` / `fonts.css`（均为 OFL 许可字体）。
- * 本模块在运行时把 07 的令牌映射到本馆自己的 CSS 变量上，
- * 这样 07 更新令牌后主站自动跟随，而本目录的 tokens.css 始终作为兜底。
+ * 07-museum-art 交付 `design-tokens.json` 与 OFL 字体（字体样式表由 index.html
+ * 静态引入，见 <link rel="stylesheet" href="./art/assets/fonts/fonts.css">）。
  *
- * 若 07 尚未交付，模块静默降级为主站自带令牌，不影响任何功能。
+ * **本模块不再把 07 的令牌写进 CSS 变量**：改版后全站色板由
+ * 16-design-system 的 `--ds-*` 令牌层唯一决定（DESIGN-SPEC §1.1），
+ * 而 07 的 design-tokens.json 仍带旧色板（信号橙 #F0601F）。
+ * 若继续运行时注入，同名变量会「后加载者胜」把新令牌覆盖回旧色板——
+ * 这正是 MIGRATION-NOTES 风险 B 描述的命名空间冲突。
+ *
+ * 因此这里只做两件事：探测字体样式表是否就位、探测 07 的令牌文件是否存在，
+ * 结果用于馆方说明页如实标注美术资产来源。
+ *
+ * 若 07 美术包缺席，模块静默降级，不影响任何功能。
+ *
+ * @returns {{tokens: boolean, fonts: boolean, meta: object|null}}
  */
 
 const BASE = (import.meta.env?.BASE_URL ?? './').replace(/\/*$/, '/');
 
-/** 07 令牌 → 本馆 CSS 变量 的映射表 */
-function buildMap(t) {
-  const c = t.color ?? {};
-  const s = t.semantic ?? {};
-  const ty = t.typography ?? {};
-  const sp = t.space ?? {};
-  const r = t.radius ?? {};
-  const sh = t.shadow ?? {};
-  const mo = t.motion ?? {};
-  const z = t.z ?? {};
-
-  const map = {
-    // 语义色
-    '--bg-app': s.bgBase,
-    '--bg-sunken': s.bgDeep,
-    '--bg-panel': s.bgPanel,
-    '--bg-panel-2': s.bgRaised,
-    '--bg-raised': c.ink?.['600'],
-    '--bg-paper': c.paper?.['100'],
-    '--bg-paper-2': c.paper?.['200'],
-
-    '--text-strong': s.textPrimary,
-    '--text-body': s.textSecondary,
-    '--text-muted': s.textMuted,
-    '--text-faint': c.paper?.['500'],
-    '--text-on-paper': c.ink?.['900'],
-    '--text-on-paper-muted': c.ink?.['700'],
-
-    '--accent': s.accent,
-    '--accent-deep': s.accentDeep,
-    '--signal-500': s.accent,
-    '--signal-600': s.accentDeep,
-    '--signal-400': s.accentSoft,
-    '--signal-300': s.accentSoft,
-    '--ok-500': s.positive,
-
-    '--line': s.hairline,
-    '--line-strong': s.hairlineStrong,
-    '--line-warm': s.hairline,
-
-    // 字体
-    '--font-display': ty.fontFamily?.display,
-    '--font-text': ty.fontFamily?.sans,
-    '--font-mono': ty.fontFamily?.mono,
-
-    // 间距（本馆 --sp-N ↔ 07 space.N）
-    '--sp-1': sp['1'],
-    '--sp-2': sp['2'],
-    '--sp-3': sp['3'],
-    '--sp-4': sp['4'],
-    '--sp-5': sp['5'],
-    '--sp-6': sp['6'],
-    '--sp-7': sp['8'],
-    '--sp-8': sp['9'],
-    '--sp-9': sp['10'],
-
-    // 圆角
-    '--r-xs': r.xs,
-    '--r-sm': r.sm,
-    '--r-md': r.md,
-    '--r-lg': r.lg,
-    '--r-pill': r.pill,
-
-    // 阴影
-    '--shadow-low': sh.sm,
-    '--shadow-mid': sh.md,
-    '--shadow-high': sh.lg,
-    '--glow-signal': sh.glow,
-
-    // 动效
-    '--dur-1': mo.instant,
-    '--dur-2': mo.base,
-    '--dur-3': mo.slow,
-    '--ease-out': mo.easeOut,
-    '--ease-in-out': mo.easeInOut,
-
-    // 层级
-    '--z-nav': `${z.sticky ?? 40}`,
-    '--z-panel': `${z.overlay ?? 60}`,
-    '--z-modal': `${z.modal ?? 80}`,
-    '--z-toast': `${z.toast ?? 95}`,
-  };
-
-  // 去掉空值，避免把变量覆盖成 undefined
-  return Object.fromEntries(Object.entries(map).filter(([, v]) => typeof v === 'string' && v.length));
-}
-
-async function exists(url) {
-  try {
-    const res = await fetch(url, { method: 'HEAD', cache: 'no-cache' });
-    return res.ok;
-  } catch {
-    return false;
-  }
-}
-
 /**
- * 应用主题
+ * 美术包接入探测
+ *
+ * 07-museum-art 交付 `design-tokens.json` 与 OFL 字体（字体样式表由 index.html
+ * 静态引入，见 `<link rel="stylesheet" href="./art/assets/fonts/fonts.css">`）。
+ *
+ * **本模块不再把 07 的令牌写进 CSS 变量**：改版后全站色板由
+ * 16-design-system 的 `--ds-*` 令牌层唯一决定（DESIGN-SPEC §1.1），
+ * 而 07 的 `design-tokens.json` 仍带旧色板（信号橙 `#F0601F`）。
+ * 若继续运行时注入，同名变量会**后加载者胜**把新令牌覆盖回旧色板——
+ * 这正是 MIGRATION-NOTES 风险 B 描述的命名空间冲突。
+ *
+ * 因此这里只做两件事：探测字体样式表是否就位、探测 07 的令牌文件是否存在，
+ * 结果用于馆方说明页如实标注美术资产来源。
+ *
+ * 若 07 美术包缺席，模块静默降级，不影响任何功能。
+ *
  * @returns {{tokens: boolean, fonts: boolean, meta: object|null}}
  */
 export async function applyTheme() {
   const result = { tokens: false, fonts: false, meta: null };
 
-  // 1) 自托管字体（OFL，来自 07 美术包）
-  const fontsCss = `${BASE}art/assets/fonts/fonts.css`;
-  if (await exists(fontsCss)) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = fontsCss;
-    link.dataset.source = '07-museum-art';
-    document.head.appendChild(link);
-    result.fonts = true;
+  // 1) 字体样式表是否真的就位（读已解析的样式表，不再发网络请求）
+  await new Promise((r) => setTimeout(r, 0));
+  result.fonts = [...document.styleSheets].some((sheet) => {
+    try {
+      return [...sheet.cssRules].some((rule) => rule instanceof CSSFontFaceRule);
+    } catch {
+      return false;
+    }
+  });
+  if (!result.fonts) {
+    console.warn('[theme] 未检测到自托管 @font-face 规则，已回落到系统字体栈。');
   }
 
-  // 2) 设计令牌
+  // 2) 07 的美术令牌文件是否在位（只作来源标注，不注入变量）
   try {
     const res = await fetch(`${BASE}data/design-tokens.json`, { cache: 'no-cache' });
     if (res.ok) {
       const tokens = await res.json();
-      const map = buildMap(tokens);
-      const root = document.documentElement;
-      for (const [k, v] of Object.entries(map)) root.style.setProperty(k, v);
-      result.tokens = Object.keys(map).length > 0;
+      result.tokens = Boolean(tokens);
       result.meta = tokens.meta ?? null;
     }
   } catch {

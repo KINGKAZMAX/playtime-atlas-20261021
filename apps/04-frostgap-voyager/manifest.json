@@ -1,21 +1,148 @@
 {
-  "id": "04-frostgap-voyager",
-  "title": "霜隙远航",
-  "description": "第一人称 6 自由度飞船驾驶：驾驶舱舷窗与仪表台、星图跃迁、天体扫描、停靠补给与任务链，全部天体与纹理程序化生成，进度写入本地存储。",
-  "entry": "works/04-frostgap-voyager/index.html",
+  "id": "04-spaceflight",
+  "title": "霜隙远航 · Frostgap Voyager",
+  "description": "驾驶单人穿梭艇「霜隙号 FG-1」，在程序化生成的恒星系统中自由飞行：真 6 自由度操控、四个可探索区域、星图跃迁、天体扫描、空间站停靠补给。全部美术与音效由 Canvas 噪声与 WebAudio 在运行时生成，字体自托管，无任何外部素材、无 CDN、无在线 API。界面提供中英双语与完整键盘可达性。",
+  "entry": "index.html",
   "buildCommand": "npm run build",
-  "outputDir": "docs/works/04-frostgap-voyager",
-  "status": "ready",
+  "outputDir": "dist",
+  "status": "completed",
   "upstream": "04-spaceflight",
-  "license": {
-    "code": "MIT",
-    "assets": "行星、环带、星云、贴图与音效全部由代码实时合成，无外部媒体文件"
+  "subtitle": "第一人称 6 自由度太空飞船驾驶游戏",
+  "devCommand": "npm run start",
+  "devUrl": "http://127.0.0.1:4314",
+  "category": "game",
+  "tags": [
+    "threejs",
+    "webgl",
+    "6dof",
+    "space-flight",
+    "procedural",
+    "offline",
+    "no-cdn",
+    "bilingual",
+    "accessible",
+    "design-system"
+  ],
+  "tech": {
+    "runtime": "browser",
+    "language": "javascript-esm",
+    "renderer": "webgl2",
+    "dependencies": [
+      {
+        "name": "three",
+        "version": "0.169.0",
+        "license": "MIT"
+      },
+      {
+        "name": "vite",
+        "version": "5.4.11",
+        "license": "MIT",
+        "dev": true
+      }
+    ],
+    "offline": true,
+    "externalRequests": 0,
+    "persistentStorage": [
+      "localStorage:deep-space-drifter.save.v1",
+      "localStorage:deep-space-drifter.settings.v1",
+      "localStorage:frostgap-voyager.lang.v1"
+    ]
   },
-  "sources": [
-    {
-      "title": "原创作品（无复刻来源）",
-      "url": "",
-      "note": "机制参考 1970—1990 年代太空模拟与雷达导航界面的一般范式，不复制任何商业游戏素材。"
-    }
-  ]
+  "entrypoints": {
+    "html": "dist/index.html",
+    "js": "dist/assets/*.js",
+    "css": "dist/assets/*.css",
+    "fonts": "dist/assets/*.woff2",
+    "licenses": "dist/licenses/*.txt"
+  },
+  "assets": {
+    "external": false,
+    "note": "贴图、模型与音效在运行时程序化生成；仓库内无图片 / 音频 / 模型文件。字体为自托管 woff2（Space Grotesk / Inter / Space Mono，SIL OFL 1.1），许可证全文随包分发于 public/licenses/。",
+    "fonts": [
+      "src/fonts/space-grotesk-latin.woff2",
+      "src/fonts/inter-latin.woff2",
+      "src/fonts/space-mono-regular.woff2",
+      "src/fonts/space-mono-bold.woff2"
+    ],
+    "fontLicenses": [
+      "public/licenses/OFL-space-grotesk.txt",
+      "public/licenses/OFL-inter.txt",
+      "public/licenses/OFL-space-mono-regular.txt",
+      "public/licenses/OFL-space-mono-bold.txt"
+    ],
+    "noteCjk": "不分发 CJK 字体子集：16 提供的 noto-sans-sc-subset.woff2 覆盖不全（partial），会导致同句混排；字体栈保留 \"Noto Sans SC\" 族名，未命中时回退系统黑体。"
+  },
+  "features": [
+    "真 6 自由度飞行（鼠标俯仰偏航 / QE 滚转 / WASD 平移 / Space·Ctrl 升降）",
+    "牛顿惯性 + 固定步长积分（帧率无关）",
+    "指针锁定失败时自动回退到拖拽 / 方向键操控",
+    "四个可探索区域、十个可扫描天体",
+    "星图跃迁（弯曲航线 + 屏幕空间拉丝 + 音效）",
+    "空间站对接、燃料补给与船体修复",
+    "程序化行星 / 环带 / 星云 / 恒星 / 小行星带 / 空间站",
+    "WebAudio 程序化音效（用户手势后启动）",
+    "三档画质 + 软件光栅器自动降档 + 静音",
+    "任务链 + 远航档案 localStorage 持久化",
+    "键盘可达性：Tab 只做焦点导航，焦点环可见，表单控件不被游戏键劫持",
+    "中英双语：界面 / 任务链 / 天体名全双语，<html lang> 与 hreflang 同步，?lang= 直达",
+    "余晖设计系统（Afterglow）：外壳统一到 --ds-* 令牌，自托管字体，朱砂强调色",
+    "无障碍：跳转链接、aria-modal 焦点陷阱与归还、:lang(zh) 中文排版、prefers-reduced-motion 降级"
+  ],
+  "controls": {
+    "mouse": "俯仰 / 偏航（未锁定时可拖拽）",
+    "W/S": "前进 / 后退推进",
+    "A/D": "左右平移",
+    "Space/Ctrl": "上升 / 下降",
+    "Q/E": "左 / 右滚转",
+    "Shift": "后燃器推进",
+    "X/B": "刹停",
+    "F": "扫描天体",
+    "R": "对接 / 脱离泊位",
+    "M": "星图与跃迁",
+    "Tab": "在菜单与面板之间移动焦点（不劫持浏览器行为）",
+    "V": "座舱 / 追尾视角",
+    "H": "操作说明",
+    "Esc": "暂停",
+    "Backspace": "重置飞船"
+  },
+  "docs": {
+    "readme": "README.md",
+    "controls": "CONTROLS.md",
+    "qa": "QA.md",
+    "qaReport": "qa-report.md",
+    "changelog": "CHANGELOG.md",
+    "sources": "SOURCE-AND-DIFFERENCES.md",
+    "task": "TASK.md",
+    "status": "STATUS.md",
+    "restyleMap": "RESTYLE-MAP.md",
+    "licenses": "LICENSES.md"
+  },
+  "qa": {
+    "automation": "qa/qa.mjs",
+    "automationCommand": "node qa/qa.mjs",
+    "browser": "Chromium (Playwright 1.64.1, system Chrome channel)",
+    "assertions": 39,
+    "passed": 39,
+    "failed": 0,
+    "targetedChecks": 17,
+    "curatorHarness": "verdict: pass (29 项 / fail 0 / warn 0 / pass 25 / skip 1)",
+    "screenshots": "screenshots/",
+    "lastRun": "2026-10-21 23:40"
+  },
+  "screenshots": [
+    "screenshots/01-main-menu.png",
+    "screenshots/02-cockpit-docked.png",
+    "screenshots/03-thrusting.png",
+    "screenshots/04-starmap.png",
+    "screenshots/05-warp-transit.png",
+    "screenshots/06-debris-gallery.png",
+    "screenshots/07-scanning.png",
+    "screenshots/08-scan-result.png",
+    "screenshots/09-docked.png",
+    "screenshots/10-pause.png",
+    "screenshots/11-chase-view.png"
+  ],
+  "author": "MiniMax Code",
+  "generatedBy": "MiniMax Code (M3.1-Flash / max)",
+  "installCommand": "npm install"
 }

@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-ds-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="dark light" />
   <meta name="description" content="色块远征 CHROMA VOYAGE — 回响电玩馆 1990s 家用机可玩展厅：原创平台冒险《棱晶峡谷》与等距探索场景《等距测绘所》，全部美术与音乐程序化生成。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23101018'/%3E%3Crect x='4' y='4' width='11' height='11' fill='%235ee0b8'/%3E%3Crect x='17' y='4' width='11' height='11' fill='%23ffd166'/%3E%3Crect x='4' y='17' width='11' height='11' fill='%23ff7a6b'/%3E%3Crect x='17' y='17' width='11' height='11' fill='%23b48aff'/%3E%3C/svg%3E" />
   <title>色块远征 · 1990s 家用机可玩展厅 | 回响电玩馆</title>
+  <!-- 资源基准路径（MIGRATION-NOTES §6）：Pages 子路径下的字体与静态资源前缀。
+       16 的 tokens.css 用 --ds-base 派生出 --ds-font-display-src；
+       src/main.js 在运行期用 import.meta.env.BASE_URL 覆盖为相对基准，
+       以同时适配任意子路径与 file:// 离线打开。 -->
+  <style>:root{--ds-base:"/playtime-atlas-20261021/";}</style>
 </head>
-<body>
-  <a class="skip-link" href="#hall-main">跳到主要内容</a>
+<body class="ds-shell">
+  <a class="ds-skip" href="#hall-main">跳到主要内容</a>
 
   <div id="app" class="app">
     <!-- ================= 顶栏 ================= -->
-    <header class="topbar">
+    <header class="topbar ds-topbar">
       <div class="topbar__inner">
-        <div class="brand">
+        <div class="brand ds-topbar__brand">
           <span class="brand__mark" aria-hidden="true">
             <i></i><i></i><i></i><i></i>
           </span>
@@ -24,19 +30,19 @@
           </span>
         </div>
 
-        <nav class="nav" aria-label="展厅导航">
-          <a href="#/hall" data-route="hall" class="nav__link is-active">展厅</a>
-          <a href="#/platform" data-route="platform" class="nav__link">平台冒险</a>
-          <a href="#/iso" data-route="iso" class="nav__link">等距测绘所</a>
-          <a href="#/sources" data-route="sources" class="nav__link">来源与差异</a>
+        <nav class="nav ds-topbar__nav" aria-label="展厅导航">
+          <a href="#/hall" data-route="hall" class="nav__link ds-topbar__link is-active" aria-current="page">展厅</a>
+          <a href="#/platform" data-route="platform" class="nav__link ds-topbar__link">平台冒险</a>
+          <a href="#/iso" data-route="iso" class="nav__link ds-topbar__link">等距测绘所</a>
+          <a href="#/sources" data-route="sources" class="nav__link ds-topbar__link">来源与差异</a>
         </nav>
 
         <div class="topbar__tools">
-          <button type="button" id="mute-btn" class="tool-btn" aria-pressed="false" title="静音 / 取消静音">
+          <button type="button" id="mute-btn" class="tool-btn ds-btn ds-btn--ghost ds-btn--sm" aria-pressed="false" title="静音 / 取消静音">
             <span class="tool-btn__icon" aria-hidden="true">♪</span>
             <span class="tool-btn__label">音效</span>
           </button>
-          <a class="tool-btn tool-btn--ghost" href="../" id="back-to-atlas" title="返回回响电玩馆总馆">返回总馆</a>
+          <a class="tool-btn tool-btn--ghost ds-btn ds-btn--sm" href="../" id="back-to-atlas" title="返回回响电玩馆总馆">返回总馆</a>
         </div>
       </div>
       <p class="embed-note" id="embed-note" hidden>已嵌入展厅视图 · 导航与说明均在本页内</p>
@@ -48,17 +54,17 @@
         <div class="wrap">
           <div class="hero">
             <div class="hero__text">
-              <p class="hero__eyebrow">回响电玩馆 · PLAYTIME ATLAS · 时代节点 <b>console16</b> · 1990—1999</p>
-              <h1 class="hero__title" id="hall-title">色块远征</h1>
+              <p class="hero__eyebrow ds-cover__eyebrow">回响电玩馆 · PLAYTIME ATLAS · 时代节点 <b>console16</b> · 1990—1999</p>
+              <h1 class="hero__title ds-cover__title" id="hall-title">色块远征</h1>
               <canvas id="logo-canvas" class="hero__logo" aria-label="CHROMA VOYAGE"></canvas>
-              <p class="hero__lede">
+              <p class="hero__lede ds-cover__lede">
                 这是一间为 1990 年代家用机而建的<b>可玩展厅</b>。两条动线：一条是横向推进的
                 16 位风格平台冒险，一条是等距视角的测绘庭院。展品里的每一台机器、每一条技术事实
                 都标注了可点击的来源；而所有像素、图形与音乐，都是为这次展览重新写出来的。
               </p>
-              <div class="hero__actions">
-                <a class="btn btn--primary" href="#/platform">▶ 进入《棱晶峡谷》</a>
-                <a class="btn" href="#/iso">◇ 前往《等距测绘所》</a>
+              <div class="hero__actions ds-cover__actions">
+                <a class="btn ds-btn ds-btn--primary" href="#/platform">▶ 进入《棱晶峡谷》</a>
+                <a class="btn ds-btn ds-btn--secondary" href="#/iso">◇ 前往《等距测绘所》</a>
               </div>
               <dl class="hero__stats">
                 <div><dt>可玩作品</dt><dd>2 件（1 平台冒险 + 1 等距场景）</dd></div>
@@ -75,7 +81,7 @@
 
           <!-- 展品导览 -->
           <section class="block" id="consoles">
-            <header class="block__head">
+            <header class="block__head ds-in">
               <h2 class="block__title">机型导览</h2>
               <p class="block__sub">1990 年代前后活跃于家用与掌机市场的代表性机器 · 代表性选样，非编年全集</p>
             </header>
@@ -84,7 +90,7 @@
 
           <!-- 科普展品 -->
           <section class="block" id="exhibits">
-            <header class="block__head">
+            <header class="block__head ds-in">
               <h2 class="block__title">科普展品</h2>
               <p class="block__sub">每条展品均附可访问的来源链接 · 点击展开</p>
             </header>
@@ -94,39 +100,39 @@
 
           <!-- 两条动线 -->
           <section class="block" id="routes">
-            <header class="block__head">
+            <header class="block__head ds-in">
               <h2 class="block__title">两条动线</h2>
               <p class="block__sub">展厅里的两件可玩作品</p>
             </header>
             <div class="route-grid">
-              <article class="route-card route-card--platform">
+              <article class="route-card route-card--platform ds-work">
                 <div class="route-card__badge">16 位风格</div>
-                <h3>《色块远征：棱晶峡谷》</h3>
-                <p>主角「墨豆 INKBEAN」是一台方形勘探机器人。它要穿过三段色块地形，把 9 枚色晶带回跃迁塔。</p>
+                <h3 class="ds-work__title">《色块远征：棱晶峡谷》</h3>
+                <p class="ds-work__desc">主角「墨豆 INKBEAN」是一台方形勘探机器人。它要穿过三段色块地形，把 9 枚色晶带回跃迁塔。</p>
                 <ul class="route-card__list">
                   <li>3 关手工编排，含单向平台、移动色台、尖刺与色浆</li>
                   <li>跳跃 / 碰撞 / 检查点 / 收集物 / 胜负 / 重开 全部实现</li>
                   <li>键盘与触控双输入，固定步长 60Hz 物理</li>
                 </ul>
-                <a class="btn btn--primary" href="#/platform">开始远征</a>
+                <a class="btn ds-btn ds-btn--primary" href="#/platform">开始远征</a>
               </article>
-              <article class="route-card route-card--iso">
+              <article class="route-card route-card--iso ds-work">
                 <div class="route-card__badge">早期 3D 质感</div>
-                <h3>《等距测绘所》</h3>
-                <p>一座 30×22 的等距庭院。九处展台散布在草台与岩台之间，点击任意展台即可展开对应的技术展品。</p>
+                <h3 class="ds-work__title">《等距测绘所》</h3>
+                <p class="ds-work__desc">一座 30×22 的等距庭院。九处展台散布在草台与岩台之间，点击任意展台即可展开对应的技术展品。</p>
                 <ul class="route-card__list">
                   <li>2:1 等距投影 + 画家算法深度排序</li>
                   <li>昼夜切换、动态水面、云层与展台高亮</li>
                   <li>拖拽平移 / 滚轮缩放 / 键盘与触屏浏览</li>
                 </ul>
-                <a class="btn btn--primary" href="#/iso">进入测绘所</a>
+                <a class="btn ds-btn ds-btn--primary" href="#/iso">进入测绘所</a>
               </article>
             </div>
           </section>
 
           <!-- 来源与差异 -->
           <section class="block" id="sources">
-            <header class="block__head">
+            <header class="block__head ds-in">
               <h2 class="block__title">来源与差异说明</h2>
               <p class="block__sub">本展厅是原创作品，不是任何既有作品的复刻</p>
             </header>
@@ -177,10 +183,10 @@
           </div>
 
           <div class="game-stage">
-            <div class="game-frame" id="game-frame">
+            <div class="game-frame ds-canvas-frame" id="game-frame">
               <canvas id="platform-canvas" width="320" height="240" aria-label="色块远征游戏画面"></canvas>
 
-              <div class="hud" id="platform-hud">
+              <div class="hud ds-canvas-frame__hud ds-canvas-frame__hud--top" id="platform-hud">
                 <div class="hud__row">
                   <span class="hud__chip hud__chip--life" id="hud-lives"></span>
                   <span class="hud__chip hud__chip--shard" id="hud-shards"></span>
@@ -209,10 +215,10 @@
             <aside class="play-side">
               <h3 class="play-side__title">操作</h3>
               <ul class="keylist">
-                <li><kbd>←</kbd><kbd>→</kbd> / <kbd>A</kbd><kbd>D</kbd><span>移动</span></li>
-                <li><kbd>空格</kbd> / <kbd>↑</kbd> / <kbd>W</kbd><span>跳跃（长按跳更高）</span></li>
-                <li><kbd>R</kbd><span>重开本关</span></li>
-                <li><kbd>Esc</kbd><span>返回展厅</span></li>
+                <li><kbd class="ds-key">←</kbd><kbd class="ds-key">→</kbd> / <kbd class="ds-key">A</kbd><kbd class="ds-key">D</kbd><span>移动</span></li>
+                <li><kbd class="ds-key">空格</kbd> / <kbd class="ds-key">↑</kbd> / <kbd class="ds-key">W</kbd><span>跳跃（长按跳更高）</span></li>
+                <li><kbd class="ds-key">R</kbd><span>重开本关</span></li>
+                <li><kbd class="ds-key">Esc</kbd><span>返回展厅</span></li>
               </ul>
               <p class="play-side__note">
                 触屏设备请使用画面下方的虚拟按键。踩中敌人可将其消灭；从侧面接触则会失去一条命。
@@ -238,14 +244,14 @@
           </div>
 
           <div class="iso-stage">
-            <div class="iso-frame" id="iso-frame">
+            <div class="iso-frame ds-canvas-frame" id="iso-frame">
               <canvas id="iso-canvas" aria-label="等距测绘所场景"></canvas>
 
               <div class="iso-toolbar">
-                <button type="button" class="tool-btn" id="iso-zoom-out" aria-label="缩小">−</button>
-                <button type="button" class="tool-btn" id="iso-zoom-in" aria-label="放大">＋</button>
-                <button type="button" class="tool-btn" id="iso-night" aria-pressed="false">昼夜</button>
-                <button type="button" class="tool-btn" id="iso-reset">复位</button>
+                <button type="button" class="tool-btn ds-btn ds-btn--sm" id="iso-zoom-out" aria-label="缩小">−</button>
+                <button type="button" class="tool-btn ds-btn ds-btn--sm" id="iso-zoom-in" aria-label="放大">＋</button>
+                <button type="button" class="tool-btn ds-btn ds-btn--sm" id="iso-night" aria-pressed="false">昼夜</button>
+                <button type="button" class="tool-btn ds-btn ds-btn--sm" id="iso-reset">复位</button>
               </div>
 
               <div class="iso-legend" id="iso-legend"></div>
@@ -257,7 +263,7 @@
               <h3 class="play-side__title">展台索引</h3>
               <ul class="hotspot-list" id="hotspot-list"></ul>
               <p class="play-side__note">
-                键盘：<kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> 平移 · <kbd>+</kbd><kbd>−</kbd> 缩放 · <kbd>Esc</kbd> 关闭展品
+                键盘：<kbd class="ds-key">←</kbd><kbd class="ds-key">→</kbd><kbd class="ds-key">↑</kbd><kbd class="ds-key">↓</kbd> 平移 · <kbd class="ds-key">+</kbd><kbd class="ds-key">−</kbd> 缩放 · <kbd class="ds-key">Esc</kbd> 关闭展品
               </p>
             </aside>
           </div>
@@ -265,7 +271,7 @@
       </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer ds-footer">
       <div class="wrap footer__inner">
         <p>
           <strong>色块远征 CHROMA VOYAGE</strong> — 回响电玩馆 1990s 家用机展厅。

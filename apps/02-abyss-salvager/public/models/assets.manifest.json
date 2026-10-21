@@ -1,0 +1,40 @@
+{
+  "id": "abyss-carapace-salvager-models",
+  "title": "渊甲拾遗者 · 随包模型 / ABYSS-CARAPACE SALVAGER — shipped model",
+  "version": "1.0.0",
+  "generated": "2026-10-21",
+  "license": {
+    "artwork": "本批原创（程序化几何 + 程序化贴图，运行时由 GLTFExporter 导出）",
+    "thirdParty": "无"
+  },
+  "work": {
+    "id": "02-abyss-salvager",
+    "titleCn": "渊甲拾遗者",
+    "titleLatin": "ABYSS-CARAPACE SALVAGER",
+    "model": "AC-VII",
+    "lengthMetres": 760,
+    "diameterMetres": 41.7,
+    "segments": 18
+  },
+  "models": [
+    {
+      "role": "canonical",
+      "file": "./abyss-salvager-ac-vii.glb",
+      "publicPath": "public/models/abyss-salvager-ac-vii.glb",
+      "buildPath": "models/abyss-salvager-ac-vii.glb",
+      "bytes": 9135924,
+      "sha256": "cd3816ad4153916cba663f211724396535921d7f822ae630b36056c73c441d92",
+      "glb": {
+        "magic": "glTF",
+        "version": 2,
+        "declaredLength": 9135924
+      },
+      "description": "《渊甲拾遗者》默认参数（18 驱动体节）导出的完整模型。"
+    }
+  ],
+  "notes": [
+    "本文件由浏览器端 GLTFExporter 实时导出；npm run capture 会把它直接写到 public/models/，构建时再由 scripts/sync-model.mjs 校验并刷新本索引。",
+    "public/ 目录会被 Vite 原样复制进构建产物，因此 dist/models/ 与线上 works/02-abyss-salvager/models/ 下的路径完全一致。",
+    "所有几何与贴图均为本项目程序化生成，未使用任何第三方模型、贴图或商业素材。"
+  ]
+}

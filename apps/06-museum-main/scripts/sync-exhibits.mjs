@@ -60,12 +60,12 @@ function wikiUrl(title) {
 
 /** 从 05 的中间产物（seed_items + curated）拼装目录 */
 async function buildCatalogFromSeed() {
-  const seedPath = path.join(SIBLINGS, '05-museum-research', 'data', 'seed_items.json');
+  const seedPath = path.join(SIBLINGS, '05-museum-catalog', 'data', 'seed_items.json');
   if (!existsSync(seedPath)) return null;
   const seed = await readJson(seedPath);
   if (!Array.isArray(seed) || !seed.length) return null;
 
-  const curatedDir = path.join(SIBLINGS, '05-museum-research', 'data', 'curated');
+  const curatedDir = path.join(SIBLINGS, '05-museum-catalog', 'data', 'curated');
   let curated = {};
   if (existsSync(curatedDir)) {
     for (const f of await readdir(curatedDir)) {
@@ -104,10 +104,10 @@ async function syncCatalog() {
 
   // 1) 首选 05 正式交付的 catalog.json
   const formal = [
-    path.join(SIBLINGS, '05-museum-research', 'catalog.json'),
-    path.join(SIBLINGS, '05-museum-research', 'dist', 'catalog.json'),
-    path.join(SIBLINGS, '05-museum-research', 'public', 'catalog.json'),
-    path.join(SIBLINGS, '05-museum-research', 'data', 'catalog.json'),
+    path.join(SIBLINGS, '05-museum-catalog', 'catalog.json'),
+    path.join(SIBLINGS, '05-museum-catalog', 'dist', 'catalog.json'),
+    path.join(SIBLINGS, '05-museum-catalog', 'public', 'catalog.json'),
+    path.join(SIBLINGS, '05-museum-catalog', 'data', 'catalog.json'),
   ];
   for (const p of formal) {
     if (!existsSync(p)) continue;
@@ -134,18 +134,44 @@ async function syncCatalog() {
 }
 
 /* ── 07：美术包 ────────────────────────────────────────────────────────────── */
-const ART_FILE = /\.(svg|png|webp|jpg|jpeg|woff2?|ttf|otf)$/i;
+const ART_FILE = /\.(svg|png|webp|jpg|jpeg|woff2?|ttf|otf|txt)$/i;
 
-async function copyAssets(fromDir, toDir) {
+/** 本项目自有、不从上游覆盖的文件（相对 public/art/assets） */
+const KEEP_OWN = new Set(['assets/fonts/fonts.css']);
+
+/**
+ * 上游包体里**绝不能上线**的目录名。
+ * 典型事故：07 的美术包里混进了做字体子集用的 Python 虚拟环境（.venv，124 MB），
+ * 照抄进 public/ 就会把整个 venv 发布到 GitHub Pages。
+ */
+const ART_JUNK_DIRS = new Set([
+  '.venv', 'venv', 'env', '__pycache__', '.pytest_cache', '.mypy_cache', '.ruff_cache',
+  '.tox', '.ipynb_checkpoints', 'node_modules', '.git', '.DS_Store',
+]);
+
+/**
+ * 同源但**用不上**的字体格式。
+ *
+ * 07 的 fonts/ 里同时给了 woff2 和 ttf；本馆的 @font-face 全部走 woff2
+ * （见 src/assets/fonts/fonts.css，5 条规则无一例外），ttf 合计约 824 KB
+ * 纯属白上线的体积。这里不落 ttf。
+ */
+const ART_SKIP_FILES = new Set(['.ttf']);
+
+async function copyAssets(fromDir, toDir, base = '') {
   if (!existsSync(fromDir)) return 0;
   let n = 0;
   const entries = await readdir(fromDir, { withFileTypes: true });
   await mkdir(toDir, { recursive: true });
   for (const e of entries) {
+    if (ART_JUNK_DIRS.has(e.name)) continue;
+    if (ART_SKIP_FILES.has(path.extname(e.name).toLowerCase())) continue;
     const src = path.join(fromDir, e.name);
     const dst = path.join(toDir, e.name);
+    const relPath = path.join(base, e.name);
+    if (KEEP_OWN.has(relPath.split(path.sep).join('/'))) continue;
     if (e.isDirectory()) {
-      n += await copyAssets(src, dst);
+      n += await copyAssets(src, dst, relPath);
     } else if (e.isFile() && ART_FILE.test(e.name)) {
       await cp(src, dst, { force: true });
       n += 1;
@@ -158,20 +184,36 @@ async function syncArt() {
   const artRoot = path.join(PUBLIC, 'art');
   await mkdir(artRoot, { recursive: true });
 
-  // 07 的真实资产目录（public/assets 与 assets）
+  /*
+   * 07 的美术包里，本馆**只用** fonts/（5 个 OFL woff2 + 许可全文）。
+   * 其余 covers / posters / cases / models / fallback 共约 51 MB 是 07 自己
+   * 画廊页的媒体素材，本馆一张都没引用——照抄进来会让 GitHub Pages 发布
+   * 凭空多出 50 MB 以上的无关负载（实测 `dist/art` 曾达 124 MB，
+   * 因为连字体子集工具用的 .venv 都被拷了进来）。
+   *
+   * 因此这里只同步 fonts/，其余目录不落地。
+   * 依据：16-design-system/DESIGN-SPEC.md §10（资源本地化与体积）、
+   *      15-supervisor/RESTYLE-SPEC.md §6.4（资源本地化，无 CDN）。
+   */
   const assetSources = [
     path.join(SIBLINGS, '07-museum-art', 'public', 'assets'),
     path.join(SIBLINGS, '07-museum-art', 'assets'),
   ];
+  const WANTED = new Set(['fonts']);
   let copied = 0;
   let used = null;
   for (const src of assetSources) {
     if (!existsSync(src)) continue;
-    const n = await copyAssets(src, path.join(artRoot, 'assets'));
-    if (n) {
-      copied += n;
-      used = rel(src);
+    for (const sub of WANTED) {
+      const from = path.join(src, sub);
+      if (!existsSync(from)) continue;
+      const n = await copyAssets(from, path.join(artRoot, 'assets', sub), path.join('assets', sub));
+      if (n) {
+        copied += n;
+        used = rel(src);
+      }
     }
+    if (copied) break;
   }
 
   // 设计令牌
@@ -216,6 +258,9 @@ const HALLS = [
   { id: 'modern', task: '12-era-modern', dir: 'modern' },
 ];
 
+/** 功能性资源（缺失即视为不可部署） */
+const FUNCTIONAL_REF = /\.(js|mjs|css|wasm|png|jpe?g|webp|gif|svg|ico|woff2?|ttf|otf|eot|mp3|ogg|wav|json)$/i;
+
 /** 判断一个目录是否是「可直接静态部署」的包体 */
 async function inspectBundle(dir) {
   const indexPath = path.join(dir, 'index.html');
@@ -231,12 +276,53 @@ async function inspectBundle(dir) {
   if (/展厅建设中|建设中|敬请期待|coming soon/i.test(html)) {
     return { ok: false, reason: '仍是占位页面' };
   }
-  const refs = [...html.matchAll(/(?:src|href)=["'](\.\/[^"']+)["']/g)].map((m) => m[1]);
-  for (const r of refs) {
-    const target = path.join(dir, r.split('?')[0].split('#')[0]);
-    if (!existsSync(target)) return { ok: false, reason: `引用了不存在的静态资源 ${r}` };
+
+  // 收集所有页面里缺失的本地引用
+  const missing = new Set();
+  for (const f of await readdir(dir)) {
+    if (!f.endsWith('.html')) continue;
+    const page = await readFile(path.join(dir, f), 'utf8');
+    for (const m of page.matchAll(/(?:src|href)=["'](\.\/[^"']+)["']/g)) {
+      const ref = m[1].split('?')[0].split('#')[0];
+      if (!existsSync(path.join(dir, ref))) missing.add(ref);
+    }
   }
-  return { ok: true, reason: '可静态部署' };
+
+  // 功能性资源缺失 → 不可部署；仅说明文档缺失 → 可部署但要清理链接
+  const functional = [...missing].filter((r) => FUNCTIONAL_REF.test(r));
+  if (functional.length) {
+    return { ok: false, reason: `引用了不存在的静态资源 ${functional[0]}` };
+  }
+  return {
+    ok: true,
+    reason: '可静态部署',
+    missingDocs: [...missing],
+  };
+}
+
+/**
+ * 清理副本中指向缺失说明文档的链接（只改副本，不动源目录），
+ * 避免这些链接在部署后产生 404。
+ */
+async function stripMissingDocLinks(dir, missingDocs) {
+  if (!missingDocs?.length) return 0;
+  let patched = 0;
+  for (const f of await readdir(dir)) {
+    if (!f.endsWith('.html')) continue;
+    const p = path.join(dir, f);
+    let html = await readFile(p, 'utf8');
+    let changed = false;
+    for (const ref of missingDocs) {
+      const needle = `href="./${ref.replace(/^\.\//, '')}"`;
+      if (html.includes(needle)) {
+        html = html.split(needle).join(`data-missing-doc="${ref.replace(/^\.\//, '')}"`);
+        changed = true;
+        patched += 1;
+      }
+    }
+    if (changed) await writeFile(p, html, 'utf8');
+  }
+  return patched;
 }
 
 /** 在本任务目录内的临时副本中构建兄弟任务（绝不写入源目录） */
@@ -311,12 +397,14 @@ async function syncExhibits() {
     ];
     let chosen = null;
     let chosenReason = '';
+    let missingDocs = [];
     for (const c of candidates) {
       if (!existsSync(c)) continue;
       const check = await inspectBundle(c);
       if (check.ok) {
         chosen = c;
         chosenReason = check.reason;
+        missingDocs = check.missingDocs ?? [];
         break;
       }
       chosenReason = check.reason;
@@ -330,6 +418,7 @@ async function syncExhibits() {
         if (check.ok) {
           chosen = built.dist;
           chosenReason = `由来源任务源码在临时副本中构建（${check.reason}）`;
+          missingDocs = check.missingDocs ?? [];
         } else {
           chosenReason = `临时构建产物未通过部署性检查：${check.reason}`;
         }
@@ -349,6 +438,8 @@ async function syncExhibits() {
     await mkdir(path.dirname(target), { recursive: true });
     await cp(chosen, target, { recursive: true, force: true });
     await prune(target);
+    const stripped = await stripMissingDocLinks(target, missingDocs);
+    if (stripped) log(`  · ${hall.task}：清理了 ${stripped} 处指向缺失说明文档的链接（${missingDocs.join(', ')}）`);
 
     const size = await dirSize(target);
     results.push({
@@ -377,13 +468,18 @@ async function syncExhibits() {
 
 /** 清理包体里不该上线的内容 */
 async function prune(dir) {
-  const JUNK = new Set(['node_modules', '.git', '.vite', 'coverage', '.cache', 'tests', 'test']);
+  const JUNK = new Set([
+    'node_modules', '.git', '.vite', 'coverage', '.cache', 'tests', 'test',
+    // 工具链产物：Python 虚拟环境、字节码缓存、系统垃圾——一律不上线
+    '.venv', 'venv', 'env', '__pycache__', '.pytest_cache', '.mypy_cache', '.ruff_cache',
+    '.tox', '.ipynb_checkpoints',
+  ]);
   const entries = await readdir(dir, { withFileTypes: true });
   for (const e of entries) {
     if (e.isDirectory() && JUNK.has(e.name)) {
       await rm(path.join(dir, e.name), { recursive: true, force: true });
     }
-    if (e.isFile() && /\.map$/i.test(e.name)) {
+    if (e.isFile() && (/\.map$/i.test(e.name) || e.name === '.DS_Store' || /\.pyc$/i.test(e.name))) {
       await rm(path.join(dir, e.name), { force: true });
     }
   }

@@ -57,6 +57,7 @@ export function createState(seed = 20261021, difficulty: Difficulty = 'standard'
     ashQueue: [],
     riftFlash: 0,
     waveClock: 0,
+    ashClock: 0,
     difficulty,
     speed: 1,
     paused: false,
@@ -408,8 +409,9 @@ export function stepDefense(state: DefenseState, dt: number): void {
     }
   }
 
-  // 灰烬 AI 编队出场
-  while (state.ashQueue.length && state.ashQueue[0]!.at <= state.waveClock) {
+  // 灰烬 AI 编队出场：用灰烬航道自己的时钟，不受玩家波次状态影响
+  state.ashClock += dt;
+  while (state.ashQueue.length && state.ashQueue[0]!.at <= state.ashClock) {
     const item = state.ashQueue.shift()!;
     spawnEnemy(state, item.kind, 'ash', item.elite);
   }

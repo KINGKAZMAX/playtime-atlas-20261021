@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-ds-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -8,19 +8,49 @@
       name="description"
       content="联机曙光 LINK DAWN —— 2000 年代 PC / 掌机 / 联机主题的可玩展厅，含两件原创可玩展项与带来源链接的年代史料。"
     />
-    <meta name="theme-color" content="#080b16" />
+    <meta name="theme-color" content="#100f0e" />
     <title>联机曙光 LINK DAWN · 2000s 可玩展厅</title>
+
+    <!-- 余晖设计系统（16-design-system）：令牌层 + 组件层 + 自托管字体
+         取用方式见 16-design-system/MIGRATION-NOTES.md §1「接入四步」。 -->
+    <link rel="stylesheet" href="./assets/ds/tokens.css" />
+    <link rel="stylesheet" href="./assets/ds/components.css" />
+    <link rel="stylesheet" href="./assets/ds/fonts/fonts.css" />
+
+    <!-- Pages 子路径基准：线上为 /playtime-atlas-20261021/，本地预览用相对路径 -->
+    <style>
+      :root {
+        --ds-base: "/playtime-atlas-20261021/";
+      }
+    </style>
+
+    <!-- 自托管字体：仅预加载首屏用到的两款拉丁字体；汉字走系统字体栈（DESIGN-SPEC §2.4） -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="./assets/ds/fonts/inter-latin.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="./assets/ds/fonts/space-grotesk-latin.woff2"
+      crossorigin
+    />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1224'/%3E%3Cpath d='M13 25 L14.5 11 h3 L19 25 z' fill='%23ff8a3d'/%3E%3Crect x='13' y='7' width='6' height='4' rx='1' fill='%23ffd166'/%3E%3Cpath d='M19 9 L29 4 v10 z' fill='%23ff8a3d' opacity='.45'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23100f0e'/%3E%3Cpath d='M13 25 L14.5 11 h3 L19 25 z' fill='%23e0684a'/%3E%3Crect x='13' y='7' width='6' height='4' rx='1' fill='%23f7f4f0'/%3E%3Cpath d='M19 9 L29 4 v10 z' fill='%23e0684a' opacity='.45'/%3E%3C/svg%3E"
     />
-    <script type="module" crossorigin src="./assets/index-BOLw7ACp.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/style-CzD6omJU.css">
+    <script type="module" crossorigin src="./assets/index-DZBvfrTw.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/style-BBtp4n0_.css">
   </head>
-  <body>
+  <body class="ds-shell">
+    <a class="ds-skip" href="#exhibits">跳到可玩展项</a>
     <div id="app"></div>
     <noscript>
-      <p style="padding: 24px; color: #e7ecf7; font-family: system-ui, sans-serif">本展厅的可玩展项需要启用 JavaScript。</p>
+      <p style="padding: 24px; color: #f7f4f0; font-family: system-ui, sans-serif">本展厅的可玩展项需要启用 JavaScript。</p>
     </noscript>
   </body>
 </html>

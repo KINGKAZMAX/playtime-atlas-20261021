@@ -7,16 +7,6 @@
   "outputDir": "dist",
   "status": "complete",
   "upstream": "11-era-online",
-  "license": {
-    "code": "MIT",
-    "assets": "原创模型、UI 与命名"
-  },
-  "sources": {
-    "count": 65,
-    "official": 5,
-    "reference": 60,
-    "checkedOn": "2026-10-21"
-  },
   "port": 4331,
   "basePath": "./",
   "runtimeDependencies": [],
@@ -62,11 +52,130 @@
       ]
     }
   ],
+  "designSystem": {
+    "name": "余晖设计系统 / Afterglow Design System",
+    "source": "16-design-system",
+    "version": "1.0.0",
+    "integration": "copy-assets-ds",
+    "tokenFile": "public/assets/ds/tokens.css",
+    "componentsFile": "public/assets/ds/components.css",
+    "fontsDir": "public/assets/ds/fonts",
+    "tokenPrefix": "--ds-",
+    "theme": "dark",
+    "dsBase": "/playtime-atlas-20261021/",
+    "componentClasses": [
+      ".ds-shell",
+      ".ds-topbar",
+      ".ds-topbar__brand",
+      ".ds-topbar__nav",
+      ".ds-topbar__link",
+      ".ds-footer",
+      ".ds-skip",
+      ".ds-canvas-frame",
+      ".ds-btn",
+      ".ds-tag",
+      ".ds-chip"
+    ],
+    "restyleInventory": "RESTYLE-INVENTORY.md",
+    "canvasPaletteKept": true,
+    "byteIdenticalToSource": true,
+    "notes": "按派单口径以『拷贝 assets/ds/』接入：16 的 tokens.css / components.css / fonts/ 逐字节拷贝到 public/assets/ds/，本目录不自建 --ds-* 令牌层与字体层。外壳改用 16 官方组件类；语义别名层（--danger/--data/--dawn/--deep 等 23 个）按 MIGRATION-NOTES §2.0 保留且全部指向 --ds-*。两个展项画布内部配色与画布尺寸比按 §4 红线保持原样；画布外的 HUD DOM 文字按 §4.2 需 ≥4.5:1（已用 --pocket-text 达标）。",
+    "semanticAliasLayer": {
+      "kept": true,
+      "count": 23,
+      "pointsTo": "--ds-* only (no literal values)",
+      "note": "MIGRATION-NOTES §2.0：写法正确，保留；改版后自有 CSS 已直接使用 --ds-*，该层为零引用的重定向层。"
+    }
+  },
+  "fonts": {
+    "selfHosted": true,
+    "externalRequests": 0,
+    "license": "SIL Open Font License 1.1",
+    "licenseFiles": [
+      "licenses/OFL-space-grotesk.txt",
+      "licenses/OFL-inter.txt",
+      "licenses/OFL-space-mono-regular.txt",
+      "licenses/OFL-space-mono-bold.txt",
+      "licenses/OFL-noto-sans-sc.txt",
+      "public/assets/ds/fonts/OFL-space-grotesk.txt",
+      "public/assets/ds/fonts/OFL-inter.txt",
+      "public/assets/ds/fonts/OFL-space-mono-regular.txt",
+      "public/assets/ds/fonts/OFL-space-mono-bold.txt",
+      "public/assets/ds/fonts/OFL-noto-sans-sc.txt"
+    ],
+    "families": [
+      {
+        "family": "Space Grotesk",
+        "file": "public/assets/ds/fonts/space-grotesk-latin.woff2",
+        "role": "display"
+      },
+      {
+        "family": "Inter",
+        "file": "public/assets/ds/fonts/inter-latin.woff2",
+        "role": "text"
+      },
+      {
+        "family": "Space Mono",
+        "file": "public/assets/ds/fonts/space-mono-regular.woff2",
+        "role": "mono"
+      },
+      {
+        "family": "Space Mono",
+        "file": "public/assets/ds/fonts/space-mono-bold.woff2",
+        "role": "mono-bold"
+      },
+      {
+        "family": "Noto Sans SC",
+        "file": "public/assets/ds/fonts/noto-sans-sc-subset.woff2",
+        "role": "cjk-fallback"
+      }
+    ]
+  },
+  "accessibility": {
+    "lang": "zh-CN",
+    "hreflang": [
+      "zh-CN",
+      "x-default"
+    ],
+    "skipLink": true,
+    "reducedMotion": true,
+    "keyboardPaths": [
+      "键盘建造",
+      "键盘升级",
+      "键盘移动",
+      "键盘对话"
+    ],
+    "notes": "英文版尚未提供，仅声明 zh-CN / x-default，不冒充存在 en 版本。",
+    "hudDomTextContrast": ">=4.5:1 (MIGRATION-NOTES §4.2；canvas 内豁免)",
+    "touchTargets": ">=24px 全部；>=44px 主控件（§5.1）"
+  },
+  "verification": {
+    "acceptance": "scripts/acceptance.cjs",
+    "assertions": 53,
+    "result": "53/53",
+    "spotcheck": "scripts/spotcheck-6.cjs",
+    "spotcheckResult": "7/7",
+    "restyleCheck": "scripts/restyle-check.cjs",
+    "restyleCheckResult": "20/20",
+    "rawResults": [
+      "qa-result.json",
+      "qa-spotcheck.json",
+      "qa-restyle.json",
+      "qa-ds-conformance.json"
+    ],
+    "dsConformance": "scripts/ds-conformance.cjs",
+    "dsConformanceResult": "14/14",
+    "upstreamSelfTests": {
+      "validateTokens": "16-design-system/tools/validate-tokens.mjs → errors: 0",
+      "verifyPreview": "16-design-system/tools/verify-preview.mjs → errors: 0, warnings: 0"
+    }
+  },
   "deployment": {
     "owner": "14-publish",
     "static": true,
     "githubPagesSubpathCompatible": true,
     "iframeEmbeddable": true,
     "notes": "本任务不部署。产物为纯静态 dist/，可直接放入任意子路径。"
-  }
+  },
+  "screenshots": 15
 }

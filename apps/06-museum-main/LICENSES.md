@@ -24,15 +24,35 @@
 
 ## 2. 自托管开源字体（来自 07-museum-art）
 
-| 字体 | 用途 | 许可 | 许可文本 |
-|---|---|---|---|
-| Inter | 界面正文 | SIL Open Font License 1.1 | `art/assets/fonts/OFL-inter.txt` |
-| Noto Sans SC | 中文 | SIL Open Font License 1.1 | `art/assets/fonts/OFL-noto-sans-sc.txt` |
-| Space Grotesk | 标题 | SIL Open Font License 1.1 | `art/assets/fonts/OFL-space-grotesk.txt` |
-| Space Mono | 等宽（编号、年代、代码） | SIL Open Font License 1.1 | `art/assets/fonts/OFL-space-mono-bold.txt` |
+| 字体 | 用途 | 文件 | 许可 | 许可文本 |
+|---|---|---|---|---|
+| Inter | 界面正文 | `inter-latin.woff2` | SIL Open Font License 1.1 | `OFL-inter.txt` |
+| Noto Sans SC | 中文 | `noto-sans-sc-subset.woff2` | SIL Open Font License 1.1 | `OFL-noto-sans-sc.txt` |
+| Space Grotesk | 标题 | `space-grotesk-latin.woff2` | SIL Open Font License 1.1 | `OFL-space-grotesk.txt` |
+| Space Mono | 等宽（编号、年代、代码） | `space-mono-regular.woff2` / `space-mono-bold.woff2` | SIL Open Font License 1.1 | `OFL-space-mono-regular.txt` / `OFL-space-mono-bold.txt` |
+
+**与设计系统的关系**：上述 5 个 woff2 与 `16-design-system/fonts/FONT-MANIFEST.json`
+登记的文件**逐字节同源**（已核验），字体族名与本目录 `src/assets/fonts.css` 的 5 条
+`@font-face`、以及 `src/styles/tokens.css` 的 `--ds-font-display` / `--ds-font-text` /
+`--ds-font-mono` 三者完全一致。`16-design-system` 的字体文件与清单为**只读引用**，
+本目录不复制其文件，只在自己的 `src/assets/fonts/fonts.css` 落地 `@font-face` 规则。
+
+**发布体积**：只发布 woff2（5 个，合计约 0.5 MB）。上游同源包里的 4 个 `.ttf`
+（合计约 824 KB）在本目录**零引用**，已在 `scripts/sync-exhibits.mjs` 的
+`ART_SKIP_FILES` 中排除，不随产物上线。
 
 字体文件由 07-museum-art 提供并随本项目一起本地托管，运行时不向任何外部域名发起请求。
 若 07 美术包缺席，主站自动回落到系统字体栈（见 `src/styles/tokens.css`），功能不受影响。
+
+## 2.1 设计系统令牌（来自 16-design-system，只读引用）
+
+| 资产 | 用途 | 许可 / 状态 |
+|---|---|---|
+| `design-tokens.json` / `src/tokens.css` | 取值来源（色彩/字体/圆角/间距/动效） | **只读引用**，本目录不复制文件；本目录令牌层取值已由 `scripts/check-tokens.mjs`（静态）与 `scripts/check-tokens-runtime.mjs`（运行期）逐名核验，与 DS **完全一致**（130 个令牌 0 不一致） |
+| `fonts/FONT-MANIFEST.json` | 字体族名与文件对应关系 | 只读引用 |
+
+> 07-museum-art 的 `design-tokens.json` **不再注入 CSS 变量**（`src/modules/theme.js` 改为只探测不注入）：该文件仍带旧色板（信号橙 `#F0601F`），运行期注入会因「同名变量后加载者胜」把本目录的 `--ds-*` 覆盖回旧色板。
+> 本目录全站色板只由 `src/styles/tokens.css` 的 `--ds-*` 令牌层决定。
 
 ## 3. 第三方代码依赖
 

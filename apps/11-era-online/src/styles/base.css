@@ -1,24 +1,51 @@
-/* base.css — 设计令牌、重置与通用组件 */
+/* base.css — 语义别名层、重置与通用组件
+ *
+ * 视觉语言依据：16-design-system/design-tokens.json + DESIGN-SPEC.md
+ *   §1 色彩 · §2 字体 · §3 布局 · §7 按钮与控件 · §8 动效 · §9 画布可读性 · §11 无障碍
+ *
+ * 约定（对应 MIGRATION-NOTES §0 风险 B）：
+ *   本文件**只声明语义别名**（--text / --panel / --dawn …），一律指向 tokens.css 的 --ds-*；
+ *   任何 --ds-* 的取值都只在 tokens.css 声明一次，此处不重复定义。
+ *
+ * 诚实性提示：顶部「本地单机」横幅、AI 徽标等状态标注由 DOM 决定，
+ * 改版只换颜色与形状，**不删改任何声明文案**（RESTYLE-SPEC §3 第 4 条）。
+ */
 
 :root {
-  --void: #080b16;
-  --deep: #0d1224;
-  --panel: #141b33;
-  --panel-hi: #1c2545;
-  --line: #2a3558;
-  --line-soft: #1f2946;
-  --text: #e7ecf7;
-  --text-dim: #9aa6c6;
-  --text-faint: #6c789b;
-  --dawn: #ff8a3d;
-  --dawn-soft: #ffb37a;
-  --data: #4fd6ff;
-  --data-soft: #a5ecff;
-  --echo: #7cf29a;
-  --warn: #ffd166;
-  --danger: #ff5d73;
-  --violet: #a78bfa;
+  /* ── 页面底与面板 ── */
+  --void: var(--ds-bg);
+  --deep: var(--ds-bg-sunken);
+  --panel: var(--ds-bg-raised);
+  --panel-hi: var(--ds-surface);
+  --line: var(--ds-line-strong);
+  --line-soft: var(--ds-line);
 
+  /* ── 文字三级（全部满足正文 4.5:1） ── */
+  --text: var(--ds-ink);
+  --text-dim: var(--ds-ink-soft);
+  --text-faint: var(--ds-ink-faint);
+
+  /* ── 唯一强调色（朱砂）+ 状态语义色 ── */
+  --dawn: var(--ds-accent);
+  --dawn-soft: var(--ds-accent-hover);
+  --data: var(--ds-accent);
+  --data-soft: var(--ds-accent);
+  --echo: var(--ds-success);
+  --warn: var(--ds-warning);
+  --danger: var(--ds-danger);
+  --violet: var(--ds-jade);
+
+  /* 深色主题下语义色的可读衍生（与 --ds-ink 混合，保证 ≥4.5:1）。
+     依据 DESIGN-SPEC §1.1「三级墨色全部满足正文 4.5:1」+ §11.1；
+     本目录自定的适配做法，16 未给深色主题的语义色变体。 */
+  --sem-danger: color-mix(in srgb, var(--ds-danger) 52%, var(--ds-ink));
+  --sem-success: color-mix(in srgb, var(--ds-success) 52%, var(--ds-ink));
+  --sem-warning: color-mix(in srgb, var(--ds-warning) 52%, var(--ds-ink));
+  --sem-info: color-mix(in srgb, var(--ds-info) 62%, var(--ds-ink));
+
+  /* ── 掌机机身配色：设备本体形象 + 掌机 HUD 可读性 ──
+     机身色阶与画布点阵色板（src/core/palette.ts 的 POCKET）一一对应，
+     按 MIGRATION-NOTES §4.2「像素在 canvas 里 → 豁免」保持不变。 */
   --pocket-d1: #1a1424;
   --pocket-d2: #2f2440;
   --pocket-d3: #573f5c;
@@ -27,14 +54,21 @@
   --pocket-lamp: #7fe3d4;
   --pocket-ink: #0d0912;
 
-  --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC",
-    system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+  /* ── 掌机 DOM 文字色（§4.2 边界：像素在 DOM 里 → 不豁免）──
+     `--pocket-d4` (#9a6a74) 作正文在 d1 上仅 4.01:1、在 pocket-ink 上仅 4.40:1，
+     未达 HUD 文字要求的 4.5:1。本令牌是 d4 的**提亮同色相**版本，专供 DOM 文字：
+       #b8848e —— d1 5.75:1 / d2 4.65:1 / pocket-ink 6.32:1 / sysbtn 5.27:1
+     画布内的同色系点阵画面**不动**（canvas 豁免），两者按 §4.2 边界判定第 2 条各行其是。 */
+  --pocket-text: #b8848e;
 
-  --radius: 12px;
-  --radius-sm: 8px;
-  --maxw: 1180px;
+  /* ── 字体 / 圆角 / 容器 ── */
+  --font-sans: var(--ds-font-text);
+  --font-display: var(--ds-font-display);
+  --font-mono: var(--ds-font-mono);
+
+  --radius: var(--ds-radius-md);
+  --radius-sm: var(--ds-radius-sm);
+  --maxw: var(--ds-max-width);
 }
 
 *,
@@ -51,14 +85,15 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  /* 参考站的「四周极淡径向柔光」机制：仅英雄区允许（DESIGN-SPEC §1.1） */
   background:
-    radial-gradient(1200px 620px at 12% -8%, rgba(79, 214, 255, 0.09), transparent 60%),
-    radial-gradient(1000px 560px at 92% 4%, rgba(255, 138, 61, 0.08), transparent 62%),
-    var(--void);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-size: 15px;
-  line-height: 1.7;
+    radial-gradient(1100px 560px at 14% -10%, color-mix(in srgb, var(--ds-accent) 9%, transparent), transparent 62%),
+    radial-gradient(900px 520px at 90% 2%, color-mix(in srgb, var(--ds-accent) 6%, transparent), transparent 64%),
+    var(--ds-bg);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-body);
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -67,9 +102,11 @@ h2,
 h3,
 h4 {
   margin: 0;
-  line-height: 1.3;
-  letter-spacing: 0.01em;
-  font-weight: 650;
+  font-family: var(--ds-font-display);
+  line-height: var(--ds-lh-tight);
+  letter-spacing: 0;
+  font-weight: var(--ds-w-medium);
+  color: var(--ds-ink);
 }
 
 p {
@@ -84,12 +121,13 @@ ol {
 }
 
 a {
-  color: var(--data);
+  color: var(--ds-accent);
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 button,
@@ -99,111 +137,131 @@ input {
   color: inherit;
 }
 
+/* 焦点环：任何状态下不得移除（DESIGN-SPEC §11.1） */
 :focus-visible {
-  outline: 2px solid var(--dawn);
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline: none;
+  box-shadow: var(--ds-focus-ring);
+  border-radius: var(--ds-radius-xs);
 }
 
-/* ── 按钮 ── */
+/* 跳转链接 .ds-skip 与焦点环 .ds-focus-ring 由 16 组件层
+   （./assets/ds/components.css）提供，此处不重复声明。 */
+
+/* ── 按钮（DESIGN-SPEC §7） ── */
 
 .btn {
   appearance: none;
-  border: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--panel-hi), var(--panel));
-  color: var(--text);
-  border-radius: var(--radius-sm);
-  padding: 9px 15px;
+  border: 1px solid var(--ds-line-strong);
+  background: var(--ds-surface);
+  color: var(--ds-ink);
+  border-radius: var(--ds-radius-control);
+  padding: 9px 16px;
   min-height: 40px;
   cursor: pointer;
-  font-size: 13.5px;
-  font-weight: 550;
-  letter-spacing: 0.02em;
-  transition: border-color 0.15s ease, transform 0.1s ease, background 0.15s ease;
+  font-size: var(--ds-type-sm);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: 0;
+  transition:
+    background var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    color var(--ds-dur-fast) var(--ds-ease-veil),
+    transform var(--ds-dur-instant) var(--ds-ease-veil);
   white-space: nowrap;
 }
 
 .btn:hover:not(:disabled) {
-  border-color: var(--data);
-  transform: translateY(-1px);
+  border-color: var(--ds-accent);
+  color: var(--ds-accent);
 }
 
 .btn:active:not(:disabled) {
-  transform: translateY(0);
+  transform: scale(0.985);
 }
 
 .btn:disabled {
-  opacity: 0.42;
+  opacity: 0.45;
   cursor: not-allowed;
 }
 
 .btn--primary {
-  background: linear-gradient(180deg, #ffa25f, var(--dawn));
-  border-color: #ffb37a;
-  color: #1a0d04;
-  font-weight: 700;
+  background: var(--ds-accent);
+  border-color: var(--ds-accent);
+  color: var(--ds-accent-ink);
+  font-weight: var(--ds-w-semibold);
 }
 
 .btn--primary:hover:not(:disabled) {
-  border-color: #ffd0b0;
+  background: var(--ds-accent-hover);
+  border-color: var(--ds-accent-hover);
+  color: var(--ds-accent-ink);
 }
 
 .btn--ghost {
   background: transparent;
-  color: var(--text-dim);
+  border-color: var(--ds-line);
+  color: var(--ds-ink-soft);
 }
 
 .btn--sm {
-  padding: 6px 11px;
+  padding: 5px 12px;
   min-height: 32px;
-  font-size: 12.5px;
+  font-size: var(--ds-type-xs);
 }
 
 .select {
   appearance: none;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 8px 28px 8px 11px;
-  min-height: 40px;
+  background: var(--ds-bg-raised);
+  border: 1px solid var(--ds-line-strong);
+  border-radius: var(--ds-radius-md);
+  padding: 9px 30px 9px 12px;
+  min-height: 44px;
   cursor: pointer;
-  font-size: 13px;
-  background-image: linear-gradient(45deg, transparent 50%, var(--text-dim) 50%),
-    linear-gradient(135deg, var(--text-dim) 50%, transparent 50%);
-  background-position: calc(100% - 15px) 17px, calc(100% - 10px) 17px;
+  font-size: var(--ds-type-sm);
+  background-image: linear-gradient(45deg, transparent 50%, var(--ds-ink-soft) 50%),
+    linear-gradient(135deg, var(--ds-ink-soft) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 19px, calc(100% - 11px) 19px;
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat;
 }
 
-/* ── 来源角标 ── */
+.select:focus-visible {
+  border-color: var(--ds-accent);
+}
+
+/* ── 来源角标（沿用既有组件，只换视觉语言） ── */
 
 .src {
   display: inline-flex;
   align-items: center;
   gap: 3px;
   margin-left: 5px;
-  padding: 0 6px;
-  border-radius: 20px;
-  font-size: 11px;
-  line-height: 18px;
-  font-family: var(--font-mono);
-  border: 1px solid rgba(79, 214, 255, 0.4);
-  background: rgba(79, 214, 255, 0.1);
-  color: var(--data-soft);
+  padding: 0 8px;
+  border-radius: var(--ds-radius-pill);
+  font-size: var(--ds-type-xs);
+  /* 24px 触摸目标（MIGRATION-NOTES §5.1 全部可交互元素 ≥24px）：22px 行高 + 上下各 1px 描边 = 24px */
+  line-height: 22px;
+  min-height: 24px;
+  font-family: var(--ds-font-mono);
+  border: 1px solid var(--ds-line-strong);
+  background: var(--ds-surface);
+  color: var(--ds-ink-soft);
   vertical-align: 1px;
   white-space: nowrap;
   text-decoration: none;
 }
 
 .src:hover {
-  background: rgba(79, 214, 255, 0.22);
+  background: var(--ds-accent-soft);
+  border-color: var(--ds-accent);
+  color: var(--ds-accent);
   text-decoration: none;
 }
 
+/* 一手来源：唯一强调色的浅底标签 */
 .src[data-src-tier="official"] {
-  border-color: rgba(255, 138, 61, 0.45);
-  background: rgba(255, 138, 61, 0.12);
-  color: var(--dawn-soft);
+  border-color: color-mix(in srgb, var(--ds-accent) 46%, transparent);
+  background: var(--ds-accent-soft);
+  color: var(--ds-accent);
 }
 
 .src--demo {
@@ -218,8 +276,8 @@ input {
 
 /* 高亮模式：所有来源角标显形 */
 .shell.show-sources .src {
-  box-shadow: 0 0 0 2px rgba(255, 209, 102, 0.55);
-  font-weight: 700;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ds-accent) 55%, transparent);
+  font-weight: var(--ds-w-bold);
 }
 
 /* ── 徽标与标签 ── */
@@ -227,74 +285,74 @@ input {
 .chip {
   display: inline-flex;
   align-items: center;
-  padding: 2px 9px;
-  border-radius: 20px;
-  font-size: 11.5px;
-  font-family: var(--font-mono);
-  border: 1px solid var(--line);
-  background: rgba(20, 27, 51, 0.7);
-  color: var(--text-dim);
+  padding: 2px 10px;
+  border-radius: var(--ds-radius-pill);
+  font-size: var(--ds-type-xs);
+  font-family: var(--ds-font-mono);
+  border: 1px solid var(--ds-line);
+  background: var(--ds-surface);
+  color: var(--ds-ink-soft);
 }
 
 .chip--local {
-  border-color: rgba(124, 242, 154, 0.45);
-  background: rgba(124, 242, 154, 0.1);
-  color: var(--echo);
+  border-color: color-mix(in srgb, var(--ds-success) 52%, transparent);
+  background: color-mix(in srgb, var(--ds-success) 12%, var(--ds-bg-raised));
+  color: var(--sem-success);
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 2px 8px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-family: var(--font-mono);
-  border: 1px solid rgba(255, 93, 115, 0.5);
-  background: rgba(255, 93, 115, 0.12);
-  color: #ffb3bf;
+  padding: 2px 9px;
+  border-radius: var(--ds-radius-pill);
+  font-size: var(--ds-type-xs);
+  font-family: var(--ds-font-mono);
+  border: 1px solid color-mix(in srgb, var(--ds-danger) 52%, transparent);
+  background: color-mix(in srgb, var(--ds-danger) 14%, var(--ds-bg-raised));
+  color: var(--sem-danger);
   white-space: nowrap;
 }
 
 /* ── 提示条 ── */
 
 .notice {
-  border: 1px solid rgba(255, 209, 102, 0.34);
-  background: linear-gradient(180deg, rgba(255, 209, 102, 0.09), rgba(255, 209, 102, 0.03));
-  border-radius: var(--radius);
-  padding: 14px 18px;
+  border: 1px solid color-mix(in srgb, var(--ds-warning) 40%, transparent);
+  background: color-mix(in srgb, var(--ds-warning) 8%, var(--ds-bg-raised));
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-4) var(--ds-space-5);
 }
 
 .notice--soft {
-  border-color: var(--line);
-  background: rgba(20, 27, 51, 0.6);
-  margin-top: 22px;
+  border-color: var(--ds-line);
+  background: var(--ds-bg-raised);
+  margin-top: var(--ds-space-6);
 }
 
 .notice__title {
-  font-weight: 700;
-  color: var(--warn);
-  font-size: 13.5px;
+  font-weight: var(--ds-w-bold);
+  color: var(--sem-warning);
+  font-size: var(--ds-type-sm);
   margin-bottom: 4px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .notice__body {
-  font-size: 13px;
-  color: var(--text-dim);
-  line-height: 1.75;
+  font-size: var(--ds-type-sm);
+  color: var(--ds-ink-soft);
+  line-height: 1.85;
 }
 
 .notice__body b {
-  color: var(--text);
+  color: var(--ds-ink);
 }
 
 /* ── 通用面板 ── */
 
 .panel {
-  border: 1px solid var(--line-soft);
-  background: linear-gradient(180deg, rgba(28, 37, 69, 0.55), rgba(13, 18, 36, 0.7));
-  border-radius: var(--radius);
-  padding: 13px 14px;
+  border: 1px solid var(--ds-line);
+  background: var(--ds-bg-raised);
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-4);
 }
 
 .panel__head {
@@ -306,27 +364,27 @@ input {
 }
 
 .panel__title {
-  font-size: 13px;
-  letter-spacing: 0.06em;
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
   text-transform: uppercase;
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-weight: 600;
+  color: var(--ds-ink-faint);
+  font-family: var(--ds-font-mono);
+  font-weight: var(--ds-w-semibold);
   margin-bottom: 8px;
 }
 
 .panel__note {
-  font-size: 11.5px;
-  color: var(--text-faint);
-  line-height: 1.6;
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-faint);
+  line-height: 1.75;
   margin-bottom: 9px;
 }
 
 .panel__hint {
-  font-size: 11.5px;
-  color: var(--text-faint);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-faint);
   margin-top: 8px;
-  line-height: 1.6;
+  line-height: 1.75;
 }
 
 /* ── 数值行 ── */
@@ -336,28 +394,28 @@ input {
   align-items: center;
   gap: 8px;
   padding: 3px 0;
-  font-size: 12.5px;
+  font-size: var(--ds-type-sm);
 }
 
 .stat__label {
-  color: var(--text-faint);
+  color: var(--ds-ink-faint);
   min-width: 68px;
-  font-size: 12px;
+  font-size: var(--ds-type-xs);
 }
 
 .stat__value {
-  font-family: var(--font-mono);
-  color: var(--text);
-  font-size: 13px;
+  font-family: var(--ds-font-mono);
+  color: var(--ds-ink);
+  font-size: var(--ds-type-mono);
   margin-left: auto;
 }
 
 .meter {
   flex: 1;
   height: 7px;
-  border-radius: 4px;
-  background: rgba(8, 11, 22, 0.85);
-  border: 1px solid var(--line-soft);
+  border-radius: var(--ds-radius-pill);
+  background: var(--ds-bg-sunken);
+  border: 1px solid var(--ds-line);
   overflow: hidden;
   display: block;
   position: relative;
@@ -367,24 +425,14 @@ input {
   display: block;
   height: 100%;
   width: 100%;
-  background: linear-gradient(90deg, var(--echo), #b6ffd0);
-  transition: width 0.22s ease;
+  background: var(--sem-success);
+  transition: width var(--ds-dur-base) var(--ds-ease-out);
 }
 
 .meter__fill--flux {
-  background: linear-gradient(90deg, var(--violet), #d3c4ff);
+  background: var(--sem-info);
 }
 
 .meter__fill.is-danger {
-  background: linear-gradient(90deg, var(--danger), #ff9aab);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.001ms !important;
-    transition-duration: 0.001ms !important;
-  }
-  html {
-    scroll-behavior: auto;
-  }
+  background: var(--sem-danger);
 }

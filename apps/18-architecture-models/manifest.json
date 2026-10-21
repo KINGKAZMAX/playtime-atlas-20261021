@@ -1,0 +1,330 @@
+{
+  "id": "18-architecture-models",
+  "title": "榫构华夏 · Timber Craft Lab",
+  "description": "六件可旋转、缩放、点选、爆炸拆解、分步组装、剖切、切换层级、双语标注并显示定性受力箭头的中国传统建筑结构 3D 教学模型：斗栱组、榫卯连接、抬梁木架、穿斗木架、敞肩石拱桥、土楼院落结构。全部几何由代码程序化生成，无任何下载模型、CDN 或在线 API；支持中英双语、reduced-motion、WebGL 不可用时的 2D 降级示意图，以及带教学示意元数据的真实几何 GLB 导出。",
+  "entry": "index.html",
+  "buildCommand": "npm run build",
+  "outputDir": "dist",
+  "status": "completed",
+  "upstream": "18-architecture-models",
+  "subtitle": "中国传统建筑结构 · 可拆解 3D 教学模型",
+  "devCommand": "npm run start",
+  "devUrl": "http://127.0.0.1:4318",
+  "category": "interactive-3d",
+  "tags": [
+    "threejs",
+    "webgl",
+    "architecture",
+    "chinese-traditional-architecture",
+    "dougong",
+    "mortise-tenon",
+    "post-and-beam",
+    "column-and-tie",
+    "stone-arch-bridge",
+    "tulou",
+    "bilingual",
+    "glb-export",
+    "procedural",
+    "offline",
+    "no-cdn",
+    "design-tokens",
+    "self-hosted-fonts"
+  ],
+  "tech": {
+    "runtime": "browser",
+    "language": "javascript-esm",
+    "renderer": "webgl2",
+    "dependencies": [
+      {
+        "name": "three",
+        "version": "0.169.0",
+        "license": "MIT"
+      },
+      {
+        "name": "vite",
+        "version": "5.4.11",
+        "license": "MIT",
+        "dev": true
+      }
+    ],
+    "offline": true,
+    "externalRequests": 0,
+    "persistentStorage": [
+      "localStorage:timber-craft-lab.lang"
+    ],
+    "fallback": "WebGL 不可用时由同一套真实几何生成 2D SVG 示意图"
+  },
+  "entrypoints": {
+    "html": "dist/index.html",
+    "js": "dist/assets/*.js",
+    "css": "dist/assets/*.css",
+    "fonts": "dist/assets/*.woff2"
+  },
+  "assets": {
+    "external": false,
+    "note": "全部 3D 几何、材质、图标与降级示意图在运行时程序化生成；仓库内无图片 / 模型 / 音频文件；favicon 为内联 SVG data URI；字体为自托管 OFL（见 fonts/ 与 SOURCES-LICENSES.md）",
+    "fonts": [
+      {
+        "family": "Space Grotesk",
+        "file": "fonts/space-grotesk-latin.woff2",
+        "license": "OFL-1.1"
+      },
+      {
+        "family": "Inter",
+        "file": "fonts/inter-latin.woff2",
+        "license": "OFL-1.1"
+      },
+      {
+        "family": "Space Mono",
+        "file": "fonts/space-mono-regular.woff2",
+        "license": "OFL-1.1"
+      },
+      {
+        "family": "Space Mono",
+        "file": "fonts/space-mono-bold.woff2",
+        "license": "OFL-1.1"
+      },
+      {
+        "family": "Noto Sans SC",
+        "file": "fonts/noto-sans-sc-subset.woff2",
+        "license": "OFL-1.1",
+        "note": "子集，仅作渐进增强；中文优先走系统字体栈"
+      }
+    ]
+  },
+  "designSystem": {
+    "tokensFrom": "16-design-system/design-tokens.json",
+    "landedAt": "src/ui/tokens.css",
+    "spec": "16-design-system/DESIGN-SPEC.md",
+    "prefix": "--ds-",
+    "note": "只读引用规范文件本身，令牌值在本目录逐组落地并注明依据小节"
+  },
+  "models": [
+    {
+      "id": "dougong",
+      "title": {
+        "zh": "斗栱组",
+        "en": "Dougong Bracket Set"
+      },
+      "pinyin": "dou gong zu",
+      "parts": 16,
+      "layers": 5,
+      "forceArrows": 7,
+      "source": "src/models/dougong.js",
+      "catalogRefs": [
+        "c01-nanchan-main-hall",
+        "c02-foguang-east-hall",
+        "c09-forbidden-city-hall"
+      ]
+    },
+    {
+      "id": "mortise",
+      "title": {
+        "zh": "榫卯连接",
+        "en": "Mortise & Tenon Joints"
+      },
+      "pinyin": "sun mao lian jie",
+      "parts": 9,
+      "layers": 4,
+      "forceArrows": 5,
+      "source": "src/models/mortise.js",
+      "catalogRefs": [
+        "c02-foguang-east-hall",
+        "c25-hemudu-site",
+        "c40-feiyun-pavilion"
+      ]
+    },
+    {
+      "id": "taoliang",
+      "title": {
+        "zh": "抬梁木架",
+        "en": "Post-and-Beam Frame"
+      },
+      "pinyin": "tai liang mu jia",
+      "parts": 18,
+      "layers": 5,
+      "forceArrows": 6,
+      "source": "src/models/taoliang.js",
+      "catalogRefs": [
+        "c01-nanchan-main-hall",
+        "c07-jinci-holy-mother-hall",
+        "c23-shaolin-temple"
+      ]
+    },
+    {
+      "id": "chuandou",
+      "title": {
+        "zh": "穿斗木架",
+        "en": "Column-and-Tie Frame"
+      },
+      "pinyin": "chuan dou mu jia",
+      "parts": 15,
+      "layers": 4,
+      "forceArrows": 6,
+      "source": "src/models/chuandou.js",
+      "catalogRefs": [
+        "c15-hongcun-village",
+        "c16-xidi-village",
+        "c19-pingyao-ancient-city"
+      ]
+    },
+    {
+      "id": "stone-arch",
+      "title": {
+        "zh": "敞肩石拱桥",
+        "en": "Open-Shoulder Stone Arch Bridge"
+      },
+      "pinyin": "chang jian shi gong qiao",
+      "parts": 17,
+      "layers": 6,
+      "forceArrows": 7,
+      "source": "src/models/stone-arch.js",
+      "catalogRefs": [
+        "c30-zhaozhou-bridge",
+        "c41-luoyang-bridge"
+      ]
+    },
+    {
+      "id": "tulou",
+      "title": {
+        "zh": "土楼 · 院落结构",
+        "en": "Tulou & Courtyard Section"
+      },
+      "pinyin": "tu lou yuan luo jie gou",
+      "parts": 19,
+      "layers": 6,
+      "forceArrows": 6,
+      "source": "src/models/tulou.js",
+      "catalogRefs": [
+        "c17-fujian-tulou",
+        "c42-baise-cellar-courtyard"
+      ]
+    }
+  ],
+  "interactions": [
+    "轨道相机：旋转 / 缩放 / 平移",
+    "构件拾取：点击高亮 + 包围框 + 双语说明卡（中文名 / 拼音 / 英文名 / 一句作用）",
+    "爆炸拆解：滑杆沿各构件的构造轴向连续散开",
+    "分步组装：逐步播放构件就位顺序",
+    "剖切：沿 X / Z / Y 的移动平面切割（材质级裁剪）",
+    "层级开关：按构件族显示 / 隐藏（屋面层在两件木架中默认隐藏）",
+    "场景内双语标注：关键构件在模型中直接标出中英名称，点击即选中，可整体开关",
+    "结构受力示意：定性箭头（load / thrust / reaction / tension / flow），共 37 支",
+    "GLB 导出：把当前模型的真实网格导出为 .glb，并写入教学示意元数据",
+    "视图：复位机位、自动旋转",
+    "2D 降级：WebGL 不可用时以同一套几何生成 SVG 示意图（含构件族图例）"
+  ],
+  "disclaimer": {
+    "statement": {
+      "zh": "教学示意，非施工/工程模型。",
+      "en": "Teaching diagram — not a construction or engineering model."
+    },
+    "schematicModelNote": {
+      "zh": "六件模型均为程序化生成的示意模型，非测绘级复原；材质与比例为教学表达，非考古数据。",
+      "en": "All six models are procedurally generated schematic models, not surveyed reconstructions; materials and proportions are pedagogical expressions, not archaeological data."
+    },
+    "placements": [
+      "3D 场景内画布 HUD 标牌（#hud-disclaimer，中英双语同屏）",
+      "模型说明页（控制面板「关于本模型」.disclaimer 块，中英双语同屏）",
+      "导出物元数据（GLB asset.extras / 根节点 extras / scenes[0].extras）",
+      "机器可读清单 models/index.json 的 disclaimer 字段"
+    ],
+    "forceArrowsNote": {
+      "zh": "受力箭头为传力路径的定性说明，非结构计算结果。",
+      "en": "Force arrows are a qualitative indication of load paths, not the result of a structural calculation."
+    }
+  },
+  "accessibility": {
+    "languages": [
+      "en",
+      "zh"
+    ],
+    "defaultLanguage": "en",
+    "reducedMotion": true,
+    "keyboardNavigable": true,
+    "skipLink": true,
+    "ariaLabelledControls": true,
+    "liveRegions": [
+      "#toast",
+      "#inspector"
+    ]
+  },
+  "publicApi": {
+    "global": "window.TimberCraftLab",
+    "version": "1.1.0",
+    "methods": [
+      "models()",
+      "getModel(id)",
+      "buildModel(id)",
+      "loadModel(id)",
+      "selectPart(partId)",
+      "getState()",
+      "viewer()",
+      "annotations()",
+      "exportMetadata(id)",
+      "exportGLBBuffer(id)",
+      "exportGLB(id)",
+      "setLang(lang)"
+    ],
+    "events": [
+      "tcl:lang"
+    ]
+  },
+  "qa": {
+    "automation": "qa/qa.mjs",
+    "automationCommand": "node qa/qa.mjs http://127.0.0.1:4318",
+    "browser": "Chromium (Playwright, system Chrome channel)",
+    "assertions": 97,
+    "passed": 97,
+    "failed": 0,
+    "screenshots": "screenshots/",
+    "groups": [
+      "启动 / Boot",
+      "模型巡检",
+      "交互能力",
+      "场景内标注",
+      "双语",
+      "教学示意声明",
+      "史实参照",
+      "模型清单",
+      "导出 / GLB",
+      "离线与资源",
+      "无障碍",
+      "2D 降级",
+      "Pages 子路径",
+      "改版一致性",
+      "移动端"
+    ]
+  },
+  "docs": {
+    "readme": "README.md",
+    "qa": "QA.md",
+    "qaReport": "qa-report.md",
+    "sourcesLicenses": "SOURCES-LICENSES.md",
+    "sources": "SOURCES.md",
+    "licenses": "LICENSES.md",
+    "referenceAudit": "docs/REFERENCE-AUDIT.md",
+    "modelContract": "docs/MODEL-CONTRACT.md",
+    "deliveryHandoff": "docs/DELIVERY-HANDOFF.md",
+    "modelIndex": "models/index.json",
+    "task": "TASK.md",
+    "status": "STATUS.md"
+  },
+  "handoff": {
+    "consumer": "19-architecture-atlas",
+    "form": "a-direct-consume",
+    "note": "19 号直接消费 18 号的 3D 模型；18 号是 3D 交互的唯一真源。19 号 src/art/schematic.js 的自绘 2D 图形是其自有的轻量插画层，不是本目录模型的替代实现，形态差异须在两侧互相声明。",
+    "mechanisms": [
+      "构建期拷贝源码：src/core/ + src/models/ + fonts/ → import 描述符 → registerModel() → 挂 Viewer",
+      "取预导出 GLB：exportGLBBuffer(id) → glTF 2.0 binary",
+      "运行时调用：iframe / 链接本目录 dist/，用 window.TimberCraftLab 驱动"
+    ],
+    "notMonorepo": "16—19 为各自独立目录，非 monorepo 单包；不得用 npm 互相依赖",
+    "machineReadableIndex": "models/index.json",
+    "indexGenerator": "scripts/build-model-index.mjs",
+    "mirrorDeclarationRequiredIn19": true
+  },
+  "author": "MiniMax Code",
+  "generatedBy": "MiniMax Code (M3.1-Flash / max)",
+  "installCommand": "npm install"
+}

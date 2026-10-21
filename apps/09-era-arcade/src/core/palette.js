@@ -31,7 +31,12 @@ export const PAL = {
   // 文字
   text: '#e8f4ff',
   textDim: '#93a6c8',
-  textFaint: '#5a6b90',
+  // textFaint 由 #5a6b90 提亮到 #687ca7：同色相、只提亮度，
+  // 使画布内 HUD 文字（提示行 / 共振计数）对 HUD 底色达到 4.5:1
+  // （MIGRATION-NOTES §4.2「HUD 文字对比度 ≥4.5:1 不豁免」/ K.3「可读性优先于风格统一」）。
+  // 实测：#5a6b90 = 3.61:1（不达标）→ #687ca7 = 4.61:1。
+  // 这是**为可读性做的最小幅度提亮**，不是把画布色板换成设计系统的色板（红线 K.1 不涉及）。
+  textFaint: '#687ca7',
 
   // 游戏专用
   crystal: '#7dfcff',
@@ -78,6 +83,7 @@ export const DIFFICULTY = [
     en: 'DIM',
     accent: '#7ad7ff',
     desc: '敌人稀疏、移动迟缓，适合初次探路。',
+    descEn: 'Sparse enemies, slow patrols — a gentle way in.',
   },
   {
     key: 'glow',
@@ -85,6 +91,7 @@ export const DIFFICULTY = [
     en: 'GLOW',
     accent: '#ffb347',
     desc: '标准节奏。游丝巡逻、巡守会追踪你的残响。',
+    descEn: 'The standard tempo. Wardens will chase your echoes.',
   },
   {
     key: 'blaze',
@@ -92,5 +99,6 @@ export const DIFFICULTY = [
     en: 'BLAZE',
     accent: '#ff4d5e',
     desc: '高压巡演。巡守更快，相位能量恢复更慢。',
+    descEn: 'A high-pressure tour. Faster wardens, slower phase recharge.',
   },
 ];

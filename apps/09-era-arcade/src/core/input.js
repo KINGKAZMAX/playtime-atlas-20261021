@@ -165,11 +165,25 @@ export function createInput({ stage, onFirstGesture }) {
         if (stage.focus) stage.focus({ preventScroll: true });
       });
       stage.addEventListener('focus', () => api.enable());
+      // 舞台失去焦点即交还键盘：否则用户在面板/按钮上操作时，
+      // 方向键仍会驱动玩法 —— 即 MIGRATION-NOTES §4.1「未聚焦仍劫持键盘」那类缺陷。
+      // 面板关闭时会把焦点归还给舞台（focus 事件）→ 重新启用。
+      stage.addEventListener('blur', () => api.disable());
     },
     destroy() {
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('keyup', onKeyUp);
       window.removeEventListener('blur', onBlur);
+    },
+    /** 调试出口：当前按住的键 / 本帧边沿事件 / 是否启用 */
+    get debug() {
+      return {
+        enabled,
+        down: Array.from(down),
+        pressed: Array.from(pressed),
+        released: Array.from(released),
+        virtual: Array.from(virtual),
+      };
     },
   };
 

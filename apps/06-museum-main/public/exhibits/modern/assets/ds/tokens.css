@@ -1,0 +1,375 @@
+/* ==========================================================================
+   折光纪 · PRISM ERA —— 设计系统令牌层（本文件为 16-design-system 的原样副本）
+   --------------------------------------------------------------------------
+   副本说明：仅在本文件头追加来源说明，**未改动任何令牌取值**。
+   依据：16-design-system/src/tokens.css（2026-10-21 22:25 落盘）
+        16-design-system/design-tokens.json（代码侧唯一取值来源）
+        16-design-system/MIGRATION-NOTES.md §0 风险 B / §1 接入四步① / §6 / §7
+   原文件 sha256: e9595d51336fac6a2cb013095b8863c72022bb20e545fa46867c129e9addf368
+   约定：本目录的 --ds-* 取值**只在此一处声明**（MIGRATION-NOTES §0 风险 B）；
+        src/styles/tokens.css 只保留语义别名与玩法语义色，不重复定义 --ds-*。
+   ========================================================================== */
+
+/* ==========================================================================
+   余晖设计系统 / Afterglow Design System
+   tokens.css — 令牌层。由 design-tokens.json 生成后人工校订。
+   用法：<link rel="stylesheet" href="./tokens.css">
+   命名：所有变量以 --ds- 前缀；所有类名以 .ds- 前缀。
+   ========================================================================== */
+
+:root {
+  /* ---------- 色彩 · 浅色主题（默认） ---------- */
+  --ds-bg: #fcfbf9;
+  --ds-bg-raised: #ffffff;
+  --ds-bg-sunken: #f2eee9;
+  --ds-ink: #14110f;
+  --ds-ink-soft: #59514b;
+  --ds-ink-faint: #6e655e;
+  --ds-line: #e4ded7;
+  --ds-line-strong: #cfc6bc;
+  --ds-surface: #f2eee9;
+  --ds-accent: #b4432b;
+  --ds-accent-hover: #97361f;
+  --ds-accent-soft: #f6e9e4;
+  --ds-accent-ink: #ffffff;
+  --ds-jade: #2e6a5e;
+  --ds-jade-soft: #e4eeeb;
+  --ds-overlay: rgba(20, 17, 15, 0.44);
+
+  /* ---------- 色彩 · 分区（tone-aware） ---------- */
+  --ds-section-ink: var(--ds-ink);
+  --ds-section-soft: rgba(20, 17, 15, 0.62);
+  --ds-section-faint: rgba(20, 17, 15, 0.38);
+  --ds-section-bg: var(--ds-bg);
+  --ds-tone-fade: #edeae5;
+  --ds-glow: var(--ds-bg);
+  --ds-section-radius-scale: 1;
+
+  /* ---------- 色彩 · 画布 / HUD ---------- */
+  --ds-canvas-hud-bg: rgba(16, 15, 14, 0.72);
+  --ds-canvas-hud-ink: #f7f4f0;
+  --ds-canvas-hud-line: rgba(247, 244, 240, 0.24);
+  --ds-canvas-scrim: rgba(16, 15, 14, 0.55);
+  --ds-danger: #c2452b;
+  --ds-success: #3f7a4e;
+  --ds-warning: #b07a1e;
+  --ds-info: #2c5c8f;
+
+  /* ---------- 字体 ----------
+   *
+   * ⚠️ 顺序规则（2026-10-21 修正，来源：05-museum-research 的基线错位实测）：
+   *   任何 **覆盖完整** 的 CJK 字体族，必须排在 **覆盖有限** 的 CJK 子集之前。
+   *   原因：CSS 字体回退是「按字符」进行的 —— 若前面的 CJK 字体缺字，
+   *   浏览器会逐字回退到下一个族，同一段文字里就会混入两套不同度量的字形，
+   *   表现为**混排基线错位**（尤其全角标点与常用字不同源时最明显）。
+   *   故本栈的顺序是：拉丁自托管字体 → 完整覆盖的系统 CJK 栈 → Noto Sans SC 子集 → 通用 sans-serif。
+   *   Noto Sans SC 子集是「渐进增强」，只在前面的完整 CJK 栈都不可用时才生效；
+   *   它由 07-museum-art 按其自身用字生成，覆盖有限，不得排在系统栈之前。
+   */
+  --ds-font-display: "Space Grotesk", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  --ds-font-text: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  --ds-font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ds-type-display: clamp(40px, 6.6vw, 84px);
+  --ds-type-h1: clamp(30px, 4.2vw, 52px);
+  --ds-type-h2: clamp(22px, 2.6vw, 32px);
+  --ds-type-h3: 20px;
+  --ds-type-h4: 17px;
+  --ds-type-lead: 19px;
+  --ds-type-body: 16px;
+  --ds-type-sm: 14px;
+  --ds-type-xs: 12.5px;
+  --ds-type-mono: 13px;
+
+  --ds-lh-display: 1.08;
+  --ds-lh-tight: 1.22;
+  --ds-lh-snug: 1.35;
+  --ds-lh-normal: 1.6;
+  --ds-lh-relaxed: 1.75;
+  --ds-lh-mono: 1.45;
+
+  --ds-w-regular: 400;
+  --ds-w-medium: 500;
+  --ds-w-semibold: 600;
+  --ds-w-bold: 700;
+
+  --ds-track-display: -0.03em;
+  --ds-track-body: -0.005em;
+  --ds-track-cjk: 0;
+  --ds-track-mono: 0.02em;
+  --ds-track-caps: 0.08em;
+
+  /* ---------- 间距 ---------- */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 24px;
+  --ds-space-6: 32px;
+  --ds-space-7: 48px;
+  --ds-space-8: 64px;
+  --ds-space-9: 96px;
+  --ds-space-10: 128px;
+  --ds-space-gutter: clamp(16px, 4vw, 48px);
+  --ds-space-rail-gap: 12px;
+  --ds-space-section-top: clamp(56px, 9vh, 104px);
+  --ds-space-section-bottom: clamp(40px, 8vh, 88px);
+
+  /* ---------- 圆角 ---------- */
+  --ds-radius-xs: 6px;
+  --ds-radius-sm: 10px;
+  --ds-radius-md: 14px;
+  --ds-radius-lg: 20px;
+  --ds-radius-xl: 28px;
+  --ds-radius-pill: 999px;
+  --ds-radius-media: clamp(16px, 2vw, 28px);
+  --ds-radius-control: 999px;
+
+  /* ---------- 阴影 ---------- */
+  --ds-shadow-1: 0 1px 2px rgba(20, 17, 15, 0.05);
+  --ds-shadow-2: 0 4px 16px rgba(20, 17, 15, 0.07);
+  --ds-shadow-3: 0 12px 40px rgba(20, 17, 15, 0.1);
+  --ds-shadow-4: 0 24px 80px rgba(20, 17, 15, 0.16);
+  --ds-ring: inset 0 0 0 1px var(--ds-line);
+  --ds-ring-strong: inset 0 0 0 1px var(--ds-line-strong);
+  --ds-focus-ring: 0 0 0 2px var(--ds-bg), 0 0 0 4px var(--ds-accent);
+
+  /* ---------- 动效 ---------- */
+  --ds-dur-instant: 120ms;
+  --ds-dur-fast: 200ms;
+  --ds-dur-base: 320ms;
+  --ds-dur-slow: 520ms;
+  --ds-dur-reveal: 800ms;
+  --ds-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ds-ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --ds-ease-veil: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-ease-spring: cubic-bezier(0.34, 1.42, 0.64, 1);
+  --ds-ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+  --ds-stagger-step: 60ms;
+  --ds-entry-translate: 24px;
+  --ds-entry-blur: 6px;
+  --ds-entry-duration: 640ms;
+  /* 入场交错延迟：由 JS 按索引覆写 */
+  --ds-in-delay: 0ms;
+
+  /* ---------- 层级 ---------- */
+  --ds-z-base: 0;
+  --ds-z-raised: 10;
+  --ds-z-sticky: 100;
+  --ds-z-rail: 200;
+  --ds-z-overlay: 300;
+  --ds-z-modal: 400;
+  --ds-z-toast: 500;
+
+  /* ---------- 布局 ---------- */
+  --ds-max-width: 1280px;
+  --ds-max-width-wide: 1600px;
+  --ds-read-width: 68ch;
+  --ds-rail-width: 132px;
+  --ds-rail-inset: 24px;
+  --ds-section-height: 100dvh;
+  --ds-grid-gutter: var(--ds-space-gutter);
+  --ds-grid-gap: var(--ds-space-5);
+  /* 景深式导航轨：由 JS 按距当前项的距离覆写 */
+  --ds-rail-scale: 1;
+  --ds-rail-blur: 0px;
+  /* 作品卡悬停遮罩 */
+  --ds-work-dim: rgba(128, 128, 128, 0.3);
+
+  /* ---------- 无障碍 ---------- */
+  --ds-contrast-text: 4.5;
+  --ds-contrast-large: 3;
+  --ds-contrast-ui: 3;
+  --ds-target-min: 44px;
+  --ds-focus-width: 2px;
+  --ds-focus-offset: 2px;
+
+  /* ---------- 资源 ---------- */
+  --ds-base: "";
+  --ds-font-display-src: var(--ds-base);
+}
+
+/* ---------- 深色主题 ---------- */
+[data-ds-theme="dark"] {
+  --ds-bg: #100f0e;
+  --ds-bg-raised: #1a1917;
+  --ds-bg-sunken: #0b0a09;
+  --ds-ink: #f7f4f0;
+  --ds-ink-soft: #c0b7b0;
+  --ds-ink-faint: #9a918a;
+  --ds-line: #2b2926;
+  --ds-line-strong: #453f39;
+  --ds-surface: #1e1d1b;
+  --ds-accent: #e0684a;
+  --ds-accent-hover: #ee8266;
+  --ds-accent-soft: #331c15;
+  --ds-accent-ink: #17110f;
+  --ds-jade: #5fa99a;
+  --ds-jade-soft: #16211e;
+  --ds-overlay: rgba(8, 7, 6, 0.62);
+
+  --ds-section-ink: #f7f4f0;
+  --ds-section-soft: rgba(247, 244, 240, 0.78);
+  --ds-section-faint: rgba(247, 244, 240, 0.46);
+  --ds-tone-fade: #141311;
+  --ds-canvas-hud-bg: rgba(8, 7, 6, 0.78);
+}
+
+/* ---------- 跟随系统（未显式指定时） ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-ds-theme="light"]) {
+    --ds-bg: #100f0e;
+    --ds-bg-raised: #1a1917;
+    --ds-bg-sunken: #0b0a09;
+    --ds-ink: #f7f4f0;
+    --ds-ink-soft: #c0b7b0;
+    --ds-ink-faint: #9a918a;
+    --ds-line: #2b2926;
+    --ds-line-strong: #453f39;
+    --ds-surface: #1e1d1b;
+    --ds-accent: #e0684a;
+    --ds-accent-hover: #ee8266;
+    --ds-accent-soft: #331c15;
+    --ds-accent-ink: #17110f;
+    --ds-jade: #5fa99a;
+    --ds-jade-soft: #16211e;
+    --ds-overlay: rgba(8, 7, 6, 0.62);
+    --ds-section-ink: #f7f4f0;
+    --ds-section-soft: rgba(247, 244, 240, 0.78);
+    --ds-section-faint: rgba(247, 244, 240, 0.46);
+    --ds-tone-fade: #141311;
+  }
+}
+
+/* ---------- 分区色调：深底分区自动反色 ----------
+   用法：<section class="ds-section" data-ds-bg="#101820"> */
+.ds-section[data-ds-tone="dark"] {
+  --ds-section-ink: var(--ds-bg);
+  --ds-section-soft: rgba(255, 255, 255, 0.78);
+  --ds-section-faint: rgba(255, 255, 255, 0.46);
+  --ds-section-bg: #101010;
+}
+.ds-section[data-ds-tone="light"] {
+  --ds-section-ink: #14110f;
+  --ds-section-soft: rgba(20, 17, 15, 0.62);
+  --ds-section-faint: rgba(20, 17, 15, 0.38);
+  --ds-section-bg: #fcfbf9;
+}
+
+/* ---------- 排版基类 ---------- */
+.ds-display {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-display);
+  line-height: var(--ds-lh-display);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: var(--ds-track-display);
+  color: var(--ds-ink);
+}
+.ds-h1 {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h1);
+  line-height: var(--ds-lh-tight);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: var(--ds-track-display);
+  color: var(--ds-ink);
+}
+.ds-h2 {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h2);
+  line-height: var(--ds-lh-tight);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: var(--ds-track-display);
+  color: var(--ds-ink);
+}
+.ds-h3 {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h3);
+  line-height: var(--ds-lh-snug);
+  font-weight: var(--ds-w-medium);
+  color: var(--ds-ink);
+}
+.ds-lead {
+  font-size: var(--ds-type-lead);
+  line-height: var(--ds-lh-normal);
+  color: var(--ds-ink-soft);
+}
+.ds-body {
+  font-size: var(--ds-type-body);
+  line-height: var(--ds-lh-normal);
+  color: var(--ds-ink-soft);
+}
+.ds-sm {
+  font-size: var(--ds-type-sm);
+  line-height: var(--ds-lh-normal);
+  color: var(--ds-ink-soft);
+}
+.ds-xs {
+  font-size: var(--ds-type-xs);
+  line-height: var(--ds-lh-normal);
+  color: var(--ds-ink-faint);
+}
+.ds-mono {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-mono);
+  line-height: var(--ds-lh-mono);
+  letter-spacing: var(--ds-track-mono);
+  color: var(--ds-ink-soft);
+}
+.ds-caps {
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
+  text-transform: uppercase;
+  font-weight: var(--ds-w-semibold);
+  color: var(--ds-ink-faint);
+}
+
+/* ---------- 中文排版修正 ----------
+   负字距会破坏汉字字面；中文标点需要不同的行高与两端对齐策略。 */
+:lang(zh),
+:lang(zh-CN),
+:lang(zh-TW) {
+  letter-spacing: var(--ds-track-cjk);
+  line-height: 1.75;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+:lang(zh) .ds-display,
+:lang(zh) .ds-h1,
+:lang(zh) .ds-h2,
+:lang(zh) .ds-h3 {
+  font-weight: var(--ds-w-medium);
+  line-height: 1.22;
+}
+:lang(zh) .ds-body,
+:lang(zh) .ds-lead,
+:lang(zh) .ds-sm {
+  line-height: 1.85;
+}
+:lang(zh) .ds-mono {
+  letter-spacing: var(--ds-track-cjk);
+}
+
+/* ---------- 减少动态效果 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ds-dur-instant: 1ms;
+    --ds-dur-fast: 1ms;
+    --ds-dur-base: 1ms;
+    --ds-dur-slow: 1ms;
+    --ds-dur-reveal: 1ms;
+    --ds-entry-duration: 1ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}

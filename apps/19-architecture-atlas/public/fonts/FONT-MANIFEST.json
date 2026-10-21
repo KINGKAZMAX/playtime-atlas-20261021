@@ -1,0 +1,160 @@
+{
+  "$comment": "余晖设计系统 · 可自托管字体清单。全部为 SIL Open Font License 1.1，随包附许可原文。运行期零外部 CDN 请求。",
+  "generatedAt": "2026-10-21T12:20:00.000Z",
+  "policy": {
+    "selfHostedOnly": true,
+    "externalCdn": false,
+    "preload": [
+      "space-grotesk-latin.woff2",
+      "inter-latin.woff2"
+    ],
+    "fontDisplay": "swap",
+    "cjkStrategy": "系统字体栈优先（0 字节、始终可用且覆盖完整），Noto Sans SC 子集为渐进增强；顺序规则：覆盖完整的系统 CJK 族必须排在覆盖有限的子集之前（CSS 按字符回退，子集在前会导致同一段文字混入两套字形、基线错位）",
+    "note": "字体不取自参考站 https://olek.si/ 。参考站使用 5 个自研/商用 woff2（display / text / inter / interd / interr），本系统未下载、未再分发其中任何一个。"
+  },
+  "stackResolution": {
+    "display": [
+      "Space Grotesk",
+      "PingFang SC",
+      "Hiragino Sans GB",
+      "Microsoft YaHei",
+      "Source Han Sans SC",
+      "Noto Sans SC",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "sans-serif"
+    ],
+    "text": [
+      "Inter",
+      "PingFang SC",
+      "Hiragino Sans GB",
+      "Microsoft YaHei",
+      "Source Han Sans SC",
+      "Noto Sans SC",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "sans-serif"
+    ],
+    "mono": [
+      "Space Mono",
+      "ui-monospace",
+      "SFMono-Regular",
+      "Menlo",
+      "Consolas",
+      "monospace"
+    ]
+  },
+  "faces": [
+    {
+      "family": "Space Grotesk",
+      "role": "display",
+      "styles": [
+        {
+          "weight": "300 700",
+          "style": "normal"
+        }
+      ],
+      "file": "space-grotesk-latin.woff2",
+      "bytes": 34788,
+      "format": "woff2",
+      "subset": "latin",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-space-grotesk.txt",
+      "copyright": "Copyright 2020 The Space Grotesk Project Authors (https://github.com/floriankarsten/space-grotesk)",
+      "source": "https://github.com/floriankarsten/space-grotesk",
+      "provenance": "本项目 07-museum-art/public/assets/fonts/ 与 06-museum-core/public/art/assets/fonts/ 已 vendored 的同一文件；本任务仅复制，未修改来源目录。"
+    },
+    {
+      "family": "Inter",
+      "role": "text",
+      "styles": [
+        {
+          "weight": "100 900",
+          "style": "normal"
+        }
+      ],
+      "file": "inter-latin.woff2",
+      "bytes": 132684,
+      "format": "woff2",
+      "subset": "latin",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-inter.txt",
+      "copyright": "Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter)",
+      "source": "https://github.com/rsms/inter",
+      "provenance": "同上游 vendored 文件（07-museum-art / 06-museum-core）。"
+    },
+    {
+      "family": "Space Mono",
+      "role": "mono",
+      "styles": [
+        {
+          "weight": "400",
+          "style": "normal",
+          "file": "space-mono-regular.woff2",
+          "bytes": 14884
+        },
+        {
+          "weight": "700",
+          "style": "normal",
+          "file": "space-mono-bold.woff2",
+          "bytes": 15000
+        }
+      ],
+      "format": "woff2",
+      "subset": "latin",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-space-mono-regular.txt / OFL-space-mono-bold.txt",
+      "copyright": "Copyright 2020 The Space Mono Project Authors (https://github.com/sharanda/space-mono)",
+      "source": "https://github.com/sharanda/space-mono",
+      "provenance": "同上游 vendored 文件。"
+    },
+    {
+      "family": "Noto Sans SC",
+      "role": "cjk-fallback",
+      "styles": [
+        {
+          "weight": "100 900",
+          "style": "normal"
+        }
+      ],
+      "file": "noto-sans-sc-subset.woff2",
+      "bytes": 197600,
+      "format": "woff2",
+      "subset": "cjk-subset",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-noto-sans-sc.txt",
+      "copyright": "Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'",
+      "source": "https://github.com/notofonts/noto-cjk",
+      "coverage": {
+        "status": "partial",
+        "note": "该子集由 07-museum-art 按其自身用字生成，字形覆盖有限，**不是**全站汉字全集。",
+        "risk": "若某页汉字超出子集，浏览器会回退到系统黑体（PingFang SC / Microsoft YaHei），视觉略有差异但**不缺字**。",
+        "action": "全站文案定稿后，用 fonttools 重新子集化本文件（或替换为完整 Noto Sans SC），再更新本清单的 bytes 与 coverage.status。"
+      },
+      "provenance": "同上游 vendored 文件。"
+    }
+  ],
+  "systemFallbacks": {
+    "cjk": [
+      "PingFang SC",
+      "Hiragino Sans GB",
+      "Microsoft YaHei",
+      "Source Han Sans SC",
+      "Noto Sans SC"
+    ],
+    "note": "系统栈是 0 字节、离线可用、覆盖全字形的兜底方案。任何设备都不会出现缺字。"
+  },
+  "integration": {
+    "css": "fonts/fonts.css",
+    "relativeUrls": true,
+    "copyTo": "release/docs/assets/ds/fonts/",
+    "pagesSubpathCheck": [
+      "https://kingkazmax.github.io/playtime-atlas-20261021/assets/ds/fonts/fonts.css",
+      "https://kingkazmax.github.io/playtime-atlas-20261021/assets/ds/fonts/inter-latin.woff2",
+      "https://kingkazmax.github.io/playtime-atlas-20261021/works/06-museum-main/art/assets/fonts/fonts.css"
+    ],
+    "knownPastDefect": "06-museum-core 曾出现 art/assets/fonts/fonts.css 线上 404（15-supervisor §4b）。迁移后必须逐条复查上列 URL 返回 200。"
+  },
+  "totalBytes": 394956,
+  "cjkStrategy": "系统字体栈优先（0 字节、始终可用且覆盖完整）；Noto Sans SC 子集仅作渐进增强，必须排在完整覆盖的 CJK 栈之后（2026-10-21 修正：子集置于系统栈之前会导致同一段文字混入两套字形、基线错位）"
+}

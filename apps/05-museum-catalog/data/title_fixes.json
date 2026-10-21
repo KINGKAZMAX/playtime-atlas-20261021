@@ -1,0 +1,59 @@
+{
+  "_note": "条目名校正记录。通用检索式解析器 resolve_titles.py 因打分过松（把 'Little Computer Program' 误配到 'Little Computer People'）而被弃用，最终采用 scripts/patch_seed*.py 中逐条人工核验后的校正结果。本文件由 patch_seed / patch_seed2 / patch_seed3 的实际执行输出整理而成，每条均可通过对应维基条目页复核。",
+  "method": "人工核验：逐条抓取来源条目的 lead 与全文 wikitext，确认条目存在、年份与创作者一致后才写回",
+  "wikiTitleCorrections": [
+    {"id": "sw-little-computer-program", "old": "Little Computer Program", "new": "Early history of video games", "reason": "无独立条目；该综述条目明确记载 1951 年的早期实验游戏与 1950–51 年的 nim-playing computer"},
+    {"id": "hw-brown-box", "old": "Brown Box (prototype)", "new": "First generation of video game consoles", "reason": "该条目明确记载 'By January 1969 the team had produced the seventh prototype, nicknamed the \"Brown Box\"'"},
+    {"id": "sw-gun-fight", "old": "Gun Fight (video game)", "new": "Gun Fight", "reason": "原名不存在，实为消歧义跳转"},
+    {"id": "sw-speed-race", "old": "Speed Race (video game)", "new": "Speed Race", "reason": "原名不存在；该条目为 Taito 1974 年作品"},
+    {"id": "sw-odyssey2-pong", "old": "Pong (1972 video game)", "new": "Magnavox Odyssey", "reason": "原名不存在；Odyssey 条目记载了主机内置的 Pong 版本"},
+    {"id": "sw-elite", "old": "Elite (1984 video game)", "new": "Elite (video game)", "reason": "原名不存在"},
+    {"id": "sw-grand-theft-auto", "old": "Grand Theft Auto (1998 video game)", "new": "Grand Theft Auto (video game)", "reason": "原名不存在"},
+    {"id": "sw-civilization", "old": "Civilization (1991 video game)", "new": "Civilization (video game)", "reason": "原名不存在"},
+    {"id": "sw-tekken", "old": "Tekken (1994 video game)", "new": "Tekken (video game)", "reason": "原名不存在"},
+    {"id": "sw-left-4-dead", "old": "Left 4 Dead (video game)", "new": "Left 4 Dead", "reason": "原名不存在"},
+    {"id": "sw-temple-run", "old": "Temple Run (video game)", "new": "Temple Run", "reason": "原名不存在"},
+    {"id": "sw-vvvvvv", "old": "VVVVVV (video game)", "new": "VVVVVV", "reason": "原名不存在"},
+    {"id": "hw-oculus-quest", "old": "Meta Quest (mixed reality)", "new": "Oculus Quest", "reason": "原名不存在（该文为 'Quest (mixed reality)'）"},
+    {"id": "sw-superhot", "old": "Superhot (video game)", "new": "Superhot VR", "reason": "原名不存在"},
+    {"id": "sw-mud1", "old": "MUD", "new": "Multi-user dungeon", "reason": "'MUD' 为消歧义页；条目正文明确 'In 1978 Roy Trubshaw, a student at the University of Essex ... started working on a multi-user adventure game'"},
+    {"id": "sw-noughts-and-crosses", "old": "Noughts and Crosses (video game)", "new": "OXO (video game)", "reason": "原名实为指向 OXO 的重定向；按其真实内容（1952，EDSAC，A. S. Douglas）改写并移入 origins"},
+    {"id": "sw-volleyball", "old": "Volleyball (video game)", "new": "Checkers (1952 video game)", "reason": "原条目为 Nintendo 1986 年的同名作品（同名不同物）；1968 年 Rosenthal 版无任何可引证条目，改用有独立条目且被综述条目明确记载的 1952 年 Checkers"},
+    {"id": "sw-space-travel", "old": "Space Travel", "new": "Space Travel (video game)", "reason": "原名为消歧义页"}
+  ],
+  "yearCorrections": [
+    {"id": "hw-zx-spectrum", "old": 1981, "new": 1982, "reason": "源条目 lead 含 1982（4 月 23 日发售）；1981 为公布年"},
+    {"id": "hw-imlac", "old": 1964, "new": 1969, "reason": "infobox founded=1968、图注 'An original Imlac PDS-1 from 1969'；lead 'The PDS-1 debuted in late 1969'"},
+    {"id": "hw-brown-box", "old": 1967, "new": 1969, "reason": "第七号原型机完成于 1969 年 1 月（1967 为第三号原型机的时间）"},
+    {"id": "sw-space-travel", "old": 1961, "new": 1969, "reason": "源条目 infobox released=1969；1961 的 7090 版本为前身"},
+    {"id": "sw-grand-theft-auto", "old": 1998, "new": 1997, "reason": "源条目正文 'is a 1997 action-adventure game ... released in November 1997'"},
+    {"id": "sw-return-of-the-obsidian", "old": 2019, "new": 2018, "reason": "源条目正文 'is a 2018 adventure and puzzle video game'"},
+    {"id": "sw-noughts-and-crosses", "old": 1971, "new": 1952, "reason": "改写为 OXO 后的实际年份"},
+    {"id": "sw-volleyball", "old": 1968, "new": 1952, "reason": "改写为 Checkers 后的实际年份"},
+    {"id": "hw-nim", "old": 1956, "new": 1952, "reason": "改写为 Nimrod 取石子计算机后的实际年份"}
+  ],
+  "creatorCorrections": [
+    {"id": "sw-gun-fight", "old": "Nintendo (Gunpei Yokoi team)", "new": "Taito（Tomohiro Nishikado 设计；美版 Dave Nutting 参与设计，Midway 发行）", "reason": "原值指向 Nintendo 的另一款同名作品"},
+    {"id": "sw-arkanoid", "old": "Romstar (Akira Fujita)", "new": "Taito（Akira Fujita、Hiroshi Tsujino 设计；北美由 Romstar 发行）", "reason": "把发行商当成了开发商"},
+    {"id": "sw-speed-race", "old": "Exidy (Larry Kaplan)", "new": "Taito（Masahiro Fukuchi、Yoshiki Okamoto）", "reason": "源条目为 Taito 作品"},
+    {"id": "hw-nim", "old": "W. A. Wickstead", "new": "Herbert Koppel、Eugene Grant、Howard Baller（W. L. Maxson Corporation）", "reason": "源条目记载的是 1951/1952 年的 Maxson 机器"},
+    {"id": "sw-computer-space", "old": "Nolan Bushnell, Andy Cappock (Nutting Associates)", "new": "Atari 前身 Syzygy Engineering（Nolan Bushnell、Andy Cappock）设计，Nutting Associates 制造与发行", "reason": "infobox developer=Syzygy Engineering、publisher=Nutting Associates"},
+    {"id": "sw-noughts-and-crosses", "old": "David Gale (Gael Games)", "new": "A. S. Douglas（剑桥大学）", "reason": "改写为 OXO 后的实际创作者"},
+    {"id": "sw-volleyball", "old": "Larry Rosenthal", "new": "Christopher Strachey", "reason": "改写为 Checkers 后的实际创作者"}
+  ],
+  "platformCorrections": [
+    {"id": "sw-pong", "old": "Atari 2600 hardware in original, then 1975 VCS cabinet", "new": "Atari 专用街机硬件（1972 年 11 月 29 日北美首发）；1975 年 10 月推出 Atari VCS/2600 家用卡带版", "reason": "原表述混淆了街机与家用版"},
+    {"id": "sw-space-travel", "old": "Modified IBM 7090", "new": "Multics / GECOS / PDP-7（1969 年版；其 1961 年前身运行于 IBM 7090）", "reason": "infobox platforms=Multics, GECOS, PDP-7"},
+    {"id": "sw-gun-fight", "old": "Electromatic / dedicated coin-op console", "new": "Taito 专用街机硬件（1975 年 9 月日本首发），后移植至 Astrocade 与 Atari 8-bit", "reason": "infobox platforms"},
+    {"id": "sw-noughts-and-crosses", "old": "TTV / coin-op (British)", "new": "EDSAC 计算机", "reason": "改写为 OXO 后的实际平台"},
+    {"id": "sw-volleyball", "old": "Custom discrete-logic console", "new": "Ferranti Mark 1 计算机（与 NIMROD 同期）", "reason": "改写为 Checkers 后的实际平台"},
+    {"id": "hw-nim", "old": "Discrete relay/computer logic (NIM)", "new": "W. L. Maxson Corporation 继电器式取石子机（后来的 NIMROD）", "reason": "改写为 Nimrod 后的实际平台"}
+  ],
+  "displayTitleCleanup": {
+    "_note": "title 为展签显示名，此前沿用维基条目名带消歧义括号；来源条目名由 sourceDetail.sourceArticle 保留。共清理 27 条。",
+    "script": "scripts/patch_seed4.py"
+  },
+  "removedEntries": [
+    {"id": "sw-groove", "title": "GROOVE", "year": 1961, "reason": "全库全文检索（srwhat=text，683 条命中）未找到任何条目记载该作品 → 按「无来源不收录」原则剔除"}
+  ]
+}

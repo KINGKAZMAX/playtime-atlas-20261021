@@ -215,8 +215,10 @@ export function createMeteor(shell) {
     shell.gameOver({
       gameId: 'meteor',
       title: '陨星纵队',
+      titleEn: 'METEOR COLUMN',
       score: st.score,
       detail: `推进至第 ${st.wave} 波`,
+      detailEn: `Pushed to wave ${st.wave}`,
       scores: list,
     });
   }
@@ -823,6 +825,7 @@ export function createMeteor(shell) {
   return {
     id: 'meteor',
     title: '陨星纵队',
+    titleEn: 'METEOR COLUMN',
     update,
     render,
     begin() {

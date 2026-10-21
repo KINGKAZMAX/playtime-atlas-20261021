@@ -77,7 +77,7 @@ export function eraDoor(era, count, { active = false } = {}) {
 export function hallCard(hall) {
   const integrated = hall.status === 'integrated';
   return `
-<div class="hall-card hall-card--${hall.status}" style="--era-accent:${escapeHtml(hall.accent)}">
+<div class="hall-card hall-card--${hall.status}" style="--identity-accent:${escapeHtml(hall.accent)}">
   <div class="hall-head">
     <p class="hall-kicker mono">${escapeHtml(hall.subtitle)}</p>
     <h3 class="hall-title">${escapeHtml(hall.title)}</h3>

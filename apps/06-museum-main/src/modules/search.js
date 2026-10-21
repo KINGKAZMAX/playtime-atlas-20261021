@@ -37,7 +37,7 @@ export function matchesQuery(exhibit, query) {
  * 主筛选函数
  * @param {Array} exhibits
  * @param {Object} options
- * @param {string} options.query
+ * @param {string} options.query      关键词（兼容别名 options.q）
  * @param {string[]} options.eras      年代 id 列表，空表示不限
  * @param {string[]} options.kinds     类别，空表示不限
  * @param {string[]} options.platforms 平台，空表示不限
@@ -45,7 +45,7 @@ export function matchesQuery(exhibit, query) {
  */
 export function filterExhibits(exhibits, options = {}) {
   const {
-    query = '',
+    query = options.q ?? '',
     eras = [],
     kinds = [],
     platforms = [],
@@ -120,8 +120,18 @@ export function collectFacets(exhibits) {
   };
 }
 
-/** 生成一段用于 aria-live 的结果播报文案 */
-export function resultAnnouncement(count, total, query) {
+/**
+ * 生成一段用于 aria-live 的结果播报文案
+ *
+ * 语言随界面语言切换；默认中文，保证既有调用与单元测试行为不变。
+ */
+export function resultAnnouncement(count, total, query, lang = 'zh') {
+  if (lang === 'en') {
+    const parts = [`${count} works`];
+    if (total !== count) parts.push(`(of ${total})`);
+    if (query && String(query).trim()) parts.push(`, keyword “${String(query).trim()}”`);
+    return parts.join('');
+  }
   const parts = [`共 ${count} 件展品`];
   if (total !== count) parts.push(`（馆藏 ${total} 件）`);
   if (query && String(query).trim()) parts.push(`，关键词「${String(query).trim()}」`);

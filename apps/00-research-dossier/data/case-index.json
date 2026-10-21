@@ -1,7 +1,7 @@
 {
  "meta": {
   "title": "MiniMax M3.1 Flash 全球公开案例库",
-  "generated_at": "2026-10-21T09:01:05Z",
+  "generated_at": "2026-10-21T16:50:42Z",
   "observation_date": "2026-10-21",
   "model": {
    "name": "MiniMax M3.1 Flash",
@@ -114,21 +114,24 @@
     "id": "X-M48",
     "slug": "tiny-pocket-landing",
     "title": "TINY//POCKET 掌机新品落地页",
-    "dimension": "web"
+    "dimension": "web",
+    "adapted_title": "NIMBUS·7 桌面气象站"
    },
    {
     "rank": 2,
     "id": "X-M02",
     "slug": "webgpu-realistic-water",
     "title": "WebGPU 写实海面 + 漂浮相机",
-    "dimension": "3d/interactive"
+    "dimension": "3d/interactive",
+    "adapted_title": "TIDAL DRIFT 潮汐漂移"
    },
    {
     "rank": 3,
     "id": "X-M09",
     "slug": "monstera-3d-viewer",
     "title": "MONSTERA STUDY 3D 模型查看器",
-    "dimension": "web/3d/interactive"
+    "dimension": "web/3d/interactive",
+    "adapted_title": "HELIOS SPECIMEN 日轮标本台"
    }
   ],
   "raw_evidence_dir": "raw/  (含 53 份 X syndication 原始 JSON、平台原始响应、13 段原始视频、27 张抽帧)",

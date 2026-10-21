@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-ds-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,8 +9,25 @@
       name="description"
       content="CHROMA S1 是一台口袋里的光谱色度仪：380–780nm 全波段采样，ΔE00 &lt; 0.8。本页为原创虚构产品的发布页演示作品。"
     />
-    <meta name="theme-color" content="#0a0d11" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0d11'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23ff6b2c' stroke-width='2.5'/%3E%3C/svg%3E" />
+    <meta name="theme-color" content="#FCFBF9" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23FCFBF9'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23B4432B' stroke-width='2.5'/%3E%3C/svg%3E" />
+
+    <!--
+      余晖设计系统（16-design-system）接入三步：
+        ① tokens.css / components.css / fonts/ → assets/ds/（构建时逐字节发布到 dist/assets/ds/**）
+        ② fonts.css 在下，其 @font-face 用相对 url("./x.woff2")，与字体文件同目录 → 子路径安全
+        ③ 注入基准路径 --ds-base + <body class="ds-shell">
+      路径全部相对：Vite 的 base:'./' 保证同一份产物能在任意子路径下工作。
+    -->
+    <link rel="stylesheet" href="./assets/ds/tokens.css" />
+    <link rel="stylesheet" href="./assets/ds/components.css" />
+    <link rel="stylesheet" href="./assets/ds/fonts/fonts.css" />
+    <!-- 基准路径放在 DS 令牌之后：tokens.css 的 :root{--ds-base:""} 同特异性，靠顺序取胜 -->
+    <style>
+      :root {
+        --ds-base: "/playtime-atlas-20261021/works/01-chroma-s1/";
+      }
+    </style>
     <!--
       Motion mode is resolved before first paint.
       ?motion=off  -> static presentation (also honoured for prefers-reduced-motion)
@@ -25,12 +42,12 @@
         document.documentElement.dataset.motion = off ? 'off' : 'on';
       })();
     </script>
-    <script type="module" crossorigin src="./assets/index-C0SKNvjH.js"></script>
+    <script type="module" crossorigin src="./assets/index-CrCbofUo.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/three-CxnsKOR_.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-BK8vydC4.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-BYvBOS1m.css">
   </head>
-  <body>
-    <a class="skip-link" href="#main">跳到主内容</a>
+  <body class="ds-shell">
+    <a class="skip-link ds-skip" href="#main">跳到主内容</a>
 
     <!-- ============ 固定章节索引（桌面端） ============ -->
     <nav class="rail" id="rail" aria-label="章节索引">
@@ -46,72 +63,56 @@
         <li><a href="#explode" data-rail-target="explode"><i>04</i><span>拆解视图</span></a></li>
         <li><a href="#faq" data-rail-target="faq"><i>05</i><span>常见问题</span></a></li>
         <li><a href="#reserve" data-rail-target="reserve"><i>06</i><span>预约</span></a></li>
+        <li></li>
       </ol>
       <div class="rail__progress" aria-hidden="true"><span id="rail-progress-bar"></span></div>
     </nav>
 
     <!-- ============ 顶部栏 ============ -->
-    <header class="topbar" id="topbar">
+    <header class="topbar ds-topbar" id="topbar">
       <a class="topbar__brand" href="#hero">
         <span class="topbar__logo" aria-hidden="true"></span>
         <span class="topbar__name">CHROMA&nbsp;S1</span>
         <span class="topbar__sub">千色仪</span>
       </a>
+      <!--
+        移动端章节指示：顶栏内的正常流元素。
+        原为「底部居中固定浮层」，会压在正文读数上（D1 文字压盖），
+        现改为顶栏内依次排列，桌面端由左侧导航轨承担同一职责。
+      -->
+      <div class="hud" id="hud" aria-hidden="true">
+        <span class="hud__num" id="hud-num">00</span>
+        <span class="hud__name" id="hud-name">概览</span>
+      </div>
       <nav class="topbar__nav" aria-label="主导航">
         <a href="#lab">光谱实验室</a>
         <a href="#samples">样本库</a>
         <a href="#specs">规格</a>
         <a href="#faq">常见问题</a>
+        
       </nav>
-      <a class="btn btn--primary btn--sm" href="#reserve">预约实测</a>
+      <a class="btn btn--secondary btn--sm" href="#reserve">预约实测</a>
     </header>
-
-    <!-- ============ 移动端章节指示 ============ -->
-    <div class="hud" id="hud" aria-hidden="true">
-      <span class="hud__num" id="hud-num">00</span>
-      <span class="hud__name" id="hud-name">概览</span>
-    </div>
 
     <main id="main">
       <!-- ============ 00 概览 ============ -->
       <section class="hero" id="hero" data-section="hero" data-rail-label="概览">
-        <div class="hero__grid">
-          <div class="hero__copy">
-            <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>PORTABLE SPECTRAL COLORIMETER</p>
-            <h1 class="hero__title">
-              <span class="hero__line"><span>把颜色</span></span>
-              <span class="hero__line"><span>量出来。</span></span>
-            </h1>
-            <p class="hero__lede">
-              CHROMA S1 是一台能塞进衬衫口袋的光谱色度仪。扣下扳机，0.4 秒读完一段光谱；
-              不再靠眼睛猜「差不多」，把颜色变成可以写进验收单的数字。
-            </p>
-            <div class="hero__actions">
-              <a class="btn btn--primary" href="#reserve">预约首批实测名额</a>
-              <a class="btn btn--ghost" href="#lab">打开光谱实验室</a>
-            </div>
-            <dl class="hero__facts">
-              <div class="fact">
-                <dt>波段</dt>
-                <dd><span data-countup="380">380</span>–<span data-countup="780">780</span> nm</dd>
-              </div>
-              <div class="fact">
-                <dt>色差</dt>
-                <dd>ΔE<sub>00</sub> &lt; <span data-countup="0.8" data-countup-decimals="1">0.8</span></dd>
-              </div>
-              <div class="fact">
-                <dt>重量</dt>
-                <dd><span data-countup="18">18</span> g</dd>
-              </div>
-              <div class="fact">
-                <dt>续航</dt>
-                <dd><span data-countup="8">8</span> h</dd>
-              </div>
-            </dl>
-          </div>
+        <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>PORTABLE SPECTRAL COLORIMETER</p>
+        <h1 class="hero__title">
+          <span class="hero__line"><span>把颜色</span></span>
+          <span class="hero__line"><span>量出来。</span></span>
+        </h1>
+        <p class="hero__lede">
+          CHROMA S1 是一台能塞进衬衫口袋的光谱色度仪。扣下扳机，0.4 秒读完一段光谱；
+          不再靠眼睛猜「差不多」，把颜色变成可以写进验收单的数字。
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#reserve">预约首批实测名额</a>
+          <a class="btn btn--ghost" href="#lab">打开光谱实验室</a>
+        </div>
 
-          <div class="hero__stage">
-            <div class="stage">
+        <div class="hero__media">
+          <div class="stage">
               <div class="stage__brackets" aria-hidden="true">
                 <span></span><span></span><span></span><span></span>
               </div>
@@ -144,11 +145,38 @@
                   <span class="sr-only">冰蓝色</span>
                 </button>
               </div>
-              <p class="stage__hint" id="stage-hint">拖动旋转 · 双击复位</p>
             </div>
-          </div>
+          <!--
+            操作提示：从画布浮层改为画布下方的正常流说明行。
+            原为绝对定位居中于画布底部，窄屏时会与画布 HUD 读数面板重叠
+            （D1 文字压盖），移入文档流后两者永不相交。
+          -->
+          <p class="stage__hint" id="stage-hint">拖动旋转 · 双击复位</p>
         </div>
+
       </section>
+
+      <!-- ============ 封面指标带 ============ -->
+      <div class="hero__facts-band">
+        <dl class="hero__facts">
+          <div class="fact">
+            <dt>波段</dt>
+            <dd><span data-countup="380">380</span>–<span data-countup="780">780</span> nm</dd>
+          </div>
+          <div class="fact">
+            <dt>色差</dt>
+            <dd>ΔE<sub>00</sub> &lt; <span data-countup="0.8" data-countup-decimals="1">0.8</span></dd>
+          </div>
+          <div class="fact">
+            <dt>重量</dt>
+            <dd><span data-countup="18">18</span> g</dd>
+          </div>
+          <div class="fact">
+            <dt>续航</dt>
+            <dd><span data-countup="8">8</span> h</dd>
+          </div>
+        </dl>
+      </div>
 
       <!-- ============ 数据带 ============ -->
       <section class="strip" aria-label="关键指标">
@@ -368,9 +396,13 @@
           </form>
         </div>
       </section>
+
+
+      
+      
     </main>
 
-    <footer class="footer">
+    <footer class="footer ds-footer">
       <div class="footer__row">
         <p class="footer__brand">CHROMA&nbsp;S1 <span>—</span> 千色仪</p>
         <p class="footer__meta">

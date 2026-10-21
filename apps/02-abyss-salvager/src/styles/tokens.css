@@ -1,0 +1,356 @@
+/* ==========================================================================
+   余晖设计系统 / Afterglow Design System — 令牌层（本项目落地）
+   --------------------------------------------------------------------------
+   依据：
+     · 16-design-system/design-tokens.json  —— 机器可读取值来源
+     · 16-design-system/DESIGN-SPEC.md      —— 成文规范
+     · 16-design-system/src/tokens.css      —— 上游实现（**只读参考，未复制**）
+
+   落地方式（RESTYLE-SPEC.md §1「只读引用，不要复制文件；各目录自行在自己的
+   src/styles/ 落地 token，落地时注明依据哪一节」）：
+     本文件是本项目**自行编写**的令牌落地层，变量名与取值与上游 token 一一对应，
+     但针对本作的「深海仪表 HUD」场景做了两处受控偏离，见文末 §偏离说明。
+
+   本作为沉浸式 3D 画布，默认深色主题（对应 design-tokens.json
+   `color.dark` / `color.canvas`），因此 <html data-ds-theme="dark">。
+   ========================================================================== */
+
+:root {
+  /* ---------- 色彩 · 深色主题（本作默认） ----------
+     依据：design-tokens.json → color.dark */
+  --ds-bg: #100f0e;
+  --ds-bg-raised: #1a1917;
+  --ds-bg-sunken: #0b0a09;
+  --ds-ink: #f7f4f0;
+  --ds-ink-soft: #c0b7b0;
+  --ds-ink-faint: #9a918a;
+  --ds-line: #2b2926;
+  --ds-line-strong: #453f39;
+  --ds-surface: #1e1d1b;
+  --ds-accent: #e0684a;
+  --ds-accent-hover: #ee8266;
+  --ds-accent-soft: #331c15;
+  --ds-accent-ink: #17110f;
+  --ds-jade: #5fa99a;
+  --ds-jade-soft: #16211e;
+  --ds-overlay: rgba(8, 7, 6, 0.62);
+
+  /* ---------- 色彩 · 分区（tone-aware） ---------- */
+  --ds-section-ink: var(--ds-ink);
+  --ds-section-soft: rgba(247, 244, 240, 0.78);
+  --ds-section-faint: rgba(247, 244, 240, 0.46);
+  --ds-section-bg: var(--ds-bg);
+  --ds-tone-fade: #141311;
+  --ds-glow: var(--ds-bg);
+  --ds-section-radius-scale: 1;
+
+  /* ---------- 色彩 · 画布 / HUD ----------
+     依据：design-tokens.json → color.canvas
+     画布上承载文字必须用 --ds-canvas-hud-bg / --ds-canvas-hud-ink。 */
+  --ds-canvas-hud-bg: rgba(8, 7, 6, 0.78);
+  --ds-canvas-hud-ink: #f7f4f0;
+  --ds-canvas-hud-line: rgba(247, 244, 240, 0.24);
+  --ds-canvas-scrim: rgba(16, 15, 14, 0.55);
+  --ds-danger: #c2452b;
+  --ds-success: #3f7a4e;
+  --ds-warning: #b07a1e;
+  --ds-info: #2c5c8f;
+
+  /* ---------- 字体 ----------
+     依据：design-tokens.json → typography.family
+     拉丁字形来自自托管 woff2（见 fonts.css）；汉字走系统栈，
+     理由见文末 §偏离说明 ①。
+     族序与规范**逐字一致**（上游 tools/ds-audit-tokens.mjs 的口径 A
+     对 --ds-font-display / --ds-font-text 逐项比对，见 STATUS.md §2.3）。 */
+  --ds-font-display: "Space Grotesk", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  --ds-font-text: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  --ds-font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ds-type-display: clamp(40px, 6.6vw, 84px);
+  --ds-type-h1: clamp(30px, 4.2vw, 52px);
+  --ds-type-h2: clamp(22px, 2.6vw, 32px);
+  --ds-type-h3: 20px;
+  --ds-type-h4: 17px;
+  --ds-type-lead: 19px;
+  --ds-type-body: 16px;
+  --ds-type-sm: 14px;
+  --ds-type-xs: 12.5px;
+  --ds-type-mono: 13px;
+
+  --ds-lh-display: 1.08;
+  --ds-lh-tight: 1.22;
+  --ds-lh-snug: 1.35;
+  --ds-lh-normal: 1.6;
+  --ds-lh-relaxed: 1.75;
+  --ds-lh-mono: 1.45;
+
+  --ds-w-regular: 400;
+  --ds-w-medium: 500;
+  --ds-w-semibold: 600;
+  --ds-w-bold: 700;
+
+  --ds-track-display: -0.03em;
+  --ds-track-body: -0.005em;
+  --ds-track-cjk: 0;
+  --ds-track-mono: 0.02em;
+  --ds-track-caps: 0.08em;
+
+  /* ---------- 间距 ----------
+     依据：design-tokens.json → space */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 24px;
+  --ds-space-6: 32px;
+  --ds-space-7: 48px;
+  --ds-space-8: 64px;
+  --ds-space-9: 96px;
+  --ds-space-10: 128px;
+  --ds-space-gutter: clamp(16px, 4vw, 48px);
+  --ds-space-rail-gap: 12px;
+  --ds-space-section-top: clamp(56px, 9vh, 104px);
+  --ds-space-section-bottom: clamp(40px, 8vh, 88px);
+
+  /* ---------- 圆角 ----------
+     依据：design-tokens.json → radius */
+  --ds-radius-xs: 6px;
+  --ds-radius-sm: 10px;
+  --ds-radius-md: 14px;
+  --ds-radius-lg: 20px;
+  --ds-radius-xl: 28px;
+  --ds-radius-pill: 999px;
+  --ds-radius-media: clamp(16px, 2vw, 28px);
+  --ds-radius-control: 999px;
+
+  /* ---------- 阴影 ----------
+     依据：design-tokens.json → shadow */
+  --ds-shadow-1: 0 1px 2px rgba(20, 17, 15, 0.05);
+  --ds-shadow-2: 0 4px 16px rgba(20, 17, 15, 0.07);
+  --ds-shadow-3: 0 12px 40px rgba(20, 17, 15, 0.1);
+  --ds-shadow-4: 0 24px 80px rgba(20, 17, 15, 0.16);
+  --ds-ring: inset 0 0 0 1px var(--ds-line);
+  --ds-ring-strong: inset 0 0 0 1px var(--ds-line-strong);
+  --ds-focus-ring: 0 0 0 2px var(--ds-bg), 0 0 0 4px var(--ds-accent);
+
+  /* ---------- 动效 ----------
+     依据：design-tokens.json → motion */
+  --ds-dur-instant: 120ms;
+  --ds-dur-fast: 200ms;
+  --ds-dur-base: 320ms;
+  --ds-dur-slow: 520ms;
+  --ds-dur-reveal: 800ms;
+  --ds-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ds-ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --ds-ease-veil: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-ease-spring: cubic-bezier(0.34, 1.42, 0.64, 1);
+  --ds-ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+  --ds-stagger-step: 60ms;
+  --ds-entry-translate: 24px;
+  --ds-entry-blur: 6px;
+  --ds-entry-duration: 640ms;
+  --ds-in-delay: 0ms;
+
+  /* ---------- 层级 ----------
+     依据：design-tokens.json → zIndex */
+  --ds-z-base: 0;
+  --ds-z-raised: 10;
+  --ds-z-sticky: 100;
+  --ds-z-rail: 200;
+  --ds-z-overlay: 300;
+  --ds-z-modal: 400;
+  --ds-z-toast: 500;
+
+  /* ---------- 布局 ----------
+     依据：design-tokens.json → layout */
+  --ds-max-width: 1280px;
+  --ds-max-width-wide: 1600px;
+  --ds-read-width: 68ch;
+  --ds-rail-width: 132px;
+  --ds-rail-inset: 24px;
+  --ds-section-height: 100dvh;
+  --ds-grid-gutter: var(--ds-space-gutter);
+  --ds-grid-gap: var(--ds-space-5);
+  --ds-rail-scale: 1;
+  --ds-rail-blur: 0px;
+  --ds-work-dim: rgba(128, 128, 128, 0.3);
+
+  /* ---------- 无障碍 ----------
+     依据：design-tokens.json → a11y */
+  --ds-contrast-text: 4.5;
+  --ds-contrast-large: 3;
+  --ds-contrast-ui: 3;
+  --ds-target-min: 44px;
+  --ds-focus-width: 2px;
+  --ds-focus-offset: 2px;
+
+  /* ---------- 资源 ----------
+     本项目所有资源由 Vite 打包（相对路径），子路径安全；
+     --ds-base 保留给需要运行时拼 URL 的场景（见 src/paths.js）。 */
+  --ds-base: "";
+  --ds-font-display-src: var(--ds-base);
+}
+
+/* ---------- 浅色主题（备用；本作默认深色） ----------
+   依据：design-tokens.json → color.light */
+[data-ds-theme="light"] {
+  --ds-bg: #fcfbf9;
+  --ds-bg-raised: #ffffff;
+  --ds-bg-sunken: #f2eee9;
+  --ds-ink: #14110f;
+  --ds-ink-soft: #59514b;
+  --ds-ink-faint: #6e655e;
+  --ds-line: #e4ded7;
+  --ds-line-strong: #cfc6bc;
+  --ds-surface: #f2eee9;
+  --ds-accent: #b4432b;
+  --ds-accent-hover: #97361f;
+  --ds-accent-soft: #f6e9e4;
+  --ds-accent-ink: #ffffff;
+  --ds-jade: #2e6a5e;
+  --ds-jade-soft: #e4eeeb;
+  --ds-overlay: rgba(20, 17, 15, 0.44);
+  --ds-canvas-hud-bg: rgba(16, 15, 14, 0.72);
+}
+
+/* ---------- 排版基类 ----------
+   依据：design-tokens.json → typography */
+.ds-display {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-display);
+  line-height: var(--ds-lh-display);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: var(--ds-track-display);
+  color: var(--ds-ink);
+}
+.ds-h1 {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h1);
+  line-height: var(--ds-lh-tight);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: var(--ds-track-display);
+  color: var(--ds-ink);
+}
+.ds-h2 {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h2);
+  line-height: var(--ds-lh-tight);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: var(--ds-track-display);
+  color: var(--ds-ink);
+}
+.ds-h3 {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h3);
+  line-height: var(--ds-lh-snug);
+  font-weight: var(--ds-w-medium);
+  color: var(--ds-ink);
+}
+.ds-lead {
+  font-size: var(--ds-type-lead);
+  line-height: var(--ds-lh-normal);
+  color: var(--ds-ink-soft);
+}
+.ds-body {
+  font-size: var(--ds-type-body);
+  line-height: var(--ds-lh-normal);
+  color: var(--ds-ink-soft);
+}
+.ds-sm {
+  font-size: var(--ds-type-sm);
+  line-height: var(--ds-lh-normal);
+  color: var(--ds-ink-soft);
+}
+.ds-xs {
+  font-size: var(--ds-type-xs);
+  line-height: var(--ds-lh-normal);
+  color: var(--ds-ink-faint);
+}
+.ds-mono {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-mono);
+  line-height: var(--ds-lh-mono);
+  letter-spacing: var(--ds-track-mono);
+  color: var(--ds-ink-soft);
+}
+.ds-caps {
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
+  text-transform: uppercase;
+  font-weight: var(--ds-w-semibold);
+  color: var(--ds-ink-faint);
+}
+
+/* ---------- 中文排版修正 ----------
+   依据：design-tokens.json → typography.tracking.cjk = 0
+   负字距会破坏汉字字面；中文段行高放宽。 */
+:lang(zh),
+:lang(zh-CN),
+:lang(zh-TW) {
+  letter-spacing: var(--ds-track-cjk);
+  line-height: 1.75;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+:lang(zh) .ds-display,
+:lang(zh) .ds-h1,
+:lang(zh) .ds-h2,
+:lang(zh) .ds-h3 {
+  font-weight: var(--ds-w-medium);
+  line-height: 1.22;
+}
+:lang(zh) .ds-body,
+:lang(zh) .ds-lead,
+:lang(zh) .ds-sm {
+  line-height: 1.85;
+}
+:lang(zh) .ds-mono {
+  letter-spacing: var(--ds-track-cjk);
+}
+
+/* ---------- 减少动态效果 ----------
+   依据：design-tokens.json → motion.reducedMotion
+   RESTYLE-SPEC.md §6.7：尊重 prefers-reduced-motion，动效可降级。 */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ds-dur-instant: 1ms;
+    --ds-dur-fast: 1ms;
+    --ds-dur-base: 1ms;
+    --ds-dur-slow: 1ms;
+    --ds-dur-reveal: 1ms;
+    --ds-entry-duration: 1ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   §偏离说明（相对 16-design-system/src/tokens.md 的受控差异，逐条有因）
+   --------------------------------------------------------------------------
+   ① 字体栈中不前置 "Noto Sans SC" 子集。
+      依据：16-design-system/fonts/FONT-MANIFEST.json → faces[].coverage 明确标注
+      该子集是 07-museum-art 按其自身用字生成的**部分覆盖**子集。若前置，
+      本作用到而子集未覆盖的汉字会回退系统黑体，产生同一段落内**两套字形混排**。
+      故按 FONT-MANIFEST.policy.cjkStrategy「系统字体栈优先（0 字节、始终可用）」
+      执行：汉字走系统栈，拉丁走自托管 woff2。族名与 16 清单一致。
+      未随包 noto-sans-sc-subset.woff2（避免引入不完整字形源）。
+
+   ② 默认主题为深色，不跟随系统。
+      依据：design-tokens.json → color.dark 注明「建筑项目与游戏内夜间场景默认使用」；
+      本作为深海场景 3D 查看器，全画布沉浸，统一深色。浅色主题仍以
+      [data-ds-theme="light"] 完整提供。
+
+   ③ 未引入 --ds-work-dim / --ds-section-height 等与本作无关的布局令牌。
+      保留无害，但本作无作品卡网格，--ds-work-dim 置空即可，不产生行为差异。
+   ========================================================================== */

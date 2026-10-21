@@ -1,21 +1,13 @@
 {
-  "id": "abyss-carapace-salvager",
+  "id": "02-abyss-salvager",
   "title": "渊甲拾遗者 · ABYSS-CARAPACE SALVAGER",
-  "description": "原创深海甲壳式矿脉采集体 3D 交互模型：760 米分段叠瓦甲壳、扁平螺旋刀片磨削冠、压力气囊尾与腹面矿仓。全部几何与贴图程序化生成，可旋转缩放、分解检视、X 光透视、双模式剖切、21 项实时参数编辑与 GLB 导出。运行期零 CDN、零 API、零外部素材。交互机制参考自 MiniMax M3.1 Flash 社区 3D 案例，作品名 / 模型形态 / 文案 / 字体 / 配色 / 布局七项均为原创设计。",
-  "entry": "dist/index.html",
-  "buildCommand": "npm install --no-audit --no-fund && npm run build",
+  "description": "原创深海甲壳式矿脉采集体 3D 交互模型：760 米分段叠瓦甲壳、扁平螺旋刀片磨削冠、压力气囊尾与腹面矿仓。全部几何与贴图程序化生成，可旋转缩放、分解检视、X 光透视、双模式剖切、21 项实时参数编辑，并可下载 / 载入随包 GLB。构件可选中（射线拾取 + 描边 + 中英属性面板）、5 层显隐开关、4 阶段分步组装；WebGL 不可用时降级为同源参数生成的 2D 技术图。运行期零 CDN、零 API、零外部素材。交互机制参考自 MiniMax M3.1 Flash 社区 3D 案例，作品名 / 模型形态 / 文案七项与视觉语言均为原创设计。",
+  "entry": "index.html",
+  "buildCommand": "npm run build",
   "outputDir": "dist",
   "status": "completed",
   "upstream": "02-model",
-  "license": "本批交付物自带；依赖 three (MIT)、vite (MIT)。未使用任何游戏 ROM、商业游戏资源或品牌视觉。",
-  "sources": [
-    {
-      "title": "机制参考：MiniMax M3.1 Flash 社区流传的 3D 建模案例",
-      "url": "",
-      "note": "原帖精确 URL 尚未由 00-research 锁定；本条出处待补，不作已核验陈述。实际作品《渊甲拾遗者 AC-VII》为原创重新设计。"
-    }
-  ],
-  "version": "1.0.0",
+  "version": "1.1.1",
   "project": "flash-showcase-20261021/02-model",
   "previewCommand": "npm run preview",
   "devCommand": "npm run dev",
@@ -40,27 +32,120 @@
     },
     "claimsAllFirstParty": false
   },
-  "artifacts": {
-    "model": "models/abyss-salvager-ac-vii.glb",
+  "assets": {
+    "model": "public/models/abyss-salvager-ac-vii.glb",
+    "modelIndex": "public/models/assets.manifest.json",
+    "buildPath": "models/abyss-salvager-ac-vii.glb",
+    "notesPage": "notes.html",
     "screenshots": "screenshots/",
     "qaReport": "screenshots/qa-results.json",
+    "d1Review": "screenshots/d1-review/",
     "source": "SOURCE.md",
     "changelog": "CHANGELOG.md",
+    "licenses": "LICENSES.md",
     "task": "TASK.md",
     "status": "STATUS.md",
     "readme": "README.md",
-    "qa": "QA.md"
+    "qa": "QA.md",
+    "restyleMap": "RESTYLE-MAP.md"
+  },
+  "restyle": {
+    "specSource": "16-design-system (RESTYLE-SPEC.md / MIGRATION-NOTES.md / design-tokens.json)",
+    "mapping": "RESTYLE-MAP.md",
+    "tokenLayer": "src/styles/tokens.css",
+    "componentLayer": "src/styles/components.css",
+    "upstreamFilesCopied": false,
+    "selfHostedFonts": [
+      "space-grotesk-latin.woff2",
+      "inter-latin.woff2",
+      "space-mono-regular.woff2",
+      "space-mono-bold.woff2"
+    ],
+    "cjkFontStrategy": "系统字体栈优先；未随包 16 的部分覆盖 Noto Sans SC 子集（理由见 tokens.css §偏离说明 ①）",
+    "defaultTheme": "dark",
+    "hudMinFontSizePx": 12.5,
+    "contrastRatioMin": 4.5,
+    "upstreamAudit": "node 16-design-system/tools/ds-audit-tokens.mjs → 🟢（必备 17 项全对；全量 129 令牌值差 0；无额外 --ds-* 声明；无顺序问题）",
+    "baseInjection": "--ds-base 由 src/paths.js → applyBaseToDocument() 从 import.meta.env.BASE_URL 注入（不写死绝对根路径）"
+  },
+  "interactions": {
+    "orbit": true,
+    "zoom": true,
+    "partSelection": true,
+    "layerToggles": 5,
+    "assemblyStages": 4,
+    "sectionModes": [
+      "longitudinal",
+      "crown"
+    ],
+    "explodeSlider": true,
+    "xray": true,
+    "parameterPanel": true,
+    "reset": true,
+    "exportGlb": true,
+    "loadShippedGlb": true,
+    "webglFallback2d": true,
+    "annotationScreenSpaceAvoidance": true
+  },
+  "disclaimer": {
+    "statement": "教学示意，非施工/工程模型",
+    "statementEn": "TEACHING ILLUSTRATION — NOT A CONSTRUCTION / ENGINEERING MODEL",
+    "singleSource": "src/model/disclaimer.js",
+    "placements": [
+      "3D 场景内铭牌",
+      "说明页 notes.html",
+      "导出 GLB 的 asset.extras"
+    ],
+    "forcesAreQualitativeOnly": true
+  },
+  "bilingualKeys": {
+    "source": "src/model/parts.js",
+    "annotations": 14,
+    "layers": 5,
+    "assemblyStages": 4,
+    "languageSwitch": "本批不提供运行时切换；中英对照同时呈现（标注胶囊 / 选择面板 / 层级开关 / 说明页对照表）"
   },
   "qa": {
     "method": "headless Google Chrome + CDP real input events",
-    "assertionsPassed": 15,
+    "assertionsPassed": 24,
     "assertionsFailed": 0,
     "consoleErrors": 0,
     "uncaughtExceptions": 0,
-    "glbBytes": 9134284,
+    "glbBytes": 9135924,
+    "glbBytesNote": "2026-10-21 本次导出实测 9,135,924 bytes（9,135,972 / 9,136,112 为此前导出的历史值）。程序化几何的顶点浮点末位差异使每次重新导出会有 ±数十字节浮动，权威值以 public/models/assets.manifest.json 的 bytes / sha256 为准；校验只断言 magic=glTF、version=2、declaredLength == 实际字节数。",
     "triangles": 104468,
     "vertices": 248706,
-    "meshes": 548
+    "meshes": 548,
+    "d1SelfCheck": {
+      "script": "scripts/check-d1.mjs",
+      "target": "生产构建 dist/（与 13 同口径、同条件）",
+      "desktop1440x900": {
+        "hitsBefore": 3,
+        "hitsAfter": 0
+      },
+      "mobile390x844": {
+        "hitsBefore": 2,
+        "hitsAfter": 0
+      },
+      "upstreamAudit": "16-design-system/tools/ds-audit-tokens.mjs → 02-model 🟢 必备缺0 值差0 全量129 缺0 值差0 额外0 顺序问题0"
+    },
+    "subPathChecks": {
+      "mount": "/playtime-atlas-20261021/works/02-abyss-salvager/",
+      "passed": 13,
+      "failed": 0,
+      "shippedGlbStatus": 200,
+      "legacyAliasStatus": 404
+    },
+    "webglFallbackChecks": {
+      "script": "scripts/check-webgl-fallback.mjs",
+      "target": "生产构建 dist/（Chrome flag 禁用 WebGL ＋ 拦截 getContext('webgl*') 返回 null）",
+      "passed": 13,
+      "failed": 0,
+      "notBlank": true,
+      "disclaimerVisible": true,
+      "screenshot": "screenshots/20-webgl-fallback.png"
+    },
+    "newAssertion": "annotation-avoids-visible-text：3D 标注胶囊与页面任意可见文字零压盖"
   },
   "runtime": {
     "externalRequests": 0,
@@ -68,6 +153,7 @@
     "api": false,
     "externalFonts": false,
     "externalModels": false,
-    "externalTextures": false
+    "externalTextures": false,
+    "subPathSafe": true
   }
 }

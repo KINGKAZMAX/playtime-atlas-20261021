@@ -15,10 +15,23 @@
  */
 
 import { execFileSync, spawnSync } from 'node:child_process';
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { filterOutput } from './publish-filter.mjs';
+
+/**
+ * 参考站抓取件 —— 机械排除。
+ *
+ * 判定规则集中在 scripts/publish-guard.mjs（可独立自检）：
+ *   node scripts/publish-guard.mjs --selftest
+ * 本文件在**每一条复制路径**上调用它，命中即跳过并记入构建报告。
+ */
+const { isReferenceCapture } = await import('./publish-guard.mjs');
+
+/** 本次构建被机械拦截掉的参考站抓取件（写进构建报告，便于核对）。 */
+const blockedCaptures = [];
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = path.join(ROOT, 'docs');
@@ -43,16 +56,21 @@ function ensure(p) {
   fs.mkdirSync(p, { recursive: true });
 }
 
-function copyDir(src, dest, filter) {
+function copyDir(src, dest, filter, rel = '') {
   ensure(dest);
   for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
     const s = path.join(src, entry.name);
     const d = path.join(dest, entry.name);
+    const r = rel ? `${rel}/${entry.name}` : entry.name;
     if (entry.isDirectory()) {
       if (entry.name === 'node_modules' || entry.name === '.git') continue;
-      copyDir(s, d, filter);
+      copyDir(s, d, filter, r);
     } else if (entry.isFile()) {
       if (filter && !filter(s)) continue;
+      if (isReferenceCapture(r)) {
+        blockedCaptures.push(r);
+        continue;
+      }
       fs.copyFileSync(s, d);
     }
   }
@@ -122,7 +140,9 @@ function scanAbsolutePaths(dir) {
 // ---------------------------------------------------------------- manifest
 
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'works.json'), 'utf8'));
-const works = manifest.works.filter((work) => work.publish !== false);
+// publish === false 的条目只在仓库内保留；deepLink === true 的条目照常构建产物，
+// 但不进入大厅目录（供「独立深链」交付，例如 00 的案例索引）。
+const works = manifest.works.filter((work) => work.publish !== false || work.deepLink === true);
 
 // ---------------------------------------------------------------- 公开净化
 
@@ -152,6 +172,65 @@ function toPublicMeta(meta) {
 // ---------------------------------------------------------------- build
 
 const results = [];
+
+/** 依赖指纹：package.json / package-lock.json 的内容哈希。变了就必须重装。 */
+function depsHash(appDir) {
+  const h = crypto.createHash('sha1');
+  for (const f of ['package.json', 'package-lock.json']) {
+    const p = path.join(appDir, f);
+    if (fs.existsSync(p)) h.update(fs.readFileSync(p));
+  }
+  return h.digest('hex');
+}
+
+/** 现有 node_modules 是否与当前依赖声明一致。 */
+function depsSatisfied(appDir) {
+  const stamp = path.join(appDir, 'node_modules', '.mavis-deps-hash');
+  if (!fs.existsSync(stamp)) return false;
+  try {
+    return fs.readFileSync(stamp, 'utf8').trim() === depsHash(appDir);
+  } catch {
+    return false;
+  }
+}
+
+function stampDeps(appDir) {
+  const stamp = path.join(appDir, 'node_modules', '.mavis-deps-hash');
+  try {
+    fs.writeFileSync(stamp, depsHash(appDir));
+  } catch { /* ignore */ }
+}
+
+/**
+ * 构建顺序：按 build.dependsOn 做拓扑排序。
+ *
+ * 背景：06（博物馆主站）的 prebuild 会从兄弟目录 07（美术资产包）取产物。
+ * 若 06 先于 07 构建，07 的 assets 还没生成，06 就会只拿到字体、丢掉
+ * cases / covers / models / posters —— 首次构建必然踩到，靠上一轮残留才侥幸没出事。
+ * 声明依赖后，顺序由数据决定，不再依赖执行顺序的巧合。
+ */
+function orderByDeps(list) {
+  const byId = new Map(list.map((w) => [w.id, w]));
+  const out = [];
+  const mark = new Map();
+
+  const visit = (w, stack = []) => {
+    if (mark.get(w.id) === 'done') return;
+    if (mark.get(w.id) === 'doing') {
+      throw new Error(`构建依赖成环：${[...stack, w.id].join(' → ')}`);
+    }
+    mark.set(w.id, 'doing');
+    for (const dep of w.build?.dependsOn || []) {
+      const d = byId.get(dep);
+      if (d) visit(d, [...stack, w.id]);
+    }
+    mark.set(w.id, 'done');
+    out.push(w);
+  };
+
+  for (const w of list) visit(w);
+  return out;
+}
 
 async function buildWork(work) {
   const started = Date.now();
@@ -187,9 +266,12 @@ async function buildWork(work) {
       const pkg = JSON.parse(fs.readFileSync(path.join(appDir, 'package.json'), 'utf8'));
       const hasLock = fs.existsSync(path.join(appDir, 'package-lock.json'));
       const hasModules = fs.existsSync(path.join(appDir, 'node_modules'));
-      if (fast && hasModules) {
+      // 依赖指纹：声明变了就必须重装（上游新增依赖时不会静默用旧 node_modules）
+      const depsStale = !depsSatisfied(appDir);
+      if (fast && hasModules && !depsStale) {
         log(`→ ${work.id}: 复用已有 node_modules (--fast)`);
       } else {
+        if (hasModules && depsStale) log(`→ ${work.id}: 依赖声明已变化，重装依赖`);
         log(`→ ${work.id}: 安装依赖 (${hasLock ? 'npm ci' : 'npm install'})`);
         try {
           run('npm', hasLock ? ['ci', '--no-audit', '--no-fund'] : ['install', '--no-audit', '--no-fund'], appDir, {
@@ -200,6 +282,7 @@ async function buildWork(work) {
           warn(`${work.id}: npm ci 失败，改用 npm install`);
           run('npm', ['install', '--no-audit', '--no-fund'], appDir, { quiet: true });
         }
+        stampDeps(appDir);
       }
       const buildScript = pkg.scripts?.build;
       if (!buildScript) throw new Error('package.json 未定义 build 脚本');
@@ -225,13 +308,19 @@ async function buildWork(work) {
     } else if (type === 'static') {
       rmrf(outDir);
       // 纯静态产物：只发布网页文件，不带 package.json / README 等开发文件
-      const keepDirs = ['data', 'public', 'assets', 'exhibits', 'models', 'fonts'];
+      const keepDirs = ['data', 'public', 'assets', 'exhibits', 'models', 'fonts', ...(work.build?.keepDirs || [])];
       const keepExts = new Set(['.html', '.css', '.js', '.json', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.glb', '.woff2', '.woff', '.ico', '.map']);
       // 发布排除项：内部台账与研究档案（manifest / cases / data 等）不随站点发布
       const exclude = new Set((work.build?.exclude || []).map((e) => e.replace(/\/$/, '')));
-      for (const e of fs.readdirSync(appDir, { withFileTypes: true })) {
-        const s = path.join(appDir, e.name);
+      // source：可指定发布源子目录（例如 17/18 作者预构建的 dist/）
+      const sourceDir = work.build?.source ? path.join(appDir, work.build.source) : appDir;
+      // entryFile：源目录中的入口文件，发布时统一命名为 index.html
+      const entryFile = work.build?.entryFile || null;
+      if (!fs.existsSync(sourceDir)) throw new Error(`静态发布源目录缺失：${path.relative(ROOT, sourceDir)}`);
+      for (const e of fs.readdirSync(sourceDir, { withFileTypes: true })) {
+        const s = path.join(sourceDir, e.name);
         try {
+          if (entryFile && e.name === entryFile) continue;
           if (e.isDirectory()) {
             if (exclude.has(e.name)) continue;
             if (keepDirs.includes(e.name)) copyDir(s, path.join(outDir, e.name));
@@ -246,6 +335,11 @@ async function buildWork(work) {
           // 上游正在改写文件：源文件可能在这一瞬间被替换或删除，跳过即可
           warn(`静态复制跳过 ${e.name}：${err.code || err.message}`);
         }
+      }
+      if (entryFile) {
+        const from = path.join(sourceDir, entryFile);
+        if (!fs.existsSync(from)) throw new Error(`静态产物缺少入口文件：${entryFile}`);
+        fs.copyFileSync(from, path.join(outDir, 'index.html'));
       }
       if (!fs.existsSync(path.join(outDir, 'index.html'))) {
         throw new Error('静态产物缺少 index.html');
@@ -301,13 +395,15 @@ async function buildWork(work) {
 }
 
 function tryFallback(outDir) {
-  if (!fs.existsSync(outDir)) return false;
+  // 注意：不要要求 outDir 已存在 —— 发布根在构建开始时整体清空，
+  // 失败项往往连目录都没有，此时仍应从 HEAD 恢复上一版已提交产物，
+  // 否则线上已发布的作品会因本轮上游构建失败而「整件消失」。
   const rel = path.relative(ROOT, outDir);
   try {
     const res = spawnSync('git', ['cat-file', '-e', `HEAD:${rel}`], { cwd: ROOT, encoding: 'utf8' });
     if (res.status !== 0) return false;
     run('git', ['checkout', 'HEAD', '--', rel], ROOT, { quiet: true });
-    return true;
+    return fs.existsSync(outDir);
   } catch {
     return false;
   }
@@ -398,6 +494,49 @@ function refreshGallery() {
   log('最终公开主页数据与封面已生成：', note || 'refresh-gallery 完成');
 }
 
+/**
+ * 发布 16-design-system 的令牌层与自托管字体 → docs/assets/ds/
+ *
+ * 路径约定（Pages 在 /docs，发布根下）：
+ *   docs/assets/ds/tokens.css      令牌层（--ds-* 变量）
+ *   docs/assets/ds/fonts/fonts.css 自托管字体声明（相对路径引用同目录 woff2）
+ *   docs/assets/ds/fonts/*.woff2   字体文件（OFL-1.1）
+ *   docs/assets/ds/fonts/OFL-*.txt 许可文本（依法随资产分发）
+ *
+ * 子路径（/playtime-atlas-20261021/）下用相对路径引用即可自动正确解析。
+ */
+function publishDesignSystem() {
+  const src = path.join(ROOT, 'apps', '16-design-system');
+  const out = path.join(SITE, 'assets', 'ds');
+  const stats = { tokens: false, fonts: 0 };
+  if (!fs.existsSync(src)) {
+    warn('apps/16-design-system 缺失，跳过设计系统发布（先跑 node scripts/sync-apps.mjs）');
+    return stats;
+  }
+  rmrf(out);
+  ensure(path.join(out, 'fonts'));
+
+  const tokens = path.join(src, 'src', 'tokens.css');
+  if (fs.existsSync(tokens)) {
+    fs.copyFileSync(tokens, path.join(out, 'tokens.css'));
+    stats.tokens = true;
+  }
+
+  const fontsDir = path.join(src, 'fonts');
+  if (fs.existsSync(fontsDir)) {
+    for (const f of fs.readdirSync(fontsDir)) {
+      const s = path.join(fontsDir, f);
+      if (!fs.statSync(s).isFile()) continue;
+      if (f.endsWith('.woff2') || f.endsWith('.txt') || f === 'fonts.css') {
+        fs.copyFileSync(s, path.join(out, 'fonts', f));
+        stats.fonts++;
+      }
+    }
+  }
+  log(`设计系统已发布 → assets/ds/（令牌 ${stats.tokens ? '✓' : '✗'} · 字体文件 ${stats.fonts}）`);
+  return stats;
+}
+
 // ---------------------------------------------------------------- main
 
 async function main() {
@@ -411,7 +550,13 @@ async function main() {
   fs.writeFileSync(path.join(SITE, '.nojekyll'), '');
   buildCovers();
 
-  const targets = only ? works.filter((w) => only.includes(w.id)) : works;
+  const selected = only ? works.filter((w) => only.includes(w.id)) : works;
+  // 构建顺序由数据决定（build.dependsOn），不靠执行顺序的巧合
+  const targets = orderByDeps(selected);
+  const depDriven = targets.filter((w) => (w.build?.dependsOn || []).length);
+  if (depDriven.length) {
+    log('构建顺序（按 dependsOn 拓扑排序）：', depDriven.map((w) => `${w.id}←${w.build.dependsOn.join(',')}`).join(' | '));
+  }
   for (const work of targets) {
     const rec = await buildWork(work);
     results.push(rec);
@@ -449,6 +594,8 @@ async function main() {
     builtAt: new Date().toISOString(),
     node: process.version,
     works: results,
+    designSystem: publishDesignSystem(),
+    blockedReferenceCaptures: blockedCaptures,
     totals: {
       total: results.length,
       built: results.filter((r) => r.buildState === 'built' || r.buildState === 'built-no-entry').length,

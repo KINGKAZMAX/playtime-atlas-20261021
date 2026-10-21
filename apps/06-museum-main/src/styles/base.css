@@ -1,4 +1,10 @@
-/* 回响电玩馆 · 基础层 */
+/*
+ * 回响电玩馆 · 基础层
+ *
+ * 依据 16-design-system/DESIGN-SPEC.md：
+ *   §1.1 色彩三级墨色    §2 字体    §7 控件    §11 无障碍    §12 减少动态效果
+ * 令牌一律走 tokens.css 的语义别名（别名指向 --ds-*）。
+ */
 
 *,
 *::before,
@@ -8,12 +14,16 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
+}
+
+/* 平滑滚动只在用户未要求减弱动效时开启（DESIGN-SPEC §12：不得覆盖系统偏好） */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: 100dvh;
   background: var(--bg-app);
   color: var(--text-body);
   font-family: var(--font-text);
@@ -21,30 +31,32 @@ body {
   line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image:
-    radial-gradient(1200px 600px at 12% -10%, rgba(255, 107, 44, 0.07), transparent 62%),
-    radial-gradient(900px 520px at 92% 4%, rgba(63, 182, 168, 0.06), transparent 60%);
-  background-attachment: fixed;
+  /* 页面背景不得使用图案；参考站的极淡径向柔光只在英雄区出现（§1.1） */
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: var(--ds-w-medium);
   line-height: var(--lh-tight);
   color: var(--text-strong);
   margin: 0;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
+}
+
+/* 标题一律允许断行：参考站在 390px 下因 nowrap 被裁（§3.2 硬性禁令） */
+h1, h2, h3, h4, .hero-title, .page-title, .era-hero-title, .exhibit-title {
+  overflow-wrap: anywhere;
 }
 
 p { margin: 0 0 var(--sp-4); }
 p:last-child { margin-bottom: 0; }
 
 a {
-  color: var(--signal-400);
+  color: var(--accent);
   text-decoration: none;
   transition: color var(--dur-1) var(--ease-out);
 }
-a:hover { color: var(--signal-300); }
+a:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
 
 img, svg { max-width: 100%; }
 
@@ -56,9 +68,9 @@ button, input, select, textarea {
 ul, ol { margin: 0; padding: 0; list-style: none; }
 
 mark {
-  background: rgba(255, 107, 44, 0.22);
-  color: var(--paper-050);
-  border-radius: 3px;
+  background: var(--accent-soft);
+  color: var(--text-strong);
+  border-radius: var(--r-xs);
   padding: 0 2px;
 }
 
@@ -67,32 +79,34 @@ code, .mono, pre {
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
 }
+:lang(zh) code, :lang(zh) .mono, :lang(zh) pre { letter-spacing: 0; }
 
 ::selection {
-  background: rgba(255, 107, 44, 0.32);
-  color: var(--paper-050);
+  background: var(--accent);
+  color: var(--ds-accent-ink);
 }
 
+/* 焦点环：任何状态下不得移除（§11.1） */
 :focus-visible {
-  outline: 2px solid var(--signal-400);
-  outline-offset: 3px;
+  outline: none;
+  box-shadow: var(--ds-focus-ring);
   border-radius: var(--r-xs);
 }
 
 /* 滚动条 */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--ink-500) transparent;
+  scrollbar-color: var(--line-strong) transparent;
 }
 *::-webkit-scrollbar { width: 10px; height: 10px; }
 *::-webkit-scrollbar-track { background: transparent; }
 *::-webkit-scrollbar-thumb {
-  background: var(--ink-500);
+  background: var(--line-strong);
   border-radius: var(--r-pill);
   border: 2px solid transparent;
   background-clip: content-box;
 }
-*::-webkit-scrollbar-thumb:hover { background: var(--ink-400); background-clip: content-box; }
+*::-webkit-scrollbar-thumb:hover { background: var(--text-faint); background-clip: content-box; }
 
 .visually-hidden {
   position: absolute !important;
@@ -105,34 +119,60 @@ code, .mono, pre {
   border: 0;
 }
 
-.skip-link {
+/* 跳转链接：每页第一个可聚焦元素（§11.1） */
+.skip-link,
+.ds-skip {
   position: fixed;
   top: -100px;
   left: var(--sp-4);
-  z-index: 200;
+  z-index: var(--ds-z-toast);
   padding: var(--sp-3) var(--sp-4);
-  background: var(--signal-500);
-  color: #1a0d04;
-  font-weight: 600;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: var(--ds-accent-ink);
+  font-weight: var(--ds-w-semibold);
   border-radius: 0 0 var(--r-sm) var(--r-sm);
   transition: top var(--dur-2) var(--ease-out);
 }
-.skip-link:focus {
+.skip-link:focus,
+.ds-skip:focus {
   top: 0;
-  color: #1a0d04;
+  color: var(--ds-accent-ink);
 }
 
 .muted { color: var(--text-muted); }
 .dot { color: var(--text-faint); margin: 0 2px; }
 
-/* 尊重系统的减弱动效偏好 */
+/* 入场动效：位移 + 透明度 + 微模糊；交错最多 6 级（§8.2） */
+.ds-in {
+  opacity: 0;
+  transform: translateY(var(--ds-entry-translate));
+  filter: blur(var(--ds-entry-blur));
+  transition:
+    opacity var(--ds-entry-duration) var(--ds-ease-out),
+    transform var(--ds-entry-duration) var(--ds-ease-out),
+    filter var(--ds-entry-duration) var(--ds-ease-out);
+  transition-delay: var(--ds-in-delay, 0ms);
+}
+.ds-in.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* 尊重系统的减弱动效偏好（§12） */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+  .ds-in { opacity: 1; transform: none; filter: none; }
 }
 
 html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after {

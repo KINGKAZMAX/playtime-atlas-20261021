@@ -27,6 +27,40 @@ export const PATCHES = [
     upstreamFix: '在 04-spaceflight/src/gfx/Procedural.js 的 makeRingTexture() 中补一行 const data = img.data;',
   },
   {
+    app: '06-museum-main',
+    file: 'scripts/sync-exhibits.mjs',
+    upstream: '06-museum-core',
+    find: "path.join(SIBLINGS, '05-museum-research'",
+    replace: "path.join(SIBLINGS, '05-museum-catalog'",
+    replaceAll: true,
+    reason:
+      '部署副本把上游 05-museum-research 重命名为 apps/05-museum-catalog（与 works.json 的 id 对齐），' +
+      '而 06 的 prebuild（scripts/sync-exhibits.mjs）按上游目录名去父目录找兄弟任务，' +
+      '找不到源 → 策展目录 139 条不生成 public/data/catalog.json，主站运行时 fetch 落空。' +
+      '【状态】仅部署布局差异，上游 06-museum-core 本身无缺陷。',
+    detected: '2026-10-21 部署构建：docs/works/06-museum-main/data/ 内缺少 catalog.json（同步日志显示策展目录回落为本地初版）。',
+    upstreamFix:
+      '无需上游修改。若上游希望目录名可配置，可让 sync-exhibits.mjs 通过环境变量或 manifest 字段读取兄弟任务目录名，' +
+      '而不是硬编码上游目录名。',
+  },
+  {
+    app: '07-museum-art',
+    file: 'index.html',
+    upstream: '07-museum-art',
+    find: '<meta name="theme-color" content="#100F0E"/>',
+    replace:
+      '<meta name="theme-color" content="#100F0E"/>\n' +
+      '<!-- 部署补丁：声明站点图标，避免浏览器自动请求 /favicon.ico 得 404 -->\n' +
+      '<link rel="icon" href="./assets/icons/joystick.svg" type="image/svg+xml"/>',
+    reason:
+      '上游 07 的页面未声明 favicon，浏览器会自行请求 /favicon.ico 并得到 404。' +
+      '13-qa-curation 把它记为 minor（「可上线，但有可标注的小瑕疵」），' +
+      '但《HANDOFF-14.md》§四 第 2 项要求「网络面板零 404（含 /favicon.ico）」。' +
+      '此处用 07 自己产出的既有图标（assets/icons/joystick.svg）声明，路径相对，兼容 Pages 子路径。',
+    detected: '2026-10-21 线上复验（verify-online.mjs）：07-museum-art 出现 HTTP≥400 → 404 /favicon.ico。',
+    upstreamFix: '在 07-museum-art/index.html 的 <head> 内加一行 <link rel="icon" href="./assets/icons/<图标>.svg">（用相对路径以兼容子路径）。',
+  },
+  {
     app: '03-interaction',
     file: 'package.json',
     upstream: '03-interaction',
@@ -74,7 +108,8 @@ export function applyPatches(appName, appDir) {
 
     const src = fs.readFileSync(file, 'utf8');
     if (!src.includes(p.find)) continue;
-    fs.writeFileSync(file, src.replace(p.find, p.replace));
+    const out = p.replaceAll ? src.split(p.find).join(p.replace) : src.replace(p.find, p.replace);
+    fs.writeFileSync(file, out);
     applied.push(p);
   }
   return applied;

@@ -35,6 +35,24 @@ export const DYES = {
 
 export const PRIORITY_LABEL = { 1: '高', 2: '中', 3: '低' };
 
+/** 当班状态机。 */
+export const SHIFT = {
+  IDLE: 'idle',       // 待开工
+  RUNNING: 'running', // 在产
+  PAUSED: 'paused',   // 暂停
+};
+
+export const SHIFT_LABEL = {
+  idle: '待开工', running: '在产', paused: '已暂停',
+};
+
+/** 班次节奏（排产难度）—— 影响织造推进速率与能耗。 */
+export const TEMPO = {
+  relaxed: { label: '轻松', rate: 0.72, note: '慢速巡检，利于细密织物' },
+  normal:  { label: '标准', rate: 1.0,  note: '常规班次节奏' },
+  tight:   { label: '紧排', rate: 1.35, note: '赶工排产，断经风险上升' },
+};
+
 /** 机台状态机。 */
 export const LOOM_STATE = {
   IDLE: 'idle',     // 待单
@@ -101,6 +119,18 @@ export function validateOrderDraft(draft) {
 
 let orderSeq = 0;
 
+/**
+ * 把订单号计数器接续到已有订单之后。
+ * 存档恢复后必须调用，否则新订单会与存档中的订单重号。
+ */
+export function syncOrderSeq(orders = []) {
+  for (const o of orders) {
+    const n = Number(String(o?.id ?? '').replace(/\D/g, ''));
+    if (Number.isFinite(n) && n > orderSeq) orderSeq = n;
+  }
+  return orderSeq;
+}
+
 export function makeOrder(draft, now = Date.now()) {
   orderSeq += 1;
   const cloth = CLOTHS[draft.cloth];
@@ -161,6 +191,7 @@ export function initialState() {
     orders: [],
     looms: makeLooms(),
     log: [],
+    eventSeq: 0,
     telemetry: [],          // { t, density, speed, tension, running, breakRate, energy }
     output: 0,              // 本班累计匹数
     meter: 0,               // 累计计数（用于订单号与遥测序列）
@@ -168,7 +199,18 @@ export function initialState() {
     logPaused: false,
     logLevel: 'all',
     chartScale: 'density',
+    shift: SHIFT.RUNNING,   // 当班状态：idle 待开工 / running 在产 / paused 暂停
+    tempo: 'normal',        // 班次节奏：relaxed 轻松 / normal 标准 / tight 紧排
+    autoDispatch: true,     // 机台空出后自动续派队首订单
   };
+}
+
+/** 两张示例订单 —— 新开班次 / 演示排产流程用。 */
+export function seedOrders(state, now = Date.now()) {
+  const a = makeOrder({ cloth: '亚麻', dye: '靛蓝', width: 92, density: 44, picks: 5, priority: 1 }, now);
+  const b = makeOrder({ cloth: '桑蚕丝', dye: '柿红', width: 76, density: 38, picks: 3, priority: 2 }, now);
+  state.orders.push(a, b);
+  return [a, b];
 }
 
 /* ────────────── 仿真推进 ────────────── */
@@ -183,6 +225,7 @@ const TICK_MS = 900;
  */
 export function tick(state, dt, rand = Math.random) {
   const secs = dt / 1000;
+  const rate = TEMPO[state.tempo]?.rate ?? 1;
   let running = 0;
   let totalBreaks = 0;
   let totalEnergy = 0;
@@ -195,7 +238,7 @@ export function tick(state, dt, rand = Math.random) {
 
     switch (loom.state) {
       case LOOM_STATE.WARP: {
-        loom.warpRemaining -= secs;
+        loom.warpRemaining -= secs * rate;
         if (loom.warpRemaining <= 0) {
           loom.state = LOOM_STATE.RUN;
           loom.progress = 0;
@@ -215,10 +258,10 @@ export function tick(state, dt, rand = Math.random) {
         const cloth = CLOTHS[order.cloth] ?? CLOTHS['苎麻'];
         const dye = DYES[order.dye] ?? DYES['米白'];
 
-        // 进度推进：机台速度 × 布种速度 × 密度惩罚
+        // 进度推进：机台速度 × 布种速度 × 密度惩罚 × 班次节奏
         const densityPenalty = 1 / (1 + (order.density - 20) / 70);
         const perSec = 0.0125 * loom.speedFactor * cloth.speed * densityPenalty;
-        loom.progress = Math.min(100, loom.progress + perSec * secs * 100);
+        loom.progress = Math.min(100, loom.progress + perSec * secs * 100 * rate);
         order.progress = loom.progress;
 
         // 张力向目标值回归，叠加随机扰动
@@ -305,8 +348,9 @@ export function tick(state, dt, rand = Math.random) {
 /* ────────────── 事件日志 ────────────── */
 
 export function pushEvent(state, level, source, message, loom = null) {
+  state.eventSeq = (state.eventSeq ?? 0) + 1;
   const entry = {
-    id: state.log.length + Math.floor(Math.random() * 1000),
+    id: `e${state.eventSeq}`,
     at: Date.now(),
     level,
     source,
@@ -324,7 +368,7 @@ export function pushEvent(state, level, source, message, loom = null) {
 /* ────────────── 派单 / 撤单 ────────────── */
 
 /** 把订单派到指定机台。返回 { ok, error }。 */
-export function assignOrder(state, orderId, loomId) {
+export function assignOrder(state, orderId, loomId, { auto = false } = {}) {
   const order = state.orders.find((o) => o.id === orderId);
   const loom = state.looms.find((l) => l.id === loomId);
 
@@ -337,14 +381,52 @@ export function assignOrder(state, orderId, loomId) {
 
   order.state = 'assigned';
   order.loomId = loom.id;
+  order.hold = false;
   loom.orderId = order.id;
   loom.state = LOOM_STATE.WARP;
   loom.progress = 0;
   loom.warpTotal = 4 + (order.picks % 3) * 2;
   loom.warpRemaining = loom.warpTotal;
 
-  pushEvent(state, 'info', loom.id, `${order.id} 派往 ${loom.id}，开始换经`, loom);
+  pushEvent(state, 'info', loom.id,
+    auto ? `${order.id} 自动续派至 ${loom.id}，开始换经` : `${order.id} 派往 ${loom.id}，开始换经`,
+    loom);
   return { ok: true };
+}
+
+/** 当前可接单的机台（待单且无在制订单）。 */
+export function freeLooms(state) {
+  return state.looms.filter((l) => l.state === LOOM_STATE.IDLE && !l.orderId);
+}
+
+/**
+ * 批量派工：把队首待排订单依次派到空闲机台。
+ * @param {object} state
+ * @param {object} opts { limit?:number, auto?:boolean }
+ * @returns {{count:number, assigned:{orderId:string,loomId:string}[], reason:string}}
+ */
+export function dispatchQueued(state, { limit = Infinity, auto = false } = {}) {
+  const assigned = [];
+  // 自动续派只捡「未挂起」的订单；人工挂起的订单必须主管手动重新派工
+  const queue = sortQueue(state.orders).filter((o) => (auto ? !o.hold : true));
+  for (const order of queue) {
+    if (assigned.length >= limit) break;
+    const loom = freeLooms(state)[0];
+    if (!loom) break;
+    const res = assignOrder(state, order.id, loom.id, { auto });
+    if (!res.ok) break;
+    assigned.push({ orderId: order.id, loomId: loom.id });
+  }
+  let reason = '';
+  if (!assigned.length) {
+    const pending = sortQueue(state.orders);
+    reason = !pending.length
+      ? '订单簿里没有待排订单'
+      : (pending.every((o) => o.hold)
+        ? '待排订单都已挂起，需要手动派工'
+        : '当前没有空闲机台，无法派工');
+  }
+  return { count: assigned.length, assigned, reason };
 }
 
 /** 撤销某机台的当前订单，订单回到队列。返回 { ok, error }。 */
@@ -361,11 +443,13 @@ export function revokeOrder(state, loomId, reason = '主管撤单') {
   order.loomId = null;
   order.progress = 0;
   order.startedAt = null;
+  // 人工撤下的订单挂起，不再被自动续派捡回，需主管手动重新派工
+  order.hold = true;
   loom.orderId = null;
   loom.progress = 0;
   loom.state = LOOM_STATE.IDLE;
 
-  pushEvent(state, 'warn', loom.id, `${order.id} 撤单（${reason}），退回队列`, loom);
+  pushEvent(state, 'warn', loom.id, `${order.id} 撤单（${reason}），退回队列并挂起`, loom);
   return { ok: true };
 }
 

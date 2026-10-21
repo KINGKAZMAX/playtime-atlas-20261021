@@ -7,17 +7,6 @@
   "outputDir": "dist",
   "status": "completed",
   "upstream": "01-web",
-  "license": {
-    "code": "本仓库任务产物，随仓库授权",
-    "thirdParty": "MIT (three, vite, typescript) / OFL-1.1 (@fontsource fonts)"
-  },
-  "sources": [
-    {
-      "title": "机制参考：公开案例的掌机落地页",
-      "url": "https://x.com/nutlope/status/2112238098147135880",
-      "note": "2026-10-19 发布，观测于 2026-10-21：1416 赞 / 84 回复。作者未公开源码。实际交付物《千色仪 CHROMA S1》为原创重新设计，不等同于该案例，也不等同于研究阶段的 TOP3 候选规格。"
-    }
-  ],
   "language": "zh-CN",
   "category": "web",
   "previewCommand": "npm run preview",
@@ -28,9 +17,9 @@
   "screenshots": "screenshots/",
   "runtimeDependencies": [
     "three@0.186.1",
-    "@fontsource/martian-mono@5.3.0",
     "@fontsource/space-grotesk@5.3.0",
-    "@fontsource/jetbrains-mono@5.3.0"
+    "@fontsource/inter@5.3.0",
+    "@fontsource/space-mono@5.3.0"
   ],
   "devDependencies": [
     "vite@7.1.7",
@@ -44,13 +33,82 @@
   "assets": {
     "images": "全部在运行时用 Canvas 2D 程序化生成（12 块样本贴图、仪表读数、地面网格、机身屏幕）",
     "models": "全部用 Three.js 图元程序化建模（机身、光学窗口、传感器、主板、电池、屏幕、校准色片）",
-    "fonts": "npm 本地安装的 @fontsource woff2 子集，latin 字形；中文使用系统字体栈",
+    "fonts": "16-design-system/fonts 的 vendored OFL-1.1 实体文件，随产物原样发布到 assets/ds/fonts/",
     "environment": "Three.js 自带 RoomEnvironment 程序化生成，无 HDR 文件"
   },
   "source": {
     "selection": "../00-research/SOURCE.md",
     "differences": "DIFF-vs-SOURCE.md",
-    "assets": "SOURCES.md"
+    "assets": "SOURCES.md",
+    "restyleInventory": "RESTYLE-INVENTORY.md"
   },
-  "notes": "按 MASTER-UPDATE.md 要求，本作品为对公开案例工艺水准的原创改编，非原样复制；作品名、文案、字体、配色、布局与产品形态均重新设计。证据缺口：参考原帖的转发数与收藏数未能核到，已在 SOURCES.md 标注。"
+  "coordination": {
+    "siblingSpec": "../00-research/TOP3.md",
+    "relation": "同一参考案例（@nutlope 落地页）的两套并列原创改编",
+    "note": "TOP3.md 建议的改编作品为「NIMBUS·7 桌面气象站」；本作品未采用该规格，另做「CHROMA S1 · 千色仪」，七项强制维度互不相同，详见 DIFF-vs-SOURCE.md 第 6 节。"
+  },
+  "notes": "按 MASTER-UPDATE.md 要求，本作品为对公开案例工艺水准的原创改编，非原样复制；作品名、文案、字体、配色、布局与产品形态均重新设计。2026-10-21 起接入批次统一设计系统（16-design-system / 余晖），只改视觉语言，不改内容。证据缺口：参考原帖的转发数与收藏数未能核到，已在 SOURCES.md 标注。2026-10-21 23:xx 按 16-design-system/MIGRATION-NOTES.md 完成设计系统接入三步（assets/ds/ 资产 + --ds-base + ds-shell 外壳类），令牌层整体替换为 16 权威值（中文字体栈按 §5.3 调序），字体改用 16 vendored 的 OFL 实体文件。",
+  "version": "1.2.0",
+  "fonts": {
+    "display": "Space Grotesk（OFL-1.1，随 16-design-system/fonts vendored 的实体文件自托管）",
+    "text": "Inter（OFL-1.1，同上）",
+    "mono": "Space Mono Regular/Bold（OFL-1.1，同上）",
+    "cjk": "系统字体栈（PingFang SC / Hiragino Sans GB / Microsoft YaHei / Source Han Sans SC）；Noto Sans SC 子集文件随包复制但页面不引用（MIGRATION-NOTES §5.3 顺序要求）",
+    "files": "public/assets/ds/fonts/*.woff2（逐字节拷贝自 16-design-system/fonts）",
+    "licenses": "LICENSES.md；OFL 全文随发布产物发布于 assets/ds/fonts/OFL-*.txt"
+  },
+  "designSystem": {
+    "name": "余晖设计系统 / Afterglow Design System",
+    "source": "../16-design-system/design-tokens.json",
+    "spec": "../16-design-system/DESIGN-SPEC.md",
+    "tokenLayer": "public/assets/ds/tokens.css（逐字节拷贝自 16-design-system/src/tokens.css）",
+    "prefix": "--ds-",
+    "theme": "light",
+    "applied": [
+      "color.light / color.canvas",
+      "typography.family / size / lineHeight / tracking / weightCjk",
+      "space",
+      "radius",
+      "motion.duration / easing / entry",
+      "layout",
+      "a11y",
+      "DESIGN-SPEC §3.2 封面",
+      "§4.2 顶栏",
+      "§7 按钮与控件",
+      "§9 画布与 HUD",
+      "§10 子路径",
+      "§11 无障碍"
+    ],
+    "deviations": "RESTYLE-INVENTORY.md §10.3（8 条，逐条说明理由）",
+    "integration": {
+      "spec": "../16-design-system/MIGRATION-NOTES.md",
+      "steps": "① assets/ds/tokens.css + components.css ② assets/ds/fonts/ ③ --ds-base 注入 + body.ds-shell",
+      "assetDir": "public/assets/ds/（Vite 静态目录；发布后为 <作品路径>/assets/ds/**）",
+      "tokenLayer": "src/styles/tokens.css 只保留语义别名层，--ds-* 取值仅在 assets/ds/tokens.css 声明一次",
+      "shellClasses": "ds-shell / ds-topbar / ds-footer / ds-skip",
+      "baseVar": "--ds-base: /playtime-atlas-20261021/works/01-chroma-s1/（页面资源全部相对，该变量不参与 URL 拼接）"
+    }
+  },
+  "i18n": {
+    "implemented": false,
+    "keys": "i18n/en.draft.json",
+    "note": "zh/en key 骨架已备（草案），页面当前为中文单语；切换控件待 19/14 统一接入。"
+  },
+  "qa": {
+    "command": "npm run qa",
+    "assertions": 65,
+    "report": "qa/report.json",
+    "overlapAudit": "qa/overlap-report.json",
+    "fullPageShots": [
+      "screenshots/12-full-page-desktop.png",
+      "screenshots/13-full-page-mobile.png"
+    ],
+    "d1OverlapAudit": "qa/d1-final.json",
+    "d1OverlapAuditScroll0": "qa/d1-scroll0.json",
+    "d1MeasureLib": "qa/lib/overlap-measure.mjs",
+    "notes": "D1 文字压盖：与 13-qa-curation 同判定口径（字形行盒求交 + 祖先 overflow 裁剪）。13 的测量位置（滚动 0）desktop 0 / mobile 0；多滚动位置采样（更严）真实压盖 desktop 0 / mobile 0，余下均为 DS §4.2 规定的粘性顶栏压滚动内容，单独归类不计。 设计系统接入自检：npm run qa:ds → 18/18（V.1 四档视口零溢出 / V.2 对比度最低 4.68:1 / V.3 129 个 --ds-* 逐名逐值一致 / V.4 无重复声明 / V.5 焦点环与 Tab 序列 / V.6 触摸目标 24·44 两档 / V.7 降级 / V.8 零外部请求 / V.9 字体本地 / V.11 中文字体栈顺序）。",
+    "dsAssertions": 21,
+    "dsReport": "qa/ds-report.json"
+  },
+  "licenses": "LICENSES.md"
 }

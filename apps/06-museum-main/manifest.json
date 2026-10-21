@@ -1,23 +1,12 @@
 {
   "id": "06-museum-core",
   "title": "回响电玩馆 · PLAYTIME ATLAS",
-  "description": "一座关于电子游戏时间的原创可漫游博物馆主站：十个年代门沿时间长廊排开，含 2D 无障碍目录、检索筛选、收藏、展品详情与逐条来源，以及一个可选的程序化 3D 展厅与四个已并入的可玩展厅。",
+  "description": "一座关于电子游戏时间的原创可漫游博物馆主站：十个年代门沿时间长廊排开，含 2D 无障碍目录、检索筛选、收藏、展品详情与逐条来源，以及一个可选的程序化 3D 展厅与五个已并入的可玩展厅。",
   "entry": "index.html",
   "buildCommand": "npm run build",
   "outputDir": "dist",
   "status": "ready",
   "upstream": "06-museum-core",
-  "license": {
-    "code": "MIT",
-    "assets": "展品图像为程序化抽象图形，不使用任何商业游戏截帧或品牌 logo"
-  },
-  "sources": [
-    {
-      "title": "策展底稿：05 联网策展目录",
-      "url": "",
-      "note": "目录项逐条附来源 URL；代表性选样，不宣称穷尽全时代。"
-    }
-  ],
   "port": 4326,
   "type": "static-site",
   "stack": [
@@ -26,19 +15,87 @@
     "three.js"
   ],
   "offline": true,
+  "base": "./",
+  "subpathReady": true,
+  "designSystem": {
+    "source": "16-design-system/design-tokens.json + src/tokens.css（只读引用，未复制文件）",
+    "theme": "dark（data-ds-theme=\"dark\"，博物馆夜景）",
+    "tokenLayer": "src/styles/tokens.css",
+    "tokensDeclared": 130,
+    "tokensSharedWithDS": 128,
+    "localOnlyTokens": [
+      "--ds-art-paper",
+      "--ds-art-ink"
+    ],
+    "identityColorException": "年代身份色（10）与展厅身份色（5）仅用于编号文字、柜体描边、时间轴节点与 3px 灯条；交互态（CTA/链接/焦点环/选中/hover）一律使用唯一强调色 --ds-accent。详见 RESTYLE-PREP.md §3.1.1",
+    "i18n": "zh / en 双语外壳，html[lang] 正确，中/EN 切换可用，英文需手动切或 ?lang=en（默认中文，不跟随浏览器语言）"
+  },
+  "verified": {
+    "build": "exit 0，产出 dist/index.html；postbuild 体积守卫通过（4.75 MB / 123 文件，上限 30 MB）",
+    "unitTests": "58 / 58 通过",
+    "subpathChecks": "41 / 41 通过（/playtime-atlas-20261021/works/06-museum-main/）",
+    "acceptance": "56 / 56 断言通过，控制台错误 0，失败请求 0（新增搜索即时性、零结果空态、卡片三块无压盖三条断言）",
+    "mobileOverflow": "390×844 下 7 条路由溢出均为 0px",
+    "tokenConsistency": "静态 130 个令牌 + 运行期 130 个令牌与设计系统完全一致（0 不一致）",
+    "fonts": "art/assets/fonts/fonts.css 在子路径下 HTTP 200（1730 B），5 个 woff2 全部 200，无 CDN；线上（已发布旧包）实测 200（1545 B）",
+    "search": "三个入口 × 存在/不存在关键词 = 9/9 通过（scripts/search-probe.mjs）。「输入即过滤」：不存在的关键词 211 → 0 并给出空态；「掌机」211 → 10；清空 → 211。修复前 fill() 后立刻读到旧值（211 → 211），根因是 220ms 去抖",
+    "overlap": "scripts/overlap-probe.mjs 裁剪感知口径下 8 条路由 × 2 视口（1440 / 390）全部 0 对；用 13-qa-curation 自身的 checkOverlaps 复跑本机构建亦为 0 对",
+    "fullPageShots": "scripts/acceptance.mjs 的 shotFull() 产出 7 张整页截图（screenshots/full/）；目录页 390px 下 47737px 超 Chromium 贴图上限，如实记为「未完成」并跳过",
+    "browser": "所有线上/本地核验与交付截图均经 Ego 浏览器（ego-browser skill v2.1.0）完成，产物在 screenshots/ego/",
+    "consoleErrors": 0,
+    "failedRequests": 0
+  },
   "entrypoints": [
     {
       "id": "06-museum-core",
       "title": "回响电玩馆 · PLAYTIME ATLAS",
       "path": "index.html",
-      "note": "博物馆主站；馆内导览、时间长廊、2D 目录、可选 3D 展厅"
+      "note": "博物馆主站；馆内导览、时间长廊、2D 无障碍目录、可选 3D 展厅"
+    }
+  ],
+  "routes": [
+    {
+      "path": "#/",
+      "name": "馆前广场"
+    },
+    {
+      "path": "#/timeline",
+      "name": "时间长廊"
+    },
+    {
+      "path": "#/era/:eraId",
+      "name": "年代展厅"
+    },
+    {
+      "path": "#/catalog",
+      "name": "2D 无障碍目录"
+    },
+    {
+      "path": "#/exhibit/:id",
+      "name": "展品详情"
+    },
+    {
+      "path": "#/collection",
+      "name": "我的收藏"
+    },
+    {
+      "path": "#/hall",
+      "name": "3D 展厅（可选）"
+    },
+    {
+      "path": "#/hall/:hallId",
+      "name": "可玩展厅（嵌入）"
+    },
+    {
+      "path": "#/about",
+      "name": "馆方说明"
     }
   ],
   "exhibits": [
     {
       "id": "origins",
       "task": "08-era-origins",
-      "status": "pending",
+      "status": "integrated",
       "path": "exhibits/origins/index.html"
     },
     {
@@ -67,9 +124,35 @@
     }
   ],
   "integrations": {
-    "catalog": "05-museum-research → public/data/catalog.json（运行时优先级最高）",
-    "art": "07-museum-art → public/art/assets/ + public/data/design-tokens.json",
-    "games": "08–12 → public/exhibits/<dir>/"
+    "catalog": "05-museum-research → public/data/catalog.json（运行时优先级最高，按来源去重合并）",
+    "art": "07-museum-art → 仅 public/art/assets/fonts/（5 个 OFL woff2 + 许可全文）与 public/data/design-tokens.json（仅用于说明页标注来源，不注入 CSS 变量）",
+    "games": "08–12 → public/exhibits/<dir>/（包体通过部署性检查才并入，否则标记 pending）",
+    "embedConvention": "外壳统一约定：.embed-wrap = .ds-canvas-frame（1px --ds-line 描边 + --ds-radius-media 圆角 + contain:paint + isolation:isolate），内框 .embed-frame 宽 100% / 高 clamp(420px,70vh,760px)，资源路径相对 ./exhibits/<dir>/<entry>；嵌入内容自身配色与玩法由各作者负责"
   },
-  "notes": "本任务只交付可静态构建的产物；GitHub 仓库创建与 Pages 部署由 14-publish 统一执行。"
+  "assetProvenance": {
+    "public/data/tokens.css": "拷贝产物（构建期生成，非手工维护）。来源链：16-design-system → 07-museum-art/scripts/sync-ds-tokens.mjs → 07-museum-art/scripts/build-tokens.mjs → 07-museum-art/public/assets/tokens.css → 本目录 scripts/sync-exhibits.mjs 拷贝。复核：与 16 的深色主题块取值逐名一致（129 个 --ds-*，0 差异）。本目录未手改该文件。",
+    "public/exhibits/{arcade,console,modern,origins}/**": "拷贝产物。来源为 ../08…12/dist，经 scripts/sync-exhibits.mjs 复制。复核：五个展厅拷贝与源 dist 逐字节一致（diff -rq 全过）。本目录未手改任何一个文件。",
+    "conclusion": "这 12 个文件均为构建/同步产物，不是手工拷贝的静态资源；修改应回到 16 / 07 / 08—12 的源头，再重跑 npm run build。"
+  },
+  "data": {
+    "exhibits": 211,
+    "eras": 10,
+    "sources": 485
+  },
+  "docs": {
+    "readme": "README.md",
+    "task": "TASK.md",
+    "status": "STATUS.md",
+    "restylePrep": "RESTYLE-PREP.md",
+    "acceptance": "ACCEPTANCE.md",
+    "subpathVerify": "SUBPATH-VERIFY.md",
+    "sources": "SOURCES.md",
+    "licenses": "LICENSES.md"
+  },
+  "knownIssues": [
+    "public/art/assets/fonts/fonts.css：源码已修（1730 B），线上仍是旧包（1545 B），待 14-publish 重新部署后生效。",
+    "线上搜索仍是 220ms 去抖的旧包，填完立刻读会读到上一档结果；本地新构建已改为输入即过滤，待发布。"
+  ],
+  "buildDeps": "scripts/sync-exhibits.mjs 从 ../08…12/dist 拷贝 5 个可玩展厅；14-publish 须在 08—12 产物就绪后再构建本目录",
+  "notes": "本任务只交付可静态构建的产物；GitHub 仓库创建与 Pages 部署由 14-publish 统一执行。本任务未做任何 git 操作。"
 }

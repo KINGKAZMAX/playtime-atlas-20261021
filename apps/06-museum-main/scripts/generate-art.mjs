@@ -12,7 +12,7 @@
  * 本生成器始终可重跑，输出确定性（固定随机种子），便于 diff 与复现。
  */
 
-import { mkdir, writeFile, readdir, unlink } from 'node:fs/promises';
+import { mkdir, writeFile, readdir, unlink, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -21,11 +21,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const OUT = path.join(ROOT, 'public', 'art');
 
-// ── 调色板（与 src/styles/tokens.css 保持一致） ────────────────────────────
-const INK = '#0D1526';
-const INK_DEEP = '#070C16';
-const PAPER = '#F4EDE0';
-const SIGNAL = '#FF6B2C';
+// ── 调色板 ────────────────────────────────────────────────────────────────
+// 依据 16-design-system/design-tokens.json §1（深色主题取值）：
+//   背景 --ds-bg #100F0E / --ds-bg-raised #1A1917
+//   文字 --ds-ink #F7F4F0
+//   唯一强调色 --ds-accent #E0684A
+// 年代辅色（ERA_THEME）是**展柜身份标识**，不属于 UI 强调色，保持不变。
+const INK = '#1A1917';
+const INK_DEEP = '#100F0E';
+const PAPER = '#F7F4F0';
+const SIGNAL = '#E0684A';
 
 const ERA_THEME = [
   { id: 'e01', code: '1950s', label: '计算的童年', accent: '#6FC7BE', motif: 'tape' },
@@ -236,7 +241,7 @@ function mark() {
   <defs>
     <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="${SIGNAL}"/>
-      <stop offset="100%" stop-color="#FFB27A"/>
+      <stop offset="100%" stop-color="#EE8266"/>
     </linearGradient>
   </defs>
   <rect width="120" height="120" rx="26" fill="${INK}"/>
@@ -278,6 +283,26 @@ function formSvg(kind) {
 </svg>`;
 }
 
+// ── 自托管字体样式表 ────────────────────────────────────────────────────────
+/**
+ * 把 src/assets/fonts.css 复制到 public/art/assets/fonts/。
+ * 该文件是本项目自有的 @font-face 清单（字体族名与本项目 CSS 变量一致）。
+ * 字体二进制与 OFL 许可全文由 scripts/sync-exhibits.mjs 从 07-museum-art 复制。
+ * 放在生成步骤里，是为了让 sync --clean 之后样式表依然会被还原。
+ */
+async function copyFontStylesheet() {
+  const src = path.join(ROOT, 'src', 'assets', 'fonts.css');
+  const dir = path.join(OUT, 'assets', 'fonts');
+  const dst = path.join(dir, 'fonts.css');
+  if (!existsSync(src)) {
+    console.warn('⚠ 缺少 src/assets/fonts.css，跳过字体样式表复制');
+    return false;
+  }
+  await mkdir(dir, { recursive: true });
+  await writeFile(dst, await readFile(src, 'utf8'), 'utf8');
+  return true;
+}
+
 // ── 输出 ────────────────────────────────────────────────────────────────────
 async function main() {
   await mkdir(OUT, { recursive: true });
@@ -306,8 +331,11 @@ async function main() {
     await writeFile(path.join(OUT, name), content, 'utf8');
   }
 
+  const fontsCss = await copyFontStylesheet();
+
   console.log(`✓ 原创美术包已生成：${written.length} 个 SVG → public/art/`);
   console.log(`  · 馆徽 1 · 年代海报 ${ERA_THEME.length} · 年代底纹 ${ERA_THEME.length} · 载体轮廓 ${Object.keys(FORMS).length}`);
+  console.log(`  · 自托管字体样式表：${fontsCss ? '已就位 public/art/assets/fonts/fonts.css' : '未就位'}`);
 }
 
 main().catch((err) => {

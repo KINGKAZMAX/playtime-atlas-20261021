@@ -6,10 +6,16 @@
   "description": "《渊甲拾遗者 / ABYSS-CARAPACE SALVAGER》 — an original interactive Three.js deep-sea mining carapace with procedural geometry, exploded inspection, parameter editing and GLB export.",
   "scripts": {
     "dev": "vite --port 4312 --strictPort",
-    "build": "vite build",
+    "build": "node scripts/sync-model.mjs && vite build && node scripts/copy-docs.mjs",
     "preview": "vite preview --port 4312 --strictPort",
     "capture": "node scripts/capture.mjs",
-    "verify:glb": "node scripts/verify-glb.mjs"
+    "check:d1": "node scripts/check-d1.mjs",
+    "verify:fallback": "node scripts/check-webgl-fallback.mjs",
+    "verify:glb": "node scripts/verify-glb.mjs",
+    "verify:dist": "node scripts/verify-dist.mjs",
+    "sync:model": "node scripts/sync-model.mjs",
+    "probe:build": "node scripts/probe-build.mjs",
+    "probe:dist": "node scripts/probe-dist.mjs"
   },
   "dependencies": {
     "three": "^0.180.0"

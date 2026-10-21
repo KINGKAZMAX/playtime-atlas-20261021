@@ -11,8 +11,6 @@
     "start": "bash scripts/start.sh"
   },
   "dependencies": {
-    "@fontsource-variable/jetbrains-mono": "^5.2.5",
-    "@fontsource-variable/space-grotesk": "^5.2.5",
     "three": "0.169.0"
   },
   "devDependencies": {

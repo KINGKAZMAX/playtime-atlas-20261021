@@ -169,6 +169,13 @@ export interface DefenseState {
   /** 灰烬裂隙的冲击闪光计时 */
   riftFlash: number;
   waveClock: number;
+  /**
+   * 灰烬航道独立时钟。
+   * 灰烬 AI 在自己的时间线上发动突击，不受玩家波次状态影响：
+   * 否则在「准备阶段」（inWave=false）waveClock 不推进，AI 明明宣布突击，
+   * 编队却迟迟不出现在场上。
+   */
+  ashClock: number;
   difficulty: Difficulty;
   speed: number;
   paused: boolean;

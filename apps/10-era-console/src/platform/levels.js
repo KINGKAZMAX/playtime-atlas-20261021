@@ -11,6 +11,11 @@
  *     单向落脚板（高度 = max(两侧地面行) − 1，两侧各差 1 格），
  *     保证任意位置失足都能安全通过 —— 关卡必定可通关。
  *  4. 相邻两段地面高差 ≤ 2 格，保证跳跃上升量在射程之内。
+ *  5. 尖刺宽度 ≤ 2 格：3 格宽尖刺需要连续 48px 滞空才能越过，
+ *     而满跳射程只有 ≈74px，余量不足 10px，容错率过低。
+ *  6. 色晶不得位于尖刺正上方，也不得紧贴尖刺的落地区
+ *     （否则"跳起拾取"与"越过尖刺"无法在同一次跳跃内完成）。
+ *  7. 地面敌人的巡逻范围不与尖刺落地区重叠，避免落地即撞。
  *
  * 角色 / 关卡 / 命名全部原创，未使用任何商业游戏资产。
  */
@@ -161,8 +166,8 @@ const LEVEL_LADDER = {
   enemies: [
     { type: 'cusp', x: 28, y: 9, range: 4 },
     { type: 'cusp', x: 84, y: 13, range: 4 },
-    { type: 'wisp', x: 36, y: 7, range: 7 },
-    { type: 'wisp', x: 86, y: 9, range: 6 },
+    { type: 'wisp', x: 29, y: 3, range: 2 },
+    { type: 'wisp', x: 89, y: 3, range: 2 },
   ],
   movers: [
     { axis: 'v', x: 26, y: 5, range: 4, speed: 0.3 },
@@ -197,19 +202,18 @@ const LEVEL_FORGE = {
   extraOneways: [],
   spikes: [
     [17, 11, 2],
-    [35, 10, 2],
-    [56, 12, 3],
-    [75, 12, 2],
-    [86, 10, 2],
+    [37, 10, 2],
+    [58, 12, 2],
+    [87, 10, 2],
     [106, 12, 2],
     [117, 12, 2],
   ],
   player: [3, 13],
   goal: [119, 13],
   shards: [
-    [36, 9],
+    [39, 9],
     [66, 9],
-    [108, 11],
+    [104, 11],
   ],
   checkpoints: [
     [15, 12],
@@ -217,13 +221,12 @@ const LEVEL_FORGE = {
     [94, 12],
   ],
   enemies: [
-    { type: 'cusp', x: 26, y: 13, range: 3 },
-    { type: 'cusp', x: 46, y: 12, range: 4 },
-    { type: 'cusp', x: 60, y: 13, range: 3 },
-    { type: 'cusp', x: 84, y: 11, range: 3 },
-    { type: 'wisp', x: 37, y: 7, range: 6 },
-    { type: 'wisp', x: 78, y: 9, range: 7 },
-    { type: 'wisp', x: 108, y: 9, range: 6 },
+    { type: 'cusp', x: 28, y: 13, range: 1 },
+    { type: 'cusp', x: 48, y: 12, range: 1 },
+    { type: 'cusp', x: 8, y: 13, range: 1 },
+    { type: 'wisp', x: 30, y: 6, range: 6 },
+    { type: 'wisp', x: 78, y: 5, range: 7 },
+    { type: 'wisp', x: 108, y: 6, range: 6 },
   ],
   movers: [
     { axis: 'h', x: 33, y: 9, range: 6, speed: 0.4 },

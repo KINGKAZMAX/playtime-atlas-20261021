@@ -1,0 +1,53 @@
+{
+  "$comment": "本目录是 16-design-system 的 vendored 副本（只读复制，未修改）。记录来源与校验值，便于 13/14 核对「页面用的令牌确实来自 16」。",
+  "generatedAt": "2026-10-21T23:40:00+08:00",
+  "upstream": {
+    "task": "16-design-system",
+    "system": "余晖设计系统 / Afterglow Design System",
+    "version": "1.0.0",
+    "authoritativeTokens": "16-design-system/design-tokens.json",
+    "tokenPrefix": "--ds-"
+  },
+  "policy": {
+    "tokensAreAuthoritativeFrom16": true,
+    "colorsCopiedFromReferenceSite": false,
+    "fontFilesCopiedFromReferenceSite": false,
+    "pageTextCopiedFromReferenceSite": false,
+    "note": "本页所有色值 / 字体 / 间距均来自 16 的令牌层；不复制参考站 https://olek.si/ 的任何色值、字体文件、页面文案或版式。"
+  },
+  "files": [
+    {
+      "path": "tokens.css",
+      "upstream": "16-design-system/src/tokens.css",
+      "sha256": "e9595d51336fac6a2cb013095b8863c72022bb20e545fa46867c129e9addf368",
+      "identicalToUpstream": true,
+      "role": "令牌层：色板 / 字体栈 / 间距 / 圆角 / 阴影 / 动效时长"
+    },
+    {
+      "path": "components.css",
+      "upstream": "16-design-system/src/components.css",
+      "sha256": "a602f4143823fec1c596c94bab8400e14dd24c462a8565cb4bcc0564e8930f51",
+      "identicalToUpstream": true,
+      "role": "组件层：按钮 / 卡片 / 表单 / 焦点环等"
+    },
+    {
+      "path": "fonts/",
+      "upstream": "16-design-system/fonts/",
+      "identicalToUpstream": true,
+      "role": "自托管字体（Space Grotesk / Inter / Space Mono / Noto Sans SC 子集）",
+      "license": "SIL Open Font License 1.1",
+      "licenseTexts": [
+        "fonts/OFL-space-grotesk.txt",
+        "fonts/OFL-inter.txt",
+        "fonts/OFL-space-mono-regular.txt",
+        "fonts/OFL-space-mono-bold.txt",
+        "fonts/OFL-noto-sans-sc.txt"
+      ],
+      "licenseTextNote": "许可原文必须与字体同目录保留，不得删除；随站点分发时同样保留。"
+    }
+  ],
+  "verification": {
+    "method": "shasum -a 256 比对 vendored 副本与 16 原件；diff -rq 比对 fonts/ 整目录",
+    "result": "全部一致，无差异"
+  }
+}

@@ -6,7 +6,14 @@ import { readFileSync } from 'node:fs';
  * 页脚会链接到这些文档，而 GitHub Pages 只发布构建产物，
  * 因此需要在构建时复制，避免 404。
  */
-const DOC_FILES = ['README.md', 'SOURCES.md', 'DIFFERENCES.md', 'LICENSES.md', 'QA.md'];
+const DOC_FILES = [
+  'README.md',
+  'SOURCES.md',
+  'DIFFERENCES.md',
+  'LICENSES.md',
+  'QA.md',
+  'RESTYLE-INVENTORY.md',
+];
 
 function copyDocs() {
   return {

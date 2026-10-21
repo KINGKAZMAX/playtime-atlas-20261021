@@ -10,8 +10,8 @@ export const EXHIBITS = [
     name: '脉冲走廊',
     nameEn: 'PULSE CORRIDOR',
     path: '/pulse',
-    color: '#4FE3D0',
-    soft: 'rgba(79, 227, 208, 0.16)',
+    color: '#2E6A5E',
+    soft: 'rgba(46, 106, 94, 0.14)',
     kind: '节奏反应',
     desc:
       '四轨光带从远处滑来，节拍与你的手指对撞。曲子是现场合成的，谱面即乐谱，视听永不脱节。',
@@ -24,8 +24,8 @@ export const EXHIBITS = [
     nameEn: 'PRISM ATRIUM',
     path: '/atrium',
     no: 'EXHIBIT 02',
-    color: '#FFC46B',
-    soft: 'rgba(255, 196, 107, 0.16)',
+    color: '#B4432B',
+    soft: 'rgba(180, 67, 43, 0.12)',
     kind: '空间解谜',
     desc:
       '一座等距的玻璃中庭。转动反光板，让白光在立柱之间折返，劈成青与品红，分别落进接收环。',
@@ -38,8 +38,8 @@ export const EXHIBITS = [
     nameEn: 'HALO DECK',
     path: '/halo',
     no: 'EXHIBIT 03',
-    color: '#9D7BFF',
-    soft: 'rgba(157, 123, 255, 0.16)',
+    color: '#2C5C8F',
+    soft: 'rgba(44, 92, 143, 0.12)',
     kind: '沉浸展项',
     desc:
       '夜色中的一座棱镜庭院。拖拽环视四周，热点展签在你靠近时亮起，讲述当代沉浸式硬件的来路。',
@@ -52,25 +52,25 @@ export const KEYWORDS = [
   {
     zh: '触屏化',
     en: 'TOUCH',
-    color: '#4FE3D0',
+    color: '#2E6A5E',
     text: '手机成为第一批真正的游戏主机。触屏没有摇杆与按键，设计师必须把操作重新想一遍：点、划、拖、长按。轻量、短局、一键即玩成为移动游戏的基本语法。',
   },
   {
     zh: '独立化',
     en: 'INDIE',
-    color: '#FFC46B',
+    color: '#8A5A00',
     text: '数字发行让小团队绕开发行商与实体零售。一款由一人完成的作品可以在商店页上架，并被全球玩家看见——独立游戏从「小众品类」变成了主流供给的一部分。',
   },
   {
     zh: '服务化',
     en: 'SERVICE',
-    color: '#FF5FA2',
+    color: '#B4432B',
     text: '作品越来越像持续运营的服务：赛季、直播活动、创作者工坊与内购经济把「一次通关」改写成「长期在线」。游戏与运营的边界被彻底抹平。',
   },
   {
     zh: '沉浸化',
     en: 'IMMERSIVE',
-    color: '#9D7BFF',
+    color: '#5B3FA8',
     text: '头显把视角从屏幕搬进空间，六自由度定位与身体姿态成为新的输入方式。与此同时，WebXR、OpenXR 等开放标准让浏览器也能承载轻量的沉浸体验。',
   },
 ];

@@ -1,3 +1,5 @@
+import { t } from '../i18n/index.js';
+
 const $ = (id) => document.getElementById(id);
 
 export class HUD {
@@ -69,13 +71,13 @@ export class HUD {
 
     this.el.fuelBar.style.width = `${Math.max(0, Math.min(100, fuel))}%`;
     this.el.fuelValue.textContent = `${Math.round(fuel)}`;
-    this.el.fuelValue.style.color = fuel < 25 ? 'var(--ember)' : '';
+    this.el.fuelValue.style.color = fuel < 25 ? 'var(--play-ember)' : '';
 
     this.el.hullBar.style.width = `${Math.max(0, Math.min(100, hull))}%`;
     this.el.hullValue.textContent = `${Math.round(hull)}`;
-    this.el.hullValue.style.color = hull < 35 ? 'var(--ember)' : '';
+    this.el.hullValue.style.color = hull < 35 ? 'var(--play-ember)' : '';
 
-    this.el.boostValue.textContent = boosting ? '后燃器点火' : '后燃器待机';
+    this.el.boostValue.textContent = boosting ? t('hud.boost.on') : t('hud.boost.idle');
     this.el.boostValue.classList.toggle('on', Boolean(boosting));
   }
 
@@ -86,7 +88,7 @@ export class HUD {
     this.el.nearest.textContent = nearest || '—';
     this.el.discoveryCount.textContent = `${discoveries} / ${total}`;
     this.el.headingValue.textContent = `${String(Math.round(heading)).padStart(3, '0')}°`;
-    this.el.camMode.textContent = camMode === 'chase' ? '追尾' : '座舱';
+    this.el.camMode.textContent = camMode === 'chase' ? t('hud.cam.chase') : t('hud.cam.cockpit');
   }
 
   setPrompt(key, text) {

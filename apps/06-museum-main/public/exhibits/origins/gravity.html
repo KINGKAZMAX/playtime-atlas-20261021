@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-CN" data-ds-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>引力双星 / GRAVITY DUO · 光点年代</title>
+    <meta
+      name="description"
+      content="展品 08-B：原创轨道引力对决。光迹即武器，相位脉冲可反制，AI 三档难度、触屏可玩。"
+    />
+    <meta name="color-scheme" content="dark" />
+    <!-- 内联 SVG 图标：不引入任何二进制素材，也避免 /favicon.ico 404 -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23070b1c'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%2367e8f9'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23ffb45c'/%3E%3C/svg%3E"
+    />
+    <link rel="preload" href="./assets/space-grotesk-latin-D_RL9BCa.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./assets/inter-latin-Bsj20kCF.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- 余晖设计系统：令牌层 / 组件层 / 自托管字体（全部本地，无 CDN）
+         顺序：既有 CSS → 规范层 → 08 专属层。 -->
+    <!-- Pages 子路径基准（MIGRATION-NOTES §6）。本目录所有资源仍走相对路径。 -->
+    <style>
+      :root {
+        --ds-base: "/playtime-atlas-20261021/";
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/gravity-Cqk4tJsr.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/loop-wgRk2069.js">
+    <link rel="modulepreload" crossorigin href="./assets/storage-BRGAT99v.js">
+    <link rel="stylesheet" crossorigin href="./assets/loop-D4DqSMcZ.css">
+    <link rel="stylesheet" crossorigin href="./assets/storage-CIVSUuMJ.css">
+  </head>
+  <body class="game-page ds-shell">
+    <a class="skip-link ds-skip" href="#stage">跳到游戏</a>
+
+    <header class="topbar ds-topbar">
+      <div class="topbar__inner">
+        <a class="topbar__brand ds-topbar__brand" href="./index.html"><b>光点年代</b> LUMEN ERA</a>
+        <span class="topbar__sep"></span>
+        <h1 class="topbar__title">引力双星 <span>Gravity Duo</span></h1>
+        <div class="topbar__actions">
+          <button class="btn btn--sm btn--ghost ds-btn ds-btn--ghost ds-btn--sm" data-control="mute" aria-pressed="false">音效 开</button>
+          <button class="btn btn--sm btn--ghost ds-btn ds-btn--ghost ds-btn--sm" data-control="pause">暂停</button>
+          <button class="btn btn--sm btn--ghost ds-btn ds-btn--ghost ds-btn--sm" data-control="restart">重开</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="stage" id="stage">
+      <div>
+        <div class="game-frame ds-canvas-frame" id="gravity-root" data-game-root data-role="root">
+          <canvas data-role="canvas" aria-label="引力双星游戏画面：两艘飞船在中央核心的引力下沿轨道追逐"></canvas>
+          <div class="focus-hint">点击画面以启用键盘</div>
+          <p class="sr-only" role="status" aria-live="polite" data-role="live"></p>
+          <div class="overlay" data-role="overlay" hidden>
+            <div class="overlay__card">
+              <p class="overlay__kicker" data-role="overlay-kicker"></p>
+              <h2 class="overlay__title" data-role="overlay-title"></h2>
+              <p class="overlay__desc" data-role="overlay-desc"></p>
+              <div class="overlay__actions" data-role="overlay-actions"></div>
+              <p class="overlay__meta" data-role="overlay-meta"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="touchpad touchpad--on" aria-hidden="true">
+          <button class="touchpad__btn ds-btn ds-btn--secondary" data-control="burst" data-player="0">青辉脉冲</button>
+          <button class="touchpad__btn ds-btn ds-btn--secondary" data-control="burst" data-player="1">朱辉脉冲</button>
+        </div>
+        <p class="note" style="margin-top: 10px">
+          触屏：在画面上按住并拖动 —— 左右拖动控制转向，向上推控制推进。
+        </p>
+      </div>
+
+      <aside class="side">
+        <div class="card">
+          <div class="card__title">对局设置</div>
+          <div class="field">
+            <div class="field__label">模式</div>
+            <div class="segment segment--row" role="group" aria-label="对局模式">
+              <button class="seg-btn ds-chip" data-control="mode" data-value="1p" aria-pressed="true">单人 vs AI</button>
+              <button class="seg-btn ds-chip" data-control="mode" data-value="2p" aria-pressed="false">双人同屏</button>
+            </div>
+          </div>
+          <div class="field" data-role="difficulty-field">
+            <div class="field__label">AI 难度 <b data-role="difficulty-label">稳轨</b></div>
+            <div class="segment segment--row" role="group" aria-label="AI 难度">
+              <button class="seg-btn ds-chip" data-control="difficulty" data-difficulty="rookie" data-value="rookie" aria-pressed="false">
+                微轨<span class="seg-btn__sub">轻松</span>
+              </button>
+              <button class="seg-btn ds-chip" data-control="difficulty" data-difficulty="steady" data-value="steady" aria-pressed="true">
+                稳轨<span class="seg-btn__sub">普通</span>
+              </button>
+              <button class="seg-btn ds-chip" data-control="difficulty" data-difficulty="keen" data-value="keen" aria-pressed="false">
+                锐轨<span class="seg-btn__sub">困难</span>
+              </button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field__label">最高分 <b data-role="best-label">0 : 0</b></div>
+            <p class="note">记录保存在本机浏览器中。</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__title">操作</div>
+          <dl class="keys">
+            <div class="keys__row">
+              <dt><kbd>A</kbd><kbd>D</kbd></dt>
+              <dd>青辉转向</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>W</kbd></dt>
+              <dd>青辉推进</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>空格</kbd></dt>
+              <dd>青辉相位脉冲</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>←</kbd><kbd>→</kbd></dt>
+              <dd>朱辉转向（双人模式）</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>↑</kbd></dt>
+              <dd>朱辉推进（双人模式）</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>/</kbd><kbd>.</kbd></dt>
+              <dd>朱辉相位脉冲（双人模式）</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>P</kbd><kbd>Esc</kbd></dt>
+              <dd>暂停 / 继续</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>R</kbd></dt>
+              <dd>重开</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>M</kbd></dt>
+              <dd>静音开关</dd>
+            </div>
+          </dl>
+          <p class="note" style="margin-top: 12px">
+            <strong>键盘只在画面获得焦点时生效</strong>，以免影响同页其它区域。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card__title">机制来源</div>
+          <p class="note">
+            引力井与有限燃料来自 1962 年 MIT 的 <em>Spacewar!</em>（两艘飞船在恒星引力井中缠斗）；
+            旋转 / 推进的矢量飞船操作来自 1979 年的 <em>Asteroids</em>。
+            <b>光迹即武器</b>与<b>相位脉冲</b>为本展品原创规则。
+            <a href="./index.html#sources">查看完整来源与差异说明 →</a>
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="foot ds-footer">
+      <div class="foot__inner ds-footer__row">
+        <span>展品 08-B · 原创重新演绎 · 非任何历史作品的复刻</span>
+        <span class="foot__links ds-footer__links">
+          <a href="./index.html">返回展厅</a>
+          <a href="./rally.html">← 上一件：辉点对拉</a>
+        </span>
+      </div>
+    </footer>
+
+  </body>
+</html>

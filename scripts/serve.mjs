@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * 零依赖静态服务器 —— 本地预览 site/ 用（与 Pages 的子路径行为一致）。
+ * 零依赖静态服务器 —— 本地预览 docs/（发布根）用（与 Pages 的子路径行为一致）。
  * 用法：node scripts/serve.mjs [port] [root]
  */
 
@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const port = Number(process.argv[2] || 4320);
-const root = path.resolve(ROOT, process.argv[3] || 'site');
+const root = path.resolve(ROOT, process.argv[3] || 'docs');
 
 const TYPES = {
   '.html': 'text/html; charset=utf-8',

@@ -1,0 +1,59 @@
+/* =====================================================================
+ * 霓虹街廊 · 街机可玩展厅
+ * src/styles/fonts.css — 自托管字体声明
+ *
+ * 字体族名与 16-design-system/fonts/FONT-MANIFEST.json 一致（规范 §2.1）：
+ *   Display  Space Grotesk —— 作品名、分区标题、按钮
+ *   Text     Inter          —— 正文、说明、详情
+ *   Mono     Space Mono     —— 年份、编号、键位、坐标
+ * 全部为 SIL Open Font License 1.1，许可原文随包附于 fonts/ 目录，
+ * 并登记在 LICENSES.md。运行期零外部请求：不引用任何 CDN。
+ *
+ * CJK 策略：拉丁字体只覆盖拉丁与数字；汉字优先走系统字体栈（0 字节），
+ * Noto Sans SC 子集作为渐进增强。两者叠加时拉丁字形来自自托管字体，
+ * 汉字字形来自系统字体/子集字体，避免混合基线错位。
+ *
+ * 画布内的拉丁字符仍由 src/core/bitmapFont.js 的原创 5×7 点阵字库绘制，
+ * **不**使用这里的 webfont —— 像素字是街机观感的一部分（红线 K.1 / K.3）。
+ * ===================================================================== */
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("./fonts/space-grotesk-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./fonts/inter-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/space-mono-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/space-mono-bold.woff2") format("woff2");
+}
+
+/* 渐进增强：Noto Sans SC 子集（覆盖有限，超出部分回落系统字体） */
+@font-face {
+  font-family: "Noto Sans SC";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./fonts/noto-sans-sc-subset.woff2") format("woff2");
+}

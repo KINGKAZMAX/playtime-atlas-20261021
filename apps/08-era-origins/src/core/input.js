@@ -4,15 +4,20 @@
  * 键盘监听挂在「游戏根容器」上而不是 document：
  * 只有当该容器（或其子树）持有焦点时，keydown/keyup 才会冒泡到这里，
  * 因此「键盘只在聚焦时生效」由 DOM 天然保证，无需额外的全局拦截。
+ * 另外还会在事件到达时用 scope.isFocused() 复核一次真实焦点位置，
+ * 避免焦点标志变旧时误判（详见 core/focus.js）。
  */
 export class InputState {
   /**
    * @param {import('./focus.js').FocusScope} scope
-   * @param {{ codes?: string[] }} [opts] codes: 本游戏会消费的按键（用于阻止默认滚动行为）
+   * @param {{ codes?: string[], onActivity?: () => void }} [opts]
+   *   codes: 本游戏会消费的按键（用于阻止默认滚动行为）
+   *   onActivity: 在**作用域内**发生按键时回调（用于在用户手势中解锁音频）
    */
   constructor(scope, opts = {}) {
     this.scope = scope;
     this.codes = new Set(opts.codes ?? []);
+    this.onActivity = opts.onActivity ?? null;
     this.down = new Set();
     this.justPressed = new Set();
     this.justReleased = new Set();
@@ -20,12 +25,14 @@ export class InputState {
     this.pointerInside = false;
 
     this._onKeyDown = (e) => {
-      if (!this.scope.focused) return;
+      // 真实焦点核验：activeElement 必须在游戏容器内
+      if (!this.scope.isFocused()) return;
       if (e.repeat) return;
       if (!this.down.has(e.code)) {
         this.down.add(e.code);
         this.justPressed.add(e.code);
       }
+      this.onActivity?.();
     };
     this._onKeyUp = (e) => {
       if (!this.down.has(e.code)) return;
@@ -34,10 +41,12 @@ export class InputState {
     };
     this._onBlur = () => {
       this.down.clear();
+      this.justPressed.clear();
+      this.justReleased.clear();
     };
     // 焦点离开游戏作用域时清空按键，避免「回来时角色还在走」
     this._onFocusChange = (e) => {
-      if (e.detail && e.detail.focused === false) this.down.clear();
+      if (e.detail && e.detail.focused === false) this._onBlur();
     };
 
     const root = scope.root;

@@ -1,29 +1,120 @@
-/* =========================================================
-   折光纪 · PRISM ERA —— 设计令牌
-   原创视觉识别：夜蓝墨底 + 棱镜三色 + 纸白
-   ========================================================= */
+/* ==========================================================================
+   折光纪 · PRISM ERA —— 本目录自有令牌层（语义别名 + 玩法语义色）
+   --------------------------------------------------------------------------
+   依据：16-design-system/MIGRATION-NOTES.md
+     §0 风险 B —— 本系统的 `--ds-*` 取值**只允许声明一次**，
+                   本目录自有层**只允许声明语义别名**，不得重新定义 `--ds-*` 的取值。
+     §2.8        —— 12-era-modern 逐项对照。
+     §7          —— reduced-motion 降级（由 16 的 tokens.css / components.css 提供，本文件不重复实现）。
+     §9 V.3/V.4  —— 令牌一致性 / 命名空间冲突。
+
+   `--ds-*` 取值的**唯一声明处**是本目录内的 16 号原样副本：
+     public/assets/ds/tokens.css      （令牌层，213 令牌）
+     public/assets/ds/components.css  （组件层，27 个 .ds-* 类）
+     public/assets/ds/fonts/fonts.css （自托管字体声明）
+   它们随本厅产物一起发布，由 index.html 以相对路径引入，适配任意子路径。
+
+   本文件只做三件事：
+     ① 语义别名层：本厅既有令牌 → 设计系统令牌（var() 惰性求值，别名在
+        [data-ds-theme="dark"] 子树里自动取深色值）。
+     ② 高对比间接层：--hc-* 指向 --ds-*，开关只改本目录自有变量，
+        **不重新定义 --ds-***（MIGRATION-NOTES §0 风险 B）。
+     ③ 玩法语义色：--prism-* 画布内配色，红线 K.1 保持原值。
+   ========================================================================== */
+
+:root {
+  /* ---------- ① 高对比间接层 ----------
+     默认与设计系统令牌同值；「高对比」开关打开时只改这一层，
+     因此 --ds-* 的取值在整个目录里始终只有 16 号副本一处声明。 */
+  --hc-line: var(--ds-line);
+  --hc-line-strong: var(--ds-line-strong);
+  --hc-ink-soft: var(--ds-ink-soft);
+  --hc-ink-faint: var(--ds-ink-faint);
+}
+
+:root[data-high-contrast='true'] {
+  --hc-line: var(--ds-ink-faint);
+  --hc-line-strong: var(--ds-ink-soft);
+  --hc-ink-soft: var(--ds-ink);
+  --hc-ink-faint: var(--ds-ink);
+}
+
+/* ==========================================================================
+   ② 语义别名层（既有令牌 → 设计系统令牌）
+   --------------------------------------------------------------------------
+   依据 MIGRATION-NOTES §2.8（12-era-modern 行）：
+     --r-md 12px   → --ds-radius-md 14px
+     --r-lg 20px   → --ds-radius-lg 20px ✅
+     --r-xl 28px   → --ds-radius-xl 28px ✅
+     --maxw 1180px → --ds-max-width 1280px
+     --gap 20px    → --ds-space-4 16px
+     --dur 220ms   → --ds-dur-base 320ms
+     --font-mono   → --ds-font-mono 'Space Mono'
+   ========================================================================== */
 
 :root {
   /* 底色层次 */
-  --ink-900: #04061a;
-  --ink-850: #050918;
-  --ink-800: #070b1e;
-  --ink-700: #0b1130;
-  --ink-600: #101a42;
-  --ink-500: #16235a;
-  --ink-400: #1d2d70;
+  --ink-900: var(--ds-bg);
+  --ink-850: var(--ds-bg);
+  --ink-800: var(--ds-bg-sunken);
+  --ink-700: var(--ds-surface);
+  --ink-600: var(--ds-bg-raised);
+  --ink-500: var(--ds-surface);
+  --ink-400: var(--hc-line-strong);
 
   /* 前景 */
-  --paper: #f2f0e9;
-  --paper-90: rgba(242, 240, 233, 0.9);
-  --paper-70: rgba(242, 240, 233, 0.7);
-  --paper-52: rgba(242, 240, 233, 0.52);
-  --paper-34: rgba(242, 240, 233, 0.34);
-  --paper-18: rgba(242, 240, 233, 0.18);
-  --paper-10: rgba(242, 240, 233, 0.1);
-  --paper-06: rgba(242, 240, 233, 0.06);
+  --paper: var(--ds-ink);
+  --paper-90: var(--ds-ink);
+  --paper-70: var(--hc-ink-soft);
+  --paper-52: var(--hc-ink-soft);
+  --paper-34: var(--hc-ink-faint);
+  --paper-18: var(--ds-canvas-hud-line);
+  --paper-10: var(--hc-line);
+  --paper-06: color-mix(in srgb, var(--hc-line) 55%, transparent);
 
-  /* 棱镜三色 + 辅助色 */
+  /* 描边与阴影 */
+  --line: var(--hc-line);
+  --line-strong: var(--hc-line-strong);
+  --glass: var(--ds-bg-raised);
+  --glass-solid: var(--ds-bg-raised);
+  --shadow-lg: var(--ds-shadow-3);
+  --shadow-md: var(--ds-shadow-2);
+  --glow-cyan: var(--ds-focus-ring);
+  --glow-magenta: var(--ds-focus-ring);
+
+  /* 语义色 */
+  --good: var(--ds-success);
+  --warn: var(--ds-warning);
+  --bad: var(--ds-danger);
+
+  /* 字体（MIGRATION-NOTES §2.8：--font-mono → --ds-font-mono 'Space Mono'） */
+  --font-display: var(--ds-font-display);
+  --font-mono: var(--ds-font-mono);
+  --font-body: var(--ds-font-text);
+
+  /* 尺度 */
+  --r-sm: var(--ds-radius-sm);
+  --r-md: var(--ds-radius-md);
+  --r-lg: var(--ds-radius-lg);
+  --r-xl: var(--ds-radius-xl);
+  --maxw: var(--ds-max-width);
+  --gap: var(--ds-space-4);
+
+  /* 动效 */
+  --ease: var(--ds-ease-out);
+  --dur: var(--ds-dur-base);
+}
+
+/* ==========================================================================
+   ③ 玩法 / 身份语义色（画布相关，红线 K.1 —— 不随外壳改版而变）
+   --------------------------------------------------------------------------
+   这些色值与 Three.js / Canvas 2D 里的场景色一一对应：
+   折光阁的青光与品红光接收环、脉冲走廊的判定色、光环台的热点色，
+   都以它们为准。若改这里而不同步改画面，玩家会读错元素。
+   （MIGRATION-NOTES §0 风险 C / §4 K.1：沉浸式作品的画布色板不在统一范围内。）
+   ========================================================================== */
+
+:root {
   --prism-cyan: #4fe3d0;
   --prism-magenta: #ff5fa2;
   --prism-amber: #ffc46b;
@@ -34,68 +125,36 @@
   --magenta-soft: rgba(255, 95, 162, 0.16);
   --amber-soft: rgba(255, 196, 107, 0.16);
   --violet-soft: rgba(157, 123, 255, 0.16);
-
-  /* 语义 */
-  --good: #7ee787;
-  --warn: #ffc46b;
-  --bad: #ff6b81;
-
-  /* 描边与阴影 */
-  --line: rgba(242, 240, 233, 0.12);
-  --line-strong: rgba(242, 240, 233, 0.22);
-  --glass: rgba(10, 16, 44, 0.62);
-  --glass-solid: rgba(8, 13, 36, 0.9);
-  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.55);
-  --shadow-md: 0 12px 34px rgba(0, 0, 0, 0.42);
-  --glow-cyan: 0 0 24px rgba(79, 227, 208, 0.35);
-  --glow-magenta: 0 0 24px rgba(255, 95, 162, 0.32);
-
-  /* 字体（Latin 自托管 OFL；中文走系统栈，不下载不外链） */
-  --font-display: 'Space Grotesk Variable', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
-    'Noto Sans CJK SC', 'Source Han Sans SC', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, 'Menlo', 'Consolas', monospace;
-  --font-body: var(--font-display);
-
-  /* 尺度 */
-  --r-sm: 6px;
-  --r-md: 12px;
-  --r-lg: 20px;
-  --r-xl: 28px;
-  --maxw: 1180px;
-  --gap: 20px;
-
-  /* 动效 */
-  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --dur: 220ms;
 }
 
-/* 高对比模式 */
-:root[data-high-contrast='true'] {
-  --paper: #ffffff;
-  --paper-70: rgba(255, 255, 255, 0.86);
-  --paper-52: rgba(255, 255, 255, 0.72);
-  --paper-34: rgba(255, 255, 255, 0.5);
-  --line: rgba(255, 255, 255, 0.3);
-  --line-strong: rgba(255, 255, 255, 0.55);
-  --glass: rgba(4, 8, 26, 0.88);
-  --glass-solid: rgba(2, 4, 16, 0.97);
+/* ==========================================================================
+   中文排版修正（G.4 / DESIGN-SPEC §2.3 / §2.5）
+   --------------------------------------------------------------------------
+   · 字距归零：负字距会压垮汉字字面（--ds-track-cjk = 0）。
+   · 行高 1.85：16 的 tokens.css 给 :lang(zh) 的基线是 1.75；本厅正文
+     （正文段落与列表）按派单要求统一到 1.85，具体类可再单独覆盖。
+   · CJK 字体栈顺序：完整覆盖的系统 CJK 族必须排在覆盖有限的
+     Noto Sans SC 子集**之前**（MIGRATION-NOTES §9 V.11）——
+     该顺序由 16 的 tokens.css 保证，本文件不重写 --ds-font-*。
+   ========================================================================== */
+
+:lang(zh),
+:lang(zh-CN),
+:lang(zh-TW) {
+  letter-spacing: var(--ds-track-cjk);
+  line-height: 1.85;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
-/* 减少动效 */
-:root[data-reduced-motion='true'] *,
-:root[data-reduced-motion='true'] *::before,
-:root[data-reduced-motion='true'] *::after {
-  animation-duration: 0.001ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.001ms !important;
+:lang(zh) .ds-display,
+:lang(zh) .ds-h1,
+:lang(zh) .ds-h2,
+:lang(zh) .ds-h3 {
+  font-weight: var(--ds-w-medium);
+  line-height: 1.22;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
+:lang(zh) .ds-mono {
+  letter-spacing: var(--ds-track-cjk);
 }

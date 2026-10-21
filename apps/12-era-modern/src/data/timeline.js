@@ -277,9 +277,9 @@ export const TIMELINE = [
 ];
 
 export const TIMELINE_TAGS = {
-  touch: { label: '触屏化', color: '#4FE3D0' },
-  indie: { label: '独立化', color: '#FFC46B' },
-  service: { label: '服务化', color: '#FF5FA2' },
-  immersive: { label: '沉浸化', color: '#9D7BFF' },
-  hardware: { label: '硬件形态', color: '#5AA9FF' },
+  touch: { label: '触屏化', color: '#2E6A5E' },
+  indie: { label: '独立化', color: '#8A5A00' },
+  service: { label: '服务化', color: '#B4432B' },
+  immersive: { label: '沉浸化', color: '#5B3FA8' },
+  hardware: { label: '硬件形态', color: '#2C5C8F' },
 };

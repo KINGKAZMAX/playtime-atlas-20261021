@@ -1,7 +1,7 @@
 # STATUS — 05 游戏博物馆联网策展研究
 
 **最后更新**：2026-10-21（UTC+8）
-**当前阶段**：S5 目录生成与验收（资料抓取已完成）
+**当前阶段**：**S8 改版执行完成**（RESTYLE-SPEC 第 1 步准备 + 第 2 步增量改版均已完成，依据 16 的五份产物；见 `RESTYLE-CHECKLIST.md` §11）
 
 ---
 
@@ -12,18 +12,25 @@
 | `TASK.md` | ✅ 完成 | 任务定义、字段要求、验收标准 |
 | `STATUS.md` | ✅ 完成 | 本文件 |
 | `README.md` | ✅ 完成 | 资料总览、字段说明、使用方式、限制声明 |
-| `catalog.json` | ✅ 完成 | 140 条，含 10 个必需字段 + 扩展字段 |
+| `catalog.json` | ✅ 完成 | 139 条，含 10 个必需字段 + 扩展字段 |
 | `catalog.meta.json` | ✅ 完成 | 年代词表、统计、字段说明、限制 |
 | `SOURCES.md` | ✅ 完成 | 逐条来源台账（每条一行的可点击来源） |
 | `REFERENCE-DESIGN.md` | ✅ 完成 | 14 个参考馆的横向比较 + 给 06/07 的落地建议 |
 | `LICENSES.md` | ✅ 完成 | 引用与素材许可边界 |
 | `QA.md` | ✅ 完成 | 实际跑过的检查与结果 |
 | `manifest.json` | ✅ 完成 | id / title / description / entry / buildCommand / outputDir / status |
-| `handoff/first-20.json` | ✅ 完成 | 给 06 的首批 20 条 |
+| `handoff/first-20-stratified.json` | ✅ 完成 | 给 06 的首批 20 条（覆盖全部 7 个时代，推荐） |
+| `handoff/first-20.json` | ✅ 完成 | 备用首批 20 条（id 顺序版，偏早期） |
 | `handoff/INTEGRATION.md` | ✅ 完成 | 给 06 的接法与边界 |
-| `screenshots/` | ✅ 完成 | 13 张实机截图 + `INDEX.tsv`（1 站因 TLS 限制无截图） |
-| `scripts/` | ✅ 完成 | 7 个可复现脚本 |
+| `screenshots/` | ✅ 完成 | 12 张实机截图 + `INDEX.tsv`（2 站无图：TLS 受限 / 站点建设中） |
+| `scripts/` | ✅ 完成 | 14 个脚本（流水线 9 + 一次性校正 5，保留作审计痕迹）+ 3 个改版自测脚本（见 §6） |
 | `data/` | ✅ 完成 | 原始抓取数据全部落盘，可离线复核 |
+| `RESTYLE-CHECKLIST.md` | ✅ 完成 | **改版待替换清单 + 第 2 步执行记录**：78 个旧 token / 145 条声明 → 16 令牌映射与落地结果 |
+| `src/catalog-page/` | ✅ 完成 | **目录页自有源码**（生成器 + 页面样式层 + `assets/ds/` 设计系统资产） |
+| `src/catalog-page/assets/ds/` | ✅ 完成 | 16 的 `tokens.css` + `components.css` + `fonts/`（4 个 OFL 字体族）副本，与原件逐字节一致 |
+| `i18n/catalog-keys.md` | ✅ 完成 | zh/en 双语 key 骨架（41 个界面 key），**只建骨架未切语言** |
+| `evidence/` | ✅ 完成 | 改版证据：`restyle-selftest.json` 23/23 · `ds-verify.json` 14/14 · `restyle-visual-diff.json` 4/4 · `ds-duration-audit.json` 13/13 · `ds-verify-preview/preview-verification.json`（16 侧门禁 errors 0）· 四档视口截图 |
+| `handoff/CATALOG-PAGE-HANDOFF.md` | ✅ 完成 | 给 14 的目录页源码接管步骤 + 设计系统资产发布路径 + 线上缺陷修法 |
 
 ---
 
@@ -46,12 +53,14 @@
 - 14 个站点全部实测可达并写入 `REFERENCE-DESIGN.md`。
 
 ### S3 截图取证 ✅
-- 内置 Browser 的 `screenshot` 在本环境返回纯白图（Electron 合成面问题，内容本身可 `query` 读出），
-  改用**本机 headless Chrome**（`--headless=new --screenshot`）取得真实页面快照。
-- 13 张成功；`videogamehistory.org` 因 TLS 握手被网关中断无图（正文抓取成功，仍作为参考站收录）。
+- 当时内置 Browser 的 `screenshot` 在本环境返回纯白图（Electron 合成面问题，内容本身可 `query` 读出），
+  故改用**本机 headless Chrome**（`--headless=new --screenshot`）取得真实页面快照。
+  > 2026-10-22 更新：按用户长期约定（Ego 是唯一浏览器入口），**参考站截图脚本已整体迁移到 Ego**
+  > （`scripts/capture_refs.py` + `scripts/ego_refshots.template.mjs`）。本节记录的是 S3 阶段的历史做法。
+- 12 张成功；`videogamehistory.org` 因 TLS 握手被网关中断无图（正文抓取成功，仍作为参考站收录）；`old-computers.com` 站点处于建设中，亦无图。
 
 ### S4 目录事实抓取与自动核对 ✅
-- 种子：人工选定 **140** 条（48 硬件 / 92 作品），覆盖 7 个时代。
+- 种子：人工选定 **139** 条（48 硬件 / 91 作品），覆盖 7 个时代。
 - 抓取：MediaWiki API 批量取 lead 摘要 + 解析 infobox 的 `released` / `platforms` / `developer`。
 - 核对：年份是否出现在正文，并与 infobox 年份交叉比对。
 - **踩过的坑（已修复）**：
@@ -67,9 +76,215 @@
 - 交付首批 **20 条** 给 06（`handoff/first-20.json` + `first-20-ids.json` + `INTEGRATION.md`）。
 - `QA.md` 记录实际跑过的检查与结果。
 
+### S6 展签清理、交接优化与最终验收 ✅
+- **展签清理**（`scripts/patch_seed4.py`）：27 条展签去掉维基消歧义括号（"(video game)" / "(console)" / "(1993 video game)" 等），
+  来源条目名由 `sourceDetail.sourceArticle` 单独保留，来源链接不受影响。
+- **交接优化**：`handoff/` 现提供**两版**首批 20 条 ——
+  `first-20-stratified.json`（**推荐**：覆盖全部 7 个时代，硬件 11 + 作品 9）与 `first-20.json`（id 顺序版，偏早期）。
+- **可达性检查加固**：抽样复核加入**主机级对照**（失败时当场复测同主机对照 URL），
+  避免把上游抖动误判为目录缺陷；观测到一次 `wikipedia.org` 全域不可达（约数分钟后自愈），
+  已在 `QA.md` §3.2 如实记录。
+- **最终验收**：`scripts/qa_check.py --http` → **19/19 通过**；`scripts/consistency_check.py` → **创作者冲突 0 条**。
+
+### S7 改版准备（RESTYLE-SPEC 第 1 步）✅
+
+**产出**：`RESTYLE-CHECKLIST.md`（待替换清单）、`i18n/catalog-keys.md`（zh/en key 骨架）、
+`src/catalog-page/`（目录页自有源码）、`evidence/`（自测与视觉比对证据）、`handoff/CATALOG-PAGE-HANDOFF.md`。
+
+**前置事实**：16-design-system 的四份产物（`REFERENCE-AUDIT.md` / `DESIGN-SPEC.md` / `design-tokens.json` / `preview.html`）**截至本轮尚未产出**，因此第 2 步（增量改版）无法开始；本轮按 RESTYLE-SPEC §4 第 1 步「不得因等 16 而停工」完成准备，且**未改动任何视觉**。
+
+**关键动作**：
+
+1. **目录页源码收归 05 自有**。改版前该页只有 14-publish 的一个生成器在渲染，05 目录内无任何 CSS/HTML，
+   「清点本目录现有字体/色值/圆角/间距使用点」无对象可清。新增
+   `src/catalog-page/build-catalog-page.mjs` + `src/catalog-page/catalog.css`，
+   DOM / 类名 / 筛选脚本与现网逐项一致；**未改动 14 的任何文件**。
+2. **占位 token 层**：`catalog.css` 的 `:root` 引入 78 个 `--ds-*` 变量，取值 **= 改版前旧值**，
+   因此渲染结果不变；第 2 步只需改这一个区块。
+3. **视觉面清点**（`scripts/restyle_inventory.py` → `evidence/restyle-inventory.md`）：
+   78 个 token / 145 条相关声明 / 30 条仍是字面量，每条给出「旧值 → 16 token 候选路径」。
+4. **自测**（`scripts/restyle_selftest.py`）：**21/22 通过**（唯一失败项为线上 404，见 §3），详见 §2。
+5. **视觉零变化核验**（`scripts/restyle_visual_regression.py`）：结构 / 计算样式 / 像素**三重一致**，
+   1440×900 截图**逐字节相同**（114 332 B，diffBytes = 0）。
+6. **发现并登记一个数据呈现缺陷**：线上页 139 条核验状态**全部**显示「来源待复核」，
+   原因是 14 的生成器读 `it.checks`（该字段不存在）而本目录 schema 是 `verification.status`。
+   事实层无问题（139 条 0 条 review）。修法与接管步骤见 `handoff/CATALOG-PAGE-HANDOFF.md`。
+
+### S8 改版执行（第 2 步）✅
+
+**前置**：16 的五份产物（`design-tokens.json` / `REFERENCE-AUDIT.md` / `DESIGN-SPEC.md` / `preview.html` / `MIGRATION-NOTES.md`）于 2026-10-21 20:31 落盘。
+
+**接入（MIGRATION-NOTES §0 三步）**：`assets/ds/tokens.css` + `components.css` + `fonts/` 拷入本目录；
+入口注入 `:root{--ds-base:"/playtime-atlas-20261021/";}`，`<body>` 加 `.ds-shell`。三个 CSS 与 16 原件逐字节一致。
+
+**通用项 G.1—G.7 全部落地**：DS 令牌直用、`.ds-topbar`/`.ds-footer`/`.ds-skip`、标题无 nowrap、
+`:lang(zh)` 字距归零（并删掉改版前自带的负字距）、元信息全部 `--ds-font-mono`、既有功能零改动、资源相对化。
+§3.4 的来源与许可呈现按路由要求用 `.ds-detail__caption` + mono 编号 `S01/S02/S03`。
+
+**视觉语言实际更换**：深墨蓝 + 橙青 → 暖白纸 `--ds-bg` + 朱砂 `--ds-accent`；等宽改自托管 Space Mono；标题改 DS 字阶。
+页面层的 78 个占位 token 已**归零**，直接消费 26 个 16 令牌（`evidence/restyle-inventory.md` 第二节）。
+
+**139 条数据密集区未被压缩**（15-supervisor 硬要求）：行高 58px → **59px**、条目标题 18px/700 → **20px/600**、
+年份 11px → **13px** mono、字段表最小列宽 190px 持平、正文字号 13.5px → 14/16px。
+
+**一处曾存在的偏差 → 已闭环**：16 的 `tokens.css` 原先把 Noto Sans SC 子集排在系统 CJK 栈之前，而该子集
+只覆盖本页 1031 个汉字的 **57.5%**（fontTools 逐字比对），会造成标题内混排基线错位。本页曾按
+`FONT-MANIFEST.json → systemFallbacks.cjk` 的策略在 `.ds-shell` 内**只调顺序**处理并声明（§11.3）；
+**16 已于 2026-10-21 22:25 在 `tokens.css` / `fonts.css` / `FONT-MANIFEST.json` 上游修正该顺序**
+（注释写明来源即本页实测），本页已**删除本地覆写**，自有 CSS **不声明任何 `--ds-*` 变量**。
+
+**S8-补-3 · 16 的上游缺陷确认与 V.11 守卫（22:5x）**：16 确认「Noto Sans SC 子集排在系统 CJK 栈之前」
+是**规范本身写错**（`DESIGN-SPEC.md` §2.1 原写作 `Space Grotesk → Noto Sans SC → 系统黑体`），已在其四份产物内修复
+（`tokens.css` / `fonts.css` / `FONT-MANIFEST.json` / `design-tokens.json`），并新增硬性条款：
+`DESIGN-SPEC.md` §2.5「字体栈顺序规则（硬性）」、`MIGRATION-NOTES.md` §2.0.1 专项清单、§9 验收清单新增 **V.11**、
+§9.1 复核方式新增第 ④ 步、`SOURCES.md` §6.1 单列「非参考站来源的规范条款」。
+**05 侧状态：已是修复版，无需再改**（根 `:root` 的 `--ds-font-display` / `--ds-font-text` 即新序，
+三份 tokens.css SHA-256 同为 `e9595d51336fac6a`；16 通知中引用的 `2cdc2120…` 是 22:25 重新同步**之前**的快照）。
+按 16 的建议已把该规则落为可复跑断言：**A.10 字体栈顺序合规**（系统 CJK 族全部在前 + 子集不得删）、
+**A.11 自有 CSS 不自造字体栈**（6 处 `font-family` 全部走 `var(--ds-font-*)`）、**A.12 CSS 与 `design-tokens.json` 逐项相等（无规范漂移）**——
+本页随包分发 `noto-sans-sc-subset.woff2` 且 `@font-face` 为活体，故 A.10 是**真缺陷守卫**。审计由 9 项增至 **12 项**。
+
+**验收**：功能自测 23/23、设计系统验收 14/14、改版前后对照 4/4、时长与命名空间与资产一致性审计 13/13（见 §3）。
+
+**S8-补-6 · 验收探针整体迁移到 Ego（00:2x，按用户长期约定）**：用户 2026-10-22 起永久约定
+「**Ego 浏览器是唯一浏览器入口**」，禁止内置 Browser 与另起 Playwright/Chromium/Chrome 等替代路径。
+本目录原有的两个探针（自行 spawn headless Chrome）属被禁路径，且在高负载时反复假失败 →
+**已整体迁移到 Ego**：`scripts/ego_probe.py`（调用器）+ `ego_ds_probe` / `ego_selftest` / `ego_live_probe` /
+`ego_refshots` 四个模板 + 共享的 `scripts/page_probe.mjs`（页内表达式**原样复用**，判定口径与历史证据一致）；
+旧的 `selftest_browser.mjs` / `ds_verify.mjs` / `capture_refs.sh` 已删除，**仓库内已无任何其他浏览器路径**。
+迁移中修正的三处环境差异（Ego 的 console.log 走 stderr / 用户扩展请求需排除 / 程序化 focus 不触发 `:focus-visible`
+→ 改用**真实键盘 Tab** 检验焦点环）。迁移后全套复跑：`qa_check` 18/18 · `ds_duration_audit` 13/13 ·
+`restyle_selftest` 23/23（1 项线上 404 归发布侧 blocked，产品侧失败 0）· `ds_check` 14/14 · `restyle_visual_regression` 4/4。
+
+**S8-补-4 · 自测探针的自加固（23:1x，与 16 的门禁缺陷同源）**：16 的 `verify-preview.mjs` 出现**偶发假失败**
+（导航后固定 `sleep(1500)` → 样式表未解析完就读到 `--ds-dur-base: ""` → 误判 reduced-motion 未生效；首跑 FAIL 1、复跑 PASS），
+16 已用轮询等待修复并指出该脚本是 13 复用的验收工具。
+**05 的两个 CDP 探针存在同一类缺陷**（导航后固定 sleep → 直接求值）；22:1x 一次复跑出现的
+**「浏览器探针无输出」**（此前被我暂归为「本机 Chrome 启动竞态」）即属此类。已按同一思路加固：
+
+| 探针 | 改后 |
+| --- | --- |
+| ~~`scripts/selftest_browser.mjs`~~（**已迁移到 Ego**，见 §11.10） | `waitForStyles()` 轮询（`readyState === 'complete'` 且 CSSOM 规则数 > 0，上限 8s，轮询用 5s 短 CDP 超时）→ 求值重试（8s/次、总量 25s 截止）→ 输出新增 `styleWait` / `warnings`；`main()` 外层兜底，任何早退都保证输出一行 JSON |
+| ~~`scripts/ds_verify.mjs`~~（**已迁移到 Ego**，见 §11.10） | 导航后改轮询；主题切换改 `waitForVar('--ds-bg')` 轮询；求值重试同上有截止时间；输出新增 `styleWarnings` |
+| `scripts/restyle_selftest.py` | 新增检查项「浏览器探针无样式就绪告警」——告警**显式化**，不静默吞掉 |
+| `scripts/ds_check.py` | 新增 **V.0 探针样式就绪无告警**（轮询超时 / 求值重试都会在此显式列出） |
+
+修法与 16 一致：**不用「把 sleep 放宽」这种只降低概率的改法**，改用「轮询等待 + 有界重试 + 显式告警」；
+轮询与重试都带**总量截止时间**，确保机器繁忙时也能在秒级收敛，而不是把 30s 的 CDP 超时成倍放大（这是我第一版加固的真实失败：
+机器繁忙时 4 视口 × 多次 30s 超时把总时长推到 600s 之上，反而比原来更容易假失败）。
+**教训已记**：加固验收工具时必须同时约束「单次超时」与「总时长」，否则会把偶发假失败换成必然超时。
+
+**S8-补-5 · 15-supervisor 独立核验回合（00:05）：两处已更正、一处已加固**
+
+15-supervisor 对本目录做了只读独立复核，结论「主体属实」，指出三处需处理，已全部完成：
+
+1. **副本漂移（真实问题，已修）**：15 实测发现我同步的 `fonts/FONT-MANIFEST.json` 比 16 原件旧 ——
+   16 于 **22:49:08** 又补了一次（`coverageEvidence` / `subsetCoverageRatio: 0.575` / `subsetCoverageBasis`
+   三个字段 + `note` 里的顺序约束段），而我同步的是更早版本。
+   **我此前「四个关键文件逐字节一致」的表述有误** —— 实测当时只有 **两个**（`tokens.css` / `fonts.css`）一致。
+   已重新同步 `fonts/**`（现 **三个关键文件** `tokens.css` `e9595d51…` / `fonts.css` `ebccba0f…` /
+   `FONT-MANIFEST.json` `7174ecf5…` 全部一致），重建 `dist/assets/ds/**` 并复跑验收：**ds-verify 14/14 通过**。
+2. **漏检口已封（新增 A.13）**：此前 A.1 只校验 `tokens.css`，正是这类漂移的漏检口。
+   新增 **A.13「DS 资产全量逐字节一致」** —— 比对 05 分发的**全部** DS 资产
+   （`tokens.css` / `components.css` / `fonts/**` 共 14 个文件）的 **src 副本与 dist 产物**是否都与 16 原件一致。
+   该守卫在加入后的**第一次运行就抓到了 dist 里的旧 FONT-MANIFEST**（重建前），重建后 13/13 全通过。
+3. **计数口径已按实际文件名与实际计数对齐**：README / STATUS 现一律引用实际文件名
+   （`restyle-selftest.json` 23/23 · `ds-verify.json` 14/14 · `restyle-visual-diff.json` 4/4 ·
+   `ds-duration-audit.json` 13/13 · `ds-verify-preview/preview-verification.json`），不再出现旧口径数字。
+4. **「自有 CSS 零声明」精确化**：准确表述为「**自有 CSS 零 `--ds-*` 声明，仅构建期在 HTML 注入 `--ds-base`**
+   （`src/catalog-page/build-catalog-page.mjs:169`；`--ds-base` 是 16 §2.0 要求的接入项，不是 CSS 声明）」。
+5. **线上 404 定位已更正**：按 15 的口径 —— 这是 **14 在 `f9202fb` 的发布决定，不是缺陷**；
+   15 已把「恢复 05 策展目录页作为独立深链」记为**首页收敛后随下一次发布执行**的清单项，13 的 `CHK[D8]` 同批归 14。
+   **05 到此为止**：不再做接入动作、不动 14 仓库、不做 git 提交/推送。
+
+**harness 与产品缺陷分开记账**：探针超时（`restyle_selftest.py` 上限 300s / `ds_check.py` 上限 600s）
+现被单列为 **`blockedByHarness`**，**不计产品失败**（`ds_check.py` 标 `classification: harness-timeout`）——
+口径与 13 对 03/04/12 的判定一致：验收工具的偶发故障不得变成下游的错误验收结论。
+实测环境注记：本次加固验证期间机器 load average 44–78（多会话并发 53 个 Chrome 进程），
+故本轮偶发一次探针超时 —— 归类后不计入产品失败。
+
+**S8-补 · 16 的二次复核回合（22:0x）**：16 告知「只剩一处要修：`--ds-dur-*: 1ms` 被写死在 `:root`」。
+**独立核对结论：该问题在 05 侧不存在，无需任何改动。** 三份 `tokens.css`（16 原件只读 / 05 src / 05 dist）
+SHA-256 同为 `2cdc2120…6425`，`:root` 取值为 120 / 200 / 320 / 520 / 800ms（`--ds-entry-duration` 640ms），
+与 `design-tokens.json → motion.*` 逐项相等；**1ms 只出现在 `tokens.css:333–341` 的
+`@media (prefers-reduced-motion: reduce)` 块与 `components.css:925–940` 的 `[data-rm="reduce"]` 块内**
+（即 MIGRATION-NOTES §7 规定的降级位置），降级外 0 次。05 自有 CSS **不声明任何 `--ds-*` 变量**
+（A.7 判据 0 个），命名空间零冲突。
+证据 `evidence/ds-duration-audit.json`（9/9）。另跑 16 侧 `validate-tokens.mjs`（PASS，errors 0）、
+`verify-preview.mjs`（PASS，errors 0 / warnings 0，产物落 `evidence/ds-verify-preview/`）。**16 目录零写入。**
+
+**S8-补-2 · 16 的更正与资产再同步（22:3x）**：16 更正其上一条通知（审计脚本未排除
+`@media (prefers-reduced-motion: reduce)` 块，把降级值误判成 `:root` 默认值），并重写 MIGRATION-NOTES §2.0，
+把我这一行改为「🟢 完全一致，无须改任何取值」。据此：
+① 重新同步 16 于 22:25 更新的 `tokens.css` / `fonts/**`（与原件逐字节一致，`dist/assets/ds/**` 同步）；
+② 删除 05 本地的 `--ds-font-*` 覆写（上游已修顺序），自有 CSS 由此**零 `--ds-` 声明**；
+③ 全套复跑：`qa_check` 18/18 · `ds_duration_audit` 9/9 · `restyle_selftest` 22/22 ·
+`ds_check` 13/13 · `restyle_visual_regression` 4/4；16 侧 `validate-tokens` PASS（errors 0）、
+`verify-preview` PASS（errors 0 / warnings 0）。
+> 注：16 的 `verify-preview.mjs` 在「系统 prefers-reduced-motion 生效」一项存在偶发竞态
+> （重导航后固定 `sleep(1500)` 不足以保证样式表解析完成，首跑读到 `durBase:""` 报 1 error，
+> 复跑即 PASS）。判读建议复跑一次。
+
 ---
 
-## 3. 关键决策
+## 3. 自测结论（供 13 对照）
+
+五套可复现证据（全部机器可读）：
+
+| 套件 | 结果 | 证据 | 复现命令 |
+| --- | --- | --- | --- |
+| 功能自测 | **23 / 23 通过** | `evidence/restyle-selftest.json` | `python3 scripts/restyle_selftest.py` |
+| 设计系统验收 | **14 / 14 通过** | `evidence/ds-verify.json` | `python3 scripts/ds_check.py` |
+| 改版前后对照 | **4 / 4 通过** | `evidence/restyle-visual-diff.json` | `python3 scripts/restyle_visual_regression.py` |
+| 动效时长与命名空间审计 | **13 / 13 通过** | `evidence/ds-duration-audit.json` | `python3 scripts/ds_duration_audit.py` |
+| 16 侧门禁（只读调用） | `validate-tokens` PASS / `verify-preview` **errors 0 · warnings 0** | `evidence/ds-verify-preview/preview-verification.json` | `node ../16-design-system/tools/verify-preview.mjs` |
+| 视觉面清点（改版前/后两态） | — | `evidence/restyle-inventory.md` / `.json` | `python3 scripts/restyle_inventory.py` |
+| 截图 | 四档视口 + 深色主题 | `evidence/screens/ds-*.png`、`before/after-1440.png` | — |
+
+**最终复跑（2026-10-22 00:1x，重同步 `FONT-MANIFEST.json` 后）**：`qa_check.py` **18/18** · `ds_duration_audit.py` **13/13** ·
+`restyle_selftest.py` **23/23（产品侧失败 0）** · `ds_check.py` **14/14** · `restyle_visual_regression.py` **4/4**；
+16 侧 `validate-tokens` PASS（errors 0）· `verify-preview` PASS（errors 0 / warnings 0）。
+（23:5x 一轮：18/18 · 12/12 · 23/23 · 14/14 · 4/4）：
+
+**最终复跑（2026-10-21 23:5x，探针加固后全量重跑）**：`qa_check.py` **18/18** · `ds_duration_audit.py` **12/12** ·
+`restyle_selftest.py` **23/23（产品侧失败 0）** · `ds_check.py` **14/14** · `restyle_visual_regression.py` **4/4**；
+16 侧 `validate-tokens` PASS（errors 0）· `verify-preview` PASS（errors 0 / warnings 0）。
+本轮复跑发生在 **机器 load average 44–199**（多会话并发 53+ Chrome 进程）的高负载时段，仍全绿。
+（22:3x 一轮：18/18 · 12/12 · 23/23 · 14/14 · 4/4。22:1x—22:2x 一轮：18/18 · 9/9 · 21/22（线上 404 归发布侧 blocked）·
+13/13 · 4/4 —— 期间 `restyle_selftest.py` 一次复跑出现「浏览器探针无输出」，根因是探针的固定等待竞态，
+已连同 16 的同类缺陷一并加固，见 S8-补-4。）
+
+| 项 | 结果 |
+| --- | --- |
+| `catalog.json` 条目数 | **139**（48 硬件 / 91 作品；7 个时代 15/14/23/20/20/20/27；年份 1951–2024） |
+| 必需字段缺失数 | **0**（10 个必需字段 × 139 条，逐条实测） |
+| id 唯一性 | 0 重复 |
+| 来源 URL 合法性 | 139/139 条均有来源，全部为 http(s) |
+| 核验状态 | `ok` 132 / `ok-article` 6 / `ok-infobox` 1 / **`review` 0** |
+| 页面在 Pages 子路径下打开 | ✅ `http://127.0.0.1:<port>/playtime-atlas-20261021/research/catalog.html` → 正常渲染，139 张卡片，`lang="zh-CN"` |
+| 线上 `/research/catalog.html` | ⚠️ **404**（实测 2026-10-21 约 20:0x，15-supervisor 00:05 复核一致）。该页在 14 的第三版发布 `f9202fb`（19:59:48「Refocus public gallery on personal works and assets」）中被从发布树删除，`data/works.json` 也已移除 `05-museum-catalog` 条目。**这是 14 的发布决定，不是缺陷**（15 已把「恢复 05 策展目录页作为独立深链」记为**首页收敛后随下一次发布执行**的清单项，13 的 `CHK[D8]` 同批归 14）。**05 不再做接入动作、不动 14 仓库、不做 git 写入**；产物与接入步骤已备好（`handoff/CATALOG-PAGE-HANDOFF.md` §0.5 / §3）。<br>（该页**最后一次上线**时实测：HTTP 200、139 张卡片；核验状态 0 已核验 / 139 待复核，缺陷见 §5） |
+| 年代筛选 | ✅ 7 个维度**逐项命中**：origins 15 / arcade 14 / home8bit 23 / console16 20 / online 20 / mobile 20 / modern 27；互斥单选；「全部时代」复位 139 |
+| 类型筛选 | ✅ hardware 48 / work 91；「全部类型」复位 139 |
+| 搜索 | ✅ 关键词 `nintendo` 命中 **16 条**，与 `catalog.json` 独立算出的期望集合**逐条相等**；清空后复原 139 |
+| 条目详情 | ✅ 展开可用；字段表 6 行（年代/类型/平台·载体/厂商·个人/配图许可状态/核验状态）；小标题「事实描述 / 入馆意义 / 来源」；首条来源链接 3 条 |
+| **控制台错误数** | **0** |
+| **未捕获异常数** | **0** |
+| **404 / 网络失败数** | **0**（含 `./catalog.css` 相对路径解析） |
+| **设计系统验收（14 项）** | ✅ 四档视口（1440/1280/768/390）`scrollWidth ≤ innerWidth`；对比度最低 **5.37:1**（≥4.5）；焦点环可见且首个可聚焦元素是 `.ds-skip`；Tab 序列不被吞；DS 令牌 16 个关键项全注入；**旧色板 0 残留**；运行期外部请求 **0**；自托管字体 4 族已加载且 0 个 404；密度未压缩；筛选/搜索可用；来源角标与 mono 编号可见；控制台错误 0；未捕获异常 0 |
+| **改版前后结构对照** | ✅ 卡片 139→139、年代筛选 15/14/23/20/20/20/27 不变、类型 48/91 不变、搜索 `nintendo` 命中 16→16（集合逐条相等）、详情字段 6 行不变；**视觉已按 16 更换**（像素 diffBytes 107006，预期不同） |
+| **动效时长与命名空间审计（13 项）** | ✅ 三份 `tokens.css` 逐字节一致；`:root` 取值 120/200/320/520/800ms + entry 640ms == 16 规范；1ms 仅在 `@media (prefers-reduced-motion: reduce)` 与 `[data-rm="reduce"]` 内（降级外 0 次）；05 自有 CSS 声明的 `--ds-*` 仅 2 条字体族顺序覆写；无硬编码时长 |
+| **字体栈顺序守卫（16 §9 V.11）** | ✅ A.10：三份 tokens.css 的显示体/正文体中，全部覆盖完整的系统 CJK 族（PingFang SC / Hiragino Sans GB / Microsoft YaHei / Source Han Sans SC）下标均小于 `Noto Sans SC` 子集下标，且**子集未被删除**；A.11：05 自有 CSS 的 6 处 `font-family` 全部只引用 `var(--ds-font-*)`。本页随包分发 `noto-sans-sc-subset.woff2` 且 `@font-face` 为活体，故 A.10 为真缺陷守卫 |
+| **16 侧门禁（只读复跑）** | ✅ `validate-tokens.mjs` → PASS（tokens 213 / css vars 130 / errors 0 / warnings 1，warning 为 spring cubic-bezier y 分量越界，既有允许项）；`verify-preview.mjs` → **PASS，errors 0 / warnings 0**（对比度最低 4.93 · reduced-motion 生效 `dur-base=1ms` · 深色主题切换正常 · 控制台错误 0） |
+
+**已知线上缺陷（待 14 修）**：线上页「来源已核验」**0** 条 / 「来源待复核」**139** 条 —— 字段口径不一致所致，
+详见 `handoff/CATALOG-PAGE-HANDOFF.md` §4。本目录自有生成器已正确取值（实测 139 条「来源已核验」）。
+
+**密度基线（改版后，供 13 复核扫读效率）**：行高 59px · 条目标题 20px/600 · 年份 13px mono ·
+字段表最小列宽 190px · 正文字号 14px（字段值）/16px（正文）—— 与改版前（58px / 18px / 11px / 190px / 13.5px）相比**未被压缩**。
+
+---
+
+## 4. 关键决策
 
 | 决策 | 理由 |
 | --- | --- |
@@ -83,7 +298,7 @@
 
 ---
 
-## 4. 限制与阻塞（如实记录）
+## 5. 限制与阻塞（如实记录）
 
 | 项 | 状态 | 影响 |
 | --- | --- | --- |
@@ -93,10 +308,21 @@
 | `mobygames.com` / `giantbomb.com` / `uvlist.net` | Cloudflare 403 | 未纳入 |
 | 少数条目机器核对为 `review` | 已人工复核并在 `QA.md` 列出 | 建议 06 对这些条目不显示"已核验"角标 |
 | 早期硬件条目的年份表述 | 个别条目正文写的是机构年份而非发行年 | 已在 `catalog.json` 的 `verification` 字段保留机器核对原值，便于追溯 |
+| ~~16 的四份产物尚未产出~~ | ✅ 已解除 | 16 的五份产物于 2026-10-21 20:31 落盘，第 2 步改版已完成 |
+| **本目录无「olek.si 风格」实测依据** | 仍然成立 | 改版的唯一依据是 16 的 `design-tokens.json` / `DESIGN-SPEC.md` / `preview.html`；本目录**未自行取证参考站**，也不写任何「olek.si 风格」结论。动效时长、字阶比、间距尺度**本项无参考站实测依据，为本批自定**（沿用 16 的取值） |
+| **Noto Sans SC 子集覆盖不足** | ✅ **已闭环**（16 于 22:25 上游修正） | 16 附带的 Noto Sans SC 子集只覆盖本页 1031 个汉字的 **57.5%**（fontTools 逐字比对），排在系统 CJK 栈之前会造成标题内混排基线错位。**16 已于 2026-10-21 22:25 在 `tokens.css` / `fonts.css` / `FONT-MANIFEST.json` 上游修正该顺序**（注释写明来源即本页实测），本页已删除本地覆写，直接消费 DS 令牌（`RESTYLE-CHECKLIST.md` §11.3） |
+
+| **era 词表两套并存** | 口径不一致 | `catalog.json.eraLabel`（05 权威，如「1950—1969 · 光点实验」）与页面 chip 文案（渲染层常量，如「1950—1969 早期电子」）不同；自有生成器暂沿用渲染层文案以保证像素一致，待 14 切换时统一 |
+| **线上核验状态全显示「来源待复核」** | 线上数据呈现错误（该页最后一次上线时） | 14 的生成器读 `it.checks`（不存在），本目录 schema 为 `verification.status`；事实层 0 条 review。修法见 `handoff/CATALOG-PAGE-HANDOFF.md` §4 |
+| **策展目录页已从线上发布树移除** | 线上 404 · **发布侧决定，非缺陷** | 14 的第三版发布 `f9202fb`（19:59:48）删除 `docs/research/catalog.html`，`data/works.json` 亦移除 `05-museum-catalog` 条目（作品清单由 14 件缩为 11 件）。15-supervisor 已于 00:05 明确：**这是 14 的发布决定，不是缺陷**；恢复该页作为独立深链（`docs/research/catalog.html` + `docs/assets/ds/**`）记为**首页收敛后随下一次发布执行**的清单项，13 的 `CHK[D8]` 同批归 14。**05 到此为止：不再做接入动作、不动 14 仓库、不做 git 提交/推送**；产物与接入步骤已备好 |
+| **像素比对的环境边界** | 仅同机同 Chrome 结论 | 改版前后对照在**同一台机器、同一版 Chrome** 下完成；跨机器/跨渲染引擎可能有抗锯齿差异，不作为跨环境结论 |
+| **主题钉在浅色** | 刻意选择 | `<html data-ds-theme="light">`，与 16 的 `preview.html` 同口径，避免同批作品在不同机器/系统主题下出现两套配色；深色主题另行验算达标（`evidence/ds-verify.json` → `darkTheme`） |
+| **中文条目的英文版仍缺** | 英文站会缺正文 | 139 条 `summary` / `significance` 仅中文；`title`（英文原名）齐备。英文站只能给元数据 + 英文原名 + 来源链接，补齐英文文案需单独立项（`i18n/catalog-keys.md` §3） |
+| **14-publish 处于第三版发布中** | 并发只读 | 核对期间 `14-publish/release/docs/` 被清空重建；本目录一律只读，比对基准取自 git 历史中最近含该页的提交（`b007c33`），**未写入 14 的任何文件** |
 
 ---
 
-## 5. 复现方式
+## 6. 复现方式
 
 ```bash
 python3 scripts/fetch_sources.py         # 抓 lead + infobox + 自动核对 → data/
@@ -104,17 +330,58 @@ python3 scripts/resolve_titles.py        # 校正错误的条目名（需人工�
 python3 scripts/fetch_image_licenses.py  # 查 Commons 首图许可
 python3 scripts/build_catalog.py         # 合并生成 catalog.json / SOURCES.md / handoff/
 python3 scripts/check_licenses.py        # 扫描参考站条款页许可关键词
-./scripts/capture_refs.sh                # headless Chrome 抓参考站截图
+python3 scripts/capture_refs.py              # 用 ego-browser 抓参考站截图
 ```
 
 抓取使用自定义 `User-Agent` 与 `Api-User-Agent` 头，批量请求并做 429 指数退避；原始响应落盘可离线复核。
 
+**改版 / 自测（RESTYLE-SPEC 第 1—2 步）**
+
+```bash
+node src/catalog-page/build-catalog-page.mjs   # 目录页构建 → dist/{catalog.html,catalog.css,assets/ds/**}
+python3 scripts/restyle_inventory.py            # 视觉面清点（改版前/后两态）→ evidence/restyle-inventory.{md,json}
+python3 scripts/restyle_selftest.py             # 功能自测 23 项（数据 + 页面 + 线上实探）→ evidence/restyle-selftest.json
+python3 scripts/restyle_selftest.py --no-live   # 离线跑（跳过线上实探）
+python3 scripts/ds_check.py                     # 设计系统验收 14 项 → evidence/ds-verify.json
+python3 scripts/restyle_visual_regression.py    # 改版前后对照 4 项 → evidence/restyle-visual-diff.json
+python3 scripts/ds_duration_audit.py            # 动效时长/命名空间/资产一致性审计 13 项 → evidence/ds-duration-audit.json
+node ../16-design-system/tools/validate-tokens.mjs   # 16 侧令牌门禁（只读）
+node ../16-design-system/tools/verify-preview.mjs     # 16 侧样例页门禁（只读）
+```
+
+`restyle_selftest.py` 与 `ds_check.py` 会临时起一个静态服务（按 Pages 子路径形态
+`/playtime-atlas-20261021/research/catalog.html`，含站点根 `assets/ds/`），
+用 **ego-browser**（唯一浏览器入口；探针为 `scripts/ego_selftest.template.mjs` / `scripts/ego_ds_probe.template.mjs`）真实点击年代/类型筛选与搜索框，
+**跑完即关，不留常驻进程**。
+
 ---
 
-## 6. 后续交接
+## 7. 后续交接
 
 - **06**：直接读 `handoff/first-20.json`；需要全量时读 `catalog.json`；接口问题见 `handoff/INTEGRATION.md` §6。
 - **07**：配图方向与许可边界见 `LICENSES.md` §4–§5。
 - **08—12**：按 `era` 过滤即可取到本展厅条目；`summary` 可直接做导语底稿。
-- **13**：`QA.md` 的机器核对结论与 `review` 名单可作为"来源可靠性"抽查清单。
-- **14**：本目录无构建步骤，直接并入发布仓库即可；`screenshots/` 建议不发布。
+- **13**：目录页的实跑证据齐备，**可直接对照，不必重复造** ——
+  `evidence/restyle-selftest.json`（功能 23/23）、`evidence/ds-verify.json`（设计系统 14/14）、
+  `evidence/restyle-visual-diff.json`（改版前后 4/4）、`evidence/ds-duration-audit.json`（时长/命名空间 9/9）、
+  `evidence/ds-verify-preview/preview-verification.json`（16 样例页门禁 errors 0）、
+  `evidence/screens/ds-*.png`（四档视口 + 深色主题）。
+  `QA.md` 的机器核对结论与 `review` 名单仍可作"来源可靠性"抽查清单。
+- **16**：05 侧对「`--ds-dur-*: 1ms` 写死在 `:root`」的独立复核已完成并落证据 ——
+  **结论：该问题在 05 侧不存在，无需改动**，与你的更正一致（详见 `RESTYLE-CHECKLIST.md` §11.8 与
+  `evidence/ds-duration-audit.json`，9/9）。
+  你于 22:25 的上游修正（字体栈顺序）已同步进 05，自有 CSS **零 `--ds-` 变量声明**（A.7 判据）。
+  你 22:5x 通知中指出的「05 根 `:root` 仍是旧序」**已是同步前的快照**：当前 05 的根 `:root`
+  即新序（三份 SHA-256 同为 `e9595d51336fac6a`），无需再改。
+  按你的建议已把字体栈顺序落为 **A.10 / A.11** 两条可复跑断言（审计 9 项 → 11 项），
+  判定口径与 §9 V.11 一致（含「子集不得删」）。
+  另：唯一待你知悉的一点 —— `verify-preview.mjs` 的「系统 prefers-reduced-motion 生效」存在偶发竞态
+  （重导航后固定 `sleep(1500)` 偶发读到空值），复跑即 PASS。
+
+- **14**：资料部分无构建步骤，直接并入发布仓库即可；`screenshots/` 建议不发布。
+  **目录页源码已收归 05 自有**（`src/catalog-page/`），且**已完成 16 设计系统改版**；
+  接入步骤（含 `assets/ds/` 的发布路径）与线上核验状态缺陷修法见 `handoff/CATALOG-PAGE-HANDOFF.md`。
+  注意发布布局：`dist/assets/ds/**` → 站点根 `docs/assets/ds/**`（MIGRATION-NOTES §14.1），
+  `dist/catalog.html` + `dist/catalog.css` → `docs/research/`。
+- **15 / 13（改版口径）**：本目录处于 **RESTYLE-SPEC 第 1 步完成、第 2 步待 16 规范** 的状态，
+  待替换清单见 `RESTYLE-CHECKLIST.md`；本目录**不含任何「olek.si 风格」实测结论**（16 尚未取证）。

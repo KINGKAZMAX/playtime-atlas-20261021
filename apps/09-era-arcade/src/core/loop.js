@@ -22,16 +22,19 @@ export function createLoop({ update, render, step = 1 / 60, maxSteps = 5 }) {
   let acc = 0;
   let running = false;
   let paused = false;
+  const stats = { frames: 0, updates: 0, renderMs: 0, lastDelta: 0, lastFrameStamp: 0 };
 
   /** 推进逻辑（固定步长） */
   function advance(now) {
     const delta = Math.min(0.25, Math.max(0, (now - last) / 1000));
     last = now;
+    stats.lastDelta = delta;
     if (paused) return;
     acc += delta;
     let steps = 0;
     while (acc >= step && steps < maxSteps) {
       update(step);
+      stats.updates += 1;
       acc -= step;
       steps += 1;
     }
@@ -42,6 +45,8 @@ export function createLoop({ update, render, step = 1 / 60, maxSteps = 5 }) {
     if (!running) return;
     rafId = requestAnimationFrame(frame);
     lastFrameAt = now;
+    stats.frames += 1;
+    stats.lastFrameStamp = now;
     advance(now);
     render();
   }
@@ -85,6 +90,16 @@ export function createLoop({ update, render, step = 1 / 60, maxSteps = 5 }) {
     },
     isRunning() {
       return running;
+    },
+    /** 调试出口：帧数 / 逻辑步数 / 时间增量，用于排查推进是否停滞 */
+    get stats() {
+      return {
+        ...stats,
+        running,
+        paused,
+        acc,
+        now: performance.now(),
+      };
     },
   };
 }

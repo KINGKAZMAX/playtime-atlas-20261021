@@ -1,0 +1,87 @@
+/* =========================================================================
+   CHROMA S1 — 本作品自有 token 层（语义别名）
+   ---------------------------------------------------------------------------
+   依据 16-design-system/MIGRATION-NOTES.md §2.6（01-web 行）与 §0 风险 B：
+
+     · `--ds-*` 变量**只声明一次** —— 在 `assets/ds/tokens.css`
+       （逐字节拷贝自 `16-design-system/src/tokens.css`）里，由 index.html 的
+       `<link>` 引入。本文件**不再**重复声明任何 `--ds-*` 取值，
+       避免同名不同义互相覆盖。
+
+     · 本文件只做两件事：
+         1) 本作品自有的、非 `--ds-` 前缀的变量（画布底色等）；
+         2) 语义别名层（`--ink-*` / `--paper-*` / `--signal-*` / `--f-*` …）
+            → 全部指向 `--ds-*`，样式表其余部分零改动即可换肤。
+
+   取值来源（只读引用，未复制 16 的资产）：
+     · `16-design-system/src/tokens.css` → `assets/ds/tokens.css`
+     · `16-design-system/design-tokens.json` → 权威取值（213 令牌 / 130 个变量）
+     · `16-design-system/MIGRATION-NOTES.md` §2.6 / §5.2 / §5.3 → 本次对齐项
+   ========================================================================= */
+
+
+/* 三维画布底色。
+   页面用浅色主题（DS 默认），而三维视口按 DS「画布 / HUD 专用色」处理：
+   取 DS 深色主题的表面色（design-tokens.json → color.dark.bg / color.dark.bgRaised），
+   保证 HUD 与读数在任何画面上可读（design-tokens.json → color.canvas）。 */
+:root {
+  --canvas-bg: #100f0e;
+  --canvas-bg-2: #1a1917;
+}
+
+/* =========================================================================
+   本作品的语义别名 → 映射到 --ds-*
+   保留原有命名，样式表其余部分零改动即可换肤。
+   ========================================================================= */
+
+:root {
+  /* --- 表面色阶（cool near-black lab instrument） → DS 表面色 --- */
+  --ink-950: var(--ds-bg-sunken);
+  --ink-900: var(--ds-bg);
+  --ink-850: var(--ds-bg-raised);
+  --ink-800: var(--ds-surface);
+  --ink-750: var(--ds-bg-sunken);
+  --ink-700: var(--ds-surface);
+
+  /* --- 发丝线 --- */
+  --line: var(--ds-line);
+  --line-2: var(--ds-line-strong);
+  --line-hi: var(--ds-line-strong);
+
+  /* --- 文字色 --- */
+  --paper: var(--ds-ink);
+  --paper-2: var(--ds-ink-soft);
+  --paper-3: var(--ds-ink-faint);
+  --paper-4: var(--ds-ink-faint);
+
+  /* --- 强调色（信号色=交互 / 玉色=数据 / 靛蓝=峰值标记） --- */
+  --signal: var(--ds-accent);
+  --signal-2: var(--ds-accent-hover);
+  --signal-dim: var(--ds-accent-soft);
+  --signal-line: color-mix(in srgb, var(--ds-accent) 38%, transparent);
+  --pulse: var(--ds-jade);
+  --pulse-dim: var(--ds-jade-soft);
+  --iris: var(--ds-info);
+  --iris-dim: color-mix(in srgb, var(--ds-info) 14%, transparent);
+
+  /* --- 字体族 --- */
+  --f-display: var(--ds-font-display);
+  --f-body: var(--ds-font-text);
+  --f-mono: var(--ds-font-mono);
+
+  /* --- 度量 --- */
+  --rail-w: var(--ds-rail-width);
+  --topbar-h: 64px;
+  --pad-x: var(--ds-space-gutter);
+
+  /* --- 圆角 --- */
+  --radius: var(--ds-radius-sm);
+  --radius-lg: var(--ds-radius-md);
+
+  /* --- 动效 --- */
+  --ease: var(--ds-ease-out);
+  --ease-io: var(--ds-ease-inout);
+  --t-fast: var(--ds-dur-fast);
+  --t-mid: var(--ds-dur-base);
+  --t-slow: var(--ds-dur-reveal);
+}

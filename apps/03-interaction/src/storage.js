@@ -5,7 +5,7 @@
  * 绝不静默失败——降级时通过 onFallback 回调通知 UI。
  */
 
-import { STORAGE_KEY, initialState } from './workshop.js';
+import { STORAGE_KEY, initialState, syncOrderSeq, SHIFT, TEMPO } from './workshop.js';
 
 const memoryStore = new Map();
 let storageAvailable = true;
@@ -113,6 +113,12 @@ export function hydrate(stored) {
     return Number.isFinite(n) && n > max ? n : max;
   }, 0);
   merged.orderSeq = maxSeq;
+  syncOrderSeq(merged.orders);
+
+  // 旧版存档没有当班状态 / 节奏字段，补默认值
+  if (![SHIFT.IDLE, SHIFT.RUNNING, SHIFT.PAUSED].includes(merged.shift)) merged.shift = SHIFT.RUNNING;
+  if (!TEMPO[merged.tempo]) merged.tempo = 'normal';
+  if (typeof merged.autoDispatch !== 'boolean') merged.autoDispatch = true;
 
   return merged;
 }

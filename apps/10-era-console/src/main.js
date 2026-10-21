@@ -1,8 +1,20 @@
 /**
  * 10-era-console — 色块远征 / CHROMA VOYAGE
  * 展厅主控：路由、展厅渲染、可玩视图挂载、嵌入协议
+ *
+ * 样式引入顺序（15 派单「接入三步」）：
+ *   assets/ds/fonts/fonts.css    16 的自托管字体（OFL，禁止 CDN）
+ *   assets/ds/tokens.css         16 的令牌层（--ds-*，唯一声明处）
+ *   assets/ds/components.css     16 的组件层（.ds-* 外壳组件）
+ *   src/styles/main.css          本作品自有样式（外壳增量覆盖；画布内部色板不动）
+ *
+ * 顺序不可颠倒：tokens 在 components 之前、components 在 main 之前，
+ * 令牌 → 组件 → 本地增量，逐层覆盖。
  */
 
+import '../assets/ds/fonts/fonts.css';
+import '../assets/ds/tokens.css';
+import '../assets/ds/components.css';
 import './styles/main.css';
 
 import { AudioEngine } from './audio/AudioEngine.js';
@@ -18,6 +30,22 @@ import { IsoScene } from './iso/IsoScene.js';
 /* ------------------------------------------------------------------ *
  * 基础
  * ------------------------------------------------------------------ */
+
+/* 运行期基准路径：由构建注入（vite base: './' → './'）。
+   相对基准同时适配 Pages 任意子路径与 file:// 离线打开（MIGRATION-NOTES §6）。
+   index.html 里已静态注入生产子路径 "/playtime-atlas-20261021/" 作为无 JS 兜底，
+   运行期这里用相对基准覆盖，使同一份产物在任意挂载点都可用。 */
+document.documentElement.style.setProperty('--ds-base', import.meta.env.BASE_URL || '');
+
+/* 入场动效开关：只有 JS 正常运行时才允许隐藏 .ds-in 元素。
+   若脚本加载失败，has-js 不会被添加 → 内容保持可见（失效安全）。 */
+document.documentElement.classList.add('has-js');
+
+/* 兜底：任何未捕获错误都撤掉 has-js，让 .ds-in 立即可见。
+   （16 的 .ds-in 默认 opacity:0，若 JS 中途出错会留下永远不可见的标题。） */
+window.addEventListener('error', () => {
+  document.documentElement.classList.remove('has-js');
+});
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -170,7 +198,7 @@ function renderConsoles() {
   const tones = ['mint', 'sky', 'sun', 'violet', 'coral'];
   CONSOLES.forEach((c, i) => {
     const card = document.createElement('article');
-    card.className = 'console-card';
+    card.className = 'console-card ds-work';
     card.dataset.year = c.year;
 
     const icon = iconCanvas(c.kind === 'handheld' ? 'handheld' : 'console', 54, 40, tones[i % tones.length]);
@@ -179,27 +207,27 @@ function renderConsoles() {
     card.appendChild(icon);
 
     const name = document.createElement('h3');
-    name.className = 'console-card__name';
+    name.className = 'console-card__name ds-work__title';
     name.textContent = c.name;
     card.appendChild(name);
 
     const maker = document.createElement('p');
-    maker.className = 'console-card__maker';
+    maker.className = 'console-card__maker ds-work__meta';
     maker.textContent = c.maker;
     card.appendChild(maker);
 
     const note = document.createElement('p');
-    note.className = 'console-card__note';
+    note.className = 'console-card__note ds-work__desc';
     note.textContent = c.note;
     card.appendChild(note);
 
     const bits = document.createElement('span');
-    bits.className = 'console-card__bits';
+    bits.className = 'console-card__bits ds-tag';
     bits.textContent = c.bits;
     card.appendChild(bits);
 
     const kind = document.createElement('span');
-    kind.className = 'console-card__kind';
+    kind.className = 'console-card__kind ds-work__meta';
     kind.textContent = c.kind === 'handheld' ? '掌机' : '家用机';
     card.appendChild(kind);
 
@@ -217,7 +245,7 @@ function renderExhibits() {
     EXHIBITS.filter((e) => !cat || e.category === cat).forEach((ex) => {
       const card = document.createElement('button');
       card.type = 'button';
-      card.className = 'exhibit-card';
+      card.className = 'exhibit-card ds-work';
       card.dataset.category = ex.category;
 
       const head = document.createElement('div');
@@ -229,10 +257,10 @@ function renderExhibits() {
 
       const titles = document.createElement('div');
       const t = document.createElement('h3');
-      t.className = 'exhibit-card__title';
+      t.className = 'exhibit-card__title ds-work__title';
       t.textContent = ex.title;
       const s = document.createElement('p');
-      s.className = 'exhibit-card__sub';
+      s.className = 'exhibit-card__sub ds-work__meta';
       s.textContent = ex.subtitle;
       titles.appendChild(t);
       titles.appendChild(s);
@@ -240,7 +268,7 @@ function renderExhibits() {
       card.appendChild(head);
 
       const fact = document.createElement('p');
-      fact.className = 'exhibit-card__fact';
+      fact.className = 'exhibit-card__fact ds-work__desc';
       fact.textContent = ex.fact;
       card.appendChild(fact);
 
@@ -266,7 +294,8 @@ function renderExhibits() {
     filters.innerHTML = '';
     const all = document.createElement('button');
     all.type = 'button';
-    all.className = 'filter-btn is-active';
+    all.className = 'filter-btn ds-chip is-active';
+    all.setAttribute('aria-pressed', 'true');
     all.textContent = `全部 ${EXHIBITS.length}`;
     filters.appendChild(all);
 
@@ -276,7 +305,8 @@ function renderExhibits() {
       if (!n) return;
       const b = document.createElement('button');
       b.type = 'button';
-      b.className = 'filter-btn';
+      b.className = 'filter-btn ds-chip';
+      b.setAttribute('aria-pressed', 'false');
       b.textContent = `${c.label} ${n}`;
       filters.appendChild(b);
       buttons.push(b);
@@ -284,8 +314,12 @@ function renderExhibits() {
 
     buttons.forEach((b) => {
       b.addEventListener('click', () => {
-        buttons.forEach((x) => x.classList.remove('is-active'));
+        buttons.forEach((x) => {
+          x.classList.remove('is-active');
+          x.setAttribute('aria-pressed', 'false');
+        });
         b.classList.add('is-active');
+        b.setAttribute('aria-pressed', 'true');
         render(b === all ? null : b.textContent.split(' ')[0]);
         // 依据类别中文名反查 id
         if (b !== all) {
@@ -549,7 +583,11 @@ function applyRoute() {
     v.classList.toggle('is-active', active);
   });
   $$('.nav__link').forEach((a) => {
-    a.classList.toggle('is-active', a.dataset.route === route || (route === 'sources' && a.dataset.route === 'hall'));
+    const active = a.dataset.route === route || (route === 'sources' && a.dataset.route === 'hall');
+    a.classList.toggle('is-active', active);
+    // 导航轨契约：当前分区用 aria-current="page" 标记（MIGRATION-NOTES §3）
+    if (active) a.setAttribute('aria-current', 'page');
+    else a.removeAttribute('aria-current');
   });
 
   if (route === 'platform') {
@@ -607,14 +645,56 @@ muteBtn?.addEventListener('click', () => {
 });
 
 /* ------------------------------------------------------------------ *
- * 启动
+ * 入场动效（.ds-in）
+ * 统一设计系统的分段入场：translateY(24px) + blur(6px)，交错 ≤6 级。
+ * 仅在 JS 正常运行时隐藏（html.has-js）；脚本失效时内容保持可见。
  * ------------------------------------------------------------------ */
 
-renderLogo();
-renderHeroArt();
-renderConsoles();
-renderExhibits();
-applyRoute();
+function setupEntrance() {
+  const items = $$('.ds-in');
+  if (!items.length) return;
+  const show = (el) => el.classList.add('is-visible');
+
+  if (typeof IntersectionObserver !== 'function') {
+    items.forEach(show);
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        show(entry.target);
+        io.unobserve(entry.target);
+      });
+    },
+    { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
+  );
+
+  items.forEach((el, i) => {
+    // 交错延迟：最多 6 级（design-tokens.json §motion.stagger.maxSteps）
+    el.style.setProperty('--ds-in-delay', `${Math.min(i, 5) * 60}ms`);
+    io.observe(el);
+  });
+}
+
+/* ------------------------------------------------------------------ *
+ * 启动
+ * 失效安全：启动过程中若抛错，撤掉 has-js —— 16 的 .ds-in 默认 opacity:0，
+ * 没有 JS 时必须让内容保持可见（MIGRATION-NOTES §5 / 本目录 QA.md §8）。
+ * ------------------------------------------------------------------ */
+
+try {
+  renderLogo();
+  renderHeroArt();
+  renderConsoles();
+  renderExhibits();
+  applyRoute();
+  setupEntrance();
+} catch (err) {
+  document.documentElement.classList.remove('has-js');
+  console.error('[chroma] 启动失败，已回退到无 JS 的静态呈现：', err);
+}
 
 // 供自动化测试与父页面调用的稳定接口
 window.__CHROMA__ = {

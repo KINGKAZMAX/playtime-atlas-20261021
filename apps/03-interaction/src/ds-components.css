@@ -1,0 +1,331 @@
+/* ==========================================================================
+   织造车间调度台 · LOOMDECK —— 组件层（.ds-*）
+   --------------------------------------------------------------------------
+   依据：16-design-system/DESIGN-SPEC.md §5 按钮 / §6 标签 / §7 表单、
+   §11 无障碍，以及 16-design-system/MIGRATION-NOTES.md §3「通用组件替换」。
+
+   说明：
+   · 本文件是**自实现**（不复制 16 的文件），取值仍以 design-tokens.json 为准。
+   · 控件高度按 DESIGN-SPEC §11.4「两档阈值」落地：
+     主控件（.ds-btn）走 AAA 档 **44px**；唯一豁免类 .ds-btn--sm 为 **32px**
+     （仍 ≥ AA 的 24px），用于列表行内操作、卡片角标、工具栏等紧凑位置
+     （§11.4「禁止做法」：不得为凑 44px 把紧凑按钮放大到撑破布局）。
+   · 既有类名（.btn / .seg__btn / .field …）全部保留；本层在其上叠加，
+     旧变量已重定向到 --ds-*（见 src/tokens.css 语义别名层）。
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. 焦点可见
+   焦点环任何状态不得移除（MIGRATION-NOTES §5）：2px 强调色 + 2px 背景偏移。
+   -------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--ds-accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   0.5 统一外壳（DESIGN-SPEC §14.3：页头 .ds-topbar / 页脚 .ds-footer / 跳转链接）
+   依据：16-design-system/src/components.css 的 .ds-shell
+   说明（两处刻意不照抄 16，均已记入 STATUS.md §8）：
+   1. 16 的 .ds-shell 带 `letter-spacing: var(--ds-track-body)`（-0.005em）。
+      该声明与 tokens.css 的 `:lang(zh)` 规则**同特异性**，而本文件加载更晚 →
+      会覆盖中文归零口径，给汉字加上负字距（**红线：中文禁负字距**）。
+      故本实现不写 letter-spacing，并在下方用更高特异性显式复原 CJK 口径。
+   2. 16 的 .ds-shell 带 `line-height: var(--ds-lh-normal)`（1.6）作为 body 级行高。
+      本作品是**整屏调度台**（网格 + 标签密集），body 级行高会整体放松行距、
+      撑高机台卡与订单卡，牺牲一屏可见台数；中文行高已按 §5 逐类落到 1.85
+      （见 tokens.css 的 `:lang(zh)` 段），标题 1.22。故此处不设 body 级行高。
+   -------------------------------------------------------------------------- */
+.ds-shell {
+  min-height: 100dvh;
+  background: var(--ds-bg);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* 中文口径复原：字距归零（特异性 0,2,0 > :lang(zh) 的 0,1,0，与加载顺序无关） */
+.ds-shell:lang(zh),
+.ds-shell:lang(zh-CN),
+.ds-shell:lang(zh-TW) {
+  letter-spacing: var(--ds-track-cjk);
+}
+
+/* --------------------------------------------------------------------------
+   1. 跳转链接（每页首个可聚焦元素）
+   -------------------------------------------------------------------------- */
+.ds-skip {
+  position: absolute;
+  left: var(--ds-space-4);
+  top: -100px;
+  z-index: var(--ds-z-toast);
+  padding: var(--ds-space-3) var(--ds-space-4);
+  min-height: var(--ds-target-min);
+  display: inline-flex;
+  align-items: center;
+  background: var(--ds-ink);
+  color: var(--ds-bg);
+  border-radius: var(--ds-radius-sm);
+  text-decoration: none;
+  font-size: var(--ds-type-sm);
+  transition: top var(--ds-dur-fast) var(--ds-ease-out);
+}
+.ds-skip:focus { top: var(--ds-space-4); }
+
+/* --------------------------------------------------------------------------
+   2. 顶部栏容器
+   窄屏不得溢出：品牌不折行、控件横向滚动。
+   说明：本作品顶栏是「品牌 | 读数 | 操作」三列调度台抬头，不是导航行，
+   因此 .ds-topbar 只提供**表面**（层级/底色/描边/内距/间距），
+   列结构交由作品自身的 .masthead 栅格决定 —— 避免 flex 覆盖栅格
+   导致窄屏下标题被挤成竖排。
+   -------------------------------------------------------------------------- */
+.ds-topbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--ds-z-sticky);
+  align-items: center;
+  gap: var(--ds-space-4);
+  padding: var(--ds-space-3) var(--ds-space-gutter);
+  background: var(--ds-bg);
+  border-bottom: 1px solid var(--ds-line);
+}
+.ds-topbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  min-height: var(--ds-target-min);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h3);
+  font-weight: var(--ds-w-semibold);
+  color: var(--ds-ink);
+  text-decoration: none;
+}
+.ds-topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   2.5 页脚（DESIGN-SPEC §14.3 统一外壳 · 来源与许可信息带）
+   16 的 .ds-footer 用 `--ds-space-7/6`（48/32px）内距，属长滚动页的页脚。
+   本作品是整屏调度台：页脚是一条**收窄的信息带**，内距压到 12/16px，
+   否则会在 900px 视口里挤掉机台矩阵一行的高度（调度台密度优先于页脚体量）。
+   内容一律为静态文本，不放链接 —— 交付产物是纯静态站，指向仓库内 .md 的链接
+   在线上会失效（不做死链）。
+   -------------------------------------------------------------------------- */
+.ds-footer {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ds-space-2) var(--ds-space-4);
+  padding: var(--ds-space-3) var(--ds-space-gutter);
+  border-top: 1px solid var(--ds-line);
+  background: var(--ds-bg);
+  color: var(--ds-ink-faint);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-cjk);
+}
+.ds-footer__meta { min-width: 0; }
+.ds-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-2) var(--ds-space-4);
+  margin-left: auto;
+}
+.ds-footer__links span { white-space: nowrap; }
+
+/* --------------------------------------------------------------------------
+   3. 按钮
+   每屏至多一个 .ds-btn--primary（本作品保留顶栏「开工并派工」为主按钮，
+   订单表单提交按钮使用 --secondary，避免同屏两个主 CTA 争夺注意力）。
+   -------------------------------------------------------------------------- */
+.ds-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-2);
+  /* AAA 档：主控件 ≥44px（§11.4） */
+  min-height: 44px;
+  padding: var(--ds-space-2) var(--ds-space-4);
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-control);
+  background: transparent;
+  color: var(--ds-ink);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-sm);
+  font-weight: var(--ds-w-medium);
+  line-height: 1.2;
+  letter-spacing: var(--ds-track-cjk);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--ds-dur-fast) var(--ds-ease-veil),
+    color var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    box-shadow var(--ds-dur-fast) var(--ds-ease-veil),
+    transform var(--ds-dur-fast) var(--ds-ease-spring);
+}
+.ds-btn--sm { min-height: 32px; padding: 4px var(--ds-space-3); font-size: var(--ds-type-xs); }
+.ds-btn--lg { min-height: 48px; padding-inline: var(--ds-space-5); font-size: var(--ds-type-body); }
+
+.ds-btn--primary {
+  background: var(--ds-accent);
+  color: var(--ds-accent-ink);
+}
+.ds-btn--primary:hover { background: var(--ds-accent-hover); }
+.ds-btn--primary:active { transform: scale(0.985); }
+
+.ds-btn--secondary {
+  background: var(--ds-surface);
+  color: var(--ds-ink);
+  box-shadow: var(--ds-ring);
+}
+.ds-btn--secondary:hover { background: var(--ds-bg-sunken); box-shadow: var(--ds-ring-strong); }
+
+.ds-btn--ghost {
+  background: transparent;
+  color: var(--ds-ink);
+  box-shadow: var(--ds-ring);
+}
+.ds-btn--ghost:hover { background: var(--ds-surface); box-shadow: var(--ds-ring-strong); }
+
+.ds-btn--quiet {
+  background: transparent;
+  color: var(--ds-ink-soft);
+  padding-inline: var(--ds-space-2);
+}
+.ds-btn--quiet:hover { color: var(--ds-ink); background: var(--ds-surface); }
+
+.ds-btn[aria-pressed="true"] {
+  background: var(--ds-accent-soft);
+  color: var(--ds-accent);
+  box-shadow: var(--ds-ring-strong);
+}
+
+.ds-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. 状态标签
+   状态不得只用颜色表达 —— 本作品所有 .ds-tag 都带文字。
+   -------------------------------------------------------------------------- */
+.ds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  height: 24px;
+  padding-inline: 10px;
+  border-radius: var(--ds-radius-pill);
+  background: var(--ds-surface);
+  color: var(--ds-ink-soft);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-cjk);
+  white-space: nowrap;
+}
+.ds-tag--accent { background: var(--ds-accent-soft); color: var(--ds-accent); }
+.ds-tag--jade { background: var(--ds-jade-soft); color: var(--ds-jade); }
+.ds-tag--outline { background: transparent; box-shadow: var(--ds-ring); }
+.ds-tag__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+  flex: none;
+}
+
+/* --------------------------------------------------------------------------
+   5. 筛选 chip（aria-pressed）
+   -------------------------------------------------------------------------- */
+.ds-chip {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  min-height: 32px;
+  padding: 4px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-pill);
+  background: var(--ds-surface);
+  color: var(--ds-ink-soft);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-cjk);
+  cursor: pointer;
+  transition: background-color var(--ds-dur-fast) var(--ds-ease-veil),
+    color var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil);
+}
+.ds-chip:hover { background: var(--ds-bg-sunken); color: var(--ds-ink); }
+.ds-chip[aria-pressed="true"] {
+  background: var(--ds-accent);
+  color: var(--ds-accent-ink);
+  border-color: var(--ds-accent);
+}
+
+/* --------------------------------------------------------------------------
+   6. 表单
+   -------------------------------------------------------------------------- */
+.ds-field { display: flex; flex-direction: column; gap: var(--ds-space-1); min-width: 0; }
+.ds-field__label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ds-space-2);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-soft);
+}
+.ds-input,
+.ds-select {
+  appearance: none;
+  width: 100%;
+  /* §7.4：控件最小高 44px、radius --ds-radius-md、--ds-bg-raised 底 */
+  min-height: 44px;
+  padding: 6px var(--ds-space-3);
+  /* 控件边界用 --ds-ink-faint（≥3:1），--ds-line 仅作装饰分隔线 */
+  border: 1px solid var(--ds-ink-faint);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-bg-raised);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-sm);
+  transition: border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    box-shadow var(--ds-dur-fast) var(--ds-ease-veil);
+}
+.ds-input:focus,
+.ds-select:focus {
+  outline: none;
+  border-color: var(--ds-accent);
+  box-shadow: 0 0 0 3px var(--ds-accent-soft);
+}
+.ds-field__error { font-size: var(--ds-type-xs); color: var(--ds-danger); }
+
+/* --------------------------------------------------------------------------
+   7. 减少动态效果
+   保留不产生位移的淡入淡出（design-tokens.json §motion.reducedMotion）。
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ds-dur-instant: 1ms;
+    --ds-dur-fast: 1ms;
+    --ds-dur-base: 1ms;
+    --ds-dur-slow: 1ms;
+    --ds-dur-reveal: 1ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

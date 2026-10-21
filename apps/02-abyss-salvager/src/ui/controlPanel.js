@@ -109,5 +109,12 @@ export function createControlPanel(root, state, schema, onChange) {
     for (const [key, ctl] of inputs) ctl.set(state[key]);
   }
 
-  return { syncAll, inputs };
+  /** Re-sync a single widget — used when the state is changed from outside
+   *  the panel (keyboard shortcut, tool rail, automated QA). */
+  function syncKey(key) {
+    const ctl = inputs.get(key);
+    if (ctl) ctl.set(state[key]);
+  }
+
+  return { syncAll, syncKey, inputs };
 }

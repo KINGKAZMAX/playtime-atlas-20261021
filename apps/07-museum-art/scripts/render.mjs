@@ -26,7 +26,7 @@ async function renderSVGSet(page, base, dir, nameFilter = (f) => f.endsWith('.sv
   let n = 0;
   for (const f of files) {
     const url = `${base}/public/assets/${dir}/${f}`;
-    await page.goto(url, { waitUntil: 'load' });
+    await page.goto(url, { waitUntil: 'load', timeout: 120000 });
     await page.evaluate(async () => {
       await document.fonts.ready;
       const imgs = [...document.querySelectorAll('image')];
@@ -56,13 +56,20 @@ async function renderModels(page, base) {
     .sort();
   let n = 0;
   for (const id of ids) {
-    await page.goto(`${base}/scripts/render/model.html?id=${id}`, { waitUntil: 'load' });
-    const state = await page
-      .waitForFunction(() => window.__READY__ !== undefined, null, { timeout: 120000 })
+    let state = null;
+    for (let attempt = 0; attempt < 2 && state !== true; attempt++) {
+    await page.goto(`${base}/scripts/render/model.html?id=${id}`, { waitUntil: 'load', timeout: 120000 });
+    state = await page
+      .waitForFunction(() => window.__READY__ !== undefined, null, { timeout: 150000 })
       .then(() => page.evaluate(() => window.__READY__))
       .catch(() => 'timeout');
     if (state !== true) {
-      console.warn(`  ⚠ 模型渲染失败：${id} (${state})`);
+      console.warn(`  ⚠ 模型渲染重试：${id} (attempt ${attempt + 1}, ${state})`);
+      await page.waitForTimeout(1500);
+    }
+    }
+    if (state !== true) {
+      console.warn(`  ✗ 模型渲染失败：${id} (${state})`);
       continue;
     }
     const out = path.join(dir, `model-${id}.png`);
@@ -80,7 +87,14 @@ async function main() {
   console.log(`· 本地服务 ${base}`);
 
   const browser = await chromium.launch({
-    args: ['--allow-file-access-from-files', '--enable-unsafe-swiftshader', '--use-gl=swiftshader'],
+    args: [
+      '--enable-unsafe-swiftshader',
+      '--use-angle=swiftshader',
+      '--disable-dev-shm-usage',
+      '--no-sandbox',
+      '--disable-background-timer-throttling',
+      '--disable-backgrounding-occluded-windows',
+    ],
   });
   const page = await browser.newPage({
     viewport: { width: 1280, height: 1280 },

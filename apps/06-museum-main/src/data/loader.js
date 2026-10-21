@@ -177,7 +177,8 @@ export async function loadCatalog({ force = false } = {}) {
         labelEn: ex.era,
         from: ex.year,
         to: ex.year,
-        accent: '#FF6B2C',
+        // 兜底年代没有专属身份色，用全站唯一的强调色（不另立色板）
+        accent: 'var(--ds-accent)',
         tagline: '本馆新增年代，叙述正在补写中。',
         narrative: '该年代由外部策展目录补充，馆方叙述文字待完善。',
         note: '本条目为外部策展目录带来的年代，本地馆方叙述尚未补写。',

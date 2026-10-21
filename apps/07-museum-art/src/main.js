@@ -5,9 +5,11 @@
 
 import './styles.css';
 import ATLAS from './data.js';
-import TOKENS from '../public/assets/tokens.js';
+import TOKENS from './tokens.js';
+import { t, getLang, setLang, setVar, applyI18n } from './i18n.js';
 
-/* ---------- 路径助手 ---------- */
+/* ---------- 路径助手 ----------
+   Pages 子路径适配：资源一律经 BASE_URL 拼接，绝不写死根路径 */
 const BASE = import.meta.env.BASE_URL || './';
 const asset = (p) => `${BASE}${String(p).replace(/^\.?\//, '')}`;
 
@@ -21,14 +23,33 @@ const el = (tag, cls, html) => {
   return n;
 };
 
+/* ---------- 容错助手 ----------
+   单个节点缺失不应该让整页空白：写文本一律走 setText，
+   渲染步骤一律走 run（出错只记 warn，其余区块照常渲染）。 */
+function setText(target, value) {
+  const n = typeof target === 'string' ? $(target) : target;
+  if (!n) return false;
+  n.textContent = value;
+  return true;
+}
+
+function run(name, fn) {
+  try {
+    fn();
+  } catch (err) {
+    console.warn(`[render] ${name} 失败：`, err);
+  }
+}
+
 /* ---------- 提示条 ---------- */
 let toastTimer = null;
 function toast(msg) {
-  const t = $('#toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  const n = $('#toast');
+  if (!n) return;
+  n.textContent = msg;
+  n.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  toastTimer = setTimeout(() => n.classList.remove('show'), 2200);
 }
 
 /* =========================================================
@@ -38,12 +59,12 @@ function renderHeroStats() {
   const box = $('#hero-stats');
   const c = ATLAS.counts;
   const stats = [
-    [c.eras, '年代分段'],
-    [c.covers, '封面'],
-    [c.cases, '展柜'],
-    [c.models, '3D 展品'],
-    [c.icons, '原创图标'],
-    [c.models ? ATLAS.models.reduce((s, m) => s + m.partCount, 0) : 0, '模型部件'],
+    [c.eras, t('stats.eras')],
+    [c.covers, t('stats.covers')],
+    [c.cases, t('stats.cases')],
+    [c.models, t('stats.models')],
+    [c.icons, t('stats.icons')],
+    [c.models ? ATLAS.models.reduce((s, m) => s + m.partCount, 0) : 0, t('stats.parts')],
   ];
   box.innerHTML = stats
     .map(([n, label]) => `<div class="stat"><b>${n}</b><span>${label}</span></div>`)
@@ -52,36 +73,48 @@ function renderHeroStats() {
 
 /* =========================================================
    2. 设计令牌
+   ----------------------------------------------------
+   令牌结构（对齐 16-design-system 后）：
+     TOKENS.designSystem — 16 的令牌树（UI 取值来源）
+     TOKENS.local        — 展品内嵌配色（海报/封面/展柜/GLB 已烘焙）
+     TOKENS.compat       — 1.0.0 旧键名 → 16 取值的兼容视图
    ========================================================= */
-function renderTokens() {
-  const groups = [
-    ['ink', '墨蓝 Ink'],
-    ['paper', '纸白 Paper'],
-    ['signal', '信号橙 Signal'],
-    ['teal', '辅助青 Teal'],
-  ];
-  $('#swatches').innerHTML = groups
-    .map(([key, label]) => {
-      const set = TOKENS.color[key];
-      const cards = Object.entries(set)
-        .reverse()
-        .map(
-          ([step, hex]) => `
+const DS = TOKENS.designSystem;
+const LOCAL = TOKENS.local;
+
+/** 拆 DTCG 的 { $value } 包装 */
+const dv = (node) => (node && typeof node === 'object' && '$value' in node ? node.$value : node);
+
+/** 把一组 { 键: { $value } } 渲染成色卡 */
+function swatchGroup(set, keyPrefix) {
+  return Object.entries(set)
+    .filter(([, v]) => dv(v) && String(dv(v)).startsWith('#'))
+    .map(([key, v]) => {
+      const hex = String(dv(v));
+      return `
           <div class="swatch">
             <div class="swatch-chip" style="background:${hex}"></div>
             <div class="swatch-meta">
-              <b>${key}-${step}</b><span>${hex.toUpperCase()}</span>
+              <b>${keyPrefix ? `${keyPrefix}-${key}` : key}</b><span>${hex.toUpperCase()}</span>
             </div>
-          </div>`,
-        )
-        .join('');
-      return `<div style="grid-column:1/-1"><p class="token-title" style="margin-top:18px">${label}</p>
-        <div class="swatches">${cards}</div></div>`;
+          </div>`;
     })
     .join('');
+}
 
-  const sem = TOKENS.semantic;
-  $('#semantic').innerHTML = Object.entries(sem)
+function renderTokens() {
+  /* ① 16 的浅色主题色板 */
+  $('#swatches').innerHTML = [
+    `<div style="grid-column:1/-1"><p class="token-title" style="margin-top:18px">${t('tokens.palette.light')}</p>
+      <div class="swatches">${swatchGroup(DS.color.light, 'light')}</div></div>`,
+    `<div style="grid-column:1/-1"><p class="token-title" style="margin-top:18px">${t('tokens.palette.dark')}</p>
+      <div class="swatches">${swatchGroup(DS.color.dark, 'dark')}</div></div>`,
+    `<div style="grid-column:1/-1"><p class="token-title" style="margin-top:18px">${t('tokens.palette.canvas')}</p>
+      <div class="swatches">${swatchGroup(DS.color.canvas, 'canvas')}</div></div>`,
+  ].join('');
+
+  /* ② 语义色：兼容视图（已指向 16 取值） */
+  $('#semantic').innerHTML = Object.entries(TOKENS.compat.semantic)
     .filter(([, v]) => typeof v === 'string' && v.startsWith('#'))
     .map(
       ([k, v]) => `<div class="swatch">
@@ -91,38 +124,64 @@ function renderTokens() {
     )
     .join('');
 
-  const sizes = [
-    ['display', '2.25rem'], ['xl', '1.75rem'], ['lg', '1.375rem'], ['md', '1.125rem'],
-    ['base', '1rem'], ['sm', '0.875rem'], ['xs', '0.75rem'],
+  /* ③ 展品内嵌配色（本地资产已烘焙，非 UI 色板） */
+  $('#exhibit-swatches').innerHTML = Object.entries(LOCAL.color)
+    .map(
+      ([group, steps]) => Object.entries(steps)
+        .reverse()
+        .map(
+          ([step, hex]) => `
+          <div class="swatch">
+            <div class="swatch-chip" style="background:${hex}"></div>
+            <div class="swatch-meta">
+              <b>${group}-${step}</b><span>${hex.toUpperCase()}</span>
+            </div>
+          </div>`,
+        )
+        .join(''),
+    )
+    .join('');
+
+  /* ④ 字阶（16 的 type scale；标签为技术名，两语一致） */
+  const sizeLabels = [
+    ['display', 'Display / H1'],
+    ['h3', 'H3 / Lead'],
+    ['body', 'Body'],
+    ['sm', 'Small'],
+    ['xs', 'Extra small'],
+    ['mono', 'Mono'],
   ];
-  $('#type-scale').innerHTML = sizes
-    .map(
-      ([k, v]) => `<div>
-        <span class="ts-label">${k} · ${v}</span>
-        <span class="ts-sample" style="font-size:${v}">回响电玩馆 Atlas</span>
-      </div>`,
-    )
+  $('#type-scale').innerHTML = sizeLabels
+    .map(([k, label]) => {
+      const v = dv(DS.typography.size[k]) || '16px';
+      const sample = k === 'mono' ? 'ATLAS-ERA-02 · 1978—1983' : '回响电玩馆 Atlas';
+      return `<div>
+        <span class="ts-label">${label}</span>
+        <span class="ts-sample" style="font-size:${v}">${sample}</span>
+      </div>`;
+    })
     .join('');
 
-  $('#space-scale').innerHTML = Object.entries(TOKENS.space)
-    .map(
-      ([k, v]) => `<div class="scale-item">
-        <i style="width:${parseFloat(v) + 2}px;height:${parseFloat(v) + 2}px"></i>${k}
-      </div>`,
-    )
+  /* ⑤ 间距 / 圆角 / 阴影（16 的取值） */
+  $('#space-scale').innerHTML = Object.entries(DS.space)
+    .filter(([k]) => /^\d+$/.test(k))
+    .map(([k, v]) => {
+      const px = parseFloat(dv(v));
+      return `<div class="scale-item">
+        <i style="width:${px + 2}px;height:${px + 2}px"></i>${k}
+      </div>`;
+    })
     .join('');
 
-  $('#radius-scale').innerHTML = Object.entries(TOKENS.radius)
-    .map(
-      ([k, v]) => `<div class="scale-item">
-        <i style="width:34px;height:34px;background:${TOKENS.color.signal[500]};border-radius:${v}"></i>${k}
-      </div>`,
-    )
+  $('#radius-scale').innerHTML = Object.entries(DS.radius)
+    .map(([k, v]) => `<div class="scale-item">
+      <i style="width:34px;height:34px;background:var(--ds-accent);border-radius:${dv(v)}"></i>${k}
+    </div>`)
     .join('');
 
-  $('#shadow-scale').innerHTML = Object.entries(TOKENS.shadow)
+  $('#shadow-scale').innerHTML = Object.entries(DS.shadow)
     .map(
-      ([k, v]) => `<div class="scale-item" style="padding:6px 12px;background:${TOKENS.color.ink[700]};border-radius:8px;box-shadow:${v}">${k}</div>`,
+      ([k, v]) => `<div class="scale-item" style="padding:6px 12px;background:var(--ds-bg-raised);border-radius:8px;box-shadow:${dv(v)}">${k}</div>`,
     )
     .join('');
 }
@@ -132,32 +191,34 @@ function renderTokens() {
    ========================================================= */
 function renderFonts() {
   const cjk = ATLAS.fonts.families.find((f) => f.family === 'Noto Sans SC');
-  $('#cjk-count').textContent = '746';
+  const cjkCount = ATLAS.fonts.cjkChars || 746;
+  setText('#cjk-count', String(cjkCount));
 
   const samples = {
     'Space Grotesk': {
       sample: 'PLAYTIME ATLAS',
-      role: '展示体 · 年代标题、编号、数字',
+      role: t('fonts.role.grotesk'),
       font: "'Space Grotesk', sans-serif",
     },
     Inter: {
-      sample: '电子游戏硬件年代馆的正文排版',
-      role: '正文 · 段落、说明、界面文案',
+      sample: getLang() === 'en'
+        ? 'Body copy set for a museum of game hardware'
+        : '电子游戏硬件年代馆的正文排版',
+      role: t('fonts.role.inter'),
       font: "'Inter', 'Noto Sans SC', sans-serif",
     },
     'Space Mono': {
       sample: 'ATLAS-ERA-02 · 1978—1983',
-      role: '等宽 · 编号、年份、标签',
+      role: t('fonts.role.mono'),
       font: "'Space Mono', monospace",
     },
     'Noto Sans SC': {
       sample: '回响电玩馆 · 街机黄金',
-      role: '中文 · 全部汉字（子集 746 字）',
+      role: t('fonts.role.cjk', { count: cjkCount }),
       font: "'Noto Sans SC', sans-serif",
     },
   };
 
-  const total = (ATLAS.fonts.totalBytes / 1024).toFixed(0);
   $('#font-cards').innerHTML = ATLAS.fonts.families
     .map((f) => {
       const s = samples[f.family] || { sample: f.family, role: f.role, font: 'sans-serif' };
@@ -169,14 +230,14 @@ function renderFonts() {
         <p class="fc-role">${s.role}</p>
         <div class="fc-sample" style="font-family:${s.font}">${s.sample}</div>
         <div class="fc-meta">
-          <span>${f.license} · 子集 ${(kb / 1024).toFixed(0)} KB</span>
-          <span>本地自托管</span>
+          <span>${f.license} · ${t('fonts.meta.subset', { size: (kb / 1024).toFixed(0) })}</span>
+          <span>${t('fonts.meta.local')}</span>
         </div>
       </article>`;
     })
     .join('');
 
-  if (!cjk) return;
+  void cjk;
 }
 
 /* =========================================================
@@ -188,8 +249,8 @@ function renderIcons() {
   const grid = $('#icon-grid');
 
   const mk = (key, label) =>
-    `<button class="filter-chip" data-cat="${key}" aria-pressed="${key === 'all'}">${
-      key === 'all' ? `全部 ${ATLAS.icons.count}` : `${label}`
+    `<button class="filter-chip ds-chip" data-cat="${key}" aria-pressed="${key === 'all'}">${
+      key === 'all' ? t('icons.filter.all', { count: ATLAS.icons.count }) : `${label}`
     }</button>`;
 
   bar.innerHTML = mk('all', '全部') + cats.map(([k, v]) => mk(k, v)).join('');
@@ -219,9 +280,9 @@ function renderIcons() {
     const ref = `#atlas-icon-${cell.dataset.id}`;
     try {
       await navigator.clipboard.writeText(ref);
-      toast(`已复制引用 ${ref}`);
+      toast(t('toast.copied', { ref }));
     } catch {
-      toast(`引用：${ref}`);
+      toast(t('toast.ref', { ref }));
     }
   });
 }
@@ -293,29 +354,57 @@ const LIGHTBOX_SETS = {
 };
 let lbSet = [];
 let lbIndex = 0;
+let lbReturnFocus = null;
 
 function openLightbox(setName, id) {
   lbSet = LIGHTBOX_SETS[setName]();
   lbIndex = Math.max(0, lbSet.findIndex((x) => x.src.includes(id)));
+  lbReturnFocus = document.activeElement;
   $('#lightbox').hidden = false;
   document.body.style.overflow = 'hidden';
   paintLightbox();
+  /* 焦点移入弹层（16 §5：role=dialog + aria-modal + 焦点陷阱 + Esc + 焦点归还） */
+  $('#lightbox-close').focus({ preventScroll: true });
 }
 function paintLightbox() {
   const item = lbSet[lbIndex];
   if (!item) return;
   $('#lightbox-img').src = asset(item.src);
   $('#lightbox-img').alt = item.cap;
-  $('#lightbox-cap').textContent = item.cap;
+  setText('#lightbox-cap', item.cap);
 }
 function closeLightbox() {
   $('#lightbox').hidden = true;
   document.body.style.overflow = '';
+  /* 焦点归还给打开者 */
+  if (lbReturnFocus && typeof lbReturnFocus.focus === 'function') {
+    lbReturnFocus.focus({ preventScroll: true });
+  }
+  lbReturnFocus = null;
 }
 function stepLightbox(d) {
   if (!lbSet.length) return;
   lbIndex = (lbIndex + d + lbSet.length) % lbSet.length;
   paintLightbox();
+}
+
+/** 焦点陷阱：Tab / Shift+Tab 在弹层内循环 */
+function trapLightboxFocus(e) {
+  if (e.key !== 'Tab') return;
+  const box = $('#lightbox');
+  if (box.hidden) return;
+  const focusables = $$('button, [href], img[tabindex], [tabindex]:not([tabindex="-1"])', box)
+    .filter((n) => n.offsetParent !== null);
+  if (!focusables.length) return;
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 }
 
 function wireLightbox() {
@@ -333,6 +422,7 @@ function wireLightbox() {
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') stepLightbox(-1);
     if (e.key === 'ArrowRight') stepLightbox(1);
+    trapLightboxFocus(e);
   });
   $('#lightbox-close').addEventListener('click', closeLightbox);
   $('#lightbox-prev').addEventListener('click', () => stepLightbox(-1));
@@ -355,7 +445,11 @@ function renderModelCards() {
         <div class="mc-meta">
           <span>${m.range} · ${m.form}</span>
           <b>${m.name}</b>
-          <em>${m.partCount} 部件 · ${m.triangleCount} 三角面 · ${(m.glbBytes / 1024).toFixed(0)} KB</em>
+          <em>${t('viewer.cardMeta', {
+            parts: m.partCount,
+            tris: m.triangleCount.toLocaleString(),
+            kb: (m.glbBytes / 1024).toFixed(0),
+          })}</em>
         </div>
       </article>`,
     )
@@ -368,24 +462,35 @@ function renderModelCards() {
     .join('');
 
   $$('.model-card').forEach((c) => c.addEventListener('click', () => selectModel(c.dataset.id)));
-  $$('.model-tab').forEach((t) => t.addEventListener('click', () => selectModel(t.dataset.id)));
+  $$('.model-tab').forEach((t2) => t2.addEventListener('click', () => selectModel(t2.dataset.id)));
 }
 
 function updateSidePanel(m) {
-  $('#viewer-title').textContent = m.name;
-  $('#viewer-latin').textContent = `${m.latin} · ${m.form} · ${m.range}`;
-  $('#viewer-specs').innerHTML = `
-    <dt>部件数</dt><dd>${m.partCount} 件</dd>
-    <dt>三角面</dt><dd>${m.triangleCount.toLocaleString()}</dd>
-    <dt>尺寸</dt><dd>${m.dimensions.w} × ${m.dimensions.h} × ${m.dimensions.d} m</dd>
-    <dt>格式</dt><dd>GLB · ${(m.glbBytes / 1024).toFixed(0)} KB</dd>
-    <dt>年代</dt><dd>${m.range}</dd>`;
-  $('#viewer-story').textContent = m.story;
-  $('#viewer-note').textContent = m.note;
-  $('#link-glb').href = asset(m.glb);
-  $('#link-png').href = asset(m.png);
-  $('#link-tech').href = asset(m.techSvg);
-  $('#link-json').href = asset(m.json);
+  setText('#viewer-title', m.name);
+  setText('#viewer-latin', `${m.latin} · ${m.form} · ${m.range}`);
+  const specs = $('#viewer-specs');
+  if (specs) {
+    specs.innerHTML = `
+    <dt>${t('viewer.spec.parts')}</dt><dd>${t('viewer.spec.partsValue', { n: m.partCount })}</dd>
+    <dt>${t('viewer.spec.tris')}</dt><dd>${m.triangleCount.toLocaleString()}</dd>
+    <dt>${t('viewer.spec.size')}</dt><dd>${m.dimensions.w} × ${m.dimensions.h} × ${m.dimensions.d} m</dd>
+    <dt>${t('viewer.spec.format')}</dt><dd>GLB · ${(m.glbBytes / 1024).toFixed(0)} KB</dd>
+    <dt>${t('viewer.spec.era')}</dt><dd>${m.range}</dd>`;
+  }
+  setText('#viewer-story', m.story);
+  setText('#viewer-note', m.note);
+  setHref('#link-glb', asset(m.glb));
+  setHref('#link-png', asset(m.png));
+  setHref('#link-tech', asset(m.techSvg));
+  setHref('#link-json', asset(m.json));
+}
+
+/** 安全设置链接地址：目标不存在时跳过而不是抛错 */
+function setHref(target, value) {
+  const n = typeof target === 'string' ? $(target) : target;
+  if (!n) return false;
+  n.href = value;
+  return true;
 }
 
 function hasWebGL() {
@@ -415,7 +520,7 @@ async function selectModel(id) {
 
   if (!hasWebGL()) {
     showFallback(m);
-    toast('未检测到 WebGL，已切换技术插画降级图');
+    toast(t('toast.noWebgl'));
     return;
   }
 
@@ -608,7 +713,7 @@ function wireViewerControls() {
   $('#btn-spin').addEventListener('click', (e) => {
     state.autoSpin = !state.autoSpin;
     e.currentTarget.setAttribute('aria-pressed', String(state.autoSpin));
-    e.currentTarget.textContent = state.autoSpin ? '自动旋转' : '已暂停旋转';
+    setText(e.currentTarget, state.autoSpin ? t('viewer.spin') : (getLang() === 'en' ? 'Rotation paused' : '已暂停旋转'));
   });
   $('#btn-reset').addEventListener('click', () => {
     if (state.api) state.api.resetView();
@@ -616,20 +721,77 @@ function wireViewerControls() {
 }
 
 /* =========================================================
-   8. 启动
+   8. 语言切换
+   ========================================================= */
+function wireLangSwitch() {
+  const btn = $('#lang-switch');
+  if (!btn) return;
+  const sync = () => {
+    const isEn = getLang() === 'en';
+    setText(btn, isEn ? '中文' : 'EN');
+    btn.setAttribute('aria-pressed', String(isEn));
+    btn.setAttribute('aria-label', isEn ? '切换到中文' : 'Switch to English');
+  };
+  btn.addEventListener('click', () => {
+    setLang(getLang() === 'en' ? 'zh' : 'en');
+    sync();
+    applyI18n();
+    /* 重新渲染依赖词条的模块 */
+    run('heroStats', renderHeroStats);
+    run('tokens', renderTokens);
+    run('fonts', renderFonts);
+    run('icons', renderIcons);
+    run('modelCards', renderModelCards);
+    if (state.current) run('sidePanel', () => updateSidePanel(state.current));
+    sync();
+  });
+  sync();
+}
+
+/* =========================================================
+   9. 入场动画（.ds-in）
+   ========================================================= */
+function wireEntryAnimation() {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nodes = $$('.section-head, .viewer, .model-tabs, .font-cards, .icon-grid, .poster-grid, .cover-grid, .case-grid, .model-cards, .fallback-grid');
+  if (reduce) {
+    nodes.forEach((n) => n.classList.add('is-in'));
+    return;
+  }
+  nodes.forEach((n) => n.classList.add('ds-in'));
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      });
+    },
+    { rootMargin: '0px 0px -8% 0px' },
+  );
+  nodes.forEach((n) => io.observe(n));
+}
+
+/* =========================================================
+   10. 启动
    ========================================================= */
 function boot() {
-  renderHeroStats();
-  renderTokens();
-  renderFonts();
-  renderIcons();
-  renderPosters();
-  renderCovers();
-  renderCases();
-  renderFallback();
-  renderModelCards();
-  wireLightbox();
-  wireViewerControls();
+  /* 动态插值变量先行登记（字体子集字数要进文案） */
+  setVar('count', ATLAS.fonts.cjkChars || 746);
+  applyI18n();
+  run('heroStats', renderHeroStats);
+  run('tokens', renderTokens);
+  run('fonts', renderFonts);
+  run('icons', renderIcons);
+  run('posters', renderPosters);
+  run('covers', renderCovers);
+  run('cases', renderCases);
+  run('fallback', renderFallback);
+  run('modelCards', renderModelCards);
+  run('lightbox', wireLightbox);
+  run('viewerControls', wireViewerControls);
+  run('langSwitch', wireLangSwitch);
+  run('entryAnimation', wireEntryAnimation);
 
   /* 注入图标雪碧 */
   fetch(asset('assets/icons/icons.svg'))
@@ -640,7 +802,7 @@ function boot() {
       holder.innerHTML = txt;
       document.body.insertBefore(holder, document.body.firstChild);
     })
-    .catch(() => toast('图标雪碧未加载'));
+    .catch(() => toast(t('icons.title')));
 
   /* 默认选中第一件展品 */
   if (ATLAS.models.length) selectModel(ATLAS.models[0].id);
@@ -648,10 +810,13 @@ function boot() {
   /* 离线提示 */
   const chip = $('#net-chip');
   const updateNet = () => {
+    if (!chip) return;
     const off = !navigator.onLine;
-    chip.textContent = off ? 'OFFLINE' : 'LOCAL';
+    setText(chip, off ? 'OFFLINE' : 'LOCAL');
     chip.classList.toggle('chip-live', !off);
-    chip.title = off ? '离线中：全部资源本地自托管，仍可完整浏览' : '全部资源本地自托管';
+    chip.title = off
+      ? (getLang() === 'en' ? 'Offline: all assets are self-hosted and remain fully browsable' : '离线中：全部资源本地自托管，仍可完整浏览')
+      : (getLang() === 'en' ? 'All assets are self-hosted' : '全部资源本地自托管');
   };
   window.addEventListener('online', updateNet);
   window.addEventListener('offline', updateNet);

@@ -7,7 +7,7 @@
   "year": 1951,
   "platform": "MIT Whirlwind / real-time cathode-ray-tube display",
   "creator": "MIT Lincoln Laboratory (Jay Forrester)",
-  "title": "Whirlwind (computer)"
+  "title": "Whirlwind"
  },
  {
   "id": "hw-nim",
@@ -47,7 +47,7 @@
   "year": 1960,
   "platform": "University of Illinois PLATO system",
   "creator": "University of Illinois at Urbana-Champaign",
-  "title": "PLATO (computer system)"
+  "title": "PLATO"
  },
  {
   "id": "hw-imlac",
@@ -127,7 +127,7 @@
   "year": 1969,
   "platform": "Brown Box / Television Trainer prototype console",
   "creator": "Ralph Baer (with Bill Harrison)",
-  "title": "Brown Box (prototype)"
+  "title": "Brown Box 棕盒原型机"
  },
  {
   "id": "sw-volleyball",
@@ -207,7 +207,7 @@
   "year": 1976,
   "platform": "Gremlin Industries coin-op",
   "creator": "Gremlin Industries (Lane Davis)",
-  "title": "Blockade (video game)"
+  "title": "Blockade"
  },
  {
   "id": "hw-atari-vcs",
@@ -257,7 +257,7 @@
   "year": 1979,
   "platform": "Atari vector-graphics arcade hardware",
   "creator": "Atari (Ed Logg, Lyle Rains)",
-  "title": "Asteroids (video game)"
+  "title": "Asteroids"
  },
  {
   "id": "sw-galaxian",
@@ -277,7 +277,7 @@
   "year": 1980,
   "platform": "Atari 2600 (VCS) cartridge",
   "creator": "Atari (Warren Robinett)",
-  "title": "Adventure (1980 video game)"
+  "title": "Adventure"
  },
  {
   "id": "sw-mud1",
@@ -287,7 +287,7 @@
   "year": 1978,
   "platform": "Mainframe computer via telnet (University of Essex)",
   "creator": "Roy Trubshaw, Richard Bartle",
-  "title": "MUD1 (University of Essex)"
+  "title": "MUD1"
  },
  {
   "id": "sw-arkanoid",
@@ -307,7 +307,7 @@
   "year": 1972,
   "platform": "Magnavox Odyssey",
   "creator": "Magnavox / Ralph Baer",
-  "title": "Pong (Magnavox Odyssey version)"
+  "title": "Pong（Magnavox Odyssey 版）"
  },
  {
   "id": "hw-vic20",
@@ -477,7 +477,7 @@
   "year": 1989,
   "platform": "Apple II, MS-DOS, Macintosh",
   "creator": "Jordan Mechner (Brøderbund)",
-  "title": "Prince of Persia (1989 video game)"
+  "title": "Prince of Persia"
  },
  {
   "id": "sw-simcity",
@@ -507,7 +507,7 @@
   "year": 1985,
   "platform": "Konami arcade hardware",
   "creator": "Konami",
-  "title": "Gradius (video game)"
+  "title": "Gradius"
  },
  {
   "id": "sw-dragons-lair",
@@ -557,7 +557,7 @@
   "year": 1994,
   "platform": "Sony PlayStation CD-ROM console",
   "creator": "Sony Computer Entertainment (Ken Kutaragi)",
-  "title": "PlayStation (console)"
+  "title": "PlayStation"
  },
  {
   "id": "hw-saturn",
@@ -617,7 +617,7 @@
   "year": 1993,
   "platform": "MS-DOS, Macintosh, ported to consoles",
   "creator": "id Software (John Carmack, John Romero)",
-  "title": "Doom (1993 video game)"
+  "title": "Doom"
  },
  {
   "id": "sw-myst",
@@ -657,7 +657,7 @@
   "year": 1998,
   "platform": "Windows, Linux, macOS, console ports",
   "creator": "Valve (Gabe Newell, Ken Levine)",
-  "title": "Half-Life (video game)"
+  "title": "Half-Life"
  },
  {
   "id": "sw-tomb-raider",
@@ -667,7 +667,7 @@
   "year": 1996,
   "platform": "MS-DOS, Sega Saturn, PlayStation",
   "creator": "Core Design (Toby Gard)",
-  "title": "Tomb Raider (1996 video game)"
+  "title": "Tomb Raider"
  },
  {
   "id": "sw-grand-theft-auto",
@@ -697,7 +697,7 @@
   "year": 1992,
   "platform": "MS-DOS, Macintosh, FM Towns",
   "creator": "Infogrames (Frédérick Raynal)",
-  "title": "Alone in the Dark (video game)"
+  "title": "Alone in the Dark"
  },
  {
   "id": "sw-dune-ii",
@@ -727,7 +727,7 @@
   "year": 2001,
   "platform": "Microsoft Xbox DVD console",
   "creator": "Microsoft (Seamus Blackley, Kevin Bachus)",
-  "title": "Xbox (console)"
+  "title": "Xbox"
  },
  {
   "id": "hw-gamecube",
@@ -787,7 +787,7 @@
   "year": 2003,
   "platform": "Steam digital distribution platform",
   "creator": "Valve Corporation",
-  "title": "Steam (service)"
+  "title": "Steam"
  },
  {
   "id": "pl-app-store",
@@ -857,7 +857,7 @@
   "year": 2005,
   "platform": "PlayStation 2, Xbox",
   "creator": "Harmonix Music Systems (Alex Rigopulos, Eran Egozy)",
-  "title": "Guitar Hero (video game)"
+  "title": "Guitar Hero"
  },
  {
   "id": "sw-garys-mod",
@@ -877,7 +877,7 @@
   "year": 2008,
   "platform": "Xbox 360 Live Arcade",
   "creator": "Number None (Jonathan Blow)",
-  "title": "Braid (video game)"
+  "title": "Braid"
  },
  {
   "id": "sw-world-of-goo",
@@ -897,7 +897,7 @@
   "year": 2007,
   "platform": "Windows / Xbox 360 (Steam)",
   "creator": "Valve Corporation",
-  "title": "Portal (video game)"
+  "title": "Portal"
  },
  {
   "id": "sw-left-4-dead",
@@ -927,7 +927,7 @@
   "year": 2010,
   "platform": "Apple iPad tablet",
   "creator": "Apple Inc. (Steve Jobs)",
-  "title": "IPad (1st generation)"
+  "title": "IPad"
  },
  {
   "id": "hw-3ds",
@@ -1027,7 +1027,7 @@
   "year": 2014,
   "platform": "iOS / Android",
   "creator": "ustwo games (Ken Wong)",
-  "title": "Monument Valley (video game)"
+  "title": "Monument Valley"
  },
  {
   "id": "sw-2048",
@@ -1037,7 +1037,7 @@
   "year": 2014,
   "platform": "Web, iOS, Android",
   "creator": "Gabriele Cirulli",
-  "title": "2048 (video game)"
+  "title": "2048"
  },
  {
   "id": "sw-fnaf",
@@ -1167,7 +1167,7 @@
   "year": 2019,
   "platform": "Oculus Quest / Meta Quest standalone VR headset",
   "creator": "Oculus VR (Palmer Luckey)",
-  "title": "Meta Quest (Oculus Quest)"
+  "title": "Meta Quest / Oculus Quest"
  },
  {
   "id": "hw-vision-pro",
@@ -1217,7 +1217,7 @@
   "year": 2020,
   "platform": "Windows, macOS, Switch, consoles",
   "creator": "Supergiant Games (Greg Kasavin)",
-  "title": "Hades (video game)"
+  "title": "Hades"
  },
  {
   "id": "sw-elden-ring",
@@ -1257,7 +1257,7 @@
   "year": 2018,
   "platform": "Windows, macOS, Linux, Switch, consoles",
   "creator": "Maddy Makes Games (Noel Berry, Amora Bettany)",
-  "title": "Celeste (video game)"
+  "title": "Celeste"
  },
  {
   "id": "sw-slay-the-spire",
@@ -1327,7 +1327,7 @@
   "year": 2024,
   "platform": "Windows, macOS, Linux, consoles, mobile",
   "creator": "LocalThunk (Dean)",
-  "title": "Balatro (video game)"
+  "title": "Balatro"
  },
  {
   "id": "sw-black-myth-wukong",

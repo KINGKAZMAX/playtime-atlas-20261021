@@ -99,23 +99,27 @@ export function place(mesh, t, r, s) {
 /** 立方体（中心在原点） */
 export function box(w, h, d) {
   const mesh = emptyMesh();
-  const x = w / 2, y = h / 2, z = d / 2;
+  const hx = w / 2, hy = h / 2, hz = d / 2;
+  /**
+   * 每个面：法线 n、面心 o、面内两个基向量 u / v，以及对应的面内半长 su / sv。
+   * 注意 su / sv 必须取该面实际张开的两个轴的半长，否则薄板会被撑成方块。
+   */
   const faces = [
-    { n: [0, 0, 1], u: [1, 0, 0], v: [0, 1, 0], o: [0, 0, z] },
-    { n: [0, 0, -1], u: [-1, 0, 0], v: [0, 1, 0], o: [0, 0, -z] },
-    { n: [1, 0, 0], u: [0, 0, -1], v: [0, 1, 0], o: [x, 0, 0] },
-    { n: [-1, 0, 0], u: [0, 0, 1], v: [0, 1, 0], o: [-x, 0, 0] },
-    { n: [0, 1, 0], u: [1, 0, 0], v: [0, 0, -1], o: [0, y, 0] },
-    { n: [0, -1, 0], u: [1, 0, 0], v: [0, 0, 1], o: [0, -y, 0] },
+    { n: [0, 0, 1], o: [0, 0, hz], u: [1, 0, 0], v: [0, 1, 0], su: hx, sv: hy },
+    { n: [0, 0, -1], o: [0, 0, -hz], u: [-1, 0, 0], v: [0, 1, 0], su: hx, sv: hy },
+    { n: [1, 0, 0], o: [hx, 0, 0], u: [0, 0, -1], v: [0, 1, 0], su: hz, sv: hy },
+    { n: [-1, 0, 0], o: [-hx, 0, 0], u: [0, 0, 1], v: [0, 1, 0], su: hz, sv: hy },
+    { n: [0, 1, 0], o: [0, hy, 0], u: [1, 0, 0], v: [0, 0, -1], su: hx, sv: hz },
+    { n: [0, -1, 0], o: [0, -hy, 0], u: [1, 0, 0], v: [0, 0, 1], su: hx, sv: hz },
   ];
   for (const f of faces) {
     const base = mesh.positions.length / 3;
     for (const [su, sv] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) {
       pushVert(
         mesh,
-        f.o[0] + f.u[0] * su * x + f.v[0] * sv * y,
-        f.o[1] + f.u[1] * su * x + f.v[1] * sv * y,
-        f.o[2] + f.u[2] * su * x + f.v[2] * sv * y,
+        f.o[0] + f.u[0] * su * f.su + f.v[0] * sv * f.sv,
+        f.o[1] + f.u[1] * su * f.su + f.v[1] * sv * f.sv,
+        f.o[2] + f.u[2] * su * f.su + f.v[2] * sv * f.sv,
         f.n[0], f.n[1], f.n[2],
       );
     }

@@ -55,5 +55,11 @@ export function applySettingsToDocument(settings = getSettings()) {
   root.dataset.muted = String(settings.muted);
   root.dataset.visualPulse = String(settings.visualPulse);
   root.dataset.reducedMotion = String(settings.reducedMotion);
+  // 减少动效：改用设计系统自带的**强制降级开关** `[data-rm="reduce"]`。
+  // 该开关的完整降级（时长归 1ms、入场位移与模糊归零、导航轴景深模糊归零）
+  // 由 16-design-system/src/components.css 实现，本目录不另写一份
+  // !important 规则去覆盖组件类（MIGRATION-NOTES §7 / 派单 G.4）。
+  if (settings.reducedMotion) root.setAttribute('data-rm', 'reduce');
+  else root.removeAttribute('data-rm');
   root.dataset.highContrast = String(settings.highContrast);
 }

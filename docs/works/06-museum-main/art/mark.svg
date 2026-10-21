@@ -2,16 +2,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="回响电玩馆馆徽">
   <defs>
     <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FF6B2C"/>
-      <stop offset="100%" stop-color="#FFB27A"/>
+      <stop offset="0%" stop-color="#E0684A"/>
+      <stop offset="100%" stop-color="#EE8266"/>
     </linearGradient>
   </defs>
-  <rect width="120" height="120" rx="26" fill="#0D1526"/>
+  <rect width="120" height="120" rx="26" fill="#1A1917"/>
   <g fill="none" stroke="url(#mg)" stroke-linecap="round">
     <path d="M28 78 Q60 96 92 78" stroke-width="4" opacity="0.95"/>
     <path d="M34 62 Q60 78 86 62" stroke-width="3" opacity="0.62"/>
     <path d="M41 46 Q60 60 79 46" stroke-width="2.4" opacity="0.38"/>
   </g>
-  <path d="M60 22 L84 50 L60 38 L36 50 Z" fill="#F4EDE0" opacity="0.92"/>
-  <circle cx="60" cy="26" r="4" fill="#FF6B2C"/>
+  <path d="M60 22 L84 50 L60 38 L36 50 Z" fill="#F7F4F0" opacity="0.92"/>
+  <circle cx="60" cy="26" r="4" fill="#E0684A"/>
 </svg>

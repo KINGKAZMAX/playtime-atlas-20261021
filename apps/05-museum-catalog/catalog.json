@@ -1,7 +1,7 @@
 [
  {
   "id": "hw-whirlwind",
-  "title": "Whirlwind (computer)",
+  "title": "Whirlwind",
   "titleZh": "旋风计算机（Whirlwind）",
   "year": 1951,
   "era": "origins",
@@ -42,10 +42,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1951",
    "infoboxPlatforms": [],
    "infoboxCreator": null,
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -95,7 +95,7 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": null,
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -145,7 +145,7 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": null,
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -192,18 +192,18 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1959",
    "infoboxPlatforms": [
     "PDP 18-bit"
    ],
    "infoboxCreator": "Digital Equipment Corporation",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "hw-plato",
-  "title": "PLATO (computer system)",
+  "title": "PLATO",
   "titleZh": "PLATO 教学计算机系统",
   "year": 1960,
   "era": "origins",
@@ -252,7 +252,7 @@
     "CDC 6000 series (PLATO IV)"
    ],
    "infoboxCreator": "University of Illinois",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -299,10 +299,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1968",
    "infoboxPlatforms": [],
    "infoboxCreator": null,
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -352,7 +352,7 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": null,
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -404,7 +404,7 @@
     "Analog computer"
    ],
    "infoboxCreator": "William Higinbotham",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -458,7 +458,7 @@
     "PDP-7"
    ],
    "infoboxCreator": "Ken Thompson",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -510,7 +510,7 @@
     "PDP-1"
    ],
    "infoboxCreator": "Steve Russell",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -562,7 +562,7 @@
     "Lincoln TX-2"
    ],
    "infoboxCreator": "MIT Lincoln Laboratory",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -614,13 +614,13 @@
     "IBM 7090"
    ],
    "infoboxCreator": "Mabel Addis",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "hw-brown-box",
-  "title": "Brown Box (prototype)",
+  "title": "Brown Box 棕盒原型机",
   "titleZh": "棕盒（Brown Box）原型机",
   "year": 1969,
   "era": "origins",
@@ -664,7 +664,7 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": null,
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -716,7 +716,7 @@
     "ubl|Pilot ACE|Ferranti Mark 1"
    ],
    "infoboxCreator": "Christopher Strachey",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -768,7 +768,7 @@
     "Arcade }}"
    ],
    "infoboxCreator": "Syzygy Engineering",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -815,10 +815,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1972",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sanders Associates",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -871,7 +871,7 @@
     "dedicated console"
    ],
    "infoboxCreator": "Atari, Inc.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -923,7 +923,7 @@
     "EDSAC"
    ],
    "infoboxCreator": "A S Douglas",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -977,7 +977,7 @@
     "Atari 8-bit"
    ],
    "infoboxCreator": "Taito",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1024,16 +1024,16 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1976",
    "infoboxPlatforms": [],
    "infoboxCreator": "Jerry Lawson",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-blockade",
-  "title": "Blockade (video game)",
+  "title": "Blockade",
   "titleZh": "《Blockade》（方块围城）",
   "year": 1976,
   "era": "arcade",
@@ -1077,7 +1077,7 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": "Gremlin",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1124,10 +1124,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1977",
    "infoboxPlatforms": [],
    "infoboxCreator": "Atari, Inc.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1177,7 +1177,7 @@
    "infoboxYear": "1974",
    "infoboxPlatforms": [],
    "infoboxCreator": "Taito",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1229,7 +1229,7 @@
     "Arcade"
    ],
    "infoboxCreator": "Exidy",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1294,13 +1294,13 @@
     "iOS"
    ],
    "infoboxCreator": "Taito",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-asteroids",
-  "title": "Asteroids (video game)",
+  "title": "Asteroids",
   "titleZh": "《Asteroids》",
   "year": 1979,
   "era": "arcade",
@@ -1350,7 +1350,7 @@
     "Game Boy"
    ],
    "infoboxCreator": "Atari, Inc. efn|Game Boy version developed by The Code Monkeys.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1415,13 +1415,13 @@
     "Sharp X1"
    ],
    "infoboxCreator": "Namco",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-adventure-atari",
-  "title": "Adventure (1980 video game)",
+  "title": "Adventure",
   "titleZh": "《Adventure》（Atari 2600 版）",
   "year": 1980,
   "era": "home8bit",
@@ -1467,13 +1467,13 @@
     "Atari 2600"
    ],
    "infoboxCreator": "Atari, Inc.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-mud1",
-  "title": "MUD1 (University of Essex)",
+  "title": "MUD1",
   "titleZh": "《MUD1》（埃塞克斯大学）",
   "year": 1978,
   "era": "arcade",
@@ -1517,7 +1517,7 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": null,
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1582,13 +1582,13 @@
     "MSX"
    ],
    "infoboxCreator": "Taito",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-odyssey2-pong",
-  "title": "Pong (Magnavox Odyssey version)",
+  "title": "Pong（Magnavox Odyssey 版）",
   "titleZh": "《Pong》在 Magnavox Odyssey 上的实现",
   "year": 1972,
   "era": "arcade",
@@ -1629,10 +1629,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1972",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sanders Associates",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1679,10 +1679,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1980",
    "infoboxPlatforms": [],
    "infoboxCreator": "Commodore Business Machines",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1729,10 +1729,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1980",
    "infoboxPlatforms": [],
    "infoboxCreator": "Nintendo R&D1",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1779,10 +1779,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1982",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sinclair Research",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1832,7 +1832,7 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": "Commodore Business Machines (CBM)",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1879,10 +1879,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1982",
    "infoboxPlatforms": [],
    "infoboxCreator": "Coleco",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1929,10 +1929,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1983",
    "infoboxPlatforms": [],
    "infoboxCreator": "Nintendo R&D2",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -1979,10 +1979,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1983",
    "infoboxPlatforms": [],
    "infoboxCreator": "Nintendo R&D2",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2029,10 +2029,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1985",
    "infoboxPlatforms": [],
    "infoboxCreator": "Commodore International (until 1994)Escom AG (1995–1996)QuikPak (– circa|1998 )",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2079,10 +2079,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1985",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sega",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2129,10 +2129,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1988",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sega",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2197,7 +2197,7 @@
     "Game Boy"
    ],
    "infoboxCreator": "Namco",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2247,7 +2247,7 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": null,
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2299,7 +2299,7 @@
     "List of Tetris variants"
    ],
    "infoboxCreator": "Alexey Pajitnov",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2351,7 +2351,7 @@
     "cslist | BBC Micro | Acorn Electron | Apple II | Amstrad CPC | Commodore 64 | ZX Spectrum | MSX | Tatung Einstein | MS-DOS | Archimedes | Amiga | Atari ST | NES (PAL)"
    ],
    "infoboxCreator": "David BrabenIan Bell",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2405,7 +2405,7 @@
     "Famicom Disk System"
    ],
    "infoboxCreator": "Nintendo R&D4",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2457,13 +2457,13 @@
     "Hlist | Famicom Disk System | Nintendo Entertainment System | Super Nintendo Entertainment System | Game Boy | Nintendo 64 | Game Boy Color | Game Boy Advance | GameCube | Wii | Nintendo DS | Nintendo 3DS | Wii U | Nintendo Switch | Nintendo Switch 2"
    ],
    "infoboxCreator": "Unbulleted list | Nintendo EAD (1986–2013) | Capcom (2001–2004) | |Flagship (2001–2004) | Grezzo (2011–present) | Monolith Soft (2011–present) | Team Ninja (2014-2020) | Omega Force (2014-2020) | Nintendo EPD (2015–present) | Tantalus Media (2016–2021)",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-prince-of-persia",
-  "title": "Prince of Persia (1989 video game)",
+  "title": "Prince of Persia",
   "titleZh": "《Prince of Persia》（1989 版）",
   "year": 1989,
   "era": "home8bit",
@@ -2509,7 +2509,7 @@
     "Apple II (see Ports) }}"
    ],
    "infoboxCreator": "Broderbund (see Ports)",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2574,7 +2574,7 @@
     "Amiga"
    ],
    "infoboxCreator": "Maxis, Tilted Mill, Aspyr Media, Full Fat, Infogrames, Nintendo EAD, Babaroga, HAL Laboratory, Track Twenty",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2628,13 +2628,13 @@
     "Macintosh"
    ],
    "infoboxCreator": "Sierra On-Line, Dynamix",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-gradius",
-  "title": "Gradius (video game)",
+  "title": "Gradius",
   "titleZh": "《Gradius》",
   "year": 1985,
   "era": "home8bit",
@@ -2688,7 +2688,7 @@
     "PC Engine"
    ],
    "infoboxCreator": "Konami",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2741,7 +2741,7 @@
     "4AApple IIGS"
    ],
    "infoboxCreator": "Unbulleted list | RDI Video Systems | Software Projects | Motivetime | Elite Systems | Sullivan Bluth Studios | Dragonstone Software",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2788,10 +2788,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1990",
    "infoboxPlatforms": [],
    "infoboxCreator": "Nintendo R&D2",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2838,10 +2838,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1993",
    "infoboxPlatforms": [],
    "infoboxCreator": "The 3DO Company",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2888,16 +2888,16 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1993",
    "infoboxPlatforms": [],
    "infoboxCreator": "Atari Corporation",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "hw-playstation",
-  "title": "PlayStation (console)",
+  "title": "PlayStation",
   "titleZh": "Sony PlayStation",
   "year": 1994,
   "era": "console16",
@@ -2938,10 +2938,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1994",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sony Computer Entertainment",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -2988,10 +2988,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1994",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sega",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3038,10 +3038,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1996",
    "infoboxPlatforms": [],
    "infoboxCreator": "Nintendo R&D3",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3088,10 +3088,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1995",
    "infoboxPlatforms": [],
    "infoboxCreator": "Nintendo R&D1",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3138,10 +3138,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "1998",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sega",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3191,13 +3191,13 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": "Capcom efn|Amiga, Atari ST, Commodore 64 and MS-DOS versions developed by Creative Materials; ZX Spectrum version developed by Tiertex; Game Boy version developed by Sun L.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-doom",
-  "title": "Doom (1993 video game)",
+  "title": "Doom",
   "titleZh": "《Doom》（1993）",
   "year": 1993,
   "era": "console16",
@@ -3244,7 +3244,7 @@
     "S"
    ],
    "infoboxCreator": "id Software",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3307,7 +3307,7 @@
     "Nintendo 3DS"
    ],
    "infoboxCreator": "Cyan efn|Saturn version developed by Sunsoft; PlayStation version developed by Alfa System; 3DO version developed by Microcabin; PlayStation Portable, Nintendo DS, and Nintendo 3DS versions developed by Hoplite Research.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3359,7 +3359,7 @@
     "Unbulleted list|Nintendo 64|GameCube|iQue Player"
    ],
    "infoboxCreator": "Nintendo EAD",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3411,13 +3411,13 @@
     "ubl|PlayStation|Windows|iOS|PlayStation 4|Android|Nintendo Switch|Xbox One"
    ],
    "infoboxCreator": "Square efn|Ported to iOS and Android by D4 Enterprise. Ported to modern Windows PC, PlayStation 4, Nintendo Switch, and Xbox One by DotEmu.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-half-life",
-  "title": "Half-Life (video game)",
+  "title": "Half-Life",
   "titleZh": "《Half-Life》",
   "year": 1998,
   "era": "console16",
@@ -3463,13 +3463,13 @@
     "Unbulleted list|Windows|PlayStation 2|macOS|Linux"
    ],
    "infoboxCreator": "Valve efn|Ported to the PlayStation 2 by Gearbox Software",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-tomb-raider",
-  "title": "Tomb Raider (1996 video game)",
+  "title": "Tomb Raider",
   "titleZh": "《Tomb Raider》（1996）",
   "year": 1996,
   "era": "console16",
@@ -3515,7 +3515,7 @@
     "Sega SaturnMS-DOSPlayStationN-GagePocket PCiOSAndroid"
    ],
    "infoboxCreator": "Core Design efn|Mac OS port developed by Aspyr, N-Gage and Pocket PC ports by Ideaworks3D, and mobile ports by Square Enix.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3567,7 +3567,7 @@
     "ubl|MS-DOS|Windows|PlayStation|Game Boy Color"
    ],
    "infoboxCreator": "DMA Design efn|Visual Sciences ported the game to the PlayStation. Tarantula Studios developed the Game Boy Color version.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3617,13 +3617,13 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": "MicroProse",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-alone-in-the-dark",
-  "title": "Alone in the Dark (video game)",
+  "title": "Alone in the Dark",
   "titleZh": "《Alone in the Dark》",
   "year": 1992,
   "era": "console16",
@@ -3670,7 +3670,7 @@
     "S"
    ],
    "infoboxCreator": "InfogramesKrisalis SoftwareDarkworksSpiral HousePocket StudiosEden GamesHydravision EntertainmentPure FPSPieces Interactive",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3726,7 +3726,7 @@
     "Mega Drive"
    ],
    "infoboxCreator": "Westwood Studios",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3776,13 +3776,13 @@
    "infoboxYear": "1994",
    "infoboxPlatforms": [],
    "infoboxCreator": "Namco",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "hw-xbox",
-  "title": "Xbox (console)",
+  "title": "Xbox",
   "titleZh": "Microsoft Xbox",
   "year": 2001,
   "era": "online",
@@ -3823,10 +3823,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2001",
    "infoboxPlatforms": [],
    "infoboxCreator": "Microsoft",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3873,10 +3873,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2001",
    "infoboxPlatforms": [],
    "infoboxCreator": "Nintendo",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3923,10 +3923,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2004",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sony Computer Entertainment",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -3976,7 +3976,7 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": "Microsoft",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4023,10 +4023,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2006",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sony Computer Entertainment",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4073,16 +4073,16 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2006",
    "infoboxPlatforms": [],
    "infoboxCreator": "Nintendo IRD",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "pl-steam",
-  "title": "Steam (service)",
+  "title": "Steam",
   "titleZh": "Steam 数字发行平台",
   "year": 2003,
   "era": "online",
@@ -4128,7 +4128,7 @@
     "Unbulleted list|Windows|macOS|Linux|iOS|Android"
    ],
    "infoboxCreator": "Valve",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4178,7 +4178,7 @@
    "infoboxYear": "2008",
    "infoboxPlatforms": [],
    "infoboxCreator": "Apple",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4230,7 +4230,7 @@
     "ubl|macOS|Windows }}"
    ],
    "infoboxCreator": "Blizzard Entertainment",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4284,7 +4284,7 @@
     "Linux }}"
    ],
    "infoboxCreator": "Unbulleted list|Valve|Turtle Rock Studios|Hidden Path Entertainment",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4336,7 +4336,7 @@
     "ubl|Windows|macOS"
    ],
    "infoboxCreator": "Riot Games",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4389,7 +4389,7 @@
     "S | Nintendo Switch 2"
    ],
    "infoboxCreator": "Unbulleted list | |Mojang Studios efn|The original versions of the game for consoles (known as legacy console editions) were developed by 4J Studios. Additional studios responsible for helping develop specific versions of the game include Xbox Game Studios Advanced Technology Group and SkyBox Labs for the Bedrock Edition, Other Ocean Interactive for the version on New Nintendo 3DS, and NetEase for",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4439,13 +4439,13 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": null,
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-guitar-hero",
-  "title": "Guitar Hero (video game)",
+  "title": "Guitar Hero",
   "titleZh": "《Guitar Hero》",
   "year": 2005,
   "era": "online",
@@ -4491,7 +4491,7 @@
     "PlayStation 2"
    ],
    "infoboxCreator": "Harmonix",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4543,13 +4543,13 @@
     "Unbulleted list|Windows|Mac OS X|Linux"
    ],
    "infoboxCreator": "Facepunch Studios",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-braid",
-  "title": "Braid (video game)",
+  "title": "Braid",
   "titleZh": "《Braid》",
   "year": 2008,
   "era": "online",
@@ -4596,7 +4596,7 @@
     "S|Android|iOS"
    ],
    "infoboxCreator": "Number None efn|Anniversary Edition developed by Thekla, Inc.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4646,13 +4646,13 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": "2D Boy",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-portal",
-  "title": "Portal (video game)",
+  "title": "Portal",
   "titleZh": "《Portal》",
   "year": 2007,
   "era": "online",
@@ -4698,7 +4698,7 @@
     "Unbulleted list|Windows|Xbox 360|PlayStation 3|Mac OS X|Linux|Android|Nintendo Switch"
    ],
    "infoboxCreator": "Valve efn|Nvidia Lightspeed Studios developed the Nvidia Shield, Nintendo Switch versions and the RTX mod version for Windows.|lead=yes",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4750,7 +4750,7 @@
     "Unbulleted list|Windows|Xbox 360|Mac OS X"
    ],
    "infoboxCreator": "Valve South efn|Certain Affinity assisted Valve South with the Xbox 360 version of the game.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4803,13 +4803,13 @@
     "macOS }}"
    ],
    "infoboxCreator": "Wizet (2003–2005) Nexon (2005–present)",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "hw-ipad",
-  "title": "IPad (1st generation)",
+  "title": "IPad",
   "titleZh": "Apple iPad（第一代）",
   "year": 2010,
   "era": "mobile",
@@ -4850,10 +4850,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2010",
    "infoboxPlatforms": [],
    "infoboxCreator": "Apple",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4900,10 +4900,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2011",
    "infoboxPlatforms": [],
    "infoboxCreator": "Nintendo Research & Engineering",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -4950,10 +4950,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2011",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sony Computer Entertainment",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5000,10 +5000,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2013",
    "infoboxPlatforms": [],
    "infoboxCreator": "Ouya, Inc. (formerly Boxer8, Inc.)",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5050,10 +5050,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2013",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sony Interactive Entertainment",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5100,10 +5100,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2013",
    "infoboxPlatforms": [],
    "infoboxCreator": "Microsoft",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5156,7 +5156,7 @@
     "Android"
    ],
    "infoboxCreator": ".Gears",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5208,7 +5208,7 @@
     "cslist|App Store|Google Play|Windows Phone Store|Windows|macOS|Linux"
    ],
    "infoboxCreator": "King",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5260,7 +5260,7 @@
     "iOS Android Arcade Windows Phone }}"
    ],
    "infoboxCreator": "Imangi Studios",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5312,13 +5312,13 @@
     "ubl|iOS|Android|"
    ],
    "infoboxCreator": "PopCap Games efn|Talkweb Games developed the game's Chinese-only version. Tencent Games ported the original version for China.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-monument-valley",
-  "title": "Monument Valley (video game)",
+  "title": "Monument Valley",
   "titleZh": "《Monument Valley》",
   "year": 2014,
   "era": "mobile",
@@ -5365,13 +5365,13 @@
     "S"
    ],
    "infoboxCreator": "Ustwo Games",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-2048",
-  "title": "2048 (video game)",
+  "title": "2048",
   "titleZh": "《2048》",
   "year": 2014,
   "era": "mobile",
@@ -5422,7 +5422,7 @@
     "KaiOS"
    ],
    "infoboxCreator": "Gabriele Cirulli",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5475,7 +5475,7 @@
     "S|Nintendo Switch|iOS|Android|Oculus Quest|Oculus Quest 2|Google Stadia"
    ],
    "infoboxCreator": "plainlist| * ScottGames * Steel Wool Studios * Illumix * Mega Cat Studios * Clickteam",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5532,7 +5532,7 @@
     "Android"
    ],
    "infoboxCreator": "3909",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5584,7 +5584,7 @@
     "Unbulleted list|Linux|Windows|OS X|PlayStation 4|Xbox One|Nintendo Switch|iOS"
    ],
    "infoboxCreator": "Unbulleted list|The Fullbright Company|BlitWorks (Switch)",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5645,7 +5645,7 @@
     "Ouya"
    ],
    "infoboxCreator": "Terry Cavanagh",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5702,7 +5702,7 @@
     "Nintendo Switch }}"
    ],
    "infoboxCreator": "Capybara GamesSuperbrothers",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5754,7 +5754,7 @@
     "Collapsible list|title= nobold|Windows | PlayStation 3 | Xbox 360 | iOS | Android | PlayStation Vita | Windows Phone | PlayStation 4 | Xbox One | macOS | Linux | Nintendo 3DS | Wii U | Nintendo Switch | Google Stadia"
    ],
    "infoboxCreator": "Re-Logic efn|name=developer|Ported to mobile and console platforms by DR Studios. The mobile version was formerly developed by Codeglue. The console version was formerly developed by Pipeworks Studios and Engine Software.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5806,7 +5806,7 @@
     "cslist|iOS|Android|Windows Phone|Leap Motion|BlackBerry 10|Symbian|BlackBerry PlayBook|Nintendo DS (DSiWare)|Mac OS X|Browser|Windows|BlackBerry|Nintendo 3DS (Nintendo eShop)|ChromeOS|Firefox OS|Nook"
    ],
    "infoboxCreator": "ZeptoLabPaladin Studios",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5858,7 +5858,7 @@
     "ubl|Xbox 360|Windows|OS X|Linux|PlayStation 4|PlayStation Vita|Wii U|Nintendo Switch }}"
    ],
    "infoboxCreator": "Team Meat",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5905,10 +5905,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2020",
    "infoboxPlatforms": [],
    "infoboxCreator": "Sony Interactive Entertainment",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -5955,10 +5955,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2017",
    "infoboxPlatforms": [],
    "infoboxCreator": "Nintendo PTD",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6005,10 +6005,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2022",
    "infoboxPlatforms": [],
    "infoboxCreator": "Valve Corporation",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6058,13 +6058,13 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": null,
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "hw-oculus-quest",
-  "title": "Meta Quest (Oculus Quest)",
+  "title": "Meta Quest / Oculus Quest",
   "titleZh": "Meta Quest（Oculus Quest）",
   "year": 2019,
   "era": "modern",
@@ -6105,10 +6105,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2019",
    "infoboxPlatforms": [],
    "infoboxCreator": "Oculus VR",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6155,10 +6155,10 @@
   "verification": {
    "status": "ok",
    "yearInLead": true,
-   "infoboxYear": null,
+   "infoboxYear": "2024",
    "infoboxPlatforms": [],
    "infoboxCreator": "Apple",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6210,7 +6210,7 @@
     "ubl|Wii U|Nintendo Switch |Nintendo Switch 2"
    ],
    "infoboxCreator": "Nintendo EPD Efn|Additional work by Monolith Soft",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6263,7 +6263,7 @@
     "Android 9+"
    ],
    "infoboxCreator": "Niantic (2016–2025)Scopely Explore (2025–present)",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6316,13 +6316,13 @@
     "S|PlayStation 5|Nintendo Switch 2"
    ],
    "infoboxCreator": "Epic Games efn|Iron Galaxy co-developed the Xbox One and PlayStation 4 versions in Fortnite: Save the World. Psyonix developed Rocket Racing. Harmonix developed Fortnite Festival.",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-hades",
-  "title": "Hades (video game)",
+  "title": "Hades",
   "titleZh": "《Hades》",
   "year": 2020,
   "era": "modern",
@@ -6369,7 +6369,7 @@
     "S|iOS"
    ],
    "infoboxCreator": "Supergiant Games efn|iOS version ported by Secret 6",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6419,7 +6419,7 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": "FromSoftware",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6472,7 +6472,7 @@
     "S|Android"
    ],
    "infoboxCreator": "Nowrap|ZA/UM",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6525,13 +6525,13 @@
     "S|Nintendo Switch"
    ],
    "infoboxCreator": "Mobius Digital",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-celeste",
-  "title": "Celeste (video game)",
+  "title": "Celeste",
   "titleZh": "《Celeste》",
   "year": 2018,
   "era": "modern",
@@ -6577,7 +6577,7 @@
     "ubl | Linux | macOS | Nintendo Switch | PlayStation 4 | Windows | Xbox One | Google Stadia"
    ],
    "infoboxCreator": "Maddy Makes Games",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6629,7 +6629,7 @@
     "ubl|Windows|macOS|Linux|Nintendo Switch|PlayStation 4|Xbox One|iOS|Android"
    ],
    "infoboxCreator": "Mega Crit",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6682,7 +6682,7 @@
     "S"
    ],
    "infoboxCreator": "Team Cherry",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6735,7 +6735,7 @@
     "S"
    ],
    "infoboxCreator": "Innersloth",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6787,7 +6787,7 @@
     "ubl|Nintendo Switch|Nintendo Switch 2"
    ],
    "infoboxCreator": "Nintendo EPD Efn|Additional development support by Monolith Soft, SRD, Mario Club, and 1-Up Studio",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6839,7 +6839,7 @@
     "Unbulleted list|Windows|Linux"
    ],
    "infoboxCreator": "Valve",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6892,13 +6892,13 @@
     "S|Nintendo Switch|Android|iOS|PlayStation 4|PlayStation 5|Meta Quest"
    ],
    "infoboxCreator": "poncle",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
  {
   "id": "sw-balatro",
-  "title": "Balatro (video game)",
+  "title": "Balatro",
   "titleZh": "《Balatro》",
   "year": 2024,
   "era": "modern",
@@ -6945,7 +6945,7 @@
     "S"
    ],
    "infoboxCreator": "LocalThunk",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -6998,7 +6998,7 @@
     "S"
    ],
    "infoboxCreator": "Game Science",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -7051,7 +7051,7 @@
     "S * iOS * Android"
    ],
    "infoboxCreator": "Mintrocket",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -7103,7 +7103,7 @@
     "ubl|PlayStation 4|PlayStation 5|Meta Quest|SteamVR|Windows Mixed Reality"
    ],
    "infoboxCreator": "Beat Games",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -7153,7 +7153,7 @@
    "infoboxYear": null,
    "infoboxPlatforms": [],
    "infoboxCreator": "ubl|Monstars|Resonair|Stage Games efn|Development on the Connected version",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -7205,7 +7205,7 @@
     "Unbulleted list|Linux|Microsoft Windows|OS X|Xbox One|PlayStation 4|Oculus Quest|Stadia|Nintendo Switch"
    ],
    "infoboxCreator": "Superhot Team",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  },
@@ -7257,7 +7257,7 @@
     "Unbulleted list|macOS|Windows|Nintendo Switch|PlayStation 4|Xbox One"
    ],
    "infoboxCreator": "Lucas Pope",
-   "checkedAt": "2026-10-21T09:40:27Z",
+   "checkedAt": "2026-10-21T10:27:54Z",
    "method": "MediaWiki lead 摘要 + infobox 交叉核对（scripts/fetch_sources.py）"
   }
  }

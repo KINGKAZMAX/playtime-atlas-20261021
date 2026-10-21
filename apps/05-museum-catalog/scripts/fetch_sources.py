@@ -142,8 +142,10 @@ def parse_infobox(wikitext):
 
 
 def ib_year(f):
-    for k in ("released", "release date", "releasedate", "launched", "launch date",
-              "debut", "year", "release date and age"):
+    for k in ("released", "release date", "releasedate", "release_date", "released",
+              "launched", "launch date", "launch_date", "debut", "introduced",
+              "year", "release date and age", "release_date and age",
+              "start date and age", "founded", "inception"):
         if k in f:
             ys = re.findall(r"\b(19[5-9]\d|20[0-2]\d)\b", f[k])
             if ys:
@@ -265,6 +267,7 @@ def main():
             "infobox_year": ib_year(fields),
             "infobox_platforms": ib_platforms(fields),
             "infobox_creator": (fields.get("developer") or fields.get("developer(s)")
+                                or fields.get("designer") or fields.get("designer(s)")
                                 or fields.get("manufacturer") or fields.get("publisher")),
         }
         checks["year_match_infobox"] = (checks["infobox_year"] == year) if (checks["infobox_year"] and year) else None

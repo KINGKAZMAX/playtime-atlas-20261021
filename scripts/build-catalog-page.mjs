@@ -2,6 +2,11 @@
 /**
  * 博物馆策展目录页生成器
  *
+ * ⚠ 发布策略：策展目录页**不再发布到线上**（works.json 中 publish=false）。
+ *   线上站点只呈现作品本身，不展示来源档案 / 公开案例索引 / 策展资料。
+ *   本脚本仅作为仓库内的生成能力保留：默认直接退出、不产出任何文件；
+ *   如确需重建（例如回灌仓库内部资料），请显式设置 PUBLISH_ARCHIVE_PAGES=1。
+ *
  * 数据来源（任选其一，优先前者）：
  *   1. apps/museum-catalog/catalog.json          —— 05 交付的全量目录
  *   2. apps/museum-catalog/data/raw_sources.json + apps/museum-catalog/data/curated/part*.json
@@ -92,6 +97,10 @@ function loadItems() {
 }
 
 function main() {
+  if (process.env.PUBLISH_ARCHIVE_PAGES !== '1') {
+    console.log('[catalog] 已停用：策展目录页不在线上发布范围，未生成任何文件。');
+    return;
+  }
   const loaded = loadItems();
   if (!loaded) {
     console.error('[catalog] 上游目录数据尚未交付：', path.relative(ROOT, APP));

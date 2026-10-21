@@ -1,0 +1,40 @@
+/* ==========================================================================
+   折光纪 · PRISM ERA —— 中文排版修正（G.4 / DESIGN-SPEC §2.3 / §2.5）
+   --------------------------------------------------------------------------
+   本文件**必须最后加载**（见 `src/main.js` 的导入顺序）。
+
+   原因：设计系统的 `:lang(zh)` 规则与本厅既有类名选择器**特异度相同**
+   （都是 0,1,0），若本文件不在最后，中文会被后加载的类规则重新加上
+   正字距（如 `.brand-cn` 的 `--ds-track-caps`）而违反「中文字距归零」。
+
+   内容：
+     · 字距归零：汉字字面不能承受负字距（--ds-track-cjk = 0）。
+     · 正文行高 1.85：只作用于正文元素（段落 / 列表 / .ds-body / .ds-lead /
+       .ds-sm），标题与 HUD 维持各自的紧凑行高。
+     · 不改 CJK 字体栈顺序：完整覆盖的系统 CJK 族必须排在覆盖有限的
+       Noto Sans SC 子集之前（MIGRATION-NOTES §9 V.11）——
+       该顺序由 16 的 tokens.css 保证，本目录不重写 --ds-font-*。
+   ========================================================================== */
+
+:lang(zh),
+:lang(zh-CN),
+:lang(zh-TW) {
+  letter-spacing: var(--ds-track-cjk);
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+:lang(zh) p,
+:lang(zh) li,
+:lang(zh) dd,
+:lang(zh) .ds-body,
+:lang(zh) .ds-lead,
+:lang(zh) .ds-sm {
+  line-height: 1.85;
+}
+
+/* 等宽文本在中文语境下同样归零（与设计系统 `:lang(zh) .ds-mono` 一致） */
+:lang(zh) .ds-mono,
+:lang(zh) .mono {
+  letter-spacing: var(--ds-track-cjk);
+}

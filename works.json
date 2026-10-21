@@ -268,7 +268,10 @@
       "upstream": "06-museum-core",
       "build": {
         "type": "npm",
-        "appDir": "apps/06-museum-main"
+        "appDir": "apps/06-museum-main",
+        "dependsOn": [
+          "07-museum-art"
+        ]
       },
       "cover": "assets/covers/06-museum-main.svg",
       "controls": [
@@ -611,9 +614,10 @@
       ],
       "differences": "档案为核验记录，非作品复刻；不含任何商业游戏素材。文件内的 TOP3 名单为研究阶段候选规格，实际交付物以各作品自身说明为准。",
       "notes": "该页为检索类资料页，不产生可玩作品；页内已写明研究阶段结论与交付作品的关系。研究阶段的原始抓取日志、外部参考目录与内部台账保留在项目仓库中，不随站点发布。",
-      "statusNote": "",
+      "statusNote": "独立深链交付（不进入大厅目录，不恢复首页说明区）；13 验收结论为「⚠️ 可上线，有 1 处 minor 瑕疵」，尚未由 14 在线上复验，故状态保持「已构建·待复验」。",
       "qaState": "verified",
-      "qaNote": "已通过 13-qa-curation 实机验收"
+      "qaNote": "已通过 13-qa-curation 实机验收",
+      "deepLink": true
     },
     {
       "id": "05-museum-catalog",
@@ -706,6 +710,203 @@
       "differences": "审计报告，不修改实现者文件。",
       "qaState": "pending-reverify",
       "qaNote": "由 13-qa-curation 维护，结论以其自报为准"
+    },
+    {
+      "id": "16-design-system",
+      "publish": false,
+      "deepLink": true,
+      "title": "余晖设计系统 · 样例页",
+      "subtitle": "AFTERGLOW DS",
+      "description": "全站统一设计规范的可运行样例页：设计令牌、组件层与封面 / 详情 / 控件 / 动效等 UI 规范示例。规范文档（DESIGN-SPEC / REFERENCE-AUDIT / MIGRATION-NOTES）作为仓库内文档留存，供后续改版追溯。",
+      "entry": "works/16-design-system/index.html",
+      "buildCommand": "静态产物（无构建步骤）",
+      "outputDir": "docs/works/16-design-system",
+      "status": "pending",
+      "qaState": "pending-reverify",
+      "statusNote": "已构建·待复验：令牌层与自托管字体另发布于站点根 assets/ds/，待 14 线上复验后转 ready。",
+      "playable": false,
+      "section": "archive",
+      "era": "2026",
+      "kind": "设计系统样例",
+      "tags": [
+        "设计令牌",
+        "组件层",
+        "UI 规范",
+        "自托管字体"
+      ],
+      "build": {
+        "type": "static",
+        "appDir": "apps/16-design-system",
+        "entryFile": "preview.html",
+        "keepDirs": [
+          "src",
+          "fonts"
+        ],
+        "exclude": [
+          "evidence",
+          "tools",
+          "design-tokens.json",
+          "DESIGN-SPEC.md",
+          "REFERENCE-AUDIT.md",
+          "MIGRATION-NOTES.md",
+          "SOURCES.md",
+          "LICENSES.md",
+          "README.md",
+          "STATUS.md",
+          "TASK.md",
+          "PROMPT.md",
+          "fonts/FONT-MANIFEST.json"
+        ]
+      },
+      "cover": "assets/covers/16-design-system.svg",
+      "controls": [
+        "滚动查看令牌与组件示例",
+        "深浅色对照"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "令牌与组件层原创；字体为 OFL-1.1（Inter / Space Grotesk / Space Mono / Noto Sans SC 子集）"
+      }
+    },
+    {
+      "id": "17-architecture-research",
+      "publish": false,
+      "deepLink": true,
+      "title": "中国经典建筑与传统结构 · 研究成果页",
+      "subtitle": "RESEARCH CATALOG",
+      "description": "双语研究成果页：42 条中国经典建筑案例、74 条术语与 18 个既有交互可视化项目台账，页面自带内联数据，可直接查阅、筛选与中英切换。",
+      "entry": "works/17-architecture-research/index.html",
+      "buildCommand": "node src/catalog-page/build-catalog-page.mjs（由 17 作者构建，14 发布其产物）",
+      "outputDir": "docs/works/17-architecture-research",
+      "status": "pending",
+      "qaState": "pending-reverify",
+      "statusNote": "已构建·待复验：仅发布 dist/ 成果页（页面数据内联，无外部请求）；原始 catalog.json / glossary.json 按 17 的 PUBLISH-EXCLUDE 不上线。",
+      "playable": false,
+      "section": "archive",
+      "era": "2026",
+      "kind": "研究成果页",
+      "tags": [
+        "42 条案例",
+        "74 条术语",
+        "双语",
+        "可筛选"
+      ],
+      "upstream": "17-architecture-research",
+      "sync": {
+        "includeDirs": [
+          "dist"
+        ]
+      },
+      "build": {
+        "type": "static",
+        "appDir": "apps/17-architecture-research",
+        "source": "dist",
+        "entryFile": "catalog.html",
+        "keepDirs": [
+          "assets"
+        ]
+      },
+      "cover": "assets/covers/17-architecture-research.svg",
+      "controls": [
+        "中英切换",
+        "按类型 / 年代筛选",
+        "搜索"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "自有研究整理；引用条目均附来源链接"
+      }
+    },
+    {
+      "id": "18-architecture-models",
+      "publish": false,
+      "deepLink": true,
+      "title": "榫构华夏 · 可拆解 3D 教学模型",
+      "subtitle": "TIMBER CRAFT LAB",
+      "description": "六件中国传统建筑结构 3D 教学模型：斗栱组、榫卯连接、抬梁木架、穿斗木架、敞肩石拱桥、土楼院落结构。可旋转缩放点选、爆炸拆解、分步组装、剖切、双语标注；WebGL 不可用时降级为 2D 示意图，并支持带教学示意元数据的 GLB 导出。",
+      "entry": "works/18-architecture-models/index.html",
+      "buildCommand": "npm run build（由 18 作者构建，14 发布其产物）",
+      "outputDir": "docs/works/18-architecture-models",
+      "status": "pending",
+      "qaState": "pending-reverify",
+      "statusNote": "已构建·待复验：18 的统一模型接口需由 19 消费验证，本轮先发布独立样例页；GLB 为页面运行时导出，非静态文件。",
+      "playable": true,
+      "section": "archive",
+      "era": "2026",
+      "kind": "3D 教学模型",
+      "tags": [
+        "6 件模型",
+        "可拆解",
+        "双语",
+        "GLB 导出",
+        "2D 降级"
+      ],
+      "upstream": "18-architecture-models",
+      "sync": {
+        "includeDirs": [
+          "dist"
+        ]
+      },
+      "build": {
+        "type": "static",
+        "appDir": "apps/18-architecture-models",
+        "source": "dist",
+        "entryFile": "index.html",
+        "keepDirs": [
+          "assets"
+        ]
+      },
+      "cover": "assets/covers/18-architecture-models.svg",
+      "controls": [
+        "旋转缩放",
+        "爆炸拆解",
+        "分步组装",
+        "剖切",
+        "中英切换",
+        "GLB 导出"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "几何全部程序化生成；字体为 OFL-1.1"
+      }
+    },
+    {
+      "id": "19-architecture-atlas",
+      "publish": false,
+      "title": "构筑华夏 · 双语建筑科普主站",
+      "subtitle": "BUILT IN CHINA",
+      "description": "英文默认 + 中英切换的双语科普主站：6 个可玩结构模块与 36 例目录，含移动端适配、2D 降级与分享深链接。",
+      "entry": "works/19-architecture-atlas/index.html",
+      "buildCommand": "npm run build",
+      "outputDir": "docs/works/19-architecture-atlas",
+      "status": "pending",
+      "qaState": "pending-reverify",
+      "statusNote": "未就绪：19 仍在施工（站点骨架与模块实现进行中），且依赖 17 与 18 稳定交付后再整合。本轮只把源码同步进仓库，不构建、不发布；待 19 交付后与 17/18 一并进入大厅「构筑华夏」分区。",
+      "playable": true,
+      "section": "archive",
+      "era": "2026",
+      "kind": "科普主站",
+      "tags": [
+        "双语",
+        "6 个可玩模块",
+        "36 例目录",
+        "分享深链接"
+      ],
+      "upstream": "19-architecture-atlas",
+      "build": {
+        "type": "npm",
+        "appDir": "apps/19-architecture-atlas"
+      },
+      "cover": "assets/covers/19-architecture-atlas.svg",
+      "controls": [
+        "中英切换",
+        "模块导航",
+        "分享深链接"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "待 19 交付时确认"
+      }
     }
   ]
 }

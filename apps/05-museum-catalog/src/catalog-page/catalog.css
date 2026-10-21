@@ -1,0 +1,319 @@
+/* ============================================================================
+   博物馆策展目录页 · 页面样式层
+   归属：05-museum-research · src/catalog-page/catalog.css
+   基座：16-design-system（tokens.css + components.css + fonts/）→ assets/ds/
+   线上：/playtime-atlas-20261021/research/catalog.html
+
+   ---------------------------------------------------------------------------
+   依据：
+     · 16-design-system/DESIGN-SPEC.md §1.1 色板 / §2.2 字阶 / §3.3 容器 /
+       §5.2 筛选条 / §6.2 详情硬性要求 / §7.4 表单 / §10 资源与子路径
+     · 16-design-system/MIGRATION-NOTES.md §3.1 G.1—G.7、§3.4 非游戏作品
+     · 15-supervisor 路由：139 条数据密集区**扫读效率优先于视觉统一**
+       —— 本层只换视觉语言，不压缩行密度、不缩小正文字号、不加负字距。
+
+   本层只提供「目录页专属」的选择器与少量变量覆写；通用外壳（顶栏 / 筛选芯片 /
+   跳转链接 / 页脚 / 输入框 / 标签 / 详情正文）全部复用 .ds-* 组件类。
+   ========================================================================= */
+
+/* ---------------------------------------------------------------------------
+   0. 中文字形策略 —— 已由 16 上游修正，本页不再覆写
+   ---------------------------------------------------------------------------
+   本页曾在此覆写 --ds-font-display / --ds-font-text，把系统 CJK 栈提到
+   Noto Sans SC 子集之前（依据：子集只覆盖本页 1031 个汉字中的 57.5%，
+   排在前面会让同一标题出现「子集字形 + 系统字形」混排、基线错位；
+   实测记录见 RESTYLE-CHECKLIST.md §6-E）。
+
+   16 已于 2026-10-21 22:25 在 tokens.css / fonts.css / FONT-MANIFEST.json
+   上游修正该顺序（规则：覆盖完整的 CJK 族必须排在覆盖有限的子集之前），
+   故本页**删除本地覆写**，改为直接消费 DS 令牌 —— 自有 CSS 不再声明任何
+   --ds-* 变量，命名空间零冲突（MIGRATION-NOTES §0 风险 A）。
+   -------------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------------
+   1. 页面基线
+   --------------------------------------------------------------------------- */
+body {
+  margin: 0;
+}
+
+/* 目录页链接：DS 未定义全局 a 样式，此处按「正文墨色 + 下划线」处理，
+   悬停转强调色（强调色仅用于交互态，不用于常驻文字）。 */
+.ds-catalog__body a,
+.ds-catalog__about a,
+.ds-footer a {
+  color: var(--ds-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.ds-catalog__body a:hover,
+.ds-catalog__about a:hover,
+.ds-footer a:hover {
+  color: var(--ds-accent);
+}
+
+/* ---------------------------------------------------------------------------
+   2. 页头区（标题块）
+   --------------------------------------------------------------------------- */
+.ds-catalog__head {
+  padding-block: var(--ds-space-7) var(--ds-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-3);
+}
+
+.ds-catalog__kicker {
+  margin: 0;
+  color: var(--ds-accent);
+}
+
+.ds-catalog__title {
+  margin: 0;
+  /* 中文标题：max-width 22ch（DESIGN-SPEC §3.2 中文放宽），禁止 nowrap */
+  max-width: 22ch;
+  overflow-wrap: anywhere;
+}
+
+.ds-catalog__sub {
+  margin: 0;
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
+  text-transform: uppercase;
+  color: var(--ds-ink-faint);
+}
+
+.ds-catalog__desc {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--ds-ink-soft);
+}
+.ds-catalog__desc b {
+  color: var(--ds-ink);
+  font-weight: var(--ds-w-semibold);
+}
+
+/* ---------------------------------------------------------------------------
+   3. 检索与筛选条
+   --------------------------------------------------------------------------- */
+.ds-catalog__toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-4);
+  padding-block: var(--ds-space-5);
+  border-block: 1px solid var(--ds-line);
+  margin-bottom: var(--ds-space-5);
+}
+
+.ds-catalog__search {
+  max-width: 420px;
+  width: 100%;
+}
+
+/* 筛选组：桌面换行，窄屏横向滚动（DESIGN-SPEC §5.2「移动端筛选条必须可横向
+   滚动，不换行占满屏」——9 个芯片换行会占掉整屏，横向滚动保证筛选可操作性） */
+.ds-catalog__filters {
+  display: flex;
+  gap: var(--ds-space-2);
+  align-items: center;
+}
+.ds-catalog__filters .ds-chip {
+  flex: none;
+  white-space: nowrap;
+}
+
+.ds-catalog__count {
+  margin: 0;
+  color: var(--ds-ink-faint);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
+}
+
+/* ---------------------------------------------------------------------------
+   4. 条目列表（139 条）
+   ---------------------------------------------------------------------------
+   密度基线（改版前后保持，不得压缩）：
+     · 行高 ≈ 56px（改版前 18px 上下内边距 + 18px 标题）
+     · 条目标题 20px / 600（改版前 18px / 700）
+     · 年份 13px mono 强调色；分类·载体·来源数 13px mono
+   --------------------------------------------------------------------------- */
+.ds-catalog__list {
+  padding-bottom: var(--ds-space-6);
+}
+
+.ds-catalog__item {
+  border-top: 1px solid var(--ds-line);
+}
+.ds-catalog__item:last-of-type {
+  border-bottom: 1px solid var(--ds-line);
+}
+
+.ds-catalog__row {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) minmax(0, auto) 18px;
+  gap: var(--ds-space-4);
+  align-items: baseline;
+  padding-block: var(--ds-space-4);
+  padding-inline: var(--ds-space-1);
+  transition: background-color var(--ds-dur-fast) var(--ds-ease-veil);
+}
+.ds-catalog__row::-webkit-details-marker { display: none; }
+.ds-catalog__row:hover {
+  background: var(--ds-bg-sunken);
+}
+
+/* 年份：关键数据高亮，用强调色（DESIGN-SPEC §1.1 允许「关键数据高亮」用强调色） */
+.ds-catalog__year {
+  color: var(--ds-accent);
+  font-size: var(--ds-type-mono);
+  letter-spacing: var(--ds-track-mono);
+}
+
+/* 条目标题：扫读主锚点。中文用 600 字重（DS 的中文标题降档规则见 §2.3） */
+.ds-catalog__name {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h3);
+  line-height: var(--ds-lh-snug);
+  font-weight: var(--ds-w-semibold);
+  color: var(--ds-ink);
+  overflow-wrap: anywhere;
+}
+
+.ds-catalog__meta {
+  color: var(--ds-ink-faint);
+  font-size: var(--ds-type-mono);
+  letter-spacing: var(--ds-track-mono);
+  overflow-wrap: anywhere;
+}
+
+/* 展开指示：纯装饰，不抢焦点 */
+.ds-catalog__row::after {
+  content: "▸";
+  color: var(--ds-ink-faint);
+  font-size: 12px;
+  justify-self: end;
+}
+.ds-catalog__item[open] > .ds-catalog__row::after {
+  content: "▾";
+  color: var(--ds-accent);
+}
+
+/* ---------------------------------------------------------------------------
+   5. 条目详情（展开后）
+   --------------------------------------------------------------------------- */
+.ds-catalog__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-5);
+  padding-block: var(--ds-space-4) var(--ds-space-6);
+  padding-inline: var(--ds-space-1);
+}
+
+/* 字段表：6 行元信息，min 190px 自适应列 */
+.ds-catalog__kv {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--ds-space-3);
+  margin: 0;
+}
+.ds-catalog__kv > div {
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-sm);
+  padding: var(--ds-space-3);
+}
+.ds-catalog__kv dt {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
+  color: var(--ds-ink-faint);
+  margin-bottom: var(--ds-space-1);
+}
+.ds-catalog__kv dd {
+  margin: 0;
+  font-size: var(--ds-type-sm);
+  color: var(--ds-ink-soft);
+  line-height: var(--ds-lh-snug);
+  overflow-wrap: anywhere;
+}
+
+/* 来源：引用与出处用 .ds-detail__caption + mono 编号（15-supervisor 路由要求） */
+.ds-catalog__sources {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+}
+.ds-catalog__sources .ds-detail__caption {
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.ds-catalog__sources a {
+  overflow-wrap: anywhere;
+}
+
+/* ---------------------------------------------------------------------------
+   6. 关于本目录
+   --------------------------------------------------------------------------- */
+.ds-catalog__about {
+  padding-bottom: var(--ds-space-7);
+}
+.ds-catalog__about .ds-detail__body {
+  gap: var(--ds-space-3);
+}
+.ds-catalog__about .ds-detail__body h3 {
+  margin-top: 0;
+}
+.ds-catalog__about .ds-body {
+  color: var(--ds-ink-soft);
+}
+
+/* ---------------------------------------------------------------------------
+   7. 响应式
+   --------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .ds-catalog__head {
+    padding-block: var(--ds-space-6) var(--ds-space-5);
+  }
+  .ds-catalog__title {
+    max-width: 100%;
+  }
+
+  /* 筛选条横向滚动：不得换行占满屏，也不得撑出横向溢出 */
+  .ds-catalog__filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: var(--ds-space-1);
+    scrollbar-width: thin;
+  }
+
+  /* 行改为两行：年份 + 标题 + 指示符，meta 换行到第二行 */
+  .ds-catalog__row {
+    grid-template-columns: 56px minmax(0, 1fr) 18px;
+    row-gap: var(--ds-space-1);
+  }
+  .ds-catalog__meta {
+    grid-column: 1 / -1;
+  }
+  .ds-catalog__row::after {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   8. 动效降级
+   ---------------------------------------------------------------------------
+   tokens.css 已用全局 `transition-duration: 1ms !important` 兜底；
+   这里对本页自身的过渡再显式关一次，双保险。
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .ds-catalog__row {
+    transition: none;
+  }
+}

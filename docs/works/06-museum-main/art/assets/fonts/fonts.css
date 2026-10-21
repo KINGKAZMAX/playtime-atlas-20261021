@@ -1,16 +1,18 @@
 /* 回响电玩馆 / PLAYTIME ATLAS — 自托管字体
  *
- * 字体族名与本项目实际使用的 CSS 变量保持一致：
- *   --font-display → 'Space Grotesk', 'Noto Sans SC'
- *   --font-text    → 'Inter', 'Noto Sans SC'
- *   --font-mono    → 'Space Mono', 'Noto Sans Mono'
+ * 字体族名与 16-design-system/fonts/FONT-MANIFEST.json 完全一致（逐字节同源）：
+ *   Display  Space Grotesk → Noto Sans SC → 系统黑体
+ *   Text     Inter        → Noto Sans SC → 系统黑体
+ *   Mono     Space Mono   → ui-monospace
+ * 对应 CSS 变量：--ds-font-display / --ds-font-text / --ds-font-mono
  *
  * 许可：Space Grotesk / Inter / Space Mono / Noto Sans SC 均为
  *       SIL Open Font License 1.1（OFL-1.1），许可全文见同目录的
  *       OFL-*.txt。字体文件由 07-museum-art 提供，本目录只做引用。
  *
  * 路径说明：全部使用相对路径（./），因此在 GitHub Pages 的任意子路径
- * （例如 /exhibits/06-museum-core/）下都能正确解析，不产生 404。
+ * （例如 /playtime-atlas-20261021/works/06-museum-main/）下都能正确解析，
+ * 不产生 404。font-display: swap，避免 FOIT 阻塞首屏。
  */
 
 @font-face {

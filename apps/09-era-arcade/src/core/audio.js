@@ -35,74 +35,119 @@ export function midiToFreq(m) {
 
 /* ------------------------------------------------------------------ *
  * 原创曲谱
- * 每个 lead/bass/drums 行 = 1 小节 16 个十六分音符；null 表示休止
+ *
+ * 数据结构：lead / bass / drums 均为「小节数组」，
+ * 每个小节是 16 个十六分音符（null 表示休止）。
+ * 调度器通过 stepValue() 取值，对缺失小节、空轨道一律回落到休止，
+ * 不会因数据不完整而抛异常。
  * ------------------------------------------------------------------ */
+
+export const STEPS_PER_BAR = 16;
+
+/**
+ * 取某条轨道在某一步的取值。
+ * @param {Array<Array<any>|null>|null|undefined} part 轨道（小节数组）
+ * @param {number} step 十六分音符序号
+ * @returns {any} 该步的音符/鼓点；缺失或空缺时返回 null（休止）
+ */
+export function stepValue(part, step) {
+  if (!Array.isArray(part) || part.length === 0) return null;
+  const barIndex = Math.floor(step / STEPS_PER_BAR);
+  const bar = part[((barIndex % part.length) + part.length) % part.length];
+  if (!Array.isArray(bar)) return null;
+  const v = bar[((step % STEPS_PER_BAR) + STEPS_PER_BAR) % STEPS_PER_BAR];
+  return v === undefined ? null : v;
+}
 
 export const THEMES = {
   hall: {
     bpm: 84,
     wave: 'triangle',
     lead: [
-      74, null, 69, null, 77, null, 69, null, 74, null, 72, null, 69, null, 72, null,
-      70, null, 65, null, 72, null, 65, null, 69, null, 65, null, 62, null, 65, null,
-      69, null, 74, null, 77, null, 79, null, 77, null, 74, null, 72, null, 74, null,
-      72, null, 69, null,  65, null, 69, null,  74, null, 72, null, 69, null, 74, null,
+      [74, null, 69, null, 65, null, 69, null, 74, null, 69, null, 67, null, 69, null],
+      [72, null, 69, null, 65, null, 69, null, 74, null, 72, null, 69, null, 72, null],
+      [70, null, 65, null, 62, null, 65, null, 69, null, 65, null, 62, null, 65, null],
+      [67, null, 72, null, 74, null, 72, null, 74, null, 72, null, 69, null, 72, null],
+      [74, null, 69, null, 65, null, 69, null, 77, null, 79, null, 77, null, 74, null],
+      [72, null, 69, null, 65, null, 69, null, 74, null, 72, null, 69, null, 65, null],
+      [69, null, 65, null, 62, null, 65, null, 69, null, 72, null, 74, null, 77, null],
+      [77, null, 74, null, 72, null, 69, null, 74, null, null, null, null, null, null, null],
     ],
     bass: [
-      38, null, null, null, 38, null, null, null, 41, null, null, null, 41, null, null, null,
-      36, null, null, null, 36, null, null, null, 37, null, null, null, 37, null, null, null,
-      38, null, null, null, 38, null, null, null, 41, null, null, null, 41, null, null, null,
-      36, null, null, null, 36, null, null, null, 37, null, null, null, 37, null, null, null,
+      [38, null, null, null, 38, null, null, null, 41, null, null, null, 41, null, null, null],
+      [36, null, null, null, 36, null, null, null, 37, null, null, null, 37, null, null, null],
+      [38, null, null, null, 38, null, null, null, 41, null, null, null, 41, null, null, null],
+      [36, null, null, null,  36, null, null, null,  38, null, null, null,  38, null, null, null],
     ],
     drums: [
-      'k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h',
-      'k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h',
-      'k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h',
-      'k', null, 'h', null, 's', null, 'h', 'h', 'k', null, 'h', null, 's', null, 'h', 'h',
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h'],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', 's', 'h', null],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h'],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', 'k', 'h', 'h', 's', 's', 'h', 'h'],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h'],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', 's', 'h', null],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h'],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', 'k', 'h', 'h', 's', 's', 'h', 'h'],
     ],
   },
   lattice: {
     bpm: 132,
     wave: 'square',
     lead: [
-      69, null, 72, null, 74, null, 72, null, 69, null, 67, null, 69, null, 72, null,
-      74, null, 77, null, 76, null, 74, null, 72, null, 74, null, 76, null, 77, null,
-      69, null, 72, null, 74, null, 72, null, 69, null, 67, null, 69, null, 72, null,
-      81, null, 79, null, 77, null, 76, null, 74, null, 72, null, 74, null, 76, null,
+      [69, null, 72, null, 74, null, 72, null, 69, null, 67, null, 69, null, 72, null],
+      [74, null, 77, null, 76, null, 74, null, 72, null, 74, null, 76, null, 77, null],
+      [69, null, 72, null, 74, null, 72, null, 69, null, 67, null, 69, null, 72, null],
+      [81, null, 79, null, 77, null, 76, null, 74, null, 72, null, 74, null, 76, null],
+      [72, null, 74, null, 76, null, 74, null, 72, null, 69, null, 72, null, 74, null],
+      [77, null, 76, null, 74, null, 72, null, 74, null, 72, null, 71, null, 69, null],
+      [69, null, 72, null, 74, null, 76, null, 77, null, 79, null, 77, null, 76, null],
+      [74, null, 72, null, 69, null, 72, null, 69, null, null, null, null, null, null, null],
     ],
     bass: [
-      45, null, 45, null, 45, null, 45, null, 45, null, 45, null, 45, null, 45, null,
-      41, null, 41, null, 41, null, 41, null, 41, null, 41, null, 41, null, 41, null,
-      43, null, 43, null, 43, null, 43, null, 43, null, 43, null, 43, null, 43, null,
-      40, null, 40, null, 40, null, 40, null, 45, null, 45, null, 45, null, 45, null,
+      [45, null, 45, null, 45, null, 45, null, 45, null, 45, null, 45, null, 45, null],
+      [41, null, 41, null, 41, null, 41, null, 41, null, 41, null, 41, null, 41, null],
+      [43, null, 43, null, 43, null, 43, null, 43, null, 43, null, 43, null, 43, null],
+      [40, null, 40, null, 40, null, 40, null, 45, null, 45, null, 45, null, 45, null],
     ],
     drums: [
-      'k', null, 'h', 'h', 's', null, 'h', null, 'k', null, 'h', 'h', 's', null, 'h', null,
-      'k', null, 'h', 'h', 's', null, 'h', null, 'k', null, 'h', 'h', 's', 's', 'h', null,
-      'k', null, 'h', 'h', 's', null, 'h', null, 'k', null, 'h', 'h', 's', null, 'h', null,
-      'k', null, 'h', 'h', 's', null, 'h', null, 'k', 'k', 'h', 'h', 's', 's', 'h', 'h',
+      ['k', null, 'h', 'h', 's', null, 'h', null, 'k', null, 'h', 'h', 's', null, 'h', null],
+      ['k', null, 'h', 'h', 's', null, 'h', null, 'k', null, 'h', 'h', 's', 's', 'h', null],
+      ['k', null, 'h', 'h', 's', null, 'h', null, 'k', null, 'h', 'h', 's', null, 'h', null],
+      ['k', null, 'h', 'h', 's', null, 'h', null, 'k', 'k', 'h', 'h', 's', 's', 'h', 'h'],
+      ['k', null, 'h', 'h', 's', null, 'h', null, 'k', null, 'h', 'h', 's', null, 'h', null],
+      ['k', null, 'h', 'h', 's', null, 'h', null, 'k', null, 'h', 'h', 's', 's', 'h', null],
+      ['k', null, 'h', 'h', 's', null, 'h', null, 'k', null, 'h', 'h', 's', null, 'h', null],
+      ['k', null, 'h', 'h', 's', null, 'h', null, 'k', 'k', 'h', 'h', 's', 's', 'h', 'h'],
     ],
   },
   meteor: {
     bpm: 146,
     wave: 'sawtooth',
     lead: [
-      72, 76, 79, 84, 79, 76, 72, null, 74, 77, 81, 86, 81, 77, 74, null,
-      72, 76, 79, 84, 88, 84, 79, 76, 72, 76, 79, 81, 84, null, null, null,
-      70, 74, 77, 82, 77, 74, 70, null, 72, 76, 79, 84, 79, 76, 72, null,
-      68, 72, 75, 80, 83, 80, 75, 72, 76, 79, 83, 86, 84, 81, 79, 76,
+      [72, 76, 79, 84, 79, 76, 72, null, 74, 77, 81, 86, 81, 77, 74, null],
+      [72, 76, 79, 84, 88, 84, 79, 76, 72, 76, 79, 81, 84, null, null, null],
+      [70, 74, 77, 82, 77, 74, 70, null, 72, 76, 79, 84, 79, 76, 72, null],
+      [68, 72, 75, 80, 83, 80, 75, 72, 76, 79, 83, 86, 84, 81, 79, 76],
+      [72, 76, 79, 84, 79, 76, 72, null, 74, 77, 81, 86, 88, 86, 84, null],
+      [83, 86, 84, 81, 79, 76, 79, 83, 81, 77, 74, 76, 79, null, null, null],
+      [70, 74, 77, 82, 77, 74, 70, null, 72, 76, 79, 84, 79, 76, 72, null],
+      [68, 72, 75, 80, 75, 72, 68, null, 72, 76, 79, 84, 86, 84, 79, 76],
     ],
     bass: [
-      36, null, 36, null, 36, null, 36, null, 36, null, 36, null, 36, null, 36, null,
-      33, null, 33, null, 33, null, 33, null, 33, null, 33, null, 33, null, 33, null,
-      35, null, 35, null, 35, null, 35, null, 35, null, 35, null, 35, null, 35, null,
-      32, null, 32, null, 32, null, 32, null, 36, null, 36, null, 36, null, 36, null,
+      [36, null, 36, null, 36, null, 36, null, 36, null, 36, null, 36, null, 36, null],
+      [33, null, 33, null, 33, null, 33, null, 33, null, 33, null, 33, null, 33, null],
+      [35, null, 35, null, 35, null, 35, null, 35, null, 35, null, 35, null, 35, null],
+      [32, null, 32, null, 32, null, 32, null, 36, null, 36, null, 36, null, 36, null],
     ],
     drums: [
-      'k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h',
-      'k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', 's', 'h', null,
-      'k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h',
-      'k', null, 'h', null, 's', null, 'h', null, 'k', 'k', 'h', 'h', 's', 's', 'h', 'h',
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h'],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', 's', 'h', null],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h'],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', 'k', 'h', 'h', 's', 's', 'h', 'h'],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h'],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', 's', 'h', null],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', null, 'h', null, 's', null, 'h', 'h'],
+      ['k', null, 'h', null, 's', null, 'h', null, 'k', 'k', 'h', 'h', 's', 's', 'h', 'h'],
     ],
   },
 };
@@ -243,10 +288,8 @@ export function createAudio() {
   const TICK = 25;
 
   function scheduleStep(theme, step, time) {
-    const bar = Math.floor(step / 16) % theme.lead.length;
-    const idx = step % 16;
-
-    const leadNote = theme.lead[bar][idx];
+    // 通过 stepValue 取值：轨道缺失、小节为 null、小节长度不足一律回落到休止
+    const leadNote = stepValue(theme.lead, step);
     if (leadNote != null) {
       const osc = ctx.createOscillator();
       const g = ctx.createGain();
@@ -261,7 +304,7 @@ export function createAudio() {
       osc.stop(time + 0.2);
     }
 
-    const bassNote = theme.bass[bar][idx];
+    const bassNote = stepValue(theme.bass, step);
     if (bassNote != null) {
       const osc = ctx.createOscillator();
       const g = ctx.createGain();
@@ -276,7 +319,7 @@ export function createAudio() {
       osc.stop(time + 0.26);
     }
 
-    const drum = theme.drums[bar][idx];
+    const drum = stepValue(theme.drums, step);
     if (drum === 'k') {
       const osc = ctx.createOscillator();
       const g = ctx.createGain();
@@ -325,7 +368,8 @@ export function createAudio() {
     if (!ctx || !current) return;
     const theme = THEMES[current.theme];
     if (!theme) return;
-    const stepDur = 60 / theme.bpm / 4;
+    const bpm = Number(theme.bpm) > 0 ? Number(theme.bpm) : 120;
+    const stepDur = 60 / bpm / 4;
     while (current.nextTime < ctx.currentTime + LOOKAHEAD) {
       scheduleStep(theme, current.step, current.nextTime);
       current.step += 1;
@@ -377,6 +421,19 @@ export function createAudio() {
     },
     get started() {
       return started;
+    },
+    /**
+     * 调试出口：暴露音频上下文状态与音乐调度进度。
+     * 供集成方（06 博物馆 / 14 部署）与自动化验收确认「音乐确实在播放」。
+     */
+    get debug() {
+      return {
+        ctxState: ctx ? ctx.state : 'none',
+        currentTime: ctx ? ctx.currentTime : 0,
+        theme: current ? current.theme : null,
+        step: current ? current.step : -1,
+        muted,
+      };
     },
   };
 }

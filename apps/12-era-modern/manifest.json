@@ -7,21 +7,6 @@
   "outputDir": "dist",
   "status": "completed",
   "upstream": "12-era-modern",
-  "license": {
-    "code": "原创（MIT 由本批次统一约定；第三方依赖见 LICENSES.md）",
-    "assets": "100% 程序化生成（Canvas 2D / Three.js 几何体与着色器 / WebAudio 合成）",
-    "fonts": [
-      "Space Grotesk Variable (SIL OFL 1.1)",
-      "JetBrains Mono Variable (SIL OFL 1.1)"
-    ]
-  },
-  "sources": [
-    {
-      "title": "时代史料来源（随展厅交付）",
-      "url": "",
-      "note": "展厅内附史料来源链接。"
-    }
-  ],
   "era": "modern",
   "eraRange": "2015-2026",
   "parentExhibit": "playtime-atlas",
@@ -55,7 +40,7 @@
       "titleEn": "PULSE CORRIDOR",
       "kind": "rhythm-reaction",
       "route": "#/pulse",
-      "color": "#4FE3D0",
+      "color": "#2E6A5E",
       "controls": [
         "D/F/J/K",
         "方向键",
@@ -77,7 +62,7 @@
       "titleEn": "PRISM ATRIUM",
       "kind": "spatial-puzzle",
       "route": "#/atrium",
-      "color": "#FFC46B",
+      "color": "#B4432B",
       "levels": 4,
       "controls": [
         "WASD/方向键移动",
@@ -99,7 +84,7 @@
       "titleEn": "HALO DECK",
       "kind": "desktop-immersive-demo",
       "route": "#/halo",
-      "color": "#9D7BFF",
+      "color": "#2C5C8F",
       "controls": [
         "拖拽环视",
         "滚轮变焦",
@@ -119,6 +104,40 @@
   "sourceVerifiedAt": "2026-10-21",
   "offline": true,
   "externalRuntimeRequests": 0,
+  "designSystem": {
+    "spec": "16-design-system/DESIGN-SPEC.md",
+    "migrationNotes": "16-design-system/MIGRATION-NOTES.md",
+    "namespace": "--ds-*",
+    "tokenSource": "public/assets/ds/tokens.css（16 号 src/tokens.css 的逐字节原样副本，本目录 --ds-* 取值的唯一声明处）",
+    "componentSource": "public/assets/ds/components.css（16 号 src/components.css 的逐字节原样副本）",
+    "fontSource": "public/assets/ds/fonts/（5 款自托管 woff2 + 5 份 OFL 全文 + FONT-MANIFEST.json）",
+    "localTokenLayer": "src/styles/tokens.css —— 仅语义别名层 + --hc-* 高对比间接层 + --prism-* 玩法语义色，不重复定义 --ds-* 取值",
+    "cjkLayer": "src/styles/cjk.css —— :lang(zh) 字距归零 + 正文行高 1.85（main.js 中最后导入）",
+    "basePathVar": "--ds-base = /playtime-atlas-20261021/（由 index.html 注入，取 design-tokens.json → meta.basePathVar 权威值）",
+    "bodyClass": "ds-shell",
+    "theme": "浅色外壳（<html data-ds-theme=\"light\">）+ 三个展项舞台深色作用域（data-ds-theme=\"dark\"）",
+    "accent": "#B4432B",
+    "components": [
+      "ds-topbar",
+      "ds-footer",
+      "ds-skip",
+      "ds-cover",
+      "ds-work",
+      "ds-detail__title",
+      "ds-btn",
+      "ds-tag",
+      "ds-chip",
+      "ds-field",
+      "ds-input",
+      "ds-rail",
+      "ds-indicator",
+      "ds-canvas-frame",
+      "ds-canvas-frame__hud",
+      "ds-diagram"
+    ],
+    "reducedMotion": "系统偏好 + 设置开关两条路径，均归零；设置开关使用 16 自带的 [data-rm=\"reduce\"]，本目录不再自写 !important 降级块",
+    "restyleInventory": "RESTYLE-INVENTORY.md"
+  },
   "deliverables": {
     "readme": "README.md",
     "task": "TASK.md",
@@ -127,11 +146,23 @@
     "licenses": "LICENSES.md",
     "qa": "QA.md",
     "screenshots": "screenshots/",
+    "evidence": "evidence/（ds-verification.json + ds/ 16 张验收截图）",
     "handoff": "handoff/",
-    "source": "src/"
+    "source": "src/",
+    "designSystemAssets": "public/assets/ds/"
   },
   "checks": {
     "levelSolver": "node scripts/test-levels.mjs",
-    "browserQa": "49 项自动断言（Chrome 实测，产物经 Pages 子路径复测），0 控制台错误，0 失败请求"
-  }
+    "i18nSkeleton": "node scripts/check-i18n.mjs",
+    "designSystemCompliance": "node scripts/verify-ds.mjs —— 14 组检查：13 pass / 1 warn / 0 fail / 0 error（verdict=PASS）。覆盖四路由×四视口的无横向溢出、14 类 .ds-* 组件、9 选择器对比度（最低 4.68:1）、触摸目标 24px/44px 两档、reduced-motion 双路径、令牌一致性（JSON 213 项 / 实比 121 项全部一致）、V.11 字体栈顺序、零外链（270 请求全同源）、标题禁 nowrap、中文排版 254 元素",
+    "browserQa": "49 项自动断言（Chrome 实测，产物经 Pages 子路径复测），0 控制台错误，0 失败请求",
+    "curationProbe": "13-qa-curation 原版探针 probeEraGame：pass 8 / warn 0 / fail 0 / skip 1（skip＝难度切换，本厅无独立难度控件）",
+    "accessibility": "11 项无障碍与 reduced-motion 自检全通过：四档视口零横向溢出、30 选择器关键文本对比度最低 4.68:1、触摸目标最小 32px、运行期零外部请求、reduced-motion 下抽样 58 项最大 0.001s 且节拍提示仍在",
+    "fontLanding": "11 项自托管字体落地专项自检全通过：两款字体已加载、Space Mono 粗体字面已取回（修复前为 unloaded）、Canvas 文本测量宽度与不存在族名不同、ctx.font 不再含 *Variable 族名",
+    "build": "npx vite build 退出码 0；产物 CSS 内字体引用为 url(./<name>.woff2)，无绝对根路径；dist/assets/ds/** 全部相对引用",
+    "distSize": "约 1.14 MB（JS 629KB / CSS 39KB / 设计系统副本 492KB，其中字体 434KB）"
+  },
+  "knownDeviations": [
+    "--ds-font-mono 比 16-design-system/design-tokens.json 多一个 Consolas；差异源自 16 号 tokens.css 本身，本厅按红线未改副本，已在 verify-ds.mjs 中按 warn 记录（见 STATUS.md L-12）"
+  ]
 }

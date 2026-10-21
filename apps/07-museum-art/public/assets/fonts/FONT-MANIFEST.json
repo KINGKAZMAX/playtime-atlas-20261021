@@ -1,0 +1,209 @@
+{
+  "$comment": "回响电玩馆 / PLAYTIME ATLAS — 可自托管字体清单。全部为 SIL Open Font License 1.1，许可原文随包附于本目录。运行期零外部 CDN 请求。",
+  "generatedAt": "2026-10-21T15:14:14.827Z",
+  "version": "1.1.0",
+  "policy": {
+    "selfHostedOnly": true,
+    "externalCdn": false,
+    "preload": [
+      "space-grotesk-latin.woff2",
+      "inter-latin.woff2"
+    ],
+    "fontDisplay": "swap",
+    "cjkStrategy": "拉丁字体仅覆盖拉丁与数字；中文优先使用系统字体栈（零字节、覆盖完整），Noto Sans SC 子集作为渐进增强。顺序规则：覆盖完整的系统 CJK 族必须排在覆盖有限的子集之前（CSS 按字符回退，子集在前会让同一段文字混入两套字形、基线错位）。",
+    "note": "字体为 SIL Open Font License 1.1 的开源字体，自托管分发；本包未取自任何参考站，也未使用任何商业字库或品牌字体。"
+  },
+  "stackResolution": {
+    "display": [
+      "Space Grotesk",
+      "PingFang SC",
+      "Hiragino Sans GB",
+      "Microsoft YaHei",
+      "Source Han Sans SC",
+      "Noto Sans SC",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "sans-serif"
+    ],
+    "text": [
+      "Inter",
+      "PingFang SC",
+      "Hiragino Sans GB",
+      "Microsoft YaHei",
+      "Source Han Sans SC",
+      "Noto Sans SC",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "sans-serif"
+    ],
+    "mono": [
+      "Space Mono",
+      "ui-monospace",
+      "SFMono-Regular",
+      "Menlo",
+      "Consolas",
+      "monospace"
+    ],
+    "source": "src/tokens.css 的 --ds-font-display / --ds-font-text / --ds-font-mono"
+  },
+  "faces": [
+    {
+      "family": "Space Grotesk",
+      "role": "display / 展示体",
+      "usage": "年代标题、编号、数字",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-space-grotesk.txt",
+      "file": "space-grotesk-latin.woff2",
+      "weightRange": "300 700",
+      "coverage": "latin + digits"
+    },
+    {
+      "family": "Inter",
+      "role": "sans / 正文",
+      "usage": "段落、说明、界面文案",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-inter.txt",
+      "file": "inter-latin.woff2",
+      "weightRange": "100 900",
+      "coverage": "latin + digits"
+    },
+    {
+      "family": "Space Mono",
+      "role": "mono / 编号与标签",
+      "usage": "编号、年份、展品标签",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-space-mono-regular.txt",
+      "styles": [
+        {
+          "weight": 400,
+          "file": "space-mono-regular.woff2"
+        },
+        {
+          "weight": 700,
+          "file": "space-mono-bold.woff2"
+        }
+      ],
+      "coverage": "latin + digits"
+    },
+    {
+      "family": "Noto Sans SC",
+      "role": "cjk / 中文",
+      "usage": "全部汉字",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-noto-sans-sc.txt",
+      "file": "noto-sans-sc-subset.woff2",
+      "weightRange": "100 900",
+      "coverage": "CJK 子集（本包用字）"
+    }
+  ],
+  "files": [
+    {
+      "file": "space-grotesk-latin.woff2",
+      "bytes": 34788,
+      "format": "woff2",
+      "sha256": "4212a294d495570baaa60d085f3b6a72b6790b5b1d13471630721ceb9c2babcf"
+    },
+    {
+      "file": "inter-latin.woff2",
+      "bytes": 132684,
+      "format": "woff2",
+      "sha256": "98342e4c9d04d96ee10270f855930ecc1adc34dc6273134d80a3c385dc530fe0"
+    },
+    {
+      "file": "space-mono-regular.woff2",
+      "bytes": 14884,
+      "format": "woff2",
+      "sha256": "2bd76ba5ecee41cdbde94aa862f0c998a6f85ee7e70b8142d19e9e8eb364eb27"
+    },
+    {
+      "file": "space-mono-bold.woff2",
+      "bytes": 15000,
+      "format": "woff2",
+      "sha256": "d09323c39cee214f6472155bb71d374a89726805f7e6313d656f3947b16ccf6c"
+    },
+    {
+      "file": "noto-sans-sc-subset.woff2",
+      "bytes": 197600,
+      "format": "woff2",
+      "sha256": "0a0b62b40f8b359d0714d47fd3e293d2ca871d0ee21acb200c0b31ebc667fe4b"
+    }
+  ],
+  "licenses": [
+    {
+      "file": "OFL-inter.txt",
+      "bytes": 4377,
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+      "license": "SIL Open Font License 1.1",
+      "verified": true
+    },
+    {
+      "file": "OFL-noto-sans-sc.txt",
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "license": "SIL Open Font License 1.1",
+      "verified": true
+    },
+    {
+      "file": "OFL-space-grotesk.txt",
+      "bytes": 4495,
+      "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72",
+      "license": "SIL Open Font License 1.1",
+      "verified": true
+    },
+    {
+      "file": "OFL-space-mono-bold.txt",
+      "bytes": 4392,
+      "sha256": "8e4ee42b2553e1e01504e61cb0d46d148cd8c9e5eacaa3622a7df2d4f2955b9f",
+      "license": "SIL Open Font License 1.1",
+      "verified": true
+    },
+    {
+      "file": "OFL-space-mono-regular.txt",
+      "bytes": 4392,
+      "sha256": "8e4ee42b2553e1e01504e61cb0d46d148cd8c9e5eacaa3622a7df2d4f2955b9f",
+      "license": "SIL Open Font License 1.1",
+      "verified": true
+    }
+  ],
+  "coverage": {
+    "cjkChars": 746,
+    "note": "中文字形子集覆盖本包实际用字 746 个；若全站用字超出覆盖，需要重新子集化并同步 16。"
+  },
+  "alignment": {
+    "alignedTo": "16-design-system/fonts/FONT-MANIFEST.json",
+    "note": "本包字体文件与 16-design-system/fonts/ 下的同名文件逐字节一致（SHA-256 相同）。本清单为自产文件，不复制 16 的清单内容。",
+    "files": [
+      {
+        "file": "space-grotesk-latin.woff2",
+        "localSha256": "4212a294d495570baaa60d085f3b6a72b6790b5b1d13471630721ceb9c2babcf",
+        "dsSha256": "4212a294d495570baaa60d085f3b6a72b6790b5b1d13471630721ceb9c2babcf",
+        "identical": true
+      },
+      {
+        "file": "inter-latin.woff2",
+        "localSha256": "98342e4c9d04d96ee10270f855930ecc1adc34dc6273134d80a3c385dc530fe0",
+        "dsSha256": "98342e4c9d04d96ee10270f855930ecc1adc34dc6273134d80a3c385dc530fe0",
+        "identical": true
+      },
+      {
+        "file": "space-mono-regular.woff2",
+        "localSha256": "2bd76ba5ecee41cdbde94aa862f0c998a6f85ee7e70b8142d19e9e8eb364eb27",
+        "dsSha256": "2bd76ba5ecee41cdbde94aa862f0c998a6f85ee7e70b8142d19e9e8eb364eb27",
+        "identical": true
+      },
+      {
+        "file": "space-mono-bold.woff2",
+        "localSha256": "d09323c39cee214f6472155bb71d374a89726805f7e6313d656f3947b16ccf6c",
+        "dsSha256": "d09323c39cee214f6472155bb71d374a89726805f7e6313d656f3947b16ccf6c",
+        "identical": true
+      },
+      {
+        "file": "noto-sans-sc-subset.woff2",
+        "localSha256": "0a0b62b40f8b359d0714d47fd3e293d2ca871d0ee21acb200c0b31ebc667fe4b",
+        "dsSha256": "0a0b62b40f8b359d0714d47fd3e293d2ca871d0ee21acb200c0b31ebc667fe4b",
+        "identical": true
+      }
+    ],
+    "fontsIdentical": true
+  }
+}

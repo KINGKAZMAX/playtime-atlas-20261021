@@ -4,6 +4,7 @@
 > 在一片稀疏的恒星系统里跃迁、扫描、记录，把每一个天体都登记进远航档案。
 
 浏览器原生运行 · Three.js + Vite · **零 CDN / 零在线 API / 零外部素材**
+（贴图与音频全程序化生成，字体自托管）
 
 ---
 
@@ -41,6 +42,9 @@ npm run preview        # 预览 dist/
 | **空间站对接** | 靠近灯塔站泊位导引灯，减速后按 `R` 完成对接，燃料加满、船体修复。 |
 | **程序化美术** | 行星表面、环带、星云、恒星米粒组织、船体蒙皮、空间站全部由 Canvas 噪声实时生成；没有任何图片文件。 |
 | **程序化音频** | 引擎轰鸣、后燃器噪声、扫描蜂鸣、跃迁、碰撞闷响全部由 WebAudio 振荡器合成；没有音频文件。 |
+| **中英双语** | 界面文案、任务链、区域与天体名、星图与档案全部双语；切换控件在主菜单与暂停面板内，`<html lang>` 与 `hreflang` 同步。 |
+| **键盘可达** | 跳转链接、覆盖层入焦与焦点陷阱、关闭归还焦点、`:lang(zh)` 中文排版、`prefers-reduced-motion` 降级。 |
+| **余晖设计系统** | 外壳（卡片 / 按钮 / 字阶 / 焦点环 / 动效）统一到本批 16-design-system 的 `--ds-*` 令牌；HUD 的玩法识别色按红线保留。 |
 
 ## 文档索引
 
@@ -49,6 +53,8 @@ npm run preview        # 预览 dist/
 | [CONTROLS.md](CONTROLS.md) | 完整操作说明与键位表 |
 | [QA.md](QA.md) | 人工与自动化验收清单、实测结果、已知限制 |
 | [SOURCE-AND-DIFFERENCES.md](SOURCE-AND-DIFFERENCES.md) | 来源说明与「对照差异说明」 |
+| [RESTYLE-MAP.md](RESTYLE-MAP.md) | 设计系统改版的待替换清单（旧值 → `--ds-*` 映射）与限制节 |
+| [LICENSES.md](LICENSES.md) | 代码、依赖与**自托管字体**的许可登记 |
 | [CHANGELOG.md](CHANGELOG.md) | 版本变更记录 |
 | [manifest.json](manifest.json) | 交付清单（供 14-publish 集成） |
 | [TASK.md](TASK.md) / [STATUS.md](STATUS.md) | 任务拆解与阶段状态 |
@@ -60,8 +66,11 @@ npm run preview        # 预览 dist/
 - 渲染：WebGL2 + ACES Filmic 色调映射 + UnrealBloom（可关）
 - 音频：Web Audio API
 - 持久化：`localStorage`
+- 字体：自托管 woff2（Space Grotesk / Inter / Space Mono，OFL-1.1，随包分发许可证）
+- 设计令牌：`src/styles/tokens.css`（`--ds-*`，取自本批 16-design-system）
 
-运行期**不发起任何网络请求**：字体使用系统字体栈，贴图与音频全部在本地程序化生成。
+运行期**不发起任何网络请求**：字体从本地 `dist/assets/*.woff2` 加载，
+贴图与音频全部在本地程序化生成。
 
 ## 目录结构
 
@@ -74,9 +83,13 @@ npm run preview        # 预览 dist/
 ├── qa/qa.mjs               # Playwright 自动化验收脚本
 ├── screenshots/            # 实机截图
 ├── dist/                   # 静态构建产物（可发布）
+├── public/licenses/        # 字体 OFL-1.1 许可证全文（构建后随包分发）
 └── src/
     ├── main.js
-    ├── styles.css          # 设计系统：暖金 / 象牙白 / 余烬红
+    ├── styles.css          # 外壳样式（全部走 --ds-* 令牌）
+    ├── styles/tokens.css   # 余晖设计系统 token 层（--ds-*）
+    ├── fonts/              # 自托管 woff2 + @font-face 声明
+    ├── i18n/               # zh / en 双语字典 + 运行时
     ├── core/               # Settings · SaveGame · EventBus · Util
     ├── gfx/                # Procedural（噪声/贴图）· Shaders（GLSL）
     ├── world/              # Config（世界常量）· Universe（世界装配）
@@ -92,9 +105,12 @@ npm run preview        # 预览 dist/
 | 参数 | 作用 |
 | --- | --- |
 | `?quality=low\|medium\|high` | 启动时强制画质档位（会写入设置） |
+| `?lang=zh-CN\|en` | 直接以指定语言启动（同时写入语言偏好） |
 | `?gpu=force` | 不因检测到软件光栅器而自动降档（用于真实 GPU 截图） |
 
 ## 许可
 
 代码与全部程序化素材均为本项目原创产出，详见 [SOURCE-AND-DIFFERENCES.md](SOURCE-AND-DIFFERENCES.md)。
 依赖 `three`（MIT）与 `vite`（MIT）均已本地化安装。
+自托管字体为 Space Grotesk / Inter / Space Mono（SIL OFL 1.1），许可证全文随包分发，
+登记见 [LICENSES.md](LICENSES.md)。

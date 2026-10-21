@@ -20,6 +20,7 @@ import { createMeteor } from './games/meteor.js';
 import { createPanels } from './ui/panels.js';
 import { createTouchPad } from './ui/touch.js';
 import { EXHIBITS, HALL_NAME } from './hall/exhibits.js';
+import { applyLang, detectLang, getLang, t } from './i18n/strings.js';
 
 const W = 480;
 const H = 270;
@@ -32,10 +33,14 @@ const dom = {
   status: document.getElementById('statusline'),
   exhibitNav: document.getElementById('exhibit-nav'),
   btnSound: document.getElementById('btn-sound'),
+  btnLang: document.getElementById('btn-lang'),
+  indicatorDots: document.getElementById('indicator-dots'),
+  indicatorText: document.getElementById('indicator-text'),
   btnCrt: document.getElementById('btn-crt'),
   btnSettings: document.getElementById('btn-settings'),
   btnCatalog: document.getElementById('btn-catalog'),
   btnTouch: document.getElementById('btn-touch'),
+  btnPause: document.getElementById('btn-pause'),
   hallTitle: document.getElementById('hall-title'),
 };
 
@@ -88,7 +93,7 @@ const shell = {
       app.sceneKey = 'hall';
       app.scene = createHall(shell);
       app.gamePaused = false;
-      setStatus('← → 沿街廊走动，站到终端前按 <kbd>空格</kbd> 进入；也可直接点击终端，或使用下方展品目录。');
+      setStatus(t('statusHall'));
       touchPad.setProfile('hall');
       setQuery(null);
       if (!settings.muted) audio.music.play('hall');
@@ -99,9 +104,7 @@ const shell = {
       app.gamePaused = false;
       app.scene = key === 'lattice' ? createLattice(shell) : createMeteor(shell);
       app.scene.begin();
-      setStatus(key === 'lattice'
-        ? '方向键 / WASD 移动 · <kbd>空格</kbd> 相位穿行 · <kbd>E</kbd> 残响 · <kbd>P</kbd> 暂停 · <kbd>R</kbd> 重开'
-        : '<kbd>A</kbd> <kbd>D</kbd> 移动 · <kbd>空格</kbd> 开火 · <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> 弹型 · <kbd>F</kbd> 共振激爆');
+      setStatus(t(key === 'lattice' ? 'statusLattice' : 'statusMeteor'));
       touchPad.setProfile(key);
       setQuery(key);
       syncChrome();
@@ -119,6 +122,9 @@ const shell = {
   },
   resume() {
     app.gamePaused = false;
+    // 关闭暂停面板：close() 幂等，且会把焦点归还给触发元素（舞台）并恢复键盘输入。
+    // 面板内「继续」按钮走同一条路径；顶栏暂停键也复用它，避免出现「已恢复但遮罩仍在」。
+    panels.close();
     if (app.mode === 'game' && app.scene && app.scene.onResume) app.scene.onResume();
     if (app.mode === 'hall' && !settings.muted) audio.music.play('hall');
   },
@@ -177,24 +183,147 @@ function setStatus(html) {
 function applyCrt() {
   document.body.classList.toggle('crt-on', settings.crt);
   dom.btnCrt.setAttribute('aria-pressed', String(settings.crt));
-  dom.btnCrt.textContent = settings.crt ? 'CRT 开' : 'CRT 关';
+  syncToggleLabels();
+}
+
+/** 同步顶栏开关按钮文案（随语言切换） */
+function syncToggleLabels() {
+  const crtSpan = dom.btnCrt.querySelector('span');
+  if (crtSpan) crtSpan.textContent = t(settings.crt ? 'crtOn' : 'crtOff');
+  const soundSpan = dom.btnSound.querySelector('span');
+  if (soundSpan) soundSpan.textContent = t(settings.muted ? 'soundOff' : 'soundOn');
+  const touchSpan = dom.btnTouch.querySelector('span');
+  if (touchSpan) touchSpan.textContent = t('touch');
+  syncPauseButton();
+}
+
+/**
+ * 暂停按钮：只在游戏内出现，文案随状态在「暂停 / 继续」之间切换。
+ * 它同时是 13-qa-curation 的 D3/D5 探针可发现的暂停控件（data-control="pause"），
+ * 让「暂停是否真的冻结」「未聚焦时是否劫持键盘」能被自动化判定，而不是只能做 DOM 级断言。
+ */
+function syncPauseButton() {
+  const btn = dom.btnPause;
+  if (!btn) return;
+  const inGame = app.mode === 'game';
+  btn.hidden = !inGame;
+  btn.setAttribute('aria-pressed', String(app.gamePaused));
+  const span = btn.querySelector('span');
+  if (span) span.textContent = t(app.gamePaused ? 'resume' : 'pause');
+  btn.setAttribute('aria-label', t(app.gamePaused ? 'resume' : 'pause'));
 }
 
 function syncChrome() {
   const inHall = app.mode === 'hall';
-  dom.hallTitle.textContent = inHall ? `${HALL_NAME.cn} · ${HALL_NAME.sub}` : `${app.scene.title} · ${app.sceneKey === 'lattice' ? 'LATTICE CORRIDOR' : 'METEOR COLUMN'}`;
+  const en = getLang() === 'en';
+  dom.hallTitle.textContent = inHall
+    ? (en ? `${HALL_NAME.en} · ${HALL_NAME.subEn}` : `${HALL_NAME.cn} · ${HALL_NAME.sub}`)
+    : (en
+      ? (app.scene.titleEn || app.scene.title)
+      : `${app.scene.title} · ${app.sceneKey === 'lattice' ? 'LATTICE CORRIDOR' : 'METEOR COLUMN'}`);
   document.body.classList.toggle('is-game', !inHall);
-  for (const btn of dom.exhibitNav.querySelectorAll('[data-exhibit]')) {
-    btn.classList.toggle('is-on', btn.dataset.exhibit === app.sceneKey);
+  syncRail();
+  syncIndicator();
+  syncPauseButton();
+}
+
+/**
+ * 导航轨景深：按与「当前展品」的距离分配墨色层级与微缩放。
+ * 语义上的当前位置由 aria-current 明确给出（不用透明度衰减，避免对比度不足）。
+ */
+function syncRail() {
+  const items = Array.from(dom.exhibitNav.querySelectorAll('[data-exhibit]'));
+  if (!items.length) return;
+  const activeId = currentExhibitId();
+  const activeIndex = Math.max(0, items.findIndex((el) => el.dataset.exhibit === activeId));
+  items.forEach((el, i) => {
+    const distance = Math.abs(i - activeIndex);
+    const level = distance === 0 ? 0 : distance === 1 ? 1 : 2;
+    el.dataset.railLevel = String(level);
+    el.style.setProperty('--ds-rail-scale', level === 0 ? '1' : level === 1 ? '1' : '0.97');
+    if (el.dataset.exhibit === activeId) el.setAttribute('aria-current', 'true');
+    else el.removeAttribute('aria-current');
+  });
+}
+
+/** 当前所处的展品：游戏内取场景键，展厅内取玩家面前那台终端 */
+function currentExhibitId() {
+  if (app.mode === 'game') return app.sceneKey;
+  if (app.scene) {
+    if (app.scene.nearestExhibit) {
+      const near = app.scene.nearestExhibit();
+      if (near) return near.id;
+    }
+    // 展厅里即使没站在终端前，也把最近的一台标为「当前位置」，导航轨始终有锚点
+    if (app.scene.closestExhibit) {
+      const close = app.scene.closestExhibit();
+      if (close) return close.id;
+    }
+  }
+  return null;
+}
+
+/** 圆点指示器：当前展品在展品序列中的位置 */
+function syncIndicator() {
+  if (!dom.indicatorDots) return;
+  const items = EXHIBITS;
+  const activeId = currentExhibitId();
+  const index = items.findIndex((ex) => ex.id === activeId);
+  if (dom.indicatorDots.childElementCount !== items.length) {
+    dom.indicatorDots.innerHTML = '';
+    for (const ex of items) {
+      const dot = document.createElement('span');
+      dot.className = 'ds-indicator__dot';
+      dot.dataset.exhibit = ex.id;
+      dom.indicatorDots.appendChild(dot);
+    }
+  }
+  Array.from(dom.indicatorDots.children).forEach((dot, i) => {
+    dot.classList.toggle('is-on', i === index);
+  });
+  if (dom.indicatorText) {
+    dom.indicatorText.textContent = index >= 0
+      ? t('indicatorLabel').replace('%d', String(index + 1)).replace('%d', String(items.length))
+      : '';
   }
 }
 
 function setQuery(key) {
   try {
-    const url = key ? `?game=${encodeURIComponent(key)}` : `${location.pathname}`;
-    history.replaceState(null, '', url);
+    const params = new URLSearchParams(location.search);
+    if (key) params.set('game', key);
+    else params.delete('game');
+    const qs = params.toString();
+    history.replaceState(null, '', `${location.pathname}${qs ? `?${qs}` : ''}${location.hash}`);
   } catch (err) {
     /* 某些 iframe 下 replaceState 可能受限，忽略即可 */
+  }
+}
+
+/**
+ * hreflang 备用链接在运行时写入。
+ *
+ * 原因：写在 index.html 里的相对 href 会被 Vite 当作静态资源改写成带哈希的产物路径，
+ * 指向错误目标；运行时写入才能保证它始终指向本页的 zh / en 变体。
+ */
+function syncAlternateLinks() {
+  try {
+    const head = document.head;
+    for (const [hreflang, lang] of [['zh-CN', 'zh'], ['en', 'en']]) {
+      let link = head.querySelector(`link[rel="alternate"][hreflang="${hreflang}"]`);
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = 'alternate';
+        link.hreflang = hreflang;
+        head.appendChild(link);
+      }
+      const url = new URL(location.href);
+      if (lang === 'en') url.searchParams.set('lang', 'en');
+      else url.searchParams.delete('lang');
+      link.href = `${url.pathname}${url.search}${url.hash}`;
+    }
+  } catch {
+    /* 某些环境不支持 DOM 变更，忽略 */
   }
 }
 
@@ -214,17 +343,18 @@ function fitStage() {
   dom.canvas.style.height = `${Math.floor(H * scale)}px`;
 }
 
-/* ------------------------------ 展品目录 ------------------------------ */
+/* ------------------------------ 展品导航轨 ------------------------------ */
 
 function buildExhibitNav() {
   dom.exhibitNav.innerHTML = '';
+  const en = getLang() === 'en';
   for (const ex of EXHIBITS) {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'navbtn';
+    btn.className = 'ds-rail__item navbtn';
     btn.dataset.exhibit = ex.id;
-    btn.style.setProperty('--accent', ex.accent);
-    btn.innerHTML = `<span class="navbtn__cn">${ex.cn}</span><span class="navbtn__en">${ex.en}</span>`;
+    btn.setAttribute('aria-label', en ? `${ex.en} — ${ex.taglineEn}` : `${ex.cn} · ${ex.tagline}`);
+    btn.innerHTML = `<span class="navbtn__cn">${en ? ex.en : ex.cn}</span><span class="navbtn__en">${en ? ex.cn : ex.en}</span>`;
     btn.addEventListener('click', () => {
       if (ex.kind === 'game') {
         shell.goTo(ex.id);
@@ -236,6 +366,8 @@ function buildExhibitNav() {
     });
     dom.exhibitNav.appendChild(btn);
   }
+  syncRail();
+  syncIndicator();
 }
 
 /* ------------------------------ 顶栏按钮 ------------------------------ */
@@ -243,12 +375,13 @@ function buildExhibitNav() {
 dom.btnSound.addEventListener('click', () => {
   const muted = !settings.muted;
   shell.setMuted(muted);
-  dom.btnSound.textContent = muted ? '声音 关' : '声音 开';
+  syncToggleLabels();
   dom.btnSound.setAttribute('aria-pressed', String(!muted));
 });
 
 dom.btnCrt.addEventListener('click', () => {
   shell.setCrt(!settings.crt);
+  syncToggleLabels();
 });
 
 dom.btnSettings.addEventListener('click', () => {
@@ -259,11 +392,51 @@ dom.btnCatalog.addEventListener('click', () => {
   panels.showChronicle();
 });
 
+dom.btnLang.addEventListener('click', () => {
+  const next = getLang() === 'en' ? 'zh' : 'en';
+  applyLang(next);
+  syncAlternateLinks();
+  syncToggleLabels();
+  syncLangChip();
+  syncChrome();
+  buildExhibitNav();
+  setStatus(app.mode === 'hall'
+    ? t('statusHall')
+    : t(app.sceneKey === 'lattice' ? 'statusLattice' : 'statusMeteor'));
+  // 切换语言后同步 URL，便于分享
+  try {
+    const url = new URL(location.href);
+    if (next === 'en') url.searchParams.set('lang', 'en');
+    else url.searchParams.delete('lang');
+    history.replaceState(null, '', url.pathname + url.search + url.hash);
+  } catch {
+    /* 某些 iframe 下 replaceState 可能受限 */
+  }
+});
+
 dom.btnTouch.addEventListener('click', () => {
   const on = !touchPad.isVisible();
   touchPad.setVisible(on);
   dom.btnTouch.setAttribute('aria-pressed', String(on));
 });
+
+/** 顶栏暂停键：与 P / Esc 等价；暂停面板内的「继续」走的是 shell.resume() */
+dom.btnPause.addEventListener('click', () => {
+  if (app.gamePaused) {
+    shell.resume();
+    syncPauseButton();
+  } else {
+    togglePause();
+  }
+});
+
+/** 语言胶囊：显示目标语言，并更新 aria-label */
+function syncLangChip() {
+  const en = getLang() === 'en';
+  dom.btnLang.textContent = en ? '中' : 'EN';
+  dom.btnLang.setAttribute('aria-pressed', String(en));
+  dom.btnLang.setAttribute('aria-label', en ? t('langToZh') : t('langToEn'));
+}
 
 /* ------------------------------ 全局按键 ------------------------------ */
 
@@ -316,6 +489,7 @@ function togglePause() {
   } else {
     panels.close();
   }
+  syncPauseButton();
 }
 
 /* ------------------------------ 画布点选 ------------------------------ */
@@ -352,11 +526,14 @@ const loop = createLoop({
 /* ------------------------------ 启动 ------------------------------ */
 
 function boot() {
+  applyLang(detectLang());
+  syncAlternateLinks();
   buildExhibitNav();
   applyCrt();
 
-  dom.btnSound.textContent = settings.muted ? '声音 关' : '声音 开';
   dom.btnSound.setAttribute('aria-pressed', String(!settings.muted));
+  syncToggleLabels();
+  syncLangChip();
 
   // 触控设备默认显示虚拟按键
   const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
@@ -395,5 +572,47 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitStage).
 
 boot();
 
-// 便于集成方（06 博物馆 / 14 部署）在浏览器控制台中检查
-window.__neonCorridor = { app, shell, settings, store };
+// 便于集成方（06 博物馆 / 14 部署）与自动化验收在浏览器控制台中检查
+window.__neonCorridor = { app, shell, settings, store, input, audio, loop };
+
+/**
+ * 顶层**只读**状态快照。
+ *
+ * 13-qa-curation 的 D3（开始 / 暂停 / 重开）与 D5（键盘焦点作用域）探针按顶层
+ * `state` / `score` / `player` 取值（见其 qa-harness/lib/probes-era.mjs 的
+ * movementSnapshot）。本作品此前只暴露嵌套结构，探针只能做 DOM 级断言，
+ * 记为「未自动验证」（issues.json 的 QA-008 / 009 / 010，severity=info，非缺陷）。
+ *
+ * 这里用 getter 暴露扁平视图：始终反映实时状态，且外部无法写入（只读）。
+ * 状态取值对齐探针的判定口径：idle / playing / paused。
+ */
+Object.defineProperties(window.__neonCorridor, {
+  state: {
+    enumerable: true,
+    get() {
+      if (app.mode !== 'game') return 'idle';
+      return app.gamePaused ? 'paused' : 'playing';
+    },
+  },
+  phase: {
+    enumerable: true,
+    get() {
+      const snap = app.scene && app.scene.snapshot ? app.scene.snapshot() : null;
+      return snap && snap.phase ? snap.phase : null;
+    },
+  },
+  score: {
+    enumerable: true,
+    get() {
+      const snap = app.scene && app.scene.snapshot ? app.scene.snapshot() : null;
+      return snap && typeof snap.score === 'number' ? snap.score : 0;
+    },
+  },
+  player: {
+    enumerable: true,
+    get() {
+      const snap = app.scene && app.scene.snapshot ? app.scene.snapshot() : null;
+      return snap && snap.player ? snap.player : null;
+    },
+  },
+});

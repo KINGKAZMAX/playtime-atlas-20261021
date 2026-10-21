@@ -1,20 +1,32 @@
-/* 回响电玩馆 · 3D 展厅与可玩展厅嵌入 */
+/*
+ * 回响电玩馆 · 3D 展厅与可玩展厅嵌入
+ *
+ * 依据 16-design-system/DESIGN-SPEC.md：
+ *   §9.1 画布容器 .ds-canvas-frame（contain: paint + isolation: isolate）
+ *   §9.2 HUD（--ds-canvas-hud-*，文字 ≥12.5px 且对比度 ≥4.5:1）
+ *   §9.3 画布上的正文必须置于遮罩之上
+ *   §10 Pages 子路径：嵌入资源一律相对路径
+ */
 
-.hall-stage {
+/* ── 3D 展厅舞台（.ds-canvas-frame）───────────────────────────────────────── */
+.hall-stage,
+.ds-canvas-frame {
   position: relative;
   height: clamp(360px, 58vh, 620px);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-lg);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-media);
   overflow: hidden;
-  background: radial-gradient(120% 100% at 50% 0%, #101c31 0%, #05080f 72%);
-  margin-bottom: var(--sp-6);
+  background: var(--ds-bg-sunken);
+  contain: paint;        /* §9.1：画布独立合成层 */
+  isolation: isolate;    /* §9.1：独立层叠上下文 */
+  margin-bottom: var(--ds-space-6);
 }
 .hall-stage canvas {
   display: block;
   width: 100%;
   height: 100%;
   cursor: grab;
-  touch-action: none;
+  touch-action: none;    /* §9.1：移动端画布禁用手势抢占，按钮区恢复 auto */
 }
 .hall-stage canvas:active { cursor: grabbing; }
 
@@ -26,31 +38,44 @@
   align-items: center;
   justify-content: center;
   gap: var(--sp-2);
-  padding: var(--sp-6);
+  padding: var(--ds-space-6);
   text-align: center;
-  color: var(--text-muted);
+  color: var(--ds-ink-soft);
   font-size: 0.9rem;
-  background: rgba(5, 8, 15, 0.72);
+  background: var(--ds-canvas-scrim);
 }
-.hall-loading.is-error { color: var(--signal-300); }
+.hall-loading.is-error { color: var(--ds-accent); }
 
-.hall-panel {
+/* HUD：--ds-canvas-hud-*（文字 ≥12.5px；对比度靠不透明底保证） */
+.hall-panel,
+.ds-canvas-frame__hud {
   position: absolute;
   left: var(--sp-4);
   bottom: var(--sp-4);
-  width: min(280px, calc(100% - var(--sp-6)));
+  width: min(280px, calc(100% - var(--ds-space-6)));
   padding: var(--sp-4);
-  border-radius: var(--r-md);
-  border: 1px solid var(--line-strong);
-  background: rgba(10, 17, 32, 0.9);
+  border-radius: var(--ds-radius-md);
+  border: 1px solid var(--ds-canvas-hud-line);
+  background: var(--ds-canvas-hud-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  color: var(--ds-canvas-hud-ink);
 }
-.hall-panel-hint { font-size: 0.8rem; color: var(--text-faint); margin: 0; }
-.hall-panel-code { font-size: 0.7rem; letter-spacing: 0.16em; color: var(--signal-400); margin-bottom: 4px; }
-.hall-panel-title { font-family: var(--font-display); font-size: 1.15rem; color: var(--text-strong); margin-bottom: 6px; }
-.hall-panel-text { font-size: 0.82rem; color: var(--text-muted); margin-bottom: var(--sp-2); }
-.hall-panel-count { font-size: 0.72rem; color: var(--text-faint); margin-bottom: var(--sp-3); }
+.hall-panel-hint { font-size: 0.8rem; color: var(--ds-canvas-hud-ink); opacity: 0.78; margin: 0; }
+.hall-panel-code {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: 0.1em;
+  color: var(--ds-canvas-hud-ink);
+  margin-bottom: 4px;
+}
+.hall-panel-title { font-family: var(--ds-font-display); font-size: 1.15rem; color: var(--ds-canvas-hud-ink); margin-bottom: 6px; }
+.hall-panel-text { font-size: 0.82rem; color: var(--ds-canvas-hud-ink); opacity: 0.82; margin-bottom: var(--sp-2); }
+.hall-panel-count { font-size: var(--ds-type-xs); color: var(--ds-canvas-hud-ink); opacity: 0.72; margin-bottom: var(--sp-3); }
+.hall-panel .btn {
+  background: var(--ds-accent);
+  color: var(--ds-accent-ink);
+}
 
 .hall-hud {
   position: absolute;
@@ -60,47 +85,62 @@
   flex-direction: column;
   gap: 3px;
   align-items: flex-end;
-  font-size: 0.66rem;
-  letter-spacing: 0.12em;
-  color: var(--text-faint);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);        /* §9.2：HUD 文字 ≥12.5px */
+  letter-spacing: 0.08em;
+  color: var(--ds-canvas-hud-ink);
   pointer-events: none;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  /* HUD 文字直接浮在 3D 画布上，没有自己的底板，靠阴影压住背景。
+     用 --ds-canvas-hud-bg（HUD 遮罩色，暗色主题下 rgba(8,7,6,.78)）而不是
+     写死 rgba(0,0,0,.8)：语义正确，且不透明度基本不变，小字对比度不退化。 */
+  text-shadow: 0 1px 6px var(--ds-canvas-hud-bg);
 }
 
-/* 可玩展厅嵌入 */
-.embed-wrap {
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-md);
+/* ── 可玩展厅嵌入 ─────────────────────────────────────────────────────────── */
+/*
+ * 嵌入容器统一约定（供 08—12 参照）：
+ *   · 外框 .embed-wrap = .ds-canvas-frame（1px 描边 + --ds-radius-media 圆角）
+ *   · 内框 .embed-frame 宽度 100%、高度 clamp(420px, 70vh, 760px)
+ *   · 资源路径一律相对（./exhibits/<dir>/<entry>），适配任意 Pages 子路径
+ *   · 嵌入内容自身的配色与玩法由各自作者负责，本馆不改其内部目录
+ */
+.embed-wrap,
+.ds-canvas-frame--embed {
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-media);
   overflow: hidden;
-  background: var(--bg-sunken);
+  background: var(--ds-bg-sunken);
+  contain: paint;
+  isolation: isolate;
 }
 .embed-frame {
   display: block;
   width: 100%;
   height: clamp(420px, 70vh, 760px);
   border: 0;
-  background: var(--bg-sunken);
+  background: var(--ds-bg-sunken);
 }
 .embed-note {
   font-size: 0.8rem;
-  color: var(--text-faint);
+  color: var(--ds-ink-faint);
   margin-top: var(--sp-3);
 }
 
+/* 待集成占位：明确说明，不提供可点击的假入口 */
 .pending-box {
-  border: 1px dashed var(--accent-line);
-  border-radius: var(--r-md);
-  padding: var(--sp-5);
-  background: var(--accent-soft);
+  border: 1px dashed var(--ds-line-strong);
+  border-radius: var(--ds-radius-md);
+  padding: var(--ds-space-5);
+  background: var(--ds-surface);
 }
 .pending-title {
-  font-family: var(--font-display);
+  font-family: var(--ds-font-display);
   font-size: 1.1rem;
-  color: var(--signal-300);
+  color: var(--ds-accent);
   margin-bottom: var(--sp-2);
 }
-.pending-text { font-size: 0.88rem; color: var(--text-body); margin: 0; max-width: 62ch; }
-.pending-text a, .hall-loading a { color: var(--signal-300); text-decoration: underline; }
+.pending-text { font-size: 0.88rem; color: var(--ds-ink-soft); margin: 0; max-width: 62ch; }
+.pending-text a, .hall-loading a { color: var(--ds-accent); text-decoration: underline; }
 
 @media (max-width: 720px) {
   .hall-stage { height: 56vh; }

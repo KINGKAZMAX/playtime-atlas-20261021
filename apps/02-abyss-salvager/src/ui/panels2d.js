@@ -9,10 +9,22 @@
  * All are drawn with vector primitives — no images, no external assets.
  */
 
-const INK = '#bfe8f2';
-const INK_SOFT = 'rgba(191, 232, 242, 0.34)';
-const ACCENT = '#38e8d0';
-const WARN = '#ff8a3d';
+/**
+ * 2D technical panels.
+ *
+ * Palette follows the shared design tokens (16-design-system/design-tokens.json
+ * → color.dark / color.canvas):
+ *   INK       → --ds-canvas-hud-ink  #f7f4f0   主文字
+ *   INK_SOFT  → 34% 透明度的同色      次级文字
+ *   ACCENT    → --ds-jade            #5fa99a   结构线稿
+ *   WARN      → --ds-accent          #e0684a   强调（尺寸标注 / 热点）
+ * These mirror src/style.css so the canvas panels and the DOM chrome read as
+ * one system.
+ */
+const INK = '#f7f4f0';
+const INK_SOFT = 'rgba(247, 244, 240, 0.46)';
+const ACCENT = '#5fa99a';
+const WARN = '#e0684a';
 
 function setupCanvas(canvas, cssW, cssH) {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -323,7 +335,7 @@ export function drawSurveyChart(canvas, opts = {}) {
     ctx.beginPath();
     ctx.arc(x, y, 2.4, 0, Math.PI * 2);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(255, 138, 61, 0.4)';
+    ctx.strokeStyle = 'rgba(224, 104, 74, 0.4)';
     ctx.lineWidth = 0.8;
     ctx.beginPath();
     ctx.arc(x, y, 5.5, 0, Math.PI * 2);

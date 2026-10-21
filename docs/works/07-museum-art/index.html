@@ -1,42 +1,46 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-ds-theme="dark">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <title>回响电玩馆 / PLAYTIME ATLAS — 原创美术与硬件模型包</title>
-<meta name="description" content="回响电玩馆（PLAYTIME ATLAS）原创美术资产包：深墨蓝 + 暖纸白 + 信号橙视觉方案、自托管 OFL 字体、48 枚原创图标、7 张年代海报、8 张封面、6 组展柜、6 件原创硬件 3D 模型，以及统一设计令牌与降级方案。"/>
-<meta name="theme-color" content="#0C1726"/>
+<meta name="description" content="回响电玩馆（PLAYTIME ATLAS）原创美术资产包：48 枚原创图标、7 张年代海报、8 张封面、6 组展柜、6 件原创硬件 3D 模型，以及与全站统一设计系统对齐的令牌与自托管 OFL 字体。"/>
+<meta name="theme-color" content="#100F0E"/>
+<!-- 部署补丁：声明站点图标，避免浏览器自动请求 /favicon.ico 得 404 -->
+<link rel="icon" href="./assets/icons/joystick.svg" type="image/svg+xml"/>
 <link rel="preload" href="./assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href="./assets/fonts/noto-sans-sc-subset.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="./assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="./assets/fonts/fonts.css"/>
 <link rel="stylesheet" href="./assets/tokens.css"/>
-  <script type="module" crossorigin src="./assets/index-I6o-omRR.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-D8HqaBI-.css">
+<style>:root { --ds-base: ""; }</style>
+  <script type="module" crossorigin src="./assets/index-DMTQOuAF.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-COV-AIku.css">
 </head>
 <body>
-<a class="skip-link" href="#main">跳到主要内容</a>
+<a class="skip-link ds-skip" href="#main" data-i18n="skip.main">跳到主要内容</a>
 
-<header class="site-header" id="top">
+<header class="site-header ds-topbar" id="top">
   <div class="wrap header-inner">
-    <a class="brand" href="#top">
+    <a class="brand ds-topbar__brand" href="#top">
       <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-text">
         <strong>回响电玩馆</strong>
         <em>PLAYTIME ATLAS</em>
       </span>
     </a>
-    <nav class="site-nav" aria-label="主导航">
-      <a href="#tokens">设计令牌</a>
-      <a href="#fonts">字体</a>
-      <a href="#icons">图标</a>
-      <a href="#posters">海报</a>
-      <a href="#covers">封面</a>
-      <a href="#cases">展柜</a>
-      <a href="#models">硬件模型</a>
-      <a href="#fallback">降级</a>
+    <nav class="site-nav ds-topbar__nav" aria-label="主导航" data-i18n-attr="aria-label:nav.label">
+      <a class="ds-topbar__link" href="#tokens" data-i18n="nav.tokens">设计令牌</a>
+      <a class="ds-topbar__link" href="#fonts" data-i18n="nav.fonts">字体</a>
+      <a class="ds-topbar__link" href="#icons" data-i18n="nav.icons">图标</a>
+      <a class="ds-topbar__link" href="#posters" data-i18n="nav.posters">海报</a>
+      <a class="ds-topbar__link" href="#covers" data-i18n="nav.covers">封面</a>
+      <a class="ds-topbar__link" href="#cases" data-i18n="nav.cases">展柜</a>
+      <a class="ds-topbar__link" href="#models" data-i18n="nav.models">硬件模型</a>
+      <a class="ds-topbar__link" href="#fallback" data-i18n="nav.fallback">降级</a>
     </nav>
     <div class="header-actions">
-      <span class="chip chip-live" id="net-chip" title="全部资源本地自托管">LOCAL</span>
+      <span class="chip chip-live ds-tag" id="net-chip" title="全部资源本地自托管">LOCAL</span>
+      <button class="lang-switch" id="lang-switch" type="button" aria-pressed="false" data-i18n-attr="aria-label:lang.switch">EN</button>
     </div>
   </div>
 </header>
@@ -46,22 +50,21 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="hero-media">
-      <img src="./assets/covers/cover-atlas-hero.png" alt="回响电玩馆展厅主视觉：一排暖光展柜在深墨蓝夜色中延伸" width="1600" height="900"/>
+      <img src="./assets/covers/cover-atlas-hero.png" alt="回响电玩馆展厅主视觉：一排暖光展柜在深墨蓝夜色中延伸" width="1600" height="900" fetchpriority="high" data-i18n-attr="alt:hero.imgAlt"/>
     </div>
     <div class="wrap hero-body">
-      <p class="eyebrow">原创美术与硬件模型包 · v1.0.0</p>
+      <p class="eyebrow" data-i18n="hero.eyebrow">原创美术与硬件模型包 · v1.1.0</p>
       <h1>回响电玩馆<span class="hero-latin">PLAYTIME ATLAS</span></h1>
-      <p class="lede">
-        为电子游戏硬件年代馆准备的一整套原创视觉资产：深墨蓝、暖纸白与信号橙构成馆内语言；
-        字体全部自托管，图标全部手绘，海报与封面由生成式关键帧叠加精确排版层合成，
-        六件跨时代硬件展品由参数化网格直接建模为 GLB。
+      <p class="lede" data-i18n="hero.lede">
+        为电子游戏硬件年代馆准备的一整套原创视觉资产：字体全部自托管，图标全部手绘，
+        海报与封面由生成式关键帧叠加精确排版层合成，六件跨时代硬件展品由参数化网格直接建模为 GLB。
       </p>
       <div class="hero-stats" id="hero-stats"></div>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#models">查看 3D 展品</a>
-        <a class="btn btn-ghost" href="#posters">浏览年代海报</a>
+        <a class="btn btn-primary ds-btn ds-btn--primary" href="#models" data-i18n="hero.cta1">查看 3D 展品</a>
+        <a class="btn btn-ghost ds-btn ds-btn--ghost" href="#posters" data-i18n="hero.cta2">浏览年代海报</a>
       </div>
-      <p class="hero-note">
+      <p class="hero-note" data-i18n="hero.note">
         本包只覆盖代表性成果，不宣称穷尽全部游戏或全部机型。所有展品为原创虚构展品，
         无任何品牌标识；年代分段为本馆原创策展划分，非官方分期。
       </p>
@@ -73,30 +76,35 @@
     <div class="wrap">
       <header class="section-head">
         <p class="eyebrow">01 / FOUNDATION</p>
-        <h2>统一设计令牌</h2>
-        <p class="section-lede">
+        <h2 data-i18n="tokens.title">统一设计令牌</h2>
+        <p class="section-lede" data-i18n-rich="tokens.lede">
           同一套令牌驱动网页、SVG 资产与 3D 材质。
           <code>design-tokens.json</code> 是唯一事实来源，CSS 与 JS 变体均由此生成。
         </p>
       </header>
 
       <div class="token-block">
-        <h3 class="token-title">配色 · 深墨蓝 / 暖纸白 / 信号橙</h3>
+        <h3 class="token-title" data-i18n="tokens.paletteTitle">配色 · 余晖设计系统</h3>
         <div class="swatches" id="swatches"></div>
       </div>
 
       <div class="token-block">
-        <h3 class="token-title">语义色</h3>
+        <h3 class="token-title" data-i18n="tokens.semanticTitle">语义色</h3>
         <div class="swatches swatches-sm" id="semantic"></div>
+      </div>
+
+      <div class="token-block">
+        <h3 class="token-title" data-i18n="tokens.exhibitTitle">展品内嵌配色 · 非 UI 色板</h3>
+        <div class="swatches" id="exhibit-swatches"></div>
       </div>
 
       <div class="token-grid">
         <div class="token-block">
-          <h3 class="token-title">字阶</h3>
+          <h3 class="token-title" data-i18n="tokens.typeTitle">字阶</h3>
           <div class="type-scale" id="type-scale"></div>
         </div>
         <div class="token-block">
-          <h3 class="token-title">间距 / 圆角 / 阴影</h3>
+          <h3 class="token-title" data-i18n="tokens.scaleTitle">间距 / 圆角 / 阴影</h3>
           <div class="scale-rows">
             <div class="scale-row" id="space-scale"></div>
             <div class="scale-row" id="radius-scale"></div>
@@ -112,11 +120,16 @@
     <div class="wrap">
       <header class="section-head">
         <p class="eyebrow">02 / TYPOGRAPHY</p>
-        <h2>自托管许可字体</h2>
-        <p class="section-lede">
+        <h2 data-i18n="fonts.title">自托管许可字体</h2>
+        <p class="section-lede" data-i18n-rich="fonts.lede">
           全部字体采用 SIL Open Font License 1.1，下载后按实际用字子集化并存于
           <code>/assets/fonts/</code>，运行期零外部字体请求。中文子集覆盖本包用字
-          <strong id="cjk-count">—</strong> 个。
+          746 个。
+        </p>
+        <p class="section-meta">
+          <span data-i18n="fonts.cjkBadge">中文字形子集</span>
+          <strong id="cjk-count">—</strong>
+          <span data-i18n="fonts.cjkBadgeTail">字 · 全部本地托管</span>
         </p>
       </header>
       <div class="font-cards" id="font-cards"></div>
@@ -128,13 +141,13 @@
     <div class="wrap">
       <header class="section-head">
         <p class="eyebrow">03 / ICONS</p>
-        <h2>原创图标集</h2>
-        <p class="section-lede">
+        <h2 data-i18n="icons.title">原创图标集</h2>
+        <p class="section-lede" data-i18n-rich="icons.lede">
           全部为手绘路径，24×24 网格、1.5 描边、圆端点、<code>currentColor</code> 可换色。
           点击任意图标复制其雪碧图引用。
         </p>
       </header>
-      <div class="filter-row" id="icon-filters" role="group" aria-label="图标分类筛选"></div>
+      <div class="filter-row" id="icon-filters" role="group" aria-label="图标分类筛选" data-i18n-attr="aria-label:icons.filterLabel"></div>
       <div class="icon-grid" id="icon-grid"></div>
     </div>
   </section>
@@ -144,8 +157,8 @@
     <div class="wrap">
       <header class="section-head">
         <p class="eyebrow">04 / ERA POSTERS</p>
-        <h2>年代海报</h2>
-        <p class="section-lede">
+        <h2 data-i18n="posters.title">年代海报</h2>
+        <p class="section-lede" data-i18n-rich="posters.lede">
           七个年代，七张 1200×1800 海报。关键帧由生成式模型产出且<strong>不含任何文字</strong>，
           中文标题、编号、年代与正文全部由 SVG 精确排版层叠加，因此零乱码。
         </p>
@@ -159,8 +172,8 @@
     <div class="wrap">
       <header class="section-head">
         <p class="eyebrow">05 / COVERS</p>
-        <h2>封面</h2>
-        <p class="section-lede">
+        <h2 data-i18n="covers.title">封面</h2>
+        <p class="section-lede" data-i18n="covers.lede">
           1600×900 横幅，供年代展厅头图、卡片封面与站点主视觉使用。
         </p>
       </header>
@@ -173,8 +186,8 @@
     <div class="wrap">
       <header class="section-head">
         <p class="eyebrow">06 / VITRINES</p>
-        <h2>展柜</h2>
-        <p class="section-lede">
+        <h2 data-i18n="cases.title">展柜</h2>
+        <p class="section-lede" data-i18n="cases.lede">
           每件展品配一套展柜：玻璃罩、暖光顶条、底座与哑光纸铭牌，柜内放置该展品的实机渲染图。
         </p>
       </header>
@@ -187,24 +200,24 @@
     <div class="wrap">
       <header class="section-head">
         <p class="eyebrow">07 / HARDWARE</p>
-        <h2>跨时代硬件展品</h2>
-        <p class="section-lede">
+        <h2 data-i18n="models.title">跨时代硬件展品</h2>
+        <p class="section-lede" data-i18n-rich="models.lede">
           六件<strong>原创虚构展品</strong>，由参数化网格直接建模为标准 GLB，可直接载入
           three.js / 任意模型查看器。共享同一套馆内材质，形成一次收藏而非六次拼凑。
         </p>
       </header>
 
-      <div class="viewer">
+      <div class="viewer ds-canvas-frame">
         <div class="viewer-stage">
-          <canvas id="model-canvas" aria-label="硬件模型 3D 查看器"></canvas>
+          <canvas id="model-canvas" aria-label="硬件模型 3D 查看器" data-i18n-attr="aria-label:viewer.canvasLabel"></canvas>
           <div class="viewer-fallback" id="viewer-fallback" hidden>
             <img id="viewer-fallback-img" alt="" />
-            <p class="viewer-fallback-note">当前环境未启用 WebGL，已切换到技术插画降级图。</p>
+            <p class="viewer-fallback-note" data-i18n="viewer.fallbackNote">当前环境未启用 WebGL，已切换到技术插画降级图。</p>
           </div>
-          <div class="viewer-toolbar">
-            <button class="btn btn-mini" id="btn-spin" type="button" aria-pressed="true">自动旋转</button>
-            <button class="btn btn-mini" id="btn-reset" type="button">重置视角</button>
-            <span class="viewer-hint">拖拽旋转 · 滚轮缩放</span>
+          <div class="viewer-toolbar ds-canvas-frame__hud">
+            <button class="btn btn-mini ds-btn ds-btn--sm" id="btn-spin" type="button" aria-pressed="true" data-i18n="viewer.spin">自动旋转</button>
+            <button class="btn btn-mini ds-btn ds-btn--sm" id="btn-reset" type="button" data-i18n="viewer.reset">重置视角</button>
+            <span class="viewer-hint" data-i18n="viewer.hint">拖拽旋转 · 滚轮缩放</span>
           </div>
         </div>
         <aside class="viewer-side">
@@ -214,15 +227,15 @@
           <p class="viewer-story" id="viewer-story">—</p>
           <p class="viewer-note" id="viewer-note">—</p>
           <div class="viewer-links">
-            <a id="link-glb" href="#" download>下载 GLB</a>
-            <a id="link-png" href="#" download>下载渲染图 PNG</a>
-            <a id="link-tech" href="#" target="_blank" rel="noopener">技术插画</a>
-            <a id="link-json" href="#" target="_blank" rel="noopener">模型元数据</a>
+            <a id="link-glb" href="#" download data-i18n="viewer.linkGlb">下载 GLB</a>
+            <a id="link-png" href="#" download data-i18n="viewer.linkPng">下载渲染图 PNG</a>
+            <a id="link-tech" href="#" target="_blank" rel="noopener" data-i18n="viewer.linkTech">技术插画</a>
+            <a id="link-json" href="#" target="_blank" rel="noopener" data-i18n="viewer.linkJson">模型元数据</a>
           </div>
         </aside>
       </div>
 
-      <div class="model-tabs" id="model-tabs" role="tablist" aria-label="展品选择"></div>
+      <div class="model-tabs" id="model-tabs" role="tablist" aria-label="展品选择" data-i18n-attr="aria-label:models.tabsLabel"></div>
       <div class="model-cards" id="model-cards"></div>
     </div>
   </section>
@@ -232,21 +245,21 @@
     <div class="wrap">
       <header class="section-head">
         <p class="eyebrow">08 / DEGRADATION</p>
-        <h2>降级与离线</h2>
-        <p class="section-lede">
+        <h2 data-i18n="fallback.title">降级与离线</h2>
+        <p class="section-lede" data-i18n="fallback.lede">
           主视觉缺失、模型不可用、WebGL 被禁用或网络中断时，馆内仍有可读可用的呈现。
           所有降级图形同样是本馆原创资产。
         </p>
       </header>
       <div class="fallback-grid" id="fallback-grid"></div>
       <div class="fallback-note">
-        <h3>降级策略</h3>
+        <h3 data-i18n="fallback.strategyTitle">降级策略</h3>
         <ul>
-          <li><strong>模型 3D → 技术插画</strong>：每件展品都附带由真实网格正交投影生成的工程制图 SVG，即使完全没有 WebGL 也保留结构与规格信息。</li>
-          <li><strong>3D → 渲染图</strong>：GLB 加载失败时退到 1024×1024 静态渲染图。</li>
-          <li><strong>渲染图 → 占位图</strong>：连静态图也缺失时，退到本馆自绘的占位图形。</li>
-          <li><strong>字体</strong>：全部子集化本地托管，缺字时由系统字体回退，不阻塞布局。</li>
-          <li><strong>离线</strong>：站点无任何外部请求，断网后仍可完整浏览。</li>
+          <li data-i18n-rich="fallback.item1"><strong>模型 3D → 技术插画</strong>：每件展品都附带由真实网格正交投影生成的工程制图 SVG，即使完全没有 WebGL 也保留结构与规格信息。</li>
+          <li data-i18n-rich="fallback.item2"><strong>3D → 渲染图</strong>：GLB 加载失败时退到 1024×1024 静态渲染图。</li>
+          <li data-i18n-rich="fallback.item3"><strong>渲染图 → 占位图</strong>：连静态图也缺失时，退到本馆自绘的占位图形。</li>
+          <li data-i18n-rich="fallback.item4"><strong>字体</strong>：全部子集化本地托管，缺字时由系统字体回退，不阻塞布局。</li>
+          <li data-i18n-rich="fallback.item5"><strong>离线</strong>：站点无任何外部请求，断网后仍可完整浏览。</li>
         </ul>
       </div>
     </div>
@@ -258,25 +271,26 @@
   <div class="wrap footer-inner">
     <div>
       <strong>回响电玩馆 / PLAYTIME ATLAS</strong>
-      <p>原创美术与硬件模型包 · v1.0.0 · 2026-10-21</p>
+      <p data-i18n="footer.line">原创美术与硬件模型包 · v1.1.0 · 2026-10-21</p>
     </div>
     <div class="footer-meta">
-      <p>美术与模型：CC0-1.0（本馆原创）</p>
-      <p>字体：SIL Open Font License 1.1</p>
-      <p>第三方素材：无</p>
+      <p data-i18n="footer.art">美术与模型：CC0-1.0（本馆原创）</p>
+      <p data-i18n="footer.fonts">字体：SIL Open Font License 1.1</p>
+      <p data-i18n="footer.third">第三方素材：无</p>
+      <p data-i18n="footer.ds">视觉规范：余晖设计系统（16-design-system）</p>
     </div>
   </div>
 </footer>
 
 <!-- 灯箱 -->
-<div class="lightbox" id="lightbox" hidden>
-  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="关闭">×</button>
-  <button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="上一张">‹</button>
+<div class="lightbox ds-lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="作品大图" hidden data-i18n-attr="aria-label:lightbox.label">
+  <button class="lightbox-close ds-iconbtn" id="lightbox-close" type="button" aria-label="关闭" data-i18n-attr="aria-label:lightbox.close">×</button>
+  <button class="lightbox-nav lightbox-prev ds-iconbtn" id="lightbox-prev" type="button" aria-label="上一张" data-i18n-attr="aria-label:lightbox.prev">‹</button>
   <figure class="lightbox-figure">
     <img id="lightbox-img" alt=""/>
     <figcaption id="lightbox-cap"></figcaption>
   </figure>
-  <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="下一张">›</button>
+  <button class="lightbox-nav lightbox-next ds-iconbtn" id="lightbox-next" type="button" aria-label="下一张" data-i18n-attr="aria-label:lightbox.next">›</button>
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>

@@ -447,8 +447,10 @@ export function createLattice(shell) {
     shell.gameOver({
       gameId: 'lattice',
       title: '晶格回廊',
+      titleEn: 'LATTICE CORRIDOR',
       score: st.score,
       detail: `抵达第 ${st.level} 层`,
+      detailEn: `Reached corridor ${st.level}`,
       scores: list,
     });
   }
@@ -856,6 +858,7 @@ export function createLattice(shell) {
   return {
     id: 'lattice',
     title: '晶格回廊',
+    titleEn: 'LATTICE CORRIDOR',
     update,
     render,
     begin() {

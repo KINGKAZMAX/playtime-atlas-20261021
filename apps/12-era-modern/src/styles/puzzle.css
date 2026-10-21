@@ -1,15 +1,20 @@
 /* =========================================================
    《折光阁 / PRISM ATRIUM》
+   ------------------------------------------------------------
+   依据：16-design-system/DESIGN-SPEC.md §7 按钮 / §9 画布与 HUD
+   展项头属于**外壳**（浅色）；舞台与 HUD 属于**游戏画面**
+   （data-ds-theme="dark"）。接收环配色是**玩法语义**
+   （与 3D 光束一一对应），不随外壳改版（红线 K.1/K.3）。
    ========================================================= */
 
 .atrium-wrap {
-  max-width: 1180px;
+  max-width: var(--ds-max-width);
   margin: 0 auto;
-  padding: clamp(18px, 3vw, 28px) clamp(14px, 3vw, 28px) 40px;
+  padding: var(--ds-space-gutter) var(--ds-space-gutter) var(--ds-space-8);
 }
 
 .atrium-head {
-  margin-bottom: 14px;
+  margin-bottom: var(--ds-space-3);
 }
 
 .atrium-head-main {
@@ -20,18 +25,24 @@
 
 .atrium-head h1 {
   margin: 2px 0 0;
-  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h2);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: var(--ds-track-display);
+  color: var(--ds-ink);
 }
 
 .atrium-stage {
   position: relative;
   width: 100%;
   height: clamp(460px, 70vh, 720px);
-  border-radius: var(--r-lg);
+  border-radius: var(--ds-radius-media);
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid var(--hc-line);
   background: radial-gradient(120% 100% at 50% 0%, #0d1338 0%, #05081a 72%);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--ds-shadow-4);
+  contain: paint;
+  isolation: isolate;
 }
 
 .atrium-canvas {
@@ -53,7 +64,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 14px;
+  padding: var(--ds-space-3);
 }
 
 .atrium-hud > * {
@@ -67,13 +78,13 @@
 
 .atrium-hud-top {
   display: flex;
-  gap: 14px;
+  gap: var(--ds-space-4);
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
-  background: linear-gradient(180deg, rgba(4, 6, 26, 0.7), transparent);
-  padding-bottom: 14px;
-  border-radius: var(--r-md);
+  background: linear-gradient(180deg, var(--ds-canvas-hud-bg), transparent);
+  padding-bottom: var(--ds-space-3);
+  border-radius: var(--ds-radius-md);
 }
 
 .atrium-tabs {
@@ -87,48 +98,51 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  border: 1px solid var(--line);
-  background: rgba(8, 13, 36, 0.72);
-  color: var(--paper-70);
-  border-radius: 999px;
+  border: 1px solid var(--ds-canvas-hud-line);
+  background: var(--ds-canvas-hud-bg);
+  color: var(--ds-canvas-hud-ink);
+  border-radius: var(--ds-radius-pill);
   padding: 5px 13px;
-  font-size: 0.82rem;
+  font-size: var(--ds-type-sm);
   cursor: pointer;
-  font-family: var(--font-display);
-  transition: all var(--dur) var(--ease);
+  font-family: var(--ds-font-display);
+  transition: background var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    color var(--ds-dur-fast) var(--ds-ease-veil);
 }
 
 .atrium-tab b {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--prism-cyan);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-canvas-hud-ink);
+  opacity: 0.8;
 }
 
 .atrium-tab i {
   color: var(--prism-amber);
   font-style: normal;
-  font-size: 0.8rem;
+  font-size: var(--ds-type-sm);
 }
 
 .atrium-tab:hover {
-  border-color: var(--paper-34);
-  color: var(--paper);
+  border-color: var(--ds-canvas-hud-ink);
+  color: var(--ds-canvas-hud-ink);
 }
 
 .atrium-tab[aria-pressed='true'] {
-  background: linear-gradient(120deg, var(--prism-cyan), #7deee0);
-  color: var(--ink-900);
+  background: var(--ds-canvas-hud-ink);
+  color: var(--ds-bg);
   border-color: transparent;
-  font-weight: 600;
+  font-weight: var(--ds-w-semibold);
 }
 
 .atrium-tab[aria-pressed='true'] b {
-  color: var(--ink-900);
+  color: var(--ds-bg);
 }
 
 .atrium-hud-stats {
   display: flex;
-  gap: 18px;
+  gap: var(--ds-space-5);
   align-items: center;
   flex-wrap: wrap;
 }
@@ -140,18 +154,20 @@
 }
 
 .hud-stat label {
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.2em;
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-cjk);
   text-transform: uppercase;
-  color: var(--paper-52);
+  color: var(--ds-canvas-hud-ink);
+  opacity: 0.76;
 }
 
 .hud-value {
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-body);
+  font-weight: var(--ds-w-medium);
   font-variant-numeric: tabular-nums;
+  color: var(--ds-canvas-hud-ink);
 }
 
 .receiver-status {
@@ -165,43 +181,46 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  border: 1px solid var(--rc, var(--paper-34));
-  color: var(--paper-34);
-  font-size: 0.8rem;
+  border: 1px solid var(--rc, var(--ds-canvas-hud-line));
+  color: var(--ds-canvas-hud-ink);
+  opacity: 0.7;
+  font-size: var(--ds-type-sm);
   line-height: 1;
 }
 
 .rev-chip.is-lit {
   background: color-mix(in srgb, var(--rc) 26%, transparent);
   color: var(--rc);
+  opacity: 1;
   box-shadow: 0 0 14px color-mix(in srgb, var(--rc) 55%, transparent);
 }
 
 .rev-chip.is-bad {
-  border-color: var(--bad);
-  color: var(--bad);
+  border-color: #ff6b81;
+  color: #ff6b81;
+  opacity: 1;
 }
 
 .atrium-hud-bottom {
   display: flex;
-  gap: 16px;
+  gap: var(--ds-space-4);
   align-items: flex-end;
   justify-content: space-between;
   flex-wrap: wrap;
-  background: linear-gradient(0deg, rgba(4, 6, 26, 0.75), transparent);
-  padding-top: 16px;
-  border-radius: var(--r-md);
+  background: linear-gradient(0deg, var(--ds-canvas-hud-bg), transparent);
+  padding-top: var(--ds-space-4);
+  border-radius: var(--ds-radius-md);
 }
 
 .hud-actions {
   display: flex;
-  gap: 8px;
+  gap: var(--ds-space-2);
   flex-wrap: wrap;
 }
 
 .hud-legend {
   display: flex;
-  gap: 14px;
+  gap: var(--ds-space-4);
   flex-wrap: wrap;
 }
 
@@ -209,8 +228,9 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.74rem;
-  color: var(--paper-52);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-canvas-hud-ink);
+  opacity: 0.86;
 }
 
 .legend-item i {
@@ -226,16 +246,17 @@
   transform: translateX(-50%);
   bottom: 74px;
   display: flex;
-  gap: 16px;
+  gap: var(--ds-space-4);
   flex-wrap: wrap;
   justify-content: center;
-  font-size: 0.72rem;
-  color: var(--paper-34);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-canvas-hud-ink);
+  opacity: 0.82;
   pointer-events: none;
-  background: rgba(4, 6, 26, 0.55);
+  background: var(--ds-canvas-hud-bg);
   padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--paper-06);
+  border-radius: var(--ds-radius-pill);
+  border: 1px solid var(--ds-canvas-hud-line);
 }
 
 .atrium-overlay {
@@ -244,8 +265,8 @@
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  background: rgba(4, 6, 26, 0.84);
+  padding: var(--ds-space-5);
+  background: var(--ds-canvas-scrim);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
 }
@@ -265,11 +286,11 @@
   color: var(--prism-amber);
   letter-spacing: 6px;
   margin-bottom: 6px;
-  text-shadow: 0 0 26px rgba(255, 196, 107, 0.5);
 }
 
 .atrium-result h2 {
   margin-bottom: 2px;
+  color: var(--ds-canvas-hud-ink);
 }
 
 @media (max-width: 720px) {
@@ -278,12 +299,39 @@
   }
   .atrium-hud-top,
   .atrium-hud-bottom {
-    gap: 8px;
+    gap: var(--ds-space-2);
   }
   .atrium-hud-stats {
-    gap: 12px;
+    gap: var(--ds-space-3);
   }
   .hud-value {
-    font-size: 0.95rem;
+    font-size: var(--ds-type-sm);
   }
+}
+
+/* ==========================================================================
+   与设计系统组件类对接：HUD 与图例
+   --------------------------------------------------------------------------
+   · .ds-canvas-frame__hud：底部控制条（撤销 / 提示 / 重置 / 视角复位 + 图例）。
+   · .ds-diagram：图例面板 —— 组件层给出边框、圆角与令牌化底色，
+     这里只把内边距压到 HUD 内的紧凑形态。
+   · 图例的**色样本身仍是玩法语义色**（青 / 品红 / 紫），
+     不得改（红线 K.1），故色样不走 --ds-* 令牌。
+   ========================================================================== */
+
+.atrium-hud-bottom.ds-canvas-frame__hud {
+  /* 实底承载面：同上，避免机械对比度检查误判 */
+  background: var(--ds-canvas-hud-bg);
+  border: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-body);
+}
+
+.hud-legend.ds-diagram {
+  padding: 8px 12px;
+  background: var(--ds-canvas-hud-bg);
+  border: 1px solid var(--ds-canvas-hud-line);
+  border-radius: var(--ds-radius-md);
 }

@@ -1,6 +1,9 @@
 import { el, clear, scrollToTop } from '../core/dom.js';
 import { getSettings, setSetting } from '../core/settings.js';
 import { recordRhythmRun, getRhythmRecord, markVisited } from '../core/progress.js';
+import { publishState } from '../core/debug-state.js';
+import { readFontStack } from '../core/tokens.js';
+import { preloadFonts } from '../core/fonts.js';
 import { toast } from '../ui/toast.js';
 import { TRACKS, JUDGE_WINDOWS, JUDGE_WEIGHT, LANE_GLYPHS, LANE_LABELS } from '../data/charts.js';
 import { audio } from './audio.js';
@@ -10,6 +13,28 @@ const LANE_COLORS = ['#4FE3D0', '#FFC46B', '#FF5FA2', '#9D7BFF'];
 const JUDGE_LABEL = { perfect: '极准', great: '很准', good: '尚可', miss: '失手' };
 const COUNTDOWN_MS = 2400;
 const APPROACH_DEFAULT = 1.55;
+
+/**
+ * Canvas 2D 不能直接用 CSS 变量，故把字体族列表从设计系统令牌读出来缓存。
+ * 改版后自托管字体族名已变（Space Grotesk / Space Mono），
+ * 这里读令牌而非写死族名，字体清单再变也不必回头改 Canvas。
+ */
+let fontDisplayStack = '';
+let fontMonoStack = '';
+
+function fontDisplay() {
+  if (!fontDisplayStack) {
+    fontDisplayStack = readFontStack('--ds-font-display', '"Space Grotesk", system-ui, sans-serif');
+  }
+  return fontDisplayStack;
+}
+
+function fontMono() {
+  if (!fontMonoStack) {
+    fontMonoStack = readFontStack('--ds-font-mono', '"Space Mono", ui-monospace, monospace');
+  }
+  return fontMonoStack;
+}
 
 /**
  * 《脉冲走廊 / PULSE CORRIDOR》
@@ -144,7 +169,7 @@ export function mountPulse(root) {
 
     const startBtn = el(
       'button.btn.btn-primary.btn-lg',
-      { type: 'button', style: { '--prisma': 'var(--prism-cyan)' } },
+      { type: 'button', 'data-control': 'start', 'aria-label': '开始游戏' },
       '开始',
     );
     startBtn.addEventListener('click', async () => {
@@ -161,13 +186,17 @@ export function mountPulse(root) {
           'header.pulse-head',
           {},
           el('a.back-link', { href: '#/' }, '← 返回展厅'),
-          el('span.exhibit-no', { style: { color: '#4FE3D0' } }, 'EXHIBIT 01'),
-          el('h1', {}, '脉冲走廊'),
+          el('span.exhibit-no', { style: { color: '#2E6A5E' } }, 'EXHIBIT 01'),
+          el('h1.ds-detail__title', {}, '脉冲走廊'),
           el('p.pulse-sub', {}, 'PULSE CORRIDOR · 节奏反应'),
         ),
         el(
           'div.pulse-setup',
-          {},
+          {
+            'data-game-root': 'pulse',
+            tabindex: '0',
+            'aria-label': '脉冲走廊选单：选择模式、曲目与播放设置',
+          },
           el(
             'section.setup-block',
             {},
@@ -234,6 +263,10 @@ export function mountPulse(root) {
     const settings = getSettings();
     const silent = settings.visualPulse || settings.muted;
 
+    // Canvas 的 ctx.font 是同步生效的，取不到字体不会等待而是静默回落系统字体。
+    // 因此先把 HUD 用到的字重（含 Space Mono 粗体）加载好，再开始绘制。
+    await preloadFonts();
+
     // 用户手势内解锁音频
     if (!silent) {
       const ok = await audio.unlock();
@@ -246,7 +279,7 @@ export function mountPulse(root) {
 
     const track = TRACKS.find((t) => t.id === state.trackId) || TRACKS[0];
     const canvas = el('canvas.pulse-canvas', { 'aria-label': '节奏轨道画面' });
-    const hud = el('div.pulse-hud');
+    const hud = el('div.pulse-hud.ds-canvas-frame__hud.ds-canvas-frame__hud--top');
     const overlay = el('div.pulse-overlay');
 
     clear(app);
@@ -261,11 +294,16 @@ export function mountPulse(root) {
           el('a.back-link', { href: '#/' }, '← 返回展厅'),
           el('div.pulse-head-title', {}, el('b', {}, '脉冲走廊'), el('span', {}, 'PULSE CORRIDOR')),
           el('div.pulse-head-actions', {},
-            el('button.btn.btn-sm', { type: 'button', id: 'pulse-pause' }, '暂停'),
-            el('button.btn.btn-sm.btn-ghost', { type: 'button', id: 'pulse-restart' }, '重开'),
+            el('button.btn.btn-sm', { type: 'button', id: 'pulse-pause', 'data-control': 'pause' }, '暂停'),
+            el('button.btn.btn-sm.btn-ghost', { type: 'button', id: 'pulse-restart', 'data-control': 'restart' }, '重开'),
           ),
         ),
-        el('div.pulse-stage', {}, canvas, hud, overlay),
+        el('div.pulse-stage.ds-canvas-frame', {
+          'data-game-root': 'pulse',
+          'data-ds-theme': 'dark',
+          tabindex: '0',
+          'aria-label': '脉冲走廊游戏画面，方向键或 D F J K 敲击轨道',
+        }, canvas, hud, overlay),
         el('p.pulse-foot', {}, '节拍由「下行光带」提前预告：光带抵达判定线的那一刻就是节拍点。'),
       ),
     );
@@ -327,6 +365,15 @@ class PulseGame {
     this.dpr = 1;
     this.w = 0;
     this.h = 0;
+    this.rootEl = canvas.closest('[data-game-root]');
+    this.lastLane = -1;
+    this.presses = 0;
+
+    // 顶部工具栏按钮（与画面内的暂停遮罩共享同一套逻辑）
+    this.pauseBtn = document.getElementById('pulse-pause');
+    this.restartBtn = document.getElementById('pulse-restart');
+    this.pauseBtn?.addEventListener('click', () => this.togglePause());
+    this.restartBtn?.addEventListener('click', () => this.restart());
 
     this.buildHud();
     this.bindInput();
@@ -359,10 +406,33 @@ class PulseGame {
   begin() {
     this.startPerf = performance.now() + COUNTDOWN_MS;
     this.phase = 'countdown';
+    this.lastLane = -1;
+    this.presses = 0;
     if (this.mode !== 'drill' && audio.active) {
       this.scheduler.start(this.track, 0);
     }
     this.updateHud();
+    this.syncPauseLabel();
+    this.publish();
+    this.focusGame();
+  }
+
+  /** 把当前运行状态发布到可观测状态对象（供自动化验收比对）。 */
+  publish() {
+    publishState({
+      state: this.phase,
+      route: '/pulse',
+      chapter: this.mode === 'drill' ? 'reaction-drill' : this.track.id,
+      score: Math.round(this.score),
+      combo: this.combo,
+      player: { lane: this.lastLane, presses: this.presses },
+      extra: {
+        mode: this.mode,
+        bpm: this.track.bpm,
+        maxCombo: this.maxCombo,
+        judged: { ...this.judged },
+      },
+    });
   }
 
   /* ---------------- HUD ---------------- */
@@ -454,9 +524,27 @@ class PulseGame {
 
   /* ---------------- 输入 ---------------- */
 
+  /** 游戏区是否持有键盘焦点。未聚焦时不消费按键，避免在 iframe 中劫持母站键盘。 */
+  isGameFocused() {
+    const root = this.rootEl;
+    if (!root) return false;
+    const active = document.activeElement;
+    return active === root || root.contains(active);
+  }
+
+  /** 把焦点交还给游戏画面。 */
+  focusGame() {
+    try {
+      this.rootEl?.focus({ preventScroll: true });
+    } catch {
+      this.rootEl?.focus();
+    }
+  }
+
   bindInput() {
     this.onKeyDown = (event) => {
       if (event.repeat) return;
+      if (!this.isGameFocused()) return;
       const code = event.code;
       if (code === 'Escape') {
         event.preventDefault();
@@ -477,6 +565,7 @@ class PulseGame {
     window.addEventListener('keydown', this.onKeyDown);
 
     this.onPointerDown = (event) => {
+      this.focusGame();
       if (this.phase === 'countdown') return;
       const rect = this.canvas.getBoundingClientRect();
       const x = event.clientX - rect.left;
@@ -501,6 +590,9 @@ class PulseGame {
     if (this.phase !== 'playing') return;
     const t = this.chartTime();
     this.laneGlow[lane] = 1;
+    this.lastLane = lane;
+    this.presses += 1;
+    this.publish();
 
     // 反应提示优先处理
     if (this.activeCue) {
@@ -619,24 +711,37 @@ class PulseGame {
   }
 
   togglePause() {
-    if (this.phase === 'playing') {
+    if (this.phase === 'playing' || this.phase === 'countdown') {
       this.pausedAt = this.chartTime();
+      this.pausedFrom = this.phase;
       this.phase = 'paused';
       this.scheduler.stop();
       audio.suspend();
       this.showPauseOverlay();
+      this.syncPauseLabel();
+      this.publish();
     } else if (this.phase === 'paused') {
-      this.phase = 'playing';
+      this.phase = this.pausedFrom === 'countdown' ? 'countdown' : 'playing';
       this.startPerf = performance.now() - this.pausedAt * 1000;
       this.scheduler.start(this.track, this.pausedAt);
       audio.resume();
       this.clearOverlay();
+      this.focusGame();
+      this.syncPauseLabel();
+      this.publish();
     }
   }
 
+  /** 顶部工具栏的暂停按钮文案随状态切换（暂停时改为「继续」）。 */
+  syncPauseLabel() {
+    if (!this.pauseBtn) return;
+    this.pauseBtn.textContent = this.phase === 'paused' ? '继续' : '暂停';
+    this.pauseBtn.setAttribute('aria-pressed', String(this.phase === 'paused'));
+  }
+
   restart() {
-    this.phase = 'countdown';
-    this.startPerf = performance.now() + COUNTDOWN_MS;
+    this.phase = 'playing';
+    this.startPerf = performance.now();
     this.pausedAt = 0;
     this.notes = this.track.notes.map((n) => ({ ...n, judged: false, result: null }));
     this.judged = { perfect: 0, great: 0, good: 0, miss: 0 };
@@ -650,10 +755,15 @@ class PulseGame {
     this.nextCueIndex = 0;
     this.activeCue = null;
     this.finished = false;
+    this.lastLane = -1;
+    this.presses = 0;
     this.prepareCues();
     this.scheduler.start(this.track, 0);
     this.clearOverlay();
+    this.syncPauseLabel();
     this.updateHud();
+    this.focusGame();
+    this.publish();
   }
 
   /* ---------------- 主循环 ---------------- */
@@ -674,6 +784,7 @@ class PulseGame {
 
     this.render(t);
     this.updateHud();
+    this.publish();
   }
 
   checkNotes(t) {
@@ -731,6 +842,7 @@ class PulseGame {
   finish() {
     this.phase = 'results';
     this.scheduler.stop();
+    this.publish();
 
     const total = this.judged.perfect + this.judged.great + this.judged.good + this.judged.miss;
     const acc = total
@@ -850,11 +962,22 @@ class PulseGame {
     clear(this.overlay);
     this.overlay.appendChild(node);
     this.overlay.classList.add('is-active');
+    // 遮罩出现时把焦点交给第一个可操作元素：键盘用户不必再去找按钮，
+    // 且焦点仍在游戏区内，按键作用域保持一致。
+    const first = this.overlay.querySelector('button, a[href], [tabindex]:not([tabindex="-1"])');
+    try {
+      first?.focus?.({ preventScroll: true });
+    } catch {
+      first?.focus?.();
+    }
   }
 
   clearOverlay() {
     clear(this.overlay);
     this.overlay.classList.remove('is-active');
+    // 遮罩移除后原先被聚焦的按钮会随 DOM 一起消失，焦点会退回 body，
+    // 这里主动交还给游戏画面，保证「关掉结算/暂停 → 键盘立刻可用」。
+    this.focusGame();
   }
 
   showPauseOverlay() {
@@ -984,7 +1107,7 @@ class PulseGame {
     ctx.fillRect(x0, judgeY - 1.5, laneWidth * 4, 3);
 
     // 轨道键位提示
-    ctx.font = '600 12px "JetBrains Mono Variable", monospace';
+    ctx.font = `600 12px ${fontMono()}`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     for (let i = 0; i < 4; i += 1) {
@@ -993,9 +1116,9 @@ class PulseGame {
       ctx.fillStyle = `rgba(242,240,233,${(0.26 + glow * 0.6).toFixed(3)})`;
       ctx.fillText(LANE_GLYPHS[i], x, judgeY + 24);
       ctx.fillStyle = `rgba(242,240,233,${(0.18 + glow * 0.5).toFixed(3)})`;
-      ctx.font = '500 10px "JetBrains Mono Variable", monospace';
+      ctx.font = `500 10px ${fontMono()}`;
       ctx.fillText(LANE_LABELS[i], x, judgeY + 44);
-      ctx.font = '600 12px "JetBrains Mono Variable", monospace';
+      ctx.font = `600 12px ${fontMono()}`;
     }
 
     // 收缩节拍环
@@ -1064,7 +1187,7 @@ class PulseGame {
     ctx.stroke();
 
     ctx.fillStyle = '#06091f';
-    ctx.font = '700 12px "Space Grotesk Variable", sans-serif';
+    ctx.font = `700 12px ${fontDisplay()}`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(LANE_GLYPHS[lane], cx, cy + 0.5);
@@ -1101,7 +1224,7 @@ class PulseGame {
     ctx.fill();
 
     ctx.fillStyle = 'rgba(242,240,233,0.4)';
-    ctx.font = '500 10px "JetBrains Mono Variable", monospace';
+    ctx.font = `500 10px ${fontMono()}`;
     ctx.textAlign = 'center';
     ctx.fillText(`BEAT ${beatIndex + 1}`, cx, cy + rInner + 18);
     ctx.restore();
@@ -1157,13 +1280,13 @@ class PulseGame {
     ctx.stroke();
 
     ctx.fillStyle = `rgba(${color},0.95)`;
-    ctx.font = '700 15px "Space Grotesk Variable", sans-serif';
+    ctx.font = `700 15px ${fontDisplay()}`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(cue.kind === 'target' ? LANE_GLYPHS[cue.lane] : '×', cx, cy);
 
     ctx.fillStyle = `rgba(${color},0.85)`;
-    ctx.font = '600 10px "JetBrains Mono Variable", monospace';
+    ctx.font = `600 10px ${fontMono()}`;
     ctx.fillText(cue.kind === 'target' ? '按此轨' : '别按此轨', cx, cy + 42);
     ctx.restore();
   }
@@ -1182,11 +1305,11 @@ class PulseGame {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = '#f2f0e9';
-    ctx.font = '700 72px "Space Grotesk Variable", sans-serif';
+    ctx.font = `700 72px ${fontDisplay()}`;
     ctx.fillText(String(Math.max(1, secs)), w / 2, h / 2 - 20);
 
     ctx.fillStyle = 'rgba(79,227,208,0.9)';
-    ctx.font = '600 13px "JetBrains Mono Variable", monospace';
+    ctx.font = `600 13px ${fontMono()}`;
     ctx.fillText('READY', w / 2, h / 2 + 34);
 
     // 预备环
@@ -1201,6 +1324,7 @@ class PulseGame {
   destroy() {
     window.cancelAnimationFrame(this.raf);
     this.scheduler.stop();
+    publishState({ state: 'idle', route: '/pulse', chapter: null });
     window.removeEventListener('keydown', this.onKeyDown);
     this.canvas.removeEventListener('pointerdown', this.onPointerDown);
     this.onResize && window.removeEventListener('resize', this.onResize);

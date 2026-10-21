@@ -1,61 +1,73 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN" data-ds-theme="dark" data-lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#070C16" />
+  <meta name="theme-color" content="#100F0E" />
   <title>回响电玩馆 · PLAYTIME ATLAS</title>
   <meta name="description" content="回响电玩馆 PLAYTIME ATLAS：一座关于电子游戏时间的原创可漫游博物馆主站。十道年代门沿时间长廊排开，含检索筛选、收藏、展品来源与可玩展厅。" />
   <meta name="color-scheme" content="dark" />
   <link rel="icon" type="image/svg+xml" href="./art/mark.svg" />
+  <!-- 自托管字体（OFL-1.1）：由 scripts/generate-art.mjs 从 src/assets/fonts.css 还原到 public/art/assets/fonts/ -->
+  <link rel="stylesheet" href="./art/assets/fonts/fonts.css" />
+  <!-- 首屏用到的两个拉丁字体预加载；汉字走系统字体栈（DESIGN-SPEC §2.4 / §10.3） -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="./art/assets/fonts/space-grotesk-latin.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="./art/assets/fonts/inter-latin.woff2" />
 </head>
 <body>
-  <a class="skip-link" href="#main">跳到主内容</a>
+  <a class="skip-link ds-skip" href="#main" data-i18n="skip.toMain">跳到主内容</a>
 
-  <header class="topbar">
+  <header class="topbar ds-topbar">
     <button class="nav-toggle" type="button" id="nav-toggle" aria-expanded="false" aria-controls="rail">
       <span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="nav-toggle-text">馆内导览</span>
+      <span class="nav-toggle-text" data-i18n="nav.rail">馆内导览</span>
     </button>
 
     <a class="brand" href="#/" aria-label="回响电玩馆首页">
       <img class="brand-mark" src="./art/mark.svg" width="34" height="34" alt="" aria-hidden="true" />
       <span class="brand-text">
-        <strong>回响电玩馆</strong>
+        <strong data-i18n="home.title">回响电玩馆</strong>
         <span class="mono brand-en">PLAYTIME ATLAS</span>
       </span>
     </a>
 
     <form class="topsearch" role="search" id="topsearch">
-      <label class="visually-hidden" for="top-q">检索馆藏展品</label>
-      <input id="top-q" name="q" type="search" placeholder="检索展品：名称 / 创作者 / 平台" autocomplete="off" enterkeyhint="search" />
-      <button class="btn btn-ghost btn-sm" type="submit">检索</button>
+      <label class="visually-hidden" for="top-q" data-i18n="nav.search">检索馆藏展品</label>
+      <input id="top-q" name="q" type="search" placeholder="检索展品：名称 / 创作者 / 平台"
+             data-i18n-attr="placeholder:nav.searchPlaceholder" autocomplete="off" enterkeyhint="search" />
+      <button class="btn btn-ghost btn-sm" type="submit" data-i18n="nav.searchSubmit">检索</button>
     </form>
 
     <nav class="topnav" aria-label="主导航">
-      <a href="#/timeline" data-nav="timeline">时间长廊</a>
-      <a href="#/catalog" data-nav="catalog">2D 目录</a>
-      <a href="#/hall" data-nav="hall">3D 展厅</a>
-      <a href="#/about" data-nav="about">馆方说明</a>
+      <a href="#/timeline" data-nav="timeline" data-i18n="nav.timeline">时间长廊</a>
+      <a href="#/catalog" data-nav="catalog" data-i18n="nav.catalog">2D 目录</a>
+      <a href="#/hall" data-nav="hall" data-i18n="nav.hall">3D 展厅</a>
+      <a href="#/about" data-nav="about" data-i18n="nav.about">馆方说明</a>
       <a class="topnav-fav" href="#/collection" data-nav="collection">
-        收藏<span class="fav-badge mono" data-fav-count>0</span>
+        <span data-i18n="nav.favorites">收藏</span><span class="fav-badge mono" data-fav-count>0</span>
       </a>
     </nav>
+
+    <!-- 语言切换（DESIGN-SPEC §4.3）：顶栏最右，chip 风格 -->
+    <div class="lang-switch" role="group" aria-label="切换语言 / Language">
+      <button type="button" data-lang="zh" aria-pressed="true" data-i18n="nav.langZh">中</button>
+      <button type="button" data-lang="en" aria-pressed="false" data-i18n="nav.langEn">EN</button>
+    </div>
   </header>
 
   <div class="shell">
-    <nav class="rail" id="rail" aria-label="馆内导览">
+    <nav class="rail ds-rail" id="rail" aria-label="馆内导览">
       <div class="rail-inner">
-        <p class="rail-label mono">年代展厅</p>
+        <p class="rail-label mono" data-i18n="nav.eras">年代展厅</p>
         <ul class="rail-list" id="rail-eras"><li class="rail-skeleton">载入中…</li></ul>
-        <p class="rail-label mono">其他</p>
+        <p class="rail-label mono" data-i18n="nav.other">其他</p>
         <ul class="rail-list">
-          <li><a href="#/" data-nav="home">馆前广场</a></li>
-          <li><a href="#/timeline" data-nav="timeline">时间长廊</a></li>
-          <li><a href="#/catalog" data-nav="catalog">2D 无障碍目录</a></li>
-          <li><a href="#/hall" data-nav="hall">3D 展厅（可选）</a></li>
-          <li><a href="#/collection" data-nav="collection">我的收藏</a></li>
-          <li><a href="#/about" data-nav="about">馆方说明</a></li>
+          <li><a href="#/" data-nav="home" data-i18n="nav.home">馆前广场</a></li>
+          <li><a href="#/timeline" data-nav="timeline" data-i18n="nav.timeline">时间长廊</a></li>
+          <li><a href="#/catalog" data-nav="catalog" data-i18n="nav.catalog">2D 无障碍目录</a></li>
+          <li><a href="#/hall" data-nav="hall" data-i18n="nav.hall">3D 展厅（可选）</a></li>
+          <li><a href="#/collection" data-nav="collection" data-i18n="nav.collection">我的收藏</a></li>
+          <li><a href="#/about" data-nav="about" data-i18n="nav.about">馆方说明</a></li>
         </ul>
         <p class="rail-foot mono" id="rail-foot"></p>
       </div>
@@ -66,16 +78,16 @@
     </main>
   </div>
 
-  <footer class="footer">
+  <footer class="footer ds-footer">
     <div class="footer-inner">
       <p class="footer-line">
-        <strong>回响电玩馆 · PLAYTIME ATLAS</strong>
+        <strong data-i18n="home.title">回响电玩馆 · PLAYTIME ATLAS</strong>
         <span class="muted">原创策展与视觉方案，展品叙述可逐条核对来源。</span>
       </p>
       <p class="footer-line mono" id="footer-meta"></p>
     </div>
   </footer>
 
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>

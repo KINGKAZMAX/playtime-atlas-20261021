@@ -1,23 +1,12 @@
 {
   "id": "00-research",
   "title": "MiniMax M3.1 Flash 全球公开案例索引",
-  "description": "对 MiniMax M3.1 Flash 全球公开案例的联网检索与核验成果：134 条案例（X 55 / B站 19 / YouTube 31 / GitHub 10 / 中文媒体 12 / 官方基准 6 / 小红书登录墙 1），每条记录原作者、直达 URL、发布时间、模型归属原文证据、平台互动指标、观测时间与不可见项；并给出覆盖网页 / 3D / 交互的 TOP3 原创改编规格（作品名·文案·内容·字体·配色·布局·模型形态全部另起，非一致复刻）与逐项对照差异说明。附可浏览的本地案例索引页 index.html（静态、自包含、零外部请求）。",
+  "description": "对 MiniMax M3.1 Flash 全球公开案例的联网检索与核验成果：134 条案例（X 55 / B站 19 / YouTube 31 / GitHub 10 / 中文媒体 12 / 官方基准 6 / 小红书登录墙 1），每条记录原作者、直达 URL、发布时间、模型归属原文证据、平台互动指标、观测时间与不可见项；并给出覆盖网页 / 3D / 交互的 TOP3 原创改编规格（作品名·文案·内容·字体·配色·布局·模型形态全部另起，非一致复刻）与逐项对照差异说明。附可浏览的本地案例索引页 index.html（静态、增量接入 16-design-system「余晖设计系统」、自托管 OFL 字体、运行期零外部请求）。",
   "entry": "index.html",
   "buildCommand": "npm run build",
   "outputDir": "./",
   "status": "completed",
   "upstream": "00-research",
-  "license": {
-    "code": "MIT",
-    "assets": "仅引用公开帖文摘录与自有核验记录，不含原始视频与抓取日志"
-  },
-  "sources": [
-    {
-      "title": "核验方式：X syndication 端点逐条拉取正文 / 作者 / 时间 / 互动量",
-      "url": "https://cdn.syndication.twimg.com/tweet-result",
-      "note": "所有平台指标为 2026-10-21 观测快照，不同平台口径不可横向比较。"
-    }
-  ],
   "$schema": "https://json.schemastore.org/manifest.json",
   "task": "00",
   "batch": "flash-showcase-20261021",
@@ -141,6 +130,95 @@
       "description": "克隆自 MiaAI-Lab/MiniMax-M3.1-Flash-100-HTML-Files。100 个单文件 HTML + 完整原始提示词。该仓库无 LICENSE，默认保留所有权利 —— 仅可作结构与提示词参考，禁止复制文件内容。",
       "status": "reference-only",
       "publish": "excluded"
+    },
+    {
+      "id": "00-research/RESTYLE-PLAN.md",
+      "title": "改版待替换清单",
+      "type": "doc",
+      "path": "RESTYLE-PLAN.md",
+      "description": "改版第 1 步产出：清点 index.html 现有字体(26)/颜色(38)/圆角(13)/间距与字阶(93)/动效(5)使用点，列出「文件 + 选择器 + 旧值 → 候选 16 token 路径」；含 5 项需新增能力（reduced-motion、focus-visible、lang 等）与明确不改版项。本轮不改视觉。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/i18n/keys.json",
+      "title": "zh/en 文案 key 骨架",
+      "type": "data",
+      "path": "i18n/keys.json",
+      "description": "99 个 key 的 {zh,en} 成对文案。zh 为页面现状逐字原文，en 为对应英文。仅骨架：页面尚未接入、尚未切换语言。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/i18n/README.md",
+      "title": "i18n 接线说明",
+      "type": "doc",
+      "path": "i18n/README.md",
+      "description": "第 2 步接线方式、动态数据（134 条案例文案属数据层，不在 key 表内）的边界、给 19/14 的对接说明。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/evidence/d1-review",
+      "title": "D1 复核截图证据",
+      "type": "evidence",
+      "path": "evidence/d1-review/",
+      "description": "2026-10-21 D1「元素重叠遮挡」全页复核的目视证据：3× 卡片（证据块截断处与「证据来源」行的间隙）、2× 分平台最高榜表、2× 页脚、首屏。仅供本地验收留痕，页面画面，不进入发布仓库。",
+      "status": "ready",
+      "publish": "excluded"
+    },
+    {
+      "id": "00-research/LICENSES.md",
+      "title": "第三方资源来源与许可登记册",
+      "type": "license",
+      "path": "LICENSES.md",
+      "description": "5 个自托管 OFL 1.1 字体的名称/版本/文件/字节/许可类型/许可全文位置/来源 URL/版权声明 + 设计系统资产出处 + 参考站非授权声明（不复制未授权素材、不宣称原创参考作品）。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/assets/ds/tokens.css",
+      "title": "余晖设计系统 · 令牌层",
+      "type": "style",
+      "path": "assets/ds/tokens.css",
+      "description": "16-design-system/src/tokens.css 原样副本（--ds-* 令牌 + :lang(zh) 中文排版修正 + reduced-motion 块）。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/assets/ds/components.css",
+      "title": "余晖设计系统 · 组件层",
+      "type": "style",
+      "path": "assets/ds/components.css",
+      "description": "16-design-system/src/components.css 原样副本（.ds-topbar / .ds-footer / .ds-skip / .ds-chip / .ds-input 等）。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/assets/ds/fonts",
+      "title": "自托管 OFL 字体包",
+      "type": "font",
+      "path": "assets/ds/fonts/fonts.css",
+      "description": "Space Grotesk / Inter / Space Mono(400,700) / Noto Sans SC 子集共 5 个 woff2（394 956 B）+ 5 份 OFL 1.1 许可原文 + FONT-MANIFEST.json。相对 URL 引用，零 CDN。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/scan_font_stack.py",
+      "title": "字体栈顺序独立复扫器",
+      "type": "tool",
+      "path": "scan_font_stack.py",
+      "description": "按 15-supervisor 判据独立复扫：解析 index.html 的 <link> 活链 → 全局收集活 @font-face + woff2 实体存在性 → 跨文件比对「有限子集」与「覆盖完整 CJK 族」在每个字体栈中的先后。真缺陷 > 0 时退出码 1。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/make_release_package.py",
+      "title": "发布包生成器（交 14-publish）",
+      "type": "tool",
+      "path": "make_release_package.py",
+      "description": "把案例索引打成可静态构建的交付包，并对发布包本身跑 12 项包级自检（相对路径 / 零外部请求 / 资源齐全 / 字体字节与清单一致 / OFL 原文随包 / 无开发文件 / 字体栈复扫 / 自包含 / 深链锚点 / @font-face 本地）。退出码 0 = 全部通过。不做任何 git 写入动作。",
+      "status": "ready"
+    },
+    {
+      "id": "00-research/release-package",
+      "title": "发布包（交 14-publish 统一提交）",
+      "type": "package",
+      "path": "release-package/",
+      "description": "交付包三件：PAYLOAD/（可静态构建的产物目录 = docs/works/00-research-dossier/ 的完整内容，16 文件 / 882 047 B）+ PACKAGE-MANIFEST.json（入口 / 建议深链 / 相对发布根路径 / 文件清单字节与 SHA256 / 12 项自检结论）+ INTEGRATION.md（接入说明）。建议深链 works/00-research-dossier/。",
+      "status": "ready"
     }
   ],
   "build": {
@@ -181,16 +259,55 @@
         "build_index.py",
         "gen_ranking.py",
         "verify.py",
-        ".gitignore"
+        ".gitignore",
+        "RESTYLE-PLAN.md",
+        "i18n/keys.json",
+        "i18n/README.md",
+        "LICENSES.md",
+        "assets/ds/tokens.css",
+        "assets/ds/components.css",
+        "assets/ds/fonts/fonts.css",
+        "assets/ds/fonts/FONT-MANIFEST.json",
+        "assets/ds/fonts/inter-latin.woff2",
+        "assets/ds/fonts/space-grotesk-latin.woff2",
+        "assets/ds/fonts/space-mono-regular.woff2",
+        "assets/ds/fonts/space-mono-bold.woff2",
+        "assets/ds/fonts/noto-sans-sc-subset.woff2",
+        "assets/ds/fonts/OFL-inter.txt",
+        "assets/ds/fonts/OFL-space-grotesk.txt",
+        "assets/ds/fonts/OFL-space-mono-regular.txt",
+        "assets/ds/fonts/OFL-space-mono-bold.txt",
+        "assets/ds/fonts/OFL-noto-sans-sc.txt",
+        "scan_font_stack.py",
+        "make_release_package.py"
       ],
       "exclude": [
         "media/ (13 段第三方原始视频，约 324 MB)",
         "raw/ (平台原始抓取证据，含第三方内容)",
         "frames/ (第三方视频抽帧，仅供内部比对，不得作为作品素材)",
-        "references/ (★ 无 LICENSE 的克隆参考库，禁止复制其内容)"
+        "evidence/ (D1 复核截图证据，本地验收留痕，含页面画面)",
+        "references/ (★ 无 LICENSE 的克隆参考库，禁止复制其内容)",
+        "release-package/ (交 14-publish 的交付包；14 取其中的 PAYLOAD/ 作为发布产物即可，整目录不必进站点仓库)"
       ],
       "gitignore": "00-research/.gitignore 已声明上述排除项",
-      "note": "研究证据保留在本机，供 01-04 并行任务读取与改编比对；不进入发布仓库。"
+      "note": "研究证据保留在本机，供 01-04 并行任务读取与改编比对；不进入发布仓库。⚠️ 改版第 2 步后本目录不再是单文件：assets/ds/（492 KiB）必须随发布包一同拷入，否则线上样式与字体全 404（16 记录的 06-museum-core 历史缺陷）。本目录采用作品内自包含副本（相对 URL，任意子路径可移植）。",
+      "externalDependencyNote": "assets/ds/ 由同级 16-design-system/src|fonts 复制而来（原样，未修改）。若 14-publish 决定改为站点根共享（release/docs/assets/ds/），须同步改 index.html 的三个 <link> 路径，并保证作品路径与站点根两份都有，否则 404。",
+      "releasePackage": {
+        "directory": "00-research/release-package/",
+        "payload": "00-research/release-package/PAYLOAD/",
+        "manifest": "00-research/release-package/PACKAGE-MANIFEST.json",
+        "integration": "00-research/release-package/INTEGRATION.md",
+        "generator": "00-research/make_release_package.py",
+        "entry": "index.html",
+        "aliasEntry": "case-index.html",
+        "recommendedDeepLink": "works/00-research-dossier/",
+        "pathRelativeToPublishRoot": "works/00-research-dossier/",
+        "fileCount": 16,
+        "totalBytes": 882047,
+        "packageChecks": "PASS 12 / FAIL 0（对发布包本身，exit 0）",
+        "browserAcceptance": "Ego 验收 32 项全绿（1440/1280/768/390 + 别名入口 + 深链 + 可达性）",
+        "gitPolicy": "本包不含 git 写入动作，请 14 统一提交"
+      }
     }
   },
   "metrics": {
@@ -205,7 +322,28 @@
     "platformsAttempted": 7,
     "platformsWithData": 6,
     "platformsBlocked": 1,
-    "blockedDetail": "小红书：搜索需登录（已尝试 6 条路径），记为不可见项"
+    "blockedDetail": "小红书：搜索需登录（已尝试 6 条路径），记为不可见项",
+    "verifyChecks": 120,
+    "verifyResult": "PASS 120 / FAIL 0 / WARN 0 (exit 0)",
+    "d1Overlap": "桌面 0 / 移动 0（双口径 × 四视口：13 当前 20:04 版 + 18:41 版，改版后复测仍 0/0）",
+    "searchFilter": "生效：'鹈鹕' 134 → 9 / 134",
+    "restyleAcceptance": "浏览器四档视口 62 项全绿（溢出 0 / 对比度最低 4.81 / 焦点环 12/12 / Tab 12/12 / 外部请求 0）",
+    "designSystem": "afterglow-ds v1.0.0（--ds-* 令牌 / .ds-* 类），固定浅色主题",
+    "selfHostedFonts": 5,
+    "selfHostedFontBytes": 394956,
+    "designSystemBytes": 504612,
+    "externalRequests": 0,
+    "fontStackScan": "真缺陷 0 项（独立复扫 scan_font_stack.py，退出码 0；修复前 2 项 / 退出码 1）",
+    "fontStackRendering": "汉字统一由系统 CJK 族（PingFang SC）渲染；拉丁字形来自自托管 Inter / Space Grotesk / Space Mono",
+    "releasePackage": {
+      "checks": 12,
+      "result": "PASS 12 / FAIL 0 (exit 0)",
+      "files": 16,
+      "bytes": 882047,
+      "deepLink": "works/00-research-dossier/",
+      "browserAcceptance": "Ego（唯一浏览器入口）验收：外部请求 0 / 页面控制台错误 0 / HTTP≥400 0 / 横向溢出 0px / 5 字体本地 loaded / 检索 134→9 / 平台筛选 X=55 / 移动 390 溢出 0 / 别名入口同完好",
+      "negativeControl": "注入 1 个 CDN 资源 + 1 个根绝对路径 → C3/C4/C5 报错、退出码 1"
+    }
   },
   "attributionPolicy": {
     "countedAsM31Flash": "仅当作者正文 / 画面水印 / 官方文档明确写出 M3.1 Flash 或 M3.1-Flash",
@@ -222,5 +360,30 @@
       "M3.1 Flash + H3 混合模型"
     ],
     "globalFirstClaim": "不声称全网第一；各平台指标分别比较，不可横向相加"
+  },
+  "restyle": {
+    "stage": "step-2-complete; step-3 (13 acceptance) pending",
+    "step": 2,
+    "stepName": "增量改版：接入 16-design-system「余晖设计系统」（令牌/组件/字体/外壳层），统一导航·封面·页脚·控件，密集数据区只提可读性不压缩信息密度",
+    "status": "step-2-complete",
+    "styleSource": "16-design-system/{REFERENCE-AUDIT.md,DESIGN-SPEC.md,design-tokens.json,preview.html,MIGRATION-NOTES.md}",
+    "styleSourceAvailable": true,
+    "styleSourceDeliveredAt": "2026-10-21 20:11-20:34 (Taipei)",
+    "designSystem": "afterglow-ds v1.0.0 (CSS var prefix --ds-, class prefix .ds-)",
+    "referenceSiteEvidence": "16 已于 2026-10-21 19:30 完成对 https://olek.si/ 的取证（REFERENCE-AUDIT.md，逐条标注直接观察/二手证据/推测）。颜色·字体·字号·圆角·缓动曲线与命名均为 16 自有设计，与参考站取值不同",
+    "plan": "RESTYLE-PLAN.md",
+    "i18n": "i18n/keys.json",
+    "visualChangesThisRound": "第 1 步零视觉改动；第 2 步落地全部 --ds-* 视觉替换：13 个语义别名重定向 + 25 处硬编码 rgba → color-mix(令牌) + 外壳层 .ds-topbar/.ds-footer/.ds-skip + 中文负字距 3 处复位 + 标题 nowrap 禁令 + 焦点环兜底 + 自托管 OFL 字体",
+    "pendingDecision": "主题已定：固定浅色（<html data-ds-theme=\"light\">），与 16 preview.html 默认态一致。理由：tokens.css 未给 --ds-success/--ds-warning/--ds-danger 定义深色档，跟随系统会使状态胶囊对比度降至 ≈3.5:1，而 MIGRATION-NOTES §0 风险 B 不允许就地重定义 --ds-* 取值 → 以固定浅色规避。未提供主题切换（属第 3 步范围）。",
+    "knownGaps": "--ds-blur 不存在于 16 令牌 → 工具栏 backdrop-filter:blur(10px) 的 10px 为本批自定（已在 STATUS 限制节注明）；--ds-success/--ds-warning/--ds-danger 无深色档 → 已由固定浅色主题规避，未自定深色语义色",
+    "d1Review": "2026-10-21 双口径闭环：18:41 口径修复前桌面4/移动9 → 修复后 桌面0/移动0；当前口径(20:04) 桌面0/移动0；字形越过裁剪边 31/44 → 0/0；越界深度 77px → 0；.ev 溢出元素 16/23 → 0/0。根因为 .ev 按像素裁剪导致行中切割，已改为按行截断（max-height 精确等于 3 个行高 + fitEvidence 把前缀+省略号塞进 3 行），未用 z-index/transform 掩盖",
+    "otherDefectsFixed": "搜索框从未真正过滤（c.data_q 从未赋值，真值守卫短路）→ 检索串挂到案例对象，134→9/134 复测通过；/favicon.ico 404（13 QA-046）→ 内联 data URI SVG；无 prefers-reduced-motion 降级 → 按 16 §7 落地",
+    "verifyChecks": 120,
+    "theme": "light (fixed, <html data-ds-theme=\"light\">)",
+    "dsBase": "/playtime-atlas-20261021/ （按 MIGRATION-NOTES §6 在入口注入；本页资源仍全部相对路径）",
+    "integration": "assets/ds/ 下 tokens.css + components.css + fonts/（5 woff2 + 5 OFL 原文 + fonts.css + FONT-MANIFEST.json，共 492 KiB）；index.html 三个 <link rel=stylesheet> 全部相对路径；<body class=\"ds-shell\">；.ds-topbar/.ds-footer/.ds-skip",
+    "redLinesRespected": "未改名/未复制参考站作品名文案（TOP3 卡标题改为本批改编名 + 来源行）；未复制参考站图片/视频/字体；既有 CSS 未删除（只重定向取值）；未用 z-index 掩盖重叠；未复制参考站紫 #6549F2（改用朱砂 #B4432B）；标题无 nowrap；中文无负字距；无 CDN 字体脚本（零外部请求）",
+    "acceptance": "npm run verify → PASS 120 / FAIL 0 / WARN 0 (exit 0)；浏览器四档视口（1440/1280/768/390）验收 62 项全绿：横向溢出 0 / 正文对比度最低 4.81:1 / D1 双口径 0/0 / 负字距 0 / 标题 nowrap 0 / 触摸目标 <24px 0 / 控制台错误 0 / HTTP≥400 0 / 外部请求 0 / 焦点环 12/12 可见 / Tab 12/12 推进 / 搜索 134→9 / reduced-motion 0.001s / 5 个字体本地 loaded；字体栈顺序：独立复扫真缺陷 0 项（修复前 2 项），CDP CSS.getPlatformFontsForNode 实测汉字统一由系统 CJK 族渲染（修复前同段文字混排 Noto 子集 + PingFang 两套字形）",
+    "fontStackOrder": "2026-10-21 22:4x 修正：assets/ds/tokens.css 的 --ds-font-display/--ds-font-text 换序为「拉丁自托管 → 完整系统 CJK 栈（PingFang SC / Hiragino Sans GB / Microsoft YaHei / Source Han Sans SC）→ Noto Sans SC 子集 → -apple-system/BlinkMacSystemFont → sans-serif」。此前自托管有限子集 Noto Sans SC 排在完整系统 CJK 族之前，CSS 按字符回退导致同段汉字混入两套字形（基线错位）。noto-sans-sc-subset.woff2 保留不删、@font-face 声明一字未改，子集降为渐进增强兜底。assets/ds/tokens.css、assets/ds/fonts/fonts.css、assets/ds/fonts/FONT-MANIFEST.json 已与 16-design-system 修正版逐字一致。"
   }
 }

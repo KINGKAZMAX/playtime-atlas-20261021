@@ -8,11 +8,20 @@
     "art": "node scripts/generate-art.mjs",
     "sync": "node scripts/sync-exhibits.mjs",
     "prebuild": "npm run art && npm run sync",
+    "postbuild": "node scripts/check-dist.mjs",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "test": "node scripts/test.mjs",
-    "verify:catalog": "node scripts/verify-catalog.mjs"
+    "verify:catalog": "node scripts/verify-catalog.mjs",
+    "check:tokens": "node scripts/check-tokens.mjs",
+    "check:tokens:runtime": "node scripts/check-tokens-runtime.mjs",
+    "search:probe": "node scripts/search-probe.mjs",
+    "overlap": "node scripts/overlap-probe.mjs",
+    "serve:subpath": "node scripts/serve-subpath.mjs",
+    "verify:subpath": "node scripts/verify-subpath.mjs",
+    "acceptance": "node scripts/acceptance.mjs",
+    "overflow": "node scripts/overflow-probe.mjs"
   },
   "dependencies": {
     "three": "0.169.0"

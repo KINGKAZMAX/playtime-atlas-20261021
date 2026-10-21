@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="disc 轮廓">
-  <rect width="120" height="120" rx="16" fill="#0D1526"/>
-  <circle cx="60" cy="60" r="42" fill="#F4EDE0" opacity="0.9"/><circle cx="60" cy="60" r="42" fill="none" stroke="#0D1526" stroke-width="1" opacity="0.15"/><circle cx="60" cy="60" r="26" fill="none" stroke="#0D1526" stroke-width="1.4" opacity="0.2"/><circle cx="60" cy="60" r="12" fill="#0D1526" opacity="0.25"/><path d="M60 18 A42 42 0 0 1 96 42 L60 42 Z" fill="#FF6B2C" opacity="0.6"/>
+  <rect width="120" height="120" rx="16" fill="#1A1917"/>
+  <circle cx="60" cy="60" r="42" fill="#F7F4F0" opacity="0.9"/><circle cx="60" cy="60" r="42" fill="none" stroke="#1A1917" stroke-width="1" opacity="0.15"/><circle cx="60" cy="60" r="26" fill="none" stroke="#1A1917" stroke-width="1.4" opacity="0.2"/><circle cx="60" cy="60" r="12" fill="#1A1917" opacity="0.25"/><path d="M60 18 A42 42 0 0 1 96 42 L60 42 Z" fill="#E0684A" opacity="0.6"/>
 </svg>

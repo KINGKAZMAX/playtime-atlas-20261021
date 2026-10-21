@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# 深空漫游 · Deep Space Drifter
+# 霜隙远航 · Frostgap Voyager
 # 本地一键启动脚本（仅监听 127.0.0.1，不对外网发布）
 #
 set -euo pipefail
@@ -44,7 +44,7 @@ done
 
 echo ""
 echo "  ╔══════════════════════════════════════════════╗"
-echo "  ║        深空漫游 · DEEP SPACE DRIFTER          ║"
+echo "  ║         霜隙远航 · FROSTGAP VOYAGER          ║"
 echo "  ╚══════════════════════════════════════════════╝"
 echo ""
 echo "  地址：http://$HOST:$PORT"

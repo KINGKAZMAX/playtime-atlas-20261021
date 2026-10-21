@@ -47,40 +47,8 @@ const TAU = Math.PI * 2;
 export const UNITS_PER_METRE = METRES_PER_UNIT;
 
 /** Named structural groups, used for the explode / x-ray / callout systems. */
-export const PART_GROUPS = {
-  CROWN: 'crown',
-  BLADE: 'blade',
-  VANE: 'vane',
-  ARM: 'arm',
-  SENSOR: 'sensor',
-  CARAPACE: 'carapace',
-  KEEL: 'keel',
-  REDUCER: 'reducer',
-  STRUT: 'strut',
-  PHOTOPHORE: 'photophore',
-  HEATVENT: 'heatvent',
-  SUCKER: 'sucker',
-  FAN: 'fan',
-  HOPPER: 'hopper',
-};
-
-/** Bilingual callout for every annotation anchor. */
-export const ANNOTATIONS = [
-  { id: 'crown', cn: '磨削冠', en: 'Milling crown', group: PART_GROUPS.CROWN },
-  { id: 'blade', cn: '螺旋刀片', en: 'Spiral cutter blade', group: PART_GROUPS.BLADE },
-  { id: 'vane', cn: '矿浆导流叶', en: 'Slurry deflector vane', group: PART_GROUPS.VANE },
-  { id: 'arm', cn: '矿石抓取臂', en: 'Ore grappler arm', group: PART_GROUPS.ARM },
-  { id: 'sensor', cn: '声呐桅杆', en: 'Sonar mast', group: PART_GROUPS.SENSOR },
-  { id: 'carapace', cn: '叠压甲壳板', en: 'Overlapping carapace', group: PART_GROUPS.CARAPACE },
-  { id: 'keel', cn: '承力脊梁', en: 'Load keel beam', group: PART_GROUPS.KEEL },
-  { id: 'reducer', cn: '行星减速组', en: 'Planetary reducer', group: PART_GROUPS.REDUCER },
-  { id: 'strut', cn: '液压伸缩撑', en: 'Hydraulic strut', group: PART_GROUPS.STRUT },
-  { id: 'photophore', cn: '荧光鳃瓣', en: 'Bioluminescent gill', group: PART_GROUPS.PHOTOPHORE },
-  { id: 'heatvent', cn: '热液排口', en: 'Hydrothermal heat vent', group: PART_GROUPS.HEATVENT },
-  { id: 'sucker', cn: '腹面吸盘', en: 'Ventral anchor sucker', group: PART_GROUPS.SUCKER },
-  { id: 'hopper', cn: '矿仓观察窗', en: 'Ore hopper window', group: PART_GROUPS.HOPPER },
-  { id: 'fan', cn: '尾扇叶片', en: 'Caudal fan blade', group: PART_GROUPS.FAN },
-];
+import { PART_GROUPS } from './parts.js';
+export { PART_GROUPS, ANNOTATIONS } from './parts.js';
 
 function tag(object3d, group, name) {
   object3d.userData.partGroup = group;

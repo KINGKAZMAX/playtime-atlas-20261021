@@ -6,16 +6,27 @@
  *  document 级 keydown，玩家在主站其他区域按方向键时，iframe 里的游戏会跟着动，
  *  浏览器还会滚动页面 —— 这是嵌入式小游戏的经典事故。
  *
- * 策略：
- *  1. 游戏根节点带 tabindex="0"，成为唯一的键盘「作用域」。
- *  2. 只有当 document.activeElement 落在该作用域内（或作用域本身）时，
- *     keydown / keyup 才会被转成游戏输入。
- *  3. 未聚焦时按下游戏键位 -> 阻止默认行为失效 -> 页面正常滚动 / 父页面正常响应。
- *  4. 失焦时清空所有按键状态，避免「切回来时角色还在走」。
+ * 判定采用**双保险**：
+ *  1. 监听器只挂在游戏根容器上，不挂在 document / window 上。
+ *     keydown 只会在「焦点位于该容器或其子树」时冒泡到容器，天然隔离父页面。
+ *  2. 事件到达时再核验一次**真实焦点位置**（document.activeElement），
+ *     不轻信缓存的 focused 标志 —— 标志可能因元素失焦、文档切换等原因变旧。
+ *     只要 activeElement 是 BODY 或落在容器之外，键盘一律不驱动游戏。
  */
 
 /** 全局唯一的「当前持有键盘的游戏」实例。 */
 let activeScope = null;
+
+/**
+ * 焦点是否真的落在给定容器内。
+ * 以 document.activeElement 为准 —— 它是唯一权威的焦点事实来源。
+ */
+export function hasFocusWithin(root) {
+  if (!root) return false;
+  const ae = document.activeElement;
+  if (!ae || ae === document.body || ae === document.documentElement) return false;
+  return ae === root || root.contains(ae);
+}
 
 export class FocusScope {
   /**
@@ -38,6 +49,16 @@ export class FocusScope {
       if (e.relatedTarget && root.contains(e.relatedTarget)) return;
       this.setFocused(false);
     };
+    // 文档级焦点同步：focusin / focusout 会冒泡，用于捕捉「焦点被移出容器但标志未更新」
+    this._onDocFocusIn = (e) => {
+      const t = e.target;
+      if (t && (t === root || root.contains(t))) this.setFocused(true);
+    };
+    this._onDocFocusOut = (e) => {
+      const rt = e.relatedTarget;
+      if (rt && (rt === root || root.contains(rt))) return; // 仍在容器内
+      if (this.focused) this.setFocused(false);
+    };
     this._onKeyDown = (e) => this._handleKey(e, true);
     this._onKeyUp = (e) => this._handleKey(e, false);
     this._onWindowBlur = () => {
@@ -47,9 +68,20 @@ export class FocusScope {
 
     root.addEventListener('focusin', this._onFocusIn);
     root.addEventListener('focusout', this._onFocusOut);
+    document.addEventListener('focusin', this._onDocFocusIn);
+    document.addEventListener('focusout', this._onDocFocusOut);
     root.addEventListener('keydown', this._onKeyDown);
     root.addEventListener('keyup', this._onKeyUp);
     window.addEventListener('blur', this._onWindowBlur);
+  }
+
+  /**
+   * 真实焦点状态：缓存标志 **且** document.activeElement 确实落在容器内。
+   * 两者都满足才算获得焦点。
+   */
+  isFocused() {
+    if (!this.focused) return false;
+    return hasFocusWithin(this.root);
   }
 
   setFocused(focused) {
@@ -85,7 +117,7 @@ export class FocusScope {
     if (!consumes) return;
 
     // 焦点不在作用域内 -> 一律放行，让浏览器 / 父页面正常处理
-    if (!this.focused) {
+    if (!this.isFocused()) {
       if (isDown) {
         this.root.dispatchEvent(
           new CustomEvent('gamekeyrejected', { detail: { key: e.key, code: e.code } }),
@@ -104,6 +136,8 @@ export class FocusScope {
   destroy() {
     this.root.removeEventListener('focusin', this._onFocusIn);
     this.root.removeEventListener('focusout', this._onFocusOut);
+    document.removeEventListener('focusin', this._onDocFocusIn);
+    document.removeEventListener('focusout', this._onDocFocusOut);
     this.root.removeEventListener('keydown', this._onKeyDown);
     this.root.removeEventListener('keyup', this._onKeyUp);
     window.removeEventListener('blur', this._onWindowBlur);
@@ -113,5 +147,5 @@ export class FocusScope {
 
 /** 当前是否允许键盘驱动游戏（用于 HUD 提示）。 */
 export function isKeyboardLive() {
-  return activeScope !== null && activeScope.focused;
+  return activeScope !== null && activeScope.isFocused();
 }

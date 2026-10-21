@@ -21,6 +21,7 @@ import {
   DIFFICULTIES,
   DIFFICULTY_ORDER,
   ENEMIES,
+  GRID,
   GRID_COLS,
   GRID_ROWS,
   TOTAL_WAVES,
@@ -36,6 +37,7 @@ import {
   serialize,
   startNextWave,
   stepDefense,
+  towerAt,
   towerById,
   upgradeCost,
   upgradeTower,
@@ -61,7 +63,7 @@ export function createDefenseView(): DefenseView {
   // ── DOM 骨架 ──
   const canvas = el('canvas', { class: 'defense__canvas', width: CANVAS_W, height: CANVAS_H, role: 'img', 'aria-label': '灯塔协议战场' });
   const overlay = el('div', { class: 'defense__overlay', hidden: true });
-  const board = el('div', { class: 'defense__board' }, [canvas, overlay]);
+  const board = el('div', { class: 'defense__board ds-canvas-frame' }, [canvas, overlay]);
 
   const statSigma = el('span', { class: 'stat__value', text: '0' });
   const statFlux = el('span', { class: 'stat__value', text: '0' });
@@ -178,13 +180,14 @@ export function createDefenseView(): DefenseView {
   ]);
 
   // ── 控制条 ──
-  const btnStart = el('button', { class: 'btn btn--primary', type: 'button', text: '立即开波 (Space)' });
-  const btnPause = el('button', { class: 'btn', type: 'button', text: '暂停 (P)' });
-  const btnSpeed = el('button', { class: 'btn', type: 'button', text: '速度 1×' });
-  const btnSave = el('button', { class: 'btn', type: 'button', text: '存档' });
-  const btnLoad = el('button', { class: 'btn', type: 'button', text: '读档' });
-  const btnReset = el('button', { class: 'btn btn--ghost', type: 'button', text: '重开' });
-  const btnMute = el('button', { class: 'btn btn--ghost', type: 'button', text: '静音' });
+  // data-act 为稳定标识：验收脚本按动作定位，不依赖按钮在 DOM 中的序号
+  const btnStart = el('button', { class: 'btn btn--primary', type: 'button', text: '立即开波 (Space)', 'data-act': 'start' });
+  const btnPause = el('button', { class: 'btn', type: 'button', text: '暂停 (P)', 'data-act': 'pause' });
+  const btnSpeed = el('button', { class: 'btn', type: 'button', text: '速度 1×', 'data-act': 'speed' });
+  const btnSave = el('button', { class: 'btn', type: 'button', text: '存档', 'data-act': 'save' });
+  const btnLoad = el('button', { class: 'btn', type: 'button', text: '读档', 'data-act': 'load' });
+  const btnReset = el('button', { class: 'btn btn--ghost', type: 'button', text: '重开', 'data-act': 'reset' });
+  const btnMute = el('button', { class: 'btn btn--ghost', type: 'button', text: '静音', 'data-act': 'mute' });
   const diffSelect = el('select', { class: 'select', 'aria-label': 'AI 难度档位' }) as HTMLSelectElement;
   for (const d of DIFFICULTY_ORDER) {
     const def = DIFFICULTIES[d];
@@ -194,8 +197,13 @@ export function createDefenseView(): DefenseView {
 
   const saveNote = el('span', { class: 'game__note', text: storageAvailable ? '存档写入本机 localStorage' : '当前环境不可写入 localStorage，刷新后进度不会保留' });
 
+  // 准备阶段是自动开波的：不显示倒计时的话，玩家只会看到「立即开波」突然变灰，
+  // 误以为按钮坏了。这里把下一波的状态常驻写在按钮旁边。
+  const startNote = el('span', { class: 'bar__countdown', text: '' });
+
   const bar = el('div', { class: 'game__bar' }, [
     btnStart,
+    startNote,
     btnPause,
     btnSpeed,
     btnSave,
@@ -268,6 +276,7 @@ export function createDefenseView(): DefenseView {
       syncBuildButtons();
     } else {
       state.selectedTower = null;
+      explainBuildFailure(col, row);
     }
     syncHud();
   };
@@ -330,6 +339,8 @@ export function createDefenseView(): DefenseView {
     state.assaultCountdown = def.assaultInterval;
     state.aiIntent = `难度切换为「${def.name}」：${def.desc}`;
     flash(`AI 难度：${def.name}`, '#a78bfa');
+    // 交还键盘焦点：否则下拉框会一直吃掉数字键与 Enter
+    diffSelect.blur();
     syncHud();
   });
 
@@ -376,7 +387,10 @@ export function createDefenseView(): DefenseView {
         state.selectedTower = existing.id;
         state.buildKind = null;
       } else if (state.buildKind) {
-        buildTower(state, state.buildKind, c.col, c.row);
+        const ok = buildTower(state, state.buildKind, c.col, c.row);
+        if (!ok) explainBuildFailure(c.col, c.row);
+      } else {
+        explainBuildFailure(c.col, c.row);
       }
       syncBuildButtons();
     }
@@ -385,8 +399,10 @@ export function createDefenseView(): DefenseView {
 
   // 方向键移动光标。
   // - 「刚按下」时立刻移动 1 格，保证轻点也有效（否则快速点按会被 60Hz 轮询漏掉）
-  // - 持续按住时先等 0.24s，再以 0.08s 的间隔自动重复
-  const CURSOR_REPEAT_DELAY = 0.24;
+  // - 持续按住时先等 0.40s，再以 0.08s 的间隔自动重复
+  //   连发延迟取 0.40s（常规桌面 UI 的重复延迟量级）：手指/键盘的「点一下」
+  //   即使稍慢也不会连跳多格；只有真正按住不动才会持续移动。
+  const CURSOR_REPEAT_DELAY = 0.4;
   const CURSOR_REPEAT_RATE = 0.08;
   let cursorRepeatTimer = 0;
 
@@ -525,6 +541,21 @@ export function createDefenseView(): DefenseView {
     state.bannerT = 1.6;
     void color;
   };
+
+  /** 建造失败时给出原因，避免玩家以为按键失灵。 */
+  function explainBuildFailure(col: number, row: number): void {
+    if (col < 0 || col >= GRID_COLS || row < 0 || row >= GRID_ROWS) return;
+    const cell = GRID[row]![col]!;
+    let reason = '此处无法建造';
+    if (cell === 'main') reason = '这是入侵航道，不能建造';
+    else if (cell === 'ash') reason = '这是灰烬航道，不能建造';
+    else if (cell === 'rock') reason = '岩块上无法建造';
+    else if (cell === 'beacon') reason = '灯塔所在格不能建造';
+    else if (cell === 'rift') reason = '灰烬裂隙所在格不能建造';
+    else if (towerAt(state, col, row)) reason = '这里已经有设施了';
+    flash(reason, '#ffd166');
+    audio.play('alarm');
+  }
 
   // ── HUD 同步 ──
   //
@@ -719,6 +750,14 @@ export function createDefenseView(): DefenseView {
     }
 
     btnStart.disabled = state.inWave || state.over !== null;
+    // 说明按钮为什么亮/灭
+    if (state.over) {
+      startNote.textContent = '本局已结束';
+    } else if (state.inWave) {
+      startNote.textContent = `第 ${state.wave} 波进行中`;
+    } else {
+      startNote.textContent = `${Math.max(0, Math.ceil(state.prepTimer))}s 后自动开波`;
+    }
   }
 
   // ── 生命周期 ──

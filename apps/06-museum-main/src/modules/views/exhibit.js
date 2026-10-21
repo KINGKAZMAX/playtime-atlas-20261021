@@ -35,7 +35,7 @@ export function renderExhibit(ctx, id) {
   ];
 
   return `
-<article class="exhibit-page" data-era="${escapeHtml(exhibit.era)}" style="--era-accent:${escapeHtml(era?.accent ?? '#FF6B2C')}">
+<article class="exhibit-page" data-era="${escapeHtml(exhibit.era)}" style="--era-accent:${escapeHtml(era?.accent ?? 'var(--ds-accent)')}">
   <nav class="crumbs" aria-label="面包屑">
     <a href="#/">馆前广场</a>
     <span aria-hidden="true">/</span>
@@ -68,16 +68,16 @@ export function renderExhibit(ctx, id) {
 
   <div class="exhibit-body">
     <section class="exhibit-main">
-      <h2 class="section-title">展品叙述</h2>
+      <h2 class="section-title" data-i18n="exhibit.narrative">展品叙述</h2>
       <p class="exhibit-text">${escapeHtml(exhibit.summary)}</p>
-      <h2 class="section-title">史实意义</h2>
+      <h2 class="section-title" data-i18n="exhibit.significance">史实意义</h2>
       <p class="exhibit-text">${escapeHtml(exhibit.significance)}</p>
 
-      <h2 class="section-title">来源与核对</h2>
+      <h2 class="section-title" data-i18n="exhibit.sources">来源与核对</h2>
       <p class="section-desc">以下为公开可查的资料入口。馆方叙述为原创改写，请以原始来源为准。</p>
       ${sourceList(exhibit)}
 
-      <h2 class="section-title">图片与素材许可</h2>
+      <h2 class="section-title" data-i18n="exhibit.license">图片与素材许可</h2>
       <p class="exhibit-text">${escapeHtml(exhibit.imageLicense)}</p>
       <p class="exhibit-text muted">本馆展签图形为程序化生成的原创 SVG，不含任何第三方商标或商业游戏素材。</p>
     </section>
@@ -110,7 +110,7 @@ export function renderExhibit(ctx, id) {
     related.length
       ? `<section class="section" aria-labelledby="related-title">
           <div class="section-head">
-            <h2 class="section-title" id="related-title">同展厅展品</h2>
+            <h2 class="section-title" id="related-title" data-i18n="exhibit.related">同展厅展品</h2>
             <a class="section-link" href="#/era/${encodeURIComponent(exhibit.era)}">查看全部 →</a>
           </div>
           <div class="grid grid--cards">

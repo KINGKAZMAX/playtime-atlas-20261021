@@ -94,27 +94,27 @@ export function drawDeviceScreen(
   const w = canvas.width;
   const h = canvas.height;
 
-  ctx.fillStyle = '#0b0f13';
+  ctx.fillStyle = '#100f0e';
   ctx.fillRect(0, 0, w, h);
 
   // swatch block
   ctx.fillStyle = hex;
   ctx.fillRect(14, 14, 78, 78);
-  ctx.strokeStyle = 'rgba(255,255,255,0.22)';
+  ctx.strokeStyle = 'rgba(247,244,240,0.24)';
   ctx.lineWidth = 2;
   ctx.strokeRect(14, 14, 78, 78);
 
   // readouts
-  ctx.fillStyle = '#ece9e2';
+  ctx.fillStyle = '#f7f4f0';
   ctx.font = '600 30px "Martian Mono", monospace';
   ctx.textBaseline = 'top';
   ctx.fillText(hex.replace('#', ''), 104, 18);
 
-  ctx.fillStyle = '#6d7781';
+  ctx.fillStyle = '#a79e97';
   ctx.font = '500 15px "JetBrains Mono", monospace';
   ctx.fillText(`λ ${String(peak).padStart(3, ' ')} nm`, 104, 56);
 
-  ctx.fillStyle = '#4fd8e8';
+  ctx.fillStyle = '#5fa99a';
   ctx.font = '500 15px "JetBrains Mono", monospace';
   ctx.fillText(label.toUpperCase().slice(0, 18), 104, 80);
 
@@ -130,7 +130,7 @@ export function drawDeviceScreen(
     ctx.fillStyle = `hsl(${hue} 85% ${34 + amp * 26}%)`;
     ctx.fillRect(gx + i, gy + gh - amp * gh, 1, amp * gh);
   }
-  ctx.strokeStyle = 'rgba(236,233,226,0.28)';
+  ctx.strokeStyle = 'rgba(247,244,240,0.28)';
   ctx.lineWidth = 1;
   ctx.strokeRect(gx, gy, gw, gh);
 }

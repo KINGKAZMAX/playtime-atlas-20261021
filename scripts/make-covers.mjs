@@ -223,13 +223,33 @@ function buildSvg(work, index) {
 function main() {
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'works.json'), 'utf8'));
   fs.mkdirSync(OUT, { recursive: true });
-  // 不发布的条目（publish=false）不生成封面：线上不该出现它们的痕迹
-  const publishable = manifest.works.filter((w) => w.publish !== false);
-  publishable.forEach((work, i) => {
+
+  // 真实截图封面优先：hall/cover-map.json 里有映射的作品，不生成通用 SVG 封面，
+  // 避免「程序化通用封面」覆盖真实截图（用户 2026-10-21 23:18 首页指令）。
+  let realCovers = new Set();
+  const coverMapFile = path.join(ROOT, 'hall', 'cover-map.json');
+  if (fs.existsSync(coverMapFile)) {
+    try {
+      const raw = JSON.parse(fs.readFileSync(coverMapFile, 'utf8'));
+      const bag = raw && typeof raw === 'object' && raw.covers && typeof raw.covers === 'object' ? raw.covers : raw;
+      realCovers = new Set(Object.keys(bag || {}));
+    } catch {
+      console.warn('[covers] cover-map.json 解析失败，按无真实封面处理');
+    }
+  }
+
+  // 不发布的条目（publish=false）不生成封面：线上不该出现它们的痕迹；
+  // deepLink 条目只交付独立深链，同样不出现在大厅里。
+  const publishable = manifest.works.filter((w) => w.publish !== false && w.deepLink !== true);
+  const needSvg = publishable.filter((w) => !realCovers.has(w.id));
+  needSvg.forEach((work, i) => {
     const file = path.join(OUT, `${work.id}.svg`);
     fs.writeFileSync(file, buildSvg(work, i + 1));
   });
-  console.log(`[covers] 生成 ${publishable.length} 张封面 → ${path.relative(ROOT, OUT)}`);
+  console.log(
+    `[covers] 生成 ${needSvg.length} 张通用封面 → ${path.relative(ROOT, OUT)}` +
+    `（真实截图封面 ${realCovers.size} 件不生成，避免覆盖）`
+  );
 }
 
 main();

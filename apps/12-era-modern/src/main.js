@@ -1,15 +1,16 @@
-import '@fontsource-variable/space-grotesk';
-import '@fontsource-variable/jetbrains-mono';
-
 import './styles/tokens.css';
 import './styles/base.css';
 import './styles/hall.css';
 import './styles/rhythm.css';
 import './styles/puzzle.css';
 import './styles/vr.css';
+// 中文排版修正层必须**最后**加载（与既有类名选择器特异度相同时靠顺序决胜）
+import './styles/cjk.css';
 
 import { getSettings, applySettingsToDocument } from './core/settings.js';
+import { preloadFonts } from './core/fonts.js';
 import { bus } from './core/bus.js';
+import { publishState } from './core/debug-state.js';
 import { buildShell } from './ui/shell.js';
 import { startRouter, onRouteChange, navigate } from './ui/router.js';
 import { clear, scrollToTop } from './core/dom.js';
@@ -46,6 +47,7 @@ function mountRoute(path) {
     navigate('/');
     return;
   }
+  publishState({ route: path, state: 'idle' });
   try {
     cleanup = factory(main) || null;
     scrollToTop();
@@ -63,6 +65,9 @@ function mountRoute(path) {
 function boot() {
   applySettingsToDocument(getSettings());
   bus.on('settings:change', (settings) => applySettingsToDocument(settings));
+
+  // 预热自托管字体（含 Canvas 用到的等宽体粗字重），避免绘制时静默回落系统字体
+  preloadFonts();
 
   buildShell();
   onRouteChange(mountRoute);

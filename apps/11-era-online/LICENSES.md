@@ -7,13 +7,16 @@
 ## 1. 结论先说
 
 **本目录交付的全部内容，其著作权均属于本任务的执行方（MiniMax Code / M3.1-Flash），
-以本仓库的许可证为准。目录内不包含任何需要额外授权才能分发的第三方素材。**
+以本仓库的许可证为准。目录内不包含任何需要额外授权才能分发的第三方素材；
+视觉层按 `16-design-system`（同批原创）以拷贝方式接入，随包分发的第三方资产仅有 SIL OFL 1.1 字体，许可全文随包，可自由再分发。**
 
 - ❌ 无 ROM、无游戏录像、无商业游戏截图
 - ❌ 无厂商 Logo、无品牌标识、无商标字体
-- ❌ 无第三方美术、音频、字体文件
+- ❌ 无第三方美术、音频文件
 - ❌ 无未授权的贴图 / 精灵图 / 音频采样
 - ❌ 无凭据、日志、私有文件
+- ✅ 唯一的第三方资产是 5 款 **SIL OFL 1.1** 自托管字体（见 §2.1），随包附许可全文
+- ✅ 设计系统 CSS（令牌层 / 组件层）为**同批原创**的逐字节拷贝，许可为「可自由使用与修改」
 
 ---
 
@@ -29,9 +32,34 @@
 | **全部音效**（`src/core/audio.ts`） | WebAudio **实时合成**（振荡器 + 包络 + 程序化噪声缓冲），无音频文件 | 本仓库许可证 |
 | **头部装饰画**（`src/shell/heroCanvas.ts`） | Canvas 2D 程序化绘制 | 本仓库许可证 |
 | **图标** | 内联 SVG（`index.html` 中的 favicon），原创绘制 | 本仓库许可证 |
-| **网页字体** | **不引入任何字体文件**，仅使用系统字体栈（`PingFang SC` / `Hiragino Sans GB` / `Microsoft YaHei` / `Noto Sans SC` / `system-ui` / `ui-monospace` 等） | 系统自带，不随本产物分发 |
+| **网页字体** | 见下方 §2.1：5 款 SIL OFL 1.1 字体（Space Grotesk / Inter / Space Mono ×2 / Noto Sans SC 子集），自 `16-design-system/fonts/` **拷贝**至 `public/assets/ds/fonts/`，**自托管、无 CDN、无外链** | SIL Open Font License 1.1（许可全文随包） |
+| **设计系统令牌层 / 组件层**（`public/assets/ds/tokens.css`、`components.css`） | `16-design-system/src/`，**逐字节拷贝、未修改** | 与本批同源原创（16 的 `LICENSES.md` §2 登记为「本项目原创，随本批交付，可自由使用与修改」） |
 | **依赖** | 仅 `vite@5.4.11` + `typescript@5.6.3` 两个 **devDependency** | MIT / Apache-2.0 |
 | **运行时依赖** | **零** | — |
+
+---
+
+## 2.1 自托管网页字体（改版接入，全部 OFL 1.1）
+
+字体文件取自 `16-design-system/fonts/`（同批 OFL 字体），按派单口径以**拷贝**方式接入：
+`16-design-system/fonts/` → 本目录 `public/assets/ds/fonts/`（构建后落到 `dist/assets/ds/fonts/`），
+**逐文件 sha256 与源文件一致、未改动一个字节**。许可全文随包复制到本目录 `licenses/`，
+并在 `public/assets/ds/fonts/` 内另存一份（与字体同目录发布）。
+
+| 字体 | 文件（`public/assets/ds/fonts/`） | 字节 | 字重 | 许可 | 许可全文 | 用途 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Space Grotesk | `space-grotesk-latin.woff2` | 34 788 | 300–700 | SIL OFL 1.1 | `licenses/OFL-space-grotesk.txt` | 展示字体（标题、区块标题） |
+| Inter | `inter-latin.woff2` | 132 684 | 100–900 | SIL OFL 1.1 | `licenses/OFL-inter.txt` | 正文字体 |
+| Space Mono Regular | `space-mono-regular.woff2` | 14 884 | 400 | SIL OFL 1.1 | `licenses/OFL-space-mono-regular.txt` | 年份 / 编号 / 等宽数字 |
+| Space Mono Bold | `space-mono-bold.woff2` | 15 000 | 700 | SIL OFL 1.1 | `licenses/OFL-space-mono-bold.txt` | 等宽强调 |
+| Noto Sans SC（子集） | `noto-sans-sc-subset.woff2` | 197 600 | 100–900 | SIL OFL 1.1 | `licenses/OFL-noto-sans-sc.txt` | 汉字渐进增强（覆盖有限，排在系统 CJK 栈之后） |
+
+- 清单与版权声明原文另见 `public/assets/ds/fonts/FONT-MANIFEST.json`（与 `licenses/FONT-MANIFEST.json` 同源）。
+- **运行期零外部请求**：全部字体随 `dist/` 本地分发，不引用任何 CDN / `fonts.googleapis.com`。
+- **字体回退顺序**：`--ds-font-*` 取自 16 的 `tokens.css` 原件 —— **覆盖完整的系统 CJK 族排在
+  覆盖有限的 Noto Sans SC 子集之前**，避免同一段文字混入两套度量不同的字形（混排基线错位）。
+- 展项 A / 展项 B 画布内使用的 5×7 点阵字形表（`src/core/pixelFont.ts`）是本任务**逐字手写**的 Canvas 绘制字形，
+  **不是 Web 字体**，不涉及任何字体授权。
 
 ---
 

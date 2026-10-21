@@ -80,12 +80,18 @@ export class GravityGame {
     this.audio = new AudioKit();
 
     this.scope = new FocusScope(root);
-    this.input = new InputState(this.scope, { codes: KEY_CODES });
+    this.input = new InputState(this.scope, {
+      codes: KEY_CODES,
+      // 只在游戏作用域内发生按键时才回调 —— 音频解锁也因此被限制在用户手势内
+      onActivity: () => this.audio.unlock(),
+    });
 
     const settings = load('gravity.settings', {}) || {};
     this.mode = settings.mode === '2p' ? '2p' : '1p';
     this.difficulty = DIFFICULTY[settings.difficulty] ? settings.difficulty : 'steady';
     this.best = load('gravity.best', { p1: 0, p2: 0 }) || { p1: 0, p2: 0 };
+    // 立即落盘设置：保证本机始终留有可核验的偏好记录
+    save('gravity.settings', { mode: this.mode, difficulty: this.difficulty });
 
     this.state = 'idle';
     this.stateTimer = 0;
@@ -119,6 +125,16 @@ export class GravityGame {
     this.bindLifecycle();
     this.renderOverlay();
     this.loop.start();
+  }
+
+  /** 玩家 1 飞船（只读引用，供自动化验收观察位置变化）。 */
+  get p1() {
+    return this.craft[0];
+  }
+
+  /** 玩家 2 飞船（只读引用）。 */
+  get p2() {
+    return this.craft[1];
   }
 
   makeCraft(index, angle) {
@@ -164,7 +180,7 @@ export class GravityGame {
     document.querySelectorAll('[data-control="pause"]').forEach((btn) => {
       btn.addEventListener('click', () => {
         this.audio.unlock();
-        if (this.state === 'playing') this.pause();
+        if (this.state === 'playing' || this.state === 'countdown') this.pause();
         else if (this.state === 'paused') this.resume();
       });
     });
@@ -223,19 +239,20 @@ export class GravityGame {
     this.difficulty = key;
     save('gravity.settings', { mode: this.mode, difficulty: this.difficulty });
     this.syncControls();
-    this.restart();
+    // 难度只影响 AI 表现与尾迹长度，可以即时生效；
+    // 不重开当前对局 —— 换难度不应该抹掉玩家的比分。
+    if (this.state === 'idle' || this.state === 'over') this.restart();
   }
 
   bindLifecycle() {
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden && this.state === 'playing') this.pause();
+      if (document.hidden && (this.state === 'playing' || this.state === 'countdown')) this.pause();
     });
     this.root.addEventListener('gameblur', () => {
       if (this.state === 'playing') this.pause();
     });
-    const unlock = () => this.audio.unlock();
-    window.addEventListener('pointerdown', unlock, { once: true });
-    window.addEventListener('keydown', unlock, { once: true });
+    // 音频解锁只在游戏容器内的交互里发生（不监听 window 级 keydown）
+    this.root.addEventListener('pointerdown', () => this.audio.unlock(), { once: true });
     this.canvas.addEventListener('pointerdown', (e) => {
       this.scope.focus();
       this.audio.unlock();
@@ -281,7 +298,10 @@ export class GravityGame {
   }
 
   pause() {
-    if (this.state !== 'playing') return;
+    // 倒计时阶段同样可以暂停 —— 否则「暂停」在开局前会失效，
+    // 自动化验收也无法把游戏真正冻结下来。
+    if (this.state !== 'playing' && this.state !== 'countdown') return;
+    this.resumeState = this.state; // 记住暂停前处于倒计时还是对局
     this.state = 'paused';
     this.renderOverlay();
     this.announce('已暂停');
@@ -289,7 +309,9 @@ export class GravityGame {
 
   resume() {
     if (this.state !== 'paused') return;
-    this.state = 'playing';
+    // 恢复到暂停前的阶段（倒计时继续走完，而不是直接跳进对局）
+    this.state = this.resumeState === 'countdown' ? 'countdown' : 'playing';
+    this.resumeState = null;
     this.overlay.hidden = true;
     this.scope.focus();
     this.announce('继续');
@@ -329,7 +351,7 @@ export class GravityGame {
       this.restart();
     }
     if (this.input.wasPressed('KeyP') || this.input.wasPressed('Escape')) {
-      if (this.state === 'playing') this.pause();
+      if (this.state === 'playing' || this.state === 'countdown') this.pause();
       else if (this.state === 'paused') this.resume();
     }
     if (this.input.wasPressed('Enter') && (this.state === 'idle' || this.state === 'over')) {
@@ -1032,8 +1054,8 @@ export class GravityGame {
         '你的<b style="color:#5ce1e6">光迹</b>就是武器——撞上对手的光迹会灼伤自己。';
       const otherLabel = this.mode === '1p' ? '切到双人同屏' : '切到单人 vs AI';
       this.overlayActions.innerHTML =
-        '<button class="btn btn--primary" data-act="play">开始对决</button>' +
-        `<button class="btn btn--ghost" data-act="switch">${otherLabel}</button>`;
+        '<button class="btn btn--primary ds-btn ds-btn--primary" data-act="play">开始对决</button>' +
+        `<button class="btn btn--ghost ds-btn ds-btn--ghost" data-act="switch">${otherLabel}</button>`;
       this.overlayActions.querySelector('[data-act="play"]').addEventListener('click', () => {
         this.audio.unlock();
         this.start();
@@ -1049,8 +1071,8 @@ export class GravityGame {
       this.overlayTitle.innerHTML = '暂停<em>中</em>';
       this.overlayDesc.textContent = '按 P 或 Esc 继续，按 R 重开。';
       this.overlayActions.innerHTML =
-        '<button class="btn btn--primary" data-act="resume">继续</button>' +
-        '<button class="btn btn--ghost" data-act="restart">重开</button>';
+        '<button class="btn btn--primary ds-btn ds-btn--primary" data-act="resume">继续</button>' +
+        '<button class="btn btn--ghost ds-btn ds-btn--ghost" data-act="restart">重开</button>';
       this.overlayActions.querySelector('[data-act="resume"]').addEventListener('click', () => this.resume());
       this.overlayActions.querySelector('[data-act="restart"]').addEventListener('click', () => this.restart());
       this.overlayMeta.textContent = '切到其他窗口会自动暂停';
@@ -1062,7 +1084,7 @@ export class GravityGame {
       this.overlayDesc.innerHTML =
         `最终比分 <b>${this.score[0]} : ${this.score[1]}</b><br>` +
         `历史最佳 ${this.best.p1} : ${this.best.p2}`;
-      this.overlayActions.innerHTML = '<button class="btn btn--primary" data-act="play">再来一场</button>';
+      this.overlayActions.innerHTML = '<button class="btn btn--primary ds-btn ds-btn--primary" data-act="play">再来一场</button>';
       this.overlayActions.querySelector('[data-act="play"]').addEventListener('click', () => {
         this.audio.unlock();
         this.start();

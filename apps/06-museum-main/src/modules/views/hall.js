@@ -1,12 +1,15 @@
 /**
  * 3D 展厅页面 · #/hall 与 #/hall/:hallId
  *
- * 若 hallId 对应 08—12 的某个可玩展厅，则在 3D 场景之上叠加该展厅的 iframe；
+ * 按 TASK.md 的 F9，3D 展厅是**独立路由 `#/hall`**：只有它挂 three.js 场景。
+ * `#/hall/:hallId` 是「在 3D 展厅语境里看某个可玩展项」的页面，只做嵌入，
+ * 不再额外占一个 WebGL 上下文——两个 WebGL 场景同时满负荷会把页面拖垮。
+ *
+ * 若 hallId 对应 08—12 的某个可玩展厅，则嵌入该展厅的 iframe；
  * 未并入时只显示说明，不提供假入口。
  */
 
 import { escapeHtml } from '../../core/format.js';
-import { emptyState } from '../components.js';
 
 export function renderHall(ctx, hallId) {
   const hall = hallId ? ctx.halls.find((h) => h.id === hallId) : null;
@@ -33,19 +36,6 @@ export function renderHall(ctx, hallId) {
   </p>
 </section>
 
-<div class="hall-stage" id="hall-stage">
-  <canvas id="hall-canvas" aria-label="3D 展厅可交互画布" role="img"></canvas>
-  <div class="hall-loading" id="hall-loading" role="status">正在点亮展厅灯光…</div>
-  <aside class="hall-panel" id="hall-panel" aria-live="polite">
-    <p class="hall-panel-hint">点击展柜查看该年代展品</p>
-  </aside>
-  <div class="hall-hud" aria-hidden="true">
-    <span class="mono">拖拽转视角</span>
-    <span class="mono">滚轮 / ↑↓ 移动</span>
-    <span class="mono">点击展柜</span>
-  </div>
-</div>
-
 ${
   hall
     ? `<section class="section" aria-labelledby="hall-embed-title">
@@ -63,7 +53,8 @@ ${
                <p class="embed-note">
                  上方是可玩展厅的实际内容。如果画面没有出现，请确认该展厅包已随
                  <span class="mono">public/exhibits/${escapeHtml(hall.targetDir)}/</span> 一并部署。
-               </p>`
+               </p>
+               <p><a class="btn btn-secondary" href="#/hall">回到 3D 长廊</a></p>`
             : `<div class="pending-box">
                  <p class="pending-title">待集成 · ${escapeHtml(hall.title)} 仍在制作中</p>
                  <p class="pending-text">
@@ -74,7 +65,20 @@ ${
                </div>`
         }
       </section>`
-    : `<section class="section">
+    : `<div class="hall-stage" id="hall-stage">
+        <canvas id="hall-canvas" aria-label="3D 展厅可交互画布" role="img"></canvas>
+        <div class="hall-loading" id="hall-loading" role="status">正在点亮展厅灯光…</div>
+        <aside class="hall-panel" id="hall-panel" aria-live="polite">
+          <p class="hall-panel-hint">点击展柜查看该年代展品</p>
+        </aside>
+        <div class="hall-hud" aria-hidden="true">
+          <span class="mono">拖拽转视角</span>
+          <span class="mono">滚轮 / ↑↓ 移动</span>
+          <span class="mono">点击展柜</span>
+        </div>
+      </div>
+
+      <section class="section">
         <h2 class="section-title">可玩展厅一览</h2>
         <div class="grid grid--halls">
           ${ctx.halls.map((h) => `
@@ -90,7 +94,7 @@ ${
 }`;
 }
 
-/** 挂载 3D 场景（失败时降级） */
+/** 挂载 3D 场景（失败时降级）。只有独立的 `#/hall` 路由才有舞台可挂。 */
 export async function mountHall(root, ctx, hallId) {
   const stage = root.querySelector('#hall-stage');
   const canvas = root.querySelector('#hall-canvas');
@@ -98,9 +102,12 @@ export async function mountHall(root, ctx, hallId) {
   const panel = root.querySelector('#hall-panel');
   if (!stage || !canvas) return;
 
-  // WebGL 能力检测
+  // WebGL 能力检测。探测用的上下文必须立刻释放——
+  // 浏览器对同时存活的 WebGL 上下文有数量上限，多留一个就可能挤掉展项的上下文。
   const probe = document.createElement('canvas');
-  const hasWebGL = !!(probe.getContext('webgl2') || probe.getContext('webgl'));
+  const probeCtx = probe.getContext('webgl2') || probe.getContext('webgl');
+  const hasWebGL = !!probeCtx;
+  probeCtx?.getExtension('WEBGL_lose_context')?.loseContext();
   if (!hasWebGL) {
     loading.innerHTML = '<p class="pending-title">当前浏览器未启用 WebGL</p><p class="pending-text">3D 展厅无法显示，展品仍可在 <a href="#/catalog">2D 无障碍目录</a> 中完整浏览。</p>';
     loading.classList.add('is-error');
@@ -116,6 +123,9 @@ export async function mountHall(root, ctx, hallId) {
     console.error('[hall] 加载失败', err);
     return;
   }
+
+  // 加载期间用户可能已切走：此时画布已脱离文档，不要再建场景
+  if (!stage.isConnected) return;
 
   const api = mod.buildHallScene(canvas, {
     eras: ctx.eras,

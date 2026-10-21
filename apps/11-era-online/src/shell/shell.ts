@@ -51,15 +51,52 @@ export function createShell(mount: HTMLElement): Shell {
     'aria-label': '程序化生成的点阵灯塔与连接节点装饰画面',
   }) as HTMLCanvasElement;
 
-  // ── 头部 ──
-  const nav = el('nav', { class: 'shell__nav', 'aria-label': '展厅导航' });
+  // ── 顶部导航（16-design-system 组件类 .ds-topbar） ──
+  const nav = el('nav', { class: 'ds-topbar__nav', 'aria-label': '展厅导航' });
+  const navLinks: HTMLAnchorElement[] = [];
   for (const s of SECTIONS) {
-    const a = el('a', { class: 'shell__navlink', href: `#${s.id}`, text: s.label });
+    const a = el('a', { class: 'ds-topbar__link', href: `#${s.id}`, text: s.label }) as HTMLAnchorElement;
     nav.append(a);
+    navLinks.push(a);
   }
 
+  // 当前分区高亮（DESIGN-SPEC §4.2：当前页链接用 aria-current 标注）
+  // 用滚动位置判定视口内的分区，不改导航文案。
+  const syncCurrentSection = (): void => {
+    let activeId = SECTIONS[0]?.id ?? '';
+    for (const s of SECTIONS) {
+      const node = document.getElementById(s.id);
+      if (!node) continue;
+      const r = node.getBoundingClientRect();
+      if (r.top <= window.innerHeight * 0.4 && r.bottom > window.innerHeight * 0.4) {
+        activeId = s.id;
+        break;
+      }
+    }
+    for (const a of navLinks) {
+      const on = a.getAttribute('href') === `#${activeId}`;
+      if (on) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    }
+  };
+  let navRaf = 0;
+  const onNavScroll = (): void => {
+    if (navRaf) return;
+    navRaf = requestAnimationFrame(() => {
+      navRaf = 0;
+      syncCurrentSection();
+    });
+  };
+  window.addEventListener('scroll', onNavScroll, { passive: true });
+  window.addEventListener('resize', onNavScroll, { passive: true });
+
+  const topbar = el('header', { class: 'ds-topbar' }, [
+    el('a', { class: 'ds-topbar__brand', href: '#intro', text: '联机曙光 LINK DAWN' }),
+    nav,
+  ]);
+
   const toggleSources = el('button', {
-    class: 'btn btn--ghost btn--sm',
+    class: 'btn btn--ghost btn--sm ds-btn ds-btn--sm',
     type: 'button',
     text: '高亮全部来源角标',
     'aria-pressed': 'false',
@@ -73,7 +110,6 @@ export function createShell(mount: HTMLElement): Shell {
       el('p', { class: 'brand__sub', text: '2000 – 2009 · PC · 掌机 · 联机' }),
     ]),
     el('div', { class: 'hero' }, [heroCanvas]),
-    nav,
   ]);
 
   // ── 诚信横幅 ──
@@ -298,21 +334,25 @@ export function createShell(mount: HTMLElement): Shell {
     ]),
   ]);
 
-  // ── 页脚 ──
-  const footer = el('footer', { class: 'shell__foot' }, [
+  // ── 页脚（16 组件类 .ds-footer） ──
+  const footer = el('footer', { class: 'ds-footer shell__foot' }, [
     el('p', { text: '联机曙光 LINK DAWN · 2000s 可玩展厅 · 任务 11-era-online' }),
     el('p', { class: 'shell__footnote', text: '静态子站，无运行时依赖，无在线接口；可嵌入 GitHub Pages 任意子路径。' }),
   ]);
 
   // ── 组装 ──
   const root = el('div', { class: 'shell' }, [
+    topbar,
     header,
     notice,
     el('main', { class: 'shell__main' }, [introSection, exhibitsSection, timelineSection, showcaseSection, sourcesSection]),
     footer,
   ]);
   clear(mount);
-  mount.append(root);
+  // 顶栏在内容容器之外，才能满宽并 sticky（DESIGN-SPEC §4.2）
+  mount.append(topbar, root);
+  // 首屏也要标出当前分区（否则直到用户滚动前，导航没有 aria-current）
+  requestAnimationFrame(syncCurrentSection);
 
   const stopHero = createHeroCanvas(heroCanvas);
 
@@ -344,6 +384,9 @@ export function createShell(mount: HTMLElement): Shell {
     getHandheldView: () => handheldView,
     destroy(): void {
       stopHero();
+      window.removeEventListener('scroll', onNavScroll);
+      window.removeEventListener('resize', onNavScroll);
+      if (navRaf) cancelAnimationFrame(navRaf);
       defenseView.destroy();
       handheldView.destroy();
     },

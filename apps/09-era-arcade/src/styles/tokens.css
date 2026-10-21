@@ -1,0 +1,273 @@
+/* =====================================================================
+ * 霓虹街廊 · 街机可玩展厅
+ * src/styles/tokens.css — 余晖设计系统 token 落地层
+ *
+ * 依据：16-design-system/design-tokens.json 与 DESIGN-SPEC.md
+ *  · 色彩：取 color.dark 组（本作品为夜间街机场景，暗色为唯一主题；
+ *    浅色组见 design-tokens.json，本作品不启用）。
+ *  · 分区色：color.section.dark* / toneFadeDark
+ *  · 画布 HUD 色：color.canvas.*（主题无关）
+ *  · 字体/字号/字重/字距：typography.*
+ *  · 间距：space.*      · 圆角：radius.*      · 阴影：shadow.*
+ *  · 动效：motion.*      · 层级：zIndex.*      · 布局：layout.*
+ *  · 无障碍：a11y.*      · 资源：asset.basePathVar
+ *
+ * 规则（DESIGN-SPEC §0 / MIGRATION-NOTES §0 风险 B、§2.0 09 行）：
+ *  · `--ds-*` 只在本文件声明一次；其它样式文件只允许声明语义别名。
+ *  · 暗色主题由 `[data-ds-theme="dark"]` 给出，**不写死在 :root**，
+ *    将来若支持浅色切换，只需新增 `[data-ds-theme="light"]` 覆盖块，
+ *    本块无需改动（依据 MIGRATION-NOTES §1.1-A2 / §2.0 09 行 ①）。
+ *  · 主题无关令牌（字体/间距/圆角/阴影/动效/层级/布局/无障碍）留在 `:root`。
+ *  · 本文件不引入外部资源；字体由 fonts.css 自托管。
+ *  · 画布内部色板（霓虹紫/青/品红等高饱和色）不进入本文件，
+ *    仍由 src/core/palette.js 提供，服务玩法辨识（红线 K.1）。
+ * ===================================================================== */
+
+/* =====================================================================
+ * 一、主题无关令牌
+ * ===================================================================== */
+:root {
+  /* ---------- 运行时基准路径（Pages 子路径适配，MIGRATION-NOTES §6） ---------- */
+  --ds-base: "";
+  --ds-font-display-src: var(--ds-base);
+
+  /* ---------- 字体族（typography.family） ----------
+     顺序与 16 规范一致：中文**优先系统栈**，自托管 Noto Sans SC 子集居后作兜底
+     （MIGRATION-NOTES §8「中文字体优先系统栈」） */
+  --ds-font-display: "Space Grotesk", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  --ds-font-text: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  --ds-font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ---------- 字号（typography.size） ---------- */
+  --ds-type-display: clamp(40px, 6.6vw, 84px);
+  --ds-type-h1: clamp(30px, 4.2vw, 52px);
+  --ds-type-h2: clamp(22px, 2.6vw, 32px);
+  --ds-type-h3: 20px;
+  --ds-type-h4: 17px;
+  --ds-type-lead: 19px;
+  --ds-type-body: 16px;
+  --ds-type-sm: 14px;
+  --ds-type-xs: 12.5px;
+  --ds-type-mono: 13px;
+
+  /* ---------- 行高（typography.lineHeight） ---------- */
+  --ds-lh-display: 1.08;
+  --ds-lh-tight: 1.22;
+  --ds-lh-snug: 1.35;
+  --ds-lh-normal: 1.6;
+  --ds-lh-relaxed: 1.75;
+  --ds-lh-mono: 1.45;
+
+  /* ---------- 字重（typography.weight） ---------- */
+  --ds-w-regular: 400;
+  --ds-w-medium: 500;
+  --ds-w-semibold: 600;
+  --ds-w-bold: 700;
+
+  /* ---------- 字距（typography.tracking） ---------- */
+  --ds-track-display: -0.03em;
+  --ds-track-body: -0.005em;
+  --ds-track-cjk: 0;
+  --ds-track-mono: 0.02em;
+  --ds-track-caps: 0.08em;
+
+  /* ---------- 间距（space） ---------- */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 24px;
+  --ds-space-6: 32px;
+  --ds-space-7: 48px;
+  --ds-space-8: 64px;
+  --ds-space-9: 96px;
+  --ds-space-10: 128px;
+  --ds-space-gutter: clamp(16px, 4vw, 48px);
+  --ds-space-rail-gap: 12px;
+  --ds-space-section-top: clamp(56px, 9vh, 104px);
+  --ds-space-section-bottom: clamp(40px, 8vh, 88px);
+
+  /* ---------- 圆角（radius） ---------- */
+  --ds-radius-xs: 6px;
+  --ds-radius-sm: 10px;
+  --ds-radius-md: 14px;
+  --ds-radius-lg: 20px;
+  --ds-radius-xl: 28px;
+  --ds-radius-pill: 999px;
+  --ds-radius-media: clamp(16px, 2vw, 28px);
+  --ds-radius-control: 999px;
+
+  /* ---------- 阴影（shadow） ---------- */
+  --ds-shadow-1: 0 1px 2px rgba(20, 17, 15, 0.05);
+  --ds-shadow-2: 0 4px 16px rgba(20, 17, 15, 0.07);
+  --ds-shadow-3: 0 12px 40px rgba(20, 17, 15, 0.1);
+  --ds-shadow-4: 0 24px 80px rgba(20, 17, 15, 0.16);
+  --ds-ring: inset 0 0 0 1px var(--ds-line);
+  --ds-ring-strong: inset 0 0 0 1px var(--ds-line-strong);
+  --ds-focus-ring: 0 0 0 2px var(--ds-bg), 0 0 0 4px var(--ds-accent);
+
+  /* ---------- 动效（motion） ---------- */
+  --ds-dur-instant: 120ms;
+  --ds-dur-fast: 200ms;
+  --ds-dur-base: 320ms;
+  --ds-dur-slow: 520ms;
+  --ds-dur-reveal: 800ms;
+  --ds-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ds-ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --ds-ease-veil: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-ease-spring: cubic-bezier(0.34, 1.42, 0.64, 1);
+  --ds-ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+  --ds-stagger-step: 60ms;
+  /* 入场动效（motion.entry）：位移 24px + 透明度 + 轻微模糊，禁用旋转 */
+  --ds-entry-translate: 24px;
+  --ds-entry-blur: 6px;
+  --ds-entry-duration: 640ms;
+  --ds-in-delay: 0ms; /* 入场交错延迟：由 JS 按索引覆写 */
+
+  /* ---------- 层级（zIndex） ---------- */
+  --ds-z-base: 0;
+  --ds-z-raised: 10;
+  --ds-z-sticky: 100;
+  --ds-z-rail: 200;
+  --ds-z-overlay: 300;
+  --ds-z-modal: 400;
+  --ds-z-toast: 500;
+
+  /* ---------- 布局（layout） ---------- */
+  --ds-max-width: 1280px;
+  --ds-max-width-wide: 1600px;
+  --ds-read-width: 68ch;
+  --ds-rail-width: 132px;
+  --ds-rail-inset: 24px;
+  --ds-section-height: 100dvh;
+  --ds-grid-gutter: var(--ds-space-gutter);
+  --ds-grid-gap: var(--ds-space-5);
+  --ds-rail-scale: 1; /* 景深式导航轨：由 JS 按距当前项的距离覆写 */
+  --ds-rail-blur: 0px;
+  --ds-work-dim: rgba(128, 128, 128, 0.3);
+
+  /* ---------- 无障碍（a11y） ---------- */
+  --ds-contrast-text: 4.5;
+  --ds-contrast-large: 3;
+  --ds-contrast-ui: 3;
+  --ds-target-min: 44px; /* 主控件目标（AAA 2.5.5），与 16 规范一致 */
+  --ds-focus-width: 2px;
+  --ds-focus-offset: 2px;
+
+  /* ---------- 画布与 HUD（color.canvas，主题无关） ---------- */
+  --ds-canvas-hud-bg: rgba(16, 15, 14, 0.72);
+  --ds-canvas-hud-ink: #f7f4f0;
+  --ds-canvas-hud-line: rgba(247, 244, 240, 0.24);
+  --ds-canvas-scrim: rgba(16, 15, 14, 0.55);
+  --ds-danger: #c2452b;
+  --ds-success: #3f7a4e;
+  --ds-warning: #b07a1e;
+  --ds-info: #2c5c8f;
+}
+
+/* =====================================================================
+ * 二、暗色主题（本作品唯一主题）
+ *
+ * 依据 MIGRATION-NOTES §1.1-A2 / §2.0（09-era-arcade 行 ①）：
+ * 暗色主题由 [data-ds-theme="dark"] 给出，不写死在 :root。
+ * <html> 在 index.html 中静态带 data-ds-theme="dark"，
+ * src/main.js 另有一行兜底（属性被外部移除时补回），因此不会出现主题丢失。
+ *
+ * 取值逐项抄自 design-tokens.json 的 color.dark 组与 color.section 组的深色取值。
+ * ===================================================================== */
+[data-ds-theme="dark"] {
+  /* ---------- 色彩（color.dark） ---------- */
+  --ds-bg: #100f0e;
+  --ds-bg-raised: #1a1917;
+  --ds-bg-sunken: #0b0a09;
+  --ds-ink: #f7f4f0;
+  --ds-ink-soft: #c0b7b0;
+  --ds-ink-faint: #9a918a;
+  --ds-line: #2b2926;
+  --ds-line-strong: #453f39;
+  --ds-surface: #1e1d1b;
+  --ds-accent: #e0684a;
+  --ds-accent-hover: #ee8266;
+  --ds-accent-soft: #331c15;
+  --ds-accent-ink: #17110f;
+  --ds-jade: #5fa99a;
+  --ds-jade-soft: #16211e;
+  --ds-overlay: rgba(8, 7, 6, 0.62);
+
+  /* ---------- 分区色（color.section，深色取值） ---------- */
+  --ds-section-ink: #f7f4f0;
+  --ds-section-soft: rgba(247, 244, 240, 0.78);
+  --ds-section-faint: rgba(247, 244, 240, 0.46);
+  --ds-section-bg: var(--ds-bg);
+  --ds-tone-fade: #141311;
+  --ds-glow: var(--ds-bg);
+  --ds-section-radius-scale: 1;
+
+  /* 画布 HUD 底：暗色主题下压深一档（与 16 的暗色主题块、02 / 06 / 12 目录一致） */
+  --ds-canvas-hud-bg: rgba(8, 7, 6, 0.78);
+}
+
+/* ---------------------------------------------------------------------
+ * 中文排版（DESIGN-SPEC §2.3 / MIGRATION-NOTES §5）：
+ * 负字距会压垮汉字字面，归零；正文行高放宽到 1.85，标题 1.22；
+ * 禁止 justify；长英文/URL 仍可断行。
+ * ------------------------------------------------------------------ */
+:lang(zh),
+:lang(zh-CN),
+:lang(zh-TW) {
+  letter-spacing: var(--ds-track-cjk);
+  line-height: var(--ds-lh-relaxed);
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+:lang(zh) .ds-display,
+:lang(zh) .ds-h1,
+:lang(zh) .ds-h2,
+:lang(zh) .ds-h3 {
+  font-weight: var(--ds-w-medium);
+  line-height: var(--ds-lh-tight);
+}
+
+:lang(zh) .ds-body,
+:lang(zh) .ds-lead,
+:lang(zh) .ds-sm {
+  line-height: 1.85;
+}
+
+/* ---------------------------------------------------------------------
+ * 降级（DESIGN-SPEC §12 / MIGRATION-NOTES §7 · 硬性）
+ * 必须关闭：入场位移与模糊、导航轨景深、灯箱位移、圆点形变、平滑滚动。
+ * 必须保留：焦点环、hover 的背景色变化（≤1ms 等效即时切换）。
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ds-dur-instant: 1ms;
+    --ds-dur-fast: 1ms;
+    --ds-dur-base: 1ms;
+    --ds-dur-slow: 1ms;
+    --ds-dur-reveal: 1ms;
+    --ds-entry-duration: 1ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ds-in {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .ds-rail__item {
+    filter: blur(0) !important;
+  }
+}

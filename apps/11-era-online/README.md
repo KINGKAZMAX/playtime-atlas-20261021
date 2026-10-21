@@ -4,6 +4,12 @@
 
 一个**纯静态、零运行时依赖**的年代展厅子站。包含两件完全原创的可玩展项，以及一份逐条挂来源链接的 2000 年代史料导览。
 
+> **视觉语言**：按 `16-design-system`（余晖设计系统）接入 —— 令牌层 / 组件层 / 自托管 OFL 字体
+> 以**逐字节拷贝**方式放在 `public/assets/ds/`（构建后落到 `dist/assets/ds/`），
+> 外壳使用官方组件类（`.ds-topbar` / `.ds-footer` / `.ds-canvas-frame` / `.ds-skip` / `.ds-btn`）。
+> 改版只换**视觉**，不改作品名、文案与玩法；两个展项**画布内部的配色**按红线保持原样（可玩性优先）。
+> 逐项替换台账见 [`RESTYLE-INVENTORY.md`](./RESTYLE-INVENTORY.md)。
+
 ---
 
 ## ⚑ 最重要的一件事：这是本地单机
@@ -27,9 +33,9 @@
 | 资源 | 「晶格 Σ」（击杀与过关获得，用于建造/升级）+「能量 Φ」（随时间回复，仅用于升级） |
 | 建造 | 4 种塔：**脉冲塔 / 霜凝场 / 磁轨炮 / 谐振塔**，各有 3 级，数值、射程与索敌策略互不相同 |
 | 效果类型 | 单体高射速、范围溅射+减速、远程重击、连锁+邻塔增伤 |
-| 波次 | 18 波；第 6/12/18 波为精英/首领波；开局前可预览下一波构成 |
+| 波次 | 18 波；第 6/12/18 波为精英/首领波；开局前可预览下一波构成；准备阶段倒计时归零会**自动开波**，控制条常驻提示「Ns 后自动开波」，也可随时按 `Space` 提前出击换取额外晶格 |
 | 胜负 | 守住第 18 波 = 胜利；灯塔耐久归零 = 失败；两种结局都有结算面板 |
-| AI 对手 | 「灰烬协议」走**灰烬航道**从另一方向施压，会读取你的灯塔耐久、储备与裂隙周边布防来选择编队（试探 / 渗透 / 重装 / 常规），突击前有倒计时预警并实时播报意图 |
+| AI 对手 | 「灰烬协议」走**灰烬航道**从另一方向施压，会读取你的灯塔耐久、储备与裂隙周边布防来选择编队（试探 / 渗透 / 重装 / 常规），突击前有倒计时预警并实时播报意图；突击走**独立时钟**，在准备阶段也会真正落地 |
 | 难度 | 谨慎 / 标准 / 激进（改变 AI 资源增速、突击间隔与编队强度） |
 | 暂停 | `P` / `Esc`；暂停时模拟完全冻结 |
 | 存读档 | `localStorage`，含波次、资源、塔、难度、统计 |
@@ -91,6 +97,11 @@ npm run start      # 一键：装依赖 → 构建 → 预览
   可直接放进 GitHub Pages 的**任意子路径**，无需改配置。
 - 产物是纯静态文件，无服务端依赖、无环境变量、无运行时 API。
 - 建议部署到仓库的 `11-era-online/` 子目录，对应 Pages 路径 `/<repo>/11-era-online/`。
+- **必须保留 `dist/assets/ds/`**（16 的令牌层 / 组件层 / 自托管字体，含 5 份 OFL 许可全文）：
+  页面通过 `<link>` 相对引用它，缺失会导致整体视觉与字体失效。
+- `index.html` 内有唯一一处路径常量 `--ds-base: "/playtime-atlas-20261021/"`，
+  指向本批指定的线上仓库前缀。**若实际仓库名不同，只需改这一处**；
+  其余引用（`<link>` / `<script>` / CSS `url()`）均为相对路径，不受影响。
 
 ### 给 06-museum-core（主站嵌入）
 
@@ -107,11 +118,26 @@ npm run start      # 一键：装依赖 → 构建 → 预览
 
 ```
 11-era-online/
-├── index.html               入口
+├── index.html               入口（含 ds 资源 <link>、--ds-base、.ds-skip）
 ├── package.json / vite.config.js / tsconfig.json
-├── scripts/start.sh         一键启动
+├── public/
+│   └── assets/ds/          16-design-system 原件拷贝（逐字节一致）
+│       ├── tokens.css      令牌层（--ds-*，深色主题）
+│       ├── components.css  组件层（.ds-topbar / .ds-footer / .ds-canvas-frame …）
+│       └── fonts/          fonts.css + 5 款 woff2 + FONT-MANIFEST.json + OFL 许可全文
+├── scripts/
+│   ├── start.sh               一键启动（安装 → 构建 → 预览）
+│   ├── acceptance.cjs         实机验收脚本（53 项断言，需自行安装 playwright，不参与构建）
+│   ├── spotcheck-6.cjs        定点取证脚本（键盘建造 / 升级 / 对话角标 6 项原始数值）
+│   ├── restyle-check.cjs      改版自检脚本（20 项断言：视口 / ds 资源 / 组件类 / 无障碍）
+│   └── ds-conformance.cjs     §9 规范机械复核（14 项：V.3/V.11/V.12/V.13 + §7 + §4.2 + §5.1）
 ├── src/
 │   ├── main.ts              应用入口
+│   ├── styles/
+│   │   ├── base.css         语义别名层（--font-sans → --ds-font-text 等）+ 重置 + 通用组件
+│   │   ├── shell.css        展厅外壳
+│   │   ├── defense.css      展项 A 外壳（画布内部不动）
+│   │   └── handheld.css     展项 B 外壳（掌机机身色板不动）
 │   ├── core/                共享引擎
 │   │   ├── loop.ts          固定步长主循环（暂停 / 倍速 / 后台挂起）
 │   │   ├── input.ts         键盘 + 触屏虚拟键统一输入层
@@ -130,11 +156,12 @@ npm run start      # 一键：装依赖 → 构建 → 预览
 │   ├── games/
 │   │   ├── defense/         展项 A：types / config / sim / ai / render / view
 │   │   └── handheld/        展项 B：world / sim / render / view
-│   └── styles/              base / shell / defense / handheld
+├── licenses/               字体许可全文（OFL 1.1）+ FONT-MANIFEST
 ├── screenshots/             实机截图
 ├── QA.md                    验收记录
 ├── SOURCES.md               史料台账与抓取方法
 ├── LICENSES.md              资产许可与授权边界
+├── RESTYLE-INVENTORY.md     改版「待替换清单」与落地台账
 ├── HANDOFF.md               给 06 / 14 的集成说明
 ├── manifest.json
 ├── TASK.md / STATUS.md
@@ -164,3 +191,8 @@ npm run start      # 一键：装依赖 → 构建 → 预览
 3. 展项 A 的**完整通关**（18 波）需要玩家主动投入，验收时以白盒方式验证了胜负判定逻辑。
 4. 展项 B 的地图为 20×18 格手工排布，属于**微型**探索区域，不是大地图。
 5. 本任务**不部署**；上线由 `14-publish` 统一执行。
+6. `public/assets/ds/` 是 16 设计系统的**人工拷贝**，未接构建期自动同步；
+   16 后续更新令牌/组件/字体时需要重新拷贝并复跑验收。
+7. 改版自检与 §9 规范复核只跑了 Chromium，未做 Firefox / Safari 实测。
+8. 掌机 DOM 文字色 `--pocket-text: #b8848e` 属本批自定（在 `#9a6a74` 基础上同色相提亮，
+   目的是满足 §4.2 的 HUD 文字 ≥4.5:1），**非参考站实测值**；机身色阶与画布点阵色板保持原值。

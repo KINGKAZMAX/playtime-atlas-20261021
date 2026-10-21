@@ -32,10 +32,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1951",
    "infobox_platforms": [],
    "infobox_creator": null,
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -142,12 +142,12 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1959",
    "infobox_platforms": [
     "PDP 18-bit"
    ],
    "infobox_creator": "Digital Equipment Corporation",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -227,10 +227,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1968",
    "infobox_platforms": [],
    "infobox_creator": null,
-   "year_match_infobox": null
+   "year_match_infobox": false
   },
   "status": "ok"
  },
@@ -605,10 +605,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1972",
    "infobox_platforms": [],
    "infobox_creator": "Sanders Associates",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -777,10 +777,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1976",
    "infobox_platforms": [],
    "infobox_creator": "Jerry Lawson",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -858,10 +858,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1977",
    "infobox_platforms": [],
    "infobox_creator": "Atari, Inc.",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -1259,10 +1259,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1972",
    "infobox_platforms": [],
    "infobox_creator": "Sanders Associates",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -1301,10 +1301,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1980",
    "infobox_platforms": [],
    "infobox_creator": "Commodore Business Machines",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -1350,10 +1350,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1980",
    "infobox_platforms": [],
    "infobox_creator": "Nintendo R&D1",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -1397,10 +1397,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1982",
    "infobox_platforms": [],
    "infobox_creator": "Sinclair Research",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -1467,10 +1467,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1982",
    "infobox_platforms": [],
    "infobox_creator": "Coleco",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -1504,10 +1504,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1983",
    "infobox_platforms": [],
    "infobox_creator": "Nintendo R&D2",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -1541,10 +1541,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1983",
    "infobox_platforms": [],
    "infobox_creator": "Nintendo R&D2",
-   "year_match_infobox": null
+   "year_match_infobox": false
   },
   "status": "ok"
  },
@@ -1580,10 +1580,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1985",
    "infobox_platforms": [],
    "infobox_creator": "Commodore International (until 1994)Escom AG (1995–1996)QuikPak (– circa|1998 )",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -1618,10 +1618,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1985",
    "infobox_platforms": [],
    "infobox_creator": "Sega",
-   "year_match_infobox": null
+   "year_match_infobox": false
   },
   "status": "ok"
  },
@@ -1671,10 +1671,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1988",
    "infobox_platforms": [],
    "infobox_creator": "Sega",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -2220,10 +2220,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1990",
    "infobox_platforms": [],
    "infobox_creator": "Nintendo R&D2",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -2272,10 +2272,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1993",
    "infobox_platforms": [],
    "infobox_creator": "The 3DO Company",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -2321,10 +2321,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1993",
    "infobox_platforms": [],
    "infobox_creator": "Atari Corporation",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -2376,10 +2376,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1994",
    "infobox_platforms": [],
    "infobox_creator": "Sony Computer Entertainment",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -2428,10 +2428,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1994",
    "infobox_platforms": [],
    "infobox_creator": "Sega",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -2487,10 +2487,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1996",
    "infobox_platforms": [],
    "infobox_creator": "Nintendo R&D3",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -2536,10 +2536,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1995",
    "infobox_platforms": [],
    "infobox_creator": "Nintendo R&D1",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -2588,10 +2588,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "1998",
    "infobox_platforms": [],
    "infobox_creator": "Sega",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -3168,10 +3168,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2001",
    "infobox_platforms": [],
    "infobox_creator": "Microsoft",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -3222,10 +3222,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2001",
    "infobox_platforms": [],
    "infobox_creator": "Nintendo",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -3261,10 +3261,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2004",
    "infobox_platforms": [],
    "infobox_creator": "Sony Computer Entertainment",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -3357,10 +3357,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2006",
    "infobox_platforms": [],
    "infobox_creator": "Sony Computer Entertainment",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -3400,10 +3400,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2006",
    "infobox_platforms": [],
    "infobox_creator": "Nintendo IRD",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -4036,10 +4036,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2010",
    "infobox_platforms": [],
    "infobox_creator": "Apple",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -4076,10 +4076,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2011",
    "infobox_platforms": [],
    "infobox_creator": "Nintendo Research & Engineering",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -4134,10 +4134,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2011",
    "infobox_platforms": [],
    "infobox_creator": "Sony Computer Entertainment",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -4189,10 +4189,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2013",
    "infobox_platforms": [],
    "infobox_creator": "Ouya, Inc. (formerly Boxer8, Inc.)",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -4249,10 +4249,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2013",
    "infobox_platforms": [],
    "infobox_creator": "Sony Interactive Entertainment",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -4313,10 +4313,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2013",
    "infobox_platforms": [],
    "infobox_creator": "Microsoft",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -4981,10 +4981,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2020",
    "infobox_platforms": [],
    "infobox_creator": "Sony Interactive Entertainment",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -5033,10 +5033,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2017",
    "infobox_platforms": [],
    "infobox_creator": "Nintendo PTD",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -5087,10 +5087,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2022",
    "infobox_platforms": [],
    "infobox_creator": "Valve Corporation",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -5179,10 +5179,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2019",
    "infobox_platforms": [],
    "infobox_creator": "Oculus VR",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },
@@ -5229,10 +5229,10 @@
    "lead_found": true,
    "year_in_lead": true,
    "year_in_article": true,
-   "infobox_year": null,
+   "infobox_year": "2024",
    "infobox_platforms": [],
    "infobox_creator": "Apple",
-   "year_match_infobox": null
+   "year_match_infobox": true
   },
   "status": "ok"
  },

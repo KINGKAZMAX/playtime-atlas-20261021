@@ -1,36 +1,83 @@
 {
   "id": "05-museum-research",
   "title": "游戏博物馆联网策展研究",
-  "description": "为「回响电玩馆 / PLAYTIME ATLAS」提供的联网策展底稿：14 个真实游戏博物馆/时间线/可玩展览的横向比较，以及 140 条覆盖 1950s 实验游戏至 2020s VR/独立游戏的代表硬件与作品目录（每条附年代、平台、创作者与可点击来源）。交付 catalog.json / SOURCES.md / REFERENCE-DESIGN.md 与给 06 的首批 20 条切片。",
-  "entry": "catalog.json",
-  "buildCommand": "python3 scripts/build_catalog.py",
-  "outputDir": ".",
-  "status": "completed",
+  "description": "为「回响电玩馆 / PLAYTIME ATLAS」提供的联网策展底稿：14 个真实游戏博物馆/时间线/可玩展览的横向比较，以及 139 条覆盖 1950s 实验游戏至 2020s VR/独立游戏的代表硬件与作品目录（每条附年代、平台、创作者与可点击来源）。交付 catalog.json / SOURCES.md / REFERENCE-DESIGN.md、策展目录页自有源码（已按 16 设计系统改版，dist/catalog.html）与给 06 的首批 20 条切片。",
+  "entry": "dist/catalog.html",
+  "buildCommand": "node src/catalog-page/build-catalog-page.mjs",
+  "outputDir": "dist",
+  "status": "ready",
   "upstream": "05-museum-research",
-  "license": {
-    "code": "MIT",
-    "assets": "文本条目与来源链接；配图为程序化抽象图形"
+  "dataEntry": "catalog.json",
+  "restyle": {
+    "spec": "15-supervisor/RESTYLE-SPEC.md + 16-design-system/DESIGN-NOTES（DESIGN-SPEC.md / design-tokens.json / preview.html / MIGRATION-NOTES.md）",
+    "stage": "step-2-complete",
+    "step2DoneAt": "2026-10-21T20:31+08:00 (16 规范落盘) / 2026-10-21 晚 完成执行",
+    "checklist": "RESTYLE-CHECKLIST.md",
+    "i18nKeys": "i18n/catalog-keys.md",
+    "selfTest": "evidence/restyle-selftest.json",
+    "designSystemCheck": "evidence/ds-verify.json",
+    "visualDiff": "evidence/restyle-visual-diff.json",
+    "dsAssets": "src/catalog-page/assets/ds/（tokens.css + components.css + fonts/，与 16 原件逐字节一致）",
+    "note": "第 1 步（清点 + 清单 + 双语 key 骨架）与第 2 步（增量改版）均已完成。改版后页面层直接消费 26 个 16 令牌，139 条数据密集区密度未被压缩（行高 59px / 标题 20px / 年份 13px mono）。本目录不含任何「olek.si 风格」实测结论——改版依据只有 16 的产物。原 §11.3 的 Noto Sans SC 子集顺序偏差已于 2026-10-21 22:25 由 16 上游修正，本地覆写已删除，自有 CSS 不声明任何 --ds-* 变量。 字体栈顺序已按 16 的上游修正落为 A.10/A.11 守卫（审计 12 项全通过）。 23:1x 起自测探针已按 16 的门禁修复同源加固（轮询等待 + 有界重试 + 显式告警），探针超时归类为 harness、不计产品失败。 00:05 15-supervisor 独立核验后：重同步 fonts/FONT-MANIFEST.json（16 于 22:49 更新过），三个关键文件 tokens.css / fonts.css / FONT-MANIFEST.json 现均与 16 原件逐字节一致；新增 A.13「DS 资产全量逐字节一致」（src 副本 + dist 产物 vs 16 原件，共 14 个资产文件），审计 13 项全通过。 00:2x 起全部验收探针已迁移到 ego-browser（ego_probe.py + 四个 template + page_probe.mjs），原自行 spawn Chrome 的 selftest_browser.mjs / ds_verify.mjs / capture_refs.sh 已删除，仓库内无其他浏览器路径。",
+    "durationAudit": "evidence/ds-duration-audit.json",
+    "dsPreviewGate": "evidence/ds-verify-preview/preview-verification.json",
+    "browserDriver": "ego-browser（唯一浏览器入口；见 RESTYLE-CHECKLIST.md §11.10）"
   },
-  "sources": [
-    {
-      "title": "来源台账 SOURCES.md（随 05 交付）",
-      "url": "",
-      "note": "每条至少一条可访问来源 URL。"
-    }
-  ],
   "entryFiles": [
+    "dist/catalog.html",
+    "dist/catalog.css",
+    "src/catalog-page/build-catalog-page.mjs",
+    "src/catalog-page/catalog.css",
+    "src/catalog-page/assets/ds/tokens.css",
+    "src/catalog-page/assets/ds/components.css",
+    "src/catalog-page/assets/ds/fonts/fonts.css",
     "catalog.json",
     "catalog.meta.json",
     "SOURCES.md",
     "REFERENCE-DESIGN.md",
-    "handoff/first-20.json"
+    "RESTYLE-CHECKLIST.md",
+    "i18n/catalog-keys.md",
+    "README.md",
+    "QA.md",
+    "LICENSES.md",
+    "STATUS.md",
+    "TASK.md",
+    "handoff/first-20-stratified.json",
+    "handoff/first-20-stratified-ids.json",
+    "handoff/first-20.json",
+    "handoff/first-20-ids.json",
+    "handoff/INTEGRATION.md",
+    "handoff/CATALOG-PAGE-HANDOFF.md",
+    "screenshots/INDEX.tsv"
   ],
   "artifacts": {
-    "catalogItems": 140,
+    "catalogItems": 139,
     "eras": 7,
     "referenceSites": 14,
     "screenshots": "screenshots/",
-    "rawFetchData": "data/raw_sources.json"
+    "rawFetchData": "data/raw_sources.json",
+    "scripts": 23,
+    "catalogPage": "dist/catalog.html",
+    "catalogStylesheet": "dist/catalog.css",
+    "restyleTokens": 78,
+    "selfTestChecks": 23,
+    "selfTestPassed": 23,
+    "restyleTokensPre": 78,
+    "restyleTokensPost": 26,
+    "designSystemChecks": 14,
+    "designSystemPassed": 14,
+    "visualDiffChecks": 4,
+    "visualDiffPassed": 4,
+    "dsFonts": [
+      "Inter",
+      "Space Grotesk",
+      "Space Mono",
+      "Noto Sans SC (subset)"
+    ],
+    "durationAuditChecks": 13,
+    "durationAuditPassed": 13,
+    "dsPreviewGateErrors": 0,
+    "dsPreviewGateWarnings": 0
   },
   "consumers": [
     "06-museum-core",
@@ -43,5 +90,5 @@
     "13-qa-curation",
     "14-publish"
   ],
-  "notes": "纯资料任务，无前端构建步骤。buildCommand 为可选的目录重建命令（从 data/ 重新生成 catalog.json 与 SOURCES.md），直接分发目录即可使用。部署由 14-publish 负责。"
+  "notes": "资料任务为主（catalog.json 可直接分发使用），同时保有目录页（/research/catalog.html）的自有源码与构建步骤，便于按 16 的设计规范做增量视觉改版。buildCommand 只产出 dist/catalog.html 与 dist/catalog.css；catalog.json 的重建命令仍是 python3 scripts/build_catalog.py。handoff 同时提供分层版（覆盖全部 7 个时代，推荐）与 id 顺序版首批 20 条。部署由 14-publish 负责；目录页的接入步骤与线上核验状态缺陷修法见 handoff/CATALOG-PAGE-HANDOFF.md。screenshots/ 建议不随包发布（见 LICENSES.md §3）。"
 }

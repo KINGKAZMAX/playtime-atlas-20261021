@@ -3,17 +3,17 @@
  *
  * Wires the 3D stages, the spectral lab, the sample library and the static
  * sections together. All data stays in the browser; nothing is fetched.
+ *
+ * Fonts: self-hosted, no CDN. The three families come from the batch design
+ * system's vendored OFL-1.1 files (16-design-system/fonts → assets/ds/fonts),
+ * loaded by `assets/ds/fonts/fonts.css` with relative URLs so they resolve
+ * under any sub-path. See LICENSES.md for the OFL-1.1 notices.
+ *
+ * Design system: the `--ds-*` token layer and the `.ds-*` component classes
+ * are consumed verbatim from `assets/ds/` (16-design-system), loaded ahead of
+ * this project's own styles so local rules keep the last word.
  */
-import '@fontsource/martian-mono/latin-400.css';
-import '@fontsource/martian-mono/latin-600.css';
-import '@fontsource/martian-mono/latin-800.css';
-import '@fontsource/space-grotesk/latin-300.css';
-import '@fontsource/space-grotesk/latin-400.css';
-import '@fontsource/space-grotesk/latin-500.css';
-import '@fontsource/space-grotesk/latin-700.css';
-import '@fontsource/jetbrains-mono/latin-400.css';
-import '@fontsource/jetbrains-mono/latin-500.css';
-
+import './styles/tokens.css';
 import './styles/base.css';
 import './styles/layout.css';
 import './styles/components.css';
@@ -202,12 +202,16 @@ function boot(): void {
 
   /* ---------------- exploded view ---------------- */
   const explodeToggle = $('explode-toggle');
+  const explodeStageTitle = $('explode-stage-title');
   let exploded = false;
   explodeToggle?.addEventListener('click', () => {
     exploded = !exploded;
     explodeStage?.setExplode(exploded ? 1 : 0);
     explodeToggle.setAttribute('aria-pressed', String(exploded));
     explodeToggle.textContent = exploded ? '合拢' : '展开';
+    if (explodeStageTitle) {
+      explodeStageTitle.textContent = exploded ? 'Exploded View' : 'Assembly View';
+    }
   });
 
   const callouts = Array.from(document.querySelectorAll<HTMLElement>('.explode__callouts li'));

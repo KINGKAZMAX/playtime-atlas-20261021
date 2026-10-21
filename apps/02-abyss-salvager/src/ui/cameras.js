@@ -21,7 +21,10 @@ const PRESETS = [
     dir: [-0.62, 0.4, 0.95],
     fit: { w: 27, h: 9 },
     fitNarrow: { w: 14, h: 8 },
-    margin: 1.12,
+    margin: 1.04,
+    // 全景机位改用模型**真实包围盒**做取景：手调的 fit 盒比实际投影大
+    // 约 35%，会把机器缩成一条看不清的斜线。
+    useContentBox: true,
   },
   {
     id: 'plan',
@@ -31,7 +34,8 @@ const PRESETS = [
     dir: [0.0, 1.0, 0.02],
     fit: { w: 27, h: 10 },
     fitNarrow: { w: 14, h: 9 },
-    margin: 1.12,
+    margin: 1.04,
+    useContentBox: true,
   },
   {
     id: 'profile',
@@ -41,7 +45,8 @@ const PRESETS = [
     dir: [0.0, 0.09, 1.0],
     fit: { w: 27, h: 7 },
     fitNarrow: { w: 14, h: 7 },
-    margin: 1.1,
+    margin: 1.04,
+    useContentBox: true,
   },
   {
     id: 'crown',
@@ -86,18 +91,80 @@ export function createCameraRig(camera, controls) {
   const toPos = new THREE.Vector3();
   const toTarget = new THREE.Vector3();
   const tmpDir = new THREE.Vector3();
+  const tmpRight = new THREE.Vector3();
+  const tmpUp = new THREE.Vector3();
+  const camRight = new THREE.Vector3();
+  const camUp = new THREE.Vector3();
 
   /**
-   * Solve the camera distance that keeps the preset's world extent visible.
-   * The horizontal or vertical FOV becomes the binding constraint depending on
-   * the viewport aspect. Narrow viewports use the tighter `fitNarrow` extent.
+   * HUD 安全区（像素）。左���工具栈 / 右侧卡片栏 / 顶栏 / 底部长剖带
+   * 都会遮住画布，模型必须落在**空出来的区域**里，否则面板压住机器。
+   * 由 main.js 按实际 DOM 矩形算出并注入。
+   */
+  let safe = null;
+
+  /** 模型的世界包围盒（半长），用于全景机位的精确取景。 */
+  let content = null; // { hx, hy, hz }
+
+  /**
+   * 注入模型包围盒（全长/全高/全宽的一半）。
+   * 有了它，全景机位按**真实投影尺寸**取景，而不是靠手调的保守盒子。
+   */
+  function setContentBounds(box) {
+    content = box;
+  }
+
+  /**
+   * 沿给定视线方向，把世界包围盒投影到相机右/上轴，得到该视角下
+   * 实际可见的半宽与半高。
+   */
+  function projectedExtents(dir) {
+    if (!content) return null;
+    tmpRight.set(0, 1, 0).cross(dir).normalize();
+    tmpUp.copy(dir).cross(tmpRight).normalize();
+    const halfW =
+      Math.abs(content.hx * tmpRight.x) +
+      Math.abs(content.hy * tmpRight.y) +
+      Math.abs(content.hz * tmpRight.z);
+    const halfH =
+      Math.abs(content.hx * tmpUp.x) +
+      Math.abs(content.hy * tmpUp.y) +
+      Math.abs(content.hz * tmpUp.z);
+    return { halfW, halfH };
+  }
+
+  /**
+   * 解算相机距离：让预设的世界包围盒落进安全区，而不是整个视口。
+   *
+   * 水平约束：safeW 像素要装下 fit.w 世界单位
+   *   fit.w = safeW * 2*d*tan(hFov/2) / viewW
+   * 垂直约束同理。两者取大者。
    */
   function solveDistance(preset, aspect) {
-    const fit = aspect < NARROW_ASPECT && preset.fitNarrow ? preset.fitNarrow : preset.fit;
     const vFov = (camera.fov * Math.PI) / 180;
-    const hFov = 2 * Math.atan(Math.tan(vFov / 2) * aspect);
-    const dV = fit.h / 2 / Math.tan(vFov / 2);
-    const dH = fit.w / 2 / Math.tan(hFov / 2);
+    const tanV = Math.tan(vFov / 2);
+    const tanH = tanV * aspect;
+
+    const viewW = safe ? safe.viewW : 1;
+    const viewH = safe ? safe.viewH : 1;
+    const safeW = safe ? safe.w : viewW;
+    const safeH = safe ? safe.h : viewH;
+
+    let halfW;
+    let halfH;
+    const dir = tmpDir.set(preset.dir[0], preset.dir[1], preset.dir[2]).normalize();
+    const ext = preset.useContentBox ? projectedExtents(dir) : null;
+    if (ext) {
+      halfW = ext.halfW;
+      halfH = ext.halfH;
+    } else {
+      const fit = aspect < NARROW_ASPECT && preset.fitNarrow ? preset.fitNarrow : preset.fit;
+      halfW = fit.w / 2;
+      halfH = fit.h / 2;
+    }
+
+    const dV = (halfH * 2 * viewH) / (2 * safeH * tanV);
+    const dH = (halfW * 2 * viewW) / (2 * safeW * tanH);
     return Math.max(dV, dH) * preset.margin;
   }
 
@@ -113,6 +180,32 @@ export function createCameraRig(camera, controls) {
     toPos.copy(toTarget).addScaledVector(tmpDir, dist);
     // Never let the camera sink below the seafloor.
     toPos.y = Math.max(toPos.y, 0.45);
+
+    // 把模型挪到安全区中心：沿相机右/上轴偏移观察目标。
+    if (safe && safe.viewW) {
+      const vFov = (camera.fov * Math.PI) / 180;
+      const tanV = Math.tan(vFov / 2);
+      const tanH = tanV * aspect;
+      const worldPerPx = (2 * dist * tanH) / safe.viewW;
+      const dxPx = safe.cx - safe.viewW / 2;
+      const dyPx = safe.cy - safe.viewH / 2;
+      // 相机右/上轴（由视线方向叉乘得到）
+      camRight.set(0, 1, 0).cross(tmpDir).normalize();
+      camUp.copy(tmpDir).cross(camRight).normalize();
+      toTarget.addScaledVector(camRight, -dxPx * worldPerPx);
+      toTarget.addScaledVector(camUp, dyPx * worldPerPx);
+      toPos.addScaledVector(camRight, -dxPx * worldPerPx);
+      toPos.addScaledVector(camUp, dyPx * worldPerPx);
+      toPos.y = Math.max(toPos.y, 0.45);
+    }
+  }
+
+  /**
+   * 注入 HUD 安全区（像素）。安全区必须是**视口坐标**下的矩形：
+   *   { x, y, w, h, cx, cy }
+   */
+  function setSafeArea(area) {
+    safe = area;
   }
 
   function apply(id, instant = false) {
@@ -155,6 +248,8 @@ export function createCameraRig(camera, controls) {
     apply,
     update,
     breakLock,
+    setSafeArea,
+    setContentBounds,
     /** Re-frame the active preset after a resize. */
     refit() {
       if (current === 'free') return;

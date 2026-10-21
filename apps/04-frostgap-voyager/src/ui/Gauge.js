@@ -26,13 +26,13 @@ export class Gauge {
     const cy = H / 2;
     const R = W * 0.44;
 
-    ctx.fillStyle = '#0b0805';
+    ctx.fillStyle = '#100b06';
     ctx.beginPath();
     ctx.arc(cx, cy, R, 0, Math.PI * 2);
     ctx.fill();
 
-    ctx.strokeStyle = 'rgba(233,169,61,0.55)';
-    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'rgba(233,169,61,0.95)';
+    ctx.lineWidth = 5;
     ctx.beginPath();
     ctx.arc(cx, cy, R - 3, 0, Math.PI * 2);
     ctx.stroke();
@@ -45,15 +45,15 @@ export class Gauge {
       const a = (i / 72) * Math.PI * 2;
       const major = i % 9 === 0;
       const len = major ? 20 : (i % 3 === 0 ? 12 : 7);
-      ctx.strokeStyle = major ? 'rgba(243,231,210,0.9)' : 'rgba(233,169,61,0.42)';
-      ctx.lineWidth = major ? 2 : 1;
+      ctx.strokeStyle = major ? 'rgba(255,243,222,1)' : 'rgba(233,169,61,0.85)';
+      ctx.lineWidth = major ? 4 : 2.5;
       ctx.beginPath();
       ctx.moveTo(Math.sin(a) * (R - 12), -Math.cos(a) * (R - 12));
       ctx.lineTo(Math.sin(a) * (R - 12 - len), -Math.cos(a) * (R - 12 - len));
       ctx.stroke();
     }
     // Cardinal marks
-    ctx.font = 'bold 15px "Menlo", monospace';
+    ctx.font = 'bold 26px "Menlo", monospace';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     const cards = [['N', 0], ['E', 90], ['S', 180], ['W', 270]];

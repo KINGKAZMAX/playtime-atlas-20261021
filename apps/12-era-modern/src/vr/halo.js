@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { el, clear, scrollToTop } from '../core/dom.js';
 import { markVisited } from '../core/progress.js';
+import { publishState } from '../core/debug-state.js';
 import { toast } from '../ui/toast.js';
 
 /**
@@ -73,7 +74,12 @@ export function mountHalo(root) {
   markVisited('halo');
   clear(root);
 
-  const canvasHost = el('div.halo-stage');
+  const canvasHost = el('div.halo-stage.ds-canvas-frame', {
+    'data-game-root': 'halo',
+    'data-ds-theme': 'dark',
+    tabindex: '0',
+    'aria-label': '光环台夜景棱镜庭，拖拽环视、WASD 移动、点击热点查看展签',
+  });
   const overlay = el('div.halo-overlay');
   const panel = el('div.halo-panel');
 
@@ -87,8 +93,8 @@ export function mountHalo(root) {
       el(
         'div.halo-head-main',
         {},
-        el('span.exhibit-no', { style: { color: '#9D7BFF' } }, 'EXHIBIT 03'),
-        el('h1', {}, '光环台'),
+        el('span.exhibit-no', { style: { color: '#2C5C8F' } }, 'EXHIBIT 03'),
+        el('h1.ds-detail__title', {}, '光环台'),
         el('p.pulse-sub', {}, 'HALO DECK · 沉浸展项（桌面交互演示）'),
       ),
     ),
@@ -110,6 +116,8 @@ export function mountHalo(root) {
 
   const deck = new HaloDeck({ host: canvasHost, overlay, panel });
   scrollToTop();
+  // 进入展台即把焦点交给画面（键盘只在展台获得焦点时生效）
+  requestAnimationFrame(() => deck.focusGame());
   return () => deck.destroy();
 }
 
@@ -118,6 +126,8 @@ class HaloDeck {
     this.host = host;
     this.overlay = overlay;
     this.panel = panel;
+    this.rootEl = host;
+    this.presses = 0;
 
     this.yaw = 0;
     this.pitch = 0.03;
@@ -135,6 +145,47 @@ class HaloDeck {
 
     this.loop = this.loop.bind(this);
     this.raf = window.requestAnimationFrame(this.loop);
+    this.publish();
+  }
+
+  /* ---------------- 可观测状态 ---------------- */
+
+  /** 发布运行状态（供自动化验收比对）。只读反映真实状态，不参与交互逻辑。 */
+  publish() {
+    const hotspotId = this.activeHotspot?.hs?.id ?? null;
+    publishState({
+      state: hotspotId ? 'reading' : 'exploring',
+      route: '/halo',
+      chapter: hotspotId,
+      score: 0,
+      player: {
+        x: Math.round(this.pos.x * 100) / 100,
+        z: Math.round(this.pos.z * 100) / 100,
+        yaw: Math.round(this.yaw * 1000) / 1000,
+        presses: this.presses,
+      },
+      extra: {
+        hotspot: hotspotId,
+        hotspots: HOTSPOTS.length,
+      },
+    });
+  }
+
+  /** 游戏区是否持有键盘焦点。未聚焦时不消费按键，避免在 iframe 中劫持母站键盘。 */
+  isGameFocused() {
+    const root = this.rootEl;
+    if (!root) return false;
+    const active = document.activeElement;
+    return active === root || root.contains(active);
+  }
+
+  /** 把焦点交还给展台画面。 */
+  focusGame() {
+    try {
+      this.rootEl?.focus({ preventScroll: true });
+    } catch {
+      this.rootEl?.focus();
+    }
   }
 
   initThree() {
@@ -371,7 +422,7 @@ class HaloDeck {
     const status = el('div.device-status');
     this.statusEl = status;
 
-    const detectBtn = el('button.btn.btn-sm', { type: 'button' }, '检测本机 WebXR 沉浸式 VR 支持');
+    const detectBtn = el('button.btn.btn-sm', { type: 'button', 'data-control': 'detect-vr' }, '检测本机 WebXR 沉浸式 VR 支持');
     detectBtn.addEventListener('click', async () => {
       detectBtn.disabled = true;
       detectBtn.textContent = '检测中…';
@@ -439,6 +490,7 @@ class HaloDeck {
     this.lastPointer = { x: 0, y: 0 };
 
     this.onPointerDown = (event) => {
+      this.focusGame();
       this.dragging = true;
       this.lastPointer = { x: event.clientX, y: event.clientY };
       this.renderer.domElement.setPointerCapture?.(event.pointerId);
@@ -464,9 +516,13 @@ class HaloDeck {
       this.camera.updateProjectionMatrix();
     };
     this.onKeyDown = (event) => {
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      if (!this.isGameFocused()) return;
       if (['KeyW', 'KeyA', 'KeyS', 'KeyD', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.code)) {
         event.preventDefault();
+        this.presses += 1;
         this.keys.add(event.code);
+        this.publish();
       }
     };
     this.onKeyUp = (event) => this.keys.delete(event.code);
@@ -524,6 +580,7 @@ class HaloDeck {
     if (best !== this.activeHotspot) {
       this.activeHotspot = best;
       this.renderHotspotCard();
+      this.publish();
     }
     if (best) {
       this.positionCard(best);
@@ -631,6 +688,7 @@ class HaloDeck {
       else obj.material?.dispose?.();
     });
     this.renderer.dispose();
+    publishState({ state: 'idle', route: '/halo', chapter: null });
   }
 }
 

@@ -8,6 +8,7 @@
 import {
   existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync,
 } from 'node:fs';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { eras, models, caseCopy } from './lib/catalog.mjs';
@@ -37,6 +38,7 @@ function main() {
     file: `./fonts/${f}`,
     bytes: bytes(`fonts/${f}`),
     format: f.endsWith('.woff2') ? 'woff2' : 'ttf',
+    sha256: createHash('sha256').update(readFileSync(path.join(ASSETS, 'fonts', f))).digest('hex'),
   }));
   const fontFamilies = [
     { family: 'Space Grotesk', role: 'display / 展示体', license: 'OFL-1.1', file: 'OFL-space-grotesk.txt' },
@@ -44,7 +46,6 @@ function main() {
     { family: 'Space Mono', role: 'mono / 编号与标签', license: 'OFL-1.1', file: 'OFL-space-mono-regular.txt' },
     { family: 'Noto Sans SC', role: 'cjk / 中文', license: 'OFL-1.1', file: 'OFL-noto-sans-sc.txt' },
   ];
-
   /* ---------- 图标 ---------- */
   const iconIndex = JSON.parse(readFileSync(path.join(ASSETS, 'icons', 'index.json'), 'utf8'));
 
@@ -142,35 +143,72 @@ function main() {
       }[f.replace(/\.svg$/, '')] || '降级图形',
     }));
 
+  /* 对齐后的 canonical 令牌（由 scripts/sync-ds-tokens.mjs 从 16-design-system 对齐生成） */
+  const aligned = JSON.parse(readFileSync(path.join(ROOT, 'design-tokens.json'), 'utf8'));
+  const align = aligned.meta.alignment;
+
   const manifest = {
     id: 'playtime-atlas-art',
     title: '回响电玩馆 / PLAYTIME ATLAS — 原创美术与硬件模型包',
     titleCn: '回响电玩馆',
     titleLatin: 'PLAYTIME ATLAS',
     subtitle: '电子游戏硬件年代馆 · 美术资产包',
-    version: '1.0.0',
+    version: '1.1.0',
     generated: '2026-10-21',
     scheme: {
-      name: '深墨蓝 + 暖纸白 + 信号橙',
-      ink: tokens.color.ink[800],
-      paper: tokens.color.paper[50],
-      signal: tokens.color.signal[500],
+      name: 'UI：余晖设计系统深色主题；展品内嵌：深墨蓝 + 暖纸白 + 信号橙',
+      uiBackground: aligned.meta.scheme.uiBackground,
+      uiAccent: aligned.meta.scheme.uiAccent,
+      exhibitInk: aligned.meta.scheme.exhibitInk,
+      exhibitPaper: aligned.meta.scheme.exhibitPaper,
+      exhibitSignal: aligned.meta.scheme.exhibitSignal,
     },
     license: {
       artwork: 'CC0-1.0（本馆原创）',
       fonts: 'SIL Open Font License 1.1',
       thirdParty: '无',
     },
+    /* ── 对齐信息：供 06 / 13 核对各作品是否用到了对齐后的资产 ── */
+    alignment: {
+      designSystem: align.designSystem,
+      designSystemEn: align.designSystemEn,
+      designSystemId: align.designSystemId,
+      designSystemVersion: align.designSystemVersion,
+      alignedTo: align.alignedTo,
+      alignedToCss: align.alignedToCss,
+      spec: align.spec,
+      audit: align.audit,
+      migration: align.migration,
+      source: align.source,
+      alignedAt: align.alignedAt,
+      cssVariablePrefix: align.cssVariablePrefix,
+      tokenFile: './design-tokens.json',
+      fingerprints: align.fingerprints,
+      drift: align.drift,
+      note:
+        '本资产包的 UI 令牌与字体清单已对齐 16-design-system（余晖设计系统 v' +
+        align.designSystemVersion +
+        '）。fonts 下的 5 个 woff2 与 16 的字体清单逐字节一致（fingerprints.fontsIdentical）。' +
+        '展品内嵌配色（scheme.exhibit*）是海报/封面/展柜/GLB 已烘焙的取色，不随 UI 主题变化。',
+    },
     tokens: {
       json: './design-tokens.json',
       css: './assets/tokens.css',
       js: './assets/tokens.js',
+      cssVariablePrefix: align.cssVariablePrefix,
+      designSystem: align.designSystemId,
+      designSystemVersion: align.designSystemVersion,
     },
     fonts: {
       stylesheet: './assets/fonts/fonts.css',
+      manifest: './assets/fonts/FONT-MANIFEST.json',
       families: fontFamilies,
       files: fonts,
       totalBytes: fonts.reduce((s, f) => s + f.bytes, 0),
+      cjkChars: 746,
+      alignedTo: '16-design-system/fonts/FONT-MANIFEST.json',
+      alignedDesignSystem: align.designSystemVersion,
+      fontsIdentical: align.fingerprints?.fontsIdentical ?? null,
     },
     icons: {
       sprite: './assets/icons/icons.svg',

@@ -1,0 +1,103 @@
+{
+ "schemaVersion": "1.1",
+ "generatedAt": "2026-10-21T10:27:54Z",
+ "count": 139,
+ "eras": [
+  {
+   "id": "origins",
+   "label": "1950—1969 · 光点实验",
+   "range": "1950–1969",
+   "description": "从真空管计算机上的实验性游戏到家用机原型：交互、图形与多人对战的第一批形态。",
+   "count": 15,
+   "hardware": 7,
+   "works": 8
+  },
+  {
+   "id": "arcade",
+   "label": "1970—1979 · 投币街机",
+   "range": "1970–1979",
+   "description": "街机柜成为公共空间：规则极简、分数驱动、难度自适应的商业化黄金期。",
+   "count": 14,
+   "hardware": 3,
+   "works": 11
+  },
+  {
+   "id": "home8bit",
+   "label": "1980—1989 · 家用八位机",
+   "range": "1980–1989",
+   "description": "卡带与家用机把游戏带进客厅：任天堂复兴、欧洲pectrum 与美式街机的分流。",
+   "count": 23,
+   "hardware": 10,
+   "works": 13
+  },
+  {
+   "id": "console16",
+   "label": "1990—1999 · 光盘与三维",
+   "range": "1990–1999",
+   "description": "3D 图形、CD 音频与联网雏形：主机世代更替、类型分化与产业震荡。",
+   "count": 20,
+   "hardware": 8,
+   "works": 12
+  },
+  {
+   "id": "online",
+   "label": "2000—2009 · 网络与数字发行",
+   "range": "2000–2009",
+   "description": "宽带、数字商店与虚拟世界：分发方式与社交结构同时被改写。",
+   "count": 20,
+   "hardware": 8,
+   "works": 12
+  },
+  {
+   "id": "mobile",
+   "label": "2010—2014 · 触屏与随身",
+   "range": "2010–2014",
+   "description": "多点触控与位置服务让游戏离开客厅；轻量化规则与短会话成为主流形态。",
+   "count": 20,
+   "hardware": 6,
+   "works": 14
+  },
+  {
+   "id": "modern",
+   "label": "2015—2026 · VR、独立与空间计算",
+   "range": "2015–2026",
+   "description": "虚拟现实、独立游戏黄金期与空间计算：门类边界被重新划分。",
+   "count": 27,
+   "hardware": 6,
+   "works": 21
+  }
+ ],
+ "kindCounts": {
+  "hardware": 48,
+  "work": 91
+ },
+ "coverage": "代表性选样（每时代 15—27 条，硬件与作品并重），非编年全集，不宣称穷尽任何时代的全部作品。",
+ "fieldNotes": {
+  "id": "稳定标识符，前缀 hw=硬件 / sw=作品 / pl=平台",
+  "title": "作品或硬件的原名（维基百科条目名，可直接拼接为来源 URL）",
+  "titleZh": "中文展签名，由本项目重新拟定，非官方译名",
+  "year": "首次公开或首发年份",
+  "era": "受控词表：origins / arcade / home8bit / console16 / online / mobile / modern",
+  "platform": "首发时的主要平台或载体",
+  "creator": "厂商或个人开发者",
+  "summary": "一句事实描述（客观，不含评价性夸张）",
+  "significance": "为何值得进馆的策展判断（1—2 句）",
+  "sourceUrls": "年代 / 平台 / 史实各自可点击追溯的来源",
+  "imageLicense": "配图许可状态：public-domain / cc-by-4.0 / cc-by-sa-4.0 / cc-by-nc-4.0 / cc-by-nc-sa-4.0 / gfdl / permission-required / no-image"
+ },
+ "verification": {
+  "method": "每条抓取 lead 摘要并检查年份是否出现在正文；再与 infobox 的 released / platforms / developer 交叉核对",
+  "script": "scripts/fetch_sources.py",
+  "statusCounts": {
+   "ok": 132,
+   "ok-article": 6,
+   "ok-infobox": 1
+  }
+ },
+ "limitations": [
+  "条目为代表性选样，不是全时代完整编年。",
+  "配图默认不采用第三方图片；imageLicense 记录的是维基首图在 Commons 的许可状态，供 07 美术包逐图复核后再决定是否使用。",
+  "史实以英文维基百科条目为主源，个别硬件条目已在 SOURCES.md 标注需以馆方藏品页二次确认。",
+  "本目录不含任何 ROM、商业游戏截帧或品牌视觉素材。"
+ ]
+}

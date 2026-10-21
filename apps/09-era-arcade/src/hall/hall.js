@@ -118,6 +118,20 @@ export function createHall(shell) {
     return best;
   }
 
+  /** 不设半径的最近展品：仅供导航轨标注「当前位置」 */
+  function closestExhibit() {
+    let best = null;
+    let bestD = Infinity;
+    for (const ex of EXHIBITS) {
+      const d = Math.abs(ex.x - state.playerX);
+      if (d < bestD) {
+        bestD = d;
+        best = ex;
+      }
+    }
+    return best;
+  }
+
   function enter(exhibit) {
     state.enterFlash = 1;
     shell.audio.sfx.confirm();
@@ -500,6 +514,8 @@ export function createHall(shell) {
     render,
     hitTest,
     focusExhibit,
+    nearestExhibit,
+    closestExhibit,
     /** 展厅没有暂停/生命等游戏态，暂停时仅冻结移动 */
     onPause() {},
     onResume() {},

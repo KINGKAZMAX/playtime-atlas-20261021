@@ -1,19 +1,27 @@
-/* 回响电玩馆 · 布局层：顶栏 / 侧栏 / 主区 / 页脚 */
+/*
+ * 回响电玩馆 · 布局层：顶栏 / 导览轴 / 主区 / 页脚
+ *
+ * 依据 16-design-system/DESIGN-SPEC.md：
+ *   §3.3 容器与栅格（--ds-space-gutter / --ds-max-width）
+ *   §4.1 导览轴三级墨色景深   §4.2 顶部导航   §7 控件
+ *   §11.1 触摸目标 ≥24px、主控件 ≥44px
+ */
 
-/* ── 顶栏 ─────────────────────────────────────────────────────────────────── */
-.topbar {
+/* ── 顶栏（.ds-topbar）────────────────────────────────────────────────────── */
+.topbar,
+.ds-topbar {
   position: sticky;
   top: 0;
-  z-index: var(--z-nav);
+  z-index: var(--ds-z-sticky);
   display: flex;
   align-items: center;
   gap: var(--sp-4);
-  height: var(--topbar-h);
-  padding: 0 var(--sp-5);
-  background: rgba(7, 12, 22, 0.9);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
+  min-height: var(--topbar-h);
+  padding: 0 var(--ds-space-gutter);
+  background: color-mix(in srgb, var(--ds-bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ds-line);
 }
 
 .brand {
@@ -21,20 +29,25 @@
   align-items: center;
   gap: var(--sp-3);
   color: var(--text-strong);
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  min-width: 0;
 }
-.brand:hover { color: var(--text-strong); }
-.brand-mark { border-radius: 9px; display: block; }
-.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand:hover { color: var(--text-strong); text-decoration: none; }
+.brand-mark { border-radius: var(--r-sm); display: block; flex: 0 0 auto; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
 .brand-text strong {
   font-family: var(--font-display);
   font-size: 1.08rem;
-  letter-spacing: 0.06em;
+  font-weight: var(--ds-w-medium);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .brand-en {
   font-size: 0.62rem;
   letter-spacing: 0.26em;
-  color: var(--signal-400);
+  color: var(--text-faint);
 }
 
 .topsearch {
@@ -48,37 +61,61 @@
 .topsearch input {
   flex: 1 1 auto;
   min-width: 0;
-  height: 38px;
-  padding: 0 var(--sp-3);
-  background: var(--bg-sunken);
-  border: 1px solid var(--line);
-  border-radius: var(--r-pill);
+  height: 44px;                 /* §11.1：输入控件最小高 44px */
+  padding: 0 var(--sp-4);
+  background: var(--ds-bg-sunken);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-control);
   color: var(--text-strong);
 }
 .topsearch input::placeholder { color: var(--text-faint); }
-.topsearch input:focus {
-  border-color: var(--accent-line);
+.topsearch input:focus-visible {
+  border-color: var(--ds-accent);
   outline: none;
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  box-shadow: 0 0 0 3px var(--ds-accent-soft);
 }
 
 .topnav {
   display: flex;
   align-items: center;
-  gap: var(--sp-2);
-  flex: 0 0 auto;
+  gap: var(--sp-4);             /* §4.2：导航项间距 16px */
+  /* 允许收缩：窄屏时这一段自己横向滚动，而不是把顶栏撑破页面
+     （DESIGN-SPEC §4.2「移动端导航项必须可横向滚动或折叠为抽屉，不得溢出」）。
+     改版新增语言切换后，若仍写死 flex:0 0 auto，390px 下会溢出 36px。 */
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
+.topnav::-webkit-scrollbar { display: none; }
 .topnav a {
-  padding: var(--sp-2) var(--sp-3);
-  border-radius: var(--r-pill);
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  position: relative;
+  padding: var(--sp-2) var(--sp-2);
+  border-radius: var(--r-xs);
+  color: var(--ds-ink-soft);
+  font-size: 0.92rem;
   white-space: nowrap;
+  flex: 0 0 auto;
+  transition: color var(--ds-dur-fast) var(--ds-ease-veil);
 }
-.topnav a:hover { color: var(--text-strong); background: rgba(255, 255, 255, 0.05); }
-.topnav a.is-active {
-  color: var(--signal-300);
-  background: var(--accent-soft);
+.topnav a:hover { color: var(--ds-ink); text-decoration: none; font-weight: var(--ds-w-medium); }
+/* 当前页：2px 强调色下边框（§4.2） */
+.topnav a.is-active,
+.topnav a[aria-current="page"] {
+  color: var(--ds-ink);
+  font-weight: var(--ds-w-medium);
+}
+.topnav a.is-active::after,
+.topnav a[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  left: var(--sp-2);
+  right: var(--sp-2);
+  bottom: -2px;
+  height: 2px;
+  background: var(--ds-accent);
+  border-radius: var(--r-pill);
 }
 .topnav-fav { display: inline-flex; align-items: center; gap: 6px; }
 .fav-badge {
@@ -87,109 +124,171 @@
   text-align: center;
   font-size: 0.7rem;
   border-radius: var(--r-pill);
-  background: var(--signal-500);
-  color: #241004;
-  font-weight: 700;
+  background: var(--ds-accent);
+  color: var(--ds-accent-ink);
+  font-weight: var(--ds-w-bold);
 }
 
 .nav-toggle {
   display: none;
   align-items: center;
   gap: var(--sp-2);
-  height: 38px;
+  min-height: 44px;
   padding: 0 var(--sp-3);
-  background: var(--bg-panel-2);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
+  background: var(--ds-bg-raised);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-control);
   color: var(--text-body);
   cursor: pointer;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
-.nav-toggle-bars { display: inline-flex; flex-direction: column; gap: 3px; }
+.nav-toggle-text { font-size: 0.88rem; white-space: nowrap; }
+.nav-toggle-bars { display: inline-flex; flex-direction: column; gap: 3px; flex: 0 0 auto; }
 .nav-toggle-bars i {
   display: block;
   width: 15px; height: 2px;
-  background: var(--signal-400);
+  background: var(--ds-ink-soft);
   border-radius: 2px;
 }
-.nav-toggle-text { font-size: 0.85rem; }
+
+/* 语言切换（§4.3）：顶栏最右的 chip */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-control);
+  background: var(--ds-bg-sunken);
+  flex: 0 0 auto;
+}
+.lang-switch button {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0 var(--sp-2);
+  border: 0;
+  border-radius: var(--ds-radius-control);
+  background: transparent;
+  color: var(--ds-ink-faint);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: color var(--ds-dur-fast) var(--ds-ease-veil), background var(--ds-dur-fast) var(--ds-ease-veil);
+}
+.lang-switch button:hover { color: var(--ds-ink); }
+.lang-switch button[aria-pressed="true"] {
+  background: var(--ds-ink);
+  color: var(--ds-bg);
+  font-weight: var(--ds-w-medium);
+}
 
 /* ── 主体骨架 ─────────────────────────────────────────────────────────────── */
 .shell {
   display: grid;
   grid-template-columns: var(--rail-w) minmax(0, 1fr);
   align-items: start;
-  max-width: var(--content-max);
+  max-width: var(--ds-max-width);
   margin: 0 auto;
-  padding: 0 var(--sp-5);
-  gap: var(--sp-6);
+  padding: 0 var(--ds-space-gutter);
+  gap: var(--ds-space-6);
 }
 
-.rail {
+/* 导览轴（.ds-rail）：景深由墨色层级 + 字号 + 字重 + 缩放承担，不用半透明 */
+.rail,
+.ds-rail {
   position: sticky;
   top: var(--topbar-h);
   align-self: start;
-  max-height: calc(100vh - var(--topbar-h));
+  max-height: calc(100dvh - var(--topbar-h));
   overflow-y: auto;
   padding: var(--sp-6) 0 var(--sp-7);
-  border-right: 1px solid var(--line);
+  border-right: 1px solid var(--ds-line);
   padding-right: var(--sp-4);
 }
 .rail-label {
   font-size: 0.66rem;
-  letter-spacing: 0.22em;
-  color: var(--text-faint);
+  letter-spacing: 0.16em;
+  color: var(--ds-ink-faint);
   text-transform: uppercase;
   margin: 0 0 var(--sp-2);
   padding-left: var(--sp-3);
 }
+:lang(zh) .rail-label { text-transform: none; letter-spacing: 0.04em; }
 .rail-list { margin-bottom: var(--sp-5); display: flex; flex-direction: column; gap: 2px; }
-.rail-list a {
+.rail-list a,
+.ds-rail__item {
   display: grid;
   grid-template-columns: 58px 1fr auto;
   align-items: center;
   gap: var(--sp-2);
   padding: var(--sp-2) var(--sp-3);
-  border-radius: var(--r-sm);
-  color: var(--text-muted);
-  font-size: 0.86rem;
+  border-radius: var(--ds-radius-sm);
+  color: var(--ds-ink-faint);       /* 远景级 */
+  font-size: var(--ds-type-sm);
   border-left: 2px solid transparent;
+  transform: scale(var(--ds-rail-scale, 1));
+  transform-origin: left center;
+  transition:
+    color var(--ds-dur-fast) var(--ds-ease-veil),
+    font-size var(--ds-dur-base) var(--ds-ease-veil),
+    transform var(--ds-dur-base) var(--ds-ease-veil);
 }
-.rail-list a:hover { background: rgba(255, 255, 255, 0.04); color: var(--text-strong); }
-.rail-list a.is-active {
-  color: var(--text-strong);
-  background: rgba(255, 255, 255, 0.055);
-  border-left-color: var(--era-accent, var(--signal-500));
+.rail-list a:hover { background: var(--ds-surface); color: var(--ds-ink); text-decoration: none; }
+/* 距当前项 1 级 */
+.rail-list a[data-rail-level="1"],
+.ds-rail__item[data-rail-level="1"] { color: var(--ds-ink-soft); }
+/* 距当前项 0 级（当前） */
+.rail-list a.is-active,
+.rail-list a[aria-current="true"],
+.ds-rail__item[aria-current="true"] {
+  color: var(--ds-ink);
+  font-size: var(--ds-type-body);
+  font-weight: var(--ds-w-medium);
+  transform: scale(1);
+  background: var(--ds-surface);
 }
-.rail-code { font-size: 0.68rem; color: var(--text-faint); }
-.rail-list a.is-active .rail-code { color: var(--era-accent, var(--signal-400)); }
+.rail-code { font-size: 0.68rem; color: var(--ds-ink-faint); }
+/* 年代身份色：只出现在编号色点上，不作为 UI 强调色。
+   但「当前选中」是例外——DESIGN-SPEC §1.1 规定强调色用于当前选中，
+   所以激活项的编号用唯一的 --ds-accent，不沿用该年代的专属色。 */
+.rail-list a.is-active .rail-code { color: var(--ds-accent); }
 .rail-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.rail-count { font-size: 0.68rem; color: var(--text-faint); }
-.rail-foot { font-size: 0.66rem; color: var(--text-faint); padding-left: var(--sp-3); }
-.rail-skeleton { color: var(--text-faint); font-size: 0.82rem; padding: var(--sp-2) var(--sp-3); }
+.rail-count { font-size: 0.68rem; color: var(--ds-ink-faint); }
+.rail-foot { font-size: 0.66rem; color: var(--ds-ink-faint); padding-left: var(--sp-3); }
+.rail-skeleton { color: var(--ds-ink-faint); font-size: 0.82rem; padding: var(--sp-2) var(--sp-3); }
 
 .main {
   min-width: 0;
   padding: var(--sp-6) 0 var(--sp-9);
 }
+/* 路由切换后焦点移到 <main>，焦点指示必须可见（DESIGN-SPEC §11.1）。
+   这里用 2px 强调色**内描边**而不是外发光环——外发光会在内容列四周画出一圈
+   4px 强调色，看起来像布局出了错而不是焦点提示。 */
 .main:focus { outline: none; }
+.main:focus-visible {
+  outline: 2px solid var(--ds-accent);
+  outline-offset: -2px;
+  box-shadow: none;
+}
 
-/* ── 页脚 ─────────────────────────────────────────────────────────────────── */
-.footer {
-  border-top: 1px solid var(--line);
-  background: rgba(5, 8, 15, 0.6);
+/* ── 页脚（.ds-footer）────────────────────────────────────────────────────── */
+.footer,
+.ds-footer {
+  border-top: 1px solid var(--ds-line);
+  background: var(--ds-bg-sunken);
 }
 .footer-inner {
-  max-width: var(--content-max);
+  max-width: var(--ds-max-width);
   margin: 0 auto;
-  padding: var(--sp-6) var(--sp-5);
+  padding: var(--sp-6) var(--ds-space-gutter);
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-3) var(--sp-6);
   justify-content: space-between;
 }
-.footer-line { margin: 0; font-size: 0.86rem; color: var(--text-muted); }
-.footer-line strong { color: var(--text-strong); font-family: var(--font-display); }
-.footer-line .mono { font-size: 0.72rem; color: var(--text-faint); }
+.footer-line { margin: 0; font-size: 0.86rem; color: var(--ds-ink-soft); }
+.footer-line strong { color: var(--ds-ink); font-family: var(--font-display); font-weight: var(--ds-w-medium); }
+.footer-line .mono { font-size: 0.72rem; color: var(--ds-ink-faint); }
 
 /* ── 响应式 ───────────────────────────────────────────────────────────────── */
 @media (max-width: 1080px) {
@@ -199,20 +298,25 @@
     inset: var(--topbar-h) auto 0 0;
     width: min(84vw, 300px);
     max-height: none;
-    background: var(--bg-panel);
-    border-right: 1px solid var(--line-strong);
+    background: var(--ds-bg-raised);
+    border-right: 1px solid var(--ds-line-strong);
     padding: var(--sp-5);
     transform: translateX(-102%);
-    transition: transform var(--dur-2) var(--ease-out);
-    z-index: var(--z-panel);
+    visibility: hidden;              /* 关闭时移出可聚焦范围 */
+    transition: transform var(--dur-2) var(--ease-out), visibility var(--dur-2);
+    z-index: var(--ds-z-overlay);
   }
-  body.rail-open .rail { transform: translateX(0); box-shadow: var(--shadow-high); }
+  body.rail-open .rail {
+    transform: translateX(0);
+    visibility: visible;
+    box-shadow: var(--ds-shadow-4);
+  }
   body.rail-open::after {
     content: '';
     position: fixed;
     inset: var(--topbar-h) 0 0 0;
-    background: rgba(3, 6, 12, 0.6);
-    z-index: calc(var(--z-panel) - 1);
+    background: var(--ds-overlay);
+    z-index: calc(var(--ds-z-overlay) - 1);
   }
   .nav-toggle { display: inline-flex; }
   .topsearch { max-width: none; }
@@ -220,15 +324,32 @@
 
 @media (max-width: 860px) {
   .topbar { gap: var(--sp-3); padding: 0 var(--sp-4); }
-  .topnav a { padding: var(--sp-2); font-size: 0.82rem; }
-  .topnav a[data-nav="about"] { display: none; }
+  .topnav a { padding: var(--sp-2); font-size: 0.84rem; }
   .brand-en { display: none; }
 }
 
-@media (max-width: 680px) {
+/* 窄屏：把次要入口收进导览抽屉，顶栏只保留检索与收藏，避免横向溢出 */
+@media (max-width: 720px) {
   .topsearch { display: none; }
-  .topbar { gap: var(--sp-2); }
-  .brand-text strong { font-size: 0.98rem; }
+  .topbar { gap: var(--sp-2); padding: 0 var(--sp-3); }
+  /* 窄屏顶栏只留「2D 目录 + 收藏」两个最高频入口，
+     其余（时间长廊 / 3D 展厅 / 馆方说明）都在导览抽屉里；
+     顶栏本身仍允许横向滚动（§4.2），但正常使用不需要滚动。 */
+  .topnav a[data-nav="timeline"],
+  .topnav a[data-nav="hall"],
+  .topnav a[data-nav="about"] { display: none; }
+  .topnav { gap: var(--sp-2); }
+  .topnav a { padding: var(--sp-2) var(--sp-1); }
+  .brand-text strong { font-size: 0.98rem; letter-spacing: 0.02em; }
   .main { padding-top: var(--sp-5); }
   .shell { padding: 0 var(--sp-3); gap: 0; }
+}
+
+@media (max-width: 480px) {
+  /* 极窄屏只保留馆徽图标，文字移到抽屉内，仍保留可访问名称 */
+  .brand-text { display: none; }
+  .topnav a { font-size: 0.8rem; }
+  .nav-toggle { padding: 0 var(--sp-2); }
+  .nav-toggle-text { font-size: 0.8rem; }
+  .lang-switch button { min-width: 28px; min-height: 28px; font-size: 0.74rem; }
 }

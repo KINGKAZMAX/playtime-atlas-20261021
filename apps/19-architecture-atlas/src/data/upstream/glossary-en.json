@@ -1,0 +1,21 @@
+{
+  "categories": {
+    "构件": "Component",
+    "连接": "Joint",
+    "屋面": "Roofing",
+    "结构体系": "Structural system",
+    "形制与礼制": "Form and rank",
+    "材料与做法": "Material and technique",
+    "桥与基础": "Bridges and foundations",
+    "民族与地方类型": "Ethnic and regional types"
+  },
+  "notes": {
+    "g01": "Force arrows indicate the direction of load transfer, not its magnitude; actual practice varies greatly by period and region.",
+    "g02": "「七铺作双抄双下昂」 (seven tiers, projecting outward twice and downward twice) is a term for the tier count and projection direction of a bracket set; it is not a count of individual components.",
+    "g13": "The Main Hall of Baoguo Temple is generally accepted as the only surviving Song-dynasty building that corroborates the relevant prescriptions of the Yingzao Fashi.",
+    "g25": "The multi-tenon and multi-socket components excavated at Hemudu are regarded as among the earliest known mortise-and-tenon examples in China.",
+    "g31": "The roof curve is a piecewise approximation rather than a true circular arc; in models it should be generated as a polyline, not a spline.",
+    "g54": "「窑洞营造技艺」, the yaodong construction technique, is listed among China's national intangible cultural heritage; the methods used in northern Shaanxi and in Qingyang, Gansu differ.",
+    "g59": "「中国木拱桥传统营造技艺」, the traditional craft of building Chinese timber arch bridges, was transferred in December 2024 from the Urgent Safeguarding List to the Representative List of the Intangible Cultural Heritage of Humanity."
+  }
+}

@@ -4,15 +4,20 @@
 
 > 一个**完全原创**的 1990 年代家用机展厅子站，包含一件可通关的 16 位风格横版平台冒险、
 > 一个等距视角的可交互探索场景，以及 21 条带来源链接的科普展品。
-> **全部美术、字体与音乐在运行时程序化生成**——没有一张位图、没有一段音频文件、没有一个 CDN 请求。
+> **全部美术与音乐在运行时程序化生成**——没有一张位图、没有一段音频文件、没有一个 CDN 请求。
+> 界面外壳已按 [16-design-system 的余晖设计系统](../../16-design-system/DESIGN-SPEC.md) 改版，
+> 设计系统的 `tokens.css` / `components.css` / `fonts/` 以**逐字节副本**接入本目录 `assets/ds/`，
+> 字体为自托管的开源字体（OFL 1.1，见 [`LICENSES.md`](./LICENSES.md)）。
 
 | | |
 | --- | --- |
 | 工作目录 | `/Users/mekzenx2/Documents/ChatGPT/Minimax测评/output/flash-showcase-20261021/10-era-console` |
 | 开发 / 预览端口 | `127.0.0.1:4330`（`strictPort`） |
 | 构建 | `npm run build` → `dist/`（`base: './'`，适配 GitHub Pages 任意子路径） |
-| 单元测试 | `npm test`（30 项，Node 内置 test runner） |
+| 单元测试 | `npm test`（33 项，Node 内置 test runner） |
 | 浏览器实机验收 | `node tools/qa/browser-check.mjs`（Chrome headless） |
+| 令牌一致性自检 | `node tools/qa/token-check.mjs`（拷贝件 sha256 一致 + 与 design-tokens.json 逐项等价比对 + 机制保真） |
+| 字体覆盖率实测 | `node tools/qa/font-coverage.mjs --rendered`（Noto Sans SC 子集对本作品用字的覆盖率，带阳性/阴性对照组） |
 | 部署 | 由 `14-publish` 统一负责，本目录**不含**任何部署动作 |
 
 ---
@@ -93,8 +98,8 @@ npm run verify:sources   # 核验展品来源链接可达性
 | 作品名 | 《色块远征》/ `CHROMA VOYAGE` |
 | 角色 | 墨豆 INKBEAN、棱刺 CUSP、巡块 WISP、色晶 SHARD、锚信标 ANCHOR |
 | 关卡 | 三关全部手工编排，配自动落脚板系统保证可达性 |
-| 配色 | `--ink #101018` / `--mint #5ee0b8` / `--coral #ff7a6b` / `--sun #ffd166` / `--sky #6aa9ff` / `--violet #b48aff` |
-| 字体 | 自制 5×7 点阵字模（`src/ui/pixelFont.js`），**不加载任何字体文件** |
+| 配色 | **画布内部**：`--mint #5ee0b8` / `--coral #ff7a6b` / `--sun #ffd166` / `--sky #6aa9ff` / `--violet #b48aff`；**外壳**：改版后统一取自 16-design-system 的 `--ds-*` 令牌（暗色主题，唯一强调色朱砂） |
+| 字体 | 画布内为自制 5×7 点阵字模（`src/ui/pixelFont.js`）；界面为自托管 OFL 字体 Space Grotesk / Inter / Space Mono（`assets/ds/fonts/`），中文走系统字体栈（Noto Sans SC 子集仅作兜底，排在系统 CJK 族之后） |
 | 美术 | 逐像素手绘精灵 + 运行时 Canvas 程序化图形，**零位图** |
 | 音乐 | 五首原创芯片曲 + 两段过场，WebAudio 实时合成，**零音频文件** |
 
@@ -111,6 +116,7 @@ npm run verify:sources   # 核验展品来源链接可达性
 ├─ README.md            本文件
 ├─ SOURCES.md           展品逐条来源台账 + 核验方法与结果
 ├─ LICENSES.md          资产许可与差异说明
+├─ RESTYLE-INVENTORY.md 改版批第 1 步交付：待替换清单 + 豁免清单 + 本批自定项
 ├─ QA.md                验收记录（单元测试 + 浏览器实机 + 截图）
 ├─ manifest.json        交付清单（id/title/description/entry/buildCommand/outputDir/status）
 ├─ package.json / vite.config.js
@@ -121,7 +127,12 @@ npm run verify:sources   # 核验展品来源链接可达性
 │  └─ verify_exhibit_sources.sh    从真实数据文件抽取并核验展品来源
 ├─ src/
 │  ├─ main.js             路由 / 展厅渲染 / 视图挂载 / 嵌入协议
-│  ├─ styles/main.css     原创视觉系统
+│  ├─ styles/
+│  │  └─ main.css         本作品自有样式（外壳 token 化；画布内部色板不动）
+├─ assets/ds/             16-design-system 的逐字节拷贝件（15 派单「接入三步」）
+│  ├─ tokens.css          令牌层（--ds-*，唯一声明处）
+│  ├─ components.css      组件层（.ds-*：页头/封面/按钮/卡片/画布/HUD/页脚）
+│  └─ fonts/              自托管 OFL 字体（5 woff2 + 5 许可全文 + fonts.css + FONT-MANIFEST.json）
 │  ├─ data/exhibits.js    科普展品 + 机型档案（含 sourceUrls）
 │  ├─ platform/
 │  │  ├─ physics.js       瓦片 AABB 碰撞（纯函数）
@@ -140,8 +151,8 @@ npm run verify:sources   # 核验展品来源链接可达性
 │     ├─ pixelFont.js     自制 5×7 点阵字体
 │     ├─ icons.js         程序化图标
 │     └─ Overlay.js       通用覆盖层
-├─ tests/               30 项 Node 内置测试
-├─ tools/qa/            浏览器实机验收（独立依赖，不进 dist）
+├─ tests/               33 项 Node 内置测试
+├─ tools/qa/            浏览器实机验收（独立依赖，不进 dist）：browser-check / overlap-check / token-check / font-coverage
 └─ screenshots/         实机截图
 ```
 
@@ -192,14 +203,24 @@ iframe.contentWindow.postMessage(
 1. 展品是**代表性选样**，不宣称覆盖 1990 年代全部主机与作品。
 2. 展品事实**主要依赖英文维基百科条目**（次级来源），单源条目占比高，未做多源互证；
    「位数」等参数在不同来源中口径不一，已在页面与 `SOURCES.md` 中标注。
-3. 页面依赖使用者操作系统的中文字体（不内嵌字体文件），不同系统字形会有差异。
+3. **中文**依赖使用者操作系统的中文字体（拉丁字体已自托管），不同系统字形会有差异。
+   随包分发的 Noto Sans SC 子集只覆盖本作品用字的 61.4%（源文本集）/ 70.6%（实际渲染集），
+   但它排在全部覆盖完整的系统 CJK 族之后，**在装有中文字体的系统上不会被启用**；
+   仅当系统完全没有 CJK 字体时才会生效，此时未覆盖字形回退到通用 sans-serif。
+   实测方法与对照组见 [`QA.md`](./QA.md) §4.3。
 4. 音频需用户手势后才能启动（浏览器自动播放策略），页面上有音效开关。
 5. 本任务**不做部署**；上线由 `14-publish` 统一执行。
+6. **改版批的以下维度无参考站实测依据，属本批自定**（RESTYLE-SPEC §2）：
+   默认暗色主题、覆盖层锚定在画布框内（不套用整屏灯箱）、CRT 扫描线与封面硬阴影保留原写法、
+   画布语义色在 DOM 侧的保留边界。逐条清单见 [`RESTYLE-INVENTORY.md`](./RESTYLE-INVENTORY.md) §5
+   与 [`STATUS.md`](./STATUS.md) §5。
 
 ---
 
 ## 许可
 
-代码与资产由本项目原创创作。
+代码与资产由本项目原创创作；**例外**是界面用的 4 个自托管开源字体家族
+（Space Grotesk / Inter / Space Mono / Noto Sans SC 中文子集，SIL OFL 1.1，
+许可全文见 `assets/ds/fonts/OFL-*.txt`）。
 第三方依赖：`vite`（MIT，仅构建期）、`playwright`（Apache-2.0，仅测试期），
 二者均不进入 `dist/` 产物。详见 [`LICENSES.md`](./LICENSES.md)。

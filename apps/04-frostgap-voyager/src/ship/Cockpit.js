@@ -56,24 +56,20 @@ function makeWedge(w, h, d, skew = 0.35) {
 export function buildCockpit({ mfdTexture, gaugeTexture, quality }) {
   const group = new THREE.Group();
   group.name = 'cockpit';
-  // The canopy sits far enough from the eye that the machined frame reads as
-  // a frame (a ~24° aperture) instead of a full-screen window.
-  group.scale.setScalar(1.32);
-  group.position.z = -0.62;
 
-  const hullTex = canvasTextureLocal(makeHullTexture(512, 411, [0.19, 0.17, 0.14]), {
-    repeat: [2, 2], aniso: quality.anisotropy,
+  const hullTex = canvasTextureLocal(makeHullTexture(512, 411, [0.42, 0.39, 0.33]), {
+    repeat: [4, 4], aniso: quality.anisotropy,
   });
   const roughTex = canvasTextureLocal(makeRoughnessTexture(256, 88), { srgb: false, repeat: [2, 2] });
 
   const frameMat = new THREE.MeshStandardMaterial({
-    map: hullTex, roughnessMap: roughTex, roughness: 0.58, metalness: 0.62, color: 0x8f8a80,
+    map: hullTex, roughnessMap: roughTex, roughness: 0.58, metalness: 0.55, color: 0xbdb4a4,
   });
   const shellMat = new THREE.MeshStandardMaterial({
-    map: hullTex, roughnessMap: roughTex, roughness: 0.76, metalness: 0.42, color: 0x6a6259,
+    map: hullTex, roughnessMap: roughTex, roughness: 0.74, metalness: 0.38, color: 0x968c7d,
   });
-  const trimMat = new THREE.MeshStandardMaterial({ color: 0x17140f, roughness: 0.45, metalness: 0.82 });
-  const rubberMat = new THREE.MeshStandardMaterial({ color: 0x100e0b, roughness: 0.96, metalness: 0.04 });
+  const trimMat = new THREE.MeshStandardMaterial({ color: 0x2b251c, roughness: 0.45, metalness: 0.78 });
+  const rubberMat = new THREE.MeshStandardMaterial({ color: 0x1c1913, roughness: 0.96, metalness: 0.04 });
   const accentMat = new THREE.MeshStandardMaterial({
     color: 0x110d08, roughness: 0.28, metalness: 0.9,
     emissive: 0x3a2408, emissiveIntensity: 1.0,
@@ -88,7 +84,7 @@ export function buildCockpit({ mfdTexture, gaugeTexture, quality }) {
     makeFacetFrame(4.05, 2.05, 0.52, 3.32, 1.34, 0.40, 0.32),
     frameMat
   );
-  visor.position.set(0, 0.30, -1.04);
+  visor.position.set(0, 0.30, -1.95);
   visor.rotation.x = 0.025;
   group.add(visor);
 
@@ -97,25 +93,25 @@ export function buildCockpit({ mfdTexture, gaugeTexture, quality }) {
     makeFacetFrame(3.46, 1.46, 0.44, 3.32, 1.34, 0.40, 0.34),
     trimMat
   );
-  lip.position.set(0, 0.30, -0.95);
+  lip.position.set(0, 0.30, -1.86);
   group.add(lip);
 
   // Central spine strut splitting the aperture into two panes.
   const spine = new THREE.Mesh(new THREE.BoxGeometry(0.075, 1.38, 0.30), trimMat);
-  spine.position.set(0, 0.30, -0.90);
+  spine.position.set(0, 0.30, -1.80);
   group.add(spine);
   const spineCap = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.16, 0.34), goldMat);
-  spineCap.position.set(0, 0.30, -0.90);
+  spineCap.position.set(0, 0.30, -1.80);
   group.add(spineCap);
 
   /* ---------------- Heavy angular brow ---------------- */
   const brow = new THREE.Mesh(makeWedge(3.95, 0.44, 0.72, 0.5), shellMat);
-  brow.position.set(0, 1.16, -0.86);
+  brow.position.set(0, 1.14, -1.72);
   brow.rotation.x = -0.22;
   group.add(brow);
 
   const browLip = new THREE.Mesh(makeWedge(3.55, 0.16, 0.30, 0.42), accentMat);
-  browLip.position.set(0, 0.95, -0.76);
+  browLip.position.set(0, 0.93, -1.62);
   browLip.rotation.x = -0.22;
   group.add(browLip);
 
@@ -123,7 +119,7 @@ export function buildCockpit({ mfdTexture, gaugeTexture, quality }) {
   const rivetGeo = new THREE.CylinderGeometry(0.028, 0.028, 0.03, 6);
   for (let i = 0; i < 16; i++) {
     const r = new THREE.Mesh(rivetGeo, goldMat);
-    r.position.set(-1.78 + i * 0.237, 0.99, -0.545);
+    r.position.set(-1.78 + i * 0.237, 0.97, -1.41);
     r.rotation.x = Math.PI / 2 - 0.22;
     group.add(r);
   }
@@ -134,26 +130,26 @@ export function buildCockpit({ mfdTexture, gaugeTexture, quality }) {
       makeFacetFrame(1.72, 1.62, 0.40, 1.30, 1.16, 0.30, 0.26),
       frameMat
     );
-    wing.position.set(side * 1.66, 0.26, -0.36);
+    wing.position.set(side * 2.08, 0.24, -1.20);
     wing.rotation.y = side * 1.02;
     wing.rotation.z = side * 0.04;
     group.add(wing);
 
     // Rear cheek rail
     const rail = new THREE.Mesh(makeWedge(0.30, 0.30, 2.2, 0.10), shellMat);
-    rail.position.set(side * 1.68, 0.30, 0.34);
+    rail.position.set(side * 2.02, 0.30, 0.30);
     rail.rotation.y = side * 0.30;
     group.add(rail);
   }
 
   // Roof spine
   const roof = new THREE.Mesh(makeWedge(0.32, 0.24, 2.1, 0.08), shellMat);
-  roof.position.set(0, 0.99, 0.26);
+  roof.position.set(0, 1.06, 0.22);
   group.add(roof);
 
   /* ---------------- Dashboard: angular swept desk ---------------- */
   const dash = new THREE.Group();
-  dash.position.set(0, -0.46, -0.62);
+  dash.position.set(0, -0.44, -1.02);
   dash.rotation.x = -0.50;
   group.add(dash);
 
@@ -164,60 +160,77 @@ export function buildCockpit({ mfdTexture, gaugeTexture, quality }) {
   dashEdge.position.y = 0.50;
   dash.add(dashEdge);
 
-  // Left: hooded rectangular MFD
-  const hood = new THREE.Mesh(makeWedge(1.00, 0.80, 0.16, 0.14), trimMat);
-  hood.position.set(-0.72, 0.04, 0.09);
+  // Left: MFD recessed into an angular bezel (open frame, not a solid slab,
+  // so the display itself stays visible)
+  const hood = new THREE.Mesh(
+    makeFacetFrame(0.86, 0.66, 0.11, 0.70, 0.52, 0.08, 0.12),
+    trimMat
+  );
+  hood.position.set(-0.58, 0.12, 0.12);
   dash.add(hood);
 
   const screenMat = new THREE.MeshBasicMaterial({ map: mfdTexture, toneMapped: false });
-  const screen = new THREE.Mesh(new THREE.PlaneGeometry(0.86, 0.64), screenMat);
-  screen.position.set(-0.72, 0.04, 0.135);
+  const screen = new THREE.Mesh(new THREE.PlaneGeometry(0.68, 0.50), screenMat);
+  screen.position.set(-0.58, 0.12, 0.135);
   dash.add(screen);
 
-  // Right: round CRT repeater in a raised housing
-  const crtHousing = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.30, 0.33, 0.20, 28),
-    shellMat
+  // Backlight bleed around the display
+  const backlight = new THREE.Mesh(
+    new THREE.PlaneGeometry(0.80, 0.60),
+    new THREE.MeshBasicMaterial({
+      color: 0xff9a3c, transparent: true, opacity: 0.16,
+      blending: THREE.AdditiveBlending, depthWrite: false,
+    })
   );
+  backlight.position.set(-0.58, 0.12, 0.128);
+  dash.add(backlight);
+
+  // Right: round CRT repeater in a raised housing
+  // The housing is open-ended — a closed cap would hide the screen behind it.
+  const crtHousing = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.212, 0.238, 0.18, 28, 1, true),
+    shellMat.clone()
+  );
+  crtHousing.material.side = THREE.DoubleSide;
   crtHousing.rotation.x = Math.PI / 2;
-  crtHousing.position.set(0.72, 0.10, 0.06);
+  crtHousing.position.set(0.60, 0.14, 0.03);
   dash.add(crtHousing);
 
   const crtBezel = new THREE.Mesh(
-    new THREE.TorusGeometry(0.285, 0.035, 10, 30),
+    new THREE.TorusGeometry(0.200, 0.026, 10, 30),
     goldMat
   );
-  crtBezel.position.set(0.72, 0.10, 0.165);
+  crtBezel.position.set(0.60, 0.14, 0.125);
   dash.add(crtBezel);
 
   const gaugeMat = new THREE.MeshBasicMaterial({ map: gaugeTexture, toneMapped: false });
-  const crtScreen = new THREE.Mesh(new THREE.CircleGeometry(0.268, 32), gaugeMat);
-  crtScreen.position.set(0.72, 0.10, 0.158);
+  const crtScreen = new THREE.Mesh(new THREE.CircleGeometry(0.188, 32), gaugeMat);
+  crtScreen.position.set(0.60, 0.14, 0.118);
   dash.add(crtScreen);
 
   // Domed cover glass over the CRT
   const glass = new THREE.Mesh(
-    new THREE.SphereGeometry(0.30, 24, 12, 0, Math.PI * 2, 0, Math.PI * 0.34),
-    new THREE.MeshPhysicalMaterial({
-      color: 0xdfe7f2, transparent: true, opacity: 0.16,
-      roughness: 0.06, metalness: 0.0, transmission: 0.6, side: THREE.DoubleSide,
+    new THREE.SphereGeometry(0.215, 24, 12, 0, Math.PI * 2, 0, Math.PI * 0.34),
+    new THREE.MeshBasicMaterial({
+      color: 0xbfd4e8, transparent: true, opacity: 0.07,
+      depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending,
     })
   );
   glass.rotation.x = -Math.PI / 2;
-  glass.position.set(0.72, 0.10, 0.15);
+  glass.position.set(0.60, 0.14, 0.10);
   dash.add(glass);
 
   // Three small tell-tale gauges between the MFD and the CRT
   const telltale = [];
   for (let i = 0; i < 3; i++) {
     const ring = new THREE.Mesh(new THREE.TorusGeometry(0.062, 0.014, 8, 18), goldMat);
-    ring.position.set(0.10 + i * 0.17, 0.30, 0.10);
+    ring.position.set(0.02 + i * 0.15, 0.34, 0.10);
     dash.add(ring);
     const face = new THREE.Mesh(
       new THREE.CircleGeometry(0.055, 18),
-      new THREE.MeshBasicMaterial({ color: 0x0d0906 })
+      new THREE.MeshBasicMaterial({ color: 0x2a1c0c })
     );
-    face.position.set(0.10 + i * 0.17, 0.30, 0.092);
+    face.position.set(0.02 + i * 0.15, 0.34, 0.092);
     dash.add(face);
     telltale.push(ring);
   }
@@ -229,7 +242,7 @@ export function buildCockpit({ mfdTexture, gaugeTexture, quality }) {
       new THREE.CircleGeometry(0.032, 12),
       new THREE.MeshBasicMaterial({ color: lampColors[i] })
     );
-    lamp.position.set(-0.22 + (i % 2) * 0.09, -0.28 - Math.floor(i / 2) * 0.10, 0.092);
+    lamp.position.set(-0.14 + (i % 2) * 0.09, -0.26 - Math.floor(i / 2) * 0.10, 0.092);
     dash.add(lamp);
   }
 
@@ -237,7 +250,7 @@ export function buildCockpit({ mfdTexture, gaugeTexture, quality }) {
   const sideButtons = [];
   for (const side of [-1, 1]) {
     const console3d = new THREE.Group();
-    console3d.position.set(side * 0.82, -0.58, -0.48);
+    console3d.position.set(side * 1.16, -0.56, -0.74);
     console3d.rotation.y = side * 0.44;
     console3d.rotation.x = -0.40;
     group.add(console3d);
@@ -276,7 +289,7 @@ export function buildCockpit({ mfdTexture, gaugeTexture, quality }) {
 
   /* ---------------- Overhead panel ---------------- */
   const overhead = new THREE.Group();
-  overhead.position.set(0, 0.84, -0.20);
+  overhead.position.set(0, 0.92, -0.86);
   overhead.rotation.x = 0.78;
   group.add(overhead);
   const ohBody = new THREE.Mesh(makeWedge(1.6, 0.14, 0.64, 0.14), shellMat);
@@ -303,16 +316,16 @@ export function buildCockpit({ mfdTexture, gaugeTexture, quality }) {
   const stripMat = new THREE.MeshBasicMaterial({ color: 0xc78b3a });
   for (const side of [-1, 1]) {
     const strip = new THREE.Mesh(new THREE.BoxGeometry(0.022, 0.022, 1.95), stripMat);
-    strip.position.set(side * 1.46, -0.44, -0.06);
+    strip.position.set(side * 1.72, -0.42, -0.20);
     group.add(strip);
   }
   const dashStrip = new THREE.Mesh(new THREE.BoxGeometry(1.95, 0.016, 0.016), stripMat);
-  dashStrip.position.set(0, -0.28, -0.58);
+  dashStrip.position.set(0, -0.26, -0.96);
   group.add(dashStrip);
 
   /* ---------------- Holographic HUD reticle ---------------- */
   const holo = createHologram(0xE9A93D, 0.40);
-  holo.position.set(0, 0.14, -0.82);
+  holo.position.set(0, 0.16, -1.52);
   holo.scale.setScalar(0.58);
   group.add(holo);
 
@@ -320,17 +333,22 @@ export function buildCockpit({ mfdTexture, gaugeTexture, quality }) {
     new THREE.CylinderGeometry(0.045, 0.065, 0.03, 10),
     new THREE.MeshBasicMaterial({ color: 0xe8b45c })
   );
-  emitter.position.set(0, 0.02, -0.56);
+  emitter.position.set(0, 0.03, -1.12);
   group.add(emitter);
 
   /* ---------------- Interior lighting ---------------- */
-  const cabinLight = new THREE.PointLight(0xffc98a, 0.38, 6, 2);
-  cabinLight.position.set(0, 0.55, -0.50);
+  const cabinLight = new THREE.PointLight(0xffc98a, 3.4, 9, 2);
+  cabinLight.position.set(0, 0.62, -1.05);
   group.add(cabinLight);
 
-  const warmLight = new THREE.PointLight(0xff9a4d, 0.22, 4, 2);
-  warmLight.position.set(0, -0.48, -0.28);
+  const warmLight = new THREE.PointLight(0xff9a4d, 1.6, 6, 2);
+  warmLight.position.set(0, -0.46, -0.78);
   group.add(warmLight);
+
+  // Soft bounce from the panel so the lower frame never falls to pure black
+  const fillLight = new THREE.PointLight(0xffe0b8, 1.1, 7, 2);
+  fillLight.position.set(0, 0.05, -0.45);
+  group.add(fillLight);
 
   return {
     group,
@@ -352,7 +370,7 @@ export function buildExteriorShip({ quality }) {
   group.name = 'exterior-ship';
 
   const hullTex = canvasTextureLocal(makeHullTexture(512, 912, [0.34, 0.31, 0.26]), {
-    repeat: [2, 2], aniso: quality.anisotropy,
+    repeat: [4, 4], aniso: quality.anisotropy,
   });
   const hullMat = new THREE.MeshStandardMaterial({
     map: hullTex, roughness: 0.42, metalness: 0.85, color: 0xd6cfc2,

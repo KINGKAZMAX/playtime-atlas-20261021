@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-ds-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -15,53 +15,95 @@
       property="og:description"
       content="原创街机时代展厅与两款完整小游戏：晶格回廊（迷宫追逐）、陨星纵队（编队射击）。纯静态、离线可运行。"
     />
-    <script type="module" crossorigin src="./assets/index-D857u6-f.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/style-7oFlP8p7.css">
+    <script type="module" crossorigin src="./assets/index-CwH5wIak.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/style-CyLtmF3Y.css">
   </head>
   <body>
+    <a class="ds-skip" href="#stage" data-i18n="skipToStage">跳到游戏画面</a>
+
     <div id="app" class="app">
-      <header class="topbar">
-        <div class="topbar__brand">
+      <header class="ds-topbar topbar">
+        <div class="ds-topbar__brand topbar__brand">
           <span class="topbar__mark" aria-hidden="true"></span>
           <div>
-            <h1 id="hall-title" class="topbar__title">霓虹街廊 · 街机可玩展厅</h1>
+            <h1 id="hall-title" class="topbar__title" data-i18n="workTitle">霓虹街廊 · 街机可玩展厅</h1>
             <p class="topbar__sub">NEON CORRIDOR · 1980s ARCADE HALL · 原创演绎</p>
           </div>
         </div>
-        <nav class="topbar__tools" aria-label="工具">
-          <button id="btn-catalog" type="button" class="toolbtn">街机纪年</button>
-          <button id="btn-crt" type="button" class="toolbtn" aria-pressed="true">CRT 开</button>
-          <button id="btn-sound" type="button" class="toolbtn" aria-pressed="true">声音 开</button>
-          <button id="btn-touch" type="button" class="toolbtn" aria-pressed="false">触控</button>
-          <button id="btn-settings" type="button" class="toolbtn">设置</button>
+        <nav class="ds-topbar__tools topbar__tools" aria-label="工具">
+          <button id="btn-catalog" type="button" class="ds-btn ds-btn--secondary toolbtn" data-i18n="navChronicle">
+            街机纪年
+          </button>
+          <button id="btn-crt" type="button" class="ds-btn ds-btn--ghost toolbtn" aria-pressed="true">
+            <span data-i18n="crtOn">CRT 开</span>
+          </button>
+          <button id="btn-sound" type="button" class="ds-btn ds-btn--ghost toolbtn" aria-pressed="true">
+            <span data-i18n="soundOn">声音 开</span>
+          </button>
+          <button id="btn-touch" type="button" class="ds-btn ds-btn--ghost toolbtn" aria-pressed="false">
+            <span data-i18n="touch">触控</span>
+          </button>
+          <button
+            id="btn-pause"
+            type="button"
+            class="ds-btn ds-btn--ghost toolbtn"
+            data-control="pause"
+            aria-pressed="false"
+            hidden
+          >
+            <span data-i18n="pause">暂停</span>
+          </button>
+          <button id="btn-settings" type="button" class="ds-btn ds-btn--secondary toolbtn" data-i18n="navSettings">
+            设置
+          </button>
+          <button
+            id="btn-lang"
+            type="button"
+            class="ds-chip"
+            aria-pressed="false"
+            aria-label="Switch to English"
+            title="中 / EN"
+          >
+            EN
+          </button>
         </nav>
       </header>
 
-      <main class="stage" id="stage" tabindex="0" aria-label="街机展厅画面">
-        <div class="screen">
-          <canvas id="view" width="480" height="270" aria-label="像素游戏画面"></canvas>
-          <div class="crt" aria-hidden="true">
-            <div class="crt__scan"></div>
-            <div class="crt__roll"></div>
-            <div class="crt__vignette"></div>
-            <div class="crt__glare"></div>
+      <div class="ds-layout">
+        <nav class="ds-rail exhibitnav" id="exhibit-nav" aria-label="展品目录"></nav>
+
+        <main class="ds-main">
+          <div class="stage" id="stage" tabindex="0" aria-label="街机展厅画面">
+            <div class="ds-canvas-frame screen">
+              <canvas id="view" width="480" height="270" aria-label="像素游戏画面"></canvas>
+              <div class="crt" aria-hidden="true">
+                <div class="crt__scan"></div>
+                <div class="crt__roll"></div>
+                <div class="crt__vignette"></div>
+                <div class="crt__glare"></div>
+              </div>
+            </div>
+            <div class="overlay" id="overlay" hidden></div>
           </div>
-        </div>
-        <div class="overlay" id="overlay" hidden></div>
-        <div class="touchpad" id="touchpad" hidden></div>
-      </main>
 
-      <p class="statusline" id="statusline"></p>
+          <div class="ds-indicator" id="indicator">
+            <span class="ds-indicator__dots" id="indicator-dots" aria-hidden="true"></span>
+            <span class="ds-indicator__text ds-visually-hidden" id="indicator-text"></span>
+          </div>
 
-      <nav class="exhibitnav" id="exhibit-nav" aria-label="展品目录"></nav>
+          <p class="ds-status statusline" id="statusline"></p>
 
-      <footer class="footer">
-        <p>
+          <div class="touchpad" id="touchpad" hidden></div>
+        </main>
+      </div>
+
+      <footer class="ds-footer footer">
+        <p data-i18n="footerNote">
           本作品为原创演绎：机制取自街机黄金时代的公共范式，角色、地图、规则、音效与视觉全部重新设计；
           不含任何未授权 ROM、商业游戏资源或品牌视觉。时代介绍附可核查来源，见「街机纪年」。
         </p>
-        <p class="footer__meta">
-          <span>纯静态 · 零外部依赖 · 离线可运行</span>
+        <p class="ds-footer__meta">
+          <span data-i18n="footerMeta1">纯静态 · 零外部依赖 · 离线可运行</span>
           <span>MiniMax Code M3.1-Flash 制作</span>
         </p>
       </footer>

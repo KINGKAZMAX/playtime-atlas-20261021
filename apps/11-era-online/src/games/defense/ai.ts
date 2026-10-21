@@ -145,8 +145,8 @@ export function updateAi(state: DefenseState, dt: number): void {
     }
   }
   items.sort((a, b) => a.at - b.at);
-  // 灰烬编队独立计时：从"现在"起算
-  const offset = state.waveClock;
+  // 灰烬编队独立计时：从"现在"起算（用灰烬航道自己的时钟）
+  const offset = state.ashClock;
   for (const it of items) it.at += offset;
   state.ashQueue.push(...items);
 

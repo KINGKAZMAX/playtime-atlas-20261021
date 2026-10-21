@@ -1,6 +1,12 @@
 #!/usr/bin/env node
 /**
  * 全作品验收报告页生成器
+ *
+ * ⚠ 发布策略：验收报告页**不再发布到线上**（works.json 中 publish=false）。
+ *   线上站点只呈现作品本身与构建状态，不展示差异审计 / 许可审计等内部材料。
+ *   本脚本仅作为仓库内的生成能力保留：默认直接退出、不产出任何文件；
+ *   如确需重建（例如回灌仓库内部资料），请显式设置 PUBLISH_ARCHIVE_PAGES=1。
+ *
  * 输入：apps/qa-report/QA-MATRIX.md 与 apps/qa-report/issues.json（由 13-qa-curation 交付）
  * 输出：site/qa/index.html
  * 上游数据缺失时以非零码退出 —— 大厅据此把该条标记为“未就绪”。
@@ -114,6 +120,10 @@ function md2html(md) {
 }
 
 function main() {
+  if (process.env.PUBLISH_ARCHIVE_PAGES !== '1') {
+    console.log('[qa] 已停用：验收报告页不在线上发布范围，未生成任何文件。');
+    return;
+  }
   if (!fs.existsSync(MD)) {
     console.error('[qa] 上游 QA-MATRIX.md 尚未交付：', path.relative(ROOT, MD));
     process.exit(1);

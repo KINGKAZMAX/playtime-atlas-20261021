@@ -1,25 +1,37 @@
-/* defense.css — 《灯塔协议》展项 */
+/* defense.css — 《灯塔协议》展项
+ *
+ * 视觉语言依据：16-design-system/DESIGN-SPEC.md §7 控件 · §9 画布与 HUD · §11 无障碍
+ * 令牌取值见 tokens.css（--ds-*）。
+ *
+ * 边界：画布**内部**的配色（航道、岩块、灯塔、敌人、粒子、像素字）由
+ * src/games/defense/render.ts + config.ts 绘制，属玩法语义，
+ * 按 MIGRATION-NOTES §4 K.1 一律不动；本文件只管画布**容器**与周边控件。
+ */
+
+/* ── 画布容器（等价 .ds-canvas-frame，DESIGN-SPEC §9.1） ── */
 
 .game--defense {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--ds-space-3);
 }
 
 .defense__main {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
-  gap: 14px;
+  gap: var(--ds-space-4);
   align-items: start;
 }
 
 .defense__board {
   position: relative;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: #080c17;
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-media);
+  background: var(--ds-bg-sunken);
   overflow: hidden;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.42);
+  contain: paint;
+  isolation: isolate;
+  box-shadow: var(--ds-shadow-3);
 }
 
 .defense__canvas {
@@ -37,9 +49,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(6, 9, 18, 0.78);
-  backdrop-filter: blur(3px);
-  padding: 18px;
+  background: var(--ds-overlay);
+  backdrop-filter: blur(8px);
+  padding: var(--ds-space-5);
 }
 
 .defense__overlay[hidden] {
@@ -47,26 +59,27 @@
 }
 
 .overlay__card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--panel-hi), var(--deep));
-  padding: 20px 22px;
+  border: 1px solid var(--ds-line-strong);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-bg-raised);
+  padding: var(--ds-space-5);
   max-width: 480px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--ds-shadow-4);
 }
 
 .overlay__title {
-  font-size: 19px;
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h3);
   margin-bottom: 8px;
-  color: var(--dawn);
+  color: var(--ds-accent);
 }
 
 .overlay__body {
-  font-size: 13px;
-  color: var(--text-dim);
-  line-height: 1.75;
+  font-size: var(--ds-type-sm);
+  color: var(--ds-ink-soft);
+  line-height: 1.85;
   text-align: left;
 }
 
@@ -78,29 +91,29 @@
   display: flex;
   gap: 9px;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: var(--ds-space-4);
   flex-wrap: wrap;
 }
 
 .result {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 5px 14px;
+  gap: 5px var(--ds-space-4);
   margin-top: 10px;
 }
 
 .result li {
   display: flex;
   justify-content: space-between;
-  font-size: 12.5px;
-  border-bottom: 1px dashed var(--line-soft);
+  font-size: var(--ds-type-xs);
+  border-bottom: 1px dashed var(--ds-line);
   padding: 3px 0;
-  color: var(--text-dim);
+  color: var(--ds-ink-soft);
 }
 
 .result b {
-  color: var(--text);
-  font-family: var(--font-mono);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-mono);
 }
 
 /* ── 侧栏 ── */
@@ -111,20 +124,21 @@
   gap: 10px;
 }
 
+/* AI 面板：语义色只用于描边与底纹，文字保持可读墨色 */
 .panel--ai {
-  border-color: rgba(255, 93, 115, 0.34);
-  background: linear-gradient(180deg, rgba(74, 31, 49, 0.4), rgba(13, 18, 36, 0.72));
+  border-color: color-mix(in srgb, var(--ds-danger) 42%, transparent);
+  background: color-mix(in srgb, var(--ds-danger) 8%, var(--ds-bg-raised));
 }
 
 .ai__intent {
   margin-top: 9px;
-  padding: 8px 10px;
-  border-radius: var(--radius-sm);
-  background: rgba(8, 11, 22, 0.6);
-  border-left: 2px solid var(--danger);
-  font-size: 12px;
-  line-height: 1.7;
-  color: #ffc4cd;
+  padding: 8px 11px;
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-bg-sunken);
+  border-left: 2px solid var(--ds-danger);
+  font-size: var(--ds-type-xs);
+  line-height: 1.75;
+  color: var(--ds-ink);
 }
 
 .ai__log {
@@ -138,16 +152,17 @@
 
 .ai__logitem {
   font-size: 11px;
-  font-family: var(--font-mono);
-  color: var(--text-faint);
+  font-family: var(--ds-font-mono);
+  color: var(--ds-ink-faint);
   line-height: 1.6;
 }
 
 .ai__logitem--muted {
-  color: #4d5772;
+  color: var(--ds-ink-faint);
+  opacity: 0.7;
 }
 
-/* ── 建造按钮 ── */
+/* ── 建造按钮（塔种色块属玩法识别，保持原色） ── */
 
 .panel--build {
   display: flex;
@@ -163,24 +178,27 @@
   align-items: center;
   gap: 1px 9px;
   text-align: left;
-  border: 1px solid var(--line);
-  background: rgba(13, 18, 36, 0.6);
-  border-radius: var(--radius-sm);
-  padding: 8px 10px;
+  border: 1px solid var(--ds-line);
+  background: var(--ds-surface);
+  border-radius: var(--ds-radius-md);
+  padding: 8px 11px;
   cursor: pointer;
   min-height: 46px;
-  transition: all 0.14s ease;
+  transition:
+    border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    background var(--ds-dur-fast) var(--ds-ease-veil),
+    box-shadow var(--ds-dur-fast) var(--ds-ease-veil);
 }
 
 .buildbtn:hover {
-  border-color: var(--data);
-  background: rgba(28, 37, 69, 0.6);
+  border-color: var(--ds-accent);
+  background: var(--ds-bg-raised);
 }
 
 .buildbtn.is-active {
-  border-color: var(--dawn);
-  background: rgba(255, 138, 61, 0.12);
-  box-shadow: inset 0 0 0 1px rgba(255, 138, 61, 0.3);
+  border-color: var(--ds-accent);
+  background: var(--ds-accent-soft);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ds-accent) 34%, transparent);
 }
 
 .buildbtn.is-locked {
@@ -197,30 +215,30 @@
 
 .buildbtn__name {
   grid-area: name;
-  font-size: 13.5px;
-  font-weight: 600;
+  font-size: var(--ds-type-sm);
+  font-weight: var(--ds-w-semibold);
 }
 
 .buildbtn__role {
   grid-area: role;
   font-size: 11px;
-  color: var(--text-faint);
+  color: var(--ds-ink-faint);
 }
 
 .buildbtn__cost {
   grid-area: cost;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--echo);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-mono);
+  color: var(--ds-ink);
   align-self: center;
 }
 
 .buildbtn__key {
   grid-area: key;
-  font-family: var(--font-mono);
+  font-family: var(--ds-font-mono);
   font-size: 10px;
-  color: var(--text-faint);
-  border: 1px solid var(--line);
+  color: var(--ds-ink-faint);
+  border: 1px solid var(--ds-line-strong);
   border-radius: 4px;
   padding: 0 5px;
   justify-self: start;
@@ -230,20 +248,20 @@
 
 .sel__name {
   display: block;
-  font-size: 14px;
+  font-size: var(--ds-type-body);
   margin-bottom: 6px;
 }
 
 .sel__body {
-  font-size: 12px;
-  color: var(--text-faint);
-  line-height: 1.7;
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-faint);
+  line-height: 1.75;
 }
 
 .sel__list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3px 12px;
+  gap: 3px var(--ds-space-3);
   margin-top: 4px;
 }
 
@@ -251,12 +269,12 @@
   display: flex;
   justify-content: space-between;
   font-size: 11.5px;
-  color: var(--text-dim);
+  color: var(--ds-ink-soft);
 }
 
 .sel__list b {
-  font-family: var(--font-mono);
-  color: var(--text);
+  font-family: var(--ds-font-mono);
+  color: var(--ds-ink);
 }
 
 .sel__actions {
@@ -268,14 +286,14 @@
 
 .sel__actions .btn {
   width: 100%;
-  font-size: 12.5px;
+  font-size: var(--ds-type-xs);
   padding: 8px 10px;
 }
 
 .sel__max {
-  font-size: 12px;
-  color: var(--echo);
-  font-family: var(--font-mono);
+  font-size: var(--ds-type-xs);
+  color: var(--sem-success);
+  font-family: var(--ds-font-mono);
 }
 
 .sel__modes {
@@ -287,38 +305,42 @@
 
 .sel__modelabel {
   font-size: 11px;
-  color: var(--text-faint);
+  color: var(--ds-ink-faint);
   margin-right: 2px;
 }
 
 .chipbtn {
   appearance: none;
-  border: 1px solid var(--line);
-  background: rgba(13, 18, 36, 0.6);
-  color: var(--text-dim);
-  border-radius: 20px;
-  padding: 4px 11px;
+  border: 1px solid var(--ds-line);
+  background: var(--ds-surface);
+  color: var(--ds-ink-soft);
+  border-radius: var(--ds-radius-pill);
+  padding: 4px 12px;
   font-size: 11.5px;
   cursor: pointer;
   min-height: 30px;
+  transition:
+    border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    background var(--ds-dur-fast) var(--ds-ease-veil),
+    color var(--ds-dur-fast) var(--ds-ease-veil);
 }
 
 .chipbtn:hover {
-  border-color: var(--data);
-  color: var(--text);
+  border-color: var(--ds-accent);
+  color: var(--ds-ink);
 }
 
 .chipbtn.is-active {
-  border-color: var(--dawn);
-  background: rgba(255, 138, 61, 0.14);
-  color: var(--dawn-soft);
+  border-color: var(--ds-accent);
+  background: var(--ds-accent-soft);
+  color: var(--ds-accent);
 }
 
 /* ── 预览 ── */
 
 .preview__title {
   display: block;
-  font-size: 13px;
+  font-size: var(--ds-type-sm);
   margin-bottom: 6px;
 }
 
@@ -332,14 +354,14 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 12px;
-  color: var(--text-dim);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-soft);
 }
 
 .preview__item b {
   margin-left: auto;
-  font-family: var(--font-mono);
-  color: var(--text);
+  font-family: var(--ds-font-mono);
+  color: var(--ds-ink);
 }
 
 .preview__dot {
@@ -350,12 +372,12 @@
 }
 
 .preview__item--elite {
-  color: var(--warn);
+  color: var(--sem-warning);
   margin-top: 4px;
 }
 
 .preview__item--boss {
-  color: var(--danger);
+  color: var(--sem-danger);
 }
 
 /* ── 控制条 ── */
@@ -366,20 +388,29 @@
   gap: 8px;
   flex-wrap: wrap;
   padding: 11px 13px;
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius);
-  background: rgba(13, 18, 36, 0.55);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-bg-raised);
 }
 
 .bar__label {
-  font-size: 12px;
-  color: var(--text-faint);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-faint);
   margin-left: 4px;
 }
 
+.bar__countdown {
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-soft);
+  white-space: nowrap;
+  padding: 0 8px 0 2px;
+  border-right: 1px solid var(--ds-line);
+  margin-right: 2px;
+}
+
 .game__note {
-  font-size: 11.5px;
-  color: var(--text-faint);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-faint);
   margin-left: auto;
 }
 
@@ -400,7 +431,7 @@
   .game__bar .btn {
     flex: 1 1 auto;
     padding: 9px 10px;
-    font-size: 12.5px;
+    font-size: var(--ds-type-xs);
   }
   .game__note {
     margin-left: 0;

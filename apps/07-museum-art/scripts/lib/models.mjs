@@ -37,7 +37,7 @@ function cabinet01() {
   }
 
   /* 屏幕 */
-  parts.push(p('屏幕边框', place(box(0.60, 0.50, 0.08), [0, 1.17, fz - 0.04]), 'shell-deep'));
+  parts.push(p('屏幕边框', place(box(0.60, 0.50, 0.08), [0, 1.17, fz - 0.04]), 'shell-light'));
   parts.push(p('屏幕面', place(box(0.470, 0.365, 0.010), [0, 1.17, fz + 0.012]), 'screen-glow'));
   parts.push(p('屏幕高光', place(box(0.470, 0.030, 0.004), [0, 1.325, fz + 0.018]), 'screen-glass'));
 
@@ -221,9 +221,9 @@ function handheld04() {
   parts.push(p('下机身', place(roundedBox(W, 0.060, 0.028, 0.006, 4), [0, 0.030, 0.008]), 'shell-mid'));
   parts.push(p('上机身', place(roundedBox(W, 0.060, 0.026, 0.006, 4), [0, 0.093, 0.026], [-24, 0, 0]), 'shell-mid'));
   parts.push(p('转轴', place(cylinder(0.0075, 0.0075, W, 18), [0, 0.060, -0.005], [0, 0, 90]), 'metal-dark'));
-  parts.push(p('下屏边框', place(box(0.072, 0.046, 0.003), [0, 0.036, 0.0205]), 'shell-mid'));
+  parts.push(p('下屏边框', place(box(0.072, 0.046, 0.003), [0, 0.036, 0.0205]), 'shell-light'));
   parts.push(p('下屏面', place(box(0.060, 0.034, 0.002), [0, 0.036, 0.0224]), 'screen-glow'));
-  parts.push(p('上屏边框', place(box(0.072, 0.044, 0.003), [0, 0.0977, 0.0365], [-24, 0, 0]), 'shell-mid'));
+  parts.push(p('上屏边框', place(box(0.072, 0.044, 0.003), [0, 0.0977, 0.0365], [-24, 0, 0]), 'shell-light'));
   parts.push(p('上屏面', place(box(0.060, 0.033, 0.002), [0, 0.0988, 0.0383], [-24, 0, 0]), 'screen-glow'));
   parts.push(p('十字键', place(dpad(0.026, 0.005, 0.34), [-0.043, 0.035, 0.016]), 'shell-deep'));
   parts.push(p('按键A', place(cylinder(0.0058, 0.0058, 0.005, 14), [0.043, 0.0345, 0.014]), 'accent'));

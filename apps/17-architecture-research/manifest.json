@@ -1,0 +1,1063 @@
+{
+  "id": "17-architecture-research",
+  "title": "中国经典建筑与传统结构联网研究",
+  "description": "为「构筑华夏 / Built in China」主站与 3D 教学模型提供可核验的研究底稿：42 条中国经典建筑案例（8 大区 / 7 时代 / 10 民族 / 19 省域 / 21 类构造），每条含中英名称、地域、年代与不确定性、建筑类型、结构原理、文化背景、逐条来源链接与「教学示意、非施工/工程模型」声明；74 条术语表（构件 / 连接 / 屋面 / 结构体系 / 形制礼制 / 材料做法 / 桥与基础 / 民族与地方类型）；18 个真实既有交互可视化项目台账（含网址、作者、交互方式、模型格式与许可），并从中选出 3 个机制优秀案例供改编；另交付中英双语研究成果页（dist/catalog.html）。",
+  "entry": "dist/catalog.html",
+  "buildCommand": "node src/catalog-page/build-catalog-page.mjs",
+  "outputDir": "dist",
+  "status": "complete",
+  "upstream": "17-architecture-research",
+  "schemaVersion": "1.0",
+  "task": "17-architecture-research",
+  "kind": "research-package",
+  "titleEn": "Web Research on Chinese Traditional Architecture and Structures",
+  "dataEntry": "catalog.json",
+  "entryFiles": [
+    "dist/catalog.html",
+    "dist/catalog.css",
+    "src/catalog-page/build-catalog-page.mjs",
+    "src/catalog-page/catalog.css",
+    "src/catalog-page/assets/ds/tokens.css",
+    "src/catalog-page/assets/ds/components.css",
+    "src/catalog-page/assets/ds/fonts/fonts.css",
+    "catalog.json",
+    "catalog.meta.json",
+    "glossary.json",
+    "INTERACTION-BRIEF.md",
+    "REFERENCES.md",
+    "SOURCES.md",
+    "LICENSES.md",
+    "QA.md"
+  ],
+  "rebuildCommands": {
+    "catalog": "python3 scripts/build_catalog.py",
+    "glossary": "python3 scripts/build_glossary.py",
+    "unesco": "python3 scripts/build_unesco_verified.py",
+    "verification": "python3 scripts/build_verification_status.py",
+    "manifest": "python3 scripts/build_manifest.py",
+    "qa": "python3 scripts/build_qa.py",
+    "validate": "python3 scripts/validate_catalog.py",
+    "catalogPage": "node src/catalog-page/build-catalog-page.mjs"
+  },
+  "generatedAt": "2026-10-21T22:10:00+08:00",
+  "generator": "scripts/build_manifest.py",
+  "scope": "本目录只包含研究底稿与可复现脚本；不含任何第三方图片素材，不做发布动作。",
+  "publishOwner": "14-publish（本任务不建仓、不 push、不部署）",
+  "dataset": {
+    "cases": 42,
+    "structureTypes": 21,
+    "structureGroups": 21,
+    "glossaryTerms": 74,
+    "regions": 8,
+    "eras": 7,
+    "ethnicGroups": 10,
+    "provinces": 19,
+    "independentSources": 54,
+    "firstBatchForAtlas": 18
+  },
+  "consumers": {
+    "18-architecture-models": [
+      "catalog.json",
+      "glossary.json",
+      "handoff/structure-groups.json",
+      "INTERACTION-BRIEF.md",
+      "REFERENCES.md"
+    ],
+    "19-architecture-atlas": [
+      "catalog.json",
+      "catalog.meta.json",
+      "glossary.json",
+      "handoff/first-18.json",
+      "handoff/first-18-ids.json",
+      "INTERACTION-BRIEF.md",
+      "SOURCES.md"
+    ],
+    "16-design-system": [
+      "catalog.meta.json",
+      "glossary.json",
+      "REFERENCE-NOTES.md",
+      "INTERACTION-BRIEF.md",
+      "LICENSES.md"
+    ],
+    "13-qa-curation": [
+      "QA.md",
+      "catalog.json",
+      "SOURCES.md",
+      "INTERACTION-BRIEF.md",
+      "manifest.json"
+    ],
+    "14-publish": [
+      "manifest.json",
+      "LICENSES.md",
+      "QA.md",
+      "catalog.json",
+      "catalog.meta.json",
+      "glossary.json"
+    ]
+  },
+  "publish": {
+    "owner": "14-publish（唯一 git 写入者与发布者）",
+    "buildType": "page（14 侧应以 buildCommand 构建本目录的 dist/，而非 static 直拷）",
+    "standaloneSite": false,
+    "notStandaloneSiteNote": "17 不部署独立站点：面向读者的主站是 19-architecture-atlas「构筑华夏 / Built in China」。本任务的 dist/catalog.html 是研究成果页（研究目录 / 案例总览），由 14-publish 按 page 类型构建并挂到站点的 research 路径；主站正文仍由 19 消费 catalog.json / catalog.meta.json / glossary.json 自行渲染。",
+    "conflict": "14-publish/release/scripts/build.mjs 的静态分支 keepDirs 含 'data'，与本目录 LICENSES.md 的「data/ 不随站点发布」直接冲突。",
+    "resolution": "发布方须在 work.build.exclude 中显式加入 'data'，或对 dist/ 做断言校验。",
+    "excludeListFile": "PUBLISH-EXCLUDE.txt",
+    "excludeDirs": [
+      "research-ref",
+      "screenshots",
+      "evidence",
+      "scripts",
+      "handoff",
+      "data",
+      "src"
+    ],
+    "excludeFiles": [
+      "PUBLISH-EXCLUDE.txt",
+      "TASK.md",
+      "STATUS.md",
+      "README.md",
+      "LICENSES.md",
+      "QA.md",
+      "REFERENCES.md",
+      "REFERENCE-NOTES.md",
+      "INTERACTION-BRIEF.md",
+      "SOURCES.md",
+      "catalog.json",
+      "catalog.meta.json",
+      "glossary.json",
+      "manifest.json"
+    ],
+    "includeDirs": [
+      "dist"
+    ],
+    "includeDirsNote": "dist/ 是应发布的构建产物，不得排除；src/ 是构建源码，不进站点产物树。",
+    "notForPublishNote": "research-ref/ 与 screenshots/ 内的文件是他人站点内容的抓取快照，著作权归原站作者，不得进入公开仓库。"
+  },
+  "directoryRoles": {
+    "research-ref/": "参考站观察证据隔离区（**不进入交付物、不进入公开仓库**）",
+    "screenshots/": "olek.si 实拍截图（内部观察证据，不随站点再分发）",
+    "evidence/": "本任务自产实测证据（浏览器测试报告 + 成果页截图，不随站点发布）",
+    "scripts/": "可复现脚本",
+    "data/": "取证原始材料与派生数据",
+    "handoff/": "下游交接切片",
+    "src/": "成果页源码（构建用；产物在 dist/）",
+    "dist/": "成果页构建产物（**应发布**，由 14-publish 以 page 类型接入）"
+  },
+  "fileCount": 93,
+  "totalBytes": 4172312,
+  "files": [
+    {
+      "path": "INTERACTION-BRIEF.md",
+      "role": "交互机制规格书",
+      "consumers": [
+        "18",
+        "19",
+        "16",
+        "13"
+      ],
+      "bytes": 17936,
+      "sha256": "5238ccf67fbbb5eb078e38760d181b488d69a78b3da87c930b7d354108447955"
+    },
+    {
+      "path": "LICENSES.md",
+      "role": "来源许可与素材使用边界",
+      "consumers": [
+        "16",
+        "19",
+        "13",
+        "14"
+      ],
+      "bytes": 14270,
+      "sha256": "f753b4184f6d323d90290d6a0df4146558991543e0507ef0e2255195cac4da8d"
+    },
+    {
+      "path": "PROMPT.md",
+      "role": "任务书（只读输入）",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 2133,
+      "sha256": "41cfc61be100c7e93233d49b34b2682ca8c561bb390a1144c4bff933f73c36fa"
+    },
+    {
+      "path": "PUBLISH-EXCLUDE.txt",
+      "role": "发布前必须排除的路径清单（供 14-publish 机械拦截）",
+      "consumers": [
+        "14"
+      ],
+      "bytes": 4239,
+      "sha256": "2b7e45a1284e698430979b5ab3788fd0bf8f34f24cadc2dfa7005de023636883"
+    },
+    {
+      "path": "QA.md",
+      "role": "验收结果与测试证据",
+      "consumers": [
+        "13",
+        "14"
+      ],
+      "bytes": 22978,
+      "sha256": "d6e6690b682626b48c50e0cb1cb359672ab9604dd257cd600c26ed48aa1766b8"
+    },
+    {
+      "path": "README.md",
+      "role": "本目录导览与使用说明",
+      "consumers": [
+        "18",
+        "19",
+        "16",
+        "13",
+        "14"
+      ],
+      "bytes": 22099,
+      "sha256": "766f01f2807f1b6b86e232875f7cb946e919657ff3eda573925446e9f3edc705"
+    },
+    {
+      "path": "REFERENCE-NOTES.md",
+      "role": "olek.si 实测观察记录",
+      "consumers": [
+        "16",
+        "19"
+      ],
+      "bytes": 17753,
+      "sha256": "02ad0e0053e9770e2162ab550bf7f77b155eb3ee63721662391a1cb044b7eed4"
+    },
+    {
+      "path": "REFERENCES.md",
+      "role": "交互可视化项目台账（18 个，含许可结论）",
+      "consumers": [
+        "18",
+        "19",
+        "16"
+      ],
+      "bytes": 31788,
+      "sha256": "b49bbf9aebf6f5e28697b90a3b94510cc7097c6f49abe07e3b7d2a24ae4e323f"
+    },
+    {
+      "path": "SOURCES.md",
+      "role": "逐条来源台账",
+      "consumers": [
+        "19",
+        "13",
+        "14"
+      ],
+      "bytes": 34187,
+      "sha256": "92607b92f6bf07492004de51e697a4219fa4725d4ff3e7d6ed72cd94ae2ea215"
+    },
+    {
+      "path": "STATUS.md",
+      "role": "阶段状态、决策与限制记录",
+      "consumers": [
+        "15-supervisor",
+        "13",
+        "14"
+      ],
+      "bytes": 24012,
+      "sha256": "34fde012d94705560da57b5824f90ba94df14b8d8636a45b473125eda97b747a"
+    },
+    {
+      "path": "TASK.md",
+      "role": "任务定义、字段规格与验收标准",
+      "consumers": [
+        "18",
+        "19",
+        "16",
+        "13",
+        "14"
+      ],
+      "bytes": 5937,
+      "sha256": "a445a862f864c78289b0373b5a169474f1704bb1b883b67aed71995359ec28ca"
+    },
+    {
+      "path": "catalog.json",
+      "role": "建筑案例主目录（42 条）",
+      "consumers": [
+        "19",
+        "18",
+        "13"
+      ],
+      "bytes": 232900,
+      "sha256": "b25b642112090efff72cc98d3b2b59a370051eea76195d666e84333f9511707b"
+    },
+    {
+      "path": "catalog.meta.json",
+      "role": "词表、统计、字段说明与限制",
+      "consumers": [
+        "19",
+        "18",
+        "16",
+        "13"
+      ],
+      "bytes": 11852,
+      "sha256": "19abc3f38deea63bdc514e82fcb919e7ace924932534ba0db064f1ad2d2a258d"
+    },
+    {
+      "path": "data/unesco-cn-verified.tsv",
+      "role": "UNESCO 官方编号映射（本项目自产）",
+      "consumers": [
+        "13",
+        "19"
+      ],
+      "bytes": 4322,
+      "sha256": "22ff3581962e8176f2b1a770241aa489d4393af546e656e2a52ea77f20cd2f23"
+    },
+    {
+      "path": "data/validate-report.json",
+      "role": "校验报告（本项目自产）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 12379,
+      "sha256": "233582b0274500da3c6091d3e33a3abf4debf0898e54cabf6018084cb224af91"
+    },
+    {
+      "path": "dist/assets/ds/components.css",
+      "role": "16 设计系统资源（构建产物）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 31282,
+      "sha256": "a602f4143823fec1c596c94bab8400e14dd24c462a8565cb4bcc0564e8930f51"
+    },
+    {
+      "path": "dist/assets/ds/fonts/FONT-MANIFEST.json",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 6481,
+      "sha256": "7174ecf5d614841d632d8539ed390d46af98664a11a572aa5e14af6abf03556a"
+    },
+    {
+      "path": "dist/assets/ds/fonts/OFL-inter.txt",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 4377,
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    },
+    {
+      "path": "dist/assets/ds/fonts/OFL-noto-sans-sc.txt",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+    },
+    {
+      "path": "dist/assets/ds/fonts/OFL-space-grotesk.txt",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 4495,
+      "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72"
+    },
+    {
+      "path": "dist/assets/ds/fonts/OFL-space-mono-bold.txt",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 4392,
+      "sha256": "8e4ee42b2553e1e01504e61cb0d46d148cd8c9e5eacaa3622a7df2d4f2955b9f"
+    },
+    {
+      "path": "dist/assets/ds/fonts/OFL-space-mono-regular.txt",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 4392,
+      "sha256": "8e4ee42b2553e1e01504e61cb0d46d148cd8c9e5eacaa3622a7df2d4f2955b9f"
+    },
+    {
+      "path": "dist/assets/ds/fonts/fonts.css",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 2524,
+      "sha256": "ebccba0f9628e54f547a65c9d8bd305d99f84fbfc675d0d13f383511c2564d76"
+    },
+    {
+      "path": "dist/assets/ds/fonts/inter-latin.woff2",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 132684,
+      "sha256": "98342e4c9d04d96ee10270f855930ecc1adc34dc6273134d80a3c385dc530fe0"
+    },
+    {
+      "path": "dist/assets/ds/fonts/noto-sans-sc-subset.woff2",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 197600,
+      "sha256": "0a0b62b40f8b359d0714d47fd3e293d2ca871d0ee21acb200c0b31ebc667fe4b"
+    },
+    {
+      "path": "dist/assets/ds/fonts/space-grotesk-latin.woff2",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 34788,
+      "sha256": "4212a294d495570baaa60d085f3b6a72b6790b5b1d13471630721ceb9c2babcf"
+    },
+    {
+      "path": "dist/assets/ds/fonts/space-mono-bold.woff2",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 15000,
+      "sha256": "d09323c39cee214f6472155bb71d374a89726805f7e6313d656f3947b16ccf6c"
+    },
+    {
+      "path": "dist/assets/ds/fonts/space-mono-regular.woff2",
+      "role": "自托管字体文件 / 许可文本（构建产物，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 14884,
+      "sha256": "2bd76ba5ecee41cdbde94aa862f0c998a6f85ee7e70b8142d19e9e8eb364eb27"
+    },
+    {
+      "path": "dist/assets/ds/tokens.css",
+      "role": "16 设计系统资源（构建产物）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 10954,
+      "sha256": "e9595d51336fac6a2cb013095b8863c72022bb20e545fa46867c129e9addf368"
+    },
+    {
+      "path": "dist/catalog.css",
+      "role": "研究成果页样式表",
+      "consumers": [
+        "14",
+        "13"
+      ],
+      "bytes": 10642,
+      "sha256": "d47a89fc946eedda309a0d0d551a14d2793fbaf0c016e10cf1144e8923ce38e1"
+    },
+    {
+      "path": "dist/catalog.html",
+      "role": "研究成果页（中英双语，42 案例 / 74 术语 / 21 构造）",
+      "consumers": [
+        "14",
+        "19",
+        "13"
+      ],
+      "bytes": 265002,
+      "sha256": "9cc420135a07b9ab524b0c58de7c53e1c13c598ed7f2101482fe5e164962bd4a"
+    },
+    {
+      "path": "dist/favicon.svg",
+      "role": "研究成果页构建产物（应发布）",
+      "consumers": [
+        "14",
+        "13"
+      ],
+      "bytes": 481,
+      "sha256": "c15f257baa72e4f15ce1a3ba9559eec8102229425ac1f85b5ecfecd3b45959d5"
+    },
+    {
+      "path": "evidence/browser-test-report.json",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 26919,
+      "sha256": "6b8ab85330333f331ffcd2a620969257d1c4b184b6af56a73ec403bb6d240452"
+    },
+    {
+      "path": "evidence/catalog-desktop-1440x900-dark.png",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 111789,
+      "sha256": "7f830626366bf4dc8f93821ff4f292389a445b94ecd970eb201723f0337d90db"
+    },
+    {
+      "path": "evidence/catalog-desktop-1440x900-light.png",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 111708,
+      "sha256": "d63239f7301c5babb3e2836181640adf8b19711c37e8f7673cced46bdb9a97e5"
+    },
+    {
+      "path": "evidence/catalog-mobile-390x844-light.png",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 126435,
+      "sha256": "561cda99d61aa1c6c2dc453c6d741e9c9f8db308e6930748bb5315f691c8e00f"
+    },
+    {
+      "path": "evidence/catalog-tablet-820x1180-light.png",
+      "role": "本任务自产实测证据（浏览器测试报告 + 成果页截图）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 138906,
+      "sha256": "95a9e7f2eed234fd66af89dc4dcb0d5241ad4d5b39589348db7816fe765630de"
+    },
+    {
+      "path": "glossary.json",
+      "role": "术语表（74 条）",
+      "consumers": [
+        "19",
+        "18",
+        "16"
+      ],
+      "bytes": 50224,
+      "sha256": "55260a166de4cf3f0a67d11369e27ec250172846d051397c48cb11094894df24"
+    },
+    {
+      "path": "handoff/FIELD-MAPPING.md",
+      "role": "字段映射说明（cases[] 语义 + 19 适配指引）",
+      "consumers": [
+        "19",
+        "18",
+        "16",
+        "13"
+      ],
+      "bytes": 22727,
+      "sha256": "227df0d8092f02e3ec58595e87a645db5e0279333ab8ea669357c1b825e971e8"
+    },
+    {
+      "path": "handoff/VERIFIED-VS-ASSUMED.md",
+      "role": "逐条「已核验 / 有分歧 / 假设」对照表",
+      "consumers": [
+        "18",
+        "19",
+        "13"
+      ],
+      "bytes": 8372,
+      "sha256": "3af1bed245cd5244b8f67bcf0cebb0ff2110d6a182911106aca41bf9fb39dad9"
+    },
+    {
+      "path": "handoff/field-mapping.json",
+      "role": "机器可读字段映射表",
+      "consumers": [
+        "19",
+        "18",
+        "13"
+      ],
+      "bytes": 36255,
+      "sha256": "45e8fad2b4bffd0159cd0a9e0f19b6d0b59ba35b8ca52959540dac0668ce4c58"
+    },
+    {
+      "path": "handoff/first-18-ids.json",
+      "role": "首批 18 例的 id 列表",
+      "consumers": [
+        "19"
+      ],
+      "bytes": 503,
+      "sha256": "eeff04773cf4b376fef26fba04e11471ddc55bc334e7676e305577c12f0ef5e0"
+    },
+    {
+      "path": "handoff/first-18.json",
+      "role": "给 19 号的首批 18 例",
+      "consumers": [
+        "19"
+      ],
+      "bytes": 103213,
+      "sha256": "5e291f3f8267cad7e74d004a0147f0c9ad325d459c385bd4cf4aa1d3e1d0dfc1"
+    },
+    {
+      "path": "handoff/structure-groups.json",
+      "role": "给 18 号的构造分组（21 组）",
+      "consumers": [
+        "18"
+      ],
+      "bytes": 35253,
+      "sha256": "1fe98a116499bb14f71ad08b5742bc4ab14fd9e8648700a8f507d16088349035"
+    },
+    {
+      "path": "handoff/verification-status.json",
+      "role": "机器可读的核验状态表",
+      "consumers": [
+        "18",
+        "19",
+        "13"
+      ],
+      "bytes": 53437,
+      "sha256": "ff4461b908ec199ec32d89e9421f92e57d6850c23770cb1b0eb21a39ebc41b6e"
+    },
+    {
+      "path": "manifest.json",
+      "role": "本清单",
+      "consumers": [
+        "14",
+        "13"
+      ],
+      "bytes": 32345,
+      "sha256": "fd3c87f89004b255ed6c0e69d078c1d29a26df6f1ec516dade5e5274c0ced028"
+    },
+    {
+      "path": "research-ref/README.md",
+      "role": "隔离区说明：参考站观察证据，非本项目产物",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 4801,
+      "sha256": "e94b99dc2118b10aa93d50b734027331959c9d4bcc631eea5d8f69f54616604e"
+    },
+    {
+      "path": "research-ref/olek-css-blocks.txt",
+      "role": "参考站 CSS 块快照（**不发布**）",
+      "consumers": [
+        "16"
+      ],
+      "bytes": 321882,
+      "sha256": "e962939c0a4a54dd958f0efd6984b9fdc0938daa1b4ee4af75f549a7cd470d1b"
+    },
+    {
+      "path": "research-ref/olek-index.js",
+      "role": "参考站生产 bundle 快照（**不发布**）",
+      "consumers": [
+        "16"
+      ],
+      "bytes": 575391,
+      "sha256": "8054278b1ee9911cf666001d05bb4029fc19cdb104c228c282b9485b7fd93a46"
+    },
+    {
+      "path": "research-ref/olek-tokens.json",
+      "role": "参考站设计令牌记录（**不发布**，机制参考用）",
+      "consumers": [
+        "16"
+      ],
+      "bytes": 4883,
+      "sha256": "f1937f50ee2ba375e55c3cd7eb8254edfbecb537a44ea08a50ccd9375d2684b6"
+    },
+    {
+      "path": "research-ref/unesco-cn.html",
+      "role": "UNESCO 页面快照（**不发布**）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 5686,
+      "sha256": "25cbb443301f0d213d8d92a116cbc443b5b5956177e09cf2d90870ca3ee79a6e"
+    },
+    {
+      "path": "research-ref/unesco-verified.tsv",
+      "role": "UNESCO 批量校验失败日志（**不发布**）",
+      "consumers": [
+        "13"
+      ],
+      "bytes": 433,
+      "sha256": "0f621432fb4779bba19d1a008a1f288799fe43370f5a1502bc845f2411c2909e"
+    },
+    {
+      "path": "screenshots/INDEX.tsv",
+      "role": "截图索引",
+      "consumers": [
+        "16"
+      ],
+      "bytes": 1230,
+      "sha256": "46c4daf093ed7ad70bcc2283f8fe5b4a1020ba34b4ad7601b573d5dada823d19"
+    },
+    {
+      "path": "screenshots/olek-si-desktop-1440x900.png",
+      "role": "olek.si 实拍截图（内部观察证据，不发布）",
+      "consumers": [
+        "16"
+      ],
+      "bytes": 44965,
+      "sha256": "609a26f904cda68d122763c93e4db6bd22156da44a10f85a6c9d3237277a8d1d"
+    },
+    {
+      "path": "screenshots/olek-si-desktop-hero-browser.png",
+      "role": "olek.si 实拍截图（内部观察证据，不发布）",
+      "consumers": [
+        "16"
+      ],
+      "bytes": 147003,
+      "sha256": "ef365af542df51417d5738e11fcb4a19d83480451141a9abb050f7954a381a3d"
+    },
+    {
+      "path": "screenshots/olek-si-desktop-tall-1440x2600.png",
+      "role": "olek.si 实拍截图（内部观察证据，不发布）",
+      "consumers": [
+        "16"
+      ],
+      "bytes": 85013,
+      "sha256": "1e1961c95ac100f2361d6b80e44a157b61e39f2aa6f608bf06147abc205fdc15"
+    },
+    {
+      "path": "screenshots/olek-si-mobile-390x844.png",
+      "role": "olek.si 实拍截图（内部观察证据，不发布）",
+      "consumers": [
+        "16"
+      ],
+      "bytes": 51373,
+      "sha256": "c1203f6abc51cb52fe1bfef5235559f0a974bfcef8016f81670248cac319e1b2"
+    },
+    {
+      "path": "screenshots/olek-si-tablet-820x1180.png",
+      "role": "olek.si 实拍截图（内部观察证据，不发布）",
+      "consumers": [
+        "16"
+      ],
+      "bytes": 42417,
+      "sha256": "742ca50d02277f7dadd7f1f70f1931b135f9871ba0cc971b34a8965776418bc9"
+    },
+    {
+      "path": "scripts/browser_test.mjs",
+      "role": "可复现脚本",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 34658,
+      "sha256": "f2abcefcff740d8094d2808b2e15af25573251775a7b5ef5617851b6cd8be34c"
+    },
+    {
+      "path": "scripts/build_catalog.py",
+      "role": "目录生成脚本（唯一数据源）",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 125613,
+      "sha256": "84eaae48c29d7f1d9a0bdb020fc7798e0a55106672d9a2be8ba684758166ff13"
+    },
+    {
+      "path": "scripts/build_field_mapping.py",
+      "role": "可复现脚本",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 18799,
+      "sha256": "d18d164c7ff464979c78dd4f3bbfbf355fcd5588846a4c8b8f1cc8ff98b28f95"
+    },
+    {
+      "path": "scripts/build_glossary.py",
+      "role": "术语表生成脚本",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 37501,
+      "sha256": "8d5c8ac24b5133fd9c80a07716aa9e44618c6ea48461802dd5fbddcf60449049"
+    },
+    {
+      "path": "scripts/build_manifest.py",
+      "role": "本清单生成脚本",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 16904,
+      "sha256": "c84fcaf76b3316e45179872e2d5a9aaaac5b363b7924a16df074397ed4a203ba"
+    },
+    {
+      "path": "scripts/build_qa.py",
+      "role": "可复现脚本",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 16992,
+      "sha256": "16a3f2f81856753dbb9431030e62a7a9e310cd2997ee3ec73dde91662f47b1d0"
+    },
+    {
+      "path": "scripts/build_unesco_verified.py",
+      "role": "UNESCO 官方编号映射生成脚本",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 7937,
+      "sha256": "cacf3fee0c91bdc67262cb0e9376bddd023c16a84c8e1b317d876645f6dc9f9c"
+    },
+    {
+      "path": "scripts/build_verification_status.py",
+      "role": "可复现脚本",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 8751,
+      "sha256": "62e873a461ca47211c2742bc26bc2bcdcabf204b8f2a8d540f935a26cbfec795"
+    },
+    {
+      "path": "scripts/capture.sh",
+      "role": "headless Chrome 截图脚本（内置重试退避）",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 2512,
+      "sha256": "8d1ac4e81e0cda625faa399c8de46ef3ac89e17d124abfdc35131b1c8ad213e8"
+    },
+    {
+      "path": "scripts/capture_cdp.mjs",
+      "role": "可复现脚本",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 3906,
+      "sha256": "e961b02496b07ca35b309151981cceec979c86b92655d705822fb2d7a5aa93e2"
+    },
+    {
+      "path": "scripts/extract_tokens.js",
+      "role": "从生产 bundle 提取设计令牌",
+      "consumers": [
+        "16"
+      ],
+      "bytes": 4050,
+      "sha256": "d8e497a535486042cb8d18d8ecf5001a46aaab887b9a17771c31df5869550977"
+    },
+    {
+      "path": "scripts/final_quotes.py",
+      "role": "中文引号修复工具（历史遗留）",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 2693,
+      "sha256": "8ae6fd237c49e453ff98490d00d12689aa5a6613570a888dad12196271db73bc"
+    },
+    {
+      "path": "scripts/fix_tuple_quotes.py",
+      "role": "中文引号修复工具（历史遗留）",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 1667,
+      "sha256": "d4193758868b55edddad8405a5540fb02810e89784211f8f5184631a72816e3b"
+    },
+    {
+      "path": "scripts/normalize_quotes.py",
+      "role": "中文引号修复工具（历史遗留）",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 2957,
+      "sha256": "f1f39081fa444f3d5a03fd0701d23cd4b3aa8b95e08d8a04e61de8005beb0629"
+    },
+    {
+      "path": "scripts/repair_quotes.py",
+      "role": "中文引号修复工具（历史遗留）",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 2474,
+      "sha256": "0bd36ee260cbd39e510b8876f6b33791514230410ad2e506a59fd18a81760c95"
+    },
+    {
+      "path": "scripts/run_pipeline.sh",
+      "role": "可复现脚本",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 1537,
+      "sha256": "9e390a2a6af957659e3beec83bccf49ede05558b46eaccfcdc51829599c997d5"
+    },
+    {
+      "path": "scripts/validate_catalog.py",
+      "role": "交付物校验脚本",
+      "consumers": [
+        "13",
+        "14"
+      ],
+      "bytes": 31653,
+      "sha256": "d706936603d6249237e112e86facf81261ae2a48e385104a206b6ae10a86dbaa"
+    },
+    {
+      "path": "scripts/verify_unesco.js",
+      "role": "UNESCO 编号批量校验（本机网络不通，实测未生效）",
+      "consumers": [
+        "—"
+      ],
+      "bytes": 1576,
+      "sha256": "203013686d99c0e9d50cc98cd24cf01bb077e5474f7c40380c9909f6dfcaa829"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/ASSET-SOURCE.json",
+      "role": "vendored 资源的来源与许可登记",
+      "consumers": [
+        "13",
+        "14"
+      ],
+      "bytes": 2219,
+      "sha256": "fe37e48e3212a9d10e1bc3e95cbcd207ece74fb72403701120a5436fbe8b9f43"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/components.css",
+      "role": "16 设计系统组件样式（vendored）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 31282,
+      "sha256": "a602f4143823fec1c596c94bab8400e14dd24c462a8565cb4bcc0564e8930f51"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/FONT-MANIFEST.json",
+      "role": "字体清单（vendored）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 6481,
+      "sha256": "7174ecf5d614841d632d8539ed390d46af98664a11a572aa5e14af6abf03556a"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/OFL-inter.txt",
+      "role": "自托管字体文件 / 许可文本（vendored，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 4377,
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/OFL-noto-sans-sc.txt",
+      "role": "自托管字体文件 / 许可文本（vendored，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/OFL-space-grotesk.txt",
+      "role": "自托管字体文件 / 许可文本（vendored，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 4495,
+      "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/OFL-space-mono-bold.txt",
+      "role": "自托管字体文件 / 许可文本（vendored，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 4392,
+      "sha256": "8e4ee42b2553e1e01504e61cb0d46d148cd8c9e5eacaa3622a7df2d4f2955b9f"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/OFL-space-mono-regular.txt",
+      "role": "自托管字体文件 / 许可文本（vendored，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 4392,
+      "sha256": "8e4ee42b2553e1e01504e61cb0d46d148cd8c9e5eacaa3622a7df2d4f2955b9f"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/fonts.css",
+      "role": "自托管字体声明（vendored）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 2524,
+      "sha256": "ebccba0f9628e54f547a65c9d8bd305d99f84fbfc675d0d13f383511c2564d76"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/inter-latin.woff2",
+      "role": "自托管字体文件 / 许可文本（vendored，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 132684,
+      "sha256": "98342e4c9d04d96ee10270f855930ecc1adc34dc6273134d80a3c385dc530fe0"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/noto-sans-sc-subset.woff2",
+      "role": "自托管字体文件 / 许可文本（vendored，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 197600,
+      "sha256": "0a0b62b40f8b359d0714d47fd3e293d2ca871d0ee21acb200c0b31ebc667fe4b"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/space-grotesk-latin.woff2",
+      "role": "自托管字体文件 / 许可文本（vendored，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 34788,
+      "sha256": "4212a294d495570baaa60d085f3b6a72b6790b5b1d13471630721ceb9c2babcf"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/space-mono-bold.woff2",
+      "role": "自托管字体文件 / 许可文本（vendored，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 15000,
+      "sha256": "d09323c39cee214f6472155bb71d374a89726805f7e6313d656f3947b16ccf6c"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/fonts/space-mono-regular.woff2",
+      "role": "自托管字体文件 / 许可文本（vendored，OFL）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 14884,
+      "sha256": "2bd76ba5ecee41cdbde94aa862f0c998a6f85ee7e70b8142d19e9e8eb364eb27"
+    },
+    {
+      "path": "src/catalog-page/assets/ds/tokens.css",
+      "role": "16 设计系统令牌（vendored，OFL 字体自托管）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 10954,
+      "sha256": "e9595d51336fac6a2cb013095b8863c72022bb20e545fa46867c129e9addf368"
+    },
+    {
+      "path": "src/catalog-page/build-catalog-page.mjs",
+      "role": "成果页构建脚本（产出 dist/catalog.html）",
+      "consumers": [
+        "14"
+      ],
+      "bytes": 22716,
+      "sha256": "e9b1414a4b6bc744b280533eefa84cbd7270db924562e421b78e54295943b700"
+    },
+    {
+      "path": "src/catalog-page/catalog.css",
+      "role": "成果页样式（全部走 var(--ds-*)，无硬编码色值字体）",
+      "consumers": [
+        "16",
+        "14"
+      ],
+      "bytes": 10642,
+      "sha256": "d47a89fc946eedda309a0d0d551a14d2793fbaf0c016e10cf1144e8923ce38e1"
+    }
+  ]
+}

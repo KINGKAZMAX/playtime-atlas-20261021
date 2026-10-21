@@ -1,0 +1,47 @@
+/* ==========================================================================
+   自托管字体 — 本项目落地
+   --------------------------------------------------------------------------
+   字体文件：Space Grotesk / Inter / Space Mono（拉丁子集）
+   许可：SIL Open Font License 1.1，许可全文随包（见同目录 OFL-*.txt）
+   来源：16-design-system/fonts/（该目录的字体本身即为本批 vendored 的 OFL 字体，
+        非取自参考站 https://olek.si/；见 16-design-system/fonts/FONT-MANIFEST.json
+        → policy.note）
+
+   运行期零外部请求：全部 url() 为同源相对路径，由 Vite 打包并加 hash，
+   天然适配 GitHub Pages 子路径（base: './'）。
+
+   汉字：走系统字体栈（PingFang SC / Hiragino Sans GB / Microsoft YaHei），
+   不随包部分覆盖的 Noto Sans SC 子集——理由见 tokens.css §偏离说明 ①。
+   ========================================================================== */
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("./fonts/space-grotesk-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./fonts/inter-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/space-mono-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/space-mono-bold.woff2") format("woff2");
+}

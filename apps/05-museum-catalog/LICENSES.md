@@ -57,3 +57,37 @@
 3. **展品名以编目事实出现**，不做成品牌化主视觉；中文展签名以本项目自拟的 `titleZh` 为准。
 4. 若确实需要某张外部图片（如某台硬件的历史照片），先到 Commons 文件页确认许可并记录到
    `LICENSES.md`，再由 13-qa-curation 复核。
+
+## 6. 目录页源码的素材边界（2026-10-21 改版准备新增）
+
+目录页源码（`src/catalog-page/`）与构建产物（`dist/`）**未引入任何第三方素材**，登记如下：
+
+| 项 | 现状 | 许可结论 |
+| --- | --- | --- |
+| 字体（拉丁正文 / 显示 / 等宽） | **自托管 OFL 字体**（见 §6.1）：`Inter`（正文）、`Space Grotesk`（显示）、`Space Mono`（等宽） | 全部 SIL OFL 1.1，**可再分发**；许可原文随包附（`assets/ds/fonts/OFL-*.txt`），登记见 §6.1 |
+| 字体（中文） | 系统 CJK 栈优先（`PingFang SC` / `Hiragino Sans GB` / `Microsoft YaHei` / `Source Han Sans SC`），`Noto Sans SC` 子集为渐进增强 | 中文优先用系统字体栈（0 字节、离线可用、覆盖全字形）；随包的 Noto Sans SC 子集**只覆盖本页汉字的 57.5%**，按 `FONT-MANIFEST.json → systemFallbacks.cjk` 的既定策略与 16 的上游修正（2026-10-21 22:25），子集**排在系统栈之后**（详见 `RESTYLE-CHECKLIST.md` §11.3） |
+| 图标 / 配图 | favicon 为**内联 data URI 的本项目自绘 SVG**（圆角矩形 + 双圆，朱砂 `#b4432b` / 青绿 `#2e6a5e` 描边） | 本项目原创，无第三方权利 |
+| 样式表 | `catalog.css` 本项目手写；`assets/ds/tokens.css` 与 `assets/ds/components.css` 为 **16-design-system 产出**的副本（与原件逐字节一致） | 本项目原创 + 本批设计系统产出，可再分发 |
+| 脚本 | `build-catalog-page.mjs`（构建期）+ 页面内联筛选脚本（运行期） | 本项目原创，**无 CDN、无外链字体、无运行期外部 API** |
+| 条目数据 | 全部来自本目录 `catalog.json`（文字事实 + 来源链接） | 见 `SOURCES.md` 逐条台账；链接指向第三方来源，**引用不等于授权** |
+
+### 6.1 随包分发的自托管字体（2026-10-21 改版第 2 步引入）
+
+来源：`16-design-system/fonts/`（由 16-design-system 从本批 07-museum-art / 06-museum-core 已 vendored 的
+同一批 OFL 文件复制而来，**未从参考站 https://olek.si/ 下载、未再分发其任何字体**）。
+本目录落点：`src/catalog-page/assets/ds/fonts/` → 构建到 `dist/assets/ds/fonts/`。
+
+| 字体族 | 角色 | 文件 | 字节 | 许可 | 版权 | 来源 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Space Grotesk | display（标题） | `space-grotesk-latin.woff2` | 34 788 | SIL OFL 1.1（`OFL-space-grotesk.txt`） | Copyright 2020 The Space Grotesk Project Authors | https://github.com/floriankarsten/space-grotesk |
+| Inter | text（正文） | `inter-latin.woff2` | 132 684 | SIL OFL 1.1（`OFL-inter.txt`） | Copyright 2016 The Inter Project Authors | https://github.com/rsms/inter |
+| Space Mono | mono（年份 / 编号 / 元信息） | `space-mono-regular.woff2` / `space-mono-bold.woff2` | 14 884 / 15 000 | SIL OFL 1.1（`OFL-space-mono.txt`） | Copyright 2020 The Space Mono Project Authors | https://github.com/SpaceMono/SpaceMono |
+| Noto Sans SC | 中文渐进增强（**子集**） | `noto-sans-sc-subset.woff2` | 197 600 | SIL OFL 1.1（`OFL-noto-sans-sc.txt`） | Copyright The Noto Project Authors | https://github.com/notofonts/noto-cjk |
+
+- 全部为 **SIL Open Font License 1.1**，允许再分发；许可原文已随包附在 `assets/ds/fonts/`。
+- `@font-face` 全部使用**相对 URL**（相对 `fonts.css` 所在目录），运行期**零外部请求**（实测外部请求 0）。
+- `font-display: swap`；汉字走系统字体栈，Noto 子集仅作渐进增强。
+- 完整清单与来源溯源见 `assets/ds/fonts/FONT-MANIFEST.json`（16 出具）。
+
+**本页未引入任何其他第三方素材**：图标是内联 data URI 的本项目自绘 SVG；样式表与脚本均为本项目手写；
+条目数据全部来自本目录 `catalog.json`（文字事实 + 来源链接，见 `SOURCES.md` 逐条台账）。

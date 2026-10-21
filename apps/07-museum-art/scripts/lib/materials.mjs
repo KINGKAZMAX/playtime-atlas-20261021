@@ -50,7 +50,7 @@ export const MATERIALS = {
     baseColorFactor: [0.145, 0.451, 0.396, 1],
     metallicFactor: 0,
     roughnessFactor: 0.34,
-    emissiveFactor: [0.055, 0.170, 0.148],
+    emissiveFactor: [0.090, 0.260, 0.225],
   },
   'screen-glass': {
     baseColorFactor: [0.02, 0.043, 0.075, 1],

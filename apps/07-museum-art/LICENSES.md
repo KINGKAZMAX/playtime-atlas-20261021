@@ -82,6 +82,23 @@ fontTools.subset <src.ttf> --output-file=<out.woff2> --flavor=woff2 \
 SIL OFL 1.1 要求：若随软件/素材分发字体，**必须同时分发授权与版权声明**，且不得单独出售字体本身。
 本包通过 `public/assets/fonts/OFL-*.txt` 满足该要求，并在本站页面底部标注字体来源与许可。
 
+### 1.3 与 16-design-system 的字体对齐（v1.1.0 起）
+
+本包是**全站字体的源头**：16-design-system 的 `fonts/` 直接取自本包 vendored 的同一批文件。
+v1.1.0 的改版把这条关系固化为可核对的机器可读记录：
+
+| 项 | 事实 | 核对方式 |
+| --- | --- | --- |
+| 字体文件 | 5 个 woff2 与 `16-design-system/fonts/` 下同名文件 **SHA-256 逐字节相同** | `scripts/build-font-manifest.mjs` 逐文件计算并写入 `public/assets/fonts/FONT-MANIFEST.json` → `alignment.files[].identical` |
+| 字体清单 | `public/assets/fonts/FONT-MANIFEST.json` 为**本包自产**（非复制 16 的清单），schema 与 16 一致 | `npm run fontmanifest` 重新生成 |
+| 许可原文 | 5 份 `OFL-*.txt` 均逐份校验为 `SIL OPEN FONT LICENSE Version 1.1` 原文 | `build-font-manifest.mjs` 的 `licenses[].verified` |
+| 字体栈顺序 | 与 16 一致：拉丁自托管字体 → **完整系统 CJK 栈在前** → Noto Sans SC 子集 → 通用族 | `npm run qa` 的「字体栈顺序合规」断言 |
+
+> 字体栈顺序是**硬约束**（16 的实测结论）：CSS 按字符回退，
+> 若覆盖有限的 Noto Sans SC 子集排在覆盖完整的系统 CJK 族之前，
+> 同一段中文会逐字回退、混入两套字形，表现为混排基线错位。
+> v1.1.0 之前本包的栈顺序把子集排在前面，已在改版中修正。
+
 ---
 
 ## 2. 海报与封面关键帧

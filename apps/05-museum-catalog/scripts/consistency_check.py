@@ -83,9 +83,9 @@ def main():
         # infobox 常常没有 designer 字段（如 Sketchpad 只有 developer=MIT Lincoln Laboratory），
         # 因此把 lead 正文也作为创作者佐证来源
         lead_creator = canon(toks((r.get("lead") or "")[:600]))
-        if not i_creator and not lead_creator:
-            # 来源条目是综述/列表型条目，本身既无 infobox 创作者字段、lead 也不含该创作者
-            # → 无法机器核验，单独列出，不计为冲突
+        if not i_creator:
+            # 来源条目是综述/列表型条目，没有 infobox 创作者字段可对照
+            # → 结构上无法机器核验，单独列出，不计为冲突
             unverifiable.append({"id": it["id"], "title": it["title"],
                                  "source": r.get("canonical_title") or r.get("wiki"),
                                  "curated_creator": it.get("creator")})

@@ -1,21 +1,182 @@
 {
   "id": "03-interaction",
-  "title": "织造车间调度台",
-  "description": "原创改编的浏览器端实时织造调度台：经线排布、梭子调度、开口与张力控制，附实时统计与可保存的排布方案。",
-  "entry": "works/03-interaction/index.html",
+  "title": "织造车间调度台 · LOOMDECK",
+  "description": "一间手工织造车间的浏览器端调度台：12 台提花织机跑订单簿，实时遥测（经密 / 梭速 / 张力 / 断经率 / 能耗）、事件日志、机台详情抽屉与快捷键操作。当班状态机（待开工 / 在产 / 暂停）、班次节奏（轻松 / 标准 / 紧排）、自动续派与人工派工并存，订单、机台、日志与遥测写入 localStorage，刷新后原样恢复。视觉语言采用余晖设计系统（16-design-system）浅色主题，字体全部自托管，运行期零 CDN、零 API、零外部请求。",
+  "entry": "index.html",
   "buildCommand": "npm run build",
-  "outputDir": "docs/works/03-interaction",
-  "status": "ready",
+  "outputDir": "dist",
+  "status": "completed",
   "upstream": "03-interaction",
-  "license": {
-    "code": "MIT",
-    "assets": "程序化几何与纯色材质，无第三方植物或器物模型"
+  "subtitle": "浏览器端实时织造排产与机台调度台",
+  "version": "1.1.1",
+  "project": "flash-showcase-20261021/03-interaction",
+  "category": "interaction",
+  "originality": "original-adaptation",
+  "language": "zh-CN",
+  "i18n": {
+    "status": "keys-ready",
+    "defaultLocale": "zh-CN",
+    "locales": [
+      "zh-CN",
+      "en"
+    ],
+    "keyCount": 194,
+    "keyFile": "i18n/keys.json",
+    "doc": "I18N-KEYS.md",
+    "note": "中英文案与键位齐备；运行时切换器未实现，由 19/14 统一接入"
   },
-  "sources": [
-    {
-      "title": "原创作品（无复刻来源）",
-      "url": "",
-      "note": "为「交互界面」维度独立设计的原创作品。"
-    }
-  ]
+  "devCommand": "npm run dev",
+  "previewCommand": "npm run serve",
+  "devPort": 4313,
+  "installCommand": "npm install",
+  "entrypoints": {
+    "source": "index.html",
+    "built": "dist/index.html",
+    "js": "dist/assets/*.js",
+    "css": "dist/assets/*.css",
+    "fonts": "dist/fonts/*.woff2"
+  },
+  "features": [
+    "12 台织机状态机（待单 / 换经 / 运行 / 故障 / 停机）与 5 布种 × 5 配色参数化仿真",
+    "订单簿：下单校验（幅宽 / 经密 / 匹数 / 优先级）、派单、撤单、提降优先级、清空待排",
+    "当班状态机：待开工 → 在产 ⇄ 暂停，顶栏状态芯片实时显示",
+    "班次节奏三档（轻松 / 标准 / 紧排），直接改变织造推进速率",
+    "自动续派开关（可关）+ 人工派工并存，撤下的订单自动挂起",
+    "实时遥测台：手写 SVG 折线图（经密 / 梭速刻度切换）+ 12 台负载条",
+    "事件日志带：全部 / 警告 / 故障三级筛选、暂停自动滚动、清空",
+    "机台详情抽屉：状态、在制订单、进度曲线、复位 / 停机 / 撤单、事件历史",
+    "完整键盘操作（方向键 / Enter / Backspace / Space / S / L / R / T / N / 数字键 / Esc），仅在展品获得焦点后生效",
+    "localStorage 持久化：订单、机台、日志、遥测、选中机台、当班状态与节奏，刷新后原样恢复",
+    "重置车间可在 toast 上一键撤销",
+    "响应式：1440 桌面三栏 → 860 两栏 → 520 单栏整页滚动",
+    "统一视觉语言：--ds-* 令牌层 + .ds-* 组件层（增量替换，作品名/文案/模型形态不变）",
+    "双语键表 194 条（zh/en），HTML 侧已打 data-i18n 钩子"
+  ],
+  "controls": {
+    "mouse": "点机台卡片打开详情抽屉；点订单卡片操作按钮派单 / 撤单 / 调优先级",
+    "方向键": "在机台矩阵中移动选中机台",
+    "1-9 / 0": "聚焦第 1–10 台织机",
+    "Enter": "为选中机台派发队首订单",
+    "Backspace": "撤销选中机台的当前订单（退回队列并挂起）",
+    "Space": "暂停 / 继续当班生产",
+    "S": "暂停 / 继续日志自动滚动",
+    "L": "清空日志",
+    "R": "复位选中机台的故障",
+    "T": "切换遥测刻度（经密 / 梭速）",
+    "N": "聚焦新增订单表单",
+    "Esc": "关闭抽屉 / 取消选中"
+  },
+  "tech": {
+    "runtime": "browser",
+    "language": "javascript-esm",
+    "build": "vite@5.4.21",
+    "dependencies": [],
+    "devDependencies": [
+      "vite@5.4.21",
+      "subset-font@2.9.0",
+      "wawoff2@2.0.1",
+      "harfbuzzjs@1.6.3",
+      "playwright-core@1.64.1"
+    ],
+    "offline": true,
+    "externalRequests": 0,
+    "cdn": false,
+    "api": false,
+    "externalFonts": false,
+    "subPathSafe": true,
+    "persistentStorage": [
+      "localStorage:loomdeck.workshop.v1"
+    ]
+  },
+  "restyle": {
+    "step": "RESTYLE-SPEC §4 第 2 步（16 规范就绪后增量改版）—— 已完成；并已对齐 16 v1.0.1（字体栈顺序 / 触摸目标 / 必备令牌）",
+    "basis": [
+      "16-design-system/design-tokens.json",
+      "16-design-system/DESIGN-SPEC.md §2.5 / §7.1 / §7.4 / §11.4",
+      "16-design-system/MIGRATION-NOTES.md §1 / §2.0.1 / §2.7 / §3 / §5.1 / §5.3 / §8 / §10"
+    ],
+    "method": "增量替换（61 条精确替换脚本 src/styles.css + 语义别名层），未推倒重写，既有选择器全部保留",
+    "tokenLayer": "src/tokens.css（--ds-* 令牌层 129 项，与 16-design-system/src/tokens.css 逐名等值 + 旧变量语义别名层）",
+    "componentLayer": "src/ds-components.css（.ds-skip / .ds-topbar / .ds-btn / .ds-tag / .ds-chip / .ds-field / .ds-input）",
+    "fontFamilies": [
+      "Space Grotesk",
+      "Inter",
+      "Space Mono",
+      "Noto Sans SC"
+    ],
+    "basePathVar": "--ds-base",
+    "unchanged": [
+      "作品名",
+      "文案",
+      "内容",
+      "术语",
+      "模型形态",
+      "既有功能与键位"
+    ],
+    "deviations": [
+      "未加 .ds-cover 英雄区：工具型调度台加封面会把调度控件与工单标签挤出首屏",
+      "表单控件描边用 --ds-ink-faint（5.51:1）而非 --ds-line（1.29:1）：满足 WCAG 非文字控件边界 3:1，仍在 DS 色板内",
+      "状态文字用派生墨色（--ok-ink / --warn-ink / --err-ink）：DS 的 --ds-warning 对底色仅 3.59:1，低于正文 4.5:1",
+      "--mono 别名在 generic 之前插入系统 CJK 族（Noto Sans SC 置于其后）：DS 的 --ds-font-mono 不含 CJK 兜底，中文会回退系统宋体；--ds-font-mono 令牌本身与 design-tokens.json 逐字一致",
+      "令牌层补齐规范全集 129 项，其中画布 HUD / 分区 / 导航轨类令牌本作品不消费（无 canvas、无英雄分区、无导航轨），已逐组注释，零视觉影响"
+    ],
+    "inventory": "RESTYLE-INVENTORY.md",
+    "fontStackOrder": "DESIGN-SPEC §2.5 硬性：拉丁自托管 → PingFang SC → Hiragino Sans GB → Microsoft YaHei → Source Han Sans SC → Noto Sans SC → -apple-system → BlinkMacSystemFont → sans-serif；覆盖完整的系统 CJK 族必须排在有限子集之前",
+    "tokenAudit": "16-design-system/tools/ds-audit-tokens.mjs → 🟢 声明 129 / 必备缺 0 / 必备值差 0 / 全量缺 0 / 值差 0 / 额外 0 / 字体栈顺序问题 0"
+  },
+  "assets": {
+    "external": false,
+    "images": "全部为运行时生成：SVG 折线图、负载条、迷你趋势柱、原创织机纹样 favicon；无位图素材",
+    "fonts": "自托管 woff2 随产物发布（全部 SIL OFL 1.1）：Space Grotesk 34,788 B + Inter 132,684 B + Space Mono 14,884 B / 15,000 B + Noto Sans SC 子集 106,556 B（覆盖本作品 565/565 汉字）。按 DESIGN-SPEC §2.5，汉字走系统 CJK 栈，该子集作为系统栈不可用时的离线兜底（实测可强制加载）",
+    "buildOutput": "16 个文件 / 411.1 KB",
+    "fontLicenseFiles": "dist/fonts/OFL-*.txt ×5",
+    "note": "无游戏 ROM、无商业游戏资源、无品牌视觉；界面与图标为原创设计；字体族名与 16-design-system/fonts/FONT-MANIFEST.json 一致"
+  },
+  "reference": {
+    "note": "仅借鉴交互机制骨架（多执行体 / 实时日志 / 任务编排 / 实时遥测 / 状态反馈）。未获取参考 demo 的源码与截图，不存在像素级复刻；作品名 / 文案 / 内容 / 字体 / 配色 / 布局 / 模型形态七项均为原创。",
+    "case": "AI agent command center（多代理指挥台）",
+    "url": "https://x.com/0xRicker/status/2112519745270321496",
+    "author": "Ricker (@0xRicker)",
+    "publishedAt": "2026-10-20T12:22:10Z",
+    "modelAttribution": "作者第一人称自述由 MiniMax M3.1 Flash 从零构建",
+    "engagementObservedAt": "2026-10-21",
+    "engagement": {
+      "views": 976,
+      "replies": 11,
+      "reposts": 2,
+      "likes": 49,
+      "bookmarks": 22
+    },
+    "claimsAllFirstParty": false
+  },
+  "docs": {
+    "task": "TASK.md",
+    "status": "STATUS.md",
+    "readme": "README.md",
+    "source": "SOURCE.md",
+    "changelog": "CHANGELOG.md",
+    "differences": "DESIGN-DIFF.md",
+    "qa": "QA.md",
+    "licenses": "LICENSES.md",
+    "i18n": "I18N-KEYS.md",
+    "restyleInventory": "RESTYLE-INVENTORY.md"
+  },
+  "qa": {
+    "harness": "13-qa-curation/qa-harness（只读复用，复制到临时目录并改写输出路径，不覆盖策展任务产物）",
+    "verdict": "pass",
+    "checks": 28,
+    "failed": 0,
+    "warned": 0,
+    "passed": 24,
+    "skipped": 1,
+    "smoke": "npm run qa → scripts/qa-smoke.mjs",
+    "smokeChecks": 19,
+    "smokePassed": 19,
+    "fontCheck": "npm run check:fonts → 5/5 通过（族名 / 许可 / 汉字覆盖 565/565 / ASCII / 无 CDN）",
+    "contrastCheck": "node scripts/check-contrast.mjs → 30 组配色对全部达标（正文 ≥4.5:1，图形与控件边界 ≥3:1）",
+    "report": "qa/report.json",
+    "screenshots": "screenshots/",
+    "tokenAudit": "node 16-design-system/tools/ds-audit-tokens.mjs → 🟢 必备缺 0 / 必备值差 0 / 字体栈顺序问题 0"
+  },
+  "notes": "按 MASTER-UPDATE.md 要求，本作品为对公开案例工艺水准的原创改编，非原样复制。证据缺口：参考原帖为未登录状态下的公开页面快照，互动数字会随时间增长；「25 个模拟代理」为作者自述，未见公开源码，无法逐条核验。改版只换视觉语言，作品名 / 文案 / 内容 / 模型形态未变（K.6）。 v1.1.1：按 16 v1.0.1 的硬性条款调正了中文字族栈顺序与触摸目标阈值，并补齐必备令牌；汉字因此走系统黑体（跨平台字形不统一是 16 已声明可接受的代价），自托管 Noto Sans SC 子集降为离线兜底。"
 }

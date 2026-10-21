@@ -4,6 +4,7 @@ import { el, clear, formatTime, scrollToTop } from '../core/dom.js';
 import { LEVELS, COLORS, MIRROR_ROT_NAME, ROT_NAME } from '../data/levels.js';
 import { PuzzleState, ROTATABLE } from './rules.js';
 import { getPuzzleState, setPuzzleCurrent, completeLevel, useHint, getHintCount, isLevelCompleted, markVisited } from '../core/progress.js';
+import { publishState } from '../core/debug-state.js';
 import { toast } from '../ui/toast.js';
 
 const BEAM_HEIGHT = { W: 0.5, C: 0.56, M: 0.44 };
@@ -20,7 +21,12 @@ export function mountAtrium(root) {
   const wrap = el('div.atrium-wrap');
   root.appendChild(wrap);
 
-  const stage = el('div.atrium-stage');
+  const stage = el('div.atrium-stage.ds-canvas-frame', {
+    'data-game-root': 'atrium',
+    'data-ds-theme': 'dark',
+    tabindex: '0',
+    'aria-label': '折光阁光路解谜画面，WASD 或方向键移动光标，E 旋转元件',
+  });
   const hud = el('div.atrium-hud');
   const overlay = el('div.atrium-overlay');
   stage.appendChild(hud);
@@ -33,8 +39,8 @@ export function mountAtrium(root) {
     el(
       'div.atrium-head-main',
       {},
-      el('span.exhibit-no', { style: { color: '#FFC46B' } }, 'EXHIBIT 02'),
-      el('h1', {}, '折光阁'),
+      el('span.exhibit-no', { style: { color: '#B4432B' } }, 'EXHIBIT 02'),
+      el('h1.ds-detail__title', {}, '折光阁'),
       el('p.pulse-sub', {}, 'PRISM ATRIUM · 空间解谜'),
     ),
   );
@@ -58,6 +64,9 @@ export function mountAtrium(root) {
 
   loadLevel(startId);
   scrollToTop();
+  // 进入解谜画面即把焦点交给画面：键盘只在游戏区获得焦点时生效，
+  // 但用户主动进入展项后应当「按下就能走」，不需要再点一次。
+  requestAnimationFrame(() => game?.focusGame());
 
   return () => {
     if (game) game.destroy();
@@ -74,6 +83,8 @@ class Atrium3D {
     this.overlay = overlay;
     this.level = level;
     this.onLevelChange = onLevelChange;
+    this.rootEl = stage;
+    this.presses = 0;
 
     this.state = new PuzzleState(level);
     this.selectedId = null;
@@ -94,6 +105,48 @@ class Atrium3D {
 
     this.loop = this.loop.bind(this);
     this.raf = window.requestAnimationFrame(this.loop);
+    this.publish();
+  }
+
+  /* ---------------- 可观测状态 ---------------- */
+
+  /**
+   * 发布运行状态（供自动化验收比对）。只读反映真实状态，不参与解谜逻辑。
+   */
+  publish() {
+    const p = this.state?.player || { x: 0, y: 0 };
+    publishState({
+      state: this.complete ? 'solved' : 'playing',
+      route: '/atrium',
+      chapter: this.level.id,
+      score: this.state?.collected?.size ?? 0,
+      player: { x: p.x, y: p.y, presses: this.presses },
+      extra: {
+        level: this.level.id,
+        levelName: this.level.name,
+        selected: this.selectedId,
+        collected: this.state?.collected?.size ?? 0,
+        total: this.level.motes.length,
+        elapsedMs: Math.round(this.elapsed),
+      },
+    });
+  }
+
+  /** 游戏区是否持有键盘焦点。未聚焦时不消费按键，避免在 iframe 中劫持母站键盘。 */
+  isGameFocused() {
+    const root = this.rootEl;
+    if (!root) return false;
+    const active = document.activeElement;
+    return active === root || root.contains(active);
+  }
+
+  /** 把焦点交还给解谜画面。 */
+  focusGame() {
+    try {
+      this.rootEl?.focus({ preventScroll: true });
+    } catch {
+      this.rootEl?.focus();
+    }
   }
 
   /* ---------------- 初始化 ---------------- */
@@ -535,10 +588,10 @@ class Atrium3D {
     this.elMotes = el('b.hud-value', {}, '0 / 0');
     this.elReceivers = el('div.receiver-status');
 
-    this.btnUndo = el('button.btn.btn-sm', { type: 'button', onclick: () => this.doUndo() }, '撤销');
-    this.btnHint = el('button.btn.btn-sm', { type: 'button', onclick: () => this.doHint() }, '提示');
-    this.btnReset = el('button.btn.btn-sm.btn-ghost', { type: 'button', onclick: () => this.doReset() }, '重置');
-    this.btnView = el('button.btn.btn-sm.btn-ghost', { type: 'button', onclick: () => this.resetView() }, '视角复位');
+    this.btnUndo = el('button.btn.btn-sm', { type: 'button', 'data-control': 'undo', onclick: () => this.doUndo() }, '撤销');
+    this.btnHint = el('button.btn.btn-sm', { type: 'button', 'data-control': 'hint', onclick: () => this.doHint() }, '提示');
+    this.btnReset = el('button.btn.btn-sm.btn-ghost', { type: 'button', 'data-control': 'restart', onclick: () => this.doReset() }, '重置');
+    this.btnView = el('button.btn.btn-sm.btn-ghost', { type: 'button', 'data-control': 'view', onclick: () => this.resetView() }, '视角复位');
 
     this.hud.appendChild(
       el(
@@ -556,11 +609,11 @@ class Atrium3D {
     );
     this.hud.appendChild(
       el(
-        'div.atrium-hud-bottom',
+        'div.atrium-hud-bottom.ds-canvas-frame__hud',
         {},
         el('div.hud-actions', {}, this.btnUndo, this.btnHint, this.btnReset, this.btnView),
         el(
-          'div.hud-legend',
+          'div.hud-legend.ds-diagram',
           {},
           legendItem('#4FE3D0', '青光接收环'),
           legendItem('#FF5FA2', '品红光接收环'),
@@ -612,6 +665,7 @@ class Atrium3D {
   bindInput() {
     this.onKeyDown = (event) => {
       if (event.metaKey || event.ctrlKey || event.altKey) return;
+      if (!this.isGameFocused()) return;
       const code = event.code;
       const map = {
         KeyW: [0, -1],
@@ -625,18 +679,21 @@ class Atrium3D {
       };
       if (map[code]) {
         event.preventDefault();
+        this.presses += 1;
         this.tryMove(map[code][0], map[code][1]);
         return;
       }
       if (code === 'KeyE' || code === 'Space' || code === 'Enter') {
         if (this.selectedId) {
           event.preventDefault();
+          this.presses += 1;
           this.tryRotate(this.selectedId);
         }
         return;
       }
       if (code === 'Tab') {
         event.preventDefault();
+        this.presses += 1;
         this.cycleSelection();
       }
     };
@@ -645,6 +702,7 @@ class Atrium3D {
     // 指针：区分点击与拖拽
     this.pointerDown = null;
     this.onPointerDown = (event) => {
+      this.focusGame();
       this.pointerDown = { x: event.clientX, y: event.clientY };
     };
     this.onPointerUp = (event) => {
@@ -700,6 +758,7 @@ class Atrium3D {
     };
     this.refreshLight();
     this.updateHud();
+    this.publish();
   }
 
   tryRotate(id) {
@@ -714,6 +773,7 @@ class Atrium3D {
     this.refreshLight();
     this.updateHud();
     this.updateSelRing();
+    this.publish();
   }
 
   cycleSelection() {
@@ -724,6 +784,7 @@ class Atrium3D {
     this.updateSelRing();
     const e = list[(idx + 1) % list.length];
     toast(`已选中：${e.type === 'mirror' ? '反光板' : e.type === 'splitter' ? '分光镜' : '色散棱镜'}（按 E 旋转）`);
+    this.publish();
   }
 
   updateSelRing() {
@@ -750,6 +811,7 @@ class Atrium3D {
     this.syncMeshes();
     this.refreshLight();
     this.updateHud();
+    this.publish();
     toast('已撤销上一步');
   }
 
@@ -794,6 +856,7 @@ class Atrium3D {
     this.refreshLight();
     this.updateHud();
     this.clearOverlay();
+    this.publish();
     toast('本关已重置');
   }
 
@@ -890,6 +953,7 @@ class Atrium3D {
     const stars = record.stars;
     const idx = LEVELS.findIndex((l) => l.id === this.level.id);
     const next = LEVELS[idx + 1];
+    this.publish();
 
     const box = el(
       'div.atrium-result',
@@ -922,11 +986,21 @@ class Atrium3D {
     clear(this.overlay);
     this.overlay.appendChild(node);
     this.overlay.classList.add('is-active');
+    // 遮罩出现时把焦点交给第一个可操作元素（键盘可达性 + 保持按键作用域一致）
+    const first = this.overlay.querySelector('button, a[href], [tabindex]:not([tabindex="-1"])');
+    try {
+      first?.focus?.({ preventScroll: true });
+    } catch {
+      first?.focus?.();
+    }
   }
 
   clearOverlay() {
     clear(this.overlay);
     this.overlay.classList.remove('is-active');
+    // 遮罩移除后焦点会退回 body，这里主动交还给解谜画面，
+    // 保证「关掉结算 → 键盘立刻可用」。
+    this.focusGame();
   }
 
   /* ---------------- 主循环 ---------------- */
@@ -1062,6 +1136,7 @@ class Atrium3D {
       else obj.material?.dispose?.();
     });
     this.renderer.dispose();
+    publishState({ state: 'idle', route: '/atrium', chapter: null });
   }
 }
 

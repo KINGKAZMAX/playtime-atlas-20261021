@@ -6,7 +6,7 @@
   "description": "色块远征 CHROMA VOYAGE — 1990s 家用机可玩展厅（原创平台冒险 + 等距探索场景，全程序化资产，可静态构建）",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/inline-assets.mjs",
     "preview": "vite preview",
     "test": "node --test tests/*.test.js",
     "start": "bash scripts/start.sh",

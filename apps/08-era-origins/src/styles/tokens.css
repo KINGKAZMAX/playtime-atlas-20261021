@@ -1,0 +1,114 @@
+/* ==========================================================================
+   光点年代 / LUMEN ERA —— 08 专属令牌层
+   ==========================================================================
+   本文件**不声明任何 --ds-* 取值**。
+
+   —— 分层与依据 ——
+   · assets/ds/tokens.css      —— 余晖设计系统令牌层（16-design-system/src/tokens.css）
+                                  本目录内 --ds-* 取值的**唯一声明处**。
+                                  依据 MIGRATION-NOTES §0 风险 B：同名变量由后加载者胜出，
+                                  因此「系统 token 变量只声明一次」，目录自有层只做引用。
+   · assets/ds/components.css  —— 余晖设计系统组件层（.ds-* 组件类）
+   · assets/ds/fonts/fonts.css —— 自托管 OFL 字体（禁止 CDN）
+   · src/styles/tokens.css     —— **本文件**：08 专属令牌（画布色板镜像、中文排版、纹理还原）
+   · src/styles/components.css —— 08 专属组件（游戏页 HUD / 覆盖层 / 触控区）
+
+   依据：16-design-system/MIGRATION-NOTES.md §1 接入四步、§2.8 本目录对照、
+         §4 画布豁免、§5 中文排版、§7 减少动态效果。
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. 画布色板镜像（只读）
+   --------------------------------------------------------------------------
+   玩法画面内部的全部配色（场景、辉板 / 光舟、光点、粒子、拖尾、发光）
+   由 src/core/gfx.js 的 PALETTE 与两款游戏的 JS 常量决定，
+   **不读取任何 CSS 变量**，因此外壳改版在技术上不可能影响画面配色，
+   满足 MIGRATION-NOTES §4 K.1。
+
+   下列 --lumen-* 变量是那套画布色板在 CSS 侧的**只读镜像**，
+   仅供「贴着画布的容器」使用（画布外框、HUD、覆盖层、焦点提示），
+   其取值必须与 gfx.js PALETTE 保持一致，不得当作外壳色板使用。
+   scripts/verify.sh 第 5 步会机器校验这份一致性。
+   -------------------------------------------------------------------------- */
+
+:root {
+  --lumen-void: #04060d;
+  --lumen-deep: #080d1c;
+  --lumen-panel: #0d1430;
+  --lumen-panel-2: #111a3c;
+  --lumen-line: #1c2a54;
+  --lumen-line-2: #2a3c70;
+  --lumen-cyan: #5ce1e6;
+  --lumen-cyan-dim: #2b7d86;
+  --lumen-amber: #ffb45c;
+  --lumen-amber-dim: #a8713a;
+  --lumen-rose: #ff5d8f;
+  --lumen-rose-dim: #a83a5c;
+  --lumen-bone: #e9eff8;
+  --lumen-slate: #8595b4;
+  --lumen-dim: #3f4c72;
+}
+
+/* --------------------------------------------------------------------------
+   2. 中文排版修正（MIGRATION-NOTES §5）
+   --------------------------------------------------------------------------
+   本文件位于 assets/ds/tokens.css **之后**加载，因此这里的规则会覆盖
+   组件层 .ds-shell 带来的 body 级 letter-spacing / line-height：
+   · 字距归零（--ds-track-cjk = 0）——负字距会破坏汉字字面
+   · 正文行高 1.85；标题行高 1.22
+   · word-break: normal + overflow-wrap: anywhere；禁止 justify
+   -------------------------------------------------------------------------- */
+
+:lang(zh),
+:lang(zh-CN),
+:lang(zh-TW) {
+  letter-spacing: var(--ds-track-cjk);
+  word-break: normal;
+  overflow-wrap: anywhere;
+  text-align: start;
+}
+
+:lang(zh) p,
+:lang(zh) li,
+:lang(zh) dd,
+:lang(zh) .ds-body,
+:lang(zh) .ds-lead,
+:lang(zh) .ds-sm {
+  line-height: 1.85;
+}
+
+:lang(zh) h1,
+:lang(zh) h2,
+:lang(zh) h3,
+:lang(zh) .ds-display,
+:lang(zh) .ds-h1,
+:lang(zh) .ds-h2,
+:lang(zh) .ds-h3 {
+  line-height: 1.22;
+  letter-spacing: var(--ds-track-cjk);
+}
+
+/* --------------------------------------------------------------------------
+   3. 外壳底纹还原
+   --------------------------------------------------------------------------
+   组件层 body { background: var(--ds-bg) } 是为了让移动端 overscroll 不露白边，
+   但会覆盖 base.css 里 08 的辉光 / 网格 / 扫描线纹理。
+   这里以同等特异性把纹理放回 body 的背景层（不是伪元素覆盖层 ——
+   早期版本用 position:fixed 的 body::before/::after 压住过正文，已废弃）。
+   -------------------------------------------------------------------------- */
+
+body.ds-shell {
+  background-color: var(--ds-bg);
+  background-image:
+    radial-gradient(120% 70% at 18% -10%, color-mix(in srgb, var(--ds-accent) 12%, transparent), transparent 58%),
+    radial-gradient(90% 60% at 96% 6%, color-mix(in srgb, var(--ds-jade) 8%, transparent), transparent 60%),
+    linear-gradient(color-mix(in srgb, var(--ds-ink) 3%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--ds-ink) 3%, transparent) 1px, transparent 1px),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0 2px,
+      rgba(0, 0, 0, 0.16) 2px 3px
+    );
+  background-size: 100% 100%, 100% 100%, 46px 46px, 46px 46px, auto;
+  background-attachment: fixed, fixed, fixed, fixed, fixed;
+}

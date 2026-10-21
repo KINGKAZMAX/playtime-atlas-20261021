@@ -1,3 +1,7 @@
+// NOTE: the key keeps its original `deep-space-drifter.` prefix on purpose —
+// the automated QA harness (13-qa-curation/qa-harness/lib/probes.mjs) reads
+// this exact literal, and renaming it would break its D4 check. Technical
+// contract, not a user-facing name — see SOURCE-AND-DIFFERENCES.md §3.7.
 const SETTINGS_KEY = 'deep-space-drifter.settings.v1';
 
 /**

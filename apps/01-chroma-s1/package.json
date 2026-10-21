@@ -10,12 +10,11 @@
     "preview": "vite preview --port 4311 --strictPort",
     "typecheck": "tsc --noEmit",
     "qa": "node qa/verify.mjs",
+    "qa:ds": "node qa/ds-verify.mjs --out=qa/ds-report.json",
+    "qa:d1": "node qa/d1-overlap.mjs --out=qa/d1-final.json",
     "qa:headed": "node qa/verify.mjs --headed"
   },
   "dependencies": {
-    "@fontsource/jetbrains-mono": "5.3.0",
-    "@fontsource/martian-mono": "5.3.0",
-    "@fontsource/space-grotesk": "5.3.0",
     "three": "0.186.1"
   },
   "devDependencies": {

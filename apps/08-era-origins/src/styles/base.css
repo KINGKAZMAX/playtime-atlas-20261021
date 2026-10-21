@@ -1,32 +1,41 @@
 /* ============================================================
    光点年代 / LUMEN ERA —— 基础层
-   设计令牌 + 复位 + 排版 + 通用零件
+   复位 + 排版 + 通用零件
+   ------------------------------------------------------------
+   改版说明（依据 16-design-system/MIGRATION-NOTES.md §2.8）：
+   本文件原有的一套深靛 + 青色变量已**重定向**到余晖设计系统的
+   --ds-* 令牌（见 tokens.css），外壳因此与全站统一。
+   画布配色另存为 --lumen-*（tokens.css §4），仅供贴着画布的 HUD 使用，
+   玩法画面内部由 src/core/gfx.js 的 JS 常量决定，不受 CSS 影响。
    ============================================================ */
 
 :root {
-  --void: #04060d;
-  --deep: #080d1c;
-  --panel: #0d1430;
-  --panel-2: #111a3c;
-  --panel-3: #16224b;
-  --line: #1c2a54;
-  --line-2: #2a3c70;
-  --cyan: #5ce1e6;
-  --cyan-dim: #2b7d86;
-  --amber: #ffb45c;
-  --amber-dim: #a8713a;
-  --rose: #ff5d8f;
-  --rose-dim: #a83a5c;
-  --bone: #e9eff8;
-  --slate: #8595b4;
-  --dim: #3f4c72;
+  /* ---------- 外壳：旧变量 → 余晖设计系统令牌 ----------
+     取值依据：16-design-system/design-tokens.json §color.dark / §typography /
+     §radius / §layout。深色主题下三档墨色对比度为 17.46 / 9.71 / ≥5.15 : 1，
+     均达 WCAG AA。 */
+  --void: var(--ds-bg);
+  --deep: var(--ds-bg-sunken);
+  --panel: var(--ds-surface);
+  --panel-2: var(--ds-bg-raised);
+  --panel-3: var(--ds-surface);
+  --line: var(--ds-line);
+  --line-2: var(--ds-line-strong);
+  --cyan: var(--ds-accent);
+  --cyan-dim: var(--ds-accent-hover);
+  --amber: var(--ds-jade);
+  --amber-dim: var(--ds-jade-soft);
+  --rose: var(--ds-accent-hover);
+  --rose-dim: var(--ds-accent-soft);
+  --bone: var(--ds-ink);
+  --slate: var(--ds-ink-soft);
+  --dim: var(--ds-ink-faint);
 
-  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  --sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", sans-serif;
+  --mono: var(--ds-font-mono);
+  --sans: var(--ds-font-text);
 
-  --maxw: 1180px;
-  --radius: 3px;
+  --maxw: var(--ds-max-width);
+  --radius: var(--ds-radius-xs);
 }
 
 *,
@@ -46,55 +55,32 @@ html {
 }
 
 body {
-  background: var(--void);
-  color: var(--bone);
-  font-family: var(--sans);
-  font-size: 15px;
-  line-height: 1.72;
+  background-color: var(--ds-bg);
+  /* 背景纹理全部做在 body 自身的背景层上。
+     早期版本用 position:fixed 的 body::before / body::after 伪元素做纹理，
+     但固定定位的覆盖层会参与合成，可能整层压住正文 —— 已改为背景层实现：
+     既保留观感，又从结构上保证永远不会遮挡文字。
+     改版后纹理改用强调色（--ds-accent）低透明度铺陈，与外壳同色系。 */
+  background-image:
+    radial-gradient(120% 70% at 18% -10%, color-mix(in srgb, var(--ds-accent) 12%, transparent), transparent 58%),
+    radial-gradient(90% 60% at 96% 6%, color-mix(in srgb, var(--ds-jade) 8%, transparent), transparent 60%),
+    linear-gradient(color-mix(in srgb, var(--ds-ink) 3%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--ds-ink) 3%, transparent) 1px, transparent 1px),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0 2px,
+      rgba(0, 0, 0, 0.16) 2px 3px
+    );
+  background-size: 100% 100%, 100% 100%, 46px 46px, 46px 46px, auto;
+  background-attachment: fixed, fixed, fixed, fixed, fixed;
+  color: var(--ds-ink);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-body);
+  line-height: var(--ds-lh-normal);
+  letter-spacing: var(--ds-track-body);
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-}
-
-/* 背景纹理：极细网格 + 顶部辉光，全部用 CSS 渐变，零外部资源 */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(120% 70% at 18% -10%, rgba(92, 225, 230, 0.11), transparent 58%),
-    radial-gradient(90% 60% at 96% 6%, rgba(255, 180, 92, 0.07), transparent 60%),
-    linear-gradient(rgba(92, 225, 230, 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(92, 225, 230, 0.028) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 46px 46px, 46px 46px;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.4;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0 2px,
-    rgba(0, 0, 0, 0.18) 2px 3px
-  );
-}
-
-/* TEMP-DEBUG: isolate overlay behaviour */
-.debug-off body::before,
-.debug-off body::after {
-  display: none !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body::after {
-    opacity: 0.18;
-  }
 }
 
 h1,
@@ -102,9 +88,18 @@ h2,
 h3,
 h4 {
   margin: 0;
-  font-weight: 650;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-family: var(--ds-font-display);
+  font-weight: var(--ds-w-medium);
+  line-height: var(--ds-lh-tight);
+  letter-spacing: var(--ds-track-display);
+}
+
+:lang(zh) h1,
+:lang(zh) h2,
+:lang(zh) h3,
+:lang(zh) h4 {
+  letter-spacing: var(--ds-track-cjk);
+  line-height: 1.22;
 }
 
 p {
@@ -112,155 +107,166 @@ p {
 }
 
 a {
-  color: var(--cyan);
+  color: var(--ds-accent);
   text-decoration: none;
-  border-bottom: 1px solid rgba(92, 225, 230, 0.28);
-  transition: border-color 0.18s ease, color 0.18s ease;
+  border-bottom: 1px solid color-mix(in srgb, var(--ds-accent) 38%, transparent);
+  transition: border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    color var(--ds-dur-fast) var(--ds-ease-veil);
 }
 
 a:hover,
 a:focus-visible {
-  color: #a5f2f5;
-  border-bottom-color: var(--cyan);
+  color: var(--ds-accent-hover);
+  border-bottom-color: var(--ds-accent);
 }
 
 :focus-visible {
-  outline: 2px solid var(--cyan);
-  outline-offset: 3px;
+  outline: none;
+  box-shadow: var(--ds-focus-ring);
+  border-radius: var(--ds-radius-xs);
 }
 
 code {
-  font-family: var(--mono);
+  font-family: var(--ds-font-mono);
   font-size: 0.88em;
-  background: rgba(92, 225, 230, 0.08);
-  border: 1px solid var(--line);
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-line);
   padding: 0.1em 0.42em;
-  border-radius: 2px;
-  color: #bfeef0;
+  border-radius: var(--ds-radius-xs);
+  color: var(--ds-ink);
 }
 
 /* ---------- 通用零件 ---------- */
 
 .wrap {
   width: 100%;
-  max-width: var(--maxw);
+  max-width: var(--ds-max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--ds-space-gutter);
   position: relative;
   z-index: 1;
 }
 
 .eyebrow {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.24em;
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
   text-transform: uppercase;
-  color: var(--cyan-dim);
-  margin: 0 0 10px;
+  color: var(--ds-ink-faint);
+  margin: 0 0 var(--ds-space-3);
 }
 
 .rule {
   height: 1px;
   border: 0;
   margin: 0;
-  background: linear-gradient(90deg, var(--line-2), rgba(42, 60, 112, 0));
+  background: linear-gradient(90deg, var(--ds-line-strong), transparent);
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--bone);
-  background: linear-gradient(180deg, rgba(92, 225, 230, 0.1), rgba(92, 225, 230, 0.03));
-  border: 1px solid var(--line-2);
-  border-radius: var(--radius);
-  padding: 10px 18px;
+  gap: var(--ds-space-2);
+  min-height: 44px;
+  padding: 0 var(--ds-space-4);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-sm);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: var(--ds-track-body);
+  color: var(--ds-ink);
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-control);
   cursor: pointer;
-  transition: background 0.16s ease, border-color 0.16s ease, transform 0.1s ease,
-    color 0.16s ease;
+  transition: background-color var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    color var(--ds-dur-fast) var(--ds-ease-veil),
+    transform var(--ds-dur-fast) var(--ds-ease-spring);
   -webkit-tap-highlight-color: transparent;
 }
 
 .btn:hover:not(:disabled) {
-  border-color: var(--cyan);
-  color: #cffbfc;
-  background: linear-gradient(180deg, rgba(92, 225, 230, 0.18), rgba(92, 225, 230, 0.06));
+  border-color: var(--ds-line-strong);
+  background: var(--ds-bg-sunken);
 }
 
 .btn:active:not(:disabled) {
-  transform: translateY(1px);
+  transform: scale(0.985);
 }
 
 .btn:disabled {
-  opacity: 0.36;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
 .btn--primary {
-  color: #04121a;
-  background: linear-gradient(180deg, #7ceef2, var(--cyan));
+  color: var(--ds-accent-ink);
+  background: var(--ds-accent);
   border-color: transparent;
-  font-weight: 700;
+  font-weight: var(--ds-w-semibold);
 }
 
 .btn--primary:hover:not(:disabled) {
-  color: #04121a;
-  background: linear-gradient(180deg, #a3f6f9, #6ee5ea);
+  color: var(--ds-accent-ink);
+  background: var(--ds-accent-hover);
+  border-color: transparent;
 }
 
 .btn--ghost {
   background: transparent;
+  box-shadow: var(--ds-ring);
 }
 
 .btn--sm {
-  padding: 7px 12px;
-  font-size: 11px;
+  min-height: 36px;
+  padding: 0 var(--ds-space-3);
+  font-size: var(--ds-type-xs);
 }
 
 .tag {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--slate);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 3px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  height: 24px;
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-mono);
+  color: var(--ds-ink-soft);
+  background: var(--ds-surface);
+  border: 0;
+  border-radius: var(--ds-radius-pill);
+  padding: 0 10px;
   white-space: nowrap;
 }
 
 .tag--cyan {
-  color: var(--cyan);
-  border-color: rgba(92, 225, 230, 0.36);
+  color: var(--ds-accent);
+  background: var(--ds-accent-soft);
 }
 
 .tag--amber {
-  color: var(--amber);
-  border-color: rgba(255, 180, 92, 0.36);
+  color: var(--ds-jade);
+  background: var(--ds-jade-soft);
 }
 
 .tag--rose {
-  color: var(--rose);
-  border-color: rgba(255, 93, 143, 0.36);
+  color: var(--ds-accent-hover);
+  background: var(--ds-accent-soft);
 }
 
 .panel {
   position: relative;
-  background: linear-gradient(180deg, rgba(17, 26, 60, 0.72), rgba(10, 15, 34, 0.72));
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-md);
 }
 
 .panel__corner {
   position: absolute;
   width: 9px;
   height: 9px;
-  border: 1px solid var(--line-2);
+  border: 1px solid var(--ds-line-strong);
   pointer-events: none;
 }
 
@@ -303,15 +309,17 @@ code {
 
 .skip-link {
   position: absolute;
-  left: 12px;
-  top: -60px;
-  z-index: 100;
-  background: var(--panel-2);
-  border: 1px solid var(--cyan);
-  padding: 10px 16px;
-  transition: top 0.18s ease;
+  left: var(--ds-space-4);
+  top: -100px;
+  z-index: var(--ds-z-toast);
+  background: var(--ds-ink);
+  color: var(--ds-bg);
+  border-radius: var(--ds-radius-sm);
+  padding: var(--ds-space-3) var(--ds-space-4);
+  text-decoration: none;
+  transition: top var(--ds-dur-fast) var(--ds-ease-out);
 }
 
 .skip-link:focus {
-  top: 12px;
+  top: var(--ds-space-4);
 }

@@ -23,6 +23,7 @@ import {
   METERS_PER_UNIT, SHIP, SCAN_TARGETS, SCAN_KIND_LABEL, REGIONS,
   STAR, PLANETS, MOONS, ANOMALIES, BELT, STATION, DERELICT, SPAWN,
 } from '../world/Config.js';
+import { t, loc, getLang } from '../i18n/index.js';
 
 const FIXED_DT = 1 / 120;
 
@@ -56,6 +57,13 @@ export class Game {
 
     this.state = 'loading';        // loading | menu | playing | paused
     this.quality = this.settings.quality;
+    /**
+     * Timestamp of a pause that was opened by the pointer lock being lost.
+     * Chrome reserves Esc while the pointer is locked, so one Esc gesture can
+     * arrive twice (lock loss + keydown). This marker keeps the gesture
+     * idempotent — see _togglePause().
+     */
+    this._lockLossPauseAt = 0;
 
     this.ship = new FlightModel(this.settings);
     this.missions = new MissionTracker(this.save, this.bus);
@@ -173,7 +181,7 @@ export class Game {
   async _buildWorld() {
     // Paint the loading screen first, then build the system in one task so
     // that a throttled background tab cannot stretch the load indefinitely.
-    this.overlays.setLoading('正在生成天体系统', 0.02);
+    this.overlays.setLoading(t('load.generating'), 0.02);
     await yieldToBrowser();
 
     const t0 = performance.now();
@@ -247,6 +255,39 @@ export class Game {
 
     this.input.onKeyAction = (code) => this._onKeyAction(code);
 
+    // While flying, Tab moves the focus onto the cockpit view and keeps it
+    // there. Every overlay is closed at that point, so the browser would send
+    // the focus to its own chrome — and dropping the pointer lock as a side
+    // effect would cost the pilot their mouse steering. In the menus the
+    // browser keeps full control and Tab walks the buttons normally.
+    this.input.captureTab = () => this.state === 'playing' && !this.overlays.active;
+
+    // Chrome consumes Esc as a reserved gesture while the pointer is locked,
+    // so the keydown never reaches the game. Reacting to the lock loss is
+    // what makes "Esc -> pause" reliable in every browser.
+    this.input.onPointerLockLost = () => {
+      if (this.state !== 'playing' || this.overlays.active) return;
+      // A Tab press moves the focus ring; when the focus leaves the page the
+      // browser drops the pointer lock as a side effect. That is keyboard
+      // navigation, not "the pilot wants the menu" — do not pause for it.
+      if (this.input.tabPressedRecently()) return;
+      // Chrome reserves Esc while the pointer is locked: it releases the lock
+      // and may still deliver the keydown. If the keydown did arrive, the
+      // key handler owns the pause — pausing here as well would make the
+      // single Esc gesture toggle the menu open and straight back closed.
+      if (performance.now() - this.input.lastEscapeAt() < 400) return;
+      this._lockLossPauseAt = performance.now();
+      this.pause();
+    };
+
+    // Pause when the tab or window loses focus mid-flight.
+    this._onVisibility = () => {
+      if (document.hidden && this.state === 'playing' && !this.overlays.active) {
+        this.pause();
+      }
+    };
+    document.addEventListener('visibilitychange', this._onVisibility);
+
     // Clicking the viewport re-acquires pointer lock when it was released.
     this.canvas.addEventListener('click', () => {
       if (this.state === 'playing' && !this.overlays.active && !this.input.pointerLocked) {
@@ -257,7 +298,15 @@ export class Game {
 
   _onKeyAction(code) {
     if (this.state === 'menu') {
-      if (code === 'Enter' || code === 'Space') this.startGame();
+      // In the menu the game itself is not running, but panels opened from the
+      // menu (settings / help / journal) are still overlays — Esc has to close
+      // them, otherwise a keyboard user is stuck inside the panel.
+      const panelOpen = this.overlays.active && this.overlays.active !== 'menu';
+      if (code === 'Escape') {
+        if (panelOpen) this.resume();
+        return;
+      }
+      if ((code === 'Enter' || code === 'Space') && !panelOpen) this.startGame();
       return;
     }
 
@@ -266,7 +315,10 @@ export class Game {
         this._togglePause();
         break;
       case 'KeyM':
-      case 'Tab':
+        // NOTE: 'Tab' is deliberately NOT bound to the star map. Tab belongs to
+        // the browser: it has to walk the focus ring (keyboard accessibility),
+        // and hijacking it for a game action breaks that. The star map is on
+        // 'M' alone.
         if (this.state === 'playing') this.overlays.open('starmap');
         break;
       case 'KeyH':
@@ -296,6 +348,7 @@ export class Game {
   startGame() {
     // Pointer lock has to be requested synchronously inside the click gesture.
     this.input.requestLock();
+    this._blurFocus();
 
     this.audio.init().then(() => {
       this.audio.setVolume(this.settings.get('masterVolume'));
@@ -306,7 +359,7 @@ export class Game {
     this.overlays.close();
     this.hud.show();
     this._showTutorialHints();
-    this.hud.toast('点击画面锁定鼠标；若锁定失败，可用拖拽或方向键操控', 'good');
+    this.hud.toast(t('toast.lockHint'), 'good');
   }
 
   _showTutorialHints() {
@@ -314,18 +367,22 @@ export class Game {
     this.save.data.tutorialSeen = true;
     this.save.save();
     const hints = [
-      'W / S 前后推进 · A / D 平移',
-      'Space / Ctrl 升降 · Q / E 滚转',
-      '鼠标控制俯仰与偏航',
-      'Shift 后燃器推进 · X 刹停',
-      'F 扫描天体 · M 打开星图',
-      'R 在灯塔站对接',
+      t('tutorial.0'), t('tutorial.1'), t('tutorial.2'),
+      t('tutorial.3'), t('tutorial.4'), t('tutorial.5'),
     ];
     hints.forEach((h, i) => setTimeout(() => this.hud.toast(h), 400 + i * 700));
   }
 
   _togglePause() {
     if (this.overlays.active) {
+      // One Esc gesture, one state change. When Chrome released the pointer
+      // lock first, the pause menu was already opened from that lock loss;
+      // the Esc keydown that follows belongs to the same gesture and must
+      // not close the menu again.
+      if (this._lockLossPauseAt && performance.now() - this._lockLossPauseAt < 600) {
+        this._lockLossPauseAt = 0;
+        return;
+      }
       const was = this.overlays.active;
       this.overlays.close();
       if (was === 'pause' || was === 'menu') this.resume();
@@ -339,6 +396,7 @@ export class Game {
     if (this.state !== 'playing') return;
     this.state = 'paused';
     this.input.releaseLock();
+    this._blurFocus();
     this._syncSettingsUI();
     this.overlays.open('pause');
     this.audio.setEngineLoad(0, 0);
@@ -351,9 +409,21 @@ export class Game {
       return;
     }
     this.state = 'playing';
+    // Order matters: drop the focus from the overlay control first, then
+    // close the overlay — closing hands the focus back (to the cockpit view
+    // while flying), and blurring afterwards would wipe that again.
+    this._blurFocus();
     this.overlays.close();
     this.input.requestLock();
     this.audio.resume();
+  }
+
+  /** Drop focus from whatever overlay control was last clicked. */
+  _blurFocus() {
+    const el = document.activeElement;
+    if (el && el !== document.body && typeof el.blur === 'function') {
+      el.blur();
+    }
   }
 
   toMenu() {
@@ -370,8 +440,21 @@ export class Game {
     this.docked = true;
     this._attachToDock();
     this.scan.active = false;
-    this.hud.toast('霜隙号已重置到泊位', 'warn');
+    this.scan.progress = 0;
+    this.warp = null;
+    this.warning = '';
+    this.hud.toast(t('toast.reset'), 'warn');
     this.audio.uiClick();
+    // Hand the cockpit back to the pilot even if the reset was triggered
+    // from the pause menu.
+    if (this.overlays.active) {
+      this.overlays.close();
+      if (this.state === 'paused') {
+        this.state = 'playing';
+        this._blurFocus();
+        this.input.requestLock();
+      }
+    }
   }
 
   _toggleCameraMode() {
@@ -379,7 +462,7 @@ export class Game {
     this.settings.set('cameraMode', this.cameraMode);
     this.cockpit.group.visible = this.cameraMode === 'cockpit';
     this.exterior.group.visible = this.cameraMode === 'chase';
-    this.hud.toast(this.cameraMode === 'cockpit' ? '座舱视角' : '追尾视角', 'good');
+    this.hud.toast(this.cameraMode === 'cockpit' ? t('toast.camCockpit') : t('toast.camChase'), 'good');
   }
 
   /* ================================================================ *
@@ -409,7 +492,7 @@ export class Game {
       this.save.data.docked = false;
       this.ship.position.copy(this.universe.station.portPosition).add(new THREE.Vector3(0, 16, 0));
       this.ship.velocity.set(0, 0, 0);
-      this.hud.toast('已脱离泊位', 'good');
+      this.hud.toast(t('toast.undock'), 'good');
       this.audio.uiClick();
       return;
     }
@@ -417,12 +500,12 @@ export class Game {
     const dist = this._dockDistance();
     const speed = this.ship.speed;
     if (dist > STATION.dockRadius * 3.4) {
-      this.hud.toast('距离泊位过远，无法对接', 'bad');
+      this.hud.toast(t('toast.dockTooFar'), 'bad');
       this.audio.alert();
       return;
     }
     if (speed > 3.2) {
-      this.hud.toast(`速度过高（${Math.round(speed * METERS_PER_UNIT)} m/s），按 X 刹车`, 'warn');
+      this.hud.toast(t('toast.dockTooFast', { speed: Math.round(speed * METERS_PER_UNIT) }), 'warn');
       this.audio.alert();
       return;
     }
@@ -434,7 +517,7 @@ export class Game {
     this.ship.fuel = SHIP.fuelCapacity;
     this.ship.hull = Math.min(SHIP.hullMax, this.ship.hull + 18);
     this.dockAnim = 1;
-    this.hud.toast('对接完成 · 燃料加满 · 船体修复', 'good');
+    this.hud.toast(t('toast.dockDone'), 'good');
     this.audio.dockSuccess();
     this.save.save();
   }
@@ -468,7 +551,7 @@ export class Game {
     if (this.scan.active) return;
     const candidate = this.scanCandidate;
     if (!candidate) {
-      this.hud.toast('扫描范围内没有可扫描的目标', 'warn');
+      this.hud.toast(t('toast.noScanTarget'), 'warn');
       this.audio.alert();
       return;
     }
@@ -476,7 +559,7 @@ export class Game {
     this.scan.target = candidate;
     this.scan.progress = 0;
     this.scan.pingTimer = 0;
-    this.hud.toast(`开始扫描：${candidate.name}`, 'good');
+    this.hud.toast(t('toast.scanStart', { name: loc(candidate, 'name') }), 'good');
   }
 
   _updateScan(dt) {
@@ -486,7 +569,7 @@ export class Game {
     const dist = this.ship.position.distanceTo(target.position);
     if (dist > target.scanRange * 1.25) {
       this.scan.active = false;
-      this.hud.toast('目标已超出扫描范围，中断扫描', 'bad');
+      this.hud.toast(t('toast.scanLost'), 'bad');
       return;
     }
     this.scan.progress += dt / this.scan.duration;
@@ -506,10 +589,10 @@ export class Game {
     const isNew = this.save.discover(target.id, target.name, target.kind);
     this.audio.scanComplete();
     if (isNew) {
-      this.hud.toast(`新登记：${target.name}`, 'good');
+      this.hud.toast(t('toast.newRecord', { name: loc(target, 'name') }), 'good');
       if (target.kind === 'anomaly') this.discoveredAnomaly = true;
     } else {
-      this.hud.toast(`${target.name} 的资料已归档`, 'good');
+      this.hud.toast(t('toast.archived', { name: loc(target, 'name') }), 'good');
     }
     this.overlays.showScanResult(target, { distance: this.ship.position.distanceTo(target.position) });
   }
@@ -540,7 +623,7 @@ export class Game {
 
     this.ship.velocity.set(0, 0, 0);
     this.audio.warpCharge(this.warp.charge + this.warp.travel);
-    this.hud.toast(`跃迁航线已锁定：${target.name}`, 'good');
+    this.hud.toast(t('toast.routeLocked', { name: loc(target, 'name') }), 'good');
   }
 
   _updateWarp(dt) {
@@ -582,7 +665,7 @@ export class Game {
       this.warpIntensity = 0;
       this.save.data.jumps += 1;
       this.save.save();
-      this.hud.toast(`跃迁完成：${w.target.name}`, 'good');
+      this.hud.toast(t('toast.warpDone', { name: loc(w.target, 'name') }), 'good');
     }
   }
 
@@ -611,19 +694,19 @@ export class Game {
         burning = true;
         const depth = 1 - (dist - r) / (atmoR - r);
         hazard = Math.max(hazard, 0.25 + depth * 0.75);
-        if (depth > 0.35) warning = `进入${def.name}大气层 · 过热警告`;
+        if (depth > 0.35) warning = t('warn.atmosphere', { name: loc(def, 'name') });
       }
       if (dist < r + 1.5) {
         const normal = _v1.normalize();
         this.ship.applyCollision(normal, r + 1.5 - dist, 22, 0.15);
         this.shake = Math.min(1, this.shake + 0.9);
         this.audio.impact(1);
-        warning = `撞击${def.name}地表 · 船体受损`;
+        warning = t('warn.impact', { name: loc(def, 'name') });
         this.hud.flash(0.25, 0.35);
       }
       // Proximity warning
       if (dist < r * 1.14 && dist > r + 1.5) {
-        warning = `接近${def.name}地表`;
+        warning = t('warn.approach', { name: loc(def, 'name') });
         hazard = Math.max(hazard, 0.3);
         this.proximityTimer -= dt;
         if (this.proximityTimer <= 0) {
@@ -642,7 +725,7 @@ export class Game {
       this.ship.applyCollision(normal, 14 - stDist, 16, 0.2);
       this.shake = Math.min(1, this.shake + 0.8);
       this.audio.impact(0.9);
-      warning = '撞击空间站结构';
+      warning = t('warn.stationStructure');
     }
     // Habitat ring (thin torus approximation)
     const localX = p.x - STATION.position.x;
@@ -654,7 +737,7 @@ export class Game {
       this.ship.applyCollision(_v1, 4.5 - Math.abs(ringR - STATION.ringRadius), 10, 0.25);
       this.shake = Math.min(1, this.shake + 0.6);
       this.audio.impact(0.7);
-      warning = '撞击空间站旋转环';
+      warning = t('warn.stationRing');
     }
 
     // --- Derelict ---
@@ -664,7 +747,7 @@ export class Game {
       this.ship.applyCollision(normal, DERELICT.radius * 0.9 - _v1.length(), 12, 0.25);
       this.shake = Math.min(1, this.shake + 0.7);
       this.audio.impact(0.8);
-      warning = '撞击开普勒阵列';
+      warning = t('warn.kalsoArray');
     }
 
     // --- Anomalies ---
@@ -676,7 +759,7 @@ export class Game {
         this.ship.applyCollision(normal, a.colliderRadius + 1.5 - d, 9, 0.3);
         this.shake = Math.min(1, this.shake + 0.5);
         this.audio.impact(0.6);
-        warning = '撞击未知结构';
+        warning = t('warn.unknownStructure');
       }
     }
 
@@ -699,7 +782,7 @@ export class Game {
           this.ship.applyCollision(normal, rr - d, 8, 0.3);
           this.shake = Math.min(1, this.shake + 0.45);
           this.audio.impact(0.5);
-          warning = '撞击小行星';
+          warning = t('warn.asteroid');
           break;
         }
       }
@@ -718,7 +801,7 @@ export class Game {
     this.docked = true;
     this._attachToDock();
     this.hud.flash(0.7, 0.9);
-    this.hud.toast('船体损毁 · 紧急拖回灯塔站（-150 信用点）', 'bad');
+    this.hud.toast(t('toast.hullLost'), 'bad');
     this.audio.impact(1.4);
   }
 
@@ -793,7 +876,7 @@ export class Game {
       const d = this.ship.position.distanceTo(t.position);
       if (d < bestDist) {
         bestDist = d;
-        best = t.name;
+        best = loc(t, 'name');
       }
     }
     this.nearestName = best;
@@ -956,15 +1039,15 @@ export class Game {
     const regionInfo = this.universe.regionAt(ship.position);
     const p = ship.position;
     this.hud.setRegion(
-      regionInfo.region ? regionInfo.region.name : '未知空域',
+      regionInfo.region ? loc(regionInfo.region, 'name') : t('hud.unknown'),
       `X ${Math.round(p.x)} · Y ${Math.round(p.y)} · Z ${Math.round(p.z)}`
     );
 
     // Mission
     const mission = this.missions.current;
     this.hud.setMission(
-      mission.title,
-      mission.desc,
+      loc(mission, 'title'),
+      loc(mission, 'desc'),
       mission.progress({
         ship,
         save: this.save,
@@ -977,7 +1060,7 @@ export class Game {
       }) || 0,
       this.missions.index,
       this.missions.total,
-      mission.hint || ''
+      loc(mission, 'hint') || ''
     );
 
     // Flight data
@@ -1005,13 +1088,13 @@ export class Game {
     this.scanCandidate = this.scan.active ? this.scan.target : this._findScanCandidate();
 
     // Scan panel
-    this.hud.setScan(this.scan.active, this.scan.progress, this.scan.target ? this.scan.target.name : '');
+    this.hud.setScan(this.scan.active, this.scan.progress, this.scan.target ? loc(this.scan.target, 'name') : '');
 
     // Warnings
     let warning = this.warning;
-    if (!warning && ship.fuel < 15) warning = '燃料不足 · 返回灯塔站补给';
-    if (!warning && ship.heat > 0.55) warning = '船体过热 · 离开大气层';
-    if (!warning && this.warp) warning = '跃迁充能中';
+    if (!warning && ship.fuel < 15) warning = t('warn.lowFuel');
+    if (!warning && ship.heat > 0.55) warning = t('warn.overheat');
+    if (!warning && this.warp) warning = t('warn.warpCharging');
     this.hud.setWarning(warning);
     this.hud.setDanger(this.hazard * 0.8 + (ship.hull < 30 ? 0.25 : 0));
 
@@ -1031,27 +1114,30 @@ export class Game {
 
   _updatePrompt() {
     if (this.scan.active) {
-      this.hud.setPrompt('F', '扫描进行中');
+      this.hud.setPrompt('F', t('toast.scanRunning'));
       return;
     }
     if (this.warp) {
-      this.hud.setPrompt('', '跃迁进行中');
+      this.hud.setPrompt('', t('prompt.warp'));
       return;
     }
     if (this.docked) {
-      this.hud.setPrompt('R', '按 R 脱离泊位，开始这段航程');
+      this.hud.setPrompt('R', t('prompt.undock'));
       return;
     }
     if (this.distToPort < STATION.dockRadius * 3.4) {
       if (this.ship.speed > 3.2) {
-        this.hud.setPrompt('X', `减速到 300 m/s 以下才能对接（当前 ${Math.round(this.ship.speed * METERS_PER_UNIT)} m/s）`);
+        this.hud.setPrompt('X', t('prompt.slowDown', {
+          limit: Math.round(300 / METERS_PER_UNIT * METERS_PER_UNIT),
+          speed: Math.round(this.ship.speed * METERS_PER_UNIT),
+        }));
       } else {
-        this.hud.setPrompt('R', '按 R 与灯塔站对接');
+        this.hud.setPrompt('R', t('prompt.dock'));
       }
       return;
     }
     if (this.scanCandidate) {
-      this.hud.setPrompt('F', `扫描 ${this.scanCandidate.name}`);
+      this.hud.setPrompt('F', t('toast.scanTarget', { name: loc(this.scanCandidate, 'name') }));
       return;
     }
     this.hud.setPrompt('', '');
@@ -1080,16 +1166,16 @@ export class Game {
     };
 
     if (this.scanCandidate) {
-      project(this.scanCandidate.position, 'scan', this.scanCandidate.name,
+      project(this.scanCandidate.position, 'scan', loc(this.scanCandidate, 'name'),
         this.ship.position.distanceTo(this.scanCandidate.position), 'scan');
     }
     if (this.distToPort < 900) {
-      project(this.universe.station.portPosition, 'dock', '泊位',
+      project(this.universe.station.portPosition, 'dock', t('hud.berth'),
         this.distToPort, 'dock');
     }
-    project(STAR.position, 'star', '索尔·普莱姆', this.ship.position.distanceTo(STAR.position), 'off');
+    project(STAR.position, 'star', t('marker.star'), this.ship.position.distanceTo(STAR.position), 'off');
     for (const d of PLANETS) {
-      project(d.position, `p-${d.id}`, d.name, this.ship.position.distanceTo(d.position), 'off');
+      project(d.position, `p-${d.id}`, loc(d, 'name'), this.ship.position.distanceTo(d.position), 'off');
     }
     this.hud.syncMarkers(list);
   }
@@ -1151,12 +1237,12 @@ export class Game {
       fuel: ship.fuel,
       hull: ship.hull,
       shield: 1 - this.hazard,
-      region: this.universe.regionAt(ship.position).region?.name || '—',
-      targetName: this.scanCandidate ? this.scanCandidate.name : (this.docked ? '泊位' : ''),
+      region: loc(this.universe.regionAt(ship.position).region || {}, 'name') || '—',
+      targetName: this.scanCandidate ? loc(this.scanCandidate, 'name') : (this.docked ? t('hud.berth') : ''),
       targetRange: this.scanCandidate ? this.ship.position.distanceTo(this.scanCandidate.position) : null,
       scanProgress: this.scan.active ? this.scan.progress : 0,
       contacts,
-      warning: this.warning || (ship.fuel < 15 ? '燃料不足' : ''),
+      warning: this.warning || (ship.fuel < 15 ? t('mfd.lowFuel') : ''),
       warp: this.warp ? 1 : 0,
     };
   }
@@ -1224,7 +1310,7 @@ export class Game {
     }
     this.useComposer = this.quality.bloom && this.renderTier !== 'software';
 
-    this.overlays.setLoading('正在重建天体系统…', 0.2);
+    this.overlays.setLoading(t('load.rebuilding'), 0.2);
     this.overlays.el.loading.classList.remove('hidden');
     await yieldToBrowser();
 
@@ -1251,7 +1337,7 @@ export class Game {
 
     this.overlays.el.loading.classList.add('hidden');
     this.overlays.open('pause');
-    this.hud.toast('画质已切换', 'good');
+    this.hud.toast(t('toast.quality'), 'good');
   }
 
   /* ================================================================ *

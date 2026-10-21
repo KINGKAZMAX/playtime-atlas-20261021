@@ -1,0 +1,293 @@
+/* ==========================================================================
+   织造车间调度台 · LOOMDECK —— 令牌层
+   --------------------------------------------------------------------------
+   依据：16-design-system/design-tokens.json
+        （§color.light / §typography / §space / §radius / §shadow /
+          §motion / §layout / §border / §a11y / §asset）
+   配套：16-design-system/DESIGN-SPEC.md、16-design-system/MIGRATION-NOTES.md §1、§2.7
+
+   声明规则（不可违反）：
+   1. 本目录**只在本文件声明一次** `--ds-*` 取值，其余文件不得重定义
+      （MIGRATION-NOTES §0 风险 B：同名变量后加载者胜出且值不同）。
+   2. 取值与 design-tokens.json 逐条一致；本文件不新增色板，
+      派生色一律用 color-mix() 从既有 token 推导。
+   3. 下方「语义别名层」把本作品沿用的旧变量名重定向到新 token，
+      组件样式无需逐条改写（MIGRATION-NOTES §1 推荐做法）。
+   ========================================================================== */
+
+:root {
+  /* ---------- 色彩 · 浅色主题（默认） ---------- */
+  --ds-bg: #fcfbf9;
+  --ds-bg-raised: #ffffff;
+  --ds-bg-sunken: #f2eee9;
+  --ds-ink: #14110f;
+  --ds-ink-soft: #59514b;
+  --ds-ink-faint: #6e655e;
+  --ds-line: #e4ded7;
+  --ds-line-strong: #cfc6bc;
+  --ds-surface: #f2eee9;
+  --ds-accent: #b4432b;
+  --ds-accent-hover: #97361f;
+  --ds-accent-soft: #f6e9e4;
+  --ds-accent-ink: #ffffff;
+  --ds-jade: #2e6a5e;
+  --ds-jade-soft: #e4eeeb;
+  --ds-overlay: rgba(20, 17, 15, 0.44);
+
+  /* ---------- 色彩 · 分区（tone-aware） ----------
+   * 本作品是单页调度台、无英雄分区，以下四个令牌不被消费；
+   * 仍按规范全集登记，以保证令牌层与 16-design-system/src/tokens.css 逐名一致
+   * （tools/ds-audit-tokens.mjs 全量比对口径）。 */
+  --ds-section-ink: var(--ds-ink);
+  --ds-section-soft: rgba(20, 17, 15, 0.62);
+  --ds-section-faint: rgba(20, 17, 15, 0.38);
+  --ds-section-bg: var(--ds-bg);
+  --ds-tone-fade: #edeae5;
+  --ds-glow: var(--ds-bg);
+  --ds-section-radius-scale: 1;
+
+  /* ---------- 色彩 · 画布 / HUD ----------
+   * 本作品**无画布层**（织机是 DOM + SVG 仿真，不存在 canvas 像素）。
+   * 这四项按 MIGRATION-NOTES §2.7「03-interaction 专项映射表」补齐，
+   * 属必备清单项（口径 A），不改变任何视觉表现。 */
+  --ds-canvas-hud-bg: rgba(16, 15, 14, 0.72);
+  --ds-canvas-hud-ink: #f7f4f0;
+  --ds-canvas-hud-line: rgba(247, 244, 240, 0.24);
+  --ds-canvas-scrim: rgba(16, 15, 14, 0.55);
+
+  /* ---------- 色彩 · 状态语义（只改值不改语义） ---------- */
+  --ds-danger: #c2452b;
+  --ds-success: #3f7a4e;
+  --ds-warning: #b07a1e;
+  --ds-info: #2c5c8f;
+
+  /* ---------- 字体 ----------
+   * ⚠️ **顺序即规范**（DESIGN-SPEC §2.5 / MIGRATION-NOTES §5.3，硬性条款）：
+   *   覆盖**完整**的 CJK 族必须排在覆盖**有限**的子集之前。
+   *   本目录随包分发 noto-sans-sc-subset.woff2（已按本作品用字重做子集，
+   *   565 个汉字 100% 覆盖），但按 §2.5 硬性口径，汉字恒走系统黑体，
+   *   子集只在「系统 CJK 栈整体不可用」时兜底 —— 不得排在系统族之前，
+   *   否则会出现「子集字形 + 系统字形」同段混排与基线错位。 */
+  --ds-font-display: "Space Grotesk", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  --ds-font-text: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  --ds-font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ds-type-display: clamp(40px, 6.6vw, 84px);
+  --ds-type-h1: clamp(30px, 4.2vw, 52px);
+  --ds-type-h2: clamp(22px, 2.6vw, 32px);
+  --ds-type-h3: 20px;
+  --ds-type-h4: 17px;
+  --ds-type-lead: 19px;
+  --ds-type-body: 16px;
+  --ds-type-sm: 14px;
+  --ds-type-xs: 12.5px;
+  --ds-type-mono: 13px;
+
+  --ds-lh-display: 1.08;
+  --ds-lh-tight: 1.22;
+  --ds-lh-snug: 1.35;
+  --ds-lh-normal: 1.6;
+  --ds-lh-relaxed: 1.75;
+  --ds-lh-mono: 1.45;
+
+  --ds-w-regular: 400;
+  --ds-w-medium: 500;
+  --ds-w-semibold: 600;
+  --ds-w-bold: 700;
+
+  --ds-track-display: -0.03em;
+  --ds-track-body: -0.005em;
+  --ds-track-cjk: 0;
+  --ds-track-mono: 0.02em;
+  --ds-track-caps: 0.08em;
+
+  /* ---------- 间距 ---------- */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 24px;
+  --ds-space-6: 32px;
+  --ds-space-7: 48px;
+  --ds-space-8: 64px;
+  --ds-space-9: 96px;
+  --ds-space-10: 128px;
+  --ds-space-gutter: clamp(16px, 4vw, 48px);
+  --ds-space-rail-gap: 12px;
+  --ds-space-section-top: clamp(56px, 9vh, 104px);
+  --ds-space-section-bottom: clamp(40px, 8vh, 88px);
+
+  /* ---------- 圆角 ---------- */
+  --ds-radius-xs: 6px;
+  --ds-radius-sm: 10px;
+  --ds-radius-md: 14px;
+  --ds-radius-lg: 20px;
+  --ds-radius-xl: 28px;
+  --ds-radius-pill: 999px;
+  --ds-radius-media: clamp(16px, 2vw, 28px);
+  --ds-radius-control: 999px;
+
+  /* ---------- 阴影 ---------- */
+  --ds-shadow-1: 0 1px 2px rgba(20, 17, 15, 0.05);
+  --ds-shadow-2: 0 4px 16px rgba(20, 17, 15, 0.07);
+  --ds-shadow-3: 0 12px 40px rgba(20, 17, 15, 0.1);
+  --ds-shadow-4: 0 24px 80px rgba(20, 17, 15, 0.16);
+  --ds-ring: inset 0 0 0 1px var(--ds-line);
+  --ds-ring-strong: inset 0 0 0 1px var(--ds-line-strong);
+  --ds-focus-ring: 0 0 0 2px var(--ds-bg), 0 0 0 4px var(--ds-accent);
+
+  /* ---------- 动效 ---------- */
+  --ds-dur-instant: 120ms;
+  --ds-dur-fast: 200ms;
+  --ds-dur-base: 320ms;
+  --ds-dur-slow: 520ms;
+  --ds-dur-reveal: 800ms;
+  --ds-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ds-ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --ds-ease-veil: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-ease-spring: cubic-bezier(0.34, 1.42, 0.64, 1);
+  --ds-ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+  --ds-stagger-step: 60ms;
+  --ds-entry-translate: 24px;
+  --ds-entry-blur: 6px;
+  --ds-entry-duration: 640ms;
+  /* 入场交错延迟：由 JS 按索引覆写（本作品未使用，登记以保持令牌层一致） */
+  --ds-in-delay: 0ms;
+
+  /* ---------- 层级 ---------- */
+  --ds-z-base: 0;
+  --ds-z-raised: 10;
+  --ds-z-sticky: 100;
+  --ds-z-rail: 200;
+  --ds-z-overlay: 300;
+  --ds-z-modal: 400;
+  --ds-z-toast: 500;
+
+  /* ---------- 布局 ---------- */
+  --ds-max-width: 1280px;
+  --ds-max-width-wide: 1600px;
+  --ds-read-width: 68ch;
+  --ds-rail-width: 132px;
+  --ds-rail-inset: 24px;
+  --ds-section-height: 100dvh;
+  --ds-grid-gutter: var(--ds-space-gutter);
+  --ds-grid-gap: var(--ds-space-5);
+  /* 景深式导航轨：由 JS 按距当前项的距离覆写（本作品无导航轨，登记保持一致） */
+  --ds-rail-scale: 1;
+  --ds-rail-blur: 0px;
+  /* 作品卡悬停遮罩（本作品无作品卡，登记保持一致） */
+  --ds-work-dim: rgba(128, 128, 128, 0.3);
+
+  /* ---------- 无障碍 ---------- */
+  --ds-contrast-text: 4.5;
+  --ds-contrast-large: 3;
+  --ds-contrast-ui: 3;
+  /* 取 44px（16 的 src/tokens.css 现值）：主控件 AAA 档目标值。
+     紧凑位置按 §11.4 用 .ds-btn--sm（32px）豁免，仍 ≥24px AA。 */
+  --ds-target-min: 44px;
+  --ds-focus-width: 2px;
+  --ds-focus-offset: 2px;
+
+  /* ---------- 资源基准 ---------- */
+  --ds-base: "";
+  --ds-font-display-src: var(--ds-base);
+}
+
+/* ==========================================================================
+   语义别名层 —— 把本作品沿用的旧变量名重定向到新 token
+   --------------------------------------------------------------------------
+   依据 MIGRATION-NOTES §2.7「03-interaction 专项映射表」。
+   组件样式继续使用旧变量名（--ink / --paper / --persimmon …），
+   视觉语言一次性切换到 16 的设计系统；旧变量名保留，避免大面积改动
+   结构性选择器（MIGRATION-NOTES §1「不要求删除既有 CSS」）。
+   ========================================================================== */
+
+:root {
+  /* 纸面与墨色 */
+  --paper:       var(--ds-bg);          /* #FCFBF9 页面底色 */
+  --paper-2:     var(--ds-bg-sunken);    /* #F2EEE9 凹陷槽位 */
+  --rice:        var(--ds-bg-sunken);    /* #F2EEE9 */
+  --rice-warm:   var(--ds-surface);      /* #F2EEE9 静置块面 */
+  --ink:         var(--ds-ink);          /* #14110F 主文字 */
+  --ink-soft:    var(--ds-ink-soft);     /* #59514B 次级文字 */
+  --ink-mute:    var(--ds-ink-faint);    /* #6E655E 占位/轴标 */
+
+  /* 品牌色位 → 统一色板 */
+  --indigo:      var(--ds-ink);          /* 原靛蓝结构色 → 主文字色 */
+  --indigo-mid:  var(--ds-ink-soft);
+  --indigo-lt:   var(--ds-ink-faint);
+  --persimmon:   var(--ds-accent);       /* #B4432B 朱砂 */
+  --persimmon-lt:var(--ds-accent-hover);  /* #97361F */
+  --moss:        var(--ds-success);      /* #3F7A4E */
+  --gold:        var(--ds-warning);      /* #B07A1E */
+
+  /* 状态语义色（只改值，不改语义） */
+  --ok:          var(--ds-success);
+  --warn:        var(--ds-warning);
+  --err:         var(--ds-danger);       /* #C2452B */
+  --info:        var(--ds-info);         /* #2C5C8F */
+
+  /* 状态文字墨色：由状态色与墨色混合推导，
+     保证浅色纸面上仍满足 ≥4.5:1（DS 的 --ds-warning 作为正文文字仅 3.63:1） */
+  --ok-ink:      color-mix(in srgb, var(--ds-success) 78%, var(--ds-ink));
+  --warn-ink:    color-mix(in srgb, var(--ds-warning) 72%, var(--ds-ink));
+  --err-ink:     color-mix(in srgb, var(--ds-danger) 82%, var(--ds-ink));
+  --accent-ink:  var(--ds-accent-ink);
+
+  /* 描边 */
+  --line:        var(--ds-line);         /* #E4DED7 */
+  --line-soft:   var(--ds-line);
+
+  /* 圆角 */
+  --r-sm:        var(--ds-radius-xs);    /* 6px */
+  --r-md:        var(--ds-radius-sm);    /* 10px */
+  --r-lg:        var(--ds-radius-md);    /* 14px */
+
+  /* 阴影 */
+  --shadow-1:    var(--ds-shadow-1);
+  --shadow-2:    var(--ds-shadow-2);
+
+  /* 字族 */
+  --serif:       var(--ds-font-text);
+  /* 等宽语境在本作品里夹带中文标签（如「梭速 26 张力 42」）。
+     V.12（MIGRATION-NOTES §9「不自造字体栈」）：自有 CSS **不得**写死字体族列表，
+     只能引用 var(--ds-font-*)。因此这里不再手抄一份带 CJK 的等宽栈 ——
+     `--ds-font-mono` 之后的中文由浏览器回退到**系统 CJK 族**（与正文同一个字体），
+     不会出现宋体混排，也不会有「各目录各自照抄一份字体栈」的漂移。 */
+  --mono:        var(--ds-font-mono);
+}
+
+/* ==========================================================================
+   中文排版修正
+   --------------------------------------------------------------------------
+   依据 MIGRATION-NOTES §5：中文归零字距、禁止负字距；
+   正文行高 1.85、标题 1.22。
+   ========================================================================== */
+
+:lang(zh),
+:lang(zh-CN),
+:lang(zh-TW) {
+  letter-spacing: var(--ds-track-cjk);
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+:lang(zh) .masthead h1,
+:lang(zh) .panel__head h2,
+:lang(zh) .drawer__head h2,
+:lang(zh) .modal__head h2 {
+  line-height: 1.22;
+}
+
+:lang(zh) .order-card__name,
+:lang(zh) .loom__order,
+:lang(zh) .log-row__msg,
+:lang(zh) .devent__m,
+:lang(zh) .keys dd,
+:lang(zh) .empty-note,
+:lang(zh) .restore-banner,
+:lang(zh) .toast__msg {
+  line-height: 1.85;
+}

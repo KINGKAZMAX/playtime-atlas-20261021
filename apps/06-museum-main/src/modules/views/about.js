@@ -26,8 +26,8 @@ export function renderAbout(ctx) {
   return `
 <section class="page-head page-head--slim">
   <p class="page-eyebrow mono">ABOUT THE MUSEUM</p>
-  <h1 class="page-title">馆方说明</h1>
-  <p class="page-lede">
+  <h1 class="page-title" data-i18n="about.title">馆方说明</h1>
+  <p class="page-lede" data-i18n="about.lede">
     回响电玩馆是一个关于电子游戏时间的原创策展项目。馆名、叙述、视觉与展厅动线由本项目独立设计，
     只在「时间线 / 检索 / 展签 / 可玩入口」这类通行做法上参考了公开博物馆站点的思路。
   </p>
@@ -35,7 +35,7 @@ export function renderAbout(ctx) {
 
 <div class="about-grid">
   <section class="about-card">
-    <h2 class="section-title">策展立场</h2>
+    <h2 class="section-title" data-i18n="about.stance">策展立场</h2>
     <ul class="about-list">
       <li>馆藏是<strong>代表性样本</strong>，覆盖 1950 年代早期电子实验到 2020 年代云端与新形态，
           但不宣称穷尽全部作品，也不以「完整」自居。</li>
@@ -46,7 +46,7 @@ export function renderAbout(ctx) {
   </section>
 
   <section class="about-card">
-    <h2 class="section-title">数据与集成状态</h2>
+    <h2 class="section-title" data-i18n="about.data">数据与集成状态</h2>
     <dl class="plaque-list">
       <div><dt>${escapeHtml(sourceLabel)}</dt><dd class="mono">馆藏 ${ctx.exhibits.length} 件</dd></div>
       <div><dt>美术资产</dt><dd class="mono">${ctx.artNote}</dd></div>
@@ -56,17 +56,19 @@ export function renderAbout(ctx) {
   </section>
 
   <section class="about-card">
-    <h2 class="section-title">可玩展厅接入状态</h2>
-    <table class="table">
-      <caption class="visually-hidden">可玩展厅接入状态</caption>
-      <thead><tr><th scope="col">展厅</th><th scope="col">来源任务</th><th scope="col">年代</th><th scope="col">状态</th></tr></thead>
-      <tbody>${hallRows}</tbody>
-    </table>
+    <h2 class="section-title" data-i18n="about.halls">可玩展厅接入状态</h2>
+    <div class="table-scroll">
+      <table class="table">
+        <caption class="visually-hidden">可玩展厅接入状态</caption>
+        <thead><tr><th scope="col">展厅</th><th scope="col">来源任务</th><th scope="col">年代</th><th scope="col">状态</th></tr></thead>
+        <tbody>${hallRows}</tbody>
+      </table>
+    </div>
     <p class="muted">「待集成」表示对应任务的包体尚未交付，本馆不会渲染无法使用的假入口。</p>
   </section>
 
   <section class="about-card">
-    <h2 class="section-title">素材与许可</h2>
+    <h2 class="section-title" data-i18n="about.licenses">素材与许可</h2>
     <ul class="about-list">
       <li>展签图形、年代海报、底纹与馆徽：全部由本项目脚本程序化生成的原创 SVG，许可随本项目分发。</li>
       <li>3D 展厅中的硬件体块：用基础几何体现场拼装的原创简化造型，与任何真实产品外形不同。</li>
@@ -77,7 +79,7 @@ export function renderAbout(ctx) {
   </section>
 
   <section class="about-card about-card--wide">
-    <h2 class="section-title">已知限制</h2>
+    <h2 class="section-title" data-i18n="about.limits">已知限制</h2>
     <ul class="about-list">
       <li>馆内 2D 展厅在早期年代的收录密度高于近年；近年条目仍在持续补充。</li>
       <li>「年代」划分是本馆为了叙事清晰而做的编辑判断，并非唯一标准切法。</li>

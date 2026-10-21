@@ -1,21 +1,103 @@
 {
   "id": "09-era-arcade",
-  "title": "霓虹街廊",
-  "description": "街机时代展厅：晶格迷宫追逐与流星编队射击，像素美术与可关闭的 CRT 效果，键盘与触控双支持。",
-  "entry": "works/09-era-arcade/index.html",
-  "buildCommand": "npm run build",
-  "outputDir": "docs/works/09-era-arcade",
+  "title": "霓虹街廊 · 街机可玩展厅 (Neon Corridor · 1980s Arcade Playable Hall)",
+  "description": "原创演绎的 1980 年代街机时代可玩展厅：可漫游的霓虹街廊枢纽 + 两款完整原创小游戏《晶格回廊》（格子迷宫追逐）与《陨星纵队》（编队射击）。像素美术、可开关 CRT 显像管效果、键盘与触屏双输入、暂停/重开/计分/三档难度/本地高分榜，并附每条陈述均标注可核查来源的时代介绍。纯静态、零运行时依赖、运行期零网络请求，可直接以 iframe 嵌入或部署到 GitHub Pages 任意子路径。",
+  "entry": "index.html",
+  "buildCommand": "npm ci && npm run build",
+  "outputDir": "dist",
   "status": "ready",
   "upstream": "09-era-arcade",
-  "license": {
-    "code": "MIT",
-    "assets": "程序化像素图与合成音效"
+  "taskId": "09-era-arcade",
+  "era": "1980s-arcade",
+  "lang": "zh-CN",
+  "type": "static-site",
+  "runtimeDependencies": [],
+  "devDependencies": {
+    "vite": "5.4.11"
   },
-  "sources": [
+  "offline": true,
+  "cdn": false,
+  "embeddable": {
+    "iframe": true,
+    "subpathFriendly": true,
+    "deepLinks": {
+      "lattice": "?game=lattice",
+      "meteor": "?game=meteor",
+      "english": "?lang=en"
+    },
+    "recommendedViewport": "960×720 或以上（画布 480×270 内部分辨率，按整数倍放大）"
+  },
+  "entrypoints": [
     {
-      "title": "时代史料来源（随展厅交付）",
-      "url": "",
-      "note": "展厅内附史料来源链接。"
+      "id": "hall",
+      "name": "霓虹街廊",
+      "en": "NEON CORRIDOR",
+      "kind": "hub",
+      "url": "./index.html"
+    },
+    {
+      "id": "lattice",
+      "name": "晶格回廊",
+      "en": "LATTICE CORRIDOR",
+      "kind": "game",
+      "url": "./index.html?game=lattice"
+    },
+    {
+      "id": "meteor",
+      "name": "陨星纵队",
+      "en": "METEOR COLUMN",
+      "kind": "game",
+      "url": "./index.html?game=meteor"
     }
-  ]
+  ],
+  "assets": {
+    "external": false,
+    "fonts": "外壳层拉丁字体自托管（Space Grotesk / Inter / Space Mono，OFL 1.1，见 LICENSES.md §3.1）；汉字走系统字体栈（PingFang SC / 微软雅黑 / Noto Sans SC 子集渐进增强）；画布内 HUD 仍为本项目手写 5×7 点阵字库，不用 webfont",
+    "images": "全部程序化绘制（Canvas 像素美术 + CSS），无外部图片文件",
+    "audio": "全部 WebAudio 实时合成，站点不含任何音频文件"
+  },
+  "designSystem": {
+    "name": "余晖设计系统 / Afterglow Design System",
+    "version": "1.0.0",
+    "tokenPrefix": "--ds-",
+    "tokenSource": "16-design-system/design-tokens.json（color.dark 组）",
+    "spec": "16-design-system/DESIGN-SPEC.md",
+    "scope": "外壳层（顶栏 / 页脚 / 导航轨 / 按钮 / 面板 / 状态行 / 触控键 / 画布框 / 指示器）",
+    "outOfScope": "游戏画布内部、像素字库、CRT 扫描线与霓虹配色保持本作品原有美术判断",
+    "inventory": "RESTYLE-INVENTORY.md",
+    "status": "applied"
+  },
+  "i18n": {
+    "default": "zh",
+    "available": [
+      "zh",
+      "en"
+    ],
+    "switcher": "顶栏「中 / EN」胶囊按钮",
+    "persistence": "localStorage（neon-corridor.lang）",
+    "urlParam": "?lang=en",
+    "keyList": "src/i18n/strings.js"
+  },
+  "licenses": {
+    "code": "MIT",
+    "thirdParty": "无第三方素材、音频或 ROM；引入 4 款 OFL 1.1 字体（自托管随包分发，许可全文见 fonts/ 与 LICENSES.md §3.1）"
+  },
+  "qa": "QA.md",
+  "verification": {
+    "build": "npm run build",
+    "logic": "32/32",
+    "tokens": "129/129 逐名一致",
+    "compliance": "17/17",
+    "probeContract": "10/10",
+    "e2e": "48/48",
+    "audio": "7/7",
+    "uncaughtExceptions": 0,
+    "verifyExitCode": 0,
+    "residualProcesses": 0
+  },
+  "handoff": {
+    "museum": "06-museum-core",
+    "publish": "14-publish"
+  },
+  "theme": "dark"
 }

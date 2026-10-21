@@ -1,15 +1,20 @@
 /* =========================================================
    《光环台 / HALO DECK》
+   ------------------------------------------------------------
+   依据：16-design-system/DESIGN-SPEC.md §7 按钮 / §9 画布与 HUD
+   展项头与设备面板属于**外壳**（浅色）；展台画面与热点展签属于
+   **游戏画面**（data-ds-theme="dark"）。热点色 = 玩法 / 展签语义色，
+   不随外壳改版（红线 K.1）。
    ========================================================= */
 
 .halo-wrap {
-  max-width: 1180px;
+  max-width: var(--ds-max-width);
   margin: 0 auto;
-  padding: clamp(18px, 3vw, 28px) clamp(14px, 3vw, 28px) 44px;
+  padding: var(--ds-space-gutter) var(--ds-space-gutter) var(--ds-space-8);
 }
 
 .halo-head {
-  margin-bottom: 12px;
+  margin-bottom: var(--ds-space-3);
 }
 
 .halo-head-main {
@@ -20,37 +25,45 @@
 
 .halo-head h1 {
   margin: 2px 0 0;
-  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h2);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: var(--ds-track-display);
+  color: var(--ds-ink);
 }
 
 .halo-disclaimer {
   display: flex;
-  gap: 13px;
+  gap: var(--ds-space-3);
   align-items: flex-start;
-  border: 1px solid rgba(157, 123, 255, 0.36);
-  background: rgba(157, 123, 255, 0.09);
-  border-radius: var(--r-lg);
-  padding: 15px 18px;
-  margin-bottom: 16px;
+  border: 1px solid var(--hc-line);
+  background: var(--ds-bg-sunken);
+  border-left: 3px solid var(--ds-accent);
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-4) var(--ds-space-5);
+  margin-bottom: var(--ds-space-4);
 }
 
 .halo-disclaimer p {
   margin: 0;
-  font-size: 0.89rem;
-  color: var(--paper-70);
-  line-height: 1.7;
+  font-size: var(--ds-type-sm);
+  color: var(--hc-ink-soft);
+  line-height: var(--ds-lh-relaxed);
 }
 
 .halo-disclaimer b {
-  color: var(--prism-violet);
+  color: var(--ds-ink);
+  font-weight: var(--ds-w-semibold);
 }
 
 .halo-body {
   position: relative;
-  border-radius: var(--r-lg);
+  border-radius: var(--ds-radius-media);
   overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--hc-line);
+  box-shadow: var(--ds-shadow-4);
+  contain: paint;
+  isolation: isolate;
 }
 
 .halo-stage {
@@ -78,19 +91,21 @@
   pointer-events: none;
 }
 
+/* 热点展签：画布之上的承载面，用画布 HUD 色（DESIGN-SPEC §9.2） */
 .halo-card {
   position: absolute;
   transform: translate(-50%, -50%);
   width: min(330px, 74vw);
-  background: rgba(6, 10, 30, 0.9);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-md);
-  padding: 14px 16px;
+  background: var(--ds-canvas-hud-bg);
+  border: 1px solid var(--ds-canvas-hud-line);
+  border-radius: var(--ds-radius-md);
+  padding: var(--ds-space-3) var(--ds-space-4);
+  color: var(--ds-canvas-hud-ink);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--ds-shadow-3);
   pointer-events: auto;
-  animation: halo-in 240ms var(--ease);
+  animation: halo-in var(--ds-dur-base) var(--ds-ease-out);
 }
 
 @keyframes halo-in {
@@ -109,108 +124,115 @@
 }
 
 .halo-card h3 {
-  font-size: 0.98rem;
+  font-size: var(--ds-type-h4);
   margin: 0 0 6px;
+  color: var(--ds-canvas-hud-ink);
 }
 
 .halo-card p {
   margin: 0 0 9px;
-  font-size: 0.82rem;
-  color: var(--paper-70);
+  font-size: var(--ds-type-sm);
+  color: var(--ds-canvas-hud-ink);
+  opacity: 0.86;
   line-height: 1.65;
 }
 
 .halo-card-src {
-  font-size: 0.74rem;
-  font-family: var(--font-mono);
+  font-size: var(--ds-type-xs);
+  font-family: var(--ds-font-mono);
   line-height: 1.8;
 }
 
 .halo-card-src a {
-  color: var(--paper-52);
+  color: var(--ds-canvas-hud-ink);
+  opacity: 0.8;
 }
 
 .halo-card-src a:hover {
-  color: var(--prism-violet);
+  color: var(--ds-accent);
+  opacity: 1;
 }
 
-/* ---------------- 设备状态面板 ---------------- */
+/* ---------------- 设备状态面板（外壳 · 浅色） ---------------- */
 
 .halo-panel {
-  margin-top: 16px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--glass);
-  padding: 20px 22px;
+  margin-top: var(--ds-space-4);
+  border: 1px solid var(--hc-line);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-bg-raised);
+  box-shadow: var(--ds-shadow-1);
+  padding: var(--ds-space-5);
 }
 
 .halo-panel h2 {
-  font-size: 1.05rem;
-  margin-bottom: 12px;
+  font-size: var(--ds-type-h4);
+  font-weight: var(--ds-w-medium);
+  margin-bottom: var(--ds-space-3);
+  color: var(--ds-ink);
 }
 
 .device-list {
   list-style: none;
-  margin: 0 0 16px;
+  margin: 0 0 var(--ds-space-4);
   padding: 0;
   display: grid;
   gap: 6px;
 }
 
 .device-list li {
-  font-size: 0.87rem;
-  color: var(--paper-70);
-  border-bottom: 1px dashed var(--paper-10);
+  font-size: var(--ds-type-sm);
+  color: var(--hc-ink-soft);
+  border-bottom: 1px dashed var(--hc-line);
   padding-bottom: 6px;
 }
 
 .device-list b {
   display: inline-block;
   min-width: 8.6em;
-  color: var(--paper-52);
-  font-weight: 500;
+  color: var(--hc-ink-faint);
+  font-weight: var(--ds-w-medium);
 }
 
 .device-status {
-  margin-bottom: 14px;
+  margin-bottom: var(--ds-space-4);
 }
 
 .device-line {
   margin: 0 0 6px;
-  font-size: 0.86rem;
-  color: var(--paper-70);
+  font-size: var(--ds-type-sm);
+  color: var(--hc-ink-soft);
 }
 
 .device-line b {
-  color: var(--paper-52);
-  font-weight: 500;
+  color: var(--ds-ink);
+  font-weight: var(--ds-w-medium);
 }
 
 .device-line.is-yes b {
-  color: var(--good);
+  color: var(--ds-success);
 }
 
 .device-line.is-no b {
-  color: var(--prism-amber);
+  color: var(--ds-warning);
 }
 
 .device-note {
-  margin: 10px 0 0;
-  font-size: 0.8rem;
-  color: var(--paper-52);
-  line-height: 1.7;
+  margin: var(--ds-space-3) 0 0;
+  font-size: var(--ds-type-sm);
+  color: var(--hc-ink-faint);
+  line-height: var(--ds-lh-relaxed);
 }
 
 .halo-panel-actions {
   display: flex;
-  gap: 10px;
+  gap: var(--ds-space-2);
   flex-wrap: wrap;
 }
 
 .halo-panel-foot {
-  margin: 14px 0 0;
-  font-size: 0.78rem;
-  color: var(--paper-34);
+  margin: var(--ds-space-3) 0 0;
+  font-size: var(--ds-type-xs);
+  color: var(--hc-ink-faint);
 }
 
 @media (max-width: 720px) {

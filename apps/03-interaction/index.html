@@ -5,16 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>织造车间调度台 · LOOMDECK</title>
 <meta name="description" content="织造车间调度台 LOOMDECK — 浏览器端实时织造排产工具：机台矩阵、订单簿、任务编排、实时遥测与事件日志。" />
-<meta name="color-scheme" content="light dark" />
+<meta name="color-scheme" content="light" />
 <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<!-- 自托管字体（与 woff2 同目录，适配 Pages 任意子路径） -->
+<link rel="stylesheet" href="%BASE_URL%fonts/fonts.css" />
+<!-- 令牌层 → 组件层 → 作品样式层（顺序即层叠顺序） -->
+<link rel="stylesheet" href="./src/tokens.css" />
 <link rel="stylesheet" href="./src/styles.css" />
+<link rel="stylesheet" href="./src/ds-components.css" />
+<style>
+  /* 资源基准：design-tokens.json §asset.basePathVar。
+     本作品全部资源走相对路径，基准为空串即适配任意子路径；
+     14-publish 如需绝对基准可覆盖此值。 */
+  :root { --ds-base: ""; }
+</style>
 </head>
-<body>
+<body class="ds-shell">
 
-<a class="skip-link" href="#loom-grid">跳到机台矩阵</a>
+<a class="skip-link ds-skip" href="#loom-grid" data-i18n="skip.link">跳到机台矩阵</a>
 
 <!-- ══════════════ 页眉 ══════════════ -->
-<header class="masthead">
+<header class="masthead ds-topbar">
   <div class="masthead__brand">
     <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
       <rect x="4" y="4" width="40" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2.4"/>
@@ -23,21 +34,28 @@
       <circle cx="24" cy="24" r="4.6" fill="currentColor"/>
     </svg>
     <div class="masthead__titles">
-      <h1>织造车间调度台</h1>
-      <p class="masthead__sub">LOOMDECK · 实时排产与机台监控</p>
+      <h1 data-i18n="masthead.title">织造车间调度台</h1>
+      <p class="masthead__sub" data-i18n="masthead.sub">LOOMDECK · 实时排产与机台监控</p>
     </div>
   </div>
 
   <dl class="masthead__stats" id="headline-stats">
-    <div class="hstat"><dt>在织台数</dt><dd id="stat-running">—</dd></div>
-    <div class="hstat"><dt>待排订单</dt><dd id="stat-queued">—</dd></div>
-    <div class="hstat"><dt>本班产量</dt><dd id="stat-output">—</dd></div>
-    <div class="hstat"><dt>断经率</dt><dd id="stat-breakrate">—</dd></div>
+    <div class="hstat"><dt data-i18n="stat.running">在织台数</dt><dd id="stat-running">—</dd></div>
+    <div class="hstat"><dt data-i18n="stat.queued">待排订单</dt><dd id="stat-queued">—</dd></div>
+    <div class="hstat"><dt data-i18n="stat.output">本班产量</dt><dd id="stat-output">—</dd></div>
+    <div class="hstat"><dt data-i18n="stat.breakRate">断经率</dt><dd id="stat-breakrate">—</dd></div>
   </dl>
 
   <div class="masthead__actions">
-    <button type="button" class="btn btn--ghost" id="btn-help" aria-haspopup="dialog">快捷键</button>
-    <button type="button" class="btn btn--ghost" id="btn-reset-all">重置车间</button>
+    <p class="shift-chip ds-tag" id="shift-chip" data-shift="running">
+      <span class="shift-chip__dot" aria-hidden="true"></span>
+      <span id="shift-chip-text">在产</span>
+    </p>
+    <button type="button" class="btn ds-btn ds-btn--primary" id="btn-dispatch" data-control="start" data-exhibit="shift-dispatch" data-i18n="btn.dispatch">开始派工</button>
+    <button type="button" class="btn ds-btn ds-btn--secondary" id="btn-shift-pause" data-control="pause" aria-pressed="false" data-i18n="btn.pause">暂停当班</button>
+    <button type="button" class="btn ds-btn ds-btn--ghost" id="btn-help" aria-haspopup="dialog" data-i18n="btn.help">快捷键</button>
+    <button type="button" class="btn ds-btn ds-btn--ghost" id="btn-reset-all" data-control="restart" data-i18n="btn.reset">重置车间</button>
+    <span class="kbd-hint" id="kbd-hint" hidden data-i18n="hint.keyboard">⌨ 点按界面启用快捷键</span>
   </div>
 </header>
 
@@ -45,7 +63,7 @@
 <div class="restore-banner" id="restore-banner" hidden role="status">
   <span class="restore-banner__dot" aria-hidden="true"></span>
   <span id="restore-banner-text">已恢复上次会话</span>
-  <button type="button" class="btn btn--tiny" id="btn-dismiss-restore">知道了</button>
+  <button type="button" class="btn btn--tiny ds-btn ds-btn--sm" id="btn-dismiss-restore" data-i18n="btn.dismiss">知道了</button>
 </div>
 
 <main class="workshop">
@@ -53,96 +71,105 @@
   <!-- ══════════════ 左栏：订单簿 ══════════════ -->
   <section class="panel panel--orders" aria-labelledby="orders-title">
     <header class="panel__head">
-      <h2 id="orders-title">订单簿</h2>
+      <h2 id="orders-title" data-i18n="panel.orders">订单簿</h2>
       <span class="panel__count" id="orders-count">0</span>
+      <button type="button" class="switch ds-chip" id="btn-auto-dispatch" aria-pressed="true"
+              title="机台空出后自动接队首订单；关闭后需主管手动派工"
+              data-i18n="switch.auto">自动续派 · 开</button>
     </header>
 
     <form class="order-form" id="order-form" novalidate>
-      <div class="field">
-        <label for="f-cloth">布种</label>
-        <select id="f-cloth" name="cloth">
-          <option value="亚麻">亚麻</option>
-          <option value="棉缎">棉缎</option>
-          <option value="羊毛">羊毛</option>
-          <option value="桑蚕丝">桑蚕丝</option>
-          <option value="苎麻">苎麻</option>
+      <div class="field ds-field">
+        <label for="f-cloth" data-i18n="field.cloth">布种</label>
+        <select class="ds-select" id="f-cloth" name="cloth">
+          <option value="亚麻" data-i18n="cloth.linen">亚麻</option>
+          <option value="棉缎" data-i18n="cloth.satin">棉缎</option>
+          <option value="羊毛" data-i18n="cloth.wool">羊毛</option>
+          <option value="桑蚕丝" data-i18n="cloth.silk">桑蚕丝</option>
+          <option value="苎麻" data-i18n="cloth.ramie">苎麻</option>
         </select>
       </div>
 
-      <div class="field">
-        <label for="f-width">幅宽 <span class="field__unit">cm</span></label>
-        <input id="f-width" name="width" type="number" inputmode="numeric" value="90" step="1" />
+      <div class="field ds-field">
+        <label for="f-width"><span data-i18n="field.width">幅宽</span> <span class="field__unit">cm</span></label>
+        <input class="ds-input" id="f-width" name="width" type="number" inputmode="numeric" value="90" step="1" />
       </div>
 
-      <div class="field">
-        <label for="f-density">经密 <span class="field__unit">根/cm</span></label>
-        <input id="f-density" name="density" type="number" inputmode="numeric" value="42" step="1" />
+      <div class="field ds-field">
+        <label for="f-density"><span data-i18n="field.density">经密</span> <span class="field__unit">根/cm</span></label>
+        <input class="ds-input" id="f-density" name="density" type="number" inputmode="numeric" value="42" step="1" />
       </div>
 
-      <div class="field">
-        <label for="f-picks">匹数</label>
-        <input id="f-picks" name="picks" type="number" inputmode="numeric" value="4" step="1" />
+      <div class="field ds-field">
+        <label for="f-picks" data-i18n="field.picks">匹数</label>
+        <input class="ds-input" id="f-picks" name="picks" type="number" inputmode="numeric" value="4" step="1" />
       </div>
 
-      <div class="field">
-        <label for="f-dye">配色</label>
-        <select id="f-dye" name="dye">
-          <option value="靛蓝">靛蓝</option>
-          <option value="柿红">柿红</option>
-          <option value="苔绿">苔绿</option>
-          <option value="米白">米白</option>
-          <option value="墨黑">墨黑</option>
+      <div class="field ds-field">
+        <label for="f-dye" data-i18n="field.dye">配色</label>
+        <select class="ds-select" id="f-dye" name="dye">
+          <option value="靛蓝" data-i18n="dye.indigo">靛蓝</option>
+          <option value="柿红" data-i18n="dye.persimmon">柿红</option>
+          <option value="苔绿" data-i18n="dye.moss">苔绿</option>
+          <option value="米白" data-i18n="dye.rice">米白</option>
+          <option value="墨黑" data-i18n="dye.ink">墨黑</option>
         </select>
       </div>
 
-      <div class="field">
-        <label for="f-priority">优先级</label>
-        <select id="f-priority" name="priority">
-          <option value="3">低</option>
-          <option value="2" selected>中</option>
-          <option value="1">高</option>
+      <div class="field ds-field">
+        <label for="f-priority" data-i18n="field.priority">优先级</label>
+        <select class="ds-select" id="f-priority" name="priority">
+          <option value="3" data-i18n="priority.low">低</option>
+          <option value="2" selected data-i18n="priority.normal">中</option>
+          <option value="1" data-i18n="priority.high">高</option>
         </select>
       </div>
 
       <p class="form-error" id="form-error" role="alert" hidden></p>
 
       <div class="order-form__foot">
-        <button type="submit" class="btn btn--primary" id="btn-add-order">加入订单簿</button>
-        <button type="button" class="btn btn--ghost btn--tiny" id="btn-clear-orders">清空待排</button>
+        <button type="submit" class="btn btn--primary ds-btn ds-btn--secondary" id="btn-add-order" data-i18n="btn.addOrder">加入订单簿</button>
+        <button type="button" class="btn btn--ghost btn--tiny ds-btn ds-btn--sm" id="btn-clear-orders" data-i18n="btn.clearQueued">清空待排</button>
       </div>
     </form>
 
     <div class="panel__body panel__body--scroll" id="order-list-wrap">
       <ol class="order-list" id="order-list"></ol>
-      <p class="empty-note" id="orders-empty">订单簿是空的 —— 先在上方加入一张订单。</p>
+      <p class="empty-note" id="orders-empty" data-i18n="empty.orders">订单簿是空的 —— 先在上方加入一张订单。</p>
     </div>
   </section>
 
   <!-- ══════════════ 中栏：机台矩阵 ══════════════ -->
   <section class="panel panel--floor" aria-labelledby="floor-title">
     <header class="panel__head">
-      <h2 id="floor-title">机台矩阵</h2>
+      <h2 id="floor-title" data-i18n="panel.floor">机台矩阵</h2>
       <div class="legend" aria-hidden="true">
-        <span class="legend__item"><i class="dot dot--run"></i>运行</span>
-        <span class="legend__item"><i class="dot dot--idle"></i>待单</span>
-        <span class="legend__item"><i class="dot dot--warp"></i>换经</span>
-        <span class="legend__item"><i class="dot dot--fault"></i>故障</span>
-        <span class="legend__item"><i class="dot dot--stop"></i>停机</span>
+        <span class="legend__item"><i class="dot dot--run"></i><span data-i18n="legend.run">运行</span></span>
+        <span class="legend__item"><i class="dot dot--idle"></i><span data-i18n="legend.idle">待单</span></span>
+        <span class="legend__item"><i class="dot dot--warp"></i><span data-i18n="legend.warp">换经</span></span>
+        <span class="legend__item"><i class="dot dot--fault"></i><span data-i18n="legend.fault">故障</span></span>
+        <span class="legend__item"><i class="dot dot--stop"></i><span data-i18n="legend.stop">停机</span></span>
+      </div>
+      <div class="seg seg--sm" role="group" aria-label="班次节奏" id="tempo-group">
+        <span class="seg__cap" data-i18n="tempo.label">班次节奏</span>
+        <button type="button" class="seg__btn" data-tempo="relaxed" aria-pressed="false" data-i18n="tempo.relaxed">轻松</button>
+        <button type="button" class="seg__btn is-on" data-tempo="normal" aria-pressed="true" data-i18n="tempo.normal">标准</button>
+        <button type="button" class="seg__btn" data-tempo="tight" aria-pressed="false" data-i18n="tempo.tight">紧排</button>
       </div>
     </header>
 
     <div class="panel__body panel__body--scroll">
-      <div class="loom-grid" id="loom-grid" role="list" aria-label="织机机台矩阵"></div>
+      <div class="loom-grid" id="loom-grid" role="list" aria-label="织机机台矩阵" data-game-root tabindex="-1"></div>
     </div>
   </section>
 
   <!-- ══════════════ 右栏：遥测台 ══════════════ -->
   <section class="panel panel--telemetry" aria-labelledby="telemetry-title">
     <header class="panel__head">
-      <h2 id="telemetry-title">遥测台</h2>
+      <h2 id="telemetry-title" data-i18n="panel.telemetry">遥测台</h2>
       <div class="seg" role="group" aria-label="遥测刻度切换">
-        <button type="button" class="seg__btn is-on" id="btn-scale-density" data-scale="density">经密</button>
-        <button type="button" class="seg__btn" id="btn-scale-speed" data-scale="speed">梭速</button>
+        <button type="button" class="seg__btn is-on" id="btn-scale-density" data-scale="density" aria-pressed="true" data-i18n="scale.density">经密</button>
+        <button type="button" class="seg__btn" id="btn-scale-speed" data-scale="speed" aria-pressed="false" data-i18n="scale.speed">梭速</button>
       </div>
     </header>
 
@@ -151,7 +178,7 @@
 
       <figure class="chart">
         <figcaption class="chart__cap">
-          <span id="chart-title">车间平均经密</span>
+          <span id="chart-title" data-i18n="chart.density">车间平均经密</span>
           <span class="chart__unit" id="chart-unit">根/cm</span>
         </figcaption>
         <div class="chart__canvas-wrap">
@@ -166,15 +193,15 @@
   <!-- ══════════════ 底部：日志带 ══════════════ -->
   <section class="panel panel--log" aria-labelledby="log-title">
     <header class="panel__head">
-      <h2 id="log-title">实时日志</h2>
+      <h2 id="log-title" data-i18n="panel.log">实时日志</h2>
       <div class="log__controls">
         <div class="seg seg--sm" role="group" aria-label="日志级别筛选">
-          <button type="button" class="seg__btn is-on" data-level="all">全部</button>
-          <button type="button" class="seg__btn" data-level="warn">警告</button>
-          <button type="button" class="seg__btn" data-level="error">故障</button>
+          <button type="button" class="seg__btn is-on" data-level="all" aria-pressed="true" data-i18n="log.all">全部</button>
+          <button type="button" class="seg__btn" data-level="warn" aria-pressed="false" data-i18n="log.warn">警告</button>
+          <button type="button" class="seg__btn" data-level="error" aria-pressed="false" data-i18n="log.error">故障</button>
         </div>
-        <button type="button" class="btn btn--tiny" id="btn-pause-log" aria-pressed="false">暂停滚动</button>
-        <button type="button" class="btn btn--tiny" id="btn-clear-log">清空</button>
+        <button type="button" class="btn btn--tiny ds-btn ds-btn--sm" id="btn-pause-log" aria-pressed="false" data-i18n="btn.pauseLog">暂停滚动</button>
+        <button type="button" class="btn btn--tiny ds-btn ds-btn--sm" id="btn-clear-log" data-i18n="btn.clearLog">清空</button>
       </div>
     </header>
     <div class="panel__body panel__body--log">
@@ -184,11 +211,21 @@
 
 </main>
 
+<!-- ══════════════ 页脚：来源与许可（DESIGN-SPEC §14.3 统一外壳）══════════════ -->
+<footer class="ds-footer" aria-label="来源与许可">
+  <span class="ds-footer__meta" data-i18n="footer.source">织造车间调度台 · LOOMDECK —— 原创改编自公开案例「AI agent command center」的机制骨架，非复刻</span>
+  <span class="ds-footer__links">
+    <span data-i18n="footer.code">代码 MIT</span>
+    <span data-i18n="footer.fonts">字体 SIL OFL 1.1</span>
+    <span data-i18n="footer.offline">零外部请求</span>
+  </span>
+</footer>
+
 <!-- ══════════════ 机台详情抽屉 ══════════════ -->
 <aside class="drawer" id="drawer" hidden aria-labelledby="drawer-title" role="dialog" aria-modal="false">
   <header class="drawer__head">
-    <h2 id="drawer-title">机台详情</h2>
-    <button type="button" class="btn btn--tiny" id="btn-close-drawer" aria-label="关闭详情">关闭</button>
+    <h2 id="drawer-title" data-i18n="drawer.title">机台详情</h2>
+    <button type="button" class="btn btn--tiny ds-btn ds-btn--sm" id="btn-close-drawer" aria-label="关闭详情" data-i18n="btn.close">关闭</button>
   </header>
   <div class="drawer__body" id="drawer-body"></div>
 </aside>
@@ -197,22 +234,24 @@
 <div class="modal" id="help-modal" hidden role="dialog" aria-modal="true" aria-labelledby="help-title">
   <div class="modal__panel">
     <header class="modal__head">
-      <h2 id="help-title">键盘快捷键</h2>
-      <button type="button" class="btn btn--tiny" id="btn-close-help" aria-label="关闭帮助">关闭</button>
+      <h2 id="help-title" data-i18n="help.title">键盘快捷键</h2>
+      <button type="button" class="btn btn--tiny ds-btn ds-btn--sm" id="btn-close-help" aria-label="关闭帮助" data-i18n="btn.close">关闭</button>
     </header>
     <div class="modal__body">
       <dl class="keys">
-        <dt><kbd>1</kbd>–<kbd>9</kbd> <kbd>0</kbd></dt><dd>聚焦第 1–10 台织机</dd>
-        <dt><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd></dt><dd>在机台矩阵中移动选中</dd>
-        <dt><kbd>Enter</kbd></dt><dd>为选中机台派发队首订单</dd>
-        <dt><kbd>Backspace</kbd></dt><dd>撤销选中机台的当前订单</dd>
-        <dt><kbd>Space</kbd></dt><dd>暂停 / 继续日志自动滚动</dd>
-        <dt><kbd>L</kbd></dt><dd>清空日志</dd>
-        <dt><kbd>R</kbd></dt><dd>复位选中机台的故障</dd>
-        <dt><kbd>T</kbd></dt><dd>切换遥测刻度（经密 / 梭速）</dd>
-        <dt><kbd>N</kbd></dt><dd>聚焦新增订单表单</dd>
-        <dt><kbd>Esc</kbd></dt><dd>关闭抽屉 / 取消选中</dd>
+        <dt><kbd>1</kbd>–<kbd>9</kbd> <kbd>0</kbd></dt><dd data-i18n="help.focusLoom">聚焦第 1–10 台织机</dd>
+        <dt><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd></dt><dd data-i18n="help.move">在机台矩阵中移动选中</dd>
+        <dt><kbd>Enter</kbd></dt><dd data-i18n="help.assign">为选中机台派发队首订单</dd>
+        <dt><kbd>Backspace</kbd></dt><dd data-i18n="help.revoke">撤销选中机台的当前订单</dd>
+        <dt><kbd>Space</kbd></dt><dd data-i18n="help.pause">暂停 / 继续当班生产</dd>
+        <dt><kbd>S</kbd></dt><dd data-i18n="help.pauseLog">暂停 / 继续日志自动滚动</dd>
+        <dt><kbd>L</kbd></dt><dd data-i18n="help.clearLog">清空日志</dd>
+        <dt><kbd>R</kbd></dt><dd data-i18n="help.reset">复位选中机台的故障</dd>
+        <dt><kbd>T</kbd></dt><dd data-i18n="help.scale">切换遥测刻度（经密 / 梭速）</dd>
+        <dt><kbd>N</kbd></dt><dd data-i18n="help.newOrder">聚焦新增订单表单</dd>
+        <dt><kbd>Esc</kbd></dt><dd data-i18n="help.escape">关闭抽屉 / 取消选中</dd>
       </dl>
+      <p class="keys__note" data-i18n="help.note">快捷键只在展品自身获得焦点后生效 —— 点一下界面即可；输入框内不劫持按键。</p>
     </div>
   </div>
 </div>

@@ -1,9 +1,9 @@
 {
-  "name": "deep-space-drifter",
+  "name": "frostgap-voyager",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Deep Space Drifter - a cinematic first-person 6DOF spaceship cockpit flight game (Three.js + Vite, fully offline)",
+  "description": "霜隙远航 · Frostgap Voyager - a cinematic first-person 6DOF spaceship cockpit flight game (Three.js + Vite, fully offline)",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

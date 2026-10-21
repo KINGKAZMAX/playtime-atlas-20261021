@@ -1,0 +1,458 @@
+{
+  "checkedAt": "2026-10-21",
+  "total": 75,
+  "passed": 75,
+  "failed": 0,
+  "items": [
+    {
+      "group": "文件齐备",
+      "name": "必备文件全部存在",
+      "status": "PASS",
+      "detail": "30 个必备文件"
+    },
+    {
+      "group": "目录数据",
+      "name": "catalog.json 可解析",
+      "status": "PASS",
+      "detail": "schemaVersion=1.0"
+    },
+    {
+      "group": "目录数据",
+      "name": "案例数 ≥ 36",
+      "status": "PASS",
+      "detail": "实际 42 条"
+    },
+    {
+      "group": "目录数据",
+      "name": "案例 id 唯一",
+      "status": "PASS",
+      "detail": "42 个唯一 id"
+    },
+    {
+      "group": "目录数据",
+      "name": "构造类别 ≥ 12",
+      "status": "PASS",
+      "detail": "实际 21 类"
+    },
+    {
+      "group": "字段完整性",
+      "name": "每条含全部必备字段",
+      "status": "PASS",
+      "detail": "42 条 × 26 字段"
+    },
+    {
+      "group": "字段完整性",
+      "name": "中文字段非空",
+      "status": "PASS",
+      "detail": "无空值"
+    },
+    {
+      "group": "字段完整性",
+      "name": "英文字段非空",
+      "status": "PASS",
+      "detail": "无空值"
+    },
+    {
+      "group": "字段完整性",
+      "name": "每条至少 1 条来源",
+      "status": "PASS",
+      "detail": "全部有来源"
+    },
+    {
+      "group": "字段完整性",
+      "name": "中文名含中文字符",
+      "status": "PASS",
+      "detail": "全部通过"
+    },
+    {
+      "group": "字段完整性",
+      "name": "英文名含拉丁字母",
+      "status": "PASS",
+      "detail": "全部通过"
+    },
+    {
+      "group": "字段完整性",
+      "name": "拼音字段有效",
+      "status": "PASS",
+      "detail": "全部通过"
+    },
+    {
+      "group": "来源",
+      "name": "来源链接均为 https 或已登记的 http 例外",
+      "status": "PASS",
+      "detail": "121 条链接 / 54 个独立来源；http 例外 3 条已登记"
+    },
+    {
+      "group": "来源",
+      "name": "登记的 http 例外均被实际引用",
+      "status": "PASS",
+      "detail": "全部在用"
+    },
+    {
+      "group": "来源",
+      "name": "UNESCO 编号均在官方中国名录内",
+      "status": "PASS",
+      "detail": "用到 20 个编号：[439, 440, 703, 705, 707, 811, 812, 813, 880, 881, 912, 1002, 1003, 1112, 1113, 1279, 1305, 1334, 1442, 1561]"
+    },
+    {
+      "group": "来源",
+      "name": "证据级别取值合法",
+      "status": "PASS",
+      "detail": "['primary-verified', 'secondary']"
+    },
+    {
+      "group": "边界声明",
+      "name": "每条常驻 caveat",
+      "status": "PASS",
+      "detail": "42 条"
+    },
+    {
+      "group": "边界声明",
+      "name": "不携带第三方图片",
+      "status": "PASS",
+      "detail": "imagePlan.status = not-included"
+    },
+    {
+      "group": "术语表",
+      "name": "glossary.json 可解析",
+      "status": "PASS",
+      "detail": "74 条术语"
+    },
+    {
+      "group": "术语表",
+      "name": "术语数 ≥ 40",
+      "status": "PASS",
+      "detail": "实际 74 条"
+    },
+    {
+      "group": "术语表",
+      "name": "每条含全部必备字段",
+      "status": "PASS",
+      "detail": "全部通过"
+    },
+    {
+      "group": "术语表",
+      "name": "关联案例 id 全部有效",
+      "status": "PASS",
+      "detail": "全部有效"
+    },
+    {
+      "group": "术语表",
+      "name": "关联构造 id 全部有效",
+      "status": "PASS",
+      "detail": "全部有效"
+    },
+    {
+      "group": "术语表",
+      "name": "术语覆盖案例比例 ≥ 70%",
+      "status": "PASS",
+      "detail": "35/42 = 83%"
+    },
+    {
+      "group": "术语表",
+      "name": "术语 id 唯一",
+      "status": "PASS",
+      "detail": "全部唯一"
+    },
+    {
+      "group": "交接",
+      "name": "handoff/first-18.json 存在且 18 条",
+      "status": "PASS",
+      "detail": "18 条"
+    },
+    {
+      "group": "交接",
+      "name": "handoff/first-18-ids.json 与 first-18.json 一致",
+      "status": "PASS",
+      "detail": "18 个 id"
+    },
+    {
+      "group": "交接",
+      "name": "首批切片的 id 存在于 catalog",
+      "status": "PASS",
+      "detail": "全部命中"
+    },
+    {
+      "group": "交接",
+      "name": "构造分组覆盖全部构造类型",
+      "status": "PASS",
+      "detail": "21 组 / 构造类型 21 类"
+    },
+    {
+      "group": "交接",
+      "name": "每组含构件中英名 / 组装顺序 / 受力说明",
+      "status": "PASS",
+      "detail": "21 组全部完整"
+    },
+    {
+      "group": "交接",
+      "name": "组装顺序声明为教学示意",
+      "status": "PASS",
+      "detail": "所有 assemblyOrder 与 forceNote 均为教学示意，非施工工"
+    },
+    {
+      "group": "截图证据",
+      "name": "至少 3 张截图",
+      "status": "PASS",
+      "detail": "5 张"
+    },
+    {
+      "group": "截图证据",
+      "name": "每张截图字节数 > 0",
+      "status": "PASS",
+      "detail": "olek-si-desktop-1440x900.png=44965B, olek-si-desktop-hero-browser.png=147003B, olek-si-desktop-tall-1440x2600.png=85013B, olek-si-mobile-390x844.png=51373B, olek-si-tablet-820x1180.png=42417B"
+    },
+    {
+      "group": "截图证据",
+      "name": "screenshots/INDEX.tsv 存在",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "group": "隔离",
+      "name": "data/ 内无第三方抓取件",
+      "status": "PASS",
+      "detail": "仅 2 个本项目自产文件"
+    },
+    {
+      "group": "隔离",
+      "name": "research-ref/ 隔离区存在且带说明",
+      "status": "PASS",
+      "detail": "research-ref/README.md"
+    },
+    {
+      "group": "隔离",
+      "name": "research-ref/ 内的抓取件已被 manifest 登记为不发布",
+      "status": "PASS",
+      "detail": "5 个抓取件"
+    },
+    {
+      "group": "教学示意",
+      "name": "每条 case 带 teachingNotice 标记",
+      "status": "PASS",
+      "detail": "42 条全部带标记"
+    },
+    {
+      "group": "教学示意",
+      "name": "teachingNotice 含中英标签与不得声称清单",
+      "status": "PASS",
+      "detail": "labelZh / labelEn / forceNote / mustNotClaim 齐备"
+    },
+    {
+      "group": "发布边界",
+      "name": "PUBLISH-EXCLUDE.txt 覆盖全部敏感目录",
+      "status": "PASS",
+      "detail": "已排除目录 ['data', 'evidence', 'handoff', 'research-ref', 'screenshots', 'scripts', 'src']"
+    },
+    {
+      "group": "发布边界",
+      "name": "manifest 与 PUBLISH-EXCLUDE.txt 同源",
+      "status": "PASS",
+      "detail": "manifest.publish.excludeDirs / excludeFiles 与文本清单一致"
+    },
+    {
+      "group": "文档",
+      "name": "REFERENCES.md 收录 ≥ 8 个项目",
+      "status": "PASS",
+      "detail": "18 个项目"
+    },
+    {
+      "group": "文档",
+      "name": "README.md 存在且非空",
+      "status": "PASS",
+      "detail": "22099 B"
+    },
+    {
+      "group": "文档",
+      "name": "LICENSES.md 存在且非空",
+      "status": "PASS",
+      "detail": "14270 B"
+    },
+    {
+      "group": "文档",
+      "name": "QA.md 存在且非空",
+      "status": "PASS",
+      "detail": "21659 B"
+    },
+    {
+      "group": "文档",
+      "name": "INTERACTION-BRIEF.md 存在且非空",
+      "status": "PASS",
+      "detail": "17936 B"
+    },
+    {
+      "group": "文档",
+      "name": "STATUS.md 存在且非空",
+      "status": "PASS",
+      "detail": "24012 B"
+    },
+    {
+      "group": "文本完整性",
+      "name": "中文引号全部成对",
+      "status": "PASS",
+      "detail": "42 条 × 4 字段"
+    },
+    {
+      "group": "清单",
+      "name": "manifest.json 可解析",
+      "status": "PASS",
+      "detail": "93 个条目"
+    },
+    {
+      "group": "清单",
+      "name": "manifest 记录与磁盘一致（manifest.json / validate-report.json 自身除外，自引用不可校验）",
+      "status": "PASS",
+      "detail": "92 个条目一致"
+    },
+    {
+      "group": "清单",
+      "name": "磁盘文件全部登记在 manifest",
+      "status": "PASS",
+      "detail": "93 个文件全部登记"
+    },
+    {
+      "group": "元数据",
+      "name": "声明「代表性样本，非穷尽」",
+      "status": "PASS",
+      "detail": "5 条限制说明"
+    },
+    {
+      "group": "元数据",
+      "name": "记录 UNESCO 编号核验方法",
+      "status": "PASS",
+      "detail": "https://whc.unesco.org/en/list/?search=&search_iso_code=cn&mode=geojson&components=1"
+    },
+    {
+      "group": "词表对齐",
+      "name": "structureTypes 词表与案例使用集合 21:21 全覆盖",
+      "status": "PASS",
+      "detail": "词表 21 类 / 案例用 21 类"
+    },
+    {
+      "group": "词表对齐",
+      "name": "counts.structureTypes 与词表长度一致",
+      "status": "PASS",
+      "detail": "counts=21 / 词表=21"
+    },
+    {
+      "group": "词表对齐",
+      "name": "案例内嵌构造标签与词表一致",
+      "status": "PASS",
+      "detail": "21 类全部一致"
+    },
+    {
+      "group": "词表对齐",
+      "name": "案例 region / regionZh 与词表一致",
+      "status": "PASS",
+      "detail": "42 条全部一致"
+    },
+    {
+      "group": "成果页",
+      "name": "成果页源码与构建产物齐备",
+      "status": "PASS",
+      "detail": "9 个文件"
+    },
+    {
+      "group": "成果页",
+      "name": "案例 / 术语 / 构造三类卡片齐全",
+      "status": "PASS",
+      "detail": "case 42/42，term 74，struct 21"
+    },
+    {
+      "group": "成果页",
+      "name": "资源路径为相对路径（适配 Pages 子路径）",
+      "status": "PASS",
+      "detail": "未发现根路径写死的资源引用"
+    },
+    {
+      "group": "成果页",
+      "name": "声明 lang 属性与双语切换容器",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "group": "成果页",
+      "name": "每条案例渲染 caveat 与教学示意",
+      "status": "PASS",
+      "detail": "caveat 节点 42 / 案例 42"
+    },
+    {
+      "group": "成果页",
+      "name": "页面样式不含硬编码色值（全部 var(--ds-*)）",
+      "status": "PASS",
+      "detail": "10109 字节无 hex 色值"
+    },
+    {
+      "group": "成果页",
+      "name": "页面样式不写死字体族（走 var(--ds-font-*)）",
+      "status": "PASS",
+      "detail": "6 条 font-family 全部走令牌"
+    },
+    {
+      "group": "成果页",
+      "name": "V.12 自有 CSS 不写死字体族（含 var() fallback）",
+      "status": "PASS",
+      "detail": "6 条声明零字面字体族"
+    },
+    {
+      "group": "成果页",
+      "name": "--ds-base 由入口注入而非在自有 CSS 声明（V.4）",
+      "status": "PASS",
+      "detail": "自有 CSS 未声明 --ds-base"
+    },
+    {
+      "group": "成果页",
+      "name": "尊重 prefers-reduced-motion",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "group": "manifest 字段",
+      "name": "必需字段齐备（id/title/description/entry/buildCommand/outputDir/status）",
+      "status": "PASS",
+      "detail": "7/7"
+    },
+    {
+      "group": "manifest 字段",
+      "name": "id 与任务号一致",
+      "status": "PASS",
+      "detail": "17-architecture-research"
+    },
+    {
+      "group": "manifest 字段",
+      "name": "entry 指向实际存在的成果页",
+      "status": "PASS",
+      "detail": "dist/catalog.html"
+    },
+    {
+      "group": "manifest 字段",
+      "name": "buildCommand 指向实际存在的构建脚本",
+      "status": "PASS",
+      "detail": "node src/catalog-page/build-catalog-page.mjs"
+    },
+    {
+      "group": "manifest 字段",
+      "name": "outputDir 为 dist 且存在",
+      "status": "PASS",
+      "detail": "dist"
+    },
+    {
+      "group": "manifest 字段",
+      "name": "status 为已交付状态",
+      "status": "PASS",
+      "detail": "complete"
+    },
+    {
+      "group": "manifest 字段",
+      "name": "声明 kind 与非独立站点说明",
+      "status": "PASS",
+      "detail": "kind=research-package"
+    },
+    {
+      "group": "manifest 字段",
+      "name": "发布排除清单含 src/ 且不含 dist/",
+      "status": "PASS",
+      "detail": "excludeDirs=['research-ref', 'screenshots', 'evidence', 'scripts', 'handoff', 'data', 'src']"
+    }
+  ]
+}

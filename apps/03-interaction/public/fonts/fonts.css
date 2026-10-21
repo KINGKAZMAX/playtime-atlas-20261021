@@ -1,0 +1,61 @@
+/* ==========================================================================
+   织造车间调度台 · LOOMDECK —— 自托管字体
+   --------------------------------------------------------------------------
+   字族名与 16-design-system/fonts/FONT-MANIFEST.json 保持一致
+   （MIGRATION-NOTES §8「字体族名一致」）：
+     Space Grotesk（展示） / Inter（正文） / Space Mono（等宽）
+     Noto Sans SC（中文渐进增强子集）
+   全部为 SIL Open Font License 1.1，许可全文随包附于同目录 OFL-*.txt，
+   并登记进本目录 LICENSES.md。
+   运行期零外部请求：不引用任何 CDN，不加载任何外链字体。
+   本文件与 woff2 同目录，url() 使用相对路径 —— 适配 Pages 任意子路径
+   （MIGRATION-NOTES §6「字体 CSS 必须与 woff2 同目录同路径」）。
+   ========================================================================== */
+
+/* 展示体：作品名 / 分区标题 */
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("./space-grotesk-latin.woff2") format("woff2");
+}
+
+/* 正文体：说明 / 详情 / 界面文字 */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./inter-latin.woff2") format("woff2");
+}
+
+/* 等宽体：编号 / 读数 / 键位 */
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./space-mono-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./space-mono-bold.woff2") format("woff2");
+}
+
+/* 中文子集：以完整 Noto Sans SC 为源，按本作品实际用字子集化，
+   并把 wght 实例化到 400（静态 Regular），name 表族名规整为「Noto Sans SC」，
+   与 16-design-system/fonts/FONT-MANIFEST.json 一致。
+   覆盖范围由 scripts/check-fonts.mjs 用 harfbuzz 实测校验（当前 565/565 汉字）。
+   源字型未收录的符号（如 ⌨）回退系统字体。 */
+@font-face {
+  font-family: "Noto Sans SC";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./noto-sans-sc-subset.woff2") format("woff2");
+}

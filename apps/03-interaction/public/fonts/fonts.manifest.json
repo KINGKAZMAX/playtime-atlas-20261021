@@ -1,0 +1,48 @@
+{
+  "$comment": "LOOMDECK 自托管字体清单。族名与 16-design-system/fonts/FONT-MANIFEST.json 一致（MIGRATION-NOTES §8）。",
+  "generatedAt": "2026-10-21T16:40:48.277Z",
+  "fontDisplay": "swap",
+  "cjkStrategy": "Noto Sans SC 自托管子集覆盖本作品全部汉字（wght 实例化到 400 的静态 Regular）；源字型缺失的符号（如 ⌨）回退系统字体。",
+  "faces": [
+    {
+      "family": "Space Grotesk",
+      "file": "space-grotesk-latin.woff2",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-space-grotesk.txt",
+      "bytes": 34788,
+      "format": "woff2"
+    },
+    {
+      "family": "Inter",
+      "file": "inter-latin.woff2",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-inter.txt",
+      "bytes": 132684,
+      "format": "woff2"
+    },
+    {
+      "family": "Space Mono",
+      "file": "space-mono-regular.woff2",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-space-mono-regular.txt",
+      "bytes": 14884,
+      "format": "woff2"
+    },
+    {
+      "family": "Space Mono",
+      "file": "space-mono-bold.woff2",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-space-mono-bold.txt",
+      "bytes": 15000,
+      "format": "woff2"
+    },
+    {
+      "family": "Noto Sans SC",
+      "file": "noto-sans-sc-subset.woff2",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "OFL-noto-sans-sc.txt",
+      "bytes": 107968,
+      "format": "woff2"
+    }
+  ]
+}

@@ -55,14 +55,14 @@ export function renderEra(ctx, eraId) {
 
   <div class="era-body">
     <section class="era-narrative">
-      <h2 class="section-title">展厅导言</h2>
+      <h2 class="section-title" data-i18n="era.intro">展厅导言</h2>
       <p class="era-narrative-text">${escapeHtml(era.narrative)}</p>
       <p class="era-narrative-note">${escapeHtml(era.note)}</p>
     </section>
 
     ${hall ? `
 <section class="era-hall" aria-labelledby="era-hall-title">
-  <h2 class="section-title" id="era-hall-title">本年代可玩展厅</h2>
+  <h2 class="section-title" id="era-hall-title" data-i18n="era.hallTitle">本年代可玩展厅</h2>
   ${hallCard(hall)}
 </section>` : ''}
 
@@ -74,7 +74,7 @@ export function renderEra(ctx, eraId) {
 
     <nav class="era-pager" aria-label="年代展厅翻页">
       ${prev ? `<a class="btn btn-ghost" href="#/era/${encodeURIComponent(prev.id)}">← ${escapeHtml(prev.label)}</a>` : '<span></span>'}
-      <a class="btn btn-ghost" href="#/timeline">长时间廊</a>
+      <a class="btn btn-ghost" href="#/timeline" data-i18n="era.corridor">长时间廊</a>
       ${next ? `<a class="btn btn-ghost" href="#/era/${encodeURIComponent(next.id)}">${escapeHtml(next.label)} →</a>` : '<span></span>'}
     </nav>
   </div>

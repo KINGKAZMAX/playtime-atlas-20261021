@@ -9,6 +9,12 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "node tests/logic.test.mjs",
+    "test:e2e": "node tests/browser-smoke.mjs",
+    "test:audio": "node tests/audio-runtime-check.mjs",
+    "test:tokens": "node tests/token-consistency.mjs",
+    "test:compliance": "node tests/ds-compliance.mjs",
+    "test:probe": "node tests/probe-contract.mjs",
+    "verify": "npm run build && npm run test && npm run test:tokens && npm run test:compliance && npm run test:probe && npm run test:e2e && npm run test:audio",
     "start": "bash scripts/start.sh"
   },
   "devDependencies": {

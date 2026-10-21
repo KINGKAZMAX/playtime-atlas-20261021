@@ -37,14 +37,14 @@ function makeGridTexture(): THREE.CanvasTexture {
     ctx.clearRect(0, 0, size, size);
     const cx = size / 2;
     const cy = size / 2;
-    ctx.strokeStyle = 'rgba(79, 216, 232, 0.30)';
+    ctx.strokeStyle = 'rgba(20, 17, 15, 0.13)';
     ctx.lineWidth = 1;
     for (let r = 40; r < size / 2; r += 38) {
       ctx.beginPath();
       ctx.arc(cx, cy, r, 0, Math.PI * 2);
       ctx.stroke();
     }
-    ctx.strokeStyle = 'rgba(79, 216, 232, 0.16)';
+    ctx.strokeStyle = 'rgba(20, 17, 15, 0.07)';
     for (let i = 0; i < 24; i++) {
       const a = (i / 24) * Math.PI * 2;
       ctx.beginPath();
@@ -127,6 +127,10 @@ export function createStage(canvas: HTMLCanvasElement, options: StageOptions): S
 
   /* --- controls ---------------------------------------------------- */
   const controls = new OrbitControls(camera, canvas);
+  // Once the visitor has framed the model themselves, stop auto-fitting.
+  controls.addEventListener('start', () => {
+    userFramed = true;
+  });
   controls.enableDamping = true;
   controls.dampingFactor = 0.06;
   controls.enablePan = false;
@@ -140,10 +144,22 @@ export function createStage(canvas: HTMLCanvasElement, options: StageOptions): S
   controls.target.set(0, 0.02, 0);
   controls.update();
 
-  const defaultPosition = camera.position.clone();
-  const defaultTarget = controls.target.clone();
-
   /* --- resize ------------------------------------------------------ */
+  // The canvas frame is now 21/9 (design-system cover media). A wide frame
+  // would leave the instrument small in the middle, so the camera distance is
+  // derived from the aspect: the device should keep a stable share of the
+  // frame width, and never overflow the height.
+  const DEVICE_W = 1.62; // body + trim, world units
+  const DEVICE_H = 0.72;
+  let userFramed = false;
+
+  const fitDistance = (aspect: number): number => {
+    const tan = Math.tan((camera.fov * Math.PI) / 360);
+    const byWidth = (DEVICE_W * 0.62) / (2 * tan * aspect);
+    const byHeight = (DEVICE_H * 1.25) / (2 * tan);
+    return Math.min(Math.max(Math.max(byWidth, byHeight), 2.8), 7.5);
+  };
+
   const resize = () => {
     const rect = canvas.getBoundingClientRect();
     const w = Math.max(1, Math.floor(rect.width));
@@ -151,10 +167,23 @@ export function createStage(canvas: HTMLCanvasElement, options: StageOptions): S
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
+    if (!userFramed) {
+      const dir = camera.position.clone().normalize();
+      camera.position.copy(dir.multiplyScalar(fitDistance(camera.aspect)));
+      controls.update();
+    }
   };
-  resize();
   const ro = new ResizeObserver(resize);
   ro.observe(canvas);
+
+  // Default framing is captured *after* the first aspect-aware fit, so that
+  // double-click reset returns to the composed shot, not the raw camera slot.
+  let defaultPosition = camera.position.clone();
+  let defaultTarget = controls.target.clone();
+  requestAnimationFrame(() => {
+    defaultPosition = camera.position.clone();
+    defaultTarget = controls.target.clone();
+  });
 
   /* --- explode animation ------------------------------------------- */
   let explodeTarget = 0;

@@ -80,47 +80,46 @@ function wikiTitle(url) {
 }
 
 async function checkTitles(titles) {
-  const CHUNK = 10;
+  // 公开百科 API 对高频请求会限流（429/403），这里采用「每次一个标题 + 固定间隔」
+  // 的保守策略，配合退避重试，确保结论可信而不是碰运气。
   const missing = [];
   const canonical = new Map();
   const failed = [];
-  for (let i = 0; i < titles.length; i += CHUNK) {
-    const slice = titles.slice(i, i + CHUNK);
-    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&redirects=1&titles=${encodeURIComponent(slice.join('|'))}`;
+  const INTERVAL = 1400;
+
+  for (let i = 0; i < titles.length; i += 1) {
+    const t = titles[i];
+    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&redirects=1&titles=${encodeURIComponent(t)}`;
     let data = null;
     let lastError = '';
-    for (let attempt = 1; attempt <= 2 && !data; attempt += 1) {
+    for (let attempt = 1; attempt <= 4 && !data; attempt += 1) {
       try {
-        data = await fetchJson(url);
+        data = await fetchJson(url, { retries: 2, retryBaseMs: 2500 });
       } catch (err) {
         lastError = err.message;
       }
     }
     if (!data) {
-      failed.push({ slice, error: lastError });
-      warn(`来源校验批次失败（第 ${i / CHUNK + 1} 批，${slice.length} 个标题）：${lastError}`);
-      continue;
-    }
-    const normalized = new Map();
-    for (const n of data.query?.normalized ?? []) normalized.set(n.to, n.from);
-    const redirects = new Map();
-    for (const r of data.query?.redirects ?? []) redirects.set(r.from, r.to);
-    const pages = data.query?.pages ?? {};
-    const byTitle = new Map();
-    for (const p of Object.values(pages)) byTitle.set(p.title, p);
-    for (const t of slice) {
-      const norm = normalized.get(t) ?? t;
-      const red = redirects.get(norm) ?? norm;
-      const page = byTitle.get(red);
+      failed.push({ slice: [t], error: lastError });
+      warn(`来源校验失败：${t}（${lastError}）`);
+    } else {
+      const pages = data.query?.pages ?? {};
+      const page = Object.values(pages)[0];
       if (!page || page.missing !== undefined) {
         missing.push(t);
       } else {
         canonical.set(t, page.title);
       }
     }
-    await new Promise((r) => setTimeout(r, 2200)); // 公开 API 限流友好间隔
+    await new Promise((r) => setTimeout(r, INTERVAL));
   }
-  return { missing, canonical, failed, checked: titles.length - failed.reduce((n, f) => n + f.slice.length, 0) };
+
+  return {
+    missing,
+    canonical,
+    failed,
+    checked: titles.length - failed.length,
+  };
 }
 
 // ── 运行 ────────────────────────────────────────────────────────────────────

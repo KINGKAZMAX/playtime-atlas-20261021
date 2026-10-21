@@ -12,7 +12,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
-const target = process.argv[2] || path.resolve('models/abyss-salvager-ac-vii.glb');
+const target = process.argv[2] || path.resolve('public/models/abyss-salvager-ac-vii.glb');
 
 function readJSONChunk(buf, offset) {
   const len = buf.readUInt32LE(offset);

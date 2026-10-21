@@ -1,0 +1,1019 @@
+/* ==========================================================================
+   折光纪 · PRISM ERA —— 设计系统组件层（本文件为 16-design-system 的原样副本）
+   --------------------------------------------------------------------------
+   副本说明：仅在本文件头追加来源说明，**未改动任何规则**。
+   依据：16-design-system/src/components.css（2026-10-21 20:35 落盘）
+        16-design-system/MIGRATION-NOTES.md §3 通用组件替换
+   原文件 sha256: a602f4143823fec1c596c94bab8400e14dd24c462a8565cb4bcc0564e8930f51
+   约定：本目录的外壳（顶栏 / 页脚 / 封面 / 作品卡 / 控件 / 画布框 / HUD）
+        在既有类名之上**叠加** .ds-* 类使用，不删除既有 CSS（§10 红线）。
+   ========================================================================== */
+
+/* ==========================================================================
+   余晖设计系统 / Afterglow Design System
+   components.css — 组件层。
+   所有类名以 .ds- 前缀，可整段引入而不影响既有样式。
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. 基线
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 主题底色跟随 body，避免移动端 overscroll 露出白边 */
+body {
+  background: var(--ds-bg);
+  color: var(--ds-ink);
+}
+
+/* --------------------------------------------------------------------------
+   1. 基础容器
+   -------------------------------------------------------------------------- */
+.ds-shell {
+  min-height: 100dvh;
+  background: var(--ds-bg);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-body);
+  line-height: var(--ds-lh-normal);
+  letter-spacing: var(--ds-track-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+}
+
+.ds-container {
+  width: 100%;
+  max-width: var(--ds-max-width);
+  margin-inline: auto;
+  padding-inline: var(--ds-space-gutter);
+}
+
+.ds-container--wide { max-width: var(--ds-max-width-wide); }
+.ds-container--read { max-width: calc(var(--ds-read-width) + var(--ds-space-gutter) * 2); }
+
+.ds-section {
+  position: relative;
+  padding-block: var(--ds-space-section-top) var(--ds-space-section-bottom);
+  background: var(--ds-section-bg);
+  color: var(--ds-section-ink);
+  isolation: isolate;
+}
+
+.ds-section--viewport {
+  min-height: var(--ds-section-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 0;
+}
+
+.ds-section__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-3);
+  margin-bottom: var(--ds-space-6);
+}
+
+.ds-rule {
+  height: 1px;
+  background: var(--ds-line);
+  border: 0;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   2. 导航轨（Nav rail）
+   机制取自参考站的景深式竖排索引，但**不使用 opacity 衰减**：
+   半透明文字无论基准色多深都无法保持 4.5:1，改用「墨色层级 + 字号 + 字重 + 微缩放」表达景深。
+   -------------------------------------------------------------------------- */
+.ds-rail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--ds-z-rail);
+  width: var(--ds-rail-width);
+  padding: var(--ds-space-5) 0 var(--ds-space-5) var(--ds-rail-inset);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-rail-gap);
+  pointer-events: none;
+}
+[data-ds-theme="dark"] .ds-rail { mix-blend-mode: normal; }
+
+.ds-rail__item {
+  pointer-events: auto;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 4px 8px;
+  margin-left: -8px;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-sm);
+  letter-spacing: -0.01em;
+  /* 远景级：--ds-ink-faint，对 --ds-bg 实测 4.97:1 */
+  color: var(--ds-ink-faint);
+  cursor: pointer;
+  border-radius: var(--ds-radius-xs);
+  transform: scale(var(--ds-rail-scale, 1));
+  transform-origin: left center;
+  transition: color var(--ds-dur-fast) var(--ds-ease-veil),
+    font-size var(--ds-dur-base) var(--ds-ease-veil),
+    transform var(--ds-dur-base) var(--ds-ease-veil),
+    filter var(--ds-dur-base) var(--ds-ease-veil);
+  filter: blur(var(--ds-rail-blur, 0px));
+}
+.ds-rail__item:hover {
+  color: var(--ds-ink);
+  transform: scale(1);
+  filter: blur(0);
+}
+/* 近景级 */
+.ds-rail__item[data-rail-level="1"] { color: var(--ds-ink-soft); }
+/* 焦点级：当前分区 */
+.ds-rail__item[aria-current="true"],
+.ds-rail__item[aria-current="page"] {
+  color: var(--ds-ink);
+  font-size: var(--ds-type-body);
+  font-weight: var(--ds-w-medium);
+  transform: scale(1);
+  filter: blur(0);
+}
+.ds-rail__sep {
+  width: 10px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+  flex: none;
+}
+.ds-rail--horizontal {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--ds-space-3);
+  padding: var(--ds-space-3) var(--ds-space-gutter);
+  background: color-mix(in srgb, var(--ds-bg) 86%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--ds-line);
+  mix-blend-mode: normal;
+}
+.ds-rail--horizontal .ds-rail__sep { width: 1px; height: 10px; }
+
+@media (max-width: 767px) {
+  .ds-rail {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--ds-space-3);
+    padding: var(--ds-space-3) var(--ds-space-gutter);
+    background: color-mix(in srgb, var(--ds-bg) 86%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--ds-line);
+    mix-blend-mode: normal;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .ds-rail::-webkit-scrollbar { display: none; }
+  .ds-rail__sep { width: 1px; height: 10px; }
+}
+
+/* --------------------------------------------------------------------------
+   3. 顶部导航（页头）
+   -------------------------------------------------------------------------- */
+.ds-topbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--ds-z-sticky);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-4);
+  padding: var(--ds-space-4) var(--ds-space-gutter);
+  background: color-mix(in srgb, var(--ds-bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ds-line);
+}
+.ds-topbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  min-height: var(--ds-target-min);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-sm);
+  font-weight: var(--ds-w-semibold);
+  letter-spacing: var(--ds-track-caps);
+  text-transform: uppercase;
+  color: var(--ds-ink);
+  text-decoration: none;
+}
+.ds-topbar__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+  flex-wrap: wrap;
+}
+.ds-topbar__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ds-target-min);
+  font-size: var(--ds-type-sm);
+  color: var(--ds-ink-soft);
+  text-decoration: none;
+  padding: var(--ds-space-2) 0;
+  border-bottom: 1px solid transparent;
+  transition: color var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil);
+}
+.ds-topbar__link:hover { color: var(--ds-ink); border-bottom-color: var(--ds-line-strong); }
+.ds-topbar__link[aria-current="page"] { color: var(--ds-ink); border-bottom-color: var(--ds-accent); }
+
+/* 窄屏：品牌不折行，导航横向滚动（不得溢出、不得逐字换行） */
+@media (max-width: 767px) {
+  .ds-topbar {
+    flex-wrap: wrap;
+    row-gap: var(--ds-space-2);
+    padding-inline: var(--ds-space-4);
+  }
+  .ds-topbar__brand {
+    white-space: nowrap;
+    font-size: var(--ds-type-xs);
+  }
+  .ds-topbar__nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    width: 100%;
+    order: 3;
+    -webkit-overflow-scrolling: touch;
+  }
+  .ds-topbar__nav::-webkit-scrollbar { display: none; }
+  .ds-topbar__link {
+    white-space: nowrap;
+    flex: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. 英雄区 / 封面（Cover）
+   -------------------------------------------------------------------------- */
+.ds-cover {
+  min-height: min(88dvh, 780px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--ds-space-6);
+  padding: var(--ds-space-8) var(--ds-space-gutter) var(--ds-space-9);
+  position: relative;
+}
+.ds-cover__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
+  text-transform: uppercase;
+  color: var(--ds-ink-faint);
+}
+.ds-cover__title {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-display);
+  line-height: var(--ds-lh-display);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: var(--ds-track-display);
+  color: var(--ds-ink);
+  max-width: 18ch;
+  /* 关键：不允许 nowrap —— 参考站在 390px 下标题横向溢出，本系统必须避免 */
+  overflow-wrap: anywhere;
+}
+:lang(zh) .ds-cover__title { max-width: 22ch; line-height: 1.2; }
+.ds-cover__lede {
+  max-width: 62ch;
+  font-size: var(--ds-type-lead);
+  line-height: var(--ds-lh-normal);
+  color: var(--ds-ink-soft);
+}
+.ds-cover__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-3);
+  justify-content: center;
+}
+.ds-cover__scroll {
+  position: absolute;
+  bottom: var(--ds-space-6);
+  left: 50%;
+  translate: -50% 0;
+  color: var(--ds-ink-faint);
+  display: grid;
+  place-items: center;
+  width: var(--ds-target-min);
+  height: var(--ds-target-min);
+}
+.ds-cover__media {
+  width: min(100%, 960px);
+  aspect-ratio: 21 / 9;
+  border-radius: var(--ds-radius-media);
+  overflow: hidden;
+  background: var(--ds-surface);
+  box-shadow: var(--ds-shadow-2);
+}
+.ds-cover__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* --------------------------------------------------------------------------
+   5. 按钮
+   -------------------------------------------------------------------------- */
+.ds-btn {
+  --ds-btn-h: var(--ds-space-10);
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-2);
+  min-height: 40px;
+  height: var(--ds-btn-h);
+  padding-inline: var(--ds-space-4);
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-control);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-body);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--ds-dur-fast) var(--ds-ease-veil),
+    color var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    transform var(--ds-dur-fast) var(--ds-ease-spring),
+    box-shadow var(--ds-dur-fast) var(--ds-ease-veil);
+}
+.ds-btn--sm { min-height: 32px; height: 32px; font-size: var(--ds-type-sm); padding-inline: var(--ds-space-3); }
+.ds-btn--lg { min-height: 48px; height: 48px; font-size: var(--ds-type-body); padding-inline: var(--ds-space-5); }
+
+.ds-btn--primary {
+  background: var(--ds-accent);
+  color: var(--ds-accent-ink);
+}
+.ds-btn--primary:hover { background: var(--ds-accent-hover); }
+.ds-btn--primary:active { transform: scale(0.985); }
+
+.ds-btn--secondary {
+  background: var(--ds-surface);
+  color: var(--ds-ink);
+}
+.ds-btn--secondary:hover { background: var(--ds-bg-sunken); }
+
+.ds-btn--ghost {
+  background: transparent;
+  color: var(--ds-ink);
+  box-shadow: var(--ds-ring);
+}
+.ds-btn--ghost:hover { background: var(--ds-surface); box-shadow: var(--ds-ring-strong); }
+
+.ds-btn--quiet {
+  background: transparent;
+  color: var(--ds-ink-soft);
+  padding-inline: var(--ds-space-2);
+}
+.ds-btn--quiet:hover { color: var(--ds-ink); background: var(--ds-surface); }
+
+.ds-btn[aria-pressed="true"] {
+  background: var(--ds-accent-soft);
+  color: var(--ds-accent);
+  box-shadow: var(--ds-ring-strong);
+}
+
+.ds-btn__icon { flex: none; width: 1em; height: 1em; display: block; }
+
+/* 图标按钮 */
+.ds-iconbtn {
+  appearance: none;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ds-radius-pill);
+  background: transparent;
+  color: var(--ds-ink);
+  box-shadow: var(--ds-ring);
+  cursor: pointer;
+  transition: background-color var(--ds-dur-fast) var(--ds-ease-veil),
+    box-shadow var(--ds-dur-fast) var(--ds-ease-veil),
+    transform var(--ds-dur-fast) var(--ds-ease-spring);
+}
+.ds-iconbtn:hover { background: var(--ds-surface); box-shadow: var(--ds-ring-strong); }
+.ds-iconbtn:active { transform: scale(0.94); }
+.ds-iconbtn svg { width: 20px; height: 20px; }
+
+/* 社交圆钮 */
+.ds-social {
+  display: flex;
+  gap: var(--ds-space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ds-social__item {
+  display: inline-grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background: transparent;
+  box-shadow: var(--ds-ring);
+  color: var(--ds-ink);
+  transition: background-color var(--ds-dur-fast) var(--ds-ease-veil),
+    box-shadow var(--ds-dur-fast) var(--ds-ease-veil),
+    transform var(--ds-dur-fast) var(--ds-ease-spring);
+}
+.ds-social__item:hover { background: var(--ds-surface); box-shadow: var(--ds-ring-strong); transform: translateY(-2px); }
+.ds-social__item svg { width: 20px; height: 20px; }
+
+/* 焦点可见 */
+:where(a, button, [tabindex], input, select, textarea, summary):focus-visible {
+  outline: none;
+  box-shadow: var(--ds-focus-ring);
+  border-radius: var(--ds-radius-xs);
+}
+
+/* 跳转链接 */
+.ds-skip {
+  position: absolute;
+  left: var(--ds-space-4);
+  top: -100px;
+  z-index: var(--ds-z-toast);
+  padding: var(--ds-space-3) var(--ds-space-4);
+  background: var(--ds-ink);
+  color: var(--ds-bg);
+  border-radius: var(--ds-radius-sm);
+  text-decoration: none;
+  transition: top var(--ds-dur-fast) var(--ds-ease-out);
+}
+.ds-skip:focus { top: var(--ds-space-4); }
+
+/* --------------------------------------------------------------------------
+   6. 标签 / 徽标
+   -------------------------------------------------------------------------- */
+.ds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  height: 24px;
+  padding-inline: 10px;
+  border-radius: var(--ds-radius-pill);
+  background: var(--ds-surface);
+  color: var(--ds-ink-soft);
+  font-size: var(--ds-type-xs);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.ds-tag--accent { background: var(--ds-accent-soft); color: var(--ds-accent); }
+.ds-tag--jade { background: var(--ds-jade-soft); color: var(--ds-jade); }
+.ds-tag--outline { background: transparent; box-shadow: var(--ds-ring); }
+.ds-tag__dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; flex: none; }
+
+/* --------------------------------------------------------------------------
+   7. 作品卡（Work card）—— 机制取自参考站的媒体卡 + 去饱和遮罩
+   -------------------------------------------------------------------------- */
+.ds-work {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-3);
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--ds-radius-md);
+}
+.ds-work__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--ds-radius-media);
+  overflow: hidden;
+  background: var(--ds-surface);
+  isolation: isolate;
+}
+.ds-work__media img,
+.ds-work__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--ds-dur-slow) var(--ds-ease-out);
+}
+.ds-work__dim {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--ds-work-dim, rgba(128, 128, 128, 0.3));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--ds-dur-base) var(--ds-ease-veil);
+}
+.ds-work:hover .ds-work__dim,
+.ds-work:focus-visible .ds-work__dim { opacity: 1; }
+.ds-work:hover .ds-work__media img,
+.ds-work:focus-visible .ds-work__media img { transform: scale(1.015); }
+.ds-work__body { display: flex; flex-direction: column; gap: var(--ds-space-1); }
+.ds-work__title {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h3);
+  line-height: var(--ds-lh-snug);
+  font-weight: var(--ds-w-medium);
+  color: var(--ds-ink);
+}
+.ds-work__meta {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-sm);
+  letter-spacing: var(--ds-track-mono);
+  color: var(--ds-ink-faint);
+}
+.ds-work__desc { font-size: var(--ds-type-sm); color: var(--ds-ink-soft); }
+
+/* 栅格 */
+.ds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: var(--ds-grid-gap);
+}
+.ds-grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); }
+.ds-grid--wide-first { grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr)); }
+
+/* --------------------------------------------------------------------------
+   8. 作品大厅列表（Works hall）
+   -------------------------------------------------------------------------- */
+.ds-hall {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-8);
+}
+.ds-hall__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ds-space-5);
+  padding-block: var(--ds-space-6);
+  border-top: 1px solid var(--ds-line);
+}
+.ds-hall__index {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-mono);
+  color: var(--ds-ink-faint);
+}
+.ds-hall__title {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h2);
+  line-height: var(--ds-lh-tight);
+  font-weight: var(--ds-w-medium);
+}
+.ds-hall__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-faint);
+}
+@media (min-width: 768px) {
+  .ds-hall__row {
+    grid-template-columns: 88px minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: start;
+    gap: var(--ds-space-6);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. 详情页（Detail）
+   -------------------------------------------------------------------------- */
+.ds-detail__hero {
+  position: relative;
+  aspect-ratio: 21 / 9;
+  max-height: 62dvh;
+  border-radius: var(--ds-radius-media);
+  overflow: hidden;
+  background: var(--ds-surface);
+}
+.ds-detail__hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ds-detail__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-3);
+  padding-block: var(--ds-space-7) var(--ds-space-6);
+  border-bottom: 1px solid var(--ds-line);
+  margin-bottom: var(--ds-space-7);
+}
+.ds-detail__title {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h1);
+  line-height: var(--ds-lh-tight);
+  font-weight: var(--ds-w-medium);
+  letter-spacing: var(--ds-track-display);
+  overflow-wrap: anywhere;
+}
+.ds-detail__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-2) var(--ds-space-4);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-sm);
+  color: var(--ds-ink-faint);
+}
+.ds-detail__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-6);
+  max-width: var(--ds-read-width);
+  font-size: var(--ds-type-body);
+  line-height: var(--ds-lh-normal);
+  color: var(--ds-ink-soft);
+}
+.ds-detail__body h3 {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-h4);
+  font-weight: var(--ds-w-semibold);
+  color: var(--ds-ink);
+  margin-top: var(--ds-space-3);
+}
+.ds-detail__figure { margin: 0; display: flex; flex-direction: column; gap: var(--ds-space-2); }
+.ds-detail__figure img { width: 100%; border-radius: var(--ds-radius-md); display: block; }
+.ds-detail__caption {
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-soft);
+  display: flex;
+  gap: var(--ds-space-2);
+  align-items: baseline;
+}
+.ds-detail__caption b { font-family: var(--ds-font-mono); font-weight: var(--ds-w-regular); color: var(--ds-ink-faint); }
+
+/* --------------------------------------------------------------------------
+   10. 指示器（圆点 ↔ 箭头形变）—— 机制取自参考站
+   -------------------------------------------------------------------------- */
+.ds-indicator {
+  position: absolute;
+  bottom: clamp(36px, 8vh, 64px);
+  left: 50%;
+  translate: -50% 50%;
+  min-width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  z-index: var(--ds-z-raised);
+  pointer-events: none;
+  color: var(--ds-section-soft);
+}
+.ds-indicator__dots { display: flex; gap: var(--ds-space-2); transition: opacity var(--ds-dur-slow) var(--ds-ease-out), filter var(--ds-dur-slow) var(--ds-ease-out), scale var(--ds-dur-slow) var(--ds-ease-out); }
+.ds-indicator__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.22;
+  transition: opacity var(--ds-dur-base) var(--ds-ease-out);
+}
+.ds-indicator__dot[aria-current="true"] { opacity: 1; }
+.ds-indicator__chevron {
+  position: absolute;
+  width: 56px;
+  opacity: 0;
+  filter: blur(6px);
+  scale: 0.5;
+  transition: opacity var(--ds-dur-slow) var(--ds-ease-out), filter var(--ds-dur-slow) var(--ds-ease-out), scale var(--ds-dur-slow) var(--ds-ease-out);
+}
+.ds-indicator[data-state="chevron"] .ds-indicator__dots { opacity: 0; filter: blur(8px); scale: 0.5; }
+.ds-indicator[data-state="chevron"] .ds-indicator__chevron { opacity: 0.62; filter: blur(0); scale: 1; }
+
+/* --------------------------------------------------------------------------
+   11. 灯箱 / 展开详情（Lightbox）
+   -------------------------------------------------------------------------- */
+.ds-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ds-z-modal);
+  display: grid;
+  place-items: center;
+  padding: var(--ds-space-5);
+  background: var(--ds-overlay);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--ds-dur-base) var(--ds-ease-veil), visibility var(--ds-dur-base) var(--ds-ease-veil);
+}
+.ds-lightbox[open],
+.ds-lightbox[data-open="true"] { opacity: 1; visibility: visible; }
+.ds-lightbox__panel {
+  position: relative;
+  width: min(100%, 1024px);
+  max-height: calc(100dvh - var(--ds-space-8));
+  overflow: auto;
+  background: var(--ds-bg-raised);
+  border-radius: var(--ds-radius-lg);
+  box-shadow: var(--ds-shadow-4);
+  transform: translateY(12px) scale(0.985);
+  transition: transform var(--ds-dur-slow) var(--ds-ease-out);
+}
+.ds-lightbox[open] .ds-lightbox__panel,
+.ds-lightbox[data-open="true"] .ds-lightbox__panel { transform: none; }
+.ds-lightbox__close {
+  position: absolute;
+  top: calc(-1 * var(--ds-space-7));
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ds-target-min);
+  height: var(--ds-target-min);
+  border: 0;
+  border-radius: var(--ds-radius-pill);
+  background: transparent;
+  color: var(--ds-ink);
+  cursor: pointer;
+  box-shadow: var(--ds-ring);
+}
+.ds-lightbox__close:hover { background: var(--ds-surface); }
+
+/* 背景内容在展开态被压暗（对应参考站 content opacity .08） */
+.ds-lightbox-host[data-ds-expanded="true"] .ds-lightbox-host__body {
+  opacity: 0.08;
+  filter: blur(16px);
+  transition: opacity var(--ds-dur-slow) var(--ds-ease-out), filter var(--ds-dur-slow) var(--ds-ease-out);
+}
+
+/* --------------------------------------------------------------------------
+   12. 表单
+   -------------------------------------------------------------------------- */
+.ds-field { display: flex; flex-direction: column; gap: var(--ds-space-2); }
+.ds-field__label { font-size: var(--ds-type-sm); color: var(--ds-ink-soft); font-weight: var(--ds-w-medium); }
+.ds-input,
+.ds-select,
+.ds-textarea {
+  appearance: none;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px var(--ds-space-3);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-bg-raised);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-body);
+  transition: border-color var(--ds-dur-fast) var(--ds-ease-veil), box-shadow var(--ds-dur-fast) var(--ds-ease-veil);
+}
+.ds-input::placeholder { color: var(--ds-ink-faint); }
+.ds-input:focus, .ds-select:focus, .ds-textarea:focus {
+  outline: none;
+  border-color: var(--ds-accent);
+  box-shadow: 0 0 0 3px var(--ds-accent-soft);
+}
+.ds-textarea { min-height: 120px; resize: vertical; line-height: var(--ds-lh-normal); }
+.ds-field__hint { font-size: var(--ds-type-xs); color: var(--ds-ink-faint); }
+.ds-field__error { font-size: var(--ds-type-xs); color: var(--ds-danger); }
+
+/* 筛选条 */
+.ds-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-2);
+  align-items: center;
+}
+.ds-chip {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  min-height: 34px;
+  padding: 4px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-pill);
+  background: var(--ds-surface);
+  color: var(--ds-ink-soft);
+  font-size: var(--ds-type-sm);
+  cursor: pointer;
+  transition: background-color var(--ds-dur-fast) var(--ds-ease-veil), color var(--ds-dur-fast) var(--ds-ease-veil);
+}
+.ds-chip:hover { background: var(--ds-bg-sunken); color: var(--ds-ink); }
+.ds-chip[aria-pressed="true"] { background: var(--ds-ink); color: var(--ds-bg); }
+
+/* --------------------------------------------------------------------------
+   13. 画布与游戏 HUD
+   -------------------------------------------------------------------------- */
+.ds-canvas-frame {
+  position: relative;
+  border-radius: var(--ds-radius-media);
+  overflow: hidden;
+  background: var(--ds-bg-sunken);
+  border: 1px solid var(--ds-line);
+  /* 画布独立层叠上下文，站点级 filter/transform 不得影响 */
+  contain: paint;
+  isolation: isolate;
+}
+.ds-canvas-frame > canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: none;
+}
+.ds-canvas-frame__hud {
+  position: absolute;
+  inset: auto var(--ds-space-3) var(--ds-space-3) var(--ds-space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+  padding: var(--ds-space-2) var(--ds-space-3);
+  min-height: 36px;
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-canvas-hud-bg);
+  color: var(--ds-canvas-hud-ink);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--ds-canvas-hud-line);
+}
+.ds-canvas-frame__hud--top { inset: var(--ds-space-3) var(--ds-space-3) auto var(--ds-space-3); }
+.ds-canvas-frame__hint {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--ds-space-5);
+  text-align: center;
+  background: var(--ds-canvas-scrim);
+  color: var(--ds-canvas-hud-ink);
+  font-size: var(--ds-type-sm);
+}
+.ds-key {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: var(--ds-radius-xs);
+  border: 1px solid var(--ds-canvas-hud-line);
+  font-size: 11px;
+}
+
+/* --------------------------------------------------------------------------
+   14. 建筑图解（线稿）
+   -------------------------------------------------------------------------- */
+.ds-diagram {
+  position: relative;
+  background: var(--ds-bg-raised);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-md);
+  padding: var(--ds-space-5);
+}
+.ds-diagram__svg { width: 100%; height: auto; display: block; }
+.ds-diagram__stroke { fill: none; stroke: var(--ds-jade); stroke-width: 1.25; stroke-linecap: round; }
+.ds-diagram__stroke--accent { stroke: var(--ds-accent); }
+.ds-diagram__fill { fill: var(--ds-jade-soft); stroke: var(--ds-jade); stroke-width: 1; }
+.ds-diagram__dim {
+  font-family: var(--ds-font-mono);
+  font-size: 11px;
+  fill: var(--ds-ink-faint);
+}
+
+/* --------------------------------------------------------------------------
+   15. 页脚
+   -------------------------------------------------------------------------- */
+.ds-footer {
+  border-top: 1px solid var(--ds-line);
+  padding-block: var(--ds-space-7) var(--ds-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-4);
+  color: var(--ds-ink-faint);
+}
+.ds-footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-3) var(--ds-space-5);
+  align-items: center;
+  justify-content: space-between;
+}
+.ds-footer__links { display: flex; flex-wrap: wrap; gap: var(--ds-space-4); }
+.ds-footer__links a { color: var(--ds-ink-soft); text-decoration: none; font-size: var(--ds-type-sm); }
+.ds-footer__links a:hover { color: var(--ds-ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* --------------------------------------------------------------------------
+   16. 入场动效（IntersectionObserver 加 .ds-in）
+   -------------------------------------------------------------------------- */
+.ds-in {
+  opacity: 0;
+  transform: translateY(var(--ds-entry-translate));
+  filter: blur(var(--ds-entry-blur));
+  transition: opacity var(--ds-entry-duration) var(--ds-ease-out),
+    transform var(--ds-entry-duration) var(--ds-ease-out),
+    filter var(--ds-entry-duration) var(--ds-ease-out);
+  transition-delay: var(--ds-in-delay, 0ms);
+}
+.ds-in.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-in {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: opacity 1ms linear;
+  }
+}
+
+/* 强制 reduced-motion（供样例页切换按钮 / 无法改系统偏好的环境使用）。
+   与 @media (prefers-reduced-motion: reduce) 同效，便于验收。 */
+[data-rm="reduce"] {
+  --ds-dur-instant: 1ms;
+  --ds-dur-fast: 1ms;
+  --ds-dur-base: 1ms;
+  --ds-dur-slow: 1ms;
+  --ds-dur-reveal: 1ms;
+  --ds-entry-duration: 1ms;
+}
+[data-rm="reduce"] *,
+[data-rm="reduce"] *::before,
+[data-rm="reduce"] *::after {
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 1ms !important;
+  scroll-behavior: auto !important;
+}
+[data-rm="reduce"] .ds-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: opacity 1ms linear;
+}
+[data-rm="reduce"] .ds-rail__item {
+  filter: blur(0) !important;
+}
+
+/* --------------------------------------------------------------------------
+   17. 全屏分段滚动（Full-viewport sections）
+   -------------------------------------------------------------------------- */
+.ds-scroll-snap {
+  height: 100dvh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.ds-scroll-snap__viewport {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100dvh;
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+  overscroll-behavior-x: none;
+}
+.ds-scroll-snap__viewport > * {
+  flex: 0 0 100dvh;
+  height: 100dvh;
+  scroll-snap-align: start;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-scroll-snap__viewport { scroll-behavior: auto; }
+}
+
+/* --------------------------------------------------------------------------
+   18. 工具类
+   -------------------------------------------------------------------------- */
+.ds-stack { display: flex; flex-direction: column; }
+.ds-stack-2 { gap: var(--ds-space-2); }
+.ds-stack-3 { gap: var(--ds-space-3); }
+.ds-stack-4 { gap: var(--ds-space-4); }
+.ds-stack-5 { gap: var(--ds-space-5); }
+.ds-stack-6 { gap: var(--ds-space-6); }
+.ds-row { display: flex; align-items: center; gap: var(--ds-space-3); flex-wrap: wrap; }
+.ds-row--between { justify-content: space-between; }
+.ds-center { text-align: center; justify-content: center; }
+.ds-muted { color: var(--ds-ink-soft); }
+.ds-faint { color: var(--ds-ink-faint); }
+.ds-mono-text { font-family: var(--ds-font-mono); }
+.ds-full { width: 100%; }
+.ds-hide { display: none !important; }
+@media (max-width: 767px) { .ds-hide-sm { display: none !important; } }
+@media (min-width: 768px) { .ds-only-lg { display: none !important; } }
+
+.ds-visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

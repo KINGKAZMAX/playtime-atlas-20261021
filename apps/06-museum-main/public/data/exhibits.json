@@ -1,12 +1,13 @@
 {
-  "generatedAt": "2026-10-21T10:34:03.029Z",
+  "generatedAt": "2026-10-21T17:16:47.333Z",
   "halls": [
     {
       "id": "origins",
       "task": "08-era-origins",
-      "status": "pending",
-      "entryPath": null,
-      "note": "08-era-origins：临时构建产物未通过部署性检查：引用了不存在的静态资源 ./SOURCES.md"
+      "status": "integrated",
+      "entryPath": "origins/index.html",
+      "note": "已从 ../08-era-origins/dist 复制（可静态部署）",
+      "bytes": 421708
     },
     {
       "id": "arcade",
@@ -14,7 +15,7 @@
       "status": "integrated",
       "entryPath": "arcade/index.html",
       "note": "已从 ../09-era-arcade/dist 复制（可静态部署）",
-      "bytes": 90877
+      "bytes": 518036
     },
     {
       "id": "console",
@@ -22,7 +23,7 @@
       "status": "integrated",
       "entryPath": "console/index.html",
       "note": "已从 ../10-era-console/dist 复制（可静态部署）",
-      "bytes": 127359
+      "bytes": 688324
     },
     {
       "id": "online",
@@ -30,7 +31,7 @@
       "status": "integrated",
       "entryPath": "online/index.html",
       "note": "已从 ../11-era-online/dist 复制（可静态部署）",
-      "bytes": 136224
+      "bytes": 611497
     },
     {
       "id": "modern",
@@ -38,7 +39,7 @@
       "status": "integrated",
       "entryPath": "modern/index.html",
       "note": "已从 ../12-era-modern/dist 复制（可静态部署）",
-      "bytes": 785146
+      "bytes": 1156595
     }
   ]
 }

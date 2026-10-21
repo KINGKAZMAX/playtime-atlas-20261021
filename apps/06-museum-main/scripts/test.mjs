@@ -62,6 +62,7 @@ const { LOCAL_CATALOG } = await import('../src/data/catalog.local.js');
 const { ERAS } = await import('../src/data/eras.js');
 const { EXHIBIT_HALLS } = await import('../src/data/exhibits.config.js');
 const { mergeCatalog, resolveEra, sourceKey, normalizeExhibit } = await import('../src/data/loader.js');
+const { readCatalogState } = await import('../src/modules/views/catalog.js');
 
 /* ───────────────────────── 检索与筛选 ───────────────────────── */
 describe('检索与筛选', () => {
@@ -134,6 +135,17 @@ describe('检索与筛选', () => {
   it('matchesQuery 对空查询返回 true', () => {
     assert(matchesQuery(sample[0], ''), '空查询应匹配');
     assert(matchesQuery(sample[0], '   '), '空白查询应匹配');
+  });
+
+  it('关键词参数支持 query 与 q 两种写法（回归）', () => {
+    // 目录视图用 q 传参，过滤层历史上只认 query，导致检索静默失效
+    eq(filterExhibits(sample, { query: 'pong' }).map((e) => e.id), ['a']);
+    eq(filterExhibits(sample, { q: 'pong' }).map((e) => e.id), ['a']);
+    eq(filterExhibits(sample, { q: 'pong' }).length, 1);
+  });
+
+  it('不存在的关键词返回空集而非全量', () => {
+    eq(filterExhibits(sample, { q: '这个词不存在zzz' }).length, 0);
   });
 });
 
@@ -363,6 +375,27 @@ describe('外部策展目录接入（05 / 07）', () => {
   it('每个年代都声明了 groups（供外部年代解析）', () => {
     const bad = ERAS.filter((e) => !Array.isArray(e.groups) || !e.groups.length);
     eq(bad.map((e) => e.id), []);
+  });
+
+  it('目录状态同时提供 q 与 query（回归）', () => {
+    const s = readCatalogState({ q: '掌机' });
+    eq(s.q, '掌机');
+    eq(s.query, '掌机');
+  });
+
+  it('目录状态解析年代/类别/平台/排序', () => {
+    const s = readCatalogState({ era: 'e03,e04', kind: 'game', platform: 'PC', sort: 'year-asc', view: 'list' });
+    eq(s.eras, ['e03', 'e04']);
+    eq(s.kinds, ['game']);
+    eq(s.platforms, ['PC']);
+    eq(s.sort, 'year-asc');
+    eq(s.view, 'list');
+  });
+
+  it('目录状态回落到默认排序与视图', () => {
+    const s = readCatalogState({ sort: '乱写的排序', view: '乱写的视图' });
+    eq(s.sort, 'era');
+    eq(s.view, 'grid');
   });
 });
 

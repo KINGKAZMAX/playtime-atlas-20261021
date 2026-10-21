@@ -37,7 +37,7 @@ export function initReveal(): void {
   ] as const) {
     document.querySelectorAll<HTMLElement>(selector).forEach((row, i) => {
       row.classList.add('reveal');
-      row.dataset.delay = String(i % 3);
+      row.dataset.delay = String(i % 6);
       void attr;
     });
   }
@@ -52,7 +52,7 @@ export function initReveal(): void {
       animateCount(el);
       return;
     }
-    const delay = Number(el.dataset.delay ?? 0) * 90;
+    const delay = Number(el.dataset.delay ?? 0) * 60;
     animateIn(
       el,
       [

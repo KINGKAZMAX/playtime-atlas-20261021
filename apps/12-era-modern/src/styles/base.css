@@ -1,5 +1,17 @@
 /* =========================================================
    基础层：重置 + 页头页脚 + 通用组件
+   ------------------------------------------------------------
+   依据：16-design-system/DESIGN-SPEC.md
+     §1 色彩（唯一强调色 = --ds-accent）
+     §2 字体 / §2.3 中文排版
+     §3.3 容器与栅格（--ds-space-gutter）
+     §4.2 顶部导航（顶栏形态）
+     §5 状态标（不得只用颜色表达状态）
+     §7 按钮与控件（胶囊圆角 / 最小高 40px / focus 环 / disabled）
+     §8.3 悬停（颜色变化 + 下划线偏移）
+     §11 无障碍（对比度 / 焦点环 / 触摸目标）
+   本文件保留本厅既有的类名（DOM 结构与自动化契约不变），
+   只把视觉取值换成设计系统令牌。
    ========================================================= */
 
 *,
@@ -16,48 +28,49 @@ body {
 }
 
 body {
-  background: var(--ink-900);
-  color: var(--paper);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.65;
+  background: var(--ds-bg);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-type-body);
+  line-height: var(--ds-lh-normal);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
-body::before {
-  /* 全局底色光晕 */
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(900px 600px at 12% -8%, rgba(79, 227, 208, 0.12), transparent 62%),
-    radial-gradient(760px 520px at 92% 4%, rgba(255, 95, 162, 0.1), transparent 60%),
-    radial-gradient(1000px 700px at 50% 110%, rgba(157, 123, 255, 0.1), transparent 65%);
-}
+/* 页面背景保持纯色（DESIGN-SPEC §1.1）：柔光只允许出现在英雄区。 */
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.18;
+  font-family: var(--ds-font-display);
+  font-weight: var(--ds-w-medium);
+  line-height: var(--ds-lh-tight);
   margin: 0 0 0.5em;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--ds-track-display);
+  color: var(--ds-ink);
+}
+
+:lang(zh) h1,
+:lang(zh) h2,
+:lang(zh) h3,
+:lang(zh) h4 {
+  font-weight: var(--ds-w-medium);
+  line-height: 1.22;
 }
 
 h1 {
-  font-size: clamp(2.1rem, 5.2vw, 3.7rem);
+  font-size: var(--ds-type-h1);
 }
+
 h2 {
-  font-size: clamp(1.5rem, 3.1vw, 2.15rem);
+  font-size: var(--ds-type-h2);
 }
+
 h3 {
-  font-size: clamp(1.08rem, 2vw, 1.32rem);
+  font-size: var(--ds-type-h3);
+  line-height: var(--ds-lh-snug);
 }
 
 p {
@@ -65,33 +78,38 @@ p {
 }
 
 a {
-  color: var(--prism-cyan);
-  text-decoration-color: rgba(79, 227, 208, 0.4);
+  color: var(--ds-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--hc-line-strong);
+  text-decoration-thickness: 1px;
   text-underline-offset: 3px;
-  transition: color var(--dur) var(--ease), text-decoration-color var(--dur) var(--ease);
+  transition: color var(--ds-dur-fast) var(--ds-ease-veil),
+    text-decoration-color var(--ds-dur-fast) var(--ds-ease-veil);
 }
 
 a:hover {
-  color: #8ff2e4;
+  color: var(--ds-accent);
   text-decoration-color: currentColor;
 }
 
+/* 焦点环：2px 背景环 + 2px 强调色环，任何状态不得移除（DESIGN-SPEC §11） */
 :focus-visible {
-  outline: 2px solid var(--prism-amber);
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline: 2px solid var(--ds-accent);
+  outline-offset: 2px;
+  border-radius: var(--ds-radius-xs);
 }
 
 .skip-link {
   position: absolute;
   left: -9999px;
   top: 0;
-  z-index: 999;
-  background: var(--prism-cyan);
-  color: var(--ink-900);
+  z-index: var(--ds-z-toast);
+  background: var(--ds-accent);
+  color: var(--ds-accent-ink);
   padding: 10px 18px;
-  border-radius: 0 0 var(--r-sm) 0;
-  font-weight: 600;
+  border-radius: 0 0 var(--ds-radius-sm) 0;
+  font-weight: var(--ds-w-semibold);
+  text-decoration: none;
 }
 
 .skip-link:focus {
@@ -100,7 +118,7 @@ a:hover {
 
 .site-main {
   position: relative;
-  z-index: 1;
+  z-index: var(--ds-z-raised);
   min-height: 60vh;
 }
 
@@ -108,33 +126,34 @@ a:hover {
   outline: none;
 }
 
-/* ---------------- 页头 ---------------- */
+/* ---------------- 页头（DESIGN-SPEC §4.2 顶部导航） ---------------- */
 
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 60;
+  z-index: var(--ds-z-sticky);
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 12px clamp(16px, 4vw, 40px);
-  background: linear-gradient(180deg, rgba(5, 8, 26, 0.94), rgba(5, 8, 26, 0.66));
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
+  gap: var(--ds-space-4);
+  padding: var(--ds-space-4) var(--ds-space-gutter);
+  background: color-mix(in srgb, var(--ds-bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hc-line);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: var(--ds-space-2);
   text-decoration: none;
-  color: var(--paper);
+  color: var(--ds-ink);
   flex-shrink: 0;
+  min-height: var(--ds-target-min);
 }
 
 .brand:hover {
-  color: var(--paper);
+  color: var(--ds-ink);
 }
 
 .brand-mark {
@@ -150,260 +169,329 @@ a:hover {
 }
 
 .brand-cn {
-  font-size: 1.02rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-body);
+  font-weight: var(--ds-w-semibold);
+  letter-spacing: var(--ds-track-caps);
 }
 
 .brand-en {
-  font-family: var(--font-mono);
-  font-size: 0.64rem;
-  letter-spacing: 0.22em;
-  color: var(--paper-52);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
+  color: var(--hc-ink-faint);
   text-transform: uppercase;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--ds-space-4);
   margin-left: auto;
   flex-wrap: wrap;
 }
 
 .site-nav a {
-  padding: 7px 13px;
-  border-radius: 999px;
-  color: var(--paper-70);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ds-target-min);
+  padding: var(--ds-space-2) 0;
+  border-radius: 0;
+  color: var(--hc-ink-soft);
   text-decoration: none;
-  font-size: 0.92rem;
+  font-size: var(--ds-type-sm);
   white-space: nowrap;
-  border: 1px solid transparent;
-  transition: all var(--dur) var(--ease);
+  border-bottom: 1px solid transparent;
+  transition: color var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil);
 }
 
 .site-nav a:hover {
-  color: var(--paper);
-  background: var(--paper-06);
+  color: var(--ds-ink);
+  background: transparent;
+  border-bottom-color: var(--hc-line-strong);
 }
 
 .site-nav a[aria-current='page'] {
-  color: var(--ink-900);
-  background: linear-gradient(120deg, var(--prism-cyan), #7deee0);
-  border-color: transparent;
-  font-weight: 600;
+  color: var(--ds-ink);
+  border-bottom-color: var(--ds-accent);
+  font-weight: var(--ds-w-semibold);
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ds-space-2);
 }
 
-/* ---------------- 按钮 ---------------- */
+/* ---------------- 按钮（DESIGN-SPEC §7） ---------------- */
 
 .btn {
   appearance: none;
-  border: 1px solid var(--line-strong);
-  background: var(--paper-06);
-  color: var(--paper);
-  font-family: var(--font-display);
-  font-size: 0.93rem;
-  font-weight: 500;
-  padding: 9px 17px;
-  border-radius: 999px;
+  border: 1px solid var(--hc-line-strong);
+  background: var(--ds-surface);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-sm);
+  font-weight: var(--ds-w-medium);
+  line-height: 1.4;
+  min-height: 40px;
+  padding: 8px 18px;
+  border-radius: var(--ds-radius-control);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: var(--ds-space-2);
   text-decoration: none;
-  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease),
-    border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition: background var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil),
+    box-shadow var(--ds-dur-fast) var(--ds-ease-veil),
+    transform var(--ds-dur-instant) var(--ds-ease-veil);
 }
 
 .btn:hover:not(:disabled) {
-  background: var(--paper-10);
-  border-color: var(--paper-34);
-  transform: translateY(-1px);
+  background: var(--ds-bg-sunken);
+  border-color: var(--hc-ink-faint);
+  color: var(--ds-ink);
 }
 
 .btn:active:not(:disabled) {
-  transform: translateY(0);
+  transform: scale(0.985);
 }
 
 .btn:disabled {
-  opacity: 0.42;
+  opacity: 0.45;
   cursor: not-allowed;
 }
 
 .btn-primary {
-  background: linear-gradient(120deg, var(--prisma, var(--prism-cyan)), rgba(255, 255, 255, 0.86));
-  color: var(--ink-900);
+  background: var(--ds-accent);
+  color: var(--ds-accent-ink);
   border-color: transparent;
-  font-weight: 600;
+  font-weight: var(--ds-w-semibold);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: linear-gradient(120deg, var(--prisma, var(--prism-cyan)), #fff);
-  box-shadow: var(--glow-cyan);
+  background: var(--ds-accent-hover);
+  border-color: transparent;
+  color: var(--ds-accent-ink);
+  box-shadow: var(--ds-shadow-2);
 }
 
 .btn-ghost {
   background: transparent;
 }
 
+.btn-ghost:hover:not(:disabled) {
+  background: var(--ds-surface);
+}
+
 .btn-sm {
-  padding: 6px 12px;
-  font-size: 0.84rem;
+  min-height: 32px;
+  padding: 4px 12px;
+  font-size: var(--ds-type-xs);
 }
 
 .btn-icon {
-  padding: 8px;
-  width: 36px;
-  height: 36px;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
   justify-content: center;
 }
 
 .btn[aria-pressed='true'] {
-  background: var(--cyan-soft);
-  border-color: var(--prism-cyan);
-  color: #a9f4ea;
+  background: var(--ds-accent-soft);
+  border-color: var(--ds-accent);
+  color: var(--ds-accent);
+}
+
+/* ---------------- 与设计系统组件类对接 ----------------
+   本厅在既有类名之上**叠加** 16 号的 .ds-* 类（MIGRATION-NOTES §10 红线：
+   不删除既有 CSS，只增量叠加），因此需要就地消解两处取值冲突。 */
+
+/* 16 的 components.css 里 .ds-btn 的默认高度是 `--ds-btn-h: var(--ds-space-10)`
+   = 128px，与 DESIGN-SPEC §7「控件最小高 40px」相悖；
+   本目录按规范覆盖为 44px，同时满足 WCAG 2.5.5（AAA）主控件 44px 的要求。
+   .ds-btn--sm 由 16 的组件层自行给到 32px，用 :not() 排除，不在此覆盖。
+
+   注意：这里**直接覆盖 height**，而不是重设 `--ds-btn-h` ——
+   本目录自有层不允许声明任何 `--ds-*` 取值（MIGRATION-NOTES §0 风险 B），
+   因此不碰 16 号组件层的变量，只在几何层面就地校正。 */
+.btn.ds-btn:not(.ds-btn--sm) {
+  height: 44px;
+}
+
+/* .ds-input 面向文本框；滑杆需要保留浏览器原生外观
+   （appearance:none 会抹掉 range 控件的滑块本体，控件将不可用）。 */
+.slider.ds-input {
+  appearance: auto;
+  -webkit-appearance: auto;
+  width: 170px;
+  min-height: 44px;
+  padding: 0 2px;
+  background: var(--ds-bg-raised);
+  border: 1px solid var(--hc-line);
+  border-radius: var(--ds-radius-md);
+  accent-color: var(--ds-accent);
+}
+
+.slider.ds-input:focus-visible {
+  outline: 2px solid var(--ds-accent);
+  outline-offset: 2px;
 }
 
 /* ---------------- 面板 ---------------- */
 
 .panel {
-  background: var(--glass);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  padding: 20px 22px;
+  background: var(--ds-bg-raised);
+  border: 1px solid var(--hc-line);
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-5) var(--ds-space-5);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--ds-shadow-1);
 }
 
-/* 棱彩描边：顶部一条三色渐变 */
+/* 顶边发丝线：常规描边，不占用强调色 */
 .panel::before {
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--prism-cyan) 22%,
-    var(--prism-magenta) 58%,
-    var(--prism-amber) 84%,
-    transparent
-  );
-  opacity: 0.75;
+  background: var(--hc-line);
 }
 
 .panel-title {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.2em;
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
   text-transform: uppercase;
-  color: var(--paper-52);
-  margin-bottom: 10px;
+  color: var(--hc-ink-faint);
+  margin-bottom: var(--ds-space-3);
 }
 
+/* 状态标：必须带文字，不得只用颜色表达（DESIGN-SPEC §5） */
 .tag {
   display: inline-block;
-  padding: 2px 9px;
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
+  padding: 2px 10px;
+  border-radius: var(--ds-radius-pill);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-caps);
   text-transform: uppercase;
   border: 1px solid currentColor;
-  color: var(--paper-52);
+  color: var(--hc-ink-soft);
+  background: var(--ds-surface);
 }
 
 .tag-cyan {
-  color: var(--prism-cyan);
-  background: var(--cyan-soft);
+  color: var(--ds-accent);
+  background: var(--ds-accent-soft);
+  border-color: transparent;
 }
 .tag-magenta {
-  color: var(--prism-magenta);
-  background: var(--magenta-soft);
+  color: var(--ds-jade);
+  background: var(--ds-jade-soft);
+  border-color: transparent;
 }
 .tag-amber {
-  color: var(--prism-amber);
-  background: var(--amber-soft);
+  color: var(--ds-info);
+  background: color-mix(in srgb, var(--ds-info) 10%, transparent);
+  border-color: transparent;
 }
 .tag-violet {
-  color: var(--prism-violet);
-  background: var(--violet-soft);
+  color: var(--hc-ink-soft);
+  background: var(--ds-surface);
+  border-color: var(--hc-line-strong);
 }
 
 /* ---------------- 页脚 ---------------- */
 
 .site-footer {
   position: relative;
-  z-index: 1;
-  margin-top: 60px;
-  padding: 30px clamp(16px, 4vw, 40px) 44px;
-  border-top: 1px solid var(--line);
-  color: var(--paper-52);
-  font-size: 0.84rem;
+  z-index: var(--ds-z-raised);
+  margin-top: var(--ds-space-9);
+  padding: var(--ds-space-7) var(--ds-space-gutter) var(--ds-space-8);
+  border-top: 1px solid var(--hc-line);
+  color: var(--hc-ink-soft);
+  font-size: var(--ds-type-sm);
 }
 
 .footer-inner {
-  max-width: var(--maxw);
+  max-width: var(--ds-max-width);
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 18px 34px;
+  gap: var(--ds-space-5) var(--ds-space-7);
   align-items: flex-start;
   justify-content: space-between;
 }
 
 .footer-note {
   max-width: 62ch;
-  line-height: 1.7;
+  line-height: var(--ds-lh-relaxed);
+}
+
+.footer-note p {
+  margin: 0 0 6px;
 }
 
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 18px;
+  gap: var(--ds-space-2) var(--ds-space-4);
+}
+
+.footer-links a {
+  color: var(--hc-ink-soft);
+  text-decoration: none;
+  font-size: var(--ds-type-sm);
+}
+
+.footer-links a:hover {
+  color: var(--ds-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ---------------- 提示条 ---------------- */
 
 .toast-root {
   position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 200;
+  right: var(--ds-space-4);
+  bottom: var(--ds-space-4);
+  z-index: var(--ds-z-toast);
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: var(--ds-space-2);
   pointer-events: none;
 }
 
 .toast {
-  background: var(--glass-solid);
-  border: 1px solid var(--line-strong);
-  border-left: 3px solid var(--prism-cyan);
-  border-radius: var(--r-md);
+  background: var(--ds-bg-raised);
+  border: 1px solid var(--hc-line-strong);
+  border-left: 3px solid var(--ds-accent);
+  border-radius: var(--ds-radius-md);
   padding: 11px 16px;
-  font-size: 0.88rem;
+  font-size: var(--ds-type-sm);
+  color: var(--ds-ink);
   max-width: 340px;
-  box-shadow: var(--shadow-md);
-  animation: toast-in 260ms var(--ease);
+  box-shadow: var(--ds-shadow-3);
+  animation: toast-in var(--ds-dur-slow) var(--ds-ease-out);
 }
 
 .toast.warn {
-  border-left-color: var(--prism-amber);
+  border-left-color: var(--ds-warning);
 }
+
 .toast.bad {
-  border-left-color: var(--bad);
+  border-left-color: var(--ds-danger);
 }
+
 .toast.good {
-  border-left-color: var(--good);
+  border-left-color: var(--ds-success);
 }
 
 @keyframes toast-in {
@@ -413,30 +501,31 @@ a:hover {
   }
 }
 
-/* ---------------- 模态 ---------------- */
+/* ---------------- 模态（DESIGN-SPEC §8.5 / §11 弹层） ---------------- */
 
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 150;
-  background: rgba(2, 4, 14, 0.76);
+  z-index: var(--ds-z-modal);
+  background: var(--ds-overlay);
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  animation: fade-in 180ms var(--ease);
+  padding: var(--ds-space-5);
+  animation: fade-in var(--ds-dur-fast) var(--ds-ease-veil);
 }
 
 .modal {
-  background: var(--glass-solid);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-xl);
-  padding: 26px;
+  background: var(--ds-bg-raised);
+  border: 1px solid var(--hc-line-strong);
+  border-radius: var(--ds-radius-xl);
+  padding: var(--ds-space-6);
   width: min(560px, 100%);
   max-height: 86vh;
   overflow: auto;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--ds-shadow-4);
 }
 
 @keyframes fade-in {
@@ -451,9 +540,9 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 11px 0;
-  border-bottom: 1px solid var(--paper-06);
+  gap: var(--ds-space-4);
+  padding: var(--ds-space-3) 0;
+  border-bottom: 1px solid var(--hc-line);
 }
 
 .switch-row:last-child {
@@ -467,13 +556,13 @@ a:hover {
 }
 
 .switch-label b {
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: var(--ds-w-semibold);
+  font-size: var(--ds-type-body);
 }
 
 .switch-label span {
-  font-size: 0.8rem;
-  color: var(--paper-52);
+  font-size: var(--ds-type-sm);
+  color: var(--hc-ink-soft);
   line-height: 1.5;
 }
 
@@ -482,11 +571,12 @@ a:hover {
   width: 50px;
   height: 27px;
   flex: 0 0 50px;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  background: var(--paper-06);
+  border-radius: var(--ds-radius-pill);
+  border: 1px solid var(--hc-line-strong);
+  background: var(--ds-surface);
   cursor: pointer;
-  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  transition: background var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil);
 }
 
 .switch::after {
@@ -497,39 +587,41 @@ a:hover {
   width: 21px;
   height: 21px;
   border-radius: 50%;
-  background: var(--paper-70);
-  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+  background: var(--hc-ink-faint);
+  transition: transform var(--ds-dur-fast) var(--ds-ease-out),
+    background var(--ds-dur-fast) var(--ds-ease-veil);
 }
 
 .switch[aria-pressed='true'] {
-  background: var(--cyan-soft);
-  border-color: var(--prism-cyan);
+  background: var(--ds-accent-soft);
+  border-color: var(--ds-accent);
 }
 
 .switch[aria-pressed='true']::after {
   transform: translateX(23px);
-  background: var(--prism-cyan);
+  background: var(--ds-accent);
 }
 
 .slider {
   width: 170px;
-  accent-color: var(--prism-cyan);
+  accent-color: var(--ds-accent);
 }
 
 /* ---------------- 通用工具 ---------------- */
 
 .wrap {
-  max-width: var(--maxw);
+  max-width: var(--ds-max-width);
   margin: 0 auto;
-  padding: 0 clamp(16px, 4vw, 40px);
+  padding: 0 var(--ds-space-gutter);
 }
 
 .mono {
-  font-family: var(--font-mono);
+  font-family: var(--ds-font-mono);
+  letter-spacing: var(--ds-track-mono);
 }
 
 .muted {
-  color: var(--paper-52);
+  color: var(--hc-ink-soft);
 }
 
 .sr-only {
@@ -552,6 +644,28 @@ a:hover {
 
 hr.rule {
   border: none;
-  border-top: 1px solid var(--line);
-  margin: 28px 0;
+  border-top: 1px solid var(--hc-line);
+  margin: var(--ds-space-7) 0;
+}
+
+/* ==========================================================================
+   触摸目标 ≥ 24px（WCAG 2.2 AA · 2.5.8）
+   --------------------------------------------------------------------------
+   页脚导航与正文内的来源链接原本是行内文字链接（实测高 19px）。
+   这里只补足**可点区域**，不改变行内排版与文字位置：
+   页脚链接改为内联弹性盒（垂直居中），正文链接用内联块 + 纵向内边距
+   （纵向内边距不改变行盒高度，只扩大命中区域）。
+   ========================================================================== */
+
+.ds-footer__links a,
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+.tl-src a,
+.halo-card-src a {
+  display: inline-block;
+  padding-block: 3px;
 }

@@ -14,18 +14,19 @@ if (rail) {
   for (const stop of TIMELINE) {
     const el = document.createElement('article');
     el.className = `stop${stop.highlight ? ' stop--key' : ''}`;
+    el.dataset.year = stop.year;
 
     const node = document.createElement('span');
     node.className = 'stop__node';
     el.appendChild(node);
 
     const year = document.createElement('div');
-    year.className = 'stop__year';
+    year.className = 'stop__year ds-rail__item';
     year.textContent = stop.year;
     el.appendChild(year);
 
     const title = document.createElement('h3');
-    title.className = 'stop__title';
+    title.className = 'stop__title ds-h3';
     title.textContent = stop.title;
     el.appendChild(title);
 
@@ -35,7 +36,7 @@ if (rail) {
     el.appendChild(zh);
 
     const note = document.createElement('p');
-    note.className = 'stop__note';
+    note.className = 'stop__note ds-sm';
     note.textContent = stop.note;
     el.appendChild(note);
 
@@ -45,7 +46,7 @@ if (rail) {
 
     if (links.length) {
       const src = document.createElement('a');
-      src.className = 'stop__src';
+      src.className = 'stop__src ds-xs';
       src.href = links[0].url;
       src.target = '_blank';
       src.rel = 'noopener noreferrer';
@@ -57,6 +58,43 @@ if (rail) {
     frag.appendChild(el);
   }
   rail.appendChild(frag);
+}
+
+/* ---------------- 年代筛选（.ds-chip） ----------------
+   12 站跨越 1948—1979，按年代筛选是这条长廊最自然的一个交互。
+   契约见 16-design-system/MIGRATION-NOTES.md §3「筛选 chip」：
+   aria-pressed 标记当前项 + aria-live 播报计数。默认「全部」，不改变既有行为。 */
+
+const filterBar = document.querySelector('.timeline__filters');
+const countLabel = document.querySelector('[data-role="timeline-count"]');
+if (filterBar && rail) {
+  const chips = [...filterBar.querySelectorAll('.ds-chip')];
+  const stops = [...rail.querySelectorAll('.stop')];
+  const total = stops.length;
+
+  const apply = (decade) => {
+    let shown = 0;
+    for (const stop of stops) {
+      const year = Number(stop.dataset.year);
+      const inRange =
+        decade === 'all' ||
+        (decade === '1948-1959' && year >= 1948 && year <= 1959) ||
+        (decade === '1960-1969' && year >= 1960 && year <= 1969) ||
+        (decade === '1970-1979' && year >= 1970 && year <= 1979);
+      stop.hidden = !inRange;
+      if (inRange) shown += 1;
+    }
+    if (countLabel) countLabel.textContent = `显示 ${shown} / ${total} 站`;
+  };
+
+  for (const chip of chips) {
+    chip.addEventListener('click', () => {
+      for (const other of chips) {
+        other.setAttribute('aria-pressed', String(other === chip));
+      }
+      apply(chip.dataset.decade || 'all');
+    });
+  }
 }
 
 /* ---------------- 差异表 ---------------- */
@@ -118,7 +156,7 @@ if (list) {
     main.appendChild(claims);
 
     const meta = document.createElement('div');
-    meta.className = 'source__meta';
+    meta.className = 'source__meta ds-mono';
     const kind = document.createElement('div');
     kind.textContent = src.kind;
     const verified = document.createElement('div');

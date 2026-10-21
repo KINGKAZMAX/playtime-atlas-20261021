@@ -1,0 +1,20 @@
+{
+  "name": "timber-craft-lab",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "榫构华夏 · Timber Craft Lab — 可拆解的中国传统建筑结构 3D 教学模型 / Explorable 3D structural models of Chinese traditional architecture",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4318 --strictPort",
+    "start": "bash scripts/start.sh",
+    "qa": "node qa/qa.mjs"
+  },
+  "dependencies": {
+    "three": "0.169.0"
+  },
+  "devDependencies": {
+    "vite": "5.4.11"
+  }
+}

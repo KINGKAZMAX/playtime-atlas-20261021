@@ -8,18 +8,21 @@
 import { exhibitCard, emptyState } from '../components.js';
 import { escapeHtml, kindLabel } from '../../core/format.js';
 import { filterExhibits, collectFacets, resultAnnouncement } from '../search.js';
+import { getLang, t } from '../../i18n.js';
 
 const SORTS = [
-  { id: 'era', label: '按年代排列' },
-  { id: 'year-asc', label: '年份由早到晚' },
-  { id: 'year-desc', label: '年份由晚到早' },
-  { id: 'title', label: '按名称' },
+  { id: 'era', key: 'catalog.sort.era' },
+  { id: 'year-asc', key: 'catalog.sort.yearAsc' },
+  { id: 'year-desc', key: 'catalog.sort.yearDesc' },
+  { id: 'title', key: 'catalog.sort.title' },
 ];
 
 export function readCatalogState(query) {
   const list = (v) => (v ? String(v).split(',').map((s) => s.trim()).filter(Boolean) : []);
+  const q = query.q ?? query.query ?? '';
   return {
-    q: query.q ?? '',
+    q,
+    query: q, // 过滤层统一读取 query；q 保留给 URL 同步使用
     eras: list(query.era),
     kinds: list(query.kind),
     platforms: list(query.platform),
@@ -37,8 +40,8 @@ export function renderCatalog(ctx, query) {
   return `
 <section class="page-head page-head--slim">
   <p class="page-eyebrow mono">2D CATALOG · 无障碍目录</p>
-  <h1 class="page-title">2D 无障碍目录</h1>
-  <p class="page-lede">
+  <h1 class="page-title" data-i18n="catalog.title">2D 无障碍目录</h1>
+  <p class="page-lede" data-i18n="catalog.lede">
     全部展品的文字版目录：可搜索、可按年代 / 类别 / 平台筛选，支持列表与网格两种视图。
     本页不依赖 3D 与图形能力，键盘与读屏可完整使用。
   </p>
@@ -48,16 +51,16 @@ export function renderCatalog(ctx, query) {
   <aside class="filters" aria-label="筛选与排序">
     <form id="catalog-filters" class="filters-form">
       <div class="filter-block">
-        <label class="filter-label" for="f-q">关键词</label>
+        <label class="filter-label" for="f-q" data-i18n="catalog.searchLabel">关键词</label>
         <div class="filter-search">
           <input id="f-q" type="search" name="q" value="${escapeHtml(state.q)}"
                  placeholder="名称 / 创作者 / 平台…" autocomplete="off" enterkeyhint="search">
-          <button class="btn btn-ghost btn-sm" type="submit">检索</button>
+          <button class="btn btn-ghost btn-sm" type="submit" data-i18n="nav.searchSubmit">检索</button>
         </div>
       </div>
 
       <fieldset class="filter-block">
-        <legend class="filter-label">年代</legend>
+        <legend class="filter-label" data-i18n="catalog.filterEra">年代</legend>
         <div class="filter-list">
           ${eraList.map((era) => {
             const n = facets.eras.find(([id]) => id === era.id)?.[1] ?? 0;
@@ -71,7 +74,7 @@ export function renderCatalog(ctx, query) {
       </fieldset>
 
       <fieldset class="filter-block">
-        <legend class="filter-label">类别</legend>
+        <legend class="filter-label" data-i18n="catalog.filterKind">类别</legend>
         <div class="filter-list">
           ${facets.kinds.map(([kind, n]) => `
             <label class="filter-item">
@@ -83,7 +86,7 @@ export function renderCatalog(ctx, query) {
       </fieldset>
 
       <details class="filter-block filter-block--platforms"${state.platforms.length ? ' open' : ''}>
-        <summary class="filter-label">平台（${state.platforms.length || '全部'}）</summary>
+        <summary class="filter-label"><span data-i18n="catalog.filterPlatform">平台</span>（${state.platforms.length || '全部'}）</summary>
         <div class="filter-list filter-list--scroll">
           ${facets.platforms.map(([p, n]) => `
             <label class="filter-item">
@@ -95,28 +98,28 @@ export function renderCatalog(ctx, query) {
       </details>
 
       <div class="filter-block">
-        <label class="filter-label" for="f-sort">排序</label>
+        <label class="filter-label" for="f-sort" data-i18n="catalog.filterSort">排序</label>
         <select id="f-sort" name="sort">
-          ${SORTS.map((s) => `<option value="${s.id}"${state.sort === s.id ? ' selected' : ''}>${s.label}</option>`).join('')}
+          ${SORTS.map((s) => `<option value="${s.id}"${state.sort === s.id ? ' selected' : ''}>${escapeHtml(t(s.key))}</option>`).join('')}
         </select>
       </div>
 
       <div class="filter-block filter-block--actions">
-        <button class="btn btn-ghost btn-sm" type="button" id="f-reset">清除全部筛选</button>
+        <button class="btn btn-ghost btn-sm" type="button" id="f-reset" data-i18n="catalog.filterReset">清除全部筛选</button>
       </div>
     </form>
   </aside>
 
   <section class="results" aria-labelledby="results-title">
     <div class="results-bar">
-      <h2 class="results-title" id="results-title">展品列表</h2>
+      <h2 class="results-title" id="results-title" data-i18n="catalog.resultsTitle">展品列表</h2>
       <p class="results-count" id="results-count" role="status" aria-live="polite">
-        ${escapeHtml(resultAnnouncement(filtered.length, ctx.exhibits.length, state.q))}
+        ${escapeHtml(resultAnnouncement(filtered.length, ctx.exhibits.length, state.q, getLang()))}
       </p>
       <div class="results-tools">
         <div class="seg" role="group" aria-label="视图切换">
-          <button type="button" class="seg-btn${state.view === 'grid' ? ' is-on' : ''}" data-view="grid" aria-pressed="${state.view === 'grid'}">网格</button>
-          <button type="button" class="seg-btn${state.view === 'list' ? ' is-on' : ''}" data-view="list" aria-pressed="${state.view === 'list'}">列表</button>
+          <button type="button" class="seg-btn${state.view === 'grid' ? ' is-on' : ''}" data-view="grid" aria-pressed="${state.view === 'grid'}" data-i18n="catalog.viewGrid">网格</button>
+          <button type="button" class="seg-btn${state.view === 'list' ? ' is-on' : ''}" data-view="list" aria-pressed="${state.view === 'list'}" data-i18n="catalog.viewList">列表</button>
         </div>
       </div>
     </div>
@@ -183,6 +186,9 @@ export function mountCatalog(root, ctx) {
     const filtered = filterExhibits(ctx.exhibits, state);
     results.innerHTML = resultsMarkup(ctx, filtered, state);
     counter.textContent = resultAnnouncement(filtered.length, ctx.exhibits.length, state.q);
+    // 顶栏检索框与目录面板始终显示同一个关键词，避免两处不一致
+    const topQ = document.getElementById('top-q');
+    if (topQ && topQ.value !== state.q) topQ.value = state.q;
     if (pushUrl) syncUrl(state);
   };
 
@@ -191,11 +197,25 @@ export function mountCatalog(root, ctx) {
     refresh();
   });
 
-  let timer = null;
-  form.querySelector('#f-q')?.addEventListener('input', () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => refresh(), 220);
+  /*
+   * 关键词输入 → **立即**过滤，不做去抖。
+   *
+   * 原来有 220ms 去抖，结果是：输入停下后计数器和条目数还会停在旧值
+   * 一小段时间。实测「填完立刻读」拿到的是 211 → 211（改前），
+   * 等 220ms 之后才变成 0 —— 自动化检测与读屏用户都会看到「搜索没生效」。
+   *
+   * 211 条的「过滤 + 重绘」实测最坏 6.1ms、常见 1.4–3.9ms
+   * （scripts/diag-perf.mjs），完全扛得住逐键过滤。
+   *
+   * 中文输入法组字期间（isComposing）不重绘：重绘会打断组字、让候选框失去上下文；
+   * 组字结束后由 compositionend 触发一次刷新。
+   */
+  const qInput = form.querySelector('#f-q');
+  qInput?.addEventListener('input', (ev) => {
+    if (ev.isComposing) return;
+    refresh();
   });
+  qInput?.addEventListener('compositionend', () => refresh());
 
   form.addEventListener('change', (ev) => {
     if (ev.target.id === 'f-sort') {

@@ -21,6 +21,19 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 import { seafloorField, rubbleField, ventChimney, tubeWormCluster } from '../model/abyssal.js';
 import { createBasaltTexture, createSnowTexture, createGridTexture } from '../model/textures.js';
 
+/**
+ * Scene themes.
+ *
+ * The environment (water column, fog, basalt) keeps this work's own deep-sea
+ * identity — RESTYLE-SPEC §3 allows an established original identity to
+ * survive the restyle, and 3D readability outranks palette uniformity.
+ *
+ * The *accent* lights (rim light, head glow, vent glow) are re-tinted onto
+ * the shared design tokens so the canvas and the DOM chrome read as one
+ * system (16-design-system/design-tokens.json → color.dark):
+ *   --ds-accent #e0684a  强调（热液边缘光 / 喷口辉光）
+ *   --ds-jade   #5fa99a  结构与仪表（探照主光 / 磨削冠辉光）
+ */
 export const THEMES = {
   abyss: {
     bg: 0x050a11,
@@ -32,7 +45,7 @@ export const THEMES = {
     keyIntensity: 2.4,
     fill: 0x2c6f7c,
     fillIntensity: 0.55,
-    rim: 0xff8a3d,
+    rim: 0xe0684a,
     rimIntensity: 0.7,
     hemiSky: 0x14384a,
     hemiGround: 0x05080c,
@@ -53,7 +66,7 @@ export const THEMES = {
     keyIntensity: 2.7,
     fill: 0x1f525a,
     fillIntensity: 0.7,
-    rim: 0x38e8d0,
+    rim: 0x5fa99a,
     rimIntensity: 0.65,
     hemiSky: 0x0e2d30,
     hemiGround: 0x03080a,
@@ -128,7 +141,7 @@ export function createStage(container) {
   fillLight.position.set(-14, 9, -12);
   scene.add(fillLight);
 
-  const rimLight = new THREE.DirectionalLight(0xff8a3d, 1.1);
+  const rimLight = new THREE.DirectionalLight(0xe0684a, 1.1);
   rimLight.position.set(6, 3.2, -18);
   scene.add(rimLight);
 
@@ -136,7 +149,7 @@ export function createStage(container) {
   scene.add(hemi);
 
   // The machine's own cold floodlight.
-  const headGlow = new THREE.PointLight(0x38e8d0, 5.5, 16, 2);
+  const headGlow = new THREE.PointLight(0x5fa99a, 5.5, 16, 2);
   headGlow.position.set(0.4, 1.4, 0);
   scene.add(headGlow);
 
@@ -190,8 +203,8 @@ export function createStage(container) {
     metalness: 0.05,
   });
   const mouthMat = new THREE.MeshStandardMaterial({
-    color: 0xff7a2a,
-    emissive: 0xff7a2a,
+    color: 0xe0684a,
+    emissive: 0xe0684a,
     emissiveIntensity: 2.4,
     roughness: 0.7,
   });
@@ -308,7 +321,7 @@ export function createStage(container) {
   const plumeMat = new THREE.PointsMaterial({
     size: 0.5,
     map: snowTex,
-    color: 0xff8a3d,
+    color: 0xe0684a,
     transparent: true,
     opacity: 0.22,
     depthWrite: false,

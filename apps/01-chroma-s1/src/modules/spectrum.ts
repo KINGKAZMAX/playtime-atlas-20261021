@@ -44,16 +44,44 @@ export interface SpectrumView {
   destroy: () => void;
 }
 
+/**
+ * Chart palette.
+ *
+ * Read from the design-system CSS variables at runtime so the spectrum chart
+ * always follows the active theme (16-design-system → color / color.canvas).
+ *   grid / gridStrong / axis / text  → ink & line tokens
+ *   measured                          → accent      (实测曲线)
+ *   target                            → jade        (目标单色线)
+ *   marker                            → info        (峰值标记)
+ */
+function cssVar(name: string, fallback: string): string {
+  if (typeof window === 'undefined') return fallback;
+  const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  return v || fallback;
+}
+
+function withAlpha(color: string, alpha: number): string {
+  const c = color.trim();
+  if (c.startsWith('#')) {
+    const hex = c.length === 4
+      ? c.slice(1).split('').map((x) => x + x).join('')
+      : c.slice(1);
+    const n = parseInt(hex.slice(0, 6), 16);
+    return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`;
+  }
+  return c;
+}
+
 const COLORS = {
-  grid: 'rgba(236, 233, 226, 0.07)',
-  gridStrong: 'rgba(236, 233, 226, 0.13)',
-  axis: 'rgba(236, 233, 226, 0.32)',
-  text: '#6d7781',
-  measured: '#ff6b2c',
-  measuredFill: 'rgba(255, 107, 44, 0.16)',
-  target: '#4fd8e8',
-  noise: 'rgba(236, 233, 226, 0.30)',
-  marker: '#a78bfa',
+  grid: withAlpha(cssVar('--ds-line', '#e4ded7'), 0.9),
+  gridStrong: cssVar('--ds-line-strong', '#cfc6bc'),
+  axis: cssVar('--ds-ink-faint', '#a79e97'),
+  text: cssVar('--ds-ink-faint', '#a79e97'),
+  measured: cssVar('--ds-accent', '#b4432b'),
+  measuredFill: withAlpha(cssVar('--ds-accent', '#b4432b'), 0.16),
+  target: cssVar('--ds-jade', '#2e6a5e'),
+  noise: withAlpha(cssVar('--ds-ink-faint', '#a79e97'), 0.55),
+  marker: cssVar('--ds-info', '#2c5c8f'),
 };
 
 function smoothNoise(seed: number, count: number): Float32Array {
@@ -210,7 +238,7 @@ export function createSpectrumView(
     ctx.clearRect(0, 0, w, h);
 
     // plot background
-    ctx.fillStyle = 'rgba(5, 7, 10, 0.35)';
+    ctx.fillStyle = withAlpha(cssVar('--ds-ink', '#14110f'), 0.06);
     ctx.fillRect(pad.l, pad.t, plotW(), plotH());
 
     // horizontal grid + y labels
@@ -331,7 +359,7 @@ export function createSpectrumView(
     // --- scan mode sweep line ---
     if (state.mode === 'scan') {
       const x = xOf(LAMBDA_MIN + scanPhase * (LAMBDA_MAX - LAMBDA_MIN));
-      ctx.strokeStyle = 'rgba(167, 139, 250, 0.75)';
+      ctx.strokeStyle = COLORS.marker;
       ctx.beginPath();
       ctx.moveTo(x, pad.t);
       ctx.lineTo(x, pad.t + plotH());

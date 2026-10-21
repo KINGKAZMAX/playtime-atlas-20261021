@@ -40,8 +40,8 @@ export function renderTimeline(ctx) {
   <p class="tl-era-text">${escapeHtml(era.narrative)}</p>
   <p class="tl-era-note">${escapeHtml(era.note)}</p>
   <div class="tl-era-acts">
-    <a class="btn btn-primary" href="#/era/${encodeURIComponent(era.id)}">进入${escapeHtml(era.label)}</a>
-    ${era.playableId ? `<a class="btn btn-ghost" href="#/hall/${encodeURIComponent(era.playableId)}">可玩展厅</a>` : ''}
+    <a class="btn btn-primary" href="#/era/${encodeURIComponent(era.id)}" data-i18n="timeline.enter">进入${escapeHtml(era.label)}</a>
+    ${era.playableId ? `<a class="btn btn-ghost" href="#/hall/${encodeURIComponent(era.playableId)}" data-i18n="era.hall">可玩展厅</a>` : ''}
   </div>
   <div class="grid grid--cards grid--tight">
     ${chosen.map((ex) => exhibitCard(ex, { era, favorite: favorites.has(ex.id) })).join('')}
@@ -52,8 +52,8 @@ export function renderTimeline(ctx) {
   return `
 <section class="page-head">
   <p class="page-eyebrow mono">TIMELINE HALL</p>
-  <h1 class="page-title">时间长廊</h1>
-  <p class="page-lede">
+  <h1 class="page-title" data-i18n="timeline.title">时间长廊</h1>
+  <p class="page-lede" data-i18n="timeline.lede">
     从真空管与打孔纸开始，走到串流与订阅服务。左右方向键可在年代门之间移动，
     回车进入展厅。这是本馆唯一的横向长廊，其余页面都是 2D 展签。
   </p>

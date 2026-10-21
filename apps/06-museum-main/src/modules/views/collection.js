@@ -3,6 +3,7 @@
  */
 
 import { exhibitCard, emptyState } from '../components.js';
+import { t } from '../../i18n.js';
 import { escapeHtml } from '../../core/format.js';
 
 export function renderCollection(ctx) {
@@ -13,8 +14,8 @@ export function renderCollection(ctx) {
   return `
 <section class="page-head page-head--slim">
   <p class="page-eyebrow mono">MY COLLECTION</p>
-  <h1 class="page-title">我的收藏</h1>
-  <p class="page-lede">
+  <h1 class="page-title" data-i18n="collection.title">我的收藏</h1>
+  <p class="page-lede" data-i18n="collection.lede">
     收藏保存在这台设备的浏览器本地（localStorage），不会上传到任何服务器，
     换设备或清除浏览器数据后会消失。
   </p>
@@ -22,13 +23,13 @@ export function renderCollection(ctx) {
 
 ${
   items.length === 0
-    ? emptyState('还没有收藏任何展品', '在展品卡片或详情页点击「收藏」，就能把它们收进这里。')
+    ? emptyState(t('collection.empty'), t('collection.emptyDetail'))
     : `
 <div class="collection-bar">
   <p class="results-count" role="status" aria-live="polite">已收藏 ${items.length} 件展品</p>
   <div class="collection-tools">
-    <button class="btn btn-ghost btn-sm" type="button" id="export-fav">导出清单</button>
-    <button class="btn btn-ghost btn-sm btn-danger" type="button" id="clear-fav">清空收藏</button>
+    <button class="btn btn-ghost btn-sm" type="button" id="export-fav" data-i18n="collection.export">导出清单</button>
+    <button class="btn btn-ghost btn-sm btn-danger" type="button" id="clear-fav" data-i18n="collection.clear">清空收藏</button>
   </div>
 </div>
 <div class="grid grid--cards">

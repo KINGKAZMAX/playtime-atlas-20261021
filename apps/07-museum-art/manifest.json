@@ -1,25 +1,13 @@
 {
   "id": "07-museum-art",
   "title": "回响电玩馆 / PLAYTIME ATLAS — 原创美术与硬件模型包",
-  "description": "电子游戏硬件年代馆的整套原创视觉资产：深墨蓝+暖纸白+信号橙视觉方案、自托管 SIL OFL 字体（4 家族，已子集化）、48 枚手绘 SVG 图标、7 张年代海报（1200×1800）、8 张封面（1600×900）、6 组展柜（1000×1250）、6 件原创跨时代硬件 3D 模型（GLB + 实机渲染图 + 技术插画降级图），以及统一设计令牌（130 项）与四级降级方案。全部资产本地自托管，运行期零外部请求。",
+  "description": "电子游戏硬件年代馆的整套原创视觉资产：自托管 SIL OFL 字体（4 家族，已子集化，与 16-design-system 逐字节一致）、48 枚手绘 SVG 图标、7 张年代海报（1200×1800）、8 张封面（1600×900）、6 组展柜（1000×1250）、6 件原创跨时代硬件 3D 模型（GLB + 实机渲染图 + 技术插画降级图），以及与全站余晖设计系统对齐的设计令牌与四级降级方案。界面视觉语言已对齐全站设计系统，界面外壳中英双语。全部资产本地自托管，运行期零外部请求。",
   "entry": "index.html",
   "buildCommand": "npm run build",
   "outputDir": "dist",
   "status": "completed",
   "upstream": "07-museum-art",
-  "license": {
-    "artwork": "CC0-1.0",
-    "fonts": "SIL Open Font License 1.1",
-    "thirdPartyAssets": 0
-  },
-  "sources": [
-    {
-      "title": "原创资产，无外部素材来源",
-      "url": "",
-      "note": "硬件外形为跨时代通用造型的简化再创作，无品牌 logo 与商标字体。"
-    }
-  ],
-  "version": "1.0.0",
+  "version": "1.1.0",
   "generated": "2026-10-21",
   "author": "MiniMax Code (M3.1-Flash / max)",
   "preview": {
@@ -33,6 +21,29 @@
     "basePath": "./",
     "runtimeExternalRequests": 0
   },
+  "designSystem": {
+    "alignedTo": "16-design-system",
+    "spec": "16-design-system/DESIGN-SPEC.md",
+    "migration": "16-design-system/MIGRATION-NOTES.md §2.3",
+    "audit": "16-design-system/REFERENCE-AUDIT.md",
+    "map": "RESTYLE-MAP.md",
+    "theme": "dark",
+    "cssVariables": 129,
+    "darkOverrides": 21,
+    "jsonTokens": 213,
+    "fontsIdentical": true,
+    "conformance": "16-design-system/MIGRATION-NOTES.md §9（V.1–V.10）",
+    "conformanceEvidence": "evidence/ds-conformance.json"
+  },
+  "i18n": {
+    "languages": [
+      "zh",
+      "en"
+    ],
+    "keys": 98,
+    "switcher": "index.html 右上角按钮 / ?lang=en 直达",
+    "note": "界面外壳双语；作品名与展品名保持既定原创中文版本，位图资产内的中文为展品原件，不翻译"
+  },
   "assets": {
     "root": "public/assets",
     "manifest": "public/assets/assets.manifest.json",
@@ -40,7 +51,8 @@
       "json": "design-tokens.json",
       "css": "public/assets/tokens.css",
       "js": "public/assets/tokens.js",
-      "count": 130
+      "count": 129,
+      "jsonLeafTokens": 213
     },
     "fonts": {
       "count": 4,
@@ -52,7 +64,10 @@
       ],
       "license": "SIL Open Font License 1.1",
       "selfHosted": true,
-      "cjkSubsetChars": 746
+      "cjkSubsetChars": 746,
+      "fontManifest": "public/assets/fonts/FONT-MANIFEST.json",
+      "alignedTo": "16-design-system/fonts/FONT-MANIFEST.json",
+      "fontsIdentical": true
     },
     "icons": {
       "count": 48,
@@ -168,7 +183,14 @@
     "readme": "README.md",
     "interface": "INTERFACE.md",
     "licenses": "LICENSES.md",
-    "qa": "QA.md"
+    "qa": "QA.md",
+    "restyleMap": "RESTYLE-MAP.md"
   },
-  "notes": "本任务不部署公网；部署统一由 14-publish 负责。所有展品为原创虚构展品，无品牌标识；年代分段为本馆原创策展划分，不宣称穷尽全部作品。"
+  "verification": {
+    "static": "npm run qa（158 项）",
+    "browser": "npm run qa-browser（结构/字体/图片/3D/交互/截图/响应式）",
+    "subpath": "npm run qa-subpath（线上子路径复验）",
+    "conformance": "node scripts/qa-ds-conformance.mjs（V.1–V.10，18 项）"
+  },
+  "notes": "本任务不部署公网；部署统一由 14-publish 负责。所有展品为原创虚构展品，无品牌标识；年代分段为本馆原创策展划分，不宣称穷尽全部作品。v1.1.0 起界面视觉语言对齐全站余晖设计系统（16-design-system），令牌与字体均为脚本生成/自产，未复制 16 的文件。"
 }

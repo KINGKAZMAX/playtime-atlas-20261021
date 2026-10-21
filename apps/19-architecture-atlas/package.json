@@ -1,0 +1,24 @@
+{
+  "name": "built-in-china-architecture-atlas",
+  "private": true,
+  "version": "1.0.0",
+  "description": "构筑华夏 / Built in China: Structures & Stories — bilingual Chinese architecture atlas with interactive region map, era timeline, and six 3D structural labs.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4183",
+    "validate": "node scripts/validate.mjs",
+    "qa": "node scripts/validate.mjs && node scripts/qa-runtime.mjs"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

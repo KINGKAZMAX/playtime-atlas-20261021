@@ -1,0 +1,330 @@
+/* ==========================================================================
+   光点年代 / LUMEN ERA —— 08 专属组件层
+   ==========================================================================
+   本文件只承载**本目录特有**的组件与桥接规则；
+   余晖设计系统的通用组件（.ds-topbar / .ds-footer / .ds-btn / .ds-tag /
+   .ds-work / .ds-grid / .ds-chip / .ds-rail__item / .ds-canvas-frame …）
+   由 assets/ds/components.css 提供，本文件**不重复声明**，
+   只在 08 的既有结构与规范类名之间做桥接，或在规范之上还原 08 的既有几何。
+
+   依据：16-design-system/MIGRATION-NOTES.md §2.8（08 对照表）、
+         §3（通用组件替换）、§4.2（画布豁免边界）、§5（无障碍与双语）。
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. 顶栏：.ds-topbar 的几何还原
+   --------------------------------------------------------------------------
+   规范层 .ds-topbar 自带 padding、blur 与 border-bottom；
+   08 的 .masthead 把内边距交给内层容器 .masthead__inner 以便居中限宽，
+   且**刻意不使用 backdrop-filter**（固定定位的模糊层在部分合成环境下
+   会与页面内容冲突——这是本项目第二轮修复时确定的口径）。
+   这里只还原几何，不动排版与语义。
+   -------------------------------------------------------------------------- */
+
+.masthead.ds-topbar {
+  /* 规范层 .ds-topbar 是「brand + nav 直接作为 flex 子项」的行容器；
+     08 的顶栏把内容包在限宽内层容器 .masthead__inner 里（max-width 1280 + auto 外边距）。
+     若不把外层还原成 block，内层会成为 flex 子项被压缩成内容宽度并居中，
+     顶栏与页面正文的 gutter 对齐关系被破坏（第三轮改动前顶栏品牌与正文同在 x=128）。
+     这里只还原几何，不动排版与语义。 */
+  display: block;
+  padding: 0;
+  /* 底色写成 rgba 字面量而非 color-mix()：Chrome 会把 color-mix(in srgb, …)
+     计算成 color(srgb …) 形式，WCAG 对比度工具（16 的 lum() 与 13 的 harness
+     同款解析器）识别不了，会把可测项判成「无法计算」。
+     16,15,14 = 深色主题的 --ds-bg (#100F0E)。 */
+  background: rgba(16, 15, 14, 0.86);
+  backdrop-filter: none;
+}
+
+.masthead.ds-topbar .masthead__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-5);
+  max-width: var(--ds-max-width);
+  margin: 0 auto;
+  padding: var(--ds-space-3) var(--ds-space-gutter);
+}
+
+.masthead.ds-topbar .ds-topbar__nav {
+  display: flex;
+  gap: var(--ds-space-5);
+}
+
+.masthead.ds-topbar .ds-topbar__link {
+  position: relative;
+  min-height: var(--ds-target-min);
+  display: inline-flex;
+  align-items: center;
+  color: var(--ds-ink-faint);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color var(--ds-dur-fast) var(--ds-ease-veil),
+    border-color var(--ds-dur-fast) var(--ds-ease-veil);
+}
+
+.masthead.ds-topbar .ds-topbar__link:hover {
+  color: var(--ds-ink);
+  border-bottom-color: var(--ds-line-strong);
+}
+
+.masthead.ds-topbar .ds-topbar__link[aria-current="page"] {
+  color: var(--ds-ink);
+  border-bottom-color: var(--ds-accent);
+}
+
+/* --------------------------------------------------------------------------
+   2. 页脚：.ds-footer 的几何还原
+   -------------------------------------------------------------------------- */
+
+.foot.ds-footer {
+  display: block;
+  background: var(--ds-bg-sunken);
+  padding: var(--ds-space-7) 0 var(--ds-space-8);
+  color: var(--ds-ink-faint);
+}
+
+.foot.ds-footer .ds-footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-3) var(--ds-space-5);
+}
+
+/* --------------------------------------------------------------------------
+   3. 封面标题：渐变还原
+   --------------------------------------------------------------------------
+   .ds-cover__title 会把 color 设为 var(--ds-ink)，而 08 的序厅大标题是
+   「墨色 → 强调色」的渐变字（依赖 color: transparent + background-clip: text）。
+   这里在规范类名之上还原渐变：两端取 --ds-ink（17.46:1）与 --ds-accent（5.70:1），
+   均达 WCAG AA。
+   -------------------------------------------------------------------------- */
+
+.hero__title.ds-cover__title {
+  /* 标题本身承载可测的墨色（--ds-ink，17.46:1），
+     渐变交给内层 span —— 渐变文字的 color 是 transparent，
+     WCAG 对比度工具无法测量，会被误判为不达标。 */
+  color: var(--ds-ink);
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  max-width: none;
+}
+
+.hero__title.ds-cover__title .hero__title-grad {
+  background: linear-gradient(168deg, var(--ds-ink) 16%, var(--ds-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   4. 作品卡媒体区桥接
+   --------------------------------------------------------------------------
+   规范层 .ds-work__media 假定 16/10 比例与纯色底；08 的展品预览是
+   960×540 的示波器／轨道动画（16/9），底色必须沿用画布色板（K.1）。
+   -------------------------------------------------------------------------- */
+
+.exhibit__screen.ds-work__media {
+  aspect-ratio: 16 / 9;
+  background: var(--lumen-void);
+  border-radius: var(--ds-radius-media);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.exhibit__screen.ds-work__media canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--lumen-void);
+}
+
+/* --------------------------------------------------------------------------
+   5. 年代轴轴标
+   --------------------------------------------------------------------------
+   08 的年代长廊是**文档流内**的纵向时间轴，不是 fixed 侧轨，
+   因此只借用 .ds-rail__item 的排版语义（等宽字号 + 远景墨色），
+   不套用 .ds-rail 的固定定位骨架（那会把长廊从版面里抽走）。
+   -------------------------------------------------------------------------- */
+
+.stop__year.ds-rail__item {
+  margin-left: 0;
+  padding: 2px 6px;
+  min-height: 24px;
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-sm);
+  letter-spacing: var(--ds-track-mono);
+  color: var(--ds-ink-faint);
+  transform: none;
+  filter: none;
+}
+
+.stop--key .stop__year.ds-rail__item {
+  color: var(--ds-accent);
+}
+
+/* --------------------------------------------------------------------------
+   6. 年代筛选（.ds-chip）
+   --------------------------------------------------------------------------
+   12 站跨越 1948—1979，按年代筛选是这条长廊最自然的一个交互；
+   .ds-chip 的契约是 aria-pressed + aria-live 计数（§3「筛选 chip」）。
+   -------------------------------------------------------------------------- */
+
+.timeline__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-space-2);
+  margin: var(--ds-space-5) 0 var(--ds-space-6);
+}
+
+.timeline__filters .ds-chip {
+  min-height: 34px;
+}
+
+.timeline__filters .ds-chip[aria-pressed="true"] {
+  background: var(--ds-accent);
+  color: var(--ds-accent-ink);
+}
+
+.timeline__count {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  color: var(--ds-ink-faint);
+  margin-left: auto;
+}
+
+/* --------------------------------------------------------------------------
+   7. 画布容器：.ds-canvas-frame 桥接
+   --------------------------------------------------------------------------
+   规范层给 .ds-canvas-frame 加了 contain: paint。
+   08 的画布焦点环用「2px 描边 + 2px 外偏移」画在容器边框之外，
+   paint containment 会裁掉溢出到 padding box 之外的描边，
+   与 §5「焦点环任何状态不得移除」冲突，因此这里把 contain 降级，
+   只保留 isolation: isolate（画布独立层叠上下文这一真正目的）。
+   -------------------------------------------------------------------------- */
+
+.game-frame.ds-canvas-frame {
+  contain: none;
+  isolation: isolate;
+  border-radius: var(--ds-radius-md);
+  background: var(--lumen-void);
+  border-color: var(--lumen-line-2);
+}
+
+/* 画布相邻的 DOM 层（焦点提示、开始/暂停/结算覆盖层）保留画布色板：
+   它们压在深靛画面上，改成外壳色板会形成可见的深色方块并削弱对比度，
+   属 §4 K.3「HUD 可读性优先于风格统一」的有意偏离。 */
+.game-frame .ds-btn {
+  background: var(--lumen-panel);
+  color: var(--lumen-bone);
+  border-color: var(--lumen-line-2);
+}
+
+.game-frame .ds-btn--primary {
+  background: var(--lumen-cyan);
+  color: var(--lumen-void);
+  border-color: var(--lumen-cyan);
+}
+
+/* --------------------------------------------------------------------------
+   8. 游戏页顶栏：.ds-topbar 几何还原
+   -------------------------------------------------------------------------- */
+
+.topbar.ds-topbar {
+  /* 同 .masthead.ds-topbar：还原为 block，让限宽内层容器 .topbar__inner
+     正常占据 1280px 并与页面正文对齐（详见上文第 1 节说明）。 */
+  display: block;
+  padding: 0;
+  /* 同上：保持 rgba 字面量，保证顶栏内按钮的对比度可被自动测量 */
+  background: rgba(16, 15, 14, 0.82);
+}
+
+.topbar.ds-topbar .topbar__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+  max-width: var(--ds-max-width);
+  margin: 0 auto;
+  padding: var(--ds-space-3) var(--ds-space-gutter);
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   9. 按钮几何：按 DESIGN-SPEC §7.1 修正
+   --------------------------------------------------------------------------
+   16 的 components.css 写的是 `--ds-btn-h: var(--ds-space-10)`（= 128px），
+   但同一套规范的 DESIGN-SPEC §7.1「尺寸」明确：
+   「.ds-btn 最小高 40px，.ds-btn--sm 32px，.ds-btn--lg 48px」。
+   两者不一致时以**成文规范**为准（16 的 components.css 属实现，
+   design-tokens.json 才是取值唯一来源）。
+   若不修正，128px 高的按钮会把 08 的封面 CTA 与触控区撑破。
+   -------------------------------------------------------------------------- */
+
+.ds-btn {
+  height: auto;
+  /* §5.1 触摸目标两档：AA ≥24px（硬性）、AAA ≥44px（主控件目标值）。
+     取 44px 同时满足 DESIGN-SPEC §7.1「最小高 40px」（44 > 40）与 §5.1 的 44px。 */
+  min-height: 44px;
+}
+
+/* 触控区按钮：还原 08 既有几何，允许文字换行，
+   否则 .ds-btn 的 white-space: nowrap 会让 6 个按钮在 390px 下横向溢出 71px。 */
+.touchpad__btn.ds-btn {
+  height: auto;
+  min-height: 44px;
+  padding: var(--ds-space-3) var(--ds-space-2);
+  white-space: normal;
+  border-radius: var(--ds-radius-sm);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* --------------------------------------------------------------------------
+   10. 分段选择 ↔ .ds-chip
+   --------------------------------------------------------------------------
+   模式 / 难度切换本身就是 aria-pressed 的开关按钮，
+   与 .ds-chip 的语义完全一致；这里把 chip 的胶囊外形桥接过来，
+   但保留 08 分段控件的选中态（accent 底 + 墨色字）。
+   -------------------------------------------------------------------------- */
+
+.seg-btn.ds-chip {
+  /* .ds-chip 是 inline-flex，会把「初辉 / 轻松」这类二级说明挤成并排；
+     恢复 08 原有的块级两行排版（副标题另起一行）。 */
+  display: block;
+  text-align: center;
+  min-height: 44px;
+  padding: 4px 12px;
+  border-radius: var(--ds-radius-pill);
+  background: var(--ds-surface);
+  color: var(--ds-ink-soft);
+  border: 1px solid transparent;
+}
+
+.seg-btn.ds-chip[aria-pressed="true"] {
+  background: var(--ds-accent);
+  color: var(--ds-accent-ink);
+}
+
+.seg-btn.ds-chip .seg-btn__sub {
+  display: block;
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-type-xs);
+  letter-spacing: var(--ds-track-mono);
+  opacity: 0.72;
+  margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   11. 元信息等宽（G.5）
+   -------------------------------------------------------------------------- */
+
+.source__meta.ds-mono,
+.foot__meta.ds-mono {
+  font-family: var(--ds-font-mono);
+  letter-spacing: var(--ds-track-mono);
+  color: var(--ds-ink-faint);
+}

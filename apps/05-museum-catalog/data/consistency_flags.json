@@ -1,36 +1,5 @@
 {
- "creatorConflicts": [
-  {
-   "id": "hw-nim",
-   "title": "Nimrod 取石子计算机",
-   "creator": "Herbert Koppel、Eugene Grant、Howard Baller（W. L. Maxson Corporation）",
-   "ib_creator": "     ",
-   "creator_conflict": true,
-   "platform": "W. L. Maxson Corporation 继电器式取石子机（后来的 NIMROD）",
-   "ib_platforms": "",
-   "platform_conflict": false
-  },
-  {
-   "id": "sw-little-computer-program",
-   "title": "Little Computer Program",
-   "creator": "Geoff Hill",
-   "ib_creator": "     ",
-   "creator_conflict": true,
-   "platform": "CSIRAC / A.C.T. (Australia)",
-   "ib_platforms": "",
-   "platform_conflict": false
-  },
-  {
-   "id": "sw-mud1",
-   "title": "MUD1 (University of Essex)",
-   "creator": "Roy Trubshaw, Richard Bartle",
-   "ib_creator": "     ",
-   "creator_conflict": true,
-   "platform": "Mainframe computer via telnet (University of Essex)",
-   "ib_platforms": "",
-   "platform_conflict": false
-  }
- ],
+ "creatorConflicts": [],
  "platformNotes": [
   {
    "id": "sw-sketchpad",
@@ -76,13 +45,13 @@
   },
   {
    "id": "sw-alone-in-the-dark",
-   "title": "Alone in the Dark (video game)",
+   "title": "Alone in the Dark",
    "curated_platform": "MS-DOS, Macintosh, FM Towns",
    "ib_platforms": "MS-DOSPC-98FM Towns3DOClassic Mac OSRISC OSiOSSaturnPlayStationWindowsGame Boy ColorDreamcastPlayStation 2WiiXbox 360PlayStation 3PlayStatio"
   },
   {
    "id": "pl-steam",
-   "title": "Steam (service)",
+   "title": "Steam",
    "curated_platform": "Steam digital distribution platform",
    "ib_platforms": "Unbulleted list|Windows|macOS|Linux|iOS|Android"
   },
@@ -99,5 +68,66 @@
    "ib_platforms": "cslist|App Store|Google Play|Windows Phone Store|Windows|macOS|Linux"
   }
  ],
- "creatorUnverifiable": []
+ "creatorUnverifiable": [
+  {
+   "id": "hw-whirlwind",
+   "title": "Whirlwind",
+   "source": "Whirlwind I",
+   "curated_creator": "MIT Lincoln Laboratory (Jay Forrester)"
+  },
+  {
+   "id": "hw-nim",
+   "title": "Nimrod 取石子计算机",
+   "source": "Nim",
+   "curated_creator": "Herbert Koppel、Eugene Grant、Howard Baller（W. L. Maxson Corporation）"
+  },
+  {
+   "id": "hw-tx0",
+   "title": "TX-0",
+   "source": "TX-0",
+   "curated_creator": "MIT (Ben Gurley, Bob Everett)"
+  },
+  {
+   "id": "hw-imlac",
+   "title": "Imlac PDS-1 图形显示系统",
+   "source": "IMLAC",
+   "curated_creator": "Imlac / Evans & Sutherland"
+  },
+  {
+   "id": "sw-little-computer-program",
+   "title": "Little Computer Program",
+   "source": "Early history of video games",
+   "curated_creator": "Geoff Hill"
+  },
+  {
+   "id": "hw-brown-box",
+   "title": "Brown Box 棕盒原型机",
+   "source": "First generation of video game consoles",
+   "curated_creator": "Ralph Baer (with Bill Harrison)"
+  },
+  {
+   "id": "sw-mud1",
+   "title": "MUD1",
+   "source": "Multi-user dungeon",
+   "curated_creator": "Roy Trubshaw, Richard Bartle"
+  },
+  {
+   "id": "sw-donkey-kong",
+   "title": "Donkey Kong",
+   "source": "Donkey Kong",
+   "curated_creator": "Nintendo (Shigeru Miyamoto)"
+  },
+  {
+   "id": "sw-angry-birds",
+   "title": "Angry Birds",
+   "source": "Angry Birds",
+   "curated_creator": "Rovio Entertainment (Peter Vesterbacka)"
+  },
+  {
+   "id": "hw-ps-vr",
+   "title": "PlayStation VR",
+   "source": "PlayStation VR",
+   "curated_creator": "Sony Interactive Entertainment"
+  }
+ ]
 }
