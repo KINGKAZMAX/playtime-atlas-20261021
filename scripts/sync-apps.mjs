@@ -14,6 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { applyPatches } from './patches.mjs';
+import { isReferenceCapture } from './publish-guard.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..');
@@ -93,6 +94,11 @@ function copyDir(src, dest, rel = '') {
       copyDir(s, d, r);
     } else if (e.isFile()) {
       if (DENY_EXT.has(path.extname(e.name).toLowerCase())) continue;
+      // 参考站抓取件一律不入库（即使它出现在白名单目录里，例如 17 的 data/）
+      if (isReferenceCapture(r)) {
+        console.log(`[sync] ⛔ 拦截参考站抓取件 ${r}`);
+        continue;
+      }
       try {
         fs.copyFileSync(s, d);
       } catch (e) {
@@ -206,6 +212,10 @@ function main() {
     let n = 0;
     for (const e of fs.readdirSync(src, { withFileTypes: true })) {
       if (e.isFile() && (ALLOW_FILES.has(e.name) || (e.name.endsWith('.html') && e.name !== 'index.html'))) {
+        if (isReferenceCapture(e.name)) {
+          console.log(`[sync] ⛔ 拦截参考站抓取件 ${e.name}`);
+          continue;
+        }
         fs.copyFileSync(path.join(src, e.name), path.join(dest, e.name));
         n++;
       } else if (e.isDirectory() && (ALLOW_DIRS.has(e.name) || extraDirs.has(e.name))) {

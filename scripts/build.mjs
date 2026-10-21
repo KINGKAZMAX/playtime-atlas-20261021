@@ -328,6 +328,12 @@ async function buildWork(work) {
             if (exclude.has(e.name)) continue;
             const ext = path.extname(e.name).toLowerCase();
             if (keepExts.has(ext) && e.name !== 'package.json') {
+              // 静态分支的顶层文件同样必须过守卫 —— 否则参考站抓取件
+              // （olek-index.js / sitemap.xml / ref-*.png）会绕过 copyDir 直接进产物。
+              if (isReferenceCapture(e.name)) {
+                blockedCaptures.push(e.name);
+                continue;
+              }
               fs.copyFileSync(s, path.join(outDir, e.name));
             }
           }
@@ -537,6 +543,23 @@ function publishDesignSystem() {
   return stats;
 }
 
+/**
+ * 站点根图标 —— 生成 docs/favicon.ico。
+ *
+ * 作品页各自声明了图标，但站点根此前没有 /favicon.ico：浏览器在无 <link rel=icon>
+ * 时会请求它并得到 404（《HANDOFF-14.md》§四 第 2 项要求「网络面板零 404（含 /favicon.ico）」）。
+ * 这里只**新增**站点根图标文件，不改动任何作品页面与主页版式。
+ */
+function publishSiteFavicon() {
+  const script = path.join(ROOT, 'scripts', 'make-favicon.mjs');
+  if (!fs.existsSync(script)) {
+    warn('缺少 scripts/make-favicon.mjs，跳过站点根图标生成');
+    return false;
+  }
+  run('node', [script], ROOT, { quiet: true });
+  return fs.existsSync(path.join(SITE, 'favicon.ico'));
+}
+
 // ---------------------------------------------------------------- main
 
 async function main() {
@@ -610,6 +633,8 @@ async function main() {
   assembleHall(runtimeWorks, report);
   // 公开主页的最终形态由 refresh-gallery 决定（真实封面 + 净化字段）
   refreshGallery();
+  // 站点根图标：消除 /favicon.ico 的 404（HANDOFF §四 第 2 项）
+  publishSiteFavicon();
 
   log('---- 构建汇总 ----');
   log(`成功 ${report.totals.built} · 回退 ${report.totals.fallback} · 不可用 ${report.totals.unavailable} · 合计 ${(report.totals.bytes / 1024 / 1024).toFixed(2)} MB`);

@@ -8,7 +8,9 @@
     "batch": "flash-showcase-20261021",
     "updated": "2026-10-21",
     "note": "本清单是作品大厅与构建流程的唯一事实源。entry/outputDir 均为相对仓库根的路径，线上通过 https://<user>.github.io/<repo>/ 访问。",
-    "caveat": "00-research 的 TOP3 档案是**研究阶段的候选改编规格**（NIMBUS·7 / TIDAL DRIFT / HELIOS SPECIMEN），实际交付的作品名与形态以各作品自己的 README 与本清单为准；两者不是同一批东西，站点不声称“按 TOP3 复刻”。"
+    "caveat": "00-research 的 TOP3 档案是**研究阶段的候选改编规格**（NIMBUS·7 / TIDAL DRIFT / HELIOS SPECIMEN），实际交付的作品名与形态以各作品自己的 README 与本清单为准；两者不是同一批东西，站点不声称“按 TOP3 复刻”。",
+    "referencePolicy": "参考站（olek.si 等）的抓取源码、样式、令牌与观察证据一律不入库、不上线：16 的 evidence/ref/、17 的 research-ref/ 与 screenshots/、18 的 docs/reference/、19 的 research/_QUARANTINE__/ 均被发布守卫机械排除；16 的规范文档（DESIGN-SPEC / REFERENCE-AUDIT / design-tokens.json / MIGRATION-NOTES）与字体清单属本批原创产物，作为仓库内文档收录。",
+    "publishGuard": "发布前机械闸门：node scripts/preflight.mjs（守卫自检 + 全仓库树扫描 + 暂存清单扫描 + 凭据文件检查），不通过即禁止提交。"
   },
   "sections": [
     {

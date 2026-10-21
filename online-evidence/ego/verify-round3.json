@@ -1,0 +1,149 @@
+{
+  "ranAt": "2026-10-21T17:55:24.762Z",
+  "taskSpaceId": 85,
+  "abyssOverflowPrecise": {
+    "viewport": 390,
+    "docScrollWidth": 390,
+    "bodyScrollWidth": 416,
+    "outermost": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "cls": "rail-block",
+        "left": 8,
+        "right": 425,
+        "width": 417,
+        "overflowX": "hidden",
+        "minWidth": "auto",
+        "position": "static"
+      },
+      {
+        "tag": "CANVAS",
+        "id": "crown-section",
+        "cls": "",
+        "left": 133,
+        "right": 432,
+        "width": 299,
+        "overflowX": "clip",
+        "minWidth": "0px",
+        "position": "static"
+      },
+      {
+        "tag": "DIV",
+        "id": "cycle-meter",
+        "cls": "",
+        "left": -26,
+        "right": 416,
+        "width": 443,
+        "overflowX": "auto",
+        "minWidth": "0px",
+        "position": "absolute"
+      }
+    ],
+    "total": 8
+  },
+  "canvasPlay": [
+    {
+      "id": "01-chroma-s1",
+      "canvasCount": 15,
+      "readable2d": 13,
+      "hashBefore": 1674400523,
+      "hashAfter": 1857533854,
+      "pixelsChanged": true,
+      "note": ""
+    },
+    {
+      "id": "06-museum-main",
+      "canvasCount": 0,
+      "readable2d": 0,
+      "hashBefore": 0,
+      "hashAfter": 0,
+      "pixelsChanged": false,
+      "note": "WebGL 画布（2D 上下文不可读），改以 DOM 状态判定"
+    },
+    {
+      "id": "07-museum-art",
+      "canvasCount": 1,
+      "readable2d": 0,
+      "hashBefore": 0,
+      "hashAfter": 0,
+      "pixelsChanged": false,
+      "note": "WebGL 画布（2D 上下文不可读），改以 DOM 状态判定"
+    },
+    {
+      "id": "08-era-origins",
+      "canvasCount": 3,
+      "readable2d": 3,
+      "hashBefore": 2034088444,
+      "hashAfter": 235893041,
+      "pixelsChanged": true,
+      "note": ""
+    },
+    {
+      "id": "09-era-arcade",
+      "canvasCount": 1,
+      "readable2d": 1,
+      "hashBefore": 38333258,
+      "hashAfter": 2164494535,
+      "pixelsChanged": true,
+      "note": ""
+    },
+    {
+      "id": "10-era-console",
+      "canvasCount": 40,
+      "readable2d": 40,
+      "hashBefore": 810992380,
+      "hashAfter": 810992380,
+      "pixelsChanged": false,
+      "note": ""
+    },
+    {
+      "id": "16-design-system",
+      "canvasCount": 1,
+      "readable2d": 1,
+      "hashBefore": 0,
+      "hashAfter": 3280645010,
+      "pixelsChanged": true,
+      "note": ""
+    },
+    {
+      "id": "18-architecture-models",
+      "canvasCount": 1,
+      "readable2d": 0,
+      "hashBefore": 0,
+      "hashAfter": 0,
+      "pixelsChanged": false,
+      "note": "WebGL 画布（2D 上下文不可读），改以 DOM 状态判定"
+    }
+  ],
+  "search": [
+    {
+      "label": "17-architecture-research",
+      "typed": true,
+      "before": {
+        "count": 273,
+        "text": 32101
+      },
+      "after": {
+        "count": 273,
+        "text": 5929,
+        "visibleItems": 52
+      },
+      "filtered": true
+    },
+    {
+      "label": "00-research-dossier",
+      "typed": true,
+      "before": {
+        "count": 335,
+        "text": 46545
+      },
+      "after": {
+        "count": 19,
+        "text": 3590,
+        "visibleItems": 19
+      },
+      "filtered": false
+    }
+  ]
+}

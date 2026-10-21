@@ -14,6 +14,15 @@
  * 自检：node scripts/publish-guard.mjs --selftest
  */
 
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const HERE = path.dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = path.resolve(HERE, '..');
+
 /** 整个目录都不进公开面（隔离区 / 取证截图 / 未授权参考 / 原始截图）。 */
 const REFERENCE_CAPTURE_DIRS = [
   'research-ref',      // 17 把参考站抓取件移入的隔离目录
@@ -21,14 +30,21 @@ const REFERENCE_CAPTURE_DIRS = [
   'screenshots',       // 原始截图（含参考站截图）
   'references',        // 00 的 references/mia-100-html/（该仓库无 LICENSE）
   'evidence/ref',      // 16 的参考站取证截图
+  'evidence/ego-ref',  // 17 的参考站视口度量等观察证据
+  'docs/reference',    // 18 的参考站对照截图
+  'research',          // 观察证据根目录（19 / 18）
 ];
 
 /** 单个文件名命中即拦截。 */
 const REFERENCE_CAPTURE_FILES = [
-  /^olek[^/]*$/i,     // olek-index.js / olek-css-blocks.txt / olek-tokens.json
+  /^olek[^/]*$/i,     // olek-index.js / olek-css-blocks.txt / olek-tokens.json / oleksi-*.png
   /^ref-[^/]*$/i,     // ref-home-2560.png 之类
   /^sitemap\.xml$/i,  // 抓取的 sitemap
 ];
+
+/** 参考站域名特征：命中即视为参考站派生文件（用于体积规则的佐证）。 */
+const REFERENCE_SITE_HINT = /olek\.si/i;
+
 
 /** 判定规则（按相对路径）。 */
 export const REFERENCE_CAPTURE_PATTERNS = [
@@ -66,6 +82,145 @@ export function isReferenceCapture(relPath) {
 
 /* ----------------------------------------------------------------- 自检 */
 
+/** 大体积第三方 bundle 阈值：200 KB。 */
+const LARGE_BUNDLE_BYTES = 200 * 1024;
+
+function walkFiles(root, base = '', out = []) {
+  let entries;
+  try {
+    entries = fs.readdirSync(root, { withFileTypes: true });
+  } catch {
+    return out;
+  }
+  for (const e of entries) {
+    if (e.name === 'node_modules' || e.name === '.git') continue;
+    const abs = path.join(root, e.name);
+    const rel = base ? `${base}/${e.name}` : e.name;
+    if (e.isDirectory()) walkFiles(abs, rel, out);
+    else if (e.isFile()) out.push({ abs, rel, size: fs.statSync(abs).size });
+  }
+  return out;
+}
+
+function sha1(file) {
+  try {
+    return crypto.createHash('sha1').update(fs.readFileSync(file)).digest('hex');
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * 本批**自己构建产物**的内容哈希集合 —— 用作大体积规则的放行依据。
+ *
+ * 判定逻辑：>200KB 的 .js/.css 若内容与 docs/works/、docs/assets/ 或各作品的 dist/
+ * 中的构建产物一致，就是本批自己的打包结果（vite chunk、vendored three.js 等），放行；
+ * 否则视为「疑似外部整包」（如参考站 bundle），报出待人工复核。
+ *
+ * 注意：允许集来自**仓库根**（而不是被扫描的子目录），否则扫描 apps/ 时会失去依据。
+ * 残余风险：若参考站整包被改名后混进 docs/works/**，其哈希会进入允许集；
+ * 因此文件/目录名规则（REFERENCE_CAPTURE_FILES / DIRS）仍是第一道防线。
+ */
+function buildOutputHashes(root) {
+  const set = new Set();
+  const roots = [path.join(root, 'docs', 'works'), path.join(root, 'docs', 'assets')];
+  const appsDir = path.join(root, 'apps');
+  try {
+    for (const name of fs.readdirSync(appsDir)) {
+      const d = path.join(appsDir, name, 'dist');
+      if (fs.existsSync(d)) roots.push(d);
+    }
+  } catch { /* apps/ 不存在 */ }
+  for (const r of roots) {
+    for (const f of walkFiles(r)) {
+      if (/\.(js|css)$/i.test(f.rel)) {
+        const h = sha1(f.abs);
+        if (h) set.add(h);
+      }
+    }
+  }
+  return set;
+}
+
+/**
+ * 扫描一棵目录树，报告参考站抓取件与疑似外部大体积 bundle。
+ * @returns {{hits: Array, scanned: number}}
+ */
+export function scanTree(root, opts = {}) {
+  const allowLarge = opts.allowLarge || buildOutputHashes(REPO_ROOT);
+  const hits = [];
+  let scanned = 0;
+  for (const f of walkFiles(root)) {
+    scanned++;
+    const check = checkReferenceCapture(f.rel);
+    if (check.blocked) {
+      hits.push({ path: f.rel, type: 'reference-capture', why: check.why, size: f.size });
+      continue;
+    }
+    if (/\.(js|css)$/i.test(f.rel) && f.size > LARGE_BUNDLE_BYTES) {
+      const h = sha1(f.abs);
+      if (!h || !allowLarge.has(h)) {
+        hits.push({
+          path: f.rel,
+          type: 'large-bundle',
+          why: `>${LARGE_BUNDLE_BYTES / 1024}KB 的 JS/CSS，且内容不匹配本批构建产物（疑似外部整包）`,
+          size: f.size,
+        });
+      }
+    }
+  }
+  return { hits, scanned };
+}
+
+/** 扫描 git 已暂存的新增/修改文件清单。 */
+export function scanStaged(root) {
+  const res = spawnSync('git', ['diff', '--cached', '--name-only', '--diff-filter=ACMR'], {
+    cwd: root, encoding: 'utf8',
+  });
+  if (res.status !== 0) return { hits: [], scanned: 0, error: '无法读取暂存清单' };
+  const allowLarge = buildOutputHashes(REPO_ROOT);
+  const hits = [];
+  const files = String(res.stdout || '').split('\n').map((s) => s.trim()).filter(Boolean);
+  for (const rel of files) {
+    const abs = path.join(root, rel);
+    if (!fs.existsSync(abs) || !fs.statSync(abs).isFile()) continue;
+    const check = checkReferenceCapture(rel);
+    if (check.blocked) {
+      hits.push({ path: rel, type: 'reference-capture', why: check.why, size: fs.statSync(abs).size });
+      continue;
+    }
+    const size = fs.statSync(abs).size;
+    if (/\.(js|css)$/i.test(rel) && size > LARGE_BUNDLE_BYTES) {
+      const h = sha1(abs);
+      if (!h || !allowLarge.has(h)) {
+        hits.push({ path: rel, type: 'large-bundle', why: '>200KB 的 JS/CSS，且不匹配本批构建产物', size });
+      }
+    }
+  }
+  return { hits, scanned: files.length };
+}
+
+function fmtSize(n) {
+  return `${(n / 1024).toFixed(1)}KB`;
+}
+
+function report(label, res) {
+  if (res.error) {
+    console.error(`✗ ${label}：${res.error}`);
+    process.exit(1);
+  }
+  if (!res.hits.length) {
+    console.log(`✓ ${label}：未发现参考站抓取件或疑似外部大体积 bundle（扫描 ${res.scanned} 个文件）`);
+    return true;
+  }
+  console.error(`✗ ${label}：发现 ${res.hits.length} 项必须处理的问题`);
+  for (const h of res.hits) {
+    console.error(`   · [${h.type}] ${h.path}（${fmtSize(h.size || 0)}）—— ${h.why}`);
+  }
+  return false;
+}
+
+
 function selftest() {
   const blocked = [
     'data/olek-index.js',
@@ -75,6 +230,9 @@ function selftest() {
     'screenshots/olek-si-desktop-1440x900.png',
     'screenshots/01-hero.png',
     'evidence/ref/desktop-home.png',
+    'evidence/ego-ref/olek-si-viewport-metrics.json',
+    'docs/reference/oleksi-01-hero.png',
+    'research/_QUARANTINE__/olek-si/bundle.js',
     'public/art/ref-home-2560.png',
     'nested/deep/olek-x.json',
     'research-ref/olek-index.js',
@@ -110,4 +268,23 @@ function selftest() {
   console.log(`发布守卫自检通过：应拦截 ${blocked.length} 项、应放行 ${allowed.length} 项`);
 }
 
-if (process.argv.includes('--selftest')) selftest();
+const argv = process.argv.slice(2);
+const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (!isMain) {
+  // 被其它脚本 import 时只提供 API，不执行命令行分派
+} else if (argv.includes('--selftest')) {
+  selftest();
+} else if (argv.includes('--scan')) {
+  const i = argv.indexOf('--scan');
+  const dirs = argv.slice(i + 1).filter((a) => !a.startsWith('--'));
+  const targets = dirs.length ? dirs : ['.'];
+  let ok = true;
+  for (const d of targets) {
+    ok = report(`扫描 ${d}`, scanTree(path.resolve(REPO_ROOT, d))) && ok;
+  }
+  process.exit(ok ? 0 : 1);
+} else if (argv.includes('--staged')) {
+  process.exit(report('git 暂存清单', scanStaged(REPO_ROOT)) ? 0 : 1);
+} else {
+  console.log('用法：node scripts/publish-guard.mjs [--selftest | --scan [dir...] | --staged]');
+}

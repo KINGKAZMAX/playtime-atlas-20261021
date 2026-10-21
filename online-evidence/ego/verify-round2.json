@@ -1,0 +1,545 @@
+{
+  "ranAt": "2026-10-21T17:50:53.778Z",
+  "taskSpaceId": 76,
+  "base": "https://kingkazmax.github.io/playtime-atlas-20261021",
+  "hall": {
+    "url": "https://kingkazmax.github.io/playtime-atlas-20261021/",
+    "title": "回响电玩馆 · PLAYTIME ATLAS",
+    "http4xx5xx": [],
+    "consoleErrors": [],
+    "cards": 11,
+    "coverImgs": {
+      "total": 11,
+      "broken": [],
+      "sample": [
+        "assets/gallery-covers/01-chroma-s1.webp",
+        "assets/gallery-covers/02-abyss-salvager.webp",
+        "assets/gallery-covers/03-interaction.webp",
+        "assets/gallery-covers/04-frostgap-voyager.webp"
+      ]
+    },
+    "scroll": {
+      "scrollWidth": 1621,
+      "clientWidth": 1621,
+      "bodyScrollWidth": 1621
+    },
+    "screenshot": "/Users/mekzenx2/Documents/ChatGPT/mavis-14-v3/online-evidence/ego/hall-index.png"
+  },
+  "assetStatus": [
+    {
+      "path": "assets/ds/tokens.css",
+      "status": 200,
+      "bytes": 10115
+    },
+    {
+      "path": "assets/ds/fonts/fonts.css",
+      "status": 200,
+      "bytes": 1676
+    },
+    {
+      "path": "assets/ds/fonts/inter-latin.woff2",
+      "status": 200,
+      "bytes": 125792
+    },
+    {
+      "path": "assets/ds/fonts/space-grotesk-latin.woff2",
+      "status": 200,
+      "bytes": 32996
+    },
+    {
+      "path": "assets/ds/fonts/space-mono-regular.woff2",
+      "status": 200,
+      "bytes": 14100
+    },
+    {
+      "path": "assets/ds/fonts/space-mono-bold.woff2",
+      "status": 200,
+      "bytes": 14233
+    },
+    {
+      "path": "assets/ds/fonts/noto-sans-sc-subset.woff2",
+      "status": 200,
+      "bytes": 187176
+    },
+    {
+      "path": "assets/gallery-covers/01-chroma-s1.webp",
+      "status": 200,
+      "bytes": 38431
+    },
+    {
+      "path": "assets/gallery-covers/07-museum-art.webp",
+      "status": 200,
+      "bytes": 38679
+    },
+    {
+      "path": "assets/gallery-covers/12-era-modern.webp",
+      "status": 200,
+      "bytes": 31638
+    },
+    {
+      "path": "works/06-museum-main/art/assets/fonts/fonts.css",
+      "status": 200,
+      "bytes": 1472
+    },
+    {
+      "path": "works/06-museum-main/art/assets/fonts/inter-latin.woff2",
+      "status": 200,
+      "bytes": 125792
+    },
+    {
+      "path": "works/07-museum-art/assets/icons/joystick.svg",
+      "status": 200,
+      "bytes": 334
+    },
+    {
+      "path": "data/works.json",
+      "status": 200,
+      "bytes": 7873
+    },
+    {
+      "path": "favicon.ico",
+      "status": 404,
+      "bytes": 9379
+    }
+  ],
+  "abyssOverflow": {
+    "viewport": 390,
+    "docScrollWidth": 390,
+    "bodyScrollWidth": 416,
+    "offenders": [
+      {
+        "tag": "path",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 1005,
+        "width": 160
+      },
+      {
+        "tag": "circle",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 848,
+        "width": 6
+      },
+      {
+        "tag": "path",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 1005,
+        "width": 160
+      },
+      {
+        "tag": "circle",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 848,
+        "width": 6
+      },
+      {
+        "tag": "path",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 851,
+        "width": 160
+      },
+      {
+        "tag": "circle",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 854,
+        "width": 6
+      },
+      {
+        "tag": "path",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 904,
+        "width": 160
+      },
+      {
+        "tag": "circle",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 907,
+        "width": 6
+      },
+      {
+        "tag": "path",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 1015,
+        "width": 160
+      },
+      {
+        "tag": "circle",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 1018,
+        "width": 6
+      },
+      {
+        "tag": "path",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 1212,
+        "width": 160
+      },
+      {
+        "tag": "circle",
+        "id": "",
+        "cls": "[object SVGAnimatedString]",
+        "right": 1215,
+        "width": 6
+      }
+    ]
+  },
+  "abyssExport": {
+    "candidates": [
+      {
+        "tag": "BUTTON",
+        "id": "btn-export",
+        "cls": "btn btn-primary",
+        "text": "导出 GLB\nEXPORT",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "A",
+        "id": "btn-model-download",
+        "cls": "btn btn-mini",
+        "text": "下载\nDL",
+        "download": "abyss-salvager-ac-vii.glb",
+        "href": "./models/abyss-salvager-ac-vii.glb"
+      }
+    ],
+    "allButtons": [
+      {
+        "tag": "BUTTON",
+        "id": "btn-reset",
+        "cls": "btn",
+        "text": "重置\nRESET",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "btn-export",
+        "cls": "btn btn-primary",
+        "text": "导出 GLB\nEXPORT",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn active",
+        "text": "测绘\nSURVEY",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn",
+        "text": "俯视\nPLAN",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn",
+        "text": "侧视\nPROFILE",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn",
+        "text": "磨削冠\nCROWN",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn",
+        "text": "矿仓\nHOPPER",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn",
+        "text": "随行\nFOLLOW",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn",
+        "text": "分解\nEXPLODE",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn",
+        "text": "X 光\nX-RAY",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn",
+        "text": "线框\nWIRE",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn active",
+        "text": "标注\nLABELS",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn",
+        "text": "纵剖\nLONG",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "tool-btn",
+        "text": "冠剖\nCROWN",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "btn-model-load",
+        "cls": "btn btn-mini btn-primary",
+        "text": "载入\nLOAD",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "assembly-step",
+        "text": "1 · 磨削冠",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "assembly-step",
+        "text": "2 · + 前 6 节",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "assembly-step",
+        "text": "3 · + 全 18 节",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "assembly-step",
+        "text": "4 · 整机",
+        "download": null,
+        "href": ""
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "toggle on",
+        "text": "",
+        "download": null,
+        "href": ""
+      }
+    ],
+    "download": {
+      "ok": true,
+      "filename": "abyss-salvager-ac-vii-18seg.glb",
+      "bytes": 9136296,
+      "path": "/Users/mekzenx2/Documents/ChatGPT/mavis-14-v3/online-evidence/ego/02-abyss-salvager-export.glb"
+    },
+    "screenshot": "/Users/mekzenx2/Documents/ChatGPT/mavis-14-v3/online-evidence/ego/02-abyss-salvager-after-export.png"
+  },
+  "play": [
+    {
+      "id": "01-chroma-s1",
+      "canvasClicked": true,
+      "textBefore": 2295,
+      "textAfter": 2295,
+      "storageBefore": 34,
+      "storageAfter": 34,
+      "storageGrew": false,
+      "visiblePanels": [
+        "00\n        概览",
+        "00",
+        "概览",
+        "Spectral Response\nSINGLE SHOT\n实测曲线\n目标单色\n",
+        "Spectral Response\nSINGLE SHOT",
+        "Spectral Response"
+      ],
+      "stateChanged": false
+    },
+    {
+      "id": "06-museum-main",
+      "canvasClicked": false,
+      "textBefore": 2852,
+      "textAfter": 2852,
+      "storageBefore": 34,
+      "storageAfter": 34,
+      "storageGrew": false,
+      "visiblePanels": [
+        "游戏作品\n1951\n\n《Little Computer Program》（CSI",
+        "游戏作品\n1951\n\n《Little Computer Program》（CSI",
+        "游戏作品\n1951\n\n《Little Computer Program》（CSI",
+        "游戏作品\n1951",
+        "《Little Computer Program》（CSIRAC 上的微型程序）",
+        "Little Computer Program"
+      ],
+      "stateChanged": false
+    },
+    {
+      "id": "07-museum-art",
+      "canvasClicked": true,
+      "textBefore": 5117,
+      "textAfter": 5117,
+      "storageBefore": 34,
+      "storageAfter": 34,
+      "storageGrew": false,
+      "visiblePanels": [
+        "Space Grotesk\n\n展示体 · 年代标题、编号、数字\n\nPLAYTIM",
+        "Space Grotesk\n\n展示体 · 年代标题、编号、数字\n\nPLAYTIM",
+        "Inter\n\n正文 · 段落、说明、界面文案\n\n电子游戏硬件年代馆的正文排版\nO",
+        "Space Mono\n\n等宽 · 编号、年份、标签\n\nATLAS-ERA-02 ",
+        "Noto Sans SC\n\n中文 · 全部汉字（子集 746 字）\n\n回响电玩馆",
+        "ERA 01 · 1972 — 1978\n街机初萌\n光点第一次有了边界"
+      ],
+      "stateChanged": false
+    },
+    {
+      "id": "08-era-origins",
+      "canvasClicked": true,
+      "textBefore": 2772,
+      "textAfter": 2772,
+      "storageBefore": 34,
+      "storageAfter": 34,
+      "storageGrew": false,
+      "visiblePanels": [],
+      "stateChanged": false
+    },
+    {
+      "id": "09-era-arcade",
+      "canvasClicked": true,
+      "textBefore": 358,
+      "textAfter": 358,
+      "storageBefore": 34,
+      "storageAfter": 34,
+      "storageGrew": false,
+      "visiblePanels": [
+        "← → 沿街廊走动，站到终端前按 空格 进入；也可直接点击终端，或使用下方展品目"
+      ],
+      "stateChanged": false
+    },
+    {
+      "id": "10-era-console",
+      "canvasClicked": true,
+      "textBefore": 4536,
+      "textAfter": 4536,
+      "storageBefore": 34,
+      "storageAfter": 34,
+      "storageGrew": false,
+      "visiblePanels": [
+        "PC Engine / TurboGrafx-16\n\nHudson Soft /",
+        "PC Engine / TurboGrafx-16",
+        "Hudson Soft / NEC",
+        "第四世代最早的家庭主机，先发优势带来首批 16 位软件。",
+        "8 位 CPU + 双 16 位图形协处理器",
+        "家用机"
+      ],
+      "stateChanged": false
+    },
+    {
+      "id": "11-era-online",
+      "canvasClicked": true,
+      "textBefore": 10863,
+      "textAfter": 10862,
+      "storageBefore": 34,
+      "storageAfter": 34,
+      "storageGrew": false,
+      "visiblePanels": [
+        "起点\n\n如果要给 2000 年代找一个精确的起点，2000 年 3 月 4 日的",
+        "服务平台化\n\n2003 年 9 月，Steam 客户端上线，最初只是为了自动更新",
+        "大规模在线\n\n这一时期最有影响力的形态是 MMO——被明确概括为「大量玩家在同一",
+        "掌机的双屏与触摸\n\n掌机一侧最关键的一次形态变化是 Nintendo DS：20",
+        "免费化与共创\n\n2007 年的 Team Fortress 2、2009 年的 ",
+        "边界声明\n\n本展厅是代表性选样，不是该年代的编年全集；所列条目均只做事实陈述并附"
+      ],
+      "stateChanged": true
+    },
+    {
+      "id": "16-design-system",
+      "canvasClicked": true,
+      "textBefore": 2815,
+      "textAfter": 2815,
+      "storageBefore": 34,
+      "storageAfter": 34,
+      "storageGrew": false,
+      "visiblePanels": [
+        "可玩\n2026 · 装置",
+        "修复中\n2026 · 展厅",
+        "分数 01240\n关卡 3\nR\nESC",
+        "方向键移动\n空格\n确认",
+        "分段 2 / 5\n\n光点年代\n\n整屏分段，纵向强制吸附。离屏分段用 conten"
+      ],
+      "stateChanged": false
+    },
+    {
+      "id": "17-architecture-research",
+      "canvasClicked": false,
+      "textBefore": 32101,
+      "textAfter": 32101,
+      "storageBefore": 34,
+      "storageAfter": 34,
+      "storageGrew": false,
+      "visiblePanels": [],
+      "stateChanged": false
+    },
+    {
+      "id": "18-architecture-models",
+      "canvasClicked": true,
+      "textBefore": 3153,
+      "textAfter": 3153,
+      "storageBefore": 34,
+      "storageAfter": 34,
+      "storageGrew": false,
+      "visiblePanels": [
+        "Teaching diagram — not a construction or",
+        "Force paths受力箭头为传力路径的定性说明，非结构计算结果。",
+        "CONTROLS\n16",
+        "About this model\n\nDougong is a layered t"
+      ],
+      "stateChanged": false
+    }
+  ]
+}
