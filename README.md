@@ -27,27 +27,29 @@
 ├── apps/<id>/              ← 各作品**源码副本**（自同级任务目录只读复制而来）
 ├── scripts/
 │   ├── sync-apps.mjs       ← 从同级任务目录同步源码（只读复制，不修改上游）
-│   ├── build.mjs           ← 逐件构建 + 组装 site/ + 失败回退 + 状态报告
+│   ├── build.mjs           ← 逐件构建 + 组装 docs/ + 失败回退 + 状态报告
 │   ├── make-covers.mjs     ← 程序化生成每件作品的原创封面 SVG
 │   ├── build-research-index.mjs / build-catalog-page.mjs / build-qa-page.mjs
 │   └── serve.mjs           ← 零依赖本地静态服务器
-├── site/                   ← **发布根**（构建产物，随仓库提交，作为失败回退与快照）
+├── docs/                   ← **发布根**（构建产物，随仓库提交，作为失败回退与快照）
 └── .github/workflows/pages.yml
 ```
 
 ## 构建与发布
 
 ```bash
-node scripts/sync-apps.mjs   # 可选：从同级任务目录拉取最新源码
-node scripts/build.mjs       # 构建全部作品 → site/
-node scripts/serve.mjs 4320  # 本地预览 http://127.0.0.1:4320/
+node scripts/sync-apps.mjs       # 可选：从同级任务目录拉取最新源码
+node scripts/build.mjs           # 构建全部作品 → docs/
+node scripts/serve.mjs 4320 docs # 本地预览 http://127.0.0.1:4320/
 ```
 
-推送 `main` 分支即触发 `.github/workflows/pages.yml`：
+推送 `main` 分支即自动重新发布到 GitHub Pages：
 
-```
-checkout → setup-node → make-covers → build → configure-pages → upload-artifact → deploy-pages
-```
+- **当前生效**：`docs/` 作为 Pages 发布目录，每次推送 main 都会重新发布。
+- **同时准备就绪**：`.github/workflows/pages.yml` 提供完整的 CI 自动构建部署
+  （`checkout → setup-node → make-covers → build → configure-pages → upload-artifact → deploy-pages`）。
+  该工作流需要 `gh` 登录具备 `workflow` 授权范围；当前登录缺少该范围，因此工作流文件尚未入库。
+  授权后把 Pages 切换为 "GitHub Actions" 构建源即可启用，**无需改动仓库内容**。
 
 ### 失败回退策略
 
@@ -76,7 +78,7 @@ checkout → setup-node → make-covers → build → configure-pages → upload
 
 | 字段 | 含义 |
 | --- | --- |
-| `id` | 稳定标识，同时是 `apps/` 与 `site/works/` 下的目录名 |
+| `id` | 稳定标识，同时是 `apps/` 与 `docs/works/` 下的目录名 |
 | `title` / `subtitle` | 展示名（中 / 英） |
 | `description` | 大厅与详情页文案 |
 | `entry` | 相对仓库根的入口路径（如 `works/mech-sandworm/index.html`） |
@@ -95,7 +97,7 @@ checkout → setup-node → make-covers → build → configure-pages → upload
 - 博物馆与年代展厅的收录为**代表性选样**，不宣称穷尽任何时代。
 - 平台互动量为 **2026-10-21 观测快照**，不同平台口径不可横向比较；不声称「全网第一」。
 - 依赖指针锁定的驾驶类作品在 `iframe` 嵌套时可能被浏览器限制，可使用「独立窗口打开」。
-- 仓库内的 `site/` 是**上一次成功构建的快照**，CI 会重新构建并覆盖；它是单件构建失败时的回退来源。
+- 仓库内的 `docs/` 是**上一次成功构建的快照**，CI 会重新构建并覆盖；它是单件构建失败时的回退来源。
 
 ## 许可
 

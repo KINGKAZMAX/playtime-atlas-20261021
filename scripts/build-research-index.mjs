@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..');
 const SRC = path.join(ROOT, 'apps', 'research-top3', 'data.json');
-const OUT_DIR = path.join(ROOT, 'site', 'research');
+const OUT_DIR = path.join(ROOT, 'docs', 'research');
 const OUT = path.join(OUT_DIR, 'index.html');
 
 const esc = (s) =>

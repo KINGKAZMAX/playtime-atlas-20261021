@@ -15,7 +15,7 @@ const ROOT = path.resolve(HERE, '..');
 const SRC_DIR = path.join(ROOT, 'apps', 'qa-report');
 const MD = path.join(SRC_DIR, 'QA-MATRIX.md');
 const ISSUES = path.join(SRC_DIR, 'issues.json');
-const OUT_DIR = path.join(ROOT, 'site', 'qa');
+const OUT_DIR = path.join(ROOT, 'docs', 'qa');
 const OUT = path.join(OUT_DIR, 'index.html');
 
 const esc = (s) =>

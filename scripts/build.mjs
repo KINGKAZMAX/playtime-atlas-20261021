@@ -20,7 +20,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SITE = path.join(ROOT, 'site');
+const SITE = path.join(ROOT, 'docs');
 const argv = process.argv.slice(2);
 const only = (() => {
   const i = argv.indexOf('--only');
