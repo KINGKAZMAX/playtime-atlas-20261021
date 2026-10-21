@@ -7,8 +7,8 @@
 <meta name="description" content="织造车间调度台 LOOMDECK — 浏览器端实时织造排产工具：机台矩阵、订单簿、任务编排、实时遥测与事件日志。" />
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-  <script type="module" crossorigin src="./assets/index-4UqGTl59.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/style-BLfx7Gwv.css">
+  <script type="module" crossorigin src="./assets/index-DJEszD_C.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/style-CZoMQ6f0.css">
 </head>
 <body>
 
@@ -37,8 +37,14 @@
   </dl>
 
   <div class="masthead__actions">
+    <p class="shift-chip" id="shift-chip" data-shift="running">
+      <span class="shift-chip__dot" aria-hidden="true"></span>
+      <span id="shift-chip-text">在产</span>
+    </p>
+    <button type="button" class="btn btn--primary" id="btn-dispatch" data-control="start" data-exhibit="shift-dispatch">开始派工</button>
+    <button type="button" class="btn" id="btn-shift-pause" data-control="pause" aria-pressed="false">暂停当班</button>
     <button type="button" class="btn btn--ghost" id="btn-help" aria-haspopup="dialog">快捷键</button>
-    <button type="button" class="btn btn--ghost" id="btn-reset-all">重置车间</button>
+    <button type="button" class="btn btn--ghost" id="btn-reset-all" data-control="restart">重置车间</button>
   </div>
 </header>
 
@@ -130,10 +136,16 @@
         <span class="legend__item"><i class="dot dot--fault"></i>故障</span>
         <span class="legend__item"><i class="dot dot--stop"></i>停机</span>
       </div>
+      <div class="seg seg--sm" role="group" aria-label="班次节奏" id="tempo-group">
+        <span class="seg__cap">班次节奏</span>
+        <button type="button" class="seg__btn" data-tempo="relaxed">轻松</button>
+        <button type="button" class="seg__btn is-on" data-tempo="normal">标准</button>
+        <button type="button" class="seg__btn" data-tempo="tight">紧排</button>
+      </div>
     </header>
 
     <div class="panel__body panel__body--scroll">
-      <div class="loom-grid" id="loom-grid" role="list" aria-label="织机机台矩阵"></div>
+      <div class="loom-grid" id="loom-grid" role="list" aria-label="织机机台矩阵" data-game-root tabindex="-1"></div>
     </div>
   </section>
 
@@ -207,13 +219,15 @@
         <dt><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd></dt><dd>在机台矩阵中移动选中</dd>
         <dt><kbd>Enter</kbd></dt><dd>为选中机台派发队首订单</dd>
         <dt><kbd>Backspace</kbd></dt><dd>撤销选中机台的当前订单</dd>
-        <dt><kbd>Space</kbd></dt><dd>暂停 / 继续日志自动滚动</dd>
+        <dt><kbd>Space</kbd></dt><dd>暂停 / 继续当班生产</dd>
+        <dt><kbd>S</kbd></dt><dd>暂停 / 继续日志自动滚动</dd>
         <dt><kbd>L</kbd></dt><dd>清空日志</dd>
         <dt><kbd>R</kbd></dt><dd>复位选中机台的故障</dd>
         <dt><kbd>T</kbd></dt><dd>切换遥测刻度（经密 / 梭速）</dd>
         <dt><kbd>N</kbd></dt><dd>聚焦新增订单表单</dd>
         <dt><kbd>Esc</kbd></dt><dd>关闭抽屉 / 取消选中</dd>
       </dl>
+      <p class="keys__note">快捷键只在展品自身获得焦点后生效 —— 点一下界面即可；输入框内不劫持按键。</p>
     </div>
   </div>
 </div>

@@ -223,11 +223,13 @@ function buildSvg(work, index) {
 function main() {
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'works.json'), 'utf8'));
   fs.mkdirSync(OUT, { recursive: true });
-  manifest.works.forEach((work, i) => {
+  // 不发布的条目（publish=false）不生成封面：线上不该出现它们的痕迹
+  const publishable = manifest.works.filter((w) => w.publish !== false);
+  publishable.forEach((work, i) => {
     const file = path.join(OUT, `${work.id}.svg`);
     fs.writeFileSync(file, buildSvg(work, i + 1));
   });
-  console.log(`[covers] 生成 ${manifest.works.length} 张封面 → ${path.relative(ROOT, OUT)}`);
+  console.log(`[covers] 生成 ${publishable.length} 张封面 → ${path.relative(ROOT, OUT)}`);
 }
 
 main();

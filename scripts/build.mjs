@@ -18,6 +18,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { filterOutput } from './publish-filter.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = path.join(ROOT, 'docs');
@@ -257,6 +258,11 @@ async function buildWork(work) {
       if (!fs.existsSync(outDir)) throw new Error('页面构建后未生成产物目录');
     } else {
       throw new Error(`未知构建类型 ${type}`);
+    }
+
+    const filtered = filterOutput(outDir);
+    if (filtered.removedDocs || filtered.sanitizedHtml) {
+      rec.notes.push(`发布过滤：移除台账文档 ${filtered.removedDocs} 份、清理页面 ${filtered.sanitizedHtml} 处`);
     }
 
     const entryRel = work.entry.replace(/^site\//, '');

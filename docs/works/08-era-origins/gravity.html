@@ -9,11 +9,11 @@
       content="展品 08-B：原创轨道引力对决。光迹即武器，相位脉冲可反制，AI 三档难度、触屏可玩。"
     />
     <meta name="color-scheme" content="dark" />
-    <script type="module" crossorigin src="./assets/gravity-Bs15Ox1p.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/loop-DthldKjD.js">
-    <link rel="modulepreload" crossorigin href="./assets/storage-CmmpM2qA.js">
-    <link rel="stylesheet" crossorigin href="./assets/loop-DYUSwFgS.css">
-    <link rel="stylesheet" crossorigin href="./assets/storage-1mFWXApa.css">
+    <script type="module" crossorigin src="./assets/gravity-ByEh3K6c.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/loop-BLYrGNSl.js">
+    <link rel="modulepreload" crossorigin href="./assets/storage-CVAWjDWB.js">
+    <link rel="stylesheet" crossorigin href="./assets/loop-UbRf63Cf.css">
+    <link rel="stylesheet" crossorigin href="./assets/storage-CPSSV5Wp.css">
   </head>
   <body class="game-page">
     <a class="skip-link" href="#stage">跳到游戏</a>
@@ -33,7 +33,7 @@
 
     <main class="stage" id="stage">
       <div>
-        <div class="game-frame" id="gravity-root" data-role="root">
+        <div class="game-frame" id="gravity-root" data-game-root data-role="root">
           <canvas data-role="canvas" aria-label="引力双星游戏画面：两艘飞船在中央核心的引力下沿轨道追逐"></canvas>
           <div class="focus-hint">点击画面以启用键盘</div>
           <p class="sr-only" role="status" aria-live="polite" data-role="live"></p>
@@ -70,9 +70,15 @@
           <div class="field" data-role="difficulty-field">
             <div class="field__label">AI 难度 <b data-role="difficulty-label">稳轨</b></div>
             <div class="segment segment--row" role="group" aria-label="AI 难度">
-              <button class="seg-btn" data-control="difficulty" data-value="rookie" aria-pressed="false">微轨</button>
-              <button class="seg-btn" data-control="difficulty" data-value="steady" aria-pressed="true">稳轨</button>
-              <button class="seg-btn" data-control="difficulty" data-value="keen" aria-pressed="false">锐轨</button>
+              <button class="seg-btn" data-control="difficulty" data-difficulty="rookie" data-value="rookie" aria-pressed="false">
+                微轨<span class="seg-btn__sub">轻松</span>
+              </button>
+              <button class="seg-btn" data-control="difficulty" data-difficulty="steady" data-value="steady" aria-pressed="true">
+                稳轨<span class="seg-btn__sub">普通</span>
+              </button>
+              <button class="seg-btn" data-control="difficulty" data-difficulty="keen" data-value="keen" aria-pressed="false">
+                锐轨<span class="seg-btn__sub">困难</span>
+              </button>
             </div>
           </div>
           <div class="field">
@@ -128,12 +134,9 @@
 
         <div class="card">
           <div class="card__title">机制来源</div>
-          <p class="note">
-            引力井与有限燃料来自 1962 年 MIT 的 <em>Spacewar!</em>（两艘飞船在恒星引力井中缠斗）；
+          <p class="note">引力井与有限燃料来自 1962 年 MIT 的 <em>Spacewar!</em>（两艘飞船在恒星引力井中缠斗）；
             旋转 / 推进的矢量飞船操作来自 1979 年的 <em>Asteroids</em>。
-            <b>光迹即武器</b>与<b>相位脉冲</b>为本展品原创规则。
-            <a href="./index.html#sources">查看完整来源与差异说明 →</a>
-          </p>
+            <b>光迹即武器</b>与<b>相位脉冲</b>为本展品原创规则。</p>
         </div>
       </aside>
     </main>

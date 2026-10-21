@@ -9,11 +9,11 @@
       content="展品 08-A：原创双人光点对拉。蓄力重击、偏心回弹、AI 三档难度、触屏可玩。"
     />
     <meta name="color-scheme" content="dark" />
-    <script type="module" crossorigin src="./assets/rally-DTn2zGSG.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/loop-DthldKjD.js">
-    <link rel="modulepreload" crossorigin href="./assets/storage-CmmpM2qA.js">
-    <link rel="stylesheet" crossorigin href="./assets/loop-DYUSwFgS.css">
-    <link rel="stylesheet" crossorigin href="./assets/storage-1mFWXApa.css">
+    <script type="module" crossorigin src="./assets/rally-wU_jj257.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/loop-BLYrGNSl.js">
+    <link rel="modulepreload" crossorigin href="./assets/storage-CVAWjDWB.js">
+    <link rel="stylesheet" crossorigin href="./assets/loop-UbRf63Cf.css">
+    <link rel="stylesheet" crossorigin href="./assets/storage-CPSSV5Wp.css">
   </head>
   <body class="game-page">
     <a class="skip-link" href="#stage">跳到游戏</a>
@@ -33,7 +33,7 @@
 
     <main class="stage" id="stage">
       <div>
-        <div class="game-frame" id="rally-root" data-role="root">
+        <div class="game-frame" id="rally-root" data-game-root data-role="root">
           <canvas data-role="canvas" aria-label="辉点对拉游戏画面：两块辉板之间有一颗会拖出余辉的光点"></canvas>
           <div class="focus-hint">点击画面以启用键盘</div>
           <p class="sr-only" role="status" aria-live="polite" data-role="live"></p>
@@ -71,9 +71,15 @@
           <div class="field" data-role="difficulty-field">
             <div class="field__label">AI 难度 <b data-role="difficulty-label">稳流</b></div>
             <div class="segment segment--row" role="group" aria-label="AI 难度">
-              <button class="seg-btn" data-control="difficulty" data-value="rookie" aria-pressed="false">初辉</button>
-              <button class="seg-btn" data-control="difficulty" data-value="steady" aria-pressed="true">稳流</button>
-              <button class="seg-btn" data-control="difficulty" data-value="keen" aria-pressed="false">锐锋</button>
+              <button class="seg-btn" data-control="difficulty" data-difficulty="rookie" data-value="rookie" aria-pressed="false">
+                初辉<span class="seg-btn__sub">轻松</span>
+              </button>
+              <button class="seg-btn" data-control="difficulty" data-difficulty="steady" data-value="steady" aria-pressed="true">
+                稳流<span class="seg-btn__sub">普通</span>
+              </button>
+              <button class="seg-btn" data-control="difficulty" data-difficulty="keen" data-value="keen" aria-pressed="false">
+                锐锋<span class="seg-btn__sub">困难</span>
+              </button>
             </div>
           </div>
           <div class="field">
@@ -122,11 +128,8 @@
 
         <div class="card">
           <div class="card__title">机制来源</div>
-          <p class="note">
-            对拉原型来自 1958 年 Brookhaven 的 <em>Tennis for Two</em>（示波器上的一个亮点与拖影）
-            与 1972 年 Atari 的 <em>Pong</em>。蓄力重击与偏心回弹为本展品原创规则。
-            <a href="./index.html#sources">查看完整来源与差异说明 →</a>
-          </p>
+          <p class="note">对拉原型来自 1958 年 Brookhaven 的 <em>Tennis for Two</em>（示波器上的一个亮点与拖影）
+            与 1972 年 Atari 的 <em>Pong</em>。蓄力重击与偏心回弹为本展品原创规则。</p>
         </div>
       </aside>
     </main>

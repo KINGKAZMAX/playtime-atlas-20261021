@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-21T10:34:11.209Z",
+  "builtAt": "2026-10-21T12:27:23.345Z",
   "node": "v24.13.0",
   "works": [
     {
@@ -11,9 +11,11 @@
       "buildState": "built",
       "built": true,
       "fallback": false,
-      "bytes": 961809,
-      "durationMs": 3085,
-      "notes": [],
+      "bytes": 961814,
+      "durationMs": 62769,
+      "notes": [
+        "发布过滤：移除台账文档 0 份、清理台账区块 1 处"
+      ],
       "absolutePathRisks": [],
       "entryExists": true
     },
@@ -26,9 +28,11 @@
       "buildState": "built",
       "built": true,
       "fallback": false,
-      "bytes": 9823216,
-      "durationMs": 1841,
-      "notes": [],
+      "bytes": 9908692,
+      "durationMs": 6822,
+      "notes": [
+        "发布过滤：移除台账文档 0 份、清理台账区块 1 处"
+      ],
       "absolutePathRisks": [],
       "entryExists": true
     },
@@ -41,8 +45,8 @@
       "buildState": "built",
       "built": true,
       "fallback": false,
-      "bytes": 319239,
-      "durationMs": 755,
+      "bytes": 346007,
+      "durationMs": 19194,
       "notes": [],
       "absolutePathRisks": [],
       "entryExists": true
@@ -56,8 +60,8 @@
       "buildState": "built",
       "built": true,
       "fallback": false,
-      "bytes": 678292,
-      "durationMs": 1618,
+      "bytes": 676964,
+      "durationMs": 27658,
       "notes": [],
       "absolutePathRisks": [],
       "entryExists": true
@@ -71,9 +75,11 @@
       "buildState": "built",
       "built": true,
       "fallback": false,
-      "bytes": 55395585,
-      "durationMs": 5113,
-      "notes": [],
+      "bytes": 56575023,
+      "durationMs": 7927,
+      "notes": [
+        "发布过滤：移除台账文档 3 份、清理台账区块 5 处"
+      ],
       "absolutePathRisks": [],
       "entryExists": true
     },
@@ -86,8 +92,8 @@
       "buildState": "built",
       "built": true,
       "fallback": false,
-      "bytes": 54842056,
-      "durationMs": 2150,
+      "bytes": 55631252,
+      "durationMs": 17689,
       "notes": [],
       "absolutePathRisks": [],
       "entryExists": true
@@ -101,9 +107,11 @@
       "buildState": "built",
       "built": true,
       "fallback": false,
-      "bytes": 119319,
-      "durationMs": 498,
-      "notes": [],
+      "bytes": 118138,
+      "durationMs": 4767,
+      "notes": [
+        "发布过滤：移除台账文档 3 份、清理台账区块 3 处"
+      ],
       "absolutePathRisks": [],
       "entryExists": true
     },
@@ -116,8 +124,8 @@
       "buildState": "built",
       "built": true,
       "fallback": false,
-      "bytes": 90877,
-      "durationMs": 489,
+      "bytes": 93103,
+      "durationMs": 1334,
       "notes": [],
       "absolutePathRisks": [],
       "entryExists": true
@@ -131,9 +139,11 @@
       "buildState": "built",
       "built": true,
       "fallback": false,
-      "bytes": 127359,
-      "durationMs": 490,
-      "notes": [],
+      "bytes": 124339,
+      "durationMs": 2082,
+      "notes": [
+        "发布过滤：移除台账文档 0 份、清理台账区块 1 处"
+      ],
       "absolutePathRisks": [],
       "entryExists": true
     },
@@ -146,9 +156,11 @@
       "buildState": "built",
       "built": true,
       "fallback": false,
-      "bytes": 136224,
-      "durationMs": 1334,
-      "notes": [],
+      "bytes": 136564,
+      "durationMs": 5086,
+      "notes": [
+        "发布过滤：移除台账文档 0 份、清理台账区块 1 处"
+      ],
       "absolutePathRisks": [],
       "entryExists": true
     },
@@ -162,7 +174,7 @@
       "built": true,
       "fallback": false,
       "bytes": 785146,
-      "durationMs": 991,
+      "durationMs": 3285,
       "notes": [],
       "absolutePathRisks": [],
       "entryExists": true
@@ -173,6 +185,6 @@
     "built": 11,
     "fallback": 0,
     "unavailable": 0,
-    "bytes": 123279122
+    "bytes": 125357042
   }
 }
