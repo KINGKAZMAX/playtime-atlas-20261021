@@ -2,8 +2,8 @@
   "meta": {
     "project": "PLAYTIME ATLAS",
     "projectCn": "回响电玩馆",
-    "hall": "作品总廊",
-    "hallEn": "MASTER GALLERY",
+    "hall": "作品与资产总览",
+    "hallEn": "WORKS & ASSETS",
     "repo": "playtime-atlas-20261021",
     "batch": "flash-showcase-20261021",
     "updated": "2026-10-21",
@@ -31,15 +31,17 @@
     },
     {
       "id": "archive",
-      "label": "来源索引",
-      "labelEn": "ARCHIVE",
-      "desc": "公开案例核验记录与博物馆策展资料。"
+      "publish": false,
+      "label": "档案与目录",
+      "labelEn": "ARCHIVE & CATALOG",
+      "desc": "案例档案与博物馆策展目录。"
     },
     {
       "id": "qa",
+      "publish": false,
       "label": "验收报告",
       "labelEn": "QA",
-      "desc": "全作品实机验收与原创差异审计。"
+      "desc": "全作品实机验收与原创差异核对。"
     }
   ],
   "works": [
@@ -247,7 +249,7 @@
       "id": "06-museum-main",
       "title": "回响电玩馆",
       "subtitle": "PLAYTIME ATLAS",
-      "description": "博物馆主站：十道年代门沿时间长廊排开，含检索筛选、收藏、展品来源与可玩展厅，年代展厅内嵌各时代的独立小游戏。",
+      "description": "博物馆主站：十道年代门沿时间长廊排开，含检索筛选、收藏、展品索引与可玩展厅，年代展厅内嵌各时代的独立小游戏。",
       "entry": "works/06-museum-main/index.html",
       "buildCommand": "npm run build",
       "outputDir": "docs/works/06-museum-main",
@@ -260,7 +262,7 @@
         "时间长廊",
         "年代展厅",
         "收藏系统",
-        "展品来源",
+        "展品索引",
         "内嵌可玩"
       ],
       "upstream": "06-museum-core",
@@ -563,9 +565,10 @@
     },
     {
       "id": "00-research-dossier",
+      "publish": false,
       "title": "公开案例索引",
       "subtitle": "M3.1 FLASH CASE INDEX",
-      "description": "MiniMax M3.1 Flash 全球公开案例索引：134 条案例、6 平台可核验数据，逐条记录原作者、直达链接、发布时间、模型归属原文证据、平台指标与不可见项；含 TOP3 原创改编规格对照。",
+      "description": "研究档案页：MiniMax M3.1 Flash 全球公开案例的检索与核验成果，134 条案例、6 个平台的可核验数据，逐条记录原作者、直达链接、发布时间与模型归属证据。属第三方公开资料的整理索引，不是本人原创作品。",
       "entry": "works/00-research-dossier/index.html",
       "buildCommand": "静态产物（无构建步骤）",
       "outputDir": "docs/works/00-research-dossier",
@@ -573,18 +576,22 @@
       "playable": false,
       "section": "archive",
       "era": "2026",
-      "kind": "来源核验索引",
+      "kind": "案例档案 / 资料页",
       "tags": [
         "134 条案例",
         "6 平台数据",
-        "逐条来源",
+        "逐条出处",
         "互动量快照",
         "模型归属证据"
       ],
       "upstream": "00-research",
       "build": {
         "type": "static",
-        "appDir": "apps/00-research-dossier"
+        "appDir": "apps/00-research-dossier",
+        "exclude": [
+          "manifest.json",
+          "data/"
+        ]
       },
       "cover": "assets/covers/00-research-dossier.svg",
       "controls": [
@@ -603,16 +610,17 @@
         }
       ],
       "differences": "档案为核验记录，非作品复刻；不含任何商业游戏素材。文件内的 TOP3 名单为研究阶段候选规格，实际交付物以各作品自身说明为准。",
-      "notes": "该索引由 00-research 自带，已在页内写明「TOP3 为原创改编规格，非一致复刻」。研究阶段的原始抓取日志与外部参考目录未随站点发布。",
+      "notes": "该页为检索类资料页，不产生可玩作品；页内已写明研究阶段结论与交付作品的关系。研究阶段的原始抓取日志、外部参考目录与内部台账保留在项目仓库中，不随站点发布。",
       "statusNote": "",
       "qaState": "verified",
       "qaNote": "已通过 13-qa-curation 实机验收"
     },
     {
       "id": "05-museum-catalog",
+      "publish": false,
       "title": "博物馆策展目录",
       "subtitle": "CATALOG",
-      "description": "1950s 实验电子到 2020s VR 与独立游戏的代表硬件与作品目录，逐条附年代、平台、厂商、说明、意义与来源链接，并标注配图许可状态。",
+      "description": "1950s 实验电子到 2020s VR 与独立游戏的代表硬件与作品目录，逐条附年代、平台、厂商、说明、意义与出处链接。条目为第三方史料整理，非本人原创作品。",
       "entry": "research/catalog.html",
       "buildCommand": "node scripts/build-catalog-page.mjs",
       "outputDir": "docs/research",
@@ -624,7 +632,7 @@
       "tags": [
         "目录条目",
         "来源可追溯",
-        "配图许可标注",
+        "年代筛选",
         "按年代筛选"
       ],
       "upstream": "05-museum-research",
@@ -655,9 +663,10 @@
     },
     {
       "id": "13-qa-report",
+      "publish": false,
       "title": "全作品验收报告",
       "subtitle": "QA MATRIX",
-      "description": "对 00—12 全部产物的实机验收：桌面与移动端、开始 / 暂停 / 重置、存档、键盘焦点、控制台错误、资源 404、子路径、模型导出、原创差异与许可审计。",
+      "description": "对 00—12 全部产物的实机验收：桌面与移动端、开始 / 暂停 / 重置、存档、键盘焦点、控制台错误、资源 404、子路径、模型导出与原创差异核对。",
       "entry": "qa/index.html",
       "buildCommand": "node scripts/build-qa-page.mjs",
       "outputDir": "docs/qa",
@@ -670,7 +679,7 @@
         "实机测试",
         "问题清单",
         "差异审计",
-        "许可审计"
+        "授权核对"
       ],
       "upstream": "13-qa-curation",
       "build": {

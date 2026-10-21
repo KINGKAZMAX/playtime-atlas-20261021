@@ -166,58 +166,13 @@
       "notes": [],
       "absolutePathRisks": [],
       "entryExists": true
-    },
-    {
-      "id": "00-research-dossier",
-      "title": "公开案例索引",
-      "type": "static",
-      "qaState": "verified",
-      "outputDir": "docs/works/00-research-dossier",
-      "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 397570,
-      "durationMs": 4,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
-    },
-    {
-      "id": "05-museum-catalog",
-      "title": "博物馆策展目录",
-      "type": "page",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/research",
-      "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 275913,
-      "durationMs": 39,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
-    },
-    {
-      "id": "13-qa-report",
-      "title": "全作品验收报告",
-      "type": "page",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/qa",
-      "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 68097,
-      "durationMs": 42,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
     }
   ],
   "totals": {
-    "total": 14,
-    "built": 14,
+    "total": 11,
+    "built": 11,
     "fallback": 0,
     "unavailable": 0,
-    "bytes": 124020702
+    "bytes": 123279122
   }
 }

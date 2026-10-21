@@ -1,5 +1,5 @@
 /* ============================================================
-   作品总廊 · MASTER GALLERY — 交互层
+   作品与资产总览 · WORKS & ASSETS — 交互层
    ============================================================ */
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -321,16 +321,9 @@ function openDrawer(id) {
   const pill = pillState(work);
   const controls = (work.controls || []).map((c) => `<li>${esc(c)}</li>`).join('');
   const tags = (work.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join('');
-  const sources = (work.sources || []).map((s) => {
-    const title = s.url
-      ? `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a>`
-      : esc(s.title);
-    return `<li><span>${title}${s.note ? ` — <span class="note">${esc(s.note)}</span>` : ''}</span></li>`;
-  }).join('');
   const artifacts = (work.artifacts || [])
     .map((a) => `<li><a href="${esc(a.path)}" download>${esc(a.label)}</a></li>`)
     .join('');
-  const lic = work.license || {};
 
   const statusBlock = online
     ? `<div class="d-status"><b>${esc(pill.label)}</b> · 线上入口已就绪。${
@@ -365,15 +358,11 @@ function openDrawer(id) {
         <div><dt>时代 / 年份</dt><dd>${esc(work.era || '—')}</dd></div>
         <div><dt>入口路径</dt><dd class="mono">${esc(work.entry || '—')}</dd></div>
         <div><dt>构建体积</dt><dd>${fmtBytes(work.bytes)}</dd></div>
-        <div><dt>代码许可</dt><dd>${esc(lic.code || '—')}</dd></div>
-        <div><dt>素材说明</dt><dd>${esc(lic.assets || '—')}</dd></div>
       </dl>
     </div>
     ${controls ? `<div class="d-block"><h4>操作说明</h4><ul>${controls}</ul></div>` : ''}
     ${artifacts ? `<div class="d-block"><h4>可下载产物</h4><ul>${artifacts}</ul></div>` : ''}
-    ${work.differences ? `<div class="d-block"><h4>与参考作品的差异</h4><ul><li>${esc(work.differences)}</li></ul></div>` : ''}
     ${work.notes ? `<div class="d-block"><h4>部署备注</h4><ul><li>${esc(work.notes)}</li></ul></div>` : ''}
-    ${sources ? `<div class="d-block"><h4>来源与出处</h4><ul>${sources}</ul></div>` : ''}
     ${tags ? `<div class="d-block"><h4>标签</h4><div class="card-meta" style="padding-top:0">${tags}</div></div>` : ''}
     <div class="d-actions">${actions.join('')}</div>`;
 

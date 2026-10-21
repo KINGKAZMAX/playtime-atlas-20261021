@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * 作品总廊 · 总构建编排
+ * 作品与资产总览 · 总构建编排
  * ------------------------------------------------------------------
  * 逐件构建本批作品 → 组装 site/（GitHub Pages 发布根）。
  *
@@ -121,7 +121,32 @@ function scanAbsolutePaths(dir) {
 // ---------------------------------------------------------------- manifest
 
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'works.json'), 'utf8'));
-const works = manifest.works;
+const works = manifest.works.filter((work) => work.publish !== false);
+
+// ---------------------------------------------------------------- 公开净化
+
+/**
+ * 内部台账字段：来源出处、授权说明、与参考作品的差异对照、内部流程引用。
+ * 这些内容保留在仓库的 works.json 中供内部核验，**不进入发布产物**。
+ */
+const LEDGER_FIELDS = ['sources', 'license', 'differences', 'upstream'];
+
+/** 公开 manifest 元信息白名单：note / caveat 等内部说明不外发。 */
+const PUBLIC_META_FIELDS = ['project', 'projectCn', 'hall', 'hallEn', 'repo', 'batch', 'updated'];
+
+function toPublicWorks(list) {
+  return list.map((w) => {
+    const out = { ...w };
+    for (const f of LEDGER_FIELDS) delete out[f];
+    return out;
+  });
+}
+
+function toPublicMeta(meta) {
+  const out = {};
+  for (const f of PUBLIC_META_FIELDS) if (meta[f] !== undefined) out[f] = meta[f];
+  return out;
+}
 
 // ---------------------------------------------------------------- build
 
@@ -201,12 +226,16 @@ async function buildWork(work) {
       // 纯静态产物：只发布网页文件，不带 package.json / README 等开发文件
       const keepDirs = ['data', 'public', 'assets', 'exhibits', 'models', 'fonts'];
       const keepExts = new Set(['.html', '.css', '.js', '.json', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.glb', '.woff2', '.woff', '.ico', '.map']);
+      // 发布排除项：内部台账与研究档案（manifest / cases / data 等）不随站点发布
+      const exclude = new Set((work.build?.exclude || []).map((e) => e.replace(/\/$/, '')));
       for (const e of fs.readdirSync(appDir, { withFileTypes: true })) {
         const s = path.join(appDir, e.name);
         try {
           if (e.isDirectory()) {
+            if (exclude.has(e.name)) continue;
             if (keepDirs.includes(e.name)) copyDir(s, path.join(outDir, e.name));
           } else if (e.isFile()) {
+            if (exclude.has(e.name)) continue;
             const ext = path.extname(e.name).toLowerCase();
             if (keepExts.has(ext) && e.name !== 'package.json') {
               fs.copyFileSync(s, path.join(outDir, e.name));
@@ -316,8 +345,10 @@ function assembleHall(runtimeWorks, report) {
     return source.replace(marker, (_m, a, b) => `${a}${payload}${b}`);
   };
 
+  // 公开产物只带净化后的清单：台账字段（来源 / 许可 / 差异）不外发
+  const publicWorks = toPublicWorks(runtimeWorks);
   const manifestPayload = JSON.stringify(
-    { meta: manifest.meta, sections: manifest.sections, works: runtimeWorks },
+    { meta: toPublicMeta(manifest.meta), sections: manifest.sections.filter((section) => section.publish !== false), works: publicWorks },
     null,
     2
   );
@@ -327,7 +358,7 @@ function assembleHall(runtimeWorks, report) {
   fs.writeFileSync(indexPath, html);
 
   ensure(path.join(SITE, 'data'));
-  fs.writeFileSync(path.join(SITE, 'data', 'works.json'), JSON.stringify(runtimeWorks, null, 2));
+  fs.writeFileSync(path.join(SITE, 'data', 'works.json'), JSON.stringify(publicWorks, null, 2));
 }
 
 // ---------------------------------------------------------------- main

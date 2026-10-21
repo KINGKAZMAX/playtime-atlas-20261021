@@ -1,5 +1,5 @@
 /* ============================================================
-   作品总廊 · MASTER GALLERY
+   作品与资产总览 · WORKS & ASSETS
    原创视觉：深墨蓝底 + 暖纸白 + 信号橙，技术档案 × 展陈目录
    ============================================================ */
 
@@ -357,20 +357,20 @@ main, .topbar, .footer { position: relative; z-index: 2; }
 .bstate.unavailable { background: rgba(255,106,43,.16); color: var(--signal); }
 .board-table .note { color: var(--text-faint); font-size: 11.5px; max-width: 42ch; }
 
-/* -------------------------------------------------------------- sources */
+/* ------------------------------------------------------------- overview */
 
-.sources { padding: clamp(30px, 4vw, 50px) 0 clamp(50px, 7vw, 90px); }
-.source-grid {
+.overview { padding: clamp(30px, 4vw, 50px) 0 clamp(50px, 7vw, 90px); }
+.ov-grid {
   max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(16px, 4vw, 44px);
   display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
-.src-card {
+.ov-card {
   border: 1px solid var(--line); border-radius: var(--radius);
   background: rgba(255,255,255,.025); padding: 20px 21px;
 }
-.src-card h3 { margin: 0 0 9px; font-size: 14.5px; font-weight: 700; letter-spacing: .01em; }
-.src-card p { margin: 0; font-size: 12.8px; color: var(--text-dim); line-height: 1.78; }
-.src-card b { color: var(--text); font-weight: 600; }
+.ov-card h3 { margin: 0 0 9px; font-size: 14.5px; font-weight: 700; letter-spacing: .01em; }
+.ov-card p { margin: 0; font-size: 12.8px; color: var(--text-dim); line-height: 1.78; }
+.ov-card b { color: var(--text); font-weight: 600; }
 
 /* --------------------------------------------------------------- footer */
 
