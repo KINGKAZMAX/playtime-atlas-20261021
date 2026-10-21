@@ -12,7 +12,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = path.join(ROOT, 'site', 'assets', 'covers');
+const OUT = path.join(ROOT, 'docs', 'assets', 'covers');
 
 const PALETTES = {
   standalone: { bg: ['#0a1020', '#111a2e'], ink: '#f3ede1', accent: '#ff6a2b', aux: '#4fd6e8' },

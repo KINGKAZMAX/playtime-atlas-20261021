@@ -649,11 +649,11 @@
       }
     ],
     "differences": "资料型交付物，明确为代表性选样，不宣称穷尽任何时代。",
-    "buildState": "unavailable",
+    "buildState": "fallback",
     "buildNotes": [
       "node scripts/build-catalog-page.mjs 失败 (exit 1)"
     ],
-    "bytes": 0,
+    "bytes": 10532,
     "entryExists": false,
     "online": false
   },
