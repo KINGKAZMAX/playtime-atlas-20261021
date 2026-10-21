@@ -141,24 +141,40 @@ function categories() {
   return list;
 }
 
+/*
+ * 分类按钮常驻 DOM：仅在分类集合本身变化时重建，之后只同步 aria-pressed。
+ * 重建会删掉正在操作的按钮元素，键盘焦点会掉回 body，Tab 顺序随之断裂；
+ * 常驻按钮让焦点留在当前分类上，下一次 Tab 自然进入其后的搜索框。
+ */
 function renderCats() {
   const box = $('#cats');
   if (!box) return;
-  box.innerHTML = '';
 
-  for (const cat of categories()) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'cat';
-    btn.textContent = cat.label;
-    btn.setAttribute('aria-pressed', String(state.section === cat.id));
-    btn.addEventListener('click', () => {
-      if (state.section === cat.id) return;
-      state.section = cat.id;
-      renderCats();
-      render();
-    });
-    box.appendChild(btn);
+  const list = categories();
+  const ids = list.map((c) => c.id).join('\u0000');
+  const domIds = $$('.cat', box).map((b) => b.dataset.cat || '').join('\u0000');
+
+  if (ids !== domIds) {
+    box.textContent = '';
+
+    for (const cat of list) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cat';
+      btn.textContent = cat.label;
+      btn.dataset.cat = cat.id;
+      btn.addEventListener('click', () => {
+        if (state.section === cat.id) return;
+        state.section = cat.id;
+        renderCats();
+        render();
+      });
+      box.appendChild(btn);
+    }
+  }
+
+  for (const btn of $$('.cat', box)) {
+    btn.setAttribute('aria-pressed', String(state.section === btn.dataset.cat));
   }
 }
 
