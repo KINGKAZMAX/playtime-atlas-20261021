@@ -1,0 +1,21 @@
+{
+  "id": "08-era-origins",
+  "title": "光点年代",
+  "description": "早期电子实验与街机机制展厅：双人 / AI 光点球与轨道引力对决，含开始、暂停、重开、计分、难度与触屏支持。",
+  "entry": "works/08-era-origins/index.html",
+  "buildCommand": "npm run build",
+  "outputDir": "docs/works/08-era-origins",
+  "status": "ready",
+  "upstream": "08-era-origins",
+  "license": {
+    "code": "MIT",
+    "assets": "几何图形与音效代码合成，零外部素材"
+  },
+  "sources": [
+    {
+      "title": "时代史料来源（随展厅交付）",
+      "url": "",
+      "note": "展厅内附史料来源链接。"
+    }
+  ]
+}

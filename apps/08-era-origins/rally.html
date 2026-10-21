@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>辉点对拉 / LUMEN RALLY · 光点年代</title>
+    <meta
+      name="description"
+      content="展品 08-A：原创双人光点对拉。蓄力重击、偏心回弹、AI 三档难度、触屏可玩。"
+    />
+    <meta name="color-scheme" content="dark" />
+    <link rel="stylesheet" href="./src/styles/base.css" />
+    <link rel="stylesheet" href="./src/styles/game.css" />
+  </head>
+  <body class="game-page">
+    <a class="skip-link" href="#stage">跳到游戏</a>
+
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="topbar__brand" href="./index.html"><b>光点年代</b> LUMEN ERA</a>
+        <span class="topbar__sep"></span>
+        <h1 class="topbar__title">辉点对拉 <span>Lumen Rally</span></h1>
+        <div class="topbar__actions">
+          <button class="btn btn--sm btn--ghost" data-control="mute" aria-pressed="false">音效 开</button>
+          <button class="btn btn--sm btn--ghost" data-control="pause">暂停</button>
+          <button class="btn btn--sm btn--ghost" data-control="restart">重开</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="stage" id="stage">
+      <div>
+        <div class="game-frame" id="rally-root" data-role="root">
+          <canvas data-role="canvas" aria-label="辉点对拉游戏画面：两块辉板之间有一颗会拖出余辉的光点"></canvas>
+          <div class="focus-hint">点击画面以启用键盘</div>
+          <p class="sr-only" role="status" aria-live="polite" data-role="live"></p>
+          <div class="overlay" data-role="overlay" hidden>
+            <div class="overlay__card">
+              <p class="overlay__kicker" data-role="overlay-kicker"></p>
+              <h2 class="overlay__title" data-role="overlay-title"></h2>
+              <p class="overlay__desc" data-role="overlay-desc"></p>
+              <div class="overlay__actions" data-role="overlay-actions"></div>
+              <p class="overlay__meta" data-role="overlay-meta"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="touchpad touchpad--on" aria-hidden="true">
+          <button class="touchpad__btn" data-touch="p1-up">左辉 ▲</button>
+          <button class="touchpad__btn" data-touch="p1-down">左辉 ▼</button>
+          <button class="touchpad__btn" data-touch="p2-up">右辉 ▲</button>
+          <button class="touchpad__btn" data-touch="p2-down">右辉 ▼</button>
+          <button class="touchpad__btn" data-touch="p1-charge">左辉蓄力</button>
+          <button class="touchpad__btn" data-touch="p2-charge">右辉蓄力</button>
+        </div>
+      </div>
+
+      <aside class="side">
+        <div class="card">
+          <div class="card__title">对局设置</div>
+          <div class="field">
+            <div class="field__label">模式</div>
+            <div class="segment segment--row" role="group" aria-label="对局模式">
+              <button class="seg-btn" data-control="mode" data-value="1p" aria-pressed="true">单人 vs AI</button>
+              <button class="seg-btn" data-control="mode" data-value="2p" aria-pressed="false">双人同屏</button>
+            </div>
+          </div>
+          <div class="field" data-role="difficulty-field">
+            <div class="field__label">AI 难度 <b data-role="difficulty-label">稳流</b></div>
+            <div class="segment segment--row" role="group" aria-label="AI 难度">
+              <button class="seg-btn" data-control="difficulty" data-value="rookie" aria-pressed="false">初辉</button>
+              <button class="seg-btn" data-control="difficulty" data-value="steady" aria-pressed="true">稳流</button>
+              <button class="seg-btn" data-control="difficulty" data-value="keen" aria-pressed="false">锐锋</button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field__label">最高分 <b data-role="best-label">0 : 0</b></div>
+            <p class="note">记录保存在本机浏览器中。</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__title">操作</div>
+          <dl class="keys">
+            <div class="keys__row">
+              <dt><kbd>W</kbd><kbd>S</kbd></dt>
+              <dd>左辉上下移动</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>↑</kbd><kbd>↓</kbd></dt>
+              <dd>右辉移动（单人模式也可用）</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>空格</kbd></dt>
+              <dd>左辉蓄力，松手蓄能就绪</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>/</kbd><kbd>.</kbd></dt>
+              <dd>右辉蓄力（双人模式）</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>P</kbd><kbd>Esc</kbd></dt>
+              <dd>暂停 / 继续</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>R</kbd></dt>
+              <dd>重开</dd>
+            </div>
+            <div class="keys__row">
+              <dt><kbd>M</kbd></dt>
+              <dd>静音开关</dd>
+            </div>
+          </dl>
+          <p class="note" style="margin-top: 12px">
+            <strong>键盘只在画面获得焦点时生效</strong>，以免影响同页其它区域。
+            触屏玩家直接拖动画面即可控制辉板。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card__title">机制来源</div>
+          <p class="note">
+            对拉原型来自 1958 年 Brookhaven 的 <em>Tennis for Two</em>（示波器上的一个亮点与拖影）
+            与 1972 年 Atari 的 <em>Pong</em>。蓄力重击与偏心回弹为本展品原创规则。
+            <a href="./index.html#sources">查看完整来源与差异说明 →</a>
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="foot">
+      <div class="foot__inner">
+        <span>展品 08-A · 原创重新演绎 · 非任何历史作品的复刻</span>
+        <span class="foot__links">
+          <a href="./index.html">返回展厅</a>
+          <a href="./gravity.html">下一件：引力双星 →</a>
+        </span>
+      </div>
+    </footer>
+
+    <script type="module" src="./src/games/rally.entry.js"></script>
+  </body>
+</html>

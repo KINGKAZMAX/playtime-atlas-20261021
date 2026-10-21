@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..');
-const SRC_DIR = path.join(ROOT, 'apps', 'qa-report');
+const SRC_DIR = path.join(ROOT, 'apps', '13-qa-report');
 const MD = path.join(SRC_DIR, 'QA-MATRIX.md');
 const ISSUES = path.join(SRC_DIR, 'issues.json');
 const OUT_DIR = path.join(ROOT, 'docs', 'qa');
@@ -101,6 +101,12 @@ function md2html(md) {
     const buf = [];
     while (i < lines.length && lines[i].trim() && !/^(#{1,4}\s|```|\s*[-*]\s|\s*\d+\.\s|>|\s*\|)/.test(lines[i])) {
       buf.push(lines[i++]);
+    }
+    if (!buf.length) {
+      // 无法归类的行（例如缺少分隔行的表格片段）：原样输出并前进，避免死循环
+      out.push(`<p style="margin:0 0 11px;font-size:13.5px;color:#97a0b6;line-height:1.85">${inline(line)}</p>`);
+      i++;
+      continue;
     }
     out.push(`<p style="margin:0 0 11px;font-size:13.5px;color:#97a0b6;line-height:1.85">${inline(buf.join(' '))}</p>`);
   }

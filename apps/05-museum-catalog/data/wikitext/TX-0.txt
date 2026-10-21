@@ -1,0 +1,103 @@
+{{Short description|Early transistorized computer}}
+[[File:MIT TX-0 computer Philco surface-barrier transistors.JPG|thumb|TX-0 computer circuitry used Philco surface-barrier transistors, which were encapsulated in plug-in vacuum tubes for testing and easy removal.]]
+[[File:Philco Surface barrier transistor ad=1955.JPG|thumb|Philco surface-barrier transistor advertisement for the first high-frequency transistors, which were used in the TX-0 transistorized computer]]
+
+The '''TX-0''', for '''''T'''ransistorized E'''x'''perimental computer '''zero''''', but affectionately referred to as '''tixo''' (pronounced "tix oh"), is an early fully [[Transistor computer|transistorized computer]] that contained a then-huge 64[[Kilo-|K]] of [[18-bit computing|18-bit]] [[Word (computer architecture)|words]] of [[magnetic-core memory]]. Construction of the TX-0 began in 1955<ref>{{Cite book|url=https://books.google.com/books?id=-cIdzHlhGYgC&q=%22tx-0%22+1955&pg=PA133|title=Biomedical Computing: Digitizing Life in the United States|last=November|first=Joseph A.|date=2012-04-23|publisher=JHU Press|isbn=9781421404684|pages=133|language=en|access-date=2020-11-21|archive-date=2024-06-30|archive-url=https://web.archive.org/web/20240630181823/https://books.google.com/books?id=-cIdzHlhGYgC&q=%22tx-0%22+1955&pg=PA133#v=snippet&q=%22tx-0%22%201955&f=false|url-status=live}}</ref> and ended in 1956.<ref>{{Cite book|url=https://books.google.com/books?id=l0OYhHefumoC&q=%22tx-0%22+1956&pg=PA48|title=A History of the Internet and the Digital Future|last=Ryan|first=Johnny|date=2010-09-15|publisher=Reaktion Books|isbn=9781861898357|pages=48|language=en|access-date=2020-11-21|archive-date=2024-06-30|archive-url=https://web.archive.org/web/20240630181824/https://books.google.com/books?id=l0OYhHefumoC&q=%22tx-0%22+1956&pg=PA48#v=snippet&q=%22tx-0%22%201956&f=false|url-status=live}}</ref><ref name=":0">{{Cite book|url=https://books.google.com/books?id=x1YESXanrgQC&q=%22tx-0%22+1955&pg=PA127|title=A History of Modern Computing|last=Ceruzzi|first=Paul E.|date=2003|publisher=MIT Press|isbn=9780262532037|pages=127|language=en|access-date=2020-11-21|archive-date=2022-04-07|archive-url=https://web.archive.org/web/20220407192641/https://books.google.com/books?id=x1YESXanrgQC&q=%22tx-0%22+1955&pg=PA127|url-status=live}}</ref><ref name="cm">{{cite web|url=https://ed-thelen.org/comp-hist/TCMR-V08.pdf|title=The Computer Museum Report Number 8|date=Spring 1984|publisher=[[The Computer Museum, Boston]]|via=Ed Thelen's Web Site|url-status=live|access-date=2010-02-19|archive-date=2010-09-20|archive-url=https://web.archive.org/web/20100920213648/https://ed-thelen.org/comp-hist/TCMR-V08.pdf}}</ref> It was used continually through the 1960s at [[Massachusetts Institute of Technology|MIT]]. The TX-0 incorporated around 3,600 [[Philco]] high-frequency [[surface-barrier transistor]]s, the first transistor suitable for high-speed computers.<ref>{{cite report | author=Saul Rosen | author-link=Saul Rosen | title=PHILCO: Some Recollections of the PHILCO TRANSAC S-2000 | institution=Purdue University | type=Computer Science Technical Reports / Purdue e-Pubs | number=CSD-TR-91-051 | url=https://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=1890&context=cstech | date=June 1991 | access-date=2016-07-19 | archive-date=2016-03-04 | archive-url=https://web.archive.org/web/20160304124554/http://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=1890&context=cstech | url-status=live }} Here: page 2</ref> The TX-0 and its direct descendant, the [[PDP-1]], were platforms for pioneering computer research and the development of what would later be called computer "[[hacker]]" culture. For MIT, this was the first computer to provide a [[system console]] which allowed for direct interaction, as opposed to previous computers, which required the use of [[punched card]] as a primary interface for programmers debugging their programs.<ref>{{Citation
+| last1       = Chiou
+| first1      = Stefanie
+| last2       = Music
+| first2      = Craig
+| last3       = Sprague
+| first3      = Kara
+| last4       = Wahba
+| first4      = Rebekah
+| year        = 2001
+| title       = A Marriage of Convenience: The Founding of the MIT Artificial Intelligence Laboratory
+| publisher   = AI Lab at MIT
+| page        = 6
+| url         = http://worrydream.com/refs/FoundingOfTheAILab.pdf
+| url-status  = live | archive-date=2013-08-05 | archive-url=https://web.archive.org/web/20130805181140/http://worrydream.com/refs/FoundingOfTheAILab.pdf
+}}</ref> 
+Members of MIT's [[Tech Model Railroad Club]], "the very first hackers at MIT",  reveled in the interactivity afforded 
+by the console, and were recruited by [[Marvin Minsky]] to work on this and other systems used by Minsky's AI group.<ref>{{Citation
+| last1       = Chiou
+| first1      = Stefanie
+| last2       = Music
+| first2      = Craig
+| last3       = Sprague
+| first3      = Kara
+| last4       = Wahba
+| first4      = Rebekah
+| year        = 2001
+| title       = A Marriage of Convenience: The Founding of the MIT Artificial Intelligence Laboratory
+| publisher   = AI Lab at MIT
+| pages       = 7–8
+| url         = http://worrydream.com/refs/FoundingOfTheAILab.pdf
+| url-status  = live | archive-date=2013-08-05 | archive-url=https://web.archive.org/web/20130805181140/http://worrydream.com/refs/FoundingOfTheAILab.pdf
+}}</ref>
+
+==Background==
+The TX-0 was designed at the [[Massachusetts Institute of Technology|MIT]] [[Lincoln Laboratory]]<ref name="cm" /> largely as an experiment in [[transistor]]ized design. Like the [[Whirlwind I|Whirlwind]], the TX-0 was equipped with a [[vector display]] system, consisting of a 12-inch [[oscilloscope]] with a working area of 7 by 7 inches connected to the 18-bit output [[Hardware register|register]] of the computer, allowing it to display points and vectors with a resolution up to 512×512 screen locations.<ref>{{cite web |date = 1958-10-03| last1 = Gilmore | first1 = J.T. | last2 = Peterson |first2 = H.P.
+ | title = A functional description of the TX-0 computer |via = BitSavers.org @ Trailing-Edge.com
+ | url = http://bitsavers.trailing-edge.com/pdf/mit/tx-0/6M-4789-1_TX0_funcDescr.pdf | url-status = live | archive-date = 2012-10-03 | archive-url = https://web.archive.org/web/20121003000226/http://bitsavers.trailing-edge.com/pdf/mit/tx-0/6M-4789-1_TX0_funcDescr.pdf |quote = Div. 6 - Lincoln Lab [[MIT]]
+}}</ref>
+
+The TX-0 was an 18-bit computer with a 16-bit address range. The first two bits of the machine word designated the instruction, and the remaining 16 bits are used to specify the memory location or operand for the special "operate" instruction. These two bits created four possible instructions, which included store, add, and conditional branch instructions as a basic set.
+
+[[Wesley A. Clark]] designed the logic and [[Ken Olsen]] oversaw the engineering development.<ref name="cm"/>
+
+==Development==
+Initially a vacuum-tube computer named TX-1 was being designed to test the first large [[magnetic-core memory]] bank.  However, the design was never approved and the TX-1 was never built.  Instead, the TX-0 was designed for the same purpose, except using transistors. With the successful completion of the TX-0, work turned immediately to the much larger and far more complex [[TX-2]], completed in 1958.<ref>{{Citation
+| last       =Ornstein
+| first      =Severo
+| date       =November 15, 2002
+| title      =Computing in the Middle Ages: A View from the Trenches 1955-1983
+| publisher  =1stBooks | publication-place =Bloomington, Ind.
+| page       =80 | isbn =978-1-40-331517-5 | oclc =51823994
+| url        =https://archive.computerhistory.org/resources/access/text/2019/03/102785079-05-01-acc.pdf
+| via        =ComputerHistory.org Archive
+| url-status =live | archive-date=2021-02-15 | archive-url= https://web.archive.org/web/20210215075637/https://archive.computerhistory.org/resources/access/text/2019/03/102785079-05-01-acc.pdf
+}}</ref> Since core memory was very expensive at the time, several parts of the TX-0 memory were cannibalized for the TX-2 project.
+
+After a time, the TX-0 was no longer considered worth keeping at Lincoln Lab, and was "loaned" (semi-permanently) to the MIT Research Laboratory of Electronics (RLE) in July 1958, where it became a centerpiece of research that would eventually evolve into the [[MIT Artificial Intelligence Lab]] and the original computer [[hacker culture]]. Delivered from Lincoln Laboratory with only 4K of core, the machine no longer needed 16 bits to represent a storage address. After about a year and a half, the number of instruction bits was doubled to four, allowing a total of 16 instructions, and an [[index register]] was added. This dramatically improved programmability of the machine, but still left room for a later memory expansion to 8K (the four instruction bits and one-bit indexing flag left 13 bits for addressing). This newly modified TX-0 was used to develop a huge number of advances in computing, including [[speech recognition|speech]] and [[handwriting recognition]], as well as the tools needed to work on such projects, including [[text editor]]s and [[debugger]]s.
+
+Meanwhile, the TX-2 project was running into difficulties of its own, and several team members decided to leave the project at Lincoln Lab and start their own company - [[Digital Equipment Corporation]] (DEC).
+
+<!--==Software==-->
+<!-- Midas assembler? -->
+==Legacy==
+After a short time selling "lab modules" in the form of simple logic elements from the TX-2 design, the newly formed Digital Equipment Corporation (DEC) decided to produce a "cleaned up" TX-0 design, and delivered it in 1961 as the [[PDP-1]]. A year later, DEC donated the engineering prototype PDP-1 machine to MIT. It was installed in the room next to TX-0, and the two machines would run side-by-side for almost a decade.
+One of the TX-0 assemblers was ported to the [[PDP-1]] over a weekend in a team effort.
+
+<!-- Something here should reference paper by John McKenzie who was the technician who originally assembled the machine and took care of disassembly, moving, and reassembly & commissioning every time it was moved and brought back up: https://archive.org/details/bitsavers_mittx0memoOct74_2884219
+It might have more dates. -->
+TX-0 was shut down in 1976<ref name=Bell_video_interview>{{cite AV media |interviewer-last=Bell |interviewer-first=Gordon |interviewer-link=Gordon Bell |date=November 13, 1983 |title=The Computer Pioneers [unfinished] |time=16m 21s |type=Video interview |location= |access-date=24 October 2025|url=https://ethw.org/Archives:The_Computer_Pioneers:_The_TX-0|quote="Gordon Bell: When did the ... TX-0 actually shut down? John A. McKenzie: In '76."}}</ref>, then sold for US$450 to the then [[The Computer Museum, Boston|Digital Computer Museum]] and disassembled. It then spent about two years in storage, until its processor and console were put on display in the Computer Museum at [[Marlborough, Massachusetts]] from summer 1979 until 1981. In late 1983, the TX-0 was moved to the museum's new building in [[Boston, Massachusetts]] and restored by John A. McKenzie who had been its technician at MIT, with help from Dick Best and [[Alan Kotok]]; it was working again by November.<ref name=cm /> It appears in the "Mainframes to Minis to Micros" episode of [[Computer Chronicles|The Computer Chronicles]], recording date 31 October 1983, running the "Mouse in the Maze" program.<ref name=chronicles_tv_appearance>{{cite episode |title=Mainframes to Minis to Micros |series=[[The Computer Chronicles]]|date=31 October 1983|number=1008|url=https://archive.org/details/MainFram1984|access-date=29 May 2026}}</ref>
+<!-- TODO: add citation? https://archive.org/details/tcm-tx0-is-alive-and-well -->
+<!-- TODO: scrape up info in Digital This Week? -->
+
+<!-- TODO: when was it shut down at TCM (DEC) (MR2-2)? -->
+<!-- TODO: where was the picture of it in pieces now at Lincoln Lab? -->
+As part of its use in artificial intelligence research, the computer was used to write simple western playlets and was featured in the 1961 CBS television documentary "The Thinking Machine", and in the companion book by John Pfeiffer of the same title published by the JB Lippincott  Company in 1962.
+
+==See also==
+* [[Expensive Desk Calculator]]
+* [[Expensive Tape Recorder]]
+* [[Early history of video games]] — early video games invented on the TX-0
+
+==References==
+{{Reflist}}
+
+==External links==
+* [https://dspace.mit.edu/handle/1721.1/4132 RLE Technical Report 627 TX-0 Computer History (Oct 1974)], John A. McKenzie. ([https://dspace.mit.edu/bitstream/1721.1/4132/1/RLE-TR-627-42827671.pdf direct link])
+* [http://purl.umn.edu/107244 Oral history interview with Jack B. Dennis], [[Charles Babbage Institute]], University of Minnesota. — Dennis describes his educational background and work in time-sharing computer systems at the Massachusetts Institute of Technology (MIT), including the TX-0 computer, the work of [[John McCarthy (computer scientist)|John McCarthy]] on time-sharing, and the development of [[Multics]] at General Electric.
+* [https://web.archive.org/web/20020426085021/http://ed-thelen.org/comp-hist/TheCompMusRep/TCMR-V08.html The TX-0: Its Past and Present]
+* [http://www.bitsavers.org/pdf/mit/tx-0 TX-0 documentation]
+* [http://www.bitsavers.org/bits/MIT/tx-0/ TX-0 programs]
+* [[Steven Levy]], ''[[Hackers: Heroes of the Computer Revolution]]''
+* {{cite web|title=Welcome|url=http://tixo.org/welcome|work=Tixo.org|archive-url=https://web.archive.org/web/20110722041750/http://tixo.org/welcome|archive-date=2011-07-22|url-status=dead|access-date=2011-07-02}} — Website dedicated to information about the TX-0 computer. [Website partially working when checked]
+* {{Cite web|url=http://ethw.org/Archives:The_Computer_Pioneers:_The_TX-0|title=Archives:The Computer Pioneers: The TX-0|date=November 13, 1983 |website=Engineering and Technology History Wiki|quote=Development of the TX-0 at MIT - participants include Doug Ross and Harrison (Dit) Morse, Electronic Systems Group alumni, interview conducted by Gordon Bell.|access-date=2017-12-07}}
+
+[[Category:One-of-a-kind computers]]
+[[Category:Transistorized computers]]
+[[Category:18-bit computers]]
+[[Category:Computer-related introductions in 1956]]

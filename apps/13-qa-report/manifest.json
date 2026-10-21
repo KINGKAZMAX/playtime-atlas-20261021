@@ -1,0 +1,229 @@
+{
+  "id": "13-qa-curation",
+  "title": "全作品试玩验收与差异审计",
+  "description": "对 00—12 号任务的产物做独立验收：只读他人目录，在真实 Chromium 中对每件可运行作品做桌面(1440×900)与移动端(390×844)双视口实测，覆盖开始/暂停/重置状态机、存档跨刷新往返、键盘焦点可达性与作用域、console 错误、同源资源 404、GitHub Pages 子路径部署、3D 模型导出（GLB 容器头校验）九个必测维度；另做原创差异与来源许可审计。缺失产物一律记为 not-delivered / in-progress，不计通过。产出可复现的 Playwright 验收方案（qa-harness/）、证据 JSON、截图、机器可读问题清单与给发布任务的三类名单（可上线 / 需修复后上线 / 暂不上线）。",
+  "entry": "QA-MATRIX.md",
+  "buildCommand": "cd qa-harness && npm install && node run-qa.mjs && node build-reports.mjs",
+  "outputDir": ".",
+  "status": "ready",
+  "upstream": "13-qa-curation",
+  "license": {
+    "code": "MIT",
+    "assets": "自有测试截图与结论"
+  },
+  "sources": [
+    {
+      "title": "13-qa-curation 实机测试记录",
+      "url": "",
+      "note": "缺失项记为未通过，不记为通过。"
+    }
+  ],
+  "task": "13",
+  "batch": "flash-showcase-20261021",
+  "model": {
+    "name": "MiniMax-M3.1-Flash",
+    "effort": "max",
+    "note": "全部验收设计、脚本编写、浏览器实测、缺陷定位与报告撰写均由 MiniMax Code M3.1-Flash / max 完成"
+  },
+  "observedAt": "2026-10-21",
+  "scope": {
+    "readOnly": [
+      "00-research",
+      "01-web",
+      "02-model",
+      "03-interaction",
+      "04-spaceflight",
+      "05-museum-research",
+      "06-museum-core",
+      "07-museum-art",
+      "08-era-origins",
+      "09-era-arcade",
+      "10-era-console",
+      "11-era-online",
+      "12-era-modern"
+    ],
+    "writeOnly": "13-qa-curation/",
+    "note": "未修改任何实现者目录；构建全部在系统临时目录的副本中进行（node_modules 以符号链接复用），实现者目录全程只读。",
+    "deploy": "本任务不执行 GitHub 写入与部署；线上部署与线上复验由 14-publish 负责。"
+  },
+  "dimensions": [
+    {
+      "id": "D1",
+      "name": "桌面端 1440×900",
+      "browser": true
+    },
+    {
+      "id": "D2",
+      "name": "移动端 390×844",
+      "browser": true
+    },
+    {
+      "id": "D3",
+      "name": "开始 / 暂停 / 重置状态机",
+      "browser": true
+    },
+    {
+      "id": "D4",
+      "name": "存档写入与跨刷新往返",
+      "browser": true
+    },
+    {
+      "id": "D5",
+      "name": "键盘焦点可达性与作用域",
+      "browser": true
+    },
+    {
+      "id": "D6",
+      "name": "控制台错误 / 未捕获异常",
+      "browser": true
+    },
+    {
+      "id": "D7",
+      "name": "同源资源 404 与跨域依赖",
+      "browser": true
+    },
+    {
+      "id": "D8",
+      "name": "GitHub Pages 子路径部署",
+      "browser": true
+    },
+    {
+      "id": "D9",
+      "name": "3D 模型导出（GLB 容器头校验）",
+      "browser": true
+    },
+    {
+      "id": "D10",
+      "name": "原创差异（名称/文案/字体/配色/布局/模型形态）",
+      "browser": false
+    },
+    {
+      "id": "D11",
+      "name": "来源与许可",
+      "browser": false
+    },
+    {
+      "id": "D12",
+      "name": "交付完整性（README / manifest / 状态声明真实性）",
+      "browser": false
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "13-qa-curation/TASK.md",
+      "title": "任务契约",
+      "type": "doc",
+      "path": "TASK.md",
+      "description": "交付单元、D1—D12 维度定义、严重级别表、目录产物清单、完成定义。",
+      "status": "ready"
+    },
+    {
+      "id": "13-qa-curation/STATUS.md",
+      "title": "执行状态",
+      "type": "doc",
+      "path": "STATUS.md",
+      "description": "进度、关键判定记录、已确认缺陷与通过情况。",
+      "status": "ready"
+    },
+    {
+      "id": "13-qa-curation/README.md",
+      "title": "验收说明与结论速览",
+      "type": "doc",
+      "path": "README.md",
+      "description": "目录导航、复现方法、各维度测法、关键发现、限制声明。",
+      "status": "ready"
+    },
+    {
+      "id": "13-qa-curation/QA-CHECKLIST.md",
+      "title": "验收清单",
+      "type": "spec",
+      "path": "QA-CHECKLIST.md",
+      "description": "通用判定口径 + 逐作品逐维度勾选表 + 解除 not-delivered 所需条件。",
+      "status": "ready"
+    },
+    {
+      "id": "13-qa-curation/QA-MATRIX.md",
+      "title": "作品 × 维度总矩阵",
+      "type": "report",
+      "path": "QA-MATRIX.md",
+      "description": "每件作品每个维度的状态与结论，含实测数字；由 evidence/ 自动生成。",
+      "status": "ready"
+    },
+    {
+      "id": "13-qa-curation/issues.json",
+      "title": "问题清单（机器可读）",
+      "type": "data",
+      "path": "issues.json",
+      "description": "按严重级排序；每条含 repro / evidence / fixSuggestion（含可直接粘贴的代码片段）。",
+      "status": "ready"
+    },
+    {
+      "id": "13-qa-curation/DIFF-AUDIT.md",
+      "title": "原创差异与来源许可审计",
+      "type": "report",
+      "path": "DIFF-AUDIT.md",
+      "description": "8 项判定口径 × 逐件结论 + 跨作品一致性观察。",
+      "status": "ready"
+    },
+    {
+      "id": "13-qa-curation/HANDOFF-14.md",
+      "title": "给发布任务的行动清单",
+      "type": "spec",
+      "path": "HANDOFF-14.md",
+      "description": "可上线 / 需修复后上线 / 暂不上线三类名单 + 4 条发布红线 + 部署后复验清单。",
+      "status": "ready"
+    },
+    {
+      "id": "13-qa-curation/inventory.json",
+      "title": "00—12 产物清点",
+      "type": "data",
+      "path": "inventory.json",
+      "description": "每个目录的文件数、构建命令、产出目录、入口与交付件齐备性。",
+      "status": "ready"
+    },
+    {
+      "id": "13-qa-curation/qa-harness",
+      "title": "可执行验收方案",
+      "type": "tool",
+      "path": "qa-harness/",
+      "description": "Playwright 验收方案：子路径静态服务器、临时副本构建、就绪闸门、通用维度检查、2 件专属探针 + 展厅通用探针、报告生成器。",
+      "status": "ready"
+    },
+    {
+      "id": "13-qa-curation/evidence",
+      "title": "验收原始证据",
+      "type": "evidence",
+      "path": "evidence/",
+      "description": "每件作品一次验收的 JSON：构建日志、逐项检查结论、console/网络记录。",
+      "status": "ready"
+    },
+    {
+      "id": "13-qa-curation/screenshots",
+      "title": "截图证据",
+      "type": "media",
+      "path": "screenshots/",
+      "description": "桌面/移动/探针三态真实浏览器截图。",
+      "status": "ready"
+    }
+  ],
+  "method": {
+    "browser": "playwright-core 1.64.1 + 本机缓存 chromium-1248（channel:'chromium'），不下载浏览器",
+    "buildIsolation": "源码复制到系统临时目录后构建，node_modules 以符号链接复用；实现者目录零写入",
+    "subpath": "自建可挂载前缀的静态服务器，复现 /<repo>/exhibits/<id>/ 形态",
+    "readinessGate": "入口文件与 vite 多页入口缺失时判为 in-progress，既不计通过也不计失败",
+    "dedup": "issues.json 按 (作品, 维度, 检查名) 去重，并记录 occurrences"
+  },
+  "limitations": [
+    "触屏手势（滑动、双指）未在真机验证；触控结论基于 Chromium 模拟上下文与命中区域尺寸检查。",
+    "音频未做主观音质评估，只验证 AudioContext 可在用户手势后启动且无控制台报错。",
+    "性能未做量化（FPS 只读取页面自报值）。",
+    "无头 Chromium 与真机 Safari / iOS 的渲染差异未覆盖。",
+    "研究类任务（00-research、05-museum-research）按文件级交付物验收，不做浏览器维度判定。",
+    "本任务不执行部署，线上验收由 14-publish 在发布后进行。"
+  ],
+  "publish": {
+    "authorizedByUser": true,
+    "deployOwner": "14-publish",
+    "note": "用户已授权本批成果发布到其已登录 GitHub 并在线体验；本任务只交付验收结论与可复现的验收方案，不上传凭据、不含日志/私有文件、不另建仓库、不写 GitHub。"
+  }
+}

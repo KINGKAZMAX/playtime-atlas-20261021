@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>织造车间调度台 · LOOMDECK</title>
+<meta name="description" content="织造车间调度台 LOOMDECK — 浏览器端实时织造排产工具：机台矩阵、订单簿、任务编排、实时遥测与事件日志。" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <script type="module" crossorigin src="./assets/index-4UqGTl59.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/style-BLfx7Gwv.css">
+</head>
+<body>
+
+<a class="skip-link" href="#loom-grid">跳到机台矩阵</a>
+
+<!-- ══════════════ 页眉 ══════════════ -->
+<header class="masthead">
+  <div class="masthead__brand">
+    <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+      <rect x="4" y="4" width="40" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <path d="M12 12v24M18 12v24M24 12v24M30 12v24M36 12v24" stroke="currentColor" stroke-width="1.5" opacity=".55"/>
+      <path d="M10 18h28M10 26h28M10 34h28" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+      <circle cx="24" cy="24" r="4.6" fill="currentColor"/>
+    </svg>
+    <div class="masthead__titles">
+      <h1>织造车间调度台</h1>
+      <p class="masthead__sub">LOOMDECK · 实时排产与机台监控</p>
+    </div>
+  </div>
+
+  <dl class="masthead__stats" id="headline-stats">
+    <div class="hstat"><dt>在织台数</dt><dd id="stat-running">—</dd></div>
+    <div class="hstat"><dt>待排订单</dt><dd id="stat-queued">—</dd></div>
+    <div class="hstat"><dt>本班产量</dt><dd id="stat-output">—</dd></div>
+    <div class="hstat"><dt>断经率</dt><dd id="stat-breakrate">—</dd></div>
+  </dl>
+
+  <div class="masthead__actions">
+    <button type="button" class="btn btn--ghost" id="btn-help" aria-haspopup="dialog">快捷键</button>
+    <button type="button" class="btn btn--ghost" id="btn-reset-all">重置车间</button>
+  </div>
+</header>
+
+<!-- 恢复会话提示 -->
+<div class="restore-banner" id="restore-banner" hidden role="status">
+  <span class="restore-banner__dot" aria-hidden="true"></span>
+  <span id="restore-banner-text">已恢复上次会话</span>
+  <button type="button" class="btn btn--tiny" id="btn-dismiss-restore">知道了</button>
+</div>
+
+<main class="workshop">
+
+  <!-- ══════════════ 左栏：订单簿 ══════════════ -->
+  <section class="panel panel--orders" aria-labelledby="orders-title">
+    <header class="panel__head">
+      <h2 id="orders-title">订单簿</h2>
+      <span class="panel__count" id="orders-count">0</span>
+    </header>
+
+    <form class="order-form" id="order-form" novalidate>
+      <div class="field">
+        <label for="f-cloth">布种</label>
+        <select id="f-cloth" name="cloth">
+          <option value="亚麻">亚麻</option>
+          <option value="棉缎">棉缎</option>
+          <option value="羊毛">羊毛</option>
+          <option value="桑蚕丝">桑蚕丝</option>
+          <option value="苎麻">苎麻</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="f-width">幅宽 <span class="field__unit">cm</span></label>
+        <input id="f-width" name="width" type="number" inputmode="numeric" value="90" step="1" />
+      </div>
+
+      <div class="field">
+        <label for="f-density">经密 <span class="field__unit">根/cm</span></label>
+        <input id="f-density" name="density" type="number" inputmode="numeric" value="42" step="1" />
+      </div>
+
+      <div class="field">
+        <label for="f-picks">匹数</label>
+        <input id="f-picks" name="picks" type="number" inputmode="numeric" value="4" step="1" />
+      </div>
+
+      <div class="field">
+        <label for="f-dye">配色</label>
+        <select id="f-dye" name="dye">
+          <option value="靛蓝">靛蓝</option>
+          <option value="柿红">柿红</option>
+          <option value="苔绿">苔绿</option>
+          <option value="米白">米白</option>
+          <option value="墨黑">墨黑</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="f-priority">优先级</label>
+        <select id="f-priority" name="priority">
+          <option value="3">低</option>
+          <option value="2" selected>中</option>
+          <option value="1">高</option>
+        </select>
+      </div>
+
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+
+      <div class="order-form__foot">
+        <button type="submit" class="btn btn--primary" id="btn-add-order">加入订单簿</button>
+        <button type="button" class="btn btn--ghost btn--tiny" id="btn-clear-orders">清空待排</button>
+      </div>
+    </form>
+
+    <div class="panel__body panel__body--scroll" id="order-list-wrap">
+      <ol class="order-list" id="order-list"></ol>
+      <p class="empty-note" id="orders-empty">订单簿是空的 —— 先在上方加入一张订单。</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 中栏：机台矩阵 ══════════════ -->
+  <section class="panel panel--floor" aria-labelledby="floor-title">
+    <header class="panel__head">
+      <h2 id="floor-title">机台矩阵</h2>
+      <div class="legend" aria-hidden="true">
+        <span class="legend__item"><i class="dot dot--run"></i>运行</span>
+        <span class="legend__item"><i class="dot dot--idle"></i>待单</span>
+        <span class="legend__item"><i class="dot dot--warp"></i>换经</span>
+        <span class="legend__item"><i class="dot dot--fault"></i>故障</span>
+        <span class="legend__item"><i class="dot dot--stop"></i>停机</span>
+      </div>
+    </header>
+
+    <div class="panel__body panel__body--scroll">
+      <div class="loom-grid" id="loom-grid" role="list" aria-label="织机机台矩阵"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 右栏：遥测台 ══════════════ -->
+  <section class="panel panel--telemetry" aria-labelledby="telemetry-title">
+    <header class="panel__head">
+      <h2 id="telemetry-title">遥测台</h2>
+      <div class="seg" role="group" aria-label="遥测刻度切换">
+        <button type="button" class="seg__btn is-on" id="btn-scale-density" data-scale="density">经密</button>
+        <button type="button" class="seg__btn" id="btn-scale-speed" data-scale="speed">梭速</button>
+      </div>
+    </header>
+
+    <div class="panel__body panel__body--scroll">
+      <div class="readouts" id="readouts"></div>
+
+      <figure class="chart">
+        <figcaption class="chart__cap">
+          <span id="chart-title">车间平均经密</span>
+          <span class="chart__unit" id="chart-unit">根/cm</span>
+        </figcaption>
+        <div class="chart__canvas-wrap">
+          <svg id="telemetry-chart" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="遥测趋势图"></svg>
+        </div>
+      </figure>
+
+      <div class="bars" id="load-bars" aria-label="机台负载分布"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 底部：日志带 ══════════════ -->
+  <section class="panel panel--log" aria-labelledby="log-title">
+    <header class="panel__head">
+      <h2 id="log-title">实时日志</h2>
+      <div class="log__controls">
+        <div class="seg seg--sm" role="group" aria-label="日志级别筛选">
+          <button type="button" class="seg__btn is-on" data-level="all">全部</button>
+          <button type="button" class="seg__btn" data-level="warn">警告</button>
+          <button type="button" class="seg__btn" data-level="error">故障</button>
+        </div>
+        <button type="button" class="btn btn--tiny" id="btn-pause-log" aria-pressed="false">暂停滚动</button>
+        <button type="button" class="btn btn--tiny" id="btn-clear-log">清空</button>
+      </div>
+    </header>
+    <div class="panel__body panel__body--log">
+      <ol class="log-list" id="log-list" aria-live="polite"></ol>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════ 机台详情抽屉 ══════════════ -->
+<aside class="drawer" id="drawer" hidden aria-labelledby="drawer-title" role="dialog" aria-modal="false">
+  <header class="drawer__head">
+    <h2 id="drawer-title">机台详情</h2>
+    <button type="button" class="btn btn--tiny" id="btn-close-drawer" aria-label="关闭详情">关闭</button>
+  </header>
+  <div class="drawer__body" id="drawer-body"></div>
+</aside>
+
+<!-- ══════════════ 快捷键帮助 ══════════════ -->
+<div class="modal" id="help-modal" hidden role="dialog" aria-modal="true" aria-labelledby="help-title">
+  <div class="modal__panel">
+    <header class="modal__head">
+      <h2 id="help-title">键盘快捷键</h2>
+      <button type="button" class="btn btn--tiny" id="btn-close-help" aria-label="关闭帮助">关闭</button>
+    </header>
+    <div class="modal__body">
+      <dl class="keys">
+        <dt><kbd>1</kbd>–<kbd>9</kbd> <kbd>0</kbd></dt><dd>聚焦第 1–10 台织机</dd>
+        <dt><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd></dt><dd>在机台矩阵中移动选中</dd>
+        <dt><kbd>Enter</kbd></dt><dd>为选中机台派发队首订单</dd>
+        <dt><kbd>Backspace</kbd></dt><dd>撤销选中机台的当前订单</dd>
+        <dt><kbd>Space</kbd></dt><dd>暂停 / 继续日志自动滚动</dd>
+        <dt><kbd>L</kbd></dt><dd>清空日志</dd>
+        <dt><kbd>R</kbd></dt><dd>复位选中机台的故障</dd>
+        <dt><kbd>T</kbd></dt><dd>切换遥测刻度（经密 / 梭速）</dd>
+        <dt><kbd>N</kbd></dt><dd>聚焦新增订单表单</dd>
+        <dt><kbd>Esc</kbd></dt><dd>关闭抽屉 / 取消选中</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="false"></div>
+
+</body>
+</html>

@@ -1,0 +1,1058 @@
+{{Short description|Video game genre}}
+{{About|a type of online computer game|the first game called "MUD" or "Multi-User Dungeon"|MUD1}}
+{{redirect|MCCP|the class of chemical compounds|Chlorinated paraffins|the railroad|Port of Muskogee Railroad}}
+{{use mdy dates|date=November 2021}}
+[[File:Actsmudgnome.png|thumb|upright=1.35|A screenshot of a MUD]]
+{{VG Role-playing}}
+
+A '''multi-user dungeon''' ('''MUD''', {{IPAc-en|m|ʌ|d}}), also known as a '''multi-user dimension''' or '''multi-user domain''',{{R|bartle-acronym|hahn-acronym}} is a [[Multiplayer video game|multiplayer]] [[Time-keeping systems in games#Real-time|real-time]] [[virtual world]], usually [[Text-based game|text-based]] or [[storyboard]]ed. MUDs combine elements of [[role-playing games]], [[hack and slash]], [[player versus player]], [[interactive fiction]], and [[online chat]]. Players can read or view descriptions of rooms, objects, other players, and [[non-player character]]s, and perform actions in the virtual world that are typically also described. Players typically interact with each other and the world by typing commands that resemble a [[natural language]], as well as using a character typically called an [[Avatar (computing)|avatar]].<ref name=":022">{{Cite book |last=Salamone |first=Frank A. |title=Encyclopedia of Religious Rites, Rituals, and Festivals |publisher=[[Routledge]] |year=2004 |isbn=0-415-94180-6 |editor-last=Levinson |editor-first=David |location=New York |pages=300}}</ref>
+
+Traditional MUDs implement a [[role-playing video game]] set in a [[fantasy]] world populated by [[List of species in fantasy fiction|fictional races and monsters]], with players choosing [[character class|classes]] in order to gain specific skills or powers.  The objective of this sort of game is to slay [[monster]]s, explore a fantasy world, complete quests, go on adventures, create a story by [[roleplaying]], and advance the created character. Many MUDs were fashioned around the dice-rolling rules of the ''[[Dungeons & Dragons]]'' series of games.
+
+Such fantasy settings for MUDs are common, while many others have [[science fiction]] settings or are based on popular books, movies, animations, periods of history, worlds populated by anthropomorphic animals, and so on. Not all MUDs are games; some are designed for [[#Educational MUDs|educational]] purposes, while others are purely [[#Talkers|chat environments]], and the [[Turing completeness|flexible nature]] of many MUD servers leads to their occasional use in areas ranging from [[computer science]] research to [[geoinformatics]] to [[medical informatics]] to [[analytical chemistry]].{{R|hansen|boring|cruickshank|schaefer}}  MUDs have attracted the interest of academic scholars from many fields, including [[communication]]s, [[sociology]], [[law]], and [[economics]].{{R|turkle|grimmelmann|castronova-mmorpg}}  At one time, there was interest from the United States military in using them for teleconferencing.{{R|shefski}}
+
+Most MUDs are run as hobbies and are free to play; some may accept donations or allow players to [[Virtual Asset Sales|purchase virtual items]], while others charge a monthly subscription fee. MUDs can be accessed via standard [[telnet]] clients, or specialized [[List of MUD clients|MUD clients]], which are designed to improve the user experience. Numerous games are listed at various web portals, such as [[The Mud Connector]].
+
+The history of modern [[massively multiplayer online role-playing game]]s (MMORPGs) like ''[[EverQuest]]'' and ''[[Ultima Online]]'', and related [[virtual world]] genres such as the social virtual worlds exemplified by ''[[Second Life]]'', can be traced directly back to the MUD genre.{{R|castronova-mmorpg|stuart-mmorpg}}  Indeed, before the invention of the term MMORPG, games of this style were simply called [[#Graphical MUDs|graphical MUD]]s.  A number of influential MMORPG designers began as [[:Category:MUD developers|MUD developers]] and/or players{{R|taylor}} (such as [[Raph Koster]], [[Brad McQuaid]],{{R|guru3d}} Matt Firor, and [[Brian Green (game developer)|Brian Green]]{{R|greenmud}}) or were involved with early MUDs (like [[Mark Jacobs (video game designer)|Mark Jacobs]] and [[J. Todd Coleman]]).
+
+==Early history==
+
+=== Origins ===
+[[File:ADVENT -- Will Crowther's original version.png|thumb|[[Will Crowther]]'s ''Adventure'']]
+''[[Colossal Cave Adventure]]'', created in 1975 by [[Will Crowther]] on a [[Digital Equipment Corporation|DEC]] [[PDP-10]] computer, was the first widely played [[adventure game]]. The game was significantly expanded in 1976 by [[Don Woods (programmer)|Don Woods]]. Also called ''Adventure'', it contained many D&D features and references, including a computer controlled [[dungeon master]].{{R|montfort|livinginternet}}
+
+Numerous [[dungeon crawl]]ers were created on the [[PLATO system]] at the University of Illinois and other American universities that used PLATO, beginning in 1975. Among them were "[[pedit5]]", "oubliette", "[[Moria (PLATO)|moria]]", "avatar", "krozair", "dungeon", "[[dnd (PLATO video game)|dnd]]", "crypt", and "drygulch". By 1978–79, these games were heavily in use on various PLATO systems, and exhibited a marked increase in sophistication in terms of 3D graphics, storytelling, user involvement, team play, and depth of objects and monsters in the dungeons.<ref>Brian Dear, Chapter 16: "Into the Dungeon", [https://books.google.com/books?id=D5ZBDwAAQBAJ&pg=PA286 ''The Friendly Orange Glow''], Pantheon Books, New York, 2017; see pages 292–294 for "pedit5", pages 294–297 for "dnd", pages 297–298 for "dungeon".</ref>
+
+Inspired by ''Adventure'', a group of students at [[MIT]] in the summer of 1977 wrote a game for the PDP-10 minicomputer; called ''[[Zork]]'', it became quite popular on the [[ARPANET]]. ''Zork'' was [[ported]], under the filename DUNGEN ("dungeon"), to [[FORTRAN]] by a programmer working at [[Digital Equipment Corporation|DEC]] in 1978.{{R|zork|bartle-acronym}}
+
+In 1978 [[Roy Trubshaw]], a student at the [[University of Essex]] in the UK, started working on a multi-user adventure game in the [[MACRO-10]] assembly language for a DEC PDP-10. He named the game ''MUD'' (''Multi-User Dungeon''), in tribute to the ''Dungeon'' variant of ''Zork'', which Trubshaw had greatly enjoyed playing.{{R|wired-dragon}}  Trubshaw converted MUD to [[BCPL]] (the predecessor of [[C (programming language)|C]]), before handing over development to [[Richard Bartle]], a fellow student at the University of Essex, in 1980.{{R|bartle-history-email|shahrominemud1|cuciz}} The game revolved around gaining points till one achieved the Wizard rank, giving the character immortality and special powers over mortals.
+
+=== Wider access and early derivatives ===
+
+''MUD'', better known as ''Essex MUD'' and ''MUD1'' in later years, ran on the [[University of Essex]] network, and became more widely accessible when a guest account was set up that allowed users on [[JANET]] (a British academic [[X.25]] computer network) to connect on weekends and between the hours of 2 AM and 8 AM on weekdays.{{R|wisner1}} It became the first Internet multiplayer online role-playing game in 1980 and started the online gaming industry as a whole<ref>{{Cite web |last1=Hosch |first1=William L. |last2=Ray |first2=Michael |date=2023-05-09 |title=Online gaming |url=https://www.britannica.com/technology/online-gaming |access-date=2023-05-19 |publisher=[[Encyclopedia Britannica]] |language=en}}</ref> when the university connected its internal network to [[ARPANET]].{{R|dogarpa}}
+
+The original ''MUD'' game was closed down in late 1987,{{R|bartle-mud1-1987}} reportedly under pressure from [[CompuServe]], to whom Richard Bartle had licensed the game. This left ''[[MIST (MUD)|MIST]]'', a derivative of ''MUD1'' with similar gameplay, as the only remaining MUD running on the University of Essex network, becoming one of the first of its kind to attain broad popularity. ''MIST'' ran until the machine that hosted it, a [[PDP-10]], was superseded in early 1991.{{R|escape-from-the-dungeon}}
+
+1985 saw the origin of a number of projects inspired by the original ''MUD''. These included ''Gods'' by [[Ben Laurie]], a ''MUD1'' clone that included [[online creation]] in its endgame, and which became a commercial MUD in 1988;{{R|bartle-mudreport2}} and ''MirrorWorld'',{{R|bartle-mudreport1}} a [[tolkienesque]] MUD started by Pip Cordrey who gathered some people on a BBS he ran to create a ''MUD1'' clone that would run on a home computer.
+
+Neil Newell, an avid ''MUD1'' player, started programming his own MUD called ''SHADES'' during Christmas 1985, because ''MUD1'' was closed down during the holidays. Starting out as a hobby, ''SHADES'' became accessible in the UK as a commercial MUD via British Telecom's [[Prestel]] and [[Micronet800|Micronet]] networks.{{R|shades}} A scandal on ''SHADES'' led to the closure of [[Micronet800|Micronet]], as described in [[Indra Sinha]]'s net-memoir, ''The Cybergypsies''.{{R|sinha}}
+
+At the same time, [[Compunet]] started a project named ''Multi-User Galaxy Game'' as a science fiction alternative to ''MUD1'', a copy of which they were running on their system at the time. When one of the two programmers left CompuNet, the remaining programmer, Alan Lenton, decided to rewrite the game from scratch and named it ''[[Federation II]]'' (at the time no ''Federation I'' existed). The MUD was officially launched in 1989.{{R|bartle-mudreport3}} ''Federation II'' was later picked up by AOL, where it became known simply as ''Federation: Adult Space Fantasy''. ''Federation'' later left AOL to run on its own after AOL began offering unlimited service.
+
+=== Other early MUD-like games ===
+In 1978, around the same time Roy Trubshaw wrote ''MUD'', Alan E. Klietz wrote a game called ''Scepter'' (Scepter of Goth), and later called ''Milieu'' using Multi-[[Pascal (programming language)|Pascal]] on a [[CDC Cyber]] 6600 series [[Mainframe computer|mainframe]] which was operated by the [[Minnesota Educational Computing Consortium]].{{R|wisner2}}  Klietz ported ''Milieu'' to an [[IBM XT]] in 1983, naming the new port ''Scepter of Goth''. ''Scepter'' supported 10 to 16 simultaneous users, typically connecting in by modem. It was the first commercial MUD;<ref>{{cite book 
+| last = Bartle | first = Richard | author-link = Richard Bartle 
+| title = MMOs from the Inside Out 
+| publisher = Apress 
+| year = 2016 
+| isbn = 978-1-4842-1724-5
+| pages = 31
+| quote = in 1983, Klietz formed a company, GāmBit, with Bob Alberti and two others to commercialize Sceptre.
+| title-link = MMOs from the Inside Out }}</ref> franchises were sold to a number of locations. ''Scepter'' was first owned and run by GamBit (of [[Minneapolis, Minnesota]]), founded by Bob Alberti. GamBit's assets were later sold to [[Interplay Entertainment|Interplay Productions]].{{R|klietz}}<ref>{{harvnb|Bartle|2003|p=13}}, "Around the same time that Roy Trubshaw began work on what was to become MUD1, Alan Klietz wrote Sceptre of Goth on the CDC Cyber run by MECC (the Minnesota Educational Computer Consortium)."</ref>
+
+In 1984, Mark Peterson wrote ''The Realm of Angmar'', beginning as a [[clone (computer and video games)|clone]] of ''Scepter of Goth''. In 1994, Peterson rewrote ''The Realm of Angmar'', adapting it to [[MS-DOS]] (the basis for many dial-in [[Bulletin board system|BBS]] systems), and renamed it ''[[Swords of Chaos]]''. For a few years this was a popular form of MUD, hosted on a number of BBS systems, until widespread Internet access eliminated most BBSes.{{Citation needed|date=January 2009}}
+
+In 1984, [[Mark Jacobs (video game designer)|Mark Jacobs]] created and deployed a commercial gaming site, ''Gamers World''. The site featured two games coded and designed by Jacobs, a MUD called ''Aradath'' (which was later renamed, upgraded and ported to [[GEnie]] as ''[[Dragon's Gate]]'') and a [[4X game|4X]] science-fiction game called ''Galaxy'', which was also ported to [[GEnie]]. At its peak, the site had about 100 monthly subscribers to both ''Aradath'' and ''Galaxy''.  GEnie was shut down in the late 1990s, although ''[[Dragon's Gate]]'' was later brought to [[America Online|AOL]] before it was finally released on its own. Dragon's Gate was closed on February 10, 2007.{{R|dragonsgate}}
+
+In the summer of 1980, [[University of Virginia]] classmates John Taylor and [[Kelton Flinn]] wrote ''Dungeons of Kesmai'', a six player game inspired by ''[[Dungeons & Dragons]]'' which used [[roguelike]] [[ASCII]] graphics. They founded the [[Kesmai]] company in 1982 and in 1985 an enhanced version of ''Dungeons of Kesmai'', ''[[Island of Kesmai]]'', was launched on [[CompuServe]]. Later, its 2-D graphical descendant ''[[Legends of Kesmai]]'' was launched on [[AOL]] in 1996. The games were retired commercially in 2000.{{R|dogkesmai}}
+
+The popularity of MUDs of the University of Essex tradition escalated in the United States during the late 1980s when affordable [[personal computers]] with 300 to 2400 bit/s [[modems]] enabled role-players to log into multi-line [[Bulletin Board Systems|BBSs]] and [[online service providers]] such as [[CompuServe]]. During this time it was sometimes said that MUD stands for "Multi Undergraduate Destroyer" due to their popularity among college students and the amount of time devoted to them.{{R|mudsociety}}
+
+''[[Avalon: The Legend Lives]]'' was published by Yehuda Simmons in 1989. It was the first [[Persistent world|persistent game world]] of its kind without the traditional hourly resets<ref>{{cite web|last1=Bartle|first1=Richard|title=Richard A. Bartle: Reviews - UK|url=http://mud.co.uk/richard/imucg4.htm|quote=When you leave the game, objects can be kept for when you restart (eg. that weapon you commissioned from a smith), and you restart in the room from which you quit. This means some objects can be kept unavailable for long periods if their owner isn't playing. There are no resets.|access-date=June 7, 2015|archive-date=December 28, 2015|archive-url=https://web.archive.org/web/20151228220559/http://mud.co.uk/richard/imucg4.htm|url-status=live}}</ref> and points-based puzzle solving progression systems.<ref>{{cite web|last1=Bartle|first1=Richard|title=Reviews – UK|url=http://mud.co.uk/richard/imucg4.htm|website=www.mud.co.uk|quote=Experience is obtained by visiting new places, wandering around exploring, and even by simply chatting. This contrasts with the usual MUA scheme where points are obtained for finding treasure or performing specific tasks.|access-date=June 7, 2015|archive-date=December 28, 2015|archive-url=https://web.archive.org/web/20151228220559/http://mud.co.uk/richard/imucg4.htm|url-status=live}}</ref> Avalon introduced equilibrium and balance (cooldowns), skill-based player vs player combat and concepts such as player-run governments and player housing.<ref>{{cite web|last1=Bartle|first1=Richard|title=Reviews – UK|url=http://mud.co.uk/richard/imucg4.htm|website=www.mud.co.uk|quote=Almost anything can be bought, including houses, shops, taverns, animals, weapons, food and drink. Personae may use certain skills to create objects, eg. potions, which can be sold to other players for use on their adventures.|access-date=June 7, 2015|archive-date=December 28, 2015|archive-url=https://web.archive.org/web/20151228220559/http://mud.co.uk/richard/imucg4.htm|url-status=live}}</ref>
+
+=== Later history ===
+In 2004, significant usages of MUDs included "online gaming, education,...socializing", and religious [[ritual]]s or other religious activities.<ref name=":022" />
+
+==Popular variants==
+
+===AberMUD===
+{{Main|AberMUD}}
+
+The first popular MUD [[codebase]] was AberMUD, written in 1987 by [[Alan Cox (computer programmer)|Alan Cox]], named after the [[University of Wales, Aberystwyth]]. Alan Cox had played the original [[University of Essex]] MUD, and the gameplay was heavily influenced by it.{{R|carroll}}  AberMUD was initially written in [[B (programming language)|B]] for a Honeywell L66 mainframe under GCOS3/TSS. In late 1988 it was ported to [[C (programming language)|C]], which enabled it to spread rapidly to many [[Unix]] platforms upon its release in 1989. AberMUD's popularity resulted in several inspired works, the most notable of which were [[TinyMUD]], [[LPMud]], and [[DikuMUD]].{{R|bartle-abermud}}
+
+===TinyMUD===
+''Monster'' was a multi-user adventure game created by [[Richard Skrenta]] for the [[VAX]] and written in [[OpenVMS|VMS]] Pascal. It was publicly released in November 1988.{{R|monster-release|monster-home}}  ''Monster'' was disk-based and modifications to the game were immediate. ''Monster'' pioneered the approach of allowing players to [[online creation|build the game world]], setting new puzzles or creating dungeons for other players to explore.{{R|monster-introduction}}  Monster, which comprised about 60,000 lines of code, had many features which appeared to be designed to allow ''[[Colossal Cave Adventure]]'' to work in it. Though there never were many network-accessible Monster servers, it inspired [[James Aspnes]] to create a stripped-down version of ''Monster'' which he called TinyMUD.{{R|mud-info}}
+
+TinyMUD, written in C and released in late 1989, spawned [[TinyMUD family tree|a number of descendants]], including [[TinyMUCK]] and [[TinyMUSH]]. TinyMUCK version 2 contained a full programming language named [[MUF (programming language)|MUF]] (Multi-User [[Forth (programming language)|Forth]]), while [[MUSH]] greatly expanded the command interface. To distance itself from the combat-oriented traditional MUDs it was said that the "D" in TinyMUD stood for Multi-User "Domain" or "Dimension"; this, along with the eventual popularity of acronyms other than MUD (such as MUCK, MUSH, MUSE, and so on) for this kind of server, led to the eventual adoption of the term [[MU*]] to refer to the [[TinyMUD family tree|TinyMUD family]].{{R|bartle-acronym|hahn-acronym}} UberMUD, UnterMUD, and [[MOO]] were inspired by TinyMUD but are not direct descendants.{{R|burka-mudline-tinymud}}
+
+TinyMUD is also used to refer to the first database run under the TinyMUD codebase, which is also known as TinyMUD Classic;<ref>{{cite web| url = http://toccobrator.com/classic.html| title = toccobrator.com: TinyMUD Classic}}</ref> it ran from August 1989 to April 1990, and still comes back up every August during a holiday called Brigadoon Day, a reference to the Scottish village in the musical [[Brigadoon]].
+
+===LPMud===
+{{Main|LPMud}}
+In 1989, LPMud was developed by [[Lars Pensjö]] (hence the '''LP''' in LPMud). Pensjö had been an avid player of [[TinyMUD]] and [[AberMUD]] and wanted to create a world with the flexibility of TinyMUD and the gameplay of AberMUD. In order to accomplish this he wrote what is nowadays known as a [[virtual machine]], which he called the LPMud driver, that ran the C-like [[LPC (programming language)|LPC programming language]] used to create the game world.{{R|dog-lpmud}} Pensjö's interest in LPMud eventually waned and development was carried on by others such as [[Jörn Rennecke|Jörn "Amylaar" Rennecke]], [[Felix Croes|Felix "Dworkin" Croes]], Tim "Beek" Hollebeek and Lars Düning. During the early 1990s, LPMud was one of the most popular MUD codebases.{{R|livinginternet-lpmud}} [[LPMud family tree|Descendants of the original LPMud]] include [[MudOS]], [[Dworkin's Game Driver|DGD]], [[SWLPC (programming language)|SWLPC]], [[FluffOS]], and the [[Pike (programming language)]], the latter the work of long-time LPMud developer Fredrik "Profezzorn" Hübinette.
+
+===DikuMUD===
+{{Main|DikuMUD}}
+In 1990, the release of DikuMUD, which was inspired by AberMUD, led to a virtual explosion of [[hack and slash]] MUDs based upon its code. DikuMUD inspired [[DikuMUD family tree|numerous derivative codebases]], including [[CircleMUD]], [[Merc (MUD)|Merc]], [[ROM (MUD)|ROM]], [[SMAUG (MUD)|SMAUG]], and [[GodWars]]. The original Diku team comprised Sebastian Hammer, Tom Madsen, Katja Nyboe, Michael Seifert, and Hans Henrik Staerfeldt. DikuMUD had a key influence on the early evolution of the [[Massively multiplayer online role-playing game|MMORPG]] genre, with ''[[EverQuest]]'' (created by avid DikuMUD player [[Brad McQuaid]]{{R|guru3d}}) displaying such Diku-like gameplay that [[Verant]] developers were made to issue a sworn statement that no actual DikuMUD code was incorporated.{{R|verant-diku-persons|verant-diku-server}}
+
+===Simutronics===
+{{Main|Simutronics}}
+In 1987, David Whatley, having previously played ''[[Scepter of Goth]]'' and ''[[Island of Kesmai]]'', founded Simutronics with Tom and Susan Zelinski.{{R|cambron-dunin}} In the same year they demonstrated a prototype of ''[[GemStone IV|GemStone]]'' to [[GEnie]]. After a short-lived instance of ''GemStone II'', ''GemStone III'' was officially launched in February 1990. ''GemStone III'' became available on [[AOL]] in September 1995, followed by the release of ''[[DragonRealms]]'' in February 1996. By the end of 1997 ''GemStone III'' and ''DragonRealms'' had become the first and second most played games on AOL.{{R|dunin-simutronics}}
+
+==Gameplay==
+[[File:FurcShot2007.png|thumb|upright=1.3|Game interface of ''[[Furcadia]]'']]
+The typical MUD will describe to the player the room or area they are standing in, listing the objects, players and [[non-player characters]] (NPCs) in the area, as well as all of the exits.  To carry out a task the player would enter a text command such as '''take apple''' or '''attack dragon'''. Movement around the game environment is generally accomplished by entering the direction (or an abbreviation of it) in which the player wishes to move, for example typing '''north''' or just '''n''' would cause the player to exit the current area via the path to the north.<ref name="movement">Basic movement commands: [http://evermore.de/index.php?id=87 The Lands of Evermore Manual] {{Webarchive|url=https://web.archive.org/web/20130420225439/http://evermore.de/index.php?id=87 |date=2013-04-20 }}</ref>
+
+MUD clients are computer applications that make the MUD [[telnet]] interface more accessible to users,<ref>{{cite book | last1 = Levine | first1 = John R. | author-link = John R. Levine | title = More Internet for Dummies | publisher = IDG Books | year = 1997 | isbn = 0-7645-0135-6 | pages = 199 | quote = A better way to connect to a MUD is by using a MUD client program: a program specifically designed for MUDding.  A MUD program is really a telnet program that has had various MUD-related commands added.}}</ref> with features such as [[syntax highlighting]], [[keyboard macro]]s, and connection assistance.<ref>{{harvnb|Shah|Romine|1995|p=257}}, "Features include regular expression hilites and gags, auto-login, macros, line editing, screen mode, triggers, cyberportals, logging, file and command uploading, shells, and multiple connects."</ref><ref>{{harvnb|Busey|1995|p=200}}, "The ''TinyFugue'' system has long been a popular client interface for players of MOO, MUCK, and many TinyMUD-derivative systems.  With a robust feature list supporting multiple sessions, macros, triggers and automation, command history and other functions, TinyFugue offers users maximum control over their environment.  Although more recent programs such as Tintin++ have gained large followings, many MUD players continue to use TinyFugue because of its power and flexibility in the hands of an experience client programmer."</ref> Prominent clients include TinyTalk, TinyFugue, TinTin++, and zMUD.{{sfn|Cheong|1996|p=[https://archive.org/details/internetagentssp00cheo/page/256 256]}}{{sfn|Bartle|2003|p=481}}
+
+==Style==
+While there have been many variations in overall focus, [[gameplay]] and features in MUDs, some distinct sub-groups have formed that can be used to help categorize different [[game mechanic]]s, [[video game genres|game genres]] and [[non-game]] uses.
+
+===Hack and slash MUDs===
+{{Further|Hack and slash}}
+Perhaps the most common approach to game design in MUDs is to loosely emulate the structure of a ''[[Dungeons & Dragons]]'' campaign focused more on fighting and advancement than role-playing. When these MUDs restrict [[player versus player|player-killing]] in favor of [[player versus environment]] conflict and [[Quest (gaming)|questing]], they are labeled '''hack and slash MUDs'''. This may be considered particularly appropriate since, due to the room-based nature of traditional MUDs, ranged combat is typically difficult to implement, resulting in most MUDs equipping characters mainly with close-combat weapons. This style of game was also historically referred to within the MUD genre as "adventure games", but video gaming as a whole has developed a meaning of "[[adventure game]]" that is greatly at odds with this usage.
+
+===Player versus player MUDs===
+{{Further|Player versus player}}
+Most MUDs restrict player versus player combat, often abbreviated as PK (Player Killing). This is accomplished through hard coded restrictions and various forms of social intervention. MUDs without these restrictions are commonly known as '''PK MUDs'''. Taking this a step further are MUDs devoted ''solely'' to this sort of conflict, called '''pure PK''' MUDs, the first of which was ''[[Genocide (online game)|Genocide]]'' in 1992.{{R|reesegeno}}  ''Genocide''{{'s}} ideas were influential in the evolution of [[player versus player]] online gaming.{{R|shahromine-geno}}
+
+===Roleplaying MUDs===
+{{Further|Role-playing game}}
+'''Roleplaying MUDs''', generally abbreviated as '''RP MUDs''', encourage or enforce that players act out the role of their playing characters at all times. Some RP MUDs provide an immersive gaming environment, while others only provide a virtual world with no game elements. MUDs where roleplay is enforced and the game world is heavily computer-modeled are sometimes known as '''roleplay intensive MUDs''', or '''RPIMUDs'''.{{R|korchmar}} In many cases, role-playing MUDs attempt to differentiate themselves from hack and slash types, by dropping the "MUD" name entirely, and instead using '''MUX''' (Multi-User Experience) or '''MUSH''' (Multi-User Shared Hallucination).
+
+===Social MUDs===
+{{Further|MMOSG}}
+'''Social MUDs''' de-emphasize game elements in favor of an environment designed primarily for socializing. They are differentiated from talkers by retaining elements beyond online chat, typically [[online creation]] as a community activity and some element of [[Role-playing game|role-playing]]. Often such MUDs have broadly defined contingents of socializers and roleplayers. Server software in the [[TinyMUD family tree|TinyMUD family]], or [[MU*]], is traditionally used to implement social MUDs.
+
+===Talkers===
+{{Main|Talker}}
+A less-known MUD variant is the '''[[talker]]''', a variety of [[online chat]] environment typically based on server software like [[ew-too]] or [[NUTS (talker)|NUTS]]. Most of the early Internet talkers were [[LPMud]]s with the majority of the complex game machinery stripped away, leaving just the communication commands. The first Internet talker was ''[[Cat Chat]]'' in 1990.
+
+===Educational MUDs===
+Taking advantage of the flexibility of MUD server software, some MUDs are designed for educational purposes rather than gaming or chat. ''[[MicroMUSE]]'' is considered by author Lauren P. Burka to have been the first educational MUD,{{R|burka-mudline-micromuse}} but it can be argued{{weasel inline|date=January 2020}} that its evolution into this role was not complete until 1994,{{R|micromuse-charter}} which would make the first of many educational [[MOO]]s, ''[[Diversity University]]'' in 1993, also the first educational MUD. The MUD medium lends itself naturally to [[Constructionism (learning theory)|constructionist learning]] pedagogical approaches. The Mud Institute (TMI) was an LPMud opened in February 1992 as a gathering place for people interested in developing LPMud and teaching LPC after it became clear that Lars Pensjö had lost interest in the project. TMI focussed on both the LPMud driver and library, the driver evolving into MudOS. The TMI Mudlib was never officially released, but was influential in the development of other libraries.
+
+===Graphical MUDs===
+{{Further|MMORPG|:Category:Graphical MUDs}}
+A '''graphical MUD''' is a MUD that uses [[computer graphics]] to represent parts of the virtual world and its visitors.{{R|bartle-textgraph}} A prominent early graphical MUD was ''[[Habitat (video game)|Habitat]]'', written by [[Randy Farmer]] and [[Chip Morningstar]] for [[Lucasfilm]] in 1985.{{R|castronova-habitat}} Some graphical MUDs require players to download a special client and the game's artwork, while others provide a rich experience by being website-based. Graphical MUDs range from simply enhancing the [[user interface]] (e.g. Wolfery provides an option to set the room picture, but otherwise remains a text-based interaction) to simulating 3D worlds with visual spatial relationships and customized [[avatar (computing)|avatar]] appearances (e.g. [[Ultima Online]] provides a rich point-and-click experience).
+
+Games such as ''[[Meridian 59]]'', ''[[EverQuest]]'', ''[[Ultima Online]]'' and ''[[Dark Age of Camelot]]'' were routinely called graphical MUDs in their earlier years.{{R|meridian59-mud|bmcquaid|dog-daoc-mud|king}} ''[[RuneScape]]'' was actually originally intended to be a ''text-based'' MUD, but graphics were added very early in development.{{R|runescapeqa|warcryrunescape}} However, with the increase in computing power and Internet connectivity during the late 1990s, and the shift of online gaming to the mass market, the term "graphical MUD" fell out of favor, being replaced by MMORPG ([[massively multiplayer online role-playing game]]) a term coined by [[Richard Garriott]] in 1997.{{R|mmorpg-coinage}}
+
+== Development ==
+{{Redirect|CDLIB|the online catalog|California Digital Library}}
+Within a MUD's technical infrastructure, a mudlib (concatenation of "MUD library")<ref name="bartle-mudlib" /><ref name="busey" /> defines the rules of the in-game world.<ref name="bartle-physics" /> Examples of mudlibs include [[Ain Soph Mudlib]], [[CD gamedriver and mudlib|CDlib]],<ref name="reese1">{{cite web
+ |last=Reese 
+ |first=George 
+ |url=http://www.rpgmud.com/lpmud_timeline.htm 
+ |title=LPMud Timeline 
+ |date=1996-03-11 
+ |access-date=2010-04-18 
+ |quote=Late 1991 ¶ After the retirement of Lars from _Genesis_, the _Genesis_ admins move to create the first LPMud-derived server, CD. CD stands for Chalmers Datorforening, Swedish for Chalmers Computing Club, where _Genesis_ and _Igor_ existed. In spite of his retirement from _Genesis_, Lars continued to develop LPMud.ad 
+ |url-status=dead 
+ |archive-url=https://web.archive.org/web/20120226122409/http://www.rpgmud.com/lpmud_timeline.htm 
+ |archive-date=2012-02-26 
+}}</ref> [[Discworld Mudlib]], [[Lima Mudlib]],<ref name="crat">{{cite web
+ | url = http://lpmuds.net/forum/index.php?topic=899.0
+ | title = Full Lima Bundle Released
+ | work = lpmuds.net
+ | date = 2009-01-24
+ | access-date = 2010-05-17
+ | archive-date = March 12, 2016
+ | archive-url = https://web.archive.org/web/20160312071241/http://lpmuds.net/forum/index.php?topic=899.0
+ | url-status = dead
+ }}</ref> [[LPUniversity Mudlib]], [[MorgenGrauen Mudlib]], [[Nightmare Mudlib]], and [[TMI Mudlib]].
+
+== Community ==
+
+MUD history has been preserved primarily through community sites and blogs and not through mainstream sources with journalistic repute.<ref name="Engadget: MUD history"/> As of the late 1990s, a website called [[The Mud Connector]] has served as a central and curated repository for active MUDs.<ref name="ywwr"/><ref name="pantuso"/><ref name="condon"/> In 1995, ''The Independent'' reported that over 60,000 people regularly played about 600 MUDs, up from 170 MUDs three years prior. ''The Independent'' also noted distinct patterns of socialization within MUD communities.<ref name="godlovitch"/>
+
+In 2004, MUDs were relatively popular in the [[United States]] and mostly text-based.<ref name=":022" />
+
+Seraphina Brennan of ''[[Massively (blog)|Massively]]'' wrote that the MUD community was "in decline" as of 2009.<ref name="Engadget: MUD history" />
+
+==Psychology and engagement==
+[[Sherry Turkle]] developed a theory that the constant use (and in many cases, overuse) of MUDs allows users to develop different personalities in their environments.  She uses examples, dating back to the text-based MUDs of the mid-1990s, showing college students who simultaneously live different lives through characters in separate MUDs, up to three at a time, all while doing schoolwork.  The students claimed that it was a way to "shut off" their own lives for a while and become part of another reality.  Turkle claims that this could present a psychological problem of identity for today's youths.{{R|turkle}}
+
+"[[A Story About A Tree]]" is a short essay written by [[Raph Koster]] regarding the death of a ''[[LegendMUD]]'' player named Karyn, raising the subject of inter-human relationships in virtual worlds.
+
+Observations of MUD-play show [[Bartle Test|styles of play]] that can be roughly categorized. Achievers focus on concrete measurements of success such as [[Experience point|experience points, levels]], and wealth; Explorers investigate every nook and cranny of the game, and evaluate different [[Game mechanics|game mechanical]] options; Socializers devote most of their energy to interacting with other players; and then there are Killers who focus on interacting negatively with other players, if permitted, killing the other characters or otherwise thwarting their play. Few players play only one way; most exhibit a diverse style.{{R|bartle-taxonomy}}  According to [[Richard Bartle]], "People go there as part of a hero's journey&mdash;a means of self-discovery".{{R|stuart-bartle-herojourney}}
+
+Research has suggested that various factors combine in MUDs to provide users with a sense of ''presence'' rather than simply communication.{{R|towell}}
+
+==Grammatical usage and derived terms==
+As a noun, the word '''MUD''' is variously written MUD, Mud, and mud, depending on speaker and context.  It is also used as a verb, with '''to mud''' meaning to play or interact with a MUD and '''mudding''' referring to the act of doing so.{{R|hahn-verb}}  A '''mudder''' is one who MUDs.{{R|internetculture-mudder}} [[Compound (linguistics)|Compound words]] and [[Portmanteau word|portmanteaux]] such as '''mudlist''', '''[[Cybersex|mudsex]]''', and '''[[mudflation]]'''<ref>{{Cite web |last1=Chester |first1=Chris |title=Curing mudflation before it starts |work=[[Engadget]] |date=2008-05-05 |url=https://www.engadget.com/2008/05/05/curing-mudflation-before-it-starts/ |language=en |access-date=2019-11-27 |df=mdy-all |archive-date=November 27, 2019 |archive-url=https://web.archive.org/web/20191127230026/https://www.engadget.com/2008/05/05/curing-mudflation-before-it-starts/ |url-status=live }}</ref> are also regularly coined. [[Pun]]s on the "wet dirt" meaning of "mud" are endemic, as with, for example, the names of the [[ROM (MUD)|ROM]] ('''R'''ivers '''o'''f '''M'''UD), [[TinyMUCK|MUCK]], [[MUSH]], and [[CoffeeMUD]] codebases and the MUD ''Muddy Waters''.
+
+==See also==
+* [[Chronology of MUDs]]
+* [[Bartle Test]]
+* [[Online text-based role-playing game]]
+* [[Integrated development environment]]
+* [[Virtual economy]]
+* [[Cyberformance]]
+* [[Digital architecture]]
+
+==References==
+{{Reflist|40em|refs=
+<ref name="Engadget: MUD history">{{cite web|url=https://www.engadget.com/2009/01/06/mud-history-dissolving-into-the-waters-of-time/ |access-date=March 8, 2016 |title=MUD history dissolving into the waters of time |last1=Brennan |first1=Seraphina |date=January 6, 2009 |work=[[Massively (blog)|Massively]] |archive-url=https://web.archive.org/web/20160426044535/http://www.engadget.com/2009/01/06/mud-history-dissolving-into-the-waters-of-time/ |archive-date=April 26, 2016 |url-status=live }}</ref>
+<ref name="ywwr">{{cite book
+ | last1 = Towers | first1 = J. Tarin
+ | last2 = Badertscher | first2 = Ken
+ | last3 = Cunningham | first3 = Wayne
+ | last4 = Buskirk | first4 = Laura
+ | title = Yahoo! Wild Web Rides
+ | publisher = IDG Books Worldwide Inc.
+ | year = 1996
+ | isbn = 978-0-7645-7003-2
+ | pages = 138
+ | quote = The MUD Connector at <nowiki>http://www.mudconnect.com</nowiki> has just about everything you could possibly need to get on a MUD.  It has MUD-related links to FAQs, newsgroups and clients; as well as player discussions and forums about different MUDs.  This site also has a listing of over 500 MUDs, with pretty useful descriptions of what you can expect to find on most games.  You can even click on the MUD or home page you'd like to see and link right to it.  If you're shopping for a new MUD and aren't sure what you're looking for, this is the place to park it.  We're talking big time bookmark material here.
+}}</ref>
+<ref name="pantuso">{{cite book
+ | last = Pantuso | first = Joe
+ | title = The Complete Internet Gamer
+ | publisher = [[John Wiley & Sons]]
+ | year = 1996
+ | isbn = 978-0471137870
+ | pages = 115
+ | quote = The Mud Connector has, at the time of this writing, links to 205 active Muds. The Muds are reviewed periodically, so there are few dead links. What sets this site apart from some of the other Mud link connections listed here is that each link includes the name of the Mud, the kind of code it is based on (nice for developers), the telnet address written out, an active hyperlink to the telnet site and Web home page if one exists, and a short but useful description of the Mud. The list is alphabetized and broken into four sections for easy loading. There are also forms for submitting your Mud to the list. There is even a page for dead links in case you want to see what has gone before.
+}}</ref>
+<ref name="condon">{{cite book
+ | last1 = Condon
+ | first1 = William
+ | last2 = Butler
+ | first2 = Wayne
+ | title = Writing the Information Superhighway
+ | publisher = Longman
+ | year = 1997
+ | isbn = 978-0205195756
+ | pages = [https://archive.org/details/writinginformati00cond/page/306 306]
+ | quote = "The Mud Connector" is a complete on-line service designed to provide the most up-to-date listings of registered Multiuser on-line games.  Every entry lists the site of the game, the base code used, descriptions of the game as submitted by the administrators, links to WWW homepages (when available), and Telnet links to the game.
+ | url = https://archive.org/details/writinginformati00cond/page/306
+ }}</ref>
+<ref name="bartle-acronym">{{harvnb|Bartle|2003|pp=9–10, 741}}, [pp. 9-10] "''TinyMUD'' was deliberately intended to be distanced from the prevailing hack-and-slay ''AberMUD'' style, and the 'D' in its name was said to stand for 'Dimension' (or, occasionally, 'Domain') rather than 'Dungeon;' this is the ultimate cause of the MUD/MU* distinction that was to arise some years later." [pp. 741] "The 'D' in MUD stands for 'Dungeon' [...] because the version of ZORK Roy played was a Fortran port called DUNGEN."</ref>
+<ref name="hahn-acronym">{{cite book
+ | last = Hahn
+ | first = Harley
+ | title = The Internet Complete Reference
+ | edition = 2nd
+ | publisher = Osborne McGraw-Hill
+ | year = 1996
+ | isbn = 978-0-07-882138-7
+ | pages = [https://archive.org/details/harleyhahnsinter00hahn/page/553 553]
+ | quote = [...] muds had evolved to the point where the original name was too confining, and people started to say that "MUD" stood for the more generic "Multi-User Dimension" or "Multi-User Domain".
+ | url = https://archive.org/details/harleyhahnsinter00hahn/page/553
+ }}</ref>
+<ref name="bartle-textgraph">{{harvnb|Bartle|2003|p=3}}, "Confusingly, although the term MUD applies to virtual worlds in general, the term MU* does not&mdash;it's used strictly for text-based worlds.  The introduction of computer graphics into the mix therefore caused a second spate of naming, in order to make a distinction between ''graphical MUDs'' and ''text MUDs''."</ref>
+<ref name="castronova-mmorpg">{{cite book
+ | last = Castronova
+ | first = Edward
+ | author-link = Edward Castronova
+ | title = Synthetic Worlds: The Business and Culture of Online Games
+ | publisher = University Of Chicago Press
+ | year = 2006
+ | isbn = 978-0-226-09627-8
+ | pages = [https://archive.org/details/syntheticworlds00edwa/page/10 10, 291]
+ | quote = [pp. 10] The ancestors of MMORPGS were text-based multiuser domains (MUDs) [...] [pp. 291] Indeed, MUDs generate perhaps the one historical connection between game-based VR and the traditional program [...]
+ | url = https://archive.org/details/syntheticworlds00edwa/page/10
+ }}</ref>
+<ref name="castronova-habitat">{{cite book
+ | last = Castronova
+ | first = Edward
+ | author-link = Edward Castronova
+ | title = Synthetic Worlds: The Business and Culture of Online Games
+ | publisher = University Of Chicago Press
+ | year = 2006
+ | isbn = 978-0-226-09627-8
+ | pages = [https://archive.org/details/syntheticworlds00edwa/page/291 291]
+ | quote = [...] established ''Habitat'' as a result.  This is described as a 2D graphical MUD, and while we now know that ''Habitat'' was the first of many massively multiuser graphical chat spaces, we also know that the connection is not direct. [...] Its owners and makers (particularly F. Randy Farmer and Chip Morningstar) [...]
+ | url = https://archive.org/details/syntheticworlds00edwa/page/291
+ }}</ref>
+<ref name="stuart-mmorpg">{{cite news
+ | last = Stuart | first = Keith
+ | url = https://www.theguardian.com/technology/gamesblog/2007/jul/19/mudvsplatowh
+ | title = MUD, PLATO and the dawn of MMORPGs
+ | date = 2007-07-19
+ | quote = The thing is, though, that even if the likes of Oubliette did count as a virtual world, they had pretty well zero effect on the development of today's virtual worlds. Follow the audit trail back from World of Warcraft, and you wind up at MUD.
+ | location=London
+ | work=The Guardian
+}}</ref>
+<ref name="guru3d">{{cite web
+ |last        = Nelson
+ |first       = Mike
+ |url         = http://www.guru3d.com/gamereviews/brad-mcquaid-interview/index1.shtml
+ |title       = Interview: Brad McQuaid
+ |work        = The guru of 3D
+ |date        = 2002-07-02
+ |access-date  = 2007-03-03
+ |url-status     = dead
+ |archive-url  = https://web.archive.org/web/20070310223420/http://www.guru3d.com/gamereviews/brad-mcquaid-interview/index1.shtml
+ |archive-date = 2007-03-10
+}}</ref>
+<ref name="greenmud">{{cite web
+ | last = Carter | first = Randolph
+ | url = http://grindingtovalhalla.wordpress.com/2009/04/23/psychochild/
+ | title = Psychochild
+ | work = Grinding to Valhalla
+ | date = 2009-04-23
+ | access-date = 2010-04-19
+ | quote = The MUDs I played extensively: Genocide (where I first used the name "Psychochild"), Highlands, Farside, Kerovnia, and Astaria.
+}}</ref>
+<ref name="montfort">{{cite book
+ | last = Montfort | first = Nick | author-link = Nick Montfort
+ | title = Twisty Little Passages: An Approach to Interactive Fiction
+ | publisher = [[MIT Press]]
+ | year = 2003
+ | isbn = 978-3-540-63293-1
+ | url = https://books.google.com/books?id=XiJFORKEm0oC
+}}</ref>
+<ref name="livinginternet">{{cite web
+ | last = Stewart
+ | first = William
+ | url = http://www.livinginternet.com/d/di_major.htm
+ | title = Summary MUD History
+ | work = Living Internet
+ | quote = Containing many of the features of a D&D game, it added an interesting twist -- the dungeon master, the person who set-up and ran a D&D world, was played by the Adventure computer program itself.
+ | access-date = July 10, 2008
+ | archive-date = July 25, 2008
+ | archive-url = https://web.archive.org/web/20080725090054/http://www.livinginternet.com/d/di_major.htm
+ | url-status = live
+ }}</ref>
+<ref name="zork">{{cite web | last1 = Anderson | first1 = Tim | author-link1 = Tim Anderson (Zork) | last2 = Galley | first2 = Stu | author-link2 = Stu Galley | url = http://www.csd.uwo.ca/Infocom/Articles/NZT/zorkhist.html | title = The History of Zork | quote = Zork was too much of a nonsense word, not descriptive of the game, etc., etc., etc. Silly as it sounds, we eventually started calling it Dungeon. (Dave admits to suggesting the new name, but that's only a minor sin.) When Bob the lunatic released his FORTRAN version to the DEC users' group, that was the name he used. | url-status = dead | archive-url = https://web.archive.org/web/20090116035446/http://www.csd.uwo.ca/Infocom/Articles/NZT/zorkhist.html | archive-date = 2009-01-16 }}</ref>
+<ref name="bartle-history-email">{{cite web
+ | last = Bartle
+ | first = Richard
+ | author-link = Richard Bartle
+ | url = http://www.mud.co.uk/richard/mudhist.htm
+ | title = Early MUD History
+ | year = 1990
+ | quote = The program was also becoming unmanageable, as it was written in assembler. Hence, he rewrote everything in BCPL, starting late 1979 and working up to about Easter 1980. The finished product was the heart of the system which many people came to believe was the "original" MUD. In fact, it was version 3.
+ | access-date = August 7, 2008
+ | archive-date = March 24, 2023
+ | archive-url = https://web.archive.org/web/20230324174755/http://www.mud.co.uk/richard/mudhist.htm
+ | url-status = live
+ }}</ref>
+<ref name="shahrominemud1">{{harvnb|Shah|Romine|1995|p=7}}, "The acknowledged original game known as 'MUD' was developed in 1978 for the old DEC-10 mainframe system at Essex University by Roy Trubshaw and Richard Bartle."</ref>
+<ref name="wired-dragon">{{cite magazine
+ | last1 = Kelly
+ | first1 = Kevin
+ | author-link1 = Kevin Kelly (editor)
+ | last2 = Rheingold
+ | first2 = Howard
+ | author-link2 = Howard Rheingold
+ | year = 1993
+ | title = The Dragon Ate My Homework
+ | magazine = [[Wired (magazine)|Wired]]
+ | volume = 1
+ | issue = 3
+ | url = https://www.wired.com/wired/archive/1.03/muds.html
+ | quote = In 1980, Roy Traubshaw, a British fan of the fantasy role-playing board game Dungeons and Dragons, wrote an electronic version of that game during his final undergraduate year at Essex College. The following year, his classmate Richard Bartle took over the game, expanding the number of potential players and their options for action. He called the game MUD (for Multi-User Dungeons), and put it onto the Internet.
+ | access-date = March 8, 2017
+ | archive-date = October 25, 2012
+ | archive-url = https://web.archive.org/web/20121025101648/http://www.wired.com/wired/archive/1.03/muds.html
+ | url-status = live
+ }}</ref>
+<ref name="bartle-mud1-1987">{{cite web
+ | last = Bartle | first = Richard | author-link = Richard Bartle
+ | url = http://www.mud.co.uk/richard/incarns.htm
+ | title = Incarnations of MUD
+ | quote = This is the "classic" MUD, played by many people both internal and external to the University. Although eventually available only during night-time due to the effects of its popularity on the system, its impact on on-line gaming has been immense. I eventually closed it down on 30/9/87 upon leaving Essex University to work for MUSE full time.
+}}</ref>
+<ref name="dogarpa">{{cite book
+ | last1 = Mulligan | first1 = Jessica
+ | last2 = Patrovsky | first2 = Bridgette
+ | year = 2003 
+ | title = Developing Online Games: An Insider's Guide
+ | url = https://archive.org/details/developingonline0000mull | url-access = registration | publisher = New Riders
+ | pages = [https://archive.org/details/developingonline0000mull/page/444 444]
+ | quote = 1980 [...] Final version of ''MUD1'' completed by Richard Bartle.  Essex goes on the ARPANet, resulting in Internet MUDs!
+ | isbn = 978-1-59273-000-1
+}}</ref>
+<ref name="wisner1">{{cite web
+ | last = Wisner
+ | first = Bill
+ | url = http://groups.google.com/group/alt.mud/msg/a0c1c5d5c4a66eba
+ | title = A brief history of MUDs
+ | work = alt.mud
+ | date = 1990-06-29
+ | quote = The point of the game was to gain points until you achieved the rank of wizard, at which point you became immortal and gained certain powers over mortals. Points were  scored by killing things or dropping treasure into a swamp. The game  gained some popularity in Britain when a guest account was set up that allowed users on JANET (the British academic network) to play during the small hours of the morning each day.
+ | access-date = January 8, 2009
+ | archive-date = April 24, 2010
+ | archive-url = https://web.archive.org/web/20100424014453/http://groups.google.com/group/alt.mud/msg/a0c1c5d5c4a66eba?
+ | url-status = live
+ }}</ref>
+<ref name="wisner2">{{cite web
+ | last = Wisner
+ | first = Bill
+ | url = http://groups.google.com/group/rec.games.mud/msg/6ac0255fe640074e
+ | title = A brief (and very incomplete) history of MUDs
+ | work = alt.mud
+ | date = 1990-06-29
+ | quote = Milieu was originally written for a CDC Cyber owned by the Minnesota Educational Computer Consortium. High school students from around the state were given access to the machine for educational purposes; they often ended up writing chat programs and games instead. I am uncertain of the precise time frame, but I believe Milieu probably predates MUD.
+ | access-date = August 7, 2008
+ | archive-date = November 9, 2012
+ | archive-url = https://web.archive.org/web/20121109203047/http://groups.google.com/group/rec.games.mud/msg/6ac0255fe640074e
+ | url-status = live
+ }}</ref>
+<ref name="escape-from-the-dungeon">{{cite web
+ | last = Lawrie | first = Michael | author-link = Michael Lawrie
+ | title = Escape from the Dungeon 
+ | year = 2003
+ | url = http://lorry.org/arch-wizard/history.html
+ | quote = October of 1987 was chaos. The MUD account was deleted, but the guest account on Essex University remained open. I guess it wasn't causing any trouble so they simply left it. ROCK, UNI and MUD all ran from the MUD account so they had gone but... MIST ran from a student account and it was still playable.
+}}</ref>
+<ref name="shades">{{cite journal
+ | author = Kate & Frobozz
+ | url = http://games.world.co.uk/shades/inshades/history/Mags.htm
+ | title = Micronet's Multi-user Game
+ | year = 1986
+ | journal = Commodore Computing International
+ | quote = Written by Neil Newell, originally as a hobby because he enjoyed playing- the original MUD so much on Essex University, SHADES has recently. been launched on Micronet, the computer network, which has a large Commodore user-base.
+ | access-date = January 8, 2009
+ | archive-date = April 30, 2009
+ | archive-url = https://web.archive.org/web/20090430090107/http://games.world.co.uk/shades/inshades/history/Mags.htm
+ | url-status = dead
+ }}</ref>
+<ref name="sinha">{{cite book
+ | last = Sinha | first = Indra | author-link = Indra Sinha
+ | title = The Cybergypsies: a True Tale of Lust, War, and Betrayal on the Electronic Frontier
+ | year = 1999
+ | publisher = [[Viking Press]]
+ | isbn = 978-0-670-88630-2
+}}</ref>
+<ref name="bartle-mudreport1">{{cite web
+ |last=Bartle 
+ |first=Richard 
+ |author-link=Richard Bartle 
+ |url=http://ftp.lambda.moo.mud.org/pub/MOO/papers/mudreport.txt
+ |title=Interactive Multi-User Computer Games 
+ |year=1990 
+ |quote=Pip Cordrey used to run a BBS called 'Labbs', which had a section devoted to MUD1 in its early days.  Six people from St.  Paul's School worked on that section, and Cordrey organised them into a team to develop a MUA that would run on a home computer. The system was named MirrorWorld because it had rolling resets (as in the film "Westworld").  It went live in 1986. 
+ |url-status=live
+ |archive-url=https://web.archive.org/web/20160202125649/http://ftp.lambda.moo.mud.org/pub/MOO/papers/mudreport.txt 
+ |archive-date=2016-02-02 
+}}</ref>
+<ref name="bartle-mudreport2">{{cite web
+ |last=Bartle 
+ |first=Richard 
+ |author-link=Richard Bartle 
+ |url=http://ftp.lambda.moo.mud.org/pub/MOO/papers/mudreport.txt
+ |title=Interactive Multi-User Computer Games 
+ |year=1990 
+ |quote=Although the present system went live in October 1988, Gods began in 1985 as a non-commercial MUA; its author was inspired by MUD1 to write his own game, and was among the first people to do so. Gods was Shades' only rival to be the Prestel Micronet MUA. 
+ |url-status=live
+ |archive-url=https://web.archive.org/web/20160202125649/http://ftp.lambda.moo.mud.org/pub/MOO/papers/mudreport.txt 
+ |archive-date=2016-02-02 
+}}</ref>
+<ref name="bartle-mudreport3">{{cite web
+ |url=http://ftp.lambda.moo.mud.org/pub/MOO/papers/mudreport.txt
+ |last=Bartle 
+ |first=Richard 
+ |author-link=Richard Bartle 
+ |title=Interactive Multi-User Computer Games 
+ |year=1990 
+ |quote=The Multi-User Galaxy Game project was begun in 1985 by CompuNet as a SF alternative to MUD1, which then ran on the system.  When the other programmer left CompuNet, Lenton rewrote the game from scratch as [[Federation II]]. It was officially launched on CompuNet in 1989; reported also to run on MicroLink, and on any other commercial system willing to take it. 
+ |url-status=live
+ |archive-url=https://web.archive.org/web/20160202125649/http://ftp.lambda.moo.mud.org/pub/MOO/papers/mudreport.txt 
+ |archive-date=2016-02-02 
+}}</ref>
+<ref name="klietz">{{cite web
+ | last = Klietz
+ | first = Alan
+ | url = http://groups.google.com/group/rec.games.mud/msg/e423bcf6cf93d73b
+ | title = Scepter - the first MUD?
+ | date = 1992-01-20
+ | access-date = 2010-04-26
+ | quote = As micros became cost effective, the MECC mainframe became obsolete and was shut down in 1983.  Scepter then went commercial in a collaboration between several ex-MECC (and by then also post-highschool) game hackers.  It was rewritten in C and ran on a PC XT running QNX.  It supported 16 dialup users, and dialup installations were set up in 5 states and Canada.  This exposed Scepter to a lot of budding MUD developers at a time when the Internet was just getting started.
+ | archive-date = December 7, 2008
+ | archive-url = https://web.archive.org/web/20081207210649/http://groups.google.com/group/rec.games.mud/msg/e423bcf6cf93d73b
+ | url-status = live
+ }}</ref>
+<ref name="dragonsgate">{{cite web
+ | last = Hyrup
+ | first = Darrin
+ | url = http://dragonsgate.yuku.com/forum/viewtopic/id/362
+ | title = The Future of Dragon's Gate
+ | date = 2007-02-10
+ | access-date = 2010-04-26
+ | quote = So after more than 15 years of great memories, with a heavy heart, I am going to officially declare Dragon's Gate closed... at least for now.
+ | archive-date = July 18, 2011
+ | archive-url = https://web.archive.org/web/20110718145959/http://dragonsgate.yuku.com/forum/viewtopic/id/362
+ | url-status = live
+ }}</ref>
+<ref name="dogkesmai">{{cite book
+ | last1 = Mulligan | first1 = Jessica
+ | last2 = Patrovsky | first2 = Bridgette
+ | year = 2003 
+ | title = Developing Online Games: An Insider's Guide
+ | url = https://archive.org/details/developingonline0000mull | url-access = registration | publisher = New Riders
+ | isbn = 978-1-59273-000-1
+ | pages = [https://archive.org/details/developingonline0000mull/page/447 447], 463
+ | quote = 1985 [...] ''"My memory says that ''Island of Kesmai'' went live on CompuServe on December 15, 1985, after a very long internal test. The price was actually $6 an hour for 300 baud, $12 for 1200 baud. Serious players paid the bucks."'' '''&mdash;[[Kelton Flinn]]''' [...] 2000 [...] In May, Electronics Arts announces the shutdown of most of the Kesmai games, including Legends of Kesmai and Air Warrior Classic.
+}}</ref>
+<ref name="mudsociety">{{cite web
+| url = http://www.mud.co.uk/dvw/mudsasasociety.html
+| title = A Study of MUDs as a Society
+| year = 1998
+| quote = Some would insist however that 'MUD' does in fact stand for Multi Undergraduate Destroyer, in recognition of the number of students who may have failed their classes due to too much time spent MUDding!
+}}</ref>
+<ref name="carroll">{{cite web
+ | last = Carroll
+ | first = Eddy
+ | url = http://www.iol.ie/~ecarroll/mud/mr_5b#sect_5_4
+ | title = 5. Reviews -- Rest of the World
+ | quote = Cox was a player of MUD1 who wrote AberMUD while a student at the University of Wales, Aberystwyth.
+ | access-date = 2002-09-25
+ | archive-url = https://web.archive.org/web/20100423150558/http://www.iol.ie/~ecarroll/mud/mr_5b#sect_5_4
+ | archive-date = 2010-04-23
+ | url-status = dead
+ }}</ref>
+<ref name="bartle-abermud">{{harvnb|Bartle|2003|p=741}}, "AberMUD spread across university computer science departments like a virus. Identical copies (or incarnations) appeared on thousands of Unix machines. It went through four versions in rapid succession, spawning several imitators. The three most important of these were TinyMUD, LPMUD, and DikuMUD."</ref>
+<ref name="monster-release">{{cite web
+ | last = Skrenta | first = Richard | author-link = Richard Skrenta
+ | url = http://groups.google.com/group/comp.sources.games/msg/c95f01a4febd9fb1
+ | title = monster - multiuser adventure game for VMS
+ | work = comp.sources.games
+ | date = 1988-11-30
+ | quote = Monster was written in VMS Pascal under VMS 4.6.
+ | access-date = 2010-04-26
+}}</ref>
+<ref name="monster-home">{{cite web
+ | last = Skrenta
+ | first = Richard
+ | author-link = Richard Skrenta
+ | url = http://www.skrenta.com/monster/
+ | title = VMS Monster
+ | work = Skrentablog
+ | date = 2002-01-20
+ | access-date = 2010-11-01
+ | archive-date = February 2, 2006
+ | archive-url = https://web.archive.org/web/20060202010149/http://www.skrenta.com/monster/
+ | url-status = live
+ }}</ref>
+<ref name="monster-introduction">{{cite web
+ | last = Skrenta | first = Richard | author-link = Richard Skrenta
+ | url = http://www.skrenta.com/monster/final.html
+ | title = An Introduction to Monster
+ | date = 1997-01-13
+ | access-date = 2010-04-26
+ | quote = Monster allows players to do something that very few, if any, other games allow:  the players themselves create the fantasy world as part of the game.  Players can create objects, make locations, and set up puzzles for other players to solve.
+}}</ref>
+<ref name="mud-info">{{cite web
+ | last = Aspnes | first = James | author-link = James Aspnes
+ | url = http://groups.google.com/group/alt.mud/msg/1747c0abfca64367
+ | title = Monster
+ | date = 1990-07-04
+ | work = alt.mud
+ | quote = TinyMUD 1.0 was initially designed as a portable, stripped-down version of Monster (this was back in the days when TinyMUD was designed to be up and running in a week of coding and last for a month before everybody got bored of it.)
+}}</ref>
+<ref name="burka-mudline-tinymud">{{cite web
+ | last = Burka
+ | first = Lauren P.
+ | url = http://www.linnaean.org/~lpb/muddex/mudline.html
+ | title = The MUDline
+ | year = 1995
+ | access-date = 2010-04-26
+ | quote = August 19, 1989. Jim Aspnes announces the availability of TinyMUD to a few friends. Its port, 4201, is Aspnes' office number. TinyMUD is written in C for Unix, and was originally conceived as a front-end for IRC.
+ | archive-date = January 2, 2005
+ | archive-url = https://web.archive.org/web/20050102183913/http://www.linnaean.org/~lpb/muddex/mudline.html
+ | url-status = live
+ }}</ref>
+<ref name="dog-lpmud">{{cite book
+ | last1 = Mulligan | first1 = Jessica
+ | last2 = Patrovsky | first2 = Bridgette
+ | year = 2003 
+ | title = Developing Online Games: An Insider's Guide
+ | url = https://archive.org/details/developingonline0000mull | url-access = registration | publisher = New Riders
+ | isbn = 978-1-59273-000-1
+ | pages = [https://archive.org/details/developingonline0000mull/page/451 451]
+ | quote = 1989 [...] Lars Penjske creates ''LPMud'' and opens ''Genesis''.  "Having fun playing ''TinyMUD'' and ''AberMUD'', Lars Penjske decides to write a server to combine the extensibility of ''TinyMUD'' with the adventures of ''AberMUD''.  Out of this inspiration, he designed ''LPC'' as a special MUD language to make extending the game simple.  Lars says, '...I didn't think I would be able to design a good adventure.  By allowing wizards coding rights, I thought others could help me with this.'  The first running code was developed in a week on Unix System V using IPC, not BSD sockets.  Early object-oriented features only existed accidentally by way of the nature of MUDs manipulating objects.  As Lars learned C++, he gradually extended those features.  The result is that the whole LPMud was developed from a small prototype, gradually extended with features." &mdash;'''George Reese's''' ''LPMud Timeline''
+}}</ref>
+<ref name="livinginternet-lpmud">{{cite web
+ | last = Stewart | first = William
+ | url = http://www.livinginternet.com/d/di_major.htm
+ | title = MUD History
+ | year = 2002
+ | quote = The original LPMUD was written by Lars Pensjö and others, and became one of the most popular MUD's by the early 1990s.
+}}</ref>
+<ref name="verant-diku-persons">{{cite web
+ |last1=Smedley 
+ |first1=John 
+ |author-link1=John Smedley (video games) 
+ |last2=McQuaid 
+ |first2=Brad 
+ |author-link2=Brad McQuaid 
+ |url=http://www.dikumud.com/img/persons.gif 
+ |title=Sworn Statement 
+ |publisher=DIKU MUD 
+ |date=2000-03-17 
+ |access-date=2010-04-26 
+ |url-status=dead 
+ |archive-url=https://web.archive.org/web/20110413185123/http://www.dikumud.com/img/persons.gif 
+ |archive-date=2011-04-13 
+}}</ref>
+<ref name="verant-diku-server">{{cite web
+ |last1=McQuaid 
+ |first1=Brad 
+ |author-link1=Brad McQuaid 
+ |last2=Clover 
+ |first2=Steve 
+ |last3=Uzun 
+ |first3=Roger 
+ |url=http://www.dikumud.com/img/server.gif 
+ |title=Sworn Statement 
+ |publisher=DIKU MUD 
+ |date=2000-03-17 
+ |access-date=2010-04-26 
+ |url-status=dead 
+ |archive-url=https://web.archive.org/web/20110413185134/http://www.dikumud.com/img/server.gif 
+ |archive-date=2011-04-13 
+}}</ref>
+<ref name="cambron-dunin">{{cite web
+ |last=Cambron 
+ |first=Melanie 
+ |url=http://www.gignews.com/goddess/dunin.htm 
+ |title=A chat with Elonka Dunin 
+ |year=2002 
+ |archive-url=https://web.archive.org/web/20070927213317/http://www.gignews.com/goddess/dunin.htm 
+ |archive-date=2007-09-27 
+ |quote=Simutronics was originally the brain-child of David Whatley. As a teenager, he'd been big into the old BBS days and had even written some Fantasy Game BBS software that he sold all over the world, and he did this all from his parents' home. He'd also gotten involved as a player in some of the early multiplayer games that were out there such as Sceptre and Island of Kesmai, and, like many others who play these games, he thought to himself, "I can do this too." So in 1987, at the age of 21, he founded Simutronics Corporation with Tom and Susan Zelinski. 
+ |url-status=dead 
+}}</ref>
+<ref name="dunin-simutronics">{{cite web
+ | last = Dunin
+ | first = Elonka
+ | author-link = Elonka Dunin
+ | url = http://elonka.com/SimuTimeline.html
+ | title = Simutronics Timeline
+ | year = 2008
+ | quote = December, 1996 - GemStone III and DragonRealms are the top two titles (hours/month) in industry
+ | access-date = January 15, 2009
+ | archive-date = October 7, 2008
+ | archive-url = https://web.archive.org/web/20081007091220/http://www.elonka.com/SimuTimeline.html
+ | url-status = live
+ }}</ref>
+<ref name="reesegeno">{{cite web
+ |last=Reese 
+ |first=George 
+ |url=http://www.rpgmud.com/lpmud_timeline.htm 
+ |title=LPMud Timeline 
+ |date=1996-03-11 
+ |access-date=2010-04-14 
+ |quote=January 1992 ¶ _Genocide_ starts as the first MUD dedicated totally to inter-player conflict, which is a fancy way of saying that its theme is creatively player-killing. 
+ |url-status=dead 
+ |archive-url=https://web.archive.org/web/20120226122409/http://www.rpgmud.com/lpmud_timeline.htm 
+ |archive-date=2012-02-26 
+}}</ref>
+<ref name="shahromine-geno">{{harvnb|Shah|Romine|1995|pp=98–99}}, "Some Muds are completely dependant on player-killing, and have wars that start every half-hour or so.  These Muds are becoming more common, basing a lot of their ideas on the extremely popular LPmud known as Genocide."</ref>
+<ref name="burka-mudline-micromuse">{{cite web
+ | last = Burka
+ | first = Lauren P.
+ | url = http://www.linnaean.org/~lpb/muddex/mudline.html
+ | title = The MUD Timeline
+ | year = 1995
+ | access-date = 2010-04-22
+ | quote = Summer 1991. koosh (Nils McCarty) ports ''MicroMush'' to Chezmoto. The name is changed to ''MicroMuse'' at the suggestion of Wallace Feurzeig of BBN. ''MicroMuse'' evolves into the first educational Mud, with emphasis on K12 outreach.
+ | archive-date = January 2, 2005
+ | archive-url = https://web.archive.org/web/20050102183913/http://www.linnaean.org/~lpb/muddex/mudline.html
+ | url-status = live
+ }}</ref>
+<ref name="micromuse-charter">{{cite web
+ | url = http://underground.musenet.org:8080/~ender/charter.94
+ | title = MicroMUSE Charter
+ | publisher = MuseNet
+ | year = 1994
+ | access-date = 2010-04-22
+ | archive-date = June 15, 2011
+ | archive-url = https://web.archive.org/web/20110615000528/http://underground.musenet.org:8080/~ender/charter.94
+ | url-status = dead
+ }}</ref>
+<ref name="meridian59-mud">{{cite book
+ | last1 = Damer
+ | first1 = Bruce
+ | year = 1998
+ | title = Avatars!: exploring and building virtual worlds on the Internet
+ | publisher = Peachpit Press
+ | isbn = 978-0-201-68840-5
+ | pages = [https://archive.org/details/avatarsexploring00dame/page/383 383–384]
+ | quote = Some people describe it as a MUD (Multi User Dungeon) with a 3D interface and role playing character.
+ | url = https://archive.org/details/avatarsexploring00dame/page/383
+ }}</ref>
+<ref name="bmcquaid">{{cite web
+ |url         = http://rpgvaultarchive.ign.com/features/interviews/bmcquaid.shtml
+ |title       = Brad McQuaid Interview
+ |last        = Aihoshi
+ |first       = Richard
+ |date        = 2000-09-27
+ |publisher   = RPG Vault
+ |quote       = Then, in 1996, I was hired by Sony Interactive Studios to create a graphical, commercial MUD.
+ |url-status     = dead
+ |archive-url  = https://web.archive.org/web/20070524092336/http://rpgvaultarchive.ign.com/features/interviews/bmcquaid.shtml
+ |archive-date = 2007-05-24
+}}</ref>
+<ref name="dog-daoc-mud">{{cite book
+ | editor1-last = Mulligan | editor1-first = Jessica
+ | editor2-last = Patrovsky | editor2-first = Bridgette
+ | year = 2003 
+ | title = Developing Online Games: An Insider's Guide
+ | url = https://archive.org/details/developingonline0000mull | url-access = registration | publisher = New Riders
+ | isbn = 978-1-59273-000-1
+ | last = Firor | first = Matt | author-link = Matt Firor
+ | contribution = Post-Mortem: Mythic's ''Dark Age of Camelot''
+ | pages = [https://archive.org/details/developingonline0000mull/page/340 340]
+ | quote = It made perfect sense for us to combine the two technologies and make a graphical MUD.
+}}</ref>
+<ref name="runescapeqa">{{cite web
+ | last = Dobson
+ | first = James
+ | url = http://www.gamasutra.com/php-bin/news_index.php?story=13769
+ | title = Q&A: Behind RuneScape's 1 Million Subscriber Success
+ | access-date = 2010-04-24
+ | work = Gamasutra
+ | date = 2007-05-03
+ | quote = When I went to university, I discovered text-based MUDs, or multi-user dungeons. I loved the fact that these sorts of games had all these players playing at once - even when you were not playing, the world carried on without you. Because of this, I began creating my own text-based MUD, but I quickly realized that with so many of them out there, there was no way that mine would ever get noticed. So I began to search for a way to make mine stand out, and the obvious way, of course, was to add graphics. With my game, I was trying to emulate text MUDs at the time, purely as a hobby.
+ | archive-date = May 6, 2010
+ | archive-url = https://web.archive.org/web/20100506194632/http://www.gamasutra.com/php-bin/news_index.php?story=13769
+ | url-status = dead
+ }}</ref><ref name="warcryrunescape">{{cite web
+ | last = Funk
+ | first = John
+ | url = http://www.warcry.com/articles/view/interviews/5080-WarCry-and-Jagex-Talk-RuneScape
+ | title = WarCry and Jagex Talk RuneScape
+ | publisher = WarCry Network
+ | date = 2008-07-23
+ | access-date = 2009-01-06
+ | quote = Olifiers began with a brief history of Jagex and RuneScape: how Lead Developer Andrew Gower and his brother Paul founded the company in Cambridge in 2001, bringing their love for classic MUDs into the visual realm. The original RuneScape (now referred to as RuneScape Classic) was simply and exactly that: a 2D graphical interface placed on top of a MUD
+ | archive-url = https://web.archive.org/web/20110728024909/http://www.warcry.com/articles/view/interviews/5080-WarCry-and-Jagex-Talk-RuneScape
+ | archive-date = 2011-07-28
+ | url-status = dead
+ }}</ref>
+<ref name="mmorpg-coinage">{{cite book
+ | last1 = Safko
+ | first1 = Ron
+ | last2 = Brake
+ | first2 = David
+ | title = The Social Media Bible: Tactics, Tools, and Strategies for Business Success
+ | publisher = Wiley
+ | year = 2009
+ | isbn = 978-0-470-41155-1
+ | quote = Richard Garriott first coined the term ''MMORPG'' in 1997.
+ | url = https://archive.org/details/socialmediabible00safk
+ }}</ref>
+<ref name="stuart-bartle-herojourney">{{cite news
+ | last = Stuart
+ | first = Keith
+ | url = http://blogs.guardian.co.uk/games/archives/2007/07/17/id_close_world_of_warcraft_mud_creator_richard_bartle_on_the_state_of_virtual_worlds.html
+ | title = MUD, PLATO and the dawn of MMORPGs
+ | work = guardian.co.uk
+ | date = 2007-07-17
+ | location = London
+ | archive-date = July 6, 2008
+ | access-date = July 8, 2008
+ | archive-url = https://web.archive.org/web/20080706112357/http://blogs.guardian.co.uk/games/archives/2007/07/17/id_close_world_of_warcraft_mud_creator_richard_bartle_on_the_state_of_virtual_worlds.html
+ | url-status = dead
+ }}</ref>
+<ref name="hahn-verb">{{cite book
+ | last = Hahn
+ | first = Harley
+ | title = The Internet Complete Reference
+ | edition = 2nd
+ | year = 1996
+ | isbn = 978-0-07-882138-7
+ | pages = [https://archive.org/details/harleyhahnsinter00hahn/page/553 553]
+ | publisher = Osborne McGraw-Hill
+ | quote = The word "mud" is also used as a verb.  For example, you might hear someone say, "I like to mud more than I like to sleep," or "I am a bit tired, as I was up all night mudding, so maybe you better go to class without me".
+ | url = https://archive.org/details/harleyhahnsinter00hahn/page/553
+ }}</ref>
+<ref name="internetculture-mudder">{{cite book
+ | editor-last = Porter | editor-first = David
+ | title = Internet Culture
+ | publisher = Routledge
+ | year = 1997
+ | isbn = 978-0-415-91684-4
+ | edition = pbk.
+ | last = Ito | first = Mizuko | author-link = Mizuko Ito
+ | contribution = Virtually Embodied: The Reality of Fantasy in a Multi-User Dungeon
+ | pages = 93
+ | quote = Often MUD users (or MUDders, as they call themselves) [...]
+}}</ref>
+<ref name="bartle-taxonomy">{{cite journal
+ |last=Bartle 
+ |first=Richard 
+ |author-link=Richard Bartle 
+ |title=Hearts, Clubs, Diamonds, Spades: Players Who Suit MUDs 
+ |url=http://www.brandeis.edu/pubs/jove/HTML/v1/bartle.html 
+ |journal=Journal of Virtual Environments 
+ |editor-last=Jacobson 
+ |editor-first=David 
+ |volume=1 
+ |issue=1 
+ |date=July 1997 
+ |archive-url=https://web.archive.org/web/20071029080148/http://www.brandeis.edu/pubs/jove/HTML/v1/bartle.html 
+ |archive-date=2007-10-29 
+ |access-date=2010-04-30 
+ |url-status=dead 
+}}</ref>
+<ref name="korchmar">{{cite book
+ | last = Korchmar | first = Simon
+ | title = Erlösmodelle in Massively Multiplayer online Games
+ | publisher = [[:de:GRIN Verlag|GRIN Verlag]]
+ | year = 2007
+ | isbn = 978-3-640-22276-6
+ | language = de
+ |trans-title=Revenue Models in Massively Multiplayer online Games
+ | pages = 10
+ | quote = Unzählige MUD-Nachfolger (wie etwa MOO, MUSH, MUCK, etc.) verwendeten ähnliche Systeme und Thematiken &mdash; v. A. aus Fantasy und Science Fiction &mdash; und verstärkten teilweise den Rollenspiel-Charakter bis hin zu den 'sogennanten Role Play Intensive MUD (RPIMUD)'. ["Countless MUD successors (such as MOO, MUSH, MUCK, etc.) used similar systems and themes from fantasy and science fiction, and increased degrees of role-playing focus up to the so-called 'Role Play Intensive MUD (RPIMUD)'"]
+}}</ref>
+<ref name="towell">{{cite journal
+ | last1 = Towell
+ | first1 = John
+ | last2 = Towell
+ | first2 = Elizabeth
+ | title = Presence in Text-Based Networked Virtual Environments or "MUDS"
+ | journal = Presence
+ | year = 1997
+ | volume = 6
+ | issue = 5
+ | pages = 590–595
+ | doi = 10.1162/pres.1997.6.5.590
+ | s2cid = 46020475
+ | url = http://www.fragment.nl/mirror/various/Towell_et_al.1997.Presence_in_MUDs.htm
+ | access-date = May 2, 2010
+ | archive-date = May 18, 2013
+ | archive-url = https://web.archive.org/web/20130518113754/http://www.fragment.nl/mirror/various/Towell_et_al.1997.Presence_in_MUDs.htm
+ | url-status = dead
+ | url-access = subscription
+ }}</ref>
+<ref name="hansen">{{cite thesis
+ | last = Hansen
+ | first = Geir Harald
+ | url = http://geir-hansen.com/distributedworld.pdf
+ | title = A Distributed Persistent World Server using Dworkin's Generic Driver
+ | degree = Cand. Scient.
+ | publisher = University of Oslo
+ | date = 2002-07-31
+ | access-date = 2010-04-14
+ | archive-date = May 13, 2011
+ | archive-url = https://web.archive.org/web/20110513195857/http://geir-hansen.com/distributedworld.pdf
+ | url-status = live
+ }}</ref>
+<ref name="boring">{{cite thesis
+ | last = Boring
+ | first = Erich
+ | url = http://sc.lib.muohio.edu/bitstream/handle/2374.MIA/248/fulltext.pdf?sequence=1
+ | title = PangaeaMud: An Online, Object-oriented Multiple User Interactive Geologic Database Tool
+ | degree = Master's
+ | publisher = Miami University
+ | date = 1993-12-03
+ | access-date = 2010-05-03
+ | archive-date = July 20, 2011
+ | archive-url = https://web.archive.org/web/20110720011312/http://sc.lib.muohio.edu/bitstream/handle/2374.MIA/248/fulltext.pdf?sequence=1
+ | url-status = live
+ }}</ref>
+<ref name="cruickshank">{{cite journal
+ | last1 = Cruickshank
+ | first1 = Don
+ | last2 = De Roure
+ | first2 = David
+ | title = A Portal for Interacting with Context-aware Ubiquitous Systems
+ | year = 2004
+ | journal = Proceedings of First International Workshop on Advanced Context Modelling, Reasoning and Management
+ | pages = 96–100
+ | url = http://eprints.ecs.soton.ac.uk/9975/
+ | access-date = 2010-10-14
+ | citeseerx = 10.1.1.1.8402
+ | archive-date = November 21, 2010
+ | archive-url = https://web.archive.org/web/20101121001440/http://eprints.ecs.soton.ac.uk/9975/
+ | url-status = live
+ }}</ref>
+<ref name="turkle">{{cite book
+ | last = Turkle | first = Sherry | author-link = Sherry Turkle
+ | title = Life on the Screen: Identity in the Age of the Internet
+ | publisher = [[Simon & Schuster]]
+ | date = 1997-09-04
+ | edition = pbk.
+ | isbn = 978-0-684-83348-4
+| title-link = Life on the Screen: Identity in the Age of the Internet }}</ref>
+<ref name="grimmelmann">{{cite journal
+ | last = Grimmelmann
+ | first = James
+ | title = Virtual Worlds as Comparative Law
+ | journal = New York Law School Law Review
+ | issue = 49
+ | date = 2004-12-08
+ | pages = 147&ndash;184
+ | url = http://www.nyls.edu/user_files/1/3/4/17/49/v49n1p147-184.pdf
+ | access-date = 2010-05-06
+ | archive-date = June 19, 2010
+ | archive-url = https://web.archive.org/web/20100619110302/http://www.nyls.edu/user_files/1/3/4/17/49/v49n1p147-184.pdf
+ | url-status = dead
+ }}</ref>
+<ref name="cuciz">{{cite web
+ | last = Cuciz | first = D.
+ | title = The History of MUDs
+ | publisher = GameSpy.com
+ | year = 2004
+ | url = http://archive.gamespy.com/articles/january01/muds1/
+ | access-date = 2009-04-19
+ | archive-url = https://web.archive.org/web/20080324195532/http://archive.gamespy.com/articles/january01/muds1/
+ | archive-date = 2008-03-24
+}}</ref>
+<ref name="king">{{cite magazine
+ | last = King | first = Brad
+ | title = Games Started Off Without a Bang
+ | magazine = [[Wired News]]
+ | date = 2002-07-15
+ | url = https://www.wired.com/gaming/gamingreviews/news/2002/07/53765
+ | access-date = 2010-09-09
+}}</ref>
+<ref name="shefski">{{cite book
+ | last = Shefski
+ | first = William J.
+ | title = Interactive Internet: The Insider's Guide to MUDs, MOOs, and IRC
+ | publisher = [[Prima Games|Prima Publishing]]
+ | year = 1995
+ | isbn = 978-1-55958-748-8
+ | pages = [https://archive.org/details/isbn_9781559587488/page/41 41]
+ | url = https://archive.org/details/isbn_9781559587488/page/41
+ }}</ref>
+<ref name="schaefer">{{cite journal
+ | last1 = Schaefer | first1 = Dominik
+ | last2 = Mardare | first2 = Cezarina
+ | last3 = Savan | first3 = Alan
+ | last4 = Sanchez | first4 = Miguel D.
+ | last5 = Mei | first5 = Bastian
+ | last6 = Xia | first6 = Wei
+ | last7 = Muhler | first7 = Martin
+ | last8 = Ludwig | first8 = Alfred
+ | last9 = Schuhmann | first9 = Wolfgang
+ | title = High-Throughput Characterization of Pt Supported on Thin Film Oxide Material Libraries Applied in the Oxygen Reduction Reaction
+ | journal = [[Analytical Chemistry (journal)|Analytical Chemistry]]
+ | volume = 83
+ | issue = 6
+ | date = 2011-02-17
+ | pages = 1916–1923
+ | doi = 10.1021/ac102303u
+ | pmid = 21329337
+ | bibcode = 2011AnaCh..83.1916S
+ | quote = Programs in LPC programming language were developed to perform the following tasks: First, each set of CVs was separated into single CVs, and each of them were plotted. An average CV from all the CVs in one set was calculated and plotted as well. All images belonging to one set of CVs were combined into short animated movies to visualize the changes over time. The graphs of the averaged CVs from all measurement points within a line scan were combined into an animation for demonstrating the systematic changes along each of the Pt stripes. After that, specific parameters were extracted from each CV (see below). These parameters and some derived values were tabulated and plotted versus the x-coordinate of the measurement point. Thus, different graphs for each line scan were created showing the changes in specific properties along the thickness of the Pt stripe. The combined tabulated data for each wafer was then used to plot a 3D image of several parameters vs substrate composition and nominal thickness. The LPC programs were compiled using LDMud (V3.3.719).
+ | hdl = 11336/105712
+ | hdl-access = free
+ }}</ref>
+<ref name="taylor">{{cite book
+ | last = Taylor
+ | first = T.L.
+ | author-link = T.L. Taylor
+ | title = Play Between Worlds: Exploring Online Game Culture
+ | publisher = The MIT Press
+ | date = 2006-02-24
+ | isbn = 978-0262201636
+ | pages = [https://archive.org/details/playbetweenworld0000tayl/page/24 24]
+ | url = https://archive.org/details/playbetweenworld0000tayl/page/24
+ }}</ref>
+<ref name="godlovitch">{{cite journal
+ | last = Godlovitch | first = Ilsa
+ | title = Jackal takes Dragonfly to be his bride 
+ | journal = The Independent
+ | url = https://www.independent.co.uk/life-style/jackal-takes-dragonfly-to-be-his-bride-1598406.html
+ | date = 1995-08-28
+ | access-date = 2016-05-02
+}}</ref>
+<ref name="bartle-mudlib">{{harvnb|Bartle|2003|p=43}}, "Above this layer is what (for historical reasons) is known as the ''mudlib''<sup>58</sup>. [...] <sup>58</sup>For "mud library".  ''MUD1'' had a mudlib, but it was an adaptation of the BCPL input/output library and therefore was at a lower level than today's mudlibs.  The modern usage of the term was coined independently by ''LPMUD''."</ref>
+<ref name="busey">{{harvnb|Busey|1995|p=239}}, "''MUDLib'' is short for ''MUD library''. ... Files within a MUDLib are akin to books on the shelves of a library."</ref>
+<ref name="bartle-physics">{{harvnb|Bartle|2003|p=43}}, "The mudlib defines the physics of a virtual world, which will include things such as mass/weight, timers, movement and communication, along with higher concepts such as (in a game context) magic and combat mechanisms."</ref>
+}}
+
+== Bibliography ==
+
+{{refbegin}}
+* {{cite book
+ | last = Bartle | first = Richard | author-link = Richard Bartle
+ | title = Designing Virtual Worlds
+ | publisher = New Riders
+ | year = 2003
+ | isbn = 978-0-13-101816-7
+| title-link = Designing Virtual Worlds }}
+* {{cite book
+ | last1 = Shah | first1 = Rawn
+ | last2 = Romine | first2 = James
+ | year = 1995
+ | title = Playing MUDs on the Internet
+ | publisher = John Wiley & Sons, Inc.
+ | isbn = 978-0-471-11633-2
+}}
+* {{cite book
+ | last = Busey | first = Andrew
+ | title = Secrets of the MUD Wizards
+ | publisher = [[SAMS Publishing]]
+ | year = 1995
+ | isbn = 978-0-672-30723-2
+}}
+* {{cite book
+ | last = Carton | first = Sean | author-link = Sean Carton
+ | title = Internet Virtual Worlds Quick Tour
+ | publisher = Ventana Press
+ | year = 1995
+ | isbn = 978-1-56604-222-2
+}}
+* {{cite book | last = Cheong | first = Fah-Chun | year = 1996 | title = Internet Agents: Spiders, Wanderers, Brokers, and Bots | publisher = New Riders | isbn = 1-56205-463-5 }}
+* {{cite web
+ | last = Burka
+ | first = Lauren P.
+ | url = http://www.linnaean.org/~lpb/muddex/mudline.html
+ | title = The MUDline
+ | work = The MUDdex
+ | year = 1995
+ }}
+* {{cite web
+ | last = Koster
+ | first = Raph
+ | author-link = Raph Koster
+ | url = http://www.raphkoster.com/gaming/mudtimeline.shtml
+ | title = Online World Timeline
+ | work = Raph Koster's Website
+ | date = 2002-02-20
+ | access-date = June 27, 2006
+ | archive-date = January 17, 2009
+ | archive-url = https://web.archive.org/web/20090117223948/http://raphkoster.com/gaming/mudtimeline.shtml
+ | url-status = live
+ }}
+* {{cite web 
+ |last=Reese 
+ |first=George 
+ |url=http://www.rpgmud.com/lpmud_timeline.htm 
+ |title=The LPMud Timeline 
+ |date=1996-03-11 
+ |url-status=dead 
+ |archive-url=https://web.archive.org/web/20120226122409/http://www.rpgmud.com/lpmud_timeline.htm 
+ |archive-date=2012-02-26 
+ }}
+* {{cite web 
+ |last=Mitchell 
+ |first=Don 
+ |url=http://research.microsoft.com/vwg/papers/3DVW.htm 
+ |title=From MUDs To Virtual Worlds 
+ |work=Microsoft Social Computing Group 
+ |date=1995-03-23 
+ |archive-url=https://web.archive.org/web/20060926063650/http://research.microsoft.com/vwg/papers/3DVW.htm 
+ |archive-date=2006-09-26 
+ |url-status=dead 
+ }}
+*{{cite journal |last=Jøn |first=A. Asbjørn |date=2010 |title=The Development of MMORPG Culture and The Guild |url=https://www.researchgate.net/publication/283281457 |journal=Australian Folklore: A Yearly Journal of Folklore Studies |volume=25 |pages=97–112 |archive-date=December 30, 2022 |access-date=November 4, 2015 |archive-url=https://web.archive.org/web/20221230171253/https://www.researchgate.net/publication/283281457 |url-status=live }}
+* {{Cite news
+ | last = McClellan
+ | first = Jim
+ | url = https://www.theguardian.com/Archive/Article/0,4273,3813540,00.html
+ | title = Mind game in the MUD
+ | journal = The Guardian
+ | date = 1999-01-28
+ }}
+{{refend}}
+
+==External links==
+
+===Source code repositories===
+* [http://www.andreasen.org/ Erwin S. Andreasen]: Home of the 16k MUD competition, and other resources.
+* [http://www.mudbytes.net MudBytes.net]: MUD code repository and discussion.
+
+===Resources===
+* [http://www.mudconnect.com/ The Mud Connector]: Extensive mud portal with hundreds of mud listings
+* [http://mudseek.com MUDseek]: Google custom search engine indexing MUD and MUD-related web sites.
+* [http://www.mudstats.com/ MUD Stats]: MUD statistics.
+* [http://mudbase.com MUDbase]
+
+{{MUDs|state=expanded}}
+{{Multiplayer online games}}
+{{VideoGameGenre}}
+{{Authority control}}
+
+[[Category:MUD terminology| ]]
+[[Category:Multi-user dungeon| ]]
+[[Category:Telnet]]

@@ -1,0 +1,145 @@
+{{short description|Video game series}}
+{{about|the video game series|the first game|Space Quest I{{!}}''Space Quest I''|other uses|Space Quest (disambiguation)}}
+{{italic title}}
+
+{{Infobox video game series
+| width = 
+| title = Space Quest
+| collapsible = 
+| state = 
+| image = File:Space Quest logo.gif
+| caption = 
+| platforms = [[MS-DOS]], [[Windows]], [[Macintosh]]
+| developer = [[Sierra On-Line]], [[Dynamix]]
+| publisher = [[Sierra On-Line]]
+| genre = [[Point-and-click adventure]]
+| spinoffs = 
+| creator = [[Mark Crowe]], [[Scott Murphy (video game designer)|Scott Murphy]]
+| producer = 
+| artist = 
+| writer = 
+| composer = 
+| first release version = 1986
+| first release date = 
+| latest release version = 
+| latest release date = 1995
+}}
+
+'''''Space Quest''''' is a series of six [[comic science fiction]] [[Adventure_game#Point-and-click_adventure_games|adventure games]] released between 1986 and 1995. The games follow the adventures of a hapless janitor named Roger Wilco who finds himself entangled in intergalactic plots.
+
+Initially created for [[Sierra Entertainment|Sierra On-Line]] by [[Mark Crowe]] and [[Scott Murphy (video game designer)|Scott Murphy]] (who called themselves the "Two Guys from Andromeda"), the games parody science fiction properties such as ''[[Star Wars]]'' and ''[[Star Trek]]'' as well as pop-culture phenomena from [[McDonald's]] to [[Microsoft]]. The series' sense of humor is characterized by puns and farcical storylines. Roger Wilco is depicted as an underdog who saves the universe (often by accident), only to be ignored or punished for violating minor regulations in the process.
+
+The ''Space Quest'' games have been called "beloved cult classics" and influential adventure games of their era. Numerous collections of the games have been released since the 1990s, and the games continue to be sold on modern storefronts.<ref name="GameDeveloper">{{cite web |url=https://www.gamedeveloper.com/business/the-20-year-estrangement-of-the-two-guys-from-andromeda#close-modal |title=The 20-Year Estrangement of the Two Guys from Andromeda |author=Leigh Alexander |publisher=Game Developer |date=2012-05-31 |accessdate=2024-04-13}}</ref><ref name="MobyGamesSeries">{{cite web |title=Space Quest series |url=https://www.mobygames.com/group/4/space-quest-series/ |website=MobyGames |access-date=24 September 2025}}</ref>
+
+==Development==
+Mark Crowe and Scott Murphy met at Sierra. Crowe already worked at the company in marketing, and Murphy joined as a programmer. Both shared an interest in science fiction and felt that Sierra needed a game to distinguish from fantasy-themed titles such as Sierra's flagship ''[[King's Quest (series)|King's Quest]]'' and ''[[The Black Cauldron (video game)|The Black Cauldron]]'', the latter of which they both worked on. The two also felt the studio released games with serious storylines and lacked a comedy game, with a protagonist who was a "regular guy" rather than a hero.
+
+{{Quote box
+ |quote  = "Sierra was in a mindset where everything was medieval and it was all fairly serious. I wanted to do a game that was more fun. We even liked the idea of 'fun death'! I mean, if the player is gonna die or fail, they should at least get a laugh out of it." |author = Scott Murphy<ref name="SQCollectionHistory">{{cite book |title=The History of Space Quest (document included in the collection "Space Quest Collection Series: Starring Roger Wilco") |date=1997 |publisher=Sierra On-Line |url=https://archive.org/details/the-history-of-space-quest |access-date=25 September 2025}}</ref>
+ |width  = 33%
+ |align  = left
+}}
+
+Sierra management was reluctant to greenlight a science fiction comedy game, thinking it would not sell, and studio head [[Ken Williams (game developer)|Ken Williams]] turned down the first game pitch in 1985. Crowe and Murphy created a short prototype in their free time and pitched Williams again, who was finally convinced.
+
+''Space Quest I'' was developed in Sierra's in-house [[Adventure Game Interpreter|AGI]] engine. The game was designed by "trial and error" as game development was still a new discipline and not formalized. Both writing and artwork were improvised throughout development, with the game being updated throughout even the [[quality assurance]] process.<ref>{{cite book|last=Champion|first=Jill|author2=Leinecker, Richard C. |title=The Official Guide to Roger Wilco Space Adventures|year=1991|publisher=Compute Books|isbn= 0-87455-237-0}}</ref><ref name="IGNRetrospective">{{cite web |last1=Andreadis |first1=Kosta |title=A Year of Adventure #3: Space Quest I & II |url=https://www.ign.com/articles/2014/02/24/a-year-of-adventure-3-space-quest-i-ii |website=IGN |date=24 February 2014 |access-date=25 September 2025}}</ref><ref name="SQCollectionHistory"/>
+
+==Games==
+{{Video game timeline
+| summary = A timeline of releases in the main Space Quest series, from the first in 1986 to present.
+| 1986 = ''[[Space Quest I]]''
+| 1987 = ''[[Space Quest II]]''
+| 1989 = ''[[Space Quest III]]''
+| 1991 = ''[[Space Quest IV]]''
+| 1993 = ''[[Space Quest V]]''
+| 1995 = ''[[Space Quest 6]]''
+}}
+
+===''Space Quest: The Sarien Encounter''===
+{{main|Space Quest I|l1=''Space Quest I''}}
+
+The original ''Space Quest'' game was released in October 1986 as an intentional departure from Sierra's more serious, medieval-themed games.<ref>{{cite book|last=Purcaru|first=John Bogdan|title=Games vs. Hardware. The History of PC video games: The 80's|url=https://books.google.com/books?id=lB4PAwAAQBAJ&q=everything+at+Sierra+was+so+somber+and+had+an+almost+medieval+atmosphere.+So+we+decided+%27Why+not+make+a+fun%2C+silly+game&pg=PA296|location=[[Google Books]]|page=296|date=29 January 2014|access-date=11 December 2016}}</ref> A remake was released in 1991 as ''Space Quest I: Roger Wilco in the Sarien Encounter''.
+
+===''Space Quest II: Vohaul's Revenge''===
+{{main|Space Quest II|l1=''Space Quest II''}}
+
+Released in 1987, ''Space Quest II'' follows Roger Wilco a few months after the events of the first game. The sequel was well received and seen by critics as an improvement over the first.
+
+===''Space Quest III: The Pirates of Pestulon''===
+{{main|Space Quest III|l1=''Space Quest III''}}
+
+The third ''Space Quest'' game, released in 1989, was the first to be developed with Sierra's [[Sierra Creative Interpreter|SCI]] engine, the successor to the earlier AGI engine, and was the first ''Space Quest'' game to feature sound card support.
+
+===''Space Quest IV: Roger Wilco and the Time Rippers''===
+{{main|Space Quest IV|l1=''Space Quest IV''}}
+''Space Quest IV'' debuted in 1991, and would be the first ''Space Quest'' game to release on CD-ROM the following year. The game featured 256-color graphics, a point-and-click interface, and the CD-ROM release included recorded voice acting.
+
+===''Space Quest V: Roger Wilco – The Next Mutation''===
+{{main|Space Quest V|l1=''Space Quest V''}}
+
+Released in 1993, ''Space Quest V'' was the first ''Space Quest'' game to be developed outside of Sierra and the first to be developed without Scott Murphy. The game's development was led by Mark Crowe at Dynamix, a subsidiary of Sierra.<ref>{{cite web |url=https://www.adventureclassicgaming.com/index.php/site/interviews/234/ |title=Adventure Classic Gaming |author=Cris Skelton, Philip Jong |publisher=Adventure Classic Gaming |date=2006-11-10 |accessdate=2024-04-13}}</ref>
+
+===''Space Quest 6: Roger Wilco in The Spinal Frontier''===
+{{main|Space Quest 6|l1=''Space Quest 6''}}
+
+The final ''Space Quest'' was released in 1995. The game saw a troubled development, with Sierra employee Josh Mandel leading development and Scott Murphy serving as a consultant. Mark Crowe was not involved.<ref>{{cite web|first=Philip |last=Jong |date=24 April 2006 |url=http://www.adventureclassicgaming.com/index.php/site/interviews/196/ |title=Josh Mandel |website=Adventure Classic Gaming |access-date=24 September 2015 |url-status=live |archive-url=https://web.archive.org/web/20150925122909/http://www.adventureclassicgaming.com/index.php/site/interviews/196/ |archive-date=25 September 2015 }}</ref>
+
+===Other releases and appearances===
+* A demo for ''Space Quest 6'' was released that, unusually, contains a scenario not included in the full game
+* Sierra released a bundle of minigames from the ''Space Quest'' series as a collection titled ''Roger Wilco's Spaced Out Game Pack''
+* The video game ''[[Take a Break! Pinball]]'' features boards inspired by Sierra video games, including three from the ''Space Quest'' series
+* Sierra's ''[[Hoyle's Official Book of Games]], Volume I'' includes Roger Wilco as a computer opponent, and ''Volume III'' includes Roger as well as the villains Arnoid and Vohaul
+
+==Cancelled games==
+===Seventh ''Space Quest'' game===
+In early 1997, Sierra began development of a seventh entry in the series with Scott Murphy as director. Employees of Sierra reported that work was underway on a prototype, and Murphy stated that the game would feature multiplayer for the first time.<ref>{{cite web |last=Morrissette |first=Jess |title=Catching Up with Scott Murphy |url=https://wiw.org/~jess/scott112900.html |website=Roger Wilco's Virtual Broomcloset |date=29 November 2000 |access-date=10 October 2025}}</ref>
+
+In August 1997, Sierra released a ''Space Quest'' collection that included a promotional video announcing a "late 1998" release date for what was then called ''Space Quest 7''. Before the end of the year, however, game development was paused indefinitely in favor of projects believed to be more valuable. Two years later, [[Sierra_Entertainment#Fallout_from_CUC's_acquisition_(1999–2003)|Sierra management announced massive layoffs]] and development on a seventh ''Space Quest'' formally ceased.<ref>{{cite web |last=Jebens |first=Harley |title=Space Quest Fan Fights Sierra |url=https://www.gamespot.com/articles/space-quest-fan-fights-sierra/1100-2462412/ |website=GameSpot |date=28 April 2000 |access-date=10 October 2025}}</ref><ref>{{cite web |title=Space Quest 7 |url=https://spacequest.net/sq7/ |website=SpaceQuest.net |access-date=23 September 2025}}</ref>
+
+===Untitled Escape Factory game===
+Rumors circulated in 2002 that a developer called Escape Factory was working on a new ''Space Quest'' game. Production assets leaked in subsequent years would confirm the rumor, but the project was never formally announced nor formally confirmed by Escape Factory or Sierra. In contrast to the rest of the series, the game would have been a 3D action-adventure.
+
+Escape Factory canceled the still-unnamed project after a year of development for an unexplained "variety of reasons." Concept art, screenshots, and video footage of early builds of the game have been published online. Industry sources claimed the game was being planned for the [[PlayStation 2]] and [[Xbox]] but not home PCs.<ref name="XboxMagazine">{{cite magazine |title=The Rumor Mole |magazine=Official Xbox Magazine |date=June 2002 |issue=7 |page=26 |url=https://archive.gamehistory.org/item/ff15d8c8-ea75-4950-8372-ebfbaf8e7197 |access-date=23 September 2025}}</ref><ref name="AdventureGamersRumors">{{cite web |title=Space Quest rumors continued (published 11-14-2002) |url=http://www.adventuregamers.com/newsarchives.php?start=26 |website=Adventure Gamers | archive-url=https://web.archive.org/web/20021225063309/http://www.adventuregamers.com/newsarchives.php?start=26 |access-date=23 September 2025 | archive-date=25 December 2002 }}</ref><ref name="Unseen64">{{cite web |title=Space Quest [XBOX PS2 – Cancelled] |url=https://www.unseen64.net/2009/06/11/space-quest-xbox-ps2-cancelled/ |website=Unseen64 |date=11 June 2009 |access-date=23 September 2025}}</ref><ref name="EscapeFactory">{{cite web |title=Escape Factory News |url=http://www.escapefactory.com/news.htm |website=Escape Factory company website |archive-url=https://web.archive.org/web/20030206085546/http://www.escapefactory.com/news.htm |access-date=23 September 2025 |archive-date=6 February 2003 }}</ref><ref name="SQnetEscapeFactory">{{cite web |title=Escape Factory |url=https://www.spacequest.net/sq7/escapefactory/index.php |website=SpaceQuest.net |access-date=23 September 2025}}</ref>
+
+==Other media==
+*''The Adventures of Roger Wilco'' (1992): Adventure Comics, a division of [[Malibu Comics]], released three issues of a ''Space Quest'' comic book. The series adapts the story of ''Space Quest: The Sarien Encounter''.<ref name="ComicBooks">{{cite web |title=Roger Wilco Comic Books |url=https://www.spacequest.net/misc/rwcomic/ |website=SpaceQuest.net |access-date=24 September 2025}}</ref>
+*''The Official Guide to Roger Wilco's Space Adventures'' (1991, 1993): A walkthrough and novelization of the ''Space Quest'' series written by Jill Champion. The first edition (1991) includes ''Space Quest I–IV'', and the second edition (1993) adds coverage of ''Space Quest V''.<ref name="BookReviews">{{cite web |title=Book Reviews |url=https://www.spacequest.net/misc/bookreviews/ |website=SpaceQuest.net |access-date=9 October 2025}}</ref>
+*''The Space Quest Companion'' (1992, 1993): A guidebook to the ''Space Quest'' series written by Peter and Jeremy Spear. Like ''The Official Guide'', it combines walkthroughs with story sections told from Roger Wilco’s perspective. The first edition (1992) covers ''Space Quest I–IV''; the second edition (1993) adds ''Space Quest V''.<ref name="BookReviews" />
+
+==Legacy==
+''Space Quest'' has been remembered as an influential adventure and comedy game series. Along with other Sierra titles, ''Space Quest'' "defined the form" of point-and-click adventures. Critics have credited the games for being dense with "geeky" humor and for "paving the way" for future comedy adventure games. The series would be referenced by many future games as well as an enduring fan community, known in particular for the release of numerous [[fan games]], such as 2011's ''[[Space Quest: Vohaul Strikes Back]]''.<ref name="GameDeveloper"/><ref name="CobbettReinstall">{{cite journal |last1=Cobbett |first1=Richard |title=Reinstall: Classics of PC Gaming Revisited |journal=PC Gamer |date=September 2011 |issue=217 |pages=82–84 |url=https://archive.gamehistory.org/item/fe354ec9-ddaf-47f9-aadb-65167550650a |access-date=24 September 2025}}</ref><ref name="GameNOW">{{cite journal |title=Top 10 Funniest Games |journal=GameNOW |date=October 2003 |volume=3 |issue=24 |page=106 |url=https://archive.gamehistory.org/item/fa8dde5a-bd3b-4e87-8625-89c1affe4e55 |access-date=24 September 2025}}</ref><ref name="Supercade">{{cite book |last1=Morrissette |first1=Jess |title=Supercade: A Visual History of the Videogame Age 1985-2001 |date=2021 |publisher=Supercade Press |isbn=978-1737983811}}</ref><ref name="CobbettFangames">{{cite web |last1=Cobbett |first1=Richard |title=Space Quest: Roger Wilco Not Over And Out |url=https://www.rockpapershotgun.com/space-quest-roger-wilco-not-over-and-out |website=Rock Paper Shotgun |date=19 January 2012 |access-date=24 September 2025}}</ref><ref name="Tringham2014">{{cite book|author=Neal Roger Tringham|url=https://books.google.com/books?id=QH3SBQAAQBAJ&pg=PA119|title=Science Fiction Video Games|date=10 September 2014|publisher=CRC Press|isbn=978-1-4822-0389-9|pages=119–}}</ref>
+
+===''SpaceVenture''===
+On March 25, 2012, [[Mark Crowe]] and [[Scott Murphy (video game designer)|Scott Murphy]] announced they had reunited under a company called Two Guys from Andromeda and planned an original adventure game set in space. [[Chris Pope]] (also known as SpacePope) co-founded the company and would serve as executive producer. The game, titled ''SpaceVenture'', was intended to be a spiritual successor to the ''Space Quest'' series, starring a blue-collar spaceship worker named Ace Hardway. The ''SpaceVenture'' Kickstarter campaign launched on May 12, 2012 and narrowly reached its funding goal on June 12.<ref name="TwoGuysAnnouncement">{{cite web |title=Join Scott and Mark in their Epic new SpaceVenture |url=https://guysfromandromeda.com/uncategorized/new-game/ |website=Two Guys from Andromeda |access-date=24 September 2025}}</ref><ref name="RPSKickstarter">{{cite web |last1=Walker |first1=John |title=Wilco: Two Guys' SpaceVenture Kickstarter Just Makes It |url=https://www.rockpapershotgun.com/wilco-two-guys-spaceventure-kickstarter-just-makes-it |website=Rock Paper Shotgun |date=12 June 2012 |access-date=24 September 2025}}</ref> 
+
+''SpaceVenture'' soon entered [[development hell]], experiencing a steady stream of setbacks, delays, and shifting release dates. By 2015, the game was considered "extraordinarily late"<ref name="RPSdelayed">{{cite web |last1=Walker |first1=John |title=Much Delayed Two Guys SpaceVenture Project Offers Five Nights Spoofing Cluck Yegger Minigame To Backers |url=https://www.rockpapershotgun.com/much-delayed-two-guys-spaceventure-project-offers-cluck-yegger-minigame-to-backers |website=Rock Paper Shotgun |date=29 October 2015 |access-date=24 September 2025}}</ref>, and an early, backers-only version would not be released until 2022. The game was not released to the public until April 1, 2025 when it was published on [[Early_access#Steam_Early_Access|Steam Early Access]]—technically, still incomplete.<ref name="TimeExtension">{{cite web |last1=McFerran |first1=Damien |title=10 Years Later, 'Space Quest' Successor 'SpaceVenture' Emerges From Development Hell |url=https://www.timeextension.com/news/2022/09/10-years-later-space-quest-successor-spaceventure-emerges-from-development-hell |website=Time Extension |date=20 September 2022 |access-date=24 September 2025}}</ref><ref name="KotakuDisaster">{{cite web |last1=Walker |first1=John |title=12 Years Late, This Kickstarter-Funded Tribute To A Legendary Adventure Game Series Is A Complete Disaster |url=https://kotaku.com/spaceventure-space-quest-kickstarter-steam-disaster-1851774747 |website=Kotaku |date=4 April 2025 |access-date=24 September 2025}}</ref>
+
+Critics proposed several explanations for the game's lengthy development. The developers appeared to be "out of their depth" with the [[Unity (game engine)|Unity]] engine, lacking the expertise and resources to manage the project. The schedule was also impacted by a variety of personal problems unrelated to development, as well as misfortunes such as the death of [[Gary Owens]] in 2015 (narrator of ''Space Quest IV'' and ''Space Quest 6'' and planned to return for ''SpaceVenture'').<ref name="KotakuDisaster"/><ref>{{cite news|url=https://www.nytimes.com/2015/02/14/arts/television/gary-owens-announcer-on-laugh-in-dies-at-80.html?_r=0|title=Gary Owens, Droll Announcer on 'Laugh-In,' Dies at 80|newspaper=The New York Times|date=14 February 2015|access-date=22 July 2015|last1=Fox|first1=Margalit}}</ref>
+
+''SpaceVenture'' received negative reviews, with reviewers noting the game still felt buggy and unfinished. The backers-only version was criticized as a bug-ridden "mess," and the April 2025 release described as a "disaster." The game exited early access with a full release on December 23, 2025.<ref name="TimeExtension"/><ref name="KotakuDisaster"/><ref name="AdventureGameHotSpotReview">{{cite web |last1=Mills |first1=Shawn |title=SpaceVenture review |url=https://adventuregamehotspot.com/review/20/spaceventure |website=Adventure Game Hotspot |access-date=24 September 2025}}</ref>
+
+==References==
+{{reflist}}
+
+==Further reading==
+* {{cite book |last=Mills |first=Shawn |title=The Sierra Adventure: The Story of Sierra On-Line |year=2018 |publisher=Self published |isbn=978-1716867064}}
+
+==External links==
+* [https://www.mobygames.com/group/4/space-quest-series/ The ''Space Quest'' series] at [[MobyGames]]
+* [https://wiw.org/~jess/roger.html Roger Wilco's Virtual Broomcloset], the first ''Space Quest'' fan site, launched in 1995 and active as of 2025
+
+{{Space Quest series}}
+{{Sierra Adventure Games|Space Quest}}
+{{Activision}}
+{{portal bar|Video games}}
+
+[[Category:Space Quest| ]]
+[[Category:Activision Blizzard franchises]]
+[[Category:adventure games]]
+[[Category:Adventure games set in outer space]]
+[[Category:comics based on video games]]
+[[Category:science fiction comedy]]
+[[Category:Sierra Entertainment games]]
+[[Category:space opera video games]]
+[[Category:video game franchises]]
+[[Category:video games set on fictional planets]]

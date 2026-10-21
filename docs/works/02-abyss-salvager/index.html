@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>渊甲拾遗者 AC-VII · ABYSS-CARAPACE SALVAGER</title>
+    <meta
+      name="description"
+      content="原创深海甲壳式矿脉采集体 3D 交互模型：760 米分段甲壳、磨削冠、程序化几何、可分解检视、参数编辑与 GLB 导出。机制参考自 MiniMax M3.1 Flash 社区 3D 案例，模型形态与视觉全部原创。"
+    />
+    <meta name="color-scheme" content="dark" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23071019'/%3E%3Ccircle cx='9' cy='16' r='5' fill='none' stroke='%2338e8d0' stroke-width='2'/%3E%3Cpath d='M14 16h11M18 12v8M23 13v6' stroke='%23ff8a3d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <script type="module" crossorigin src="./assets/index-fjB6MxRS.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-o1RJDnm4.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- ============================ viewport ============================ -->
+      <div id="stage"></div>
+
+      <!-- ============================ header ============================= -->
+      <header id="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="brand-text">
+            <h1>渊甲拾遗者 <span class="mono">AC-VII</span></h1>
+            <p class="sub">ABYSS-CARAPACE SALVAGER · 深渊热液区甲壳式矿脉采集体</p>
+          </div>
+        </div>
+
+        <div id="telemetry" aria-label="实时遥测">
+          <div class="tel"><span class="tel-k">深度 DEPTH</span><span class="tel-v" id="tel-depth">4 412 m</span></div>
+          <div class="tel"><span class="tel-k">水温 TEMP</span><span class="tel-v" id="tel-temp">1.8 °C</span></div>
+          <div class="tel"><span class="tel-k">压力 PRESS</span><span class="tel-v" id="tel-pressure">441.6 atm</span></div>
+          <div class="tel tel-wide"><span class="tel-k">节律 CYCLE</span><span class="tel-v" id="tel-cycle">固着 GRIP</span></div>
+        </div>
+
+        <div class="topbar-actions">
+          <button id="btn-reset" class="btn" type="button" title="恢复所有参数与机位">
+            <span class="btn-cn">重置</span><span class="btn-en">RESET</span>
+          </button>
+          <button id="btn-export" class="btn btn-primary" type="button" title="导出当前模型为 GLB">
+            <span class="btn-cn">导出 GLB</span><span class="btn-en">EXPORT</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- ========================== tool rail ============================ -->
+      <nav id="tool-rail" aria-label="机位与检视工具"></nav>
+
+      <!-- ========================== right column ========================= -->
+      <aside id="right-column">
+        <section class="card" id="card-crown-section">
+          <header class="card-head">
+            <h2>磨削冠剖面</h2>
+            <span class="card-en">CROWN SECTION</span>
+          </header>
+          <canvas id="crown-section"></canvas>
+        </section>
+
+        <section class="card card-panel">
+          <header class="card-head">
+            <h2>参数编辑</h2>
+            <span class="card-en">PARAMETERS</span>
+          </header>
+          <div id="control-panel"></div>
+        </section>
+      </aside>
+
+      <!-- ======================= survey chart =========================== -->
+      <section id="card-survey-chart" class="card">
+        <header class="card-head">
+          <h2>等深线测区图</h2>
+          <span class="card-en">BATHYMETRIC CHART</span>
+        </header>
+        <canvas id="survey-chart"></canvas>
+      </section>
+
+      <!-- =========================== cycle meter ========================= -->
+      <div id="cycle-meter">
+        <div class="cycle-label">
+          <span class="cycle-cn">蠕动节律</span><span class="cycle-en">CYCLE</span>
+        </div>
+        <div class="cycle-beats" id="cycle-beats"></div>
+      </div>
+
+      <!-- ======================== bottom section ========================= -->
+      <section id="card-long-section" class="card">
+        <header class="card-head">
+          <h2>纵剖面 · 从头到尾</h2>
+          <span class="card-en">LONGITUDINAL SECTION</span>
+        </header>
+        <canvas id="long-section"></canvas>
+      </section>
+
+      <!-- ========================== spec readout ======================== -->
+      <section id="card-specs" class="card">
+        <header class="card-head">
+          <h2>技术参数</h2>
+          <span class="card-en">SPECIFICATION</span>
+        </header>
+        <dl class="spec-list">
+          <div><dt>全长</dt><dd id="spec-length">—</dd></div>
+          <div><dt>驱动体节</dt><dd id="spec-segments">—</dd></div>
+          <div><dt>三角面数</dt><dd id="spec-tris">—</dd></div>
+          <div><dt>网格对象</dt><dd id="spec-meshes">—</dd></div>
+          <div><dt>材质槽</dt><dd id="spec-mats">—</dd></div>
+          <div><dt>帧率</dt><dd id="spec-fps">—</dd></div>
+        </dl>
+      </section>
+
+      <!-- ========================== status toast ========================= -->
+      <div id="toast" role="status" aria-live="polite"></div>
+
+      <!-- ====================== restore UI button ======================= -->
+      <button id="ui-restore" class="btn" type="button">显示界面 / SHOW UI</button>
+
+      <!-- =========================== loader ============================== -->
+      <div id="loader">
+        <div class="loader-inner">
+          <div class="loader-ring"></div>
+          <p class="loader-cn">正在生成程序化几何…</p>
+          <p class="loader-en">BUILDING PROCEDURAL GEOMETRY</p>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

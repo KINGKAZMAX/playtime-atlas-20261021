@@ -1,0 +1,757 @@
+{{Short description|Finnish media franchise}}
+{{About|the franchise|the original video game|Angry Birds (video game)}}
+{{unreliable sources|date=July 2025}}
+{{Use dmy dates|date=July 2025}}
+{{Infobox media franchise
+| image = Angry Birds logo 2015.svg
+| caption = Logo used since 2015
+| creator = [[Jaakko Iisalo]]
+| origin = ''[[Angry Birds (video game)|Angry Birds]]'' (2009)
+| owner = [[Rovio Entertainment]]<br/>[[Sega]] {{small|(since 2023)}}
+| films = {{Plainlist|
+* ''[[The Angry Birds Movie]]'' (2016)
+* ''[[The Angry Birds Movie 2]]'' (2019)
+* ''[[The Angry Birds Movie 3]]'' (2026)
+ }} 
+| atv = {{plainlist|
+* ''[[Angry Birds Toons]]'' (2013–2016)
+* ''[[Piggy Tales]]'' (2014–2019)
+* ''[[Angry Birds Stella (TV series)|Angry Birds Stella]]'' (2014–2016)
+* ''[[Angry Birds Blues]]'' (2017)
+* ''[[Angry Birds Slingshot Stories]]'' (2020–2026)
+* ''[[Angry Birds: Summer Madness]]'' (2022)
+* ''[[Angry Birds Mystery Island]]'' (2024)
+ }}
+| vgs = [[List of Angry Birds video games|List of games]]
+| soundtracks = ''[[The Angry Birds Movie (soundtrack)|The Angry Birds Movie]]'' (2016)
+| toys = [[Lego The Angry Birds Movie]] (2016-2017)
+| attractions = {{plainlist|
+*[[Särkänniemi]] (2012-2023)
+*[[Thorpe Park]] (2014-2023)
+ }}
+| website = https://www.angrybirds.com
+| years = 2009–present
+}}
+'''''Angry Birds''''' is a  [[video game]] series and [[media franchise]] created by Finnish game designer Jaakko Iisalo and owned by [[Rovio Entertainment]], a subsidiary of [[Sega]]. The franchise primarily follows a flock of [[Anthropomorphism|anthropomorphic]] flightless birds as they defend their nest of eggs from a species of green rotund pigs. A majority of the ''Angry Birds'' video games are [[puzzle video game|puzzle game]]s developed by Rovio Entertainment and released for [[mobile device]]s, while other games and [[Spinoff (media)|spinoffs]] have been developed by other studios and are in other genres such as [[Racing video game|racing]], [[Role-playing video game|role-playing]], and [[Tile-matching video game|tile-matching]]. The franchise also includes other media such as merchandise, theme parks, television, and feature films.
+
+The first game in the series, ''[[Angry Birds (video game)|Angry Birds]]'', was developed and released in 2009. After its success, ''Angry Birds'' became their flagship franchise. Several puzzle successors followed, with the first spinoff, ''[[Bad Piggies]]'', releasing in 2012. The first media adaptation, television series ''[[Angry Birds Toons]]'', premiered in 2013. A theatrical film, ''[[The Angry Birds Movie]]'', was released in 2016, followed by a sequel, ''[[The Angry Birds Movie 2]]'', in 2019. A third film, ''[[The Angry Birds Movie 3]]'', is scheduled for 2026.
+
+''Angry Birds'' is one of the [[List of highest-grossing media franchises|highest-grossing media franchises]] and the most downloaded mobile videogame series.<ref>{{cite news |url=https://www.guinnessworldrecords.com/world-records/105416-most-downloaded-mobile-videogame-series |title=Most downloaded mobile videogame series |access-date=19 May 2026 |newspaper=[[Guinness World Records]]}}</ref> Its first game is [[List of video games considered the best|considered one of the best games of all time]], and its early successors have received positive critical reception. The franchise is frequently referenced in popular culture and has had multiple cross-promotions.
+{{TOC limit|3}}
+
+==History==
+{{Timeline of release years
+| 2009 = ''[[Angry Birds (video game)|Angry Birds]]''
+| 2010 = ''[[Angry Birds Seasons|Seasons]]''
+| 2012a = ''[[Angry Birds Friends|Friends]]''
+| 2012b = ''[[Angry Birds Space|Space]]''
+| 2012c = ''[[Angry Birds Trilogy|Trilogy]]''
+| 2012d= ''[[Bad Piggies]]''
+| 2012e = ''[[Angry Birds Star Wars|Star Wars]]''
+| 2013a = ''[[Angry Birds Star Wars II|Star Wars II]]''
+| 2013b = ''[[Angry Birds Go!|Go!]]''
+| 2014a = ''[[Angry Birds Epic|Epic]]''
+| 2014b = ''[[Angry Birds Stella|Stella]]''
+| 2014c = ''[[Angry Birds Transformers|Transformers]]''
+| 2015a = ''[[Angry Birds POP!|POP!]]''
+| 2015b = ''[[Angry Birds Fight!|Fight!]]''
+| 2015c = ''[[Angry Birds 2]]''
+| 2016a = ''[[Angry Birds Action!|Action!]]''
+| 2016b = ''[[Angry Birds Blast!|Blast!]]''
+| 2017a = ''[[Angry Birds Evolution|Evolution]]''
+| 2017b = ''Hatchlings''
+| 2018a = ''Champions''
+| 2018b = ''for Messenger''
+| 2019a = ''Dream Blast''
+| 2019b = ''Isle of Pigs''
+| 2019c = ''Explore''
+| 2019d = ''[[The Angry Birds Movie 2 VR: Under Pressure|Under Pressure]]''
+| 2021a = ''[[Angry Birds Reloaded|Reloaded]]''
+| 2021b = ''Bird Island''
+| 2022a = ''[[Angry Birds Journey|Journey]]''
+| 2022b = ''[[Angry Birds (video game)#Removal and re-release|Rovio Classics: Angry Birds]]''
+| 2024a = ''for Automotive''
+| 2025a = ''Bounce''
+| 2025b = ''Flock Party''
+|2011a=''[[Angry Birds Rio|Rio]]''|2026a=''Match''}}
+
+===2009–2012: Conception and initial successors===
+The first game in the series, ''[[Angry Birds (video game)|Angry Birds]]'', was conceptualised as a result of [[Rovio Entertainment]] only having the funds to produce one game. The idea originated from a sketch by designer Jaakko Iisalo,<ref>{{Cite web|url=https://www.theguardian.com/artanddesign/2016/feb/23/how-we-made-angry-birds|title=How we made Angry Birds|first=Keith|last=Stuart|work=The Guardian |date=23 February 2016}}</ref> and its physics-based gameplay was inspired by the [[Adobe Flash]] game ''[[Crush the Castle]]'' (2009).<ref name="BadPiggiesWired">{{cite journal|url=https://www.wired.com/2012/10/bad-piggies-rovio/|title=Angry Birds Creator Has First Original Idea|journal=[[Wired (magazine)#Website|Wired]]|date=3 October 2012|access-date=5 March 2017|archive-date=8 July 2019|archive-url=https://web.archive.org/web/20190708141908/https://www.wired.com/2012/10/bad-piggies-rovio/|url-status=live}}</ref>
+
+Following the game's success, Rovio Entertainment released its first successor, titled ''Angry Birds Halloween'', exclusively for [[iOS]] on 21 October 2010.<ref name="Joystiq">{{cite web|url=http://www.joystiq.com/2010/10/20/angry-birds-halloween-edition-spooks-ipad-iphone/|title=Angry Birds Halloween edition spooks iPad, iPhone|author=Richard Mitchell|work=[[Joystiq]]|date=21 October 2010|accessdate=28 October 2010|archive-url=https://web.archive.org/web/20101024223244/http://www.joystiq.com/2010/10/20/angry-birds-halloween-edition-spooks-ipad-iphone/|archive-date=24 October 2010|url-status=dead}}</ref> The game was later renamed to ''[[Angry Birds Seasons]]'' and was ported to Android devices in December 2010 alongside a [[Christmas]]-themed [[Patch (computing)#Video games|update]].<ref name="Seasons">{{Cite web |last=McPherson |first=Frank |date=2010-12-02 |title=Angry Bird Seasons For Android |url=https://www.adweek.com/performance-marketing/angry-bird-seasons-for-android/ |access-date=2025-01-30 |language=en-US |website=[[Adweek]]}}</ref> Multiple other ''Angry Birds'' titles would follow ''Seasons''. In 2011, a [[tie-in]] with the film ''[[Rio (2011 film)|Rio]]'', titled ''[[Angry Birds Rio]]'', was developed by Rovio and released on 22 March. Following its release, ''[[The Independent]]'' reported that ''Angry Birds Rio'' had "the biggest launch ever for Rovio".<ref name="RioIndie">{{cite web |title=Angry Birds find success in 'Rio' |url=https://www.independent.co.uk/arts-entertainment/films/angry-birds-find-success-in-rio-2252647.html |website=[[The Independent]] |access-date=8 April 2025 |date=25 March 2011}}</ref> ''Rio'' is the first of numerous ''Angry Birds'' crossovers, being followed by ''[[Angry Birds Star Wars]]'' (2012) and ''[[Angry Birds Transformers]]'' (2014).<ref name="GameRant">{{cite web |last=Warner |first=Eric |title=Angry Birds' Impact on Mobile Gaming is Still Felt 15 Years Later |url=https://gamerant.com/angry-birds-15-year-anniversary-mobile-gaming-impact/ |website=[[Game Rant]] |access-date=8 April 2025 |date=11 December 2024}}</ref> The series' first [[Spinoff (media)|spin-off]], a game titled ''[[Bad Piggies]]'' starring the pigs, was released on 27 September 2012.<ref>{{cite web |last1=Moscaritolo |first1=Angela |title=Angry Birds Creator Launching New Game, Bad Piggies |url=https://uk.pcmag.com/mobile-games/60727/angry-birds-creator-launching-new-game-bad-piggies |website=[[PC Magazine]] |access-date=8 April 2025 |date=4 September 2012}}</ref>
+
+===2012–2019: Adaptations and sequels===
+The video games received their first media adaptation in 2013 with the premiere of the animated television series ''[[Angry Birds Toons]]'' on 13 March.<ref>{{cite web |last1=Brian |first1=Matt |title=Rovio's new cartoon Web series Angry Birds Toons to begin on March 16 |url=https://thenextweb.com/news/rovios-new-cartoon-web-series-angry-birds-toons-to-begin-on-march-16 |publisher=[[TNW (website)|TNW]] |access-date=22 May 2025 |date=26 February 2013}}</ref> Following the series' announcement in 2012, head of animation Nick Dorra also confirmed that a [[feature film]] based on the ''Angry Birds'' game was in production, but would not release until after 2014.<ref>{{cite web |last1=Dredge |first1=Stuart |title=Angry Birds animated TV series to premiere in Autumn 2012 |url=https://www.theguardian.com/technology/appsblog/2012/apr/01/rovio-angry-birds-animated-series |website=[[The Guardian]] |date=April 2012 |access-date=22 May 2025}}</ref> Rovio later announced two other animated series—''[[Piggy Tales]]'' and ''[[Angry Birds Stella (TV series)|Angry Birds Stella]]''—alongside a second season of ''Angry Birds Toons'', which were all released in 2014.<ref>{{cite web |last1=Graser |first1=Marc |last2=Keslassy |first2=Elsa |title=Rovio Expands ToonsTV Channel with Stan Lee, Hasbro after 'Angry Birds Toons' Hits 1 Billion Views |url=https://variety.com/2013/digital/games/rovio-expands-toonstv-channel-with-stan-lee-hasbro-after-angry-birds-toons-hits-1-billion-views-1200666855/ |website=[[Variety (magazine)|Variety]] |access-date=22 May 2025 |date=25 September 2013}}</ref>
+
+On 16 July 2015, Rovio announced a direct sequel to the original ''Angry Birds'' game, titled ''[[Angry Birds 2]]'', which was slated for a full release on 30 July.<ref>{{cite web |last1=Dayus |first1=Oscar |title=Angry Birds 2 Announced, Release Date Revealed |url=https://www.gamespot.com/articles/angry-birds-2-announced-release-date-revealed/1100-6428932/ |website=[[GameSpot]] |access-date=23 May 2025 |date=16 July 2015}}</ref> Following the sequel, the [[teaser trailer]] for ''[[The Angry Birds Movie]]'' was released,<ref>{{cite web |last1=Reynolds |first1=Simon |title=The Angry Birds movie is still a real thing - here's a trailer to prove it |url=https://www.digitalspy.com/movies/a670034/the-angry-birds-movie-is-still-a-real-thing-heres-a-trailer-to-prove-it/ |website=[[Digital Spy]] |access-date=23 May 2025 |date=23 September 2015}}</ref> receiving negative reception.<ref>{{cite web |last1=Hooton |first1=Christopher |title=The first trailer for the Angry Birds movie is here because the world is dark and full of terror |url=https://www.independent.co.uk/arts-entertainment/films/news/the-first-trailer-for-the-angry-birds-movie-is-here-because-the-world-is-dark-and-full-of-terror-10515172.html |website=[[The Independent]] |access-date=23 May 2025 |date=24 September 2015}}</ref> ''The Angry Birds Movie'' was released in theatres by [[Sony Pictures Releasing]] on 20 May 2016.<ref>{{cite web | last = Couto | first = Anthony  | date = 24 December 2014  | url = http://uk.ign.com/articles/2014/12/24/sonys-angry-birds-movie-gets-a-new-release-date | title = Sony's Angry Birds Movie Gets a New Release Date | website = [[IGN]] | access-date = 24 December 2014
+}}</ref> A [[tie-in]] prequel game featuring [[augmented reality]] gameplay and the film's character designs, titled ''[[Angry Birds Action!]]'', was released for mobile devices in 2016 to promote the film's release.<ref>{{cite web |last1=Bryant |first1=Jacob |title='Angry Birds Action' Game Uses Augmented Reality to Promote Movie, Brand Tie-Ins |url=https://variety.com/2016/digital/games/angry-birds-action-movie-augmented-reality-1201762460/ |website=[[Variety (magazine)|Variety]] |access-date=21 June 2025 |date=27 April 2016}}</ref><ref>{{cite web |last1=Cowley |first1=Ric |title=Bouncing birds and staying on brand: The making of Angry Birds Action! |url=https://www.pocketgamer.biz/making-of-angry-birds-action/ |website=[[Pocket Gamer]] |access-date=21 June 2025 |date=19 May 2016}}</ref><ref>{{cite web |last1=Schwartz |first1=Terri |title=Angry Birds Hits Refresh With New Pinball-Inspired Title, Angry Birds Action! |url=https://www.ign.com/articles/2016/04/28/angry-birds-hits-refresh-with-new-pinball-inspired-title-angry-birds-action |website=[[IGN]] |access-date=21 June 2025 |date=28 April 2016}}</ref> The following year, in 2017, a sequel to ''The Angry Birds Movie'' was announced, scheduled for a theatrical release on 20 September 2019.<ref name=varietyab>{{cite web |last1=McNary |first1=Dave |title=Sony Sets 'Angry Birds 2' Movie for Landing in September, 2019 |url=https://variety.com/2017/film/news/sony-angry-birds-2-movie-september-2019-1202439770/ |website=[[Variety (magazine)|Variety]] |access-date=21 June 2025 |date=22 May 2017}}</ref><ref>{{cite web |last1=Gilyadov |first1=Alex |title=The Angry Birds Movie 2 Announced |url=https://www.ign.com/articles/2017/05/22/the-angry-birds-movie-2-announced |website=[[IGN]] |access-date=21 June 2025 |date=26 May 2017}}</ref>
+
+===2019–2023: Discontinuation of legacy titles===
+In 2019, several early games from the franchise—such as ''Angry Birds'' and ''Angry Birds Seasons''—were delisted from [[app store]]s due to Rovio being unable to [[Patch (computing)#Video games|update]] them to match modern standards.<ref name="ign-angrybirdsreturn">{{Cite web|title=The Original Angry Birds Games are Returning After Being Removed from Sale|website=[[IGN]]|date=22 June 2021|url=https://www.ign.com/articles/the-original-angry-birds-games-are-returning-after-being-removed-from-sale|language=en|access-date=2021-06-27}}</ref> This resulted in negative backlash, to which Rovio responded by announcing [[Video game remake|remakes]] of the discontinued titles.<ref>{{cite web |last1=Smith |first1=Olly |title=Rovio is bringing back some of its delisted Angry Birds games |url=https://www.pocketgamer.com/angry-birds/rovio-is-bringing-back-some-of-its-delisted-angry-birds |website=[[Pocket Gamer]] |access-date=19 July 2025 |date=24 June 2021}}</ref> The first of these remakes, ''Rovio Classics: Angry Birds'', was developed by Rovio using the [[Unity (game engine)|Unity]] game engine and was released for [[iOS]] and [[Android (operating system)|Android]] on 31 March 2022.<ref>{{cite web |last=Sheehan |first=Gavin |title=Rovio Relaunches The Original Angry Birds For Mobile |url=https://bleedingcool.com/games/rovio-relaunches-the-original-angry-birds-for-mobile |website=[[Bleeding Cool]] |access-date=19 July 2025 |date=31 March 2022}}</ref> In February 2023, however, the remake was delisted from [[Google Play]], whilst being renamed to ''Red's First Flight'' on the [[App Store (Apple)|App Store]].<ref>{{Cite web |last=Peters |first=Jay |date=2023-02-21 |title=The classic version of Angry Birds is being delisted from Google Play but renamed on the App Store |url=https://www.theverge.com/2023/2/21/23609181/angry-birds-rovio-classics-delisted-google-play-app-store-reds-first-flight |access-date=2023-02-21 |website=The Verge |language=en-US}}</ref> This was due to the remake having a negative impact on other ''Angry Birds'' games by being prioritised over them in search results.<ref>{{cite web |last=Morris |first=Iwan |title=Angry Birds was delisted due to its effect on search, not sales |url=https://www.pocketgamer.biz/angry-birds-was-delisted-due-to-its-effect-on-search-not-sales/ |website=[[Pocket Gamer]] |access-date=20 October 2024 |date=7 March 2023}}</ref>
+
+===2023–2026: Sega acquisition===
+In August 2023, [[Sega]] completed their acquisition of Rovio Entertainment for {{USD|776|link=no}}{{nbsp}}million.<ref>{{cite web |url=https://www.videogameschronicle.com/news/sega-has-completed-its-acquisition-of-rovio/ |title=Sega has completed its acquisition of Rovio |first=Chris |last=Scullion | date=August 18, 2023 | accessdate=August 18, 2023 |work=[[Video Games Chronicle]] }}</ref> In 2024, a crossover event between mobile games in the ''Angry Birds'' and Sega's ''[[Sonic the Hedgehog]]'' franchises was held from 14–21 March; ''Angry Birds'' characters were featured as unlockable [[player character]]s in ''[[Sonic Dash]]'' (2013) and ''[[Sonic Dash#Sequels|Sonic Forces: Speed Battle]]'' (2017), while ''Sonic''-themed elements such as [[Level (video games)|levels]],  [[power-up]]s and cosmetics were added to ''[[Angry Birds Friends]]'' (2012), ''Angry Birds 2'', and ''Angry Birds Dream Blast'' (2018).<ref>{{cite web |last=Wood |first=Rhys |title=Sega announces Sonic x Angry Birds crossover event for five of its mobile games |url=https://www.techradar.com/gaming/sega-announces-sonic-x-angry-birds-crossover-event-for-five-of-its-mobile-games |website=[[TechRadar]] |access-date=31 December 2025 |date=15 March 2024}}</ref><ref>{{cite web |last=Barker |first=Sammy |title=Sonic and Angry Birds Join Forces at Last in a Crossover No One Asked For |url=https://www.pushsquare.com/news/2024/03/sonic-and-angry-birds-join-forces-at-last-in-a-crossover-no-one-asked-for |website=[[Push Square]] |access-date=31 December 2025 |date=15 March 2024}}</ref> ''Angry Birds'' characters have additionally appeared in other Sega games such as ''[[Super Monkey Ball Banana Rumble]]'' (2024), ''[[Sonic Racing: CrossWorlds]]'' (2025), and ''[[Two Point Museum]]'' (2025).<ref>{{cite web |last=Sheehan |first=Gavin |title=Angry Birds Have Been Added To Super Monkey Ball Banana Rumble |url=https://bleedingcool.com/games/angry-birds-have-been-added-to-super-monkey-ball-banana-rumble/ |website=[[Bleeding Cool]] |access-date=19 June 2025 |date=9 April 2025}}</ref><ref>{{cite web | last=Romano | first=Sal | title=Sonic Racing: CrossWorlds free character updates Red, Goro Majima, and Arle announced | website=Gematsu | date=March 16, 2026 | url=https://www.gematsu.com/2026/03/sonic-racing-crossworlds-free-character-updates-red-goro-majima-and-arle-announced | access-date=March 16, 2026}}</ref><ref>{{cite AV media |title=Two Point Museum: Update 8.0 {{!}} OUT NOW! |url=https://www.youtube.com/watch?v=IFegWjQJk-s |via=YouTube |date=19 March 2026 |access-date=19 March 2026}}{{primary source inline|date=March 2026}}</ref>
+
+Later in 2024, ''[[The Angry Birds Movie 3]]'' was announced to be in production, with Sega producing alongside Rovio and [[Namit Malhotra]].<ref name="ABAnimationMagazine">{{cite web |last=Milligan |first=Mercedes |title='The Angry Birds Movie 3' Takes Flight with Rovio, SEGA, Prime Focus & DNEG Animation |url=https://animationmagazine.net/2024/06/the-angry-birds-movie-3-takes-flight-with-rovio-sega-prime-focus-dneg-animation/ |website=[[Animation Magazine]] |access-date=April 8, 2025 |date=June 6, 2024}}</ref><ref name="MrBeast"/> It will be released theatrically by [[Paramount Pictures]] on 23 December 2026.<ref name="MrBeast"/>
+
+==Media==
+===Video games===
+{{main|List of Angry Birds video games|l1 = List of ''Angry Birds'' video games}}
+
+{{As of|2024|12|11}}, the ''Angry Birds'' series has received over twenty instalments. This includes several follow-ups, [[Spinoff (media)|spinoffs]], and [[Crossover fiction|crossovers]] with other franchises.<ref name="GameRant"/>
+
+From 2011 to 2017, ''Angry Birds'' collaborated with many other companies and released variations of the original game in the respective collaborators' theme. Most of them were [[Adobe Flash|Flash]]-based, and all of them featured exclusive levels and elements that aided in promotion.{{cn|date=May 2026}}
+*''Angry Birds [[Google Chrome|Chrome]]''<ref>{{Cite web |date=2011-05-11 |title=Angry Birds lands in Chrome Web browser |url=https://www.the-independent.com/tech/angry-birds-lands-in-chrome-web-browser-2282673.html |access-date=2025-07-17 |website=[[The Independent]] |language=en}}</ref>
+*''Angry Birds [[Google+]]''<ref>{{cite web |last=Usher |first=Anthony |title=News Zynga, PopCap, and Rovio's Angry Birds all hit Google+ |url=https://www.pocketgamer.com/google-plus-news/zynga-popcap-and-rovios-angry-birds-all-hit-google/ |website=Pocket Gamer |access-date=26 October 2025 |date=12 August 2011}}</ref>
+*''Angry Birds Free with Magic'' (specific NFC-compatible [[Nokia]] phones only)<ref>{{cite web |last=Brian |first=Matt |title=Rovio To Launch Angry Birds Free with Magic, Requires NFC To Unlock Levels |url=https://thenextweb.com/news/rovio-to-launch-angry-birds-free-with-magic-requires-nfc-to-unlock-levels |website=TheNextWeb |access-date=26 October 2025 |date=11 April 2011}}</ref>
+*''Angry Birds Volcano'' ([[Fazer]]'s Tyrkisk Peber Volcano)<ref>{{cite web |last=Leader |first=Bird |title=New Angry Birds Volcano HTML5 Mini Game |url=https://www.angrybirdsnest.com/new-angry-birds-volcano-html5-mini-game/comment-page-1/ |website=AngryBirdsNest |access-date=26 October 2025 |date=10 October 2011}}</ref>
+*''Angry Birds Breakfast'' ([[Nesquik]] cereal)<ref>{{cite web |last=Orlong |first=Karsa |title=Angry Birds: Breakfast |url=https://www.mobygames.com/game/63853/angry-birds-breakfast/ |website=MobyGames |access-date=26 October 2025 |date=1 March 2014}}</ref>
+*''Angry Birds in The Hunt For The Golden Pistachio'' ([[Wonderful Pistachios]])<ref>{{Cite web |last=Jordan |first=Jon |date=2011-12-01 |title=Rovio links up with Wonderful Pistachios for branded Angry Birds browser game, The Hunt for the Golden Pistachio |url=https://www.pocketgamer.biz/rovio-links-up-with-wonderful-pistachios-for-branded-angry-birds-browser-game-the-hunt-for-the-golden-pistachio/ |access-date=2025-07-17 |website=[[Pocket Gamer]] |language=en}}</ref>
+*''Angry Birds Vuela [[Tazos]]'' ([[PepsiCo]]'s Tazos)<ref>{{cite web |last=Maldonado |first=Vanessa |title=PepsiCo México y Angry Birds crean alianza promocional |url=https://www.produ.com/mercadeo/noticias/pepsico-mexico-y-angry-birds-crean-alianza-promocional/ |website=Produ |access-date=26 October 2025 |date=17 January 2012}}</ref>
+*''Angry Birds [[Cheetos]]''<ref>{{cite web |last=Dmitry |first=Krystal |title=Cheetos'tan Angry Birds İstanbul KuşAtması |url=https://sosyalmedya.co/angry-birds-istanbul-kusatmasi/ |website=SosyalMedya |access-date=26 October 2025 |date=22 June 2012}}</ref>
+*''Angry Birds [[Lotus F1 Team]]''<ref>{{cite web |last=Balfe |first=Chris |title=Lotus teams up with Star Wars and Angry Birds for Austin |url=https://www.pitpass.com/public/print_article.php?fes_art_id=47860 |website=Pitpass |access-date=26 October 2025 |date=9 November 2012}}</ref>
+*''Angry Birds [[McDonald's]]'' (China only)<ref>{{cite web |last=Nouch |first=James |title=Rovio partners with McDonald's in China to create location-based Angry Birds |url=https://www.pocketgamer.biz/rovio-partners-with-mcdonalds-in-china-to-create-location-based-angry-birds/ |website=Pocket Gamer |access-date=26 October 2025 |date=24 October 2012}}</ref>
+*''Angry Birds [[Coca-Cola]]'' (Chinese [[Olympic Games|Olympic]] team partnership, China only)<ref>{{Cite web |date=2012-06-11 |title=Angry Birds Coca-Cola China Beats Web Game {{!}} AngryBirdsNest |url=https://www.angrybirdsnest.com/angry-birds-coca-cola-web-based-mini-game/ |access-date=2026-10-20 |language=en-US}}</ref>
+*''Angry Birds Heikki'' ([[Heikki Kovalainen]] partnership)<ref>{{cite web |last=Willson |first=Will |title=Angry Birds Heikki starts its engines on browsers |url=https://www.pocketgamer.com/angry-birds-heikki/angry-birds-heikki-starts-its-engines-on-browsers/ |website=Pocket Gamer |access-date=26 October 2025 |date=25 June 2012}}</ref>
+*''Angry Birds [[Telepizza]]''<ref>{{cite web |first=<!--No author specified by source.--> |title=Telepizza lleva Angry Birds a sus menús infantiles y familiares |url=https://www.europapress.es/portaltic/empresas/noticia-telepizza-lleva-angry-birds-menus-infantiles-familiares-20120519100014.html |website=Portaltic |access-date=26 October 2025 |date=19 May 2012 |trans-title=Telepizza brings Angry Birds to its family meals}}</ref>
+*''Angry Birds [[Fuji TV]]''<ref>{{cite web |last=Martin |first=Rick |title=Angry Birds Hits Japan for Cherry Blossom Season, Partners with Fuji TV |url=https://www.techinasia.com/angry-birds-japan-hanami |website=TechInAsia |access-date=26 October 2025 |date=8 March 2012}}</ref>
+*''Angry Birds in Ultrabook Adventure'' ([[Intel]]'s Ultrabook)<ref>{{cite web |last=Osborne |first=Joe |title=Angry Birds join Intel in branded ultrabook adventure on Facebook |url=https://ca.sports.yahoo.com/news/2012-08-02-angry-birds-intel-ultrabook-adventure.html |website=Yahoo |access-date=26 October 2025 |date=2 August 2012}}</ref>
+*''Angry Birds [[Philadelphia Eagles]]''<ref>{{cite web |last=Linendoll |first=Katie |title=The Philadelphia Eagles turn to Angry Birds |url=https://www.espn.com/blog/playbook/tech/post/_/id/2038/the-eagles-are-the-nfls-angry-birds |website=ESPN |access-date=26 October 2025 |date=4 September 2012}}</ref>
+
+===Television===
+{{See also|Rovio Animation#Filmography}}
+{{multiple issues|section=y|{{more citations needed section|date=April 2025}}
+{{cleanup rewrite|section=yes|date=December 2025}}}}
+{{Series overview
+| width      = 95%
+| infoA      = Status
+| infoB      = Network
+| multiseries = {{Series overview/part|c=#ccf|subtitle=Toons.TV}}
+{{Series overview
+| series      = ''[[Angry Birds Toons]]''
+| infoA       = y
+| infoB       = y
+
+| color1      = #de2d26
+| link1       = List of Angry Birds Toons episodes#Season 1 (2013–14)
+| episodes1   = 52
+| start1      = {{Start date|df=yes|2013|3|17}}
+| end1        = {{End date|df=yes|2014|3|8}}
+| infoA1      = Concluded
+| infoA1span  = 10
+| infoB1      = [[Toons.TV]]
+| infoB1span  = 10
+
+| color2      = #fc9272
+| link2       = List of Angry Birds Toons episodes#Season 2 (2014–15)
+| episodes2   = 26
+| start2      = {{Start date|df=yes|2014|10|19}}
+| end2        = {{End date|df=yes|2015|4|12}}
+
+| color3      = #fee0d2
+| link3       = List of Angry Birds Toons episodes#Season 3 (2015–16)
+| episodes3   = 26
+| start3      = {{Start date|df=yes|2015|10|1}}
+| end3        = {{End date|df=yes|2016|5|13}}
+}}
+{{Series overview
+| series      = ''[[Piggy Tales]]''
+| infoA       = y
+| infoB       = y
+
+| color1      = #006d2c
+| link1       = Piggy Tales#Season 1 (2014–15)
+| episodes1   = 31
+| start1      = {{Start date|df=yes|2014|4|17}}
+| end1        = {{End date|df=yes|2015|3|31}}
+
+| color2      = #31a354
+| link2       = Piggy Tales#Season 2: Pigs at Work (2015–17)
+| episodes2   = 26
+| start2      = {{Start date|df=yes|2015|4|17}}
+| end2        = {{End date|df=yes|2016|3|1}}
+
+| color3      = #78c679
+| link3       = Piggy Tales#Season 3: Third Act (2016–17)
+| episodes3   = 34
+| start3     = {{Start date|df=yes|2016|6|3}}
+| end3        = {{End date|df=yes|2017|2|3}}
+
+| color4      = #c2e699
+| link4       = Piggy Tales#Season 4: 4th Street (2018–19)
+| episodes4   = 30
+| start4      = {{Start date|df=yes|2017|10|20}}
+| end4        = {{End date|df=yes|2019|5|30}}
+}}
+{{Series overview
+| series      = ''[[Angry Birds Stella]]''
+| infoA       = y
+| infoB       = y
+
+| color1      = #980043
+| link1       = List of Angry Birds Stella episodes#Season 1 (2014–15)
+| episodes1   = 13
+| start1      = {{Start date|df=yes|2014|11|1}}
+| end1        = {{End date|df=yes|2015|1|24}}
+
+| color2      = #df65b0
+| link2       = List of Angry Birds Stella episodes#Season 2 (2015–16)
+| episodes2   = 13
+| start2      = {{Start date|df=yes|2015|10|9}}
+| end2        = {{End date|df=yes|2016|3|11}}
+}}
+{{Series overview
+| series      = ''Angry Birds Blues''
+| infoA       = y
+| infoB       = y
+
+| color1      = #253494
+| episodes1   = 30
+| start1      = {{Start date|df=yes|2017|3|10}}
+| end1        = {{End date|df=yes|2017|12|14}}
+}}
+{{Series overview/part|c=#ccf|subtitle=YouTube}}
+{{Series overview
+| series      = ''Angry Birds BirLd Cup''
+| infoA       = y
+| infoB       = y
+
+| color1      = #6baed6
+| link1       =
+| episodes1   = 10
+| start1      = {{Start date|df=yes|2018|6|9}}
+| end1        = {{End date|df=yes|2018|7|11}}
+| infoA1      = Concluded
+| infoA1span  = 7
+| infoB1      = [[YouTube]]
+| infoB1span  = 14
+}}
+{{Series overview
+| series      = ''Angry Birds Zero Gravity''
+| infoA       = y
+| infoB       = y
+
+| color1      = #969696
+| link1       =
+| episodes1   = 3
+| start1      = {{Start date|df=yes|2018|10|3}}
+| end1        = {{End date|df=yes|2018|10|13}}
+}}
+{{Series overview
+| series      = ''Angry Birds on the Run''
+| infoA       = y
+| infoB       = y
+
+| color1      = #fd8d3c
+| link1       =
+| episodes1   = 22
+| start1      = {{Start date|df=yes|2018|11|17}}
+| end1        = {{End date|df=yes|2019|4|20}}
+
+| color2      = #fecc5c
+| link2       =
+| episodes2   = 18
+| start2      = {{Start date|df=yes|2020|6|13}}
+| end2        = {{End date|df=yes|2020|10|24}}
+}}
+{{Series overview
+| series      = ''Angry Birds MakerSpace''
+| infoA       = y
+| infoB       = y
+
+| color1      = #3690c0
+| link1       =
+| episodes1   = 20
+| start1      = {{Start date|df=yes|2019|6|1}}
+| end1        = {{End date|df=yes|2020|1|4}}
+
+| color2      = #74a9cf
+| link2       =
+| episodes2   = 20
+| start2      = {{Start date|df=yes|2022|5|28}}
+| end2        = {{End date|df=yes|2022|10|29}}
+
+| color3      = #a6bddb
+| link3       =
+| episodes3   = 20
+| start3     = {{Start date|df=yes|2024|9|1}}
+| end3        = {{End date|df=yes|2025|2|2}}
+}}
+{{Series overview
+| series      = ''[[Angry Birds Slingshot Stories]]''
+| infoA       = y
+| infoB       = y
+| infoA1      = Ongoing
+
+| color1      = #b10026
+| link1       =
+| episodes1   = 10
+| start1      = {{Start date|df=yes|2020|1|18}}
+| end1        = {{End date|df=yes|2020|3|28}}
+| infoA1span  = 4
+
+| color2      = #fc4e2a
+| link2       =
+| episodes2   = 30
+| start2      = {{Start date|df=yes|2021|6|19}}
+| end2        = {{End date|df=yes|2022|1|29}}
+
+| color3      = #feb24c
+| link3       =
+| episodes3   = 30
+| start3     = {{Start date|df=yes|2023|10|15}}
+| end3        = {{End date|df=yes|2024|6|9}}
+
+| color4      = #ffeda0
+| link4       =
+| episodes4   = 40
+| start4      = {{Start date|df=yes|2025|5|11}}
+| end4        =
+}}
+{{Series overview
+| series      = ''Angry Birds Slingshot Space Stories''
+| infoA       = y
+| infoB       = y
+
+| color1      = #005a32
+| link1       = #Season 1
+| episodes1   = 3
+| start1      = {{Start date|df=yes|2025|10|15}}
+| end1        = {{End date|df=yes|2025|10|29}}
+| infoA1      = Concluded
+| infoA1span  = 3
+}}
+{{Series overview
+| series      = ''Angry Birds Bubble Trouble''
+| infoA       = y
+| infoB       = y
+
+| color1      = #88419d
+| link1       =
+| episodes1   = 20
+| start1      = {{Start date|df=yes|2020|12|5}}
+| end1        = {{End date|df=yes|2021|5|8}}
+
+| color2      = #8c96c6
+| link2       =
+| episodes2   = 28
+| start2      = {{Start date|df=yes|2022|12|10}}
+| end2        = {{End date|df=yes|2023|7|22}}
+}}
+{{Series overview/part|c=#ccf|subtitle=Streaming}}
+{{Series overview
+| series      = ''[[Angry Birds: Summer Madness]]''
+| infoA       = y
+| infoB       = y
+
+| color1      = #8c2d04
+| link1       = Angry Birds: Summer Madness#Season 1
+| episodes1   = 16
+| released1   = {{Start date|df=yes|2022|1|28}}
+| infoA1      = Concluded
+| infoA1span  = 6
+| infoB1      = [[Netflix]]
+
+| color2      = #cc4c02
+| link2       = Angry Birds: Summer Madness#Season 2
+| episodes2   = 16
+| released2   = {{Start date|df=yes|2022|6|24}}
+
+| color3      = #ec7014
+| link3       = Angry Birds: Summer Madness#Season 3
+| episodes3   = 4
+| released3   = {{Start date|df=yes|2022|8|25}}
+}}
+{{Series overview
+| series      = ''[[Angry Birds Mystery Island]]''
+| infoA       = y
+| infoB       = y
+
+| color1      = #f768a1
+| link1       = Angry Birds Mystery Island#Episodes
+| episodes1   = 24
+| episodes1A  = 8
+| released1A  = {{Start date|df=yes|2024|5|21}}
+| episodes1B  = 8
+| released1B  = {{Start date|df=yes|2024|8|20}}
+| episodes1C  = 8
+| released1C  = {{Start date|df=yes|2024|12|3}}
+| infoB1      = [[Amazon Prime Video]]
+}}
+}}
+
+''[[Angry Birds Toons]]'', a TV series based on the game, made its debut on 16 March 2013. ''Angry Birds Toons'' was released through third-party video distribution platforms, including Comcast's Xfinity On-Demand in the US, Samsung Smart TVs, and Roku set-top boxes. It is also available in a number of countries on traditional television broadcasts. ''Angry Birds Toons'' is still accessible on mobile devices by an additional ''Angry Birds Toons'' channel on all of the ''Angry Birds'' apps homescreens.<ref name="Forbes">{{cite web|url=https://www.forbes.com/sites/johngaudiosi/2013/03/11/rovio-execs-explain-what-angry-birds-toons-channel-opens-up-to-its-1-7-billion-gamers/|title=Rovio Execs Explain What Angry Birds Toons Channel Opens Up To Its 1.7 Billion Gamers|first=John|last=Gaudiosi|work=Forbes|date=11 March 2012|access-date=12 March 2012|archive-date=13 March 2013|archive-url=https://web.archive.org/web/20130313192720/http://www.forbes.com/sites/johngaudiosi/2013/03/11/rovio-execs-explain-what-angry-birds-toons-channel-opens-up-to-its-1-7-billion-gamers/|url-status=live}}</ref> The DVD versions of the TV series were released by [[Sony Pictures Home Entertainment]]. The series has a total of 3 seasons.
+
+On 11 April 2014, Rovio released ''[[Piggy Tales]]'', a stop motion animated series. It tells the stories of the Minion Pigs' life.{{citation needed|date=April 2025}}
+
+On 1 November 2014, Rovio released ''[[Angry Birds Stella (TV series)|Angry Birds Stella]]'', an animated series telling the stories of Stella's life and that of her friends on their own island.{{citation needed|date=April 2025}}
+
+On 3 July 2015, Rovio released the ''Rocket Science Show'', an [[educational]] live-action-animated series, the [[NASA]] tell viewers facts about [[planets]] in the [[Solar System]].{{citation needed|date=April 2025}}
+
+On 12 July 2015, ''Real Angry Birds'', inspired by the game ''Angry Birds'', premiered on ''[[Nat Geo Wild]]''.{{citation needed|date=April 2025}}
+
+In 2016, Rovio released ''Fun Game Coding'', another [[educational]] live-action-animated series, containing insightful instructions from tech-savvy Rovio employees.{{citation needed|date=April 2025}}
+
+{{anchor|Angry Birds Blues}}Rovio partnered with Canadian animation studio [[Bardel Entertainment]] to produce ''Angry Birds Blues'', a television series that released on [[Toons.TV]] on March 10, 2017.<ref>{{cite web |last=Wolfe |first=Jennifer |title=Bardel Entertainment Animating Rovio's ''Angry Birds Blues'' Series |url=https://www.awn.com/news/bardel-entertainment-animating-rovios-angry-birds-blues-series |website=[[Animation World Network]] |access-date=15 July 2026 |archive-url=https://web.archive.org/web/20260702034642/https://www.awn.com/news/bardel-entertainment-animating-rovios-angry-birds-blues-series |archive-date=2 July 2026 |date=14 March 2017 |url-status=live}}</ref> Teased in [[credits]] of ''[[The Angry Birds Movie]]'', it follows the lives of the Blues—a trio of blue hatchling [[triplets]]—as well as the Hatchlings.<ref>{{cite web |last=Price |first=Matthew |title=''Angry Birds Blues'' soars to ToonsTV |url=https://eu.oklahoman.com/story/entertainment/television/2017/03/13/angry-birds-blues-soars-to-toonstv/60613061007/ |website=[[The Oklahoman]] |access-date=15 July 2026 |archive-url=https://web.archive.org/web/20250913112833/https://eu.oklahoman.com/story/entertainment/television/2017/03/13/angry-birds-blues-soars-to-toonstv/60613061007/ |archive-date=13 September 2025 |date=13 March 2017 |url-status=live}}</ref> The series consists of 30 episodes, which were released weekly.<ref>{{cite web |last=Spangler |first=Todd |title=''Angry Birds Blues'' Series, Co-Starring Hatchlings, Set to Perch on Rovio's ToonsTV |url=https://variety.com/2017/digital/news/angry-birds-blues-hatchlings-rovio-toonstv-1201981004/ |website=[[Variety (magazine)|Variety]] |access-date=15 July 2026 |archive-url=https://web.archive.org/web/20260103225823/https://variety.com/2017/digital/news/angry-birds-blues-hatchlings-rovio-toonstv-1201981004/ |archive-date=3 January 2026 |date=8 February 2017 |url-status=live}}</ref>
+
+On 3 July 2017, [[Netflix]] and [[KidsClick]] picked up every ''Angry Birds Toons'', ''Angry Birds Stella'', and ''Piggy Tales'' episode in the form of 23 compilations.{{citation needed|date=April 2025}}
+
+On 1 June 2018, U.S. television production company Big Fish Entertainment announced that they would be partnering with Rovio to create a game show based on ''Angry Birds'' currently{{when|date=April 2020}} called ''Angry Birds Challenge''.<ref>{{cite web|url=https://variety.com/2018/tv/news/angry-birds-live-action-game-show-1202826011/|title='Angry Birds' Live-Action Game Show in the Works From Big Fish, Rovio Entertainment (EXCLUSIVE)|first=Joe|last=Otterson|date=31 May 2018|access-date=2 June 2018|archive-date=12 June 2018|archive-url=https://web.archive.org/web/20180612142829/https://variety.com/2018/tv/news/angry-birds-live-action-game-show-1202826011/|url-status=live}}</ref>
+
+On 9 June 2018, a series titled ''Angry Birds BirLd Cup'' was released on [[YouTube]]. It follows two teams (Team Red and Team Chuck) of rambunctious kids ready to put their soccer skills to the test. With Everton stars [[Wayne Rooney]], [[Dominic Calvert-Lewin]], [[Tom Davies (footballer, born 1998)|Tom Davies]], and [[Cenk Tosun]] on hand to lend their expertise and officiate the competition, the two teams will go head to head in a series of soccer-centric challenges to earn points. The team that scores the most points will claim the illustrious BirLd Cup, and BirLdwide acclaim.<ref>{{cite web |title=Rovio and Everton team up in a new soccer-centric YouTube series – The BirLd Cup! |url=https://www.rovio.com/articles/rovio-and-everton-team-up-in-a-new-soccer-centric-youtube-series-the-birld-cup/ |website=Rovio Entertainment |date=8 June 2018 |access-date=11 May 2022}}{{primary source inline|date=April 2025}}</ref>
+
+On 3 October 2018, a short, three-episode series titled ''Angry Birds Zero Gravity'' was released on YouTube.<ref>{{cite AV media |title=Angry Birds Zero Gravity {{!}} Ep1 – Stamp Collector |url=https://www.youtube.com/watch?v=nanQhryGa6g |via=YouTube | date=3 October 2018 |publisher=Angry Birds |access-date=11 May 2022}}{{primary source inline|date=April 2025}}</ref>
+
+On 17 November 2018, a series titled ''Angry Birds on the Run'' was released on YouTube. The series focuses on the birds being sent to the real world from a girl's phone, causing mayhem while the pigs are looking for them.{{citation needed|date=April 2025}}
+
+In late 2018, Rovio announced that a new, long-form ''Angry Birds'' television series titled ''[[Angry Birds: Summer Madness]]'' is in production and was originally set for release in 2021 on Netflix.<ref>{{cite web |last=Clarke |first=Stewart |title=First Longform 'Angry Birds' Series in the Works (EXCLUSIVE) |url=https://variety.com/2018/tv/news/longform-angry-birds-series-in-the-works-1202978883/ |website=Variety |access-date=2 September 2019 |date=12 October 2018 |archive-date=25 January 2022 |archive-url=https://web.archive.org/web/20220125060444/https://variety.com/2018/tv/news/longform-angry-birds-series-in-the-works-1202978883/ |url-status=live }}</ref> It was pushed and was released in January 2022.<ref>{{cite web|last=Birk|first=Libby|url=https://popculture.com/streaming/news/netflix-january-2022-new-movies-tv-shows-coming/|title=Everything Coming to Netflix in January 2022|website=PopCulture.com|date=15 December 2021|access-date=15 December 2021|archive-date=15 December 2021|archive-url=https://web.archive.org/web/20211215164423/https://popculture.com/streaming/news/netflix-january-2022-new-movies-tv-shows-coming/|url-status=live}}</ref> It focuses on Red, Stella, Bomb, and Chuck as teenagers in [[summer camp]] causing mayhem with their teacher being the Mighty Eagle.
+
+On 1 June 2019, a series titled ''Angry Birds MakerSpace'' was released on YouTube.<ref>{{cite web |title=Angry Birds MakerSpace {{!}} Drone FAIL! – S1 Ep1 |url=https://www.youtube.com/watch?v=fMXWYhs11N8 |website=YouTube | date=June 2019 |publisher=Angry Birds |access-date=11 May 2022}}</ref> It features the birds and pigs working together in a shared workspace.
+
+On 18 January 2020, a series titled ''Angry Birds Slingshot Stories'' was released on YouTube.<ref>{{cite web |title=Angry Birds Slingshot Stories Ep. 1 {{!}} First Level Ever! |url=https://www.youtube.com/watch?v=-ZghzXaZ1aM&list=PLTR8zrKWyBqjrSoXLd6DNkAs48frKlPIl&ab_channel=AngryBirds |website=YouTube | date=18 January 2020 |publisher=Angry Birds |access-date=27 March 2022}}</ref> It features structures from the original ''Angry Birds'' game and shows the birds and pigs' life outside the levels.
+
+On 31 August 2020, a new series titled ''Angry Birds Bubble Trouble'' was released on Amazon Freetime Unlimited and YouTube. It shows Red, Chuck, Bomb, Silver, and Stella in their ''Dream Blast'' designs having fun and dreaming.
+
+On 6 June 2023, a new long-form television series titled ''[[Angry Birds Mystery Island]]'' was announced, which was released on [[Amazon Prime Video]] and Amazon Kids+ on 21 May 2024. The series focus on a new group of Hatchlings, trying to survive on an uncharted island.<ref>{{Cite web|last=Milligan|first=Mercedes|title=Prime Video, Amazon Kids+ Hatch 'Angry Birds Mystery Island' Toon with Rovio|url=https://www.animationmagazine.net/2023/06/prime-video-amazon-kids-hatch-angry-birds-mystery-island-toon-with-rovio/|date=6 June 2023|access-date=6 June 2023|website=[[Animation Magazine]]}}</ref>
+
+===Films===
+{| class="wikitable plainrowheaders" style="text-align:center; width:95%;"
+! Film
+! U.S. release date
+! Director(s)
+! Screenwriter(s)
+! Producer(s)
+! Composer
+! Distributor
+|-
+! scope="row" | ''[[The Angry Birds Movie]]''
+| style="text-align:left;" |{{Start date|df=yes|2016|5|20}}
+| [[Clay Kaytis]]<br>[[Fergal Reilly]]
+| [[Jon Vitti]]
+| John Cohen<br>[[Catherine Winder]]
+| rowspan="3" | [[Heitor Pereira]]
+| rowspan="2" | [[Sony Pictures Releasing]]
+|-
+! scope="row" | ''[[The Angry Birds Movie 2]]''
+| style="text-align:left;" |{{Start date|df=yes|2019|8|14}}
+| [[Thurop Van Orman]]<br>John Rice <small>(co-director)</small>
+| [[Peter Ackerman (playwright)|Peter Ackerman]]<br>[[Eyal Podell]]<br>Jonathan E. Stewart
+| John Cohen
+|-
+! scope="row" | ''[[The Angry Birds Movie 3]]''
+| style="text-align:left;" |{{Start date|df=yes|2026|12|23}}<ref name="MrBeast"/>
+| John Rice
+| Thurop Van Orman
+| John Cohen<br>Dan Chuba<br>Carla Connor 
+| [[Paramount Pictures]]
+|}
+
+====''The Angry Birds Movie'' (2016)====
+An animated film adaptation, ''[[The Angry Birds Movie]]'', was released on 20 May 2016<ref name=RovioSPE /> which fully [[Anthropomorphism|anthropomorphizes]] the characters for the first time, giving them limbs and voices. Developed, produced and financed by [[Rovio Entertainment]],<ref name=RovioSPE /> it is animated by [[Sony Pictures Imageworks]]<ref name=THRSPI>{{cite news|last1=Vlessing|first1=Etan|title=Sony Pictures Imageworks, Rovio Pact for 'Angry Birds' Movie|url=https://www.hollywoodreporter.com/news/sony-pictures-imageworks-rovio-pact-680750|access-date=2 October 2014|work=The Hollywood Reporter|date=17 February 2014|archive-date=12 October 2014|archive-url=https://web.archive.org/web/20141012164036/http://www.hollywoodreporter.com/news/sony-pictures-imageworks-rovio-pact-680750|url-status=live}}</ref> and distributed worldwide by [[Sony Pictures Releasing]] through its [[Columbia Pictures]] label.<ref name=RovioSPE>{{cite press release|title=Rovio's Angry Birds Feature Film Nests at Sony Pictures Entertainment |url=http://www.rovio.com/en/news/press-releases/299/rovios-angry-birds-feature-film-nests-at-sony-pictures-entertainment/ |publisher=Rovio |access-date=2 October 2014 |date=15 May 2013 |url-status=dead |archive-url=https://web.archive.org/web/20141006124511/http://www.rovio.com/en/news/press-releases/299/rovios-angry-birds-feature-film-nests-at-sony-pictures-entertainment/ |archive-date= 6 October 2014 }}</ref> It is directed by animation veterans [[Clay Kaytis]] and [[Fergal Reilly]] in their directorial debut.<ref name=THRDirectors>{{cite news|last1=Roxborough|first1=Scott|title=Rovio Names Directors for 'Angry Birds' Movie|url=https://www.hollywoodreporter.com/news/rovio-names-directors-angry-birds-646715|access-date=2 October 2014|work=The Hollywood Reporter|date=10 October 2013|archive-date=12 October 2014|archive-url=https://web.archive.org/web/20141012164131/http://www.hollywoodreporter.com/news/rovio-names-directors-angry-birds-646715|url-status=live}}</ref> [[Jon Vitti]] wrote the film's screenplay,<ref name=THRScribe>{{cite news|last1=Kit|first1=Borys|title='Simpsons' Scribe Tapped to Pen 'Angry Birds' Animated Movie|url=https://www.hollywoodreporter.com/heat-vision/simpsons-scribe-tapped-pen-angry-525662|access-date=2 October 2014|work=The Hollywood Reporter|date=20 May 2013|archive-date=12 October 2014|archive-url=https://web.archive.org/web/20141012175102/http://www.hollywoodreporter.com/heat-vision/simpsons-scribe-tapped-pen-angry-525662|url-status=live}}</ref> and John Cohen<ref name=CSJohnCohen>{{cite press release|title=John Cohen to Produce Angry Birds Movie for 2016|url=https://www.comingsoon.net/news/movienews.php?id=97954|publisher=ComingSoon.net|access-date=2 October 2014|date=11 December 2012|archive-date=6 October 2014|archive-url=https://web.archive.org/web/20141006065731/http://www.comingsoon.net/news/movienews.php?id=97954|url-status=live}}</ref> and Catherine Winder<ref name=THRScribe /> served as the producers.<ref name=THRDirectors /> Rovio also hired [[David Maisel]], former executive producer of [[Marvel Studios]] films such as ''[[Iron Man (2008 film)|Iron Man]]'', to be the executive producer of its feature-length films.<ref name=CSJohnCohen />
+
+====''The Angry Birds Movie 2'' (2019)====
+A [[sequel]], ''[[The Angry Birds Movie 2]]'', was released on 13 August 2019<ref>{{cite news|last1=McNary|first1=Dave|title='Angry Birds Movie' Sequel in the Works at Rovio|url=https://variety.com/2016/film/news/rovio-planning-angry-birds-movie-sequel-1201844515/|access-date=24 December 2016|work=Variety|date=25 August 2016|archive-date=31 December 2016|archive-url=https://web.archive.org/web/20161231030314/http://variety.com/2016/film/news/rovio-planning-angry-birds-movie-sequel-1201844515/|url-status=live}}</ref><ref name=varietyab/><ref name=ABM2NewDate>{{cite tweet |last=Beck |first=Jeff |title=Sony's ANGRY BIRDS 2 nests in theaters 2 weeks earlier—now set for Sept. 6, 2019 instead of Sept. 20. |user=ERCboxoffice|number=1012089106434625537|access-date=27 June 2018}}{{Primary source inline|date=August 2020}}</ref><ref>{{cite web|title='Angry Birds 2' To Fly In Late Summer 2019|url=https://deadline.com/2018/10/angry-birds-2-release-date-change-august-2019-1202484302/|work=Deadline Hollywood|access-date=17 October 2018|date=16 October 2018|archive-date=31 March 2019|archive-url=https://web.archive.org/web/20190331122126/https://deadline.com/2018/10/angry-birds-2-release-date-change-august-2019-1202484302/|url-status=live}}</ref> which was co-produced by both Rovio Animation and [[Sony Pictures Animation]]. Directed by the creator of ''[[The Marvelous Misadventures of Flapjack]]'', [[Thurop Van Orman]], the sequel breaks from the series' source material by having the Birds and Pigs ending their rivalry to form an alliance to battle a larger threat,<ref>{{cite web |last1=Aguilar |first1=Carlos |title=Interview: 'Angry Birds 2 Movie' Director And Producer On Defying The Franchise's Video Game Origins |url=https://www.cartoonbrew.com/feature-film/interview-angry-birds-2-director-and-producer-on-defying-the-franchises-video-game-origins-178262.html |website=CartoonBrew |access-date=11 September 2019 |date=15 August 2019 |archive-date=16 August 2019 |archive-url=https://web.archive.org/web/20190816200414/https://www.cartoonbrew.com/feature-film/interview-angry-birds-2-director-and-producer-on-defying-the-franchises-video-game-origins-178262.html |url-status=live }}</ref> as well as becoming one of the most critically well-received video game film adaptations ever made, garnering an unprecedented score of 73% from [[Rotten Tomatoes]].<ref>{{cite web |title=The Angry Birds Movie 2 |url=https://www.rottentomatoes.com/m/the_angry_birds_movie_2 |website=Rotten Tomatoes |access-date=11 September 2019 |archive-date=19 March 2021 |archive-url=https://web.archive.org/web/20210319201936/https://www.rottentomatoes.com/m/the_angry_birds_movie_2 |url-status=live }}</ref>
+
+====''The Angry Birds Movie 3'' (2026)====
+A second sequel, ''[[The Angry Birds Movie 3]]'', was announced on 6 June 2024, with [[DNEG Animation]] and Rovio's new parent company [[Sega Sammy Group]] producing without the involvement of [[Sony Pictures]].<ref>{{Cite web |date=2024-06-06 |title=Rovio, SEGA, and Prime Focus Studios Announce The Angry Birds Movie 3 Is In Production At DNEG Animation |url=https://www.rovio.com/articles/the-angry-birds-movie-3-is-in-production/ |access-date=2024-06-06 |website=Rovio |language=en-US}}</ref> The film is scheduled to be released in theatres on 23 December 2026, by [[Paramount Pictures]].<ref name="MrBeast">{{cite web|url=https://deadline.com/2025/09/angry-birds-movie-3-mrbeast-salish-matter-release-date-1236548205/|title='Angry Birds Movie 3' Adds MrBeast, Salish Matter & More; Release Now Christmas Season 2026|last=D'Alessandro|first=Anthony|date=18 September 2025|website=[[Deadline Hollywood]]|access-date=18 September 2025}}</ref>
+
+==Merchandise==
+[[File:Angry Birds Flock.webp|alt=A cartoon flock of limbless birds with varying shapes, sizes, and colors|thumb|The series' cast of [[fictional character]]s have been adapted into several forms of merchandise.]]
+
+===Toys===
+{{Redirect|Telepod|the fictional teleportation technology|The Fly (1986 film)}}
+There have been several toys made from ''Angry Birds'' characters.<ref name="Variety824">{{cite news|url=https://variety.com/2010/biz/news/angry-birds-flies-with-hollywood-1118023224/|title=''Angry Birds'' flies with Hollywood|author=Marc Graser|work=Variety|date=24 August 2010|access-date=29 November 2010| archive-url= https://web.archive.org/web/20101028231138/http://www.variety.com/article/VR1118023224?refCatId=13| archive-date= 28 October 2010 | url-status= live}}</ref> The game's official website offers [[stuffed toy|stuffed plush]] versions of the birds and pigs for sale, along with T-shirts featuring the game's logo and characters.<ref>{{cite web|url=http://shop.angrybirds.com/|title=Angry Birds Shop|work=Rovio.com|access-date=30 November 2010| archive-url= https://web.archive.org/web/20101209132200/http://shop.angrybirds.com/| archive-date= 9 December 2010 | url-status= live}}</ref> In May 2011, [[Mattel]] released an ''Angry Birds'' board game, titled "Angry Birds: Knock on Wood".<ref>{{cite news|url=http://gadgetwise.blogs.nytimes.com/2011/01/07/angry-birds-at-ces/?src=busln|title=Angry Birds at C.E.S.|author=Brian Stetler|work=The New York Times|date=7 January 2011|access-date=8 January 2011|archive-date=26 August 2018|archive-url=https://web.archive.org/web/20180826145712/https://gadgetwise.blogs.nytimes.com/2011/01/07/angry-birds-at-ces/?src=busln|url-status=live}}</ref> Over 10 million ''Angry Birds'' toys have been sold thus far.<ref name="FNC_10-20">{{cite news|url=http://www.foxnews.com/scitech/2011/10/19/angry-birds-aim-for-world-domination/|title=Angry Birds Aim For World Domination|publisher=Fox News Channel|date=19 October 2011|access-date=20 October 2011|archive-date=19 April 2012|archive-url=https://web.archive.org/web/20120419102710/http://www.foxnews.com/scitech/2011/10/19/angry-birds-aim-for-world-domination/|url-status=dead}}</ref> Rovio opened the first official ''Angry Birds'' retail store in Helsinki on 11 November 2011 at 11:11&nbsp;a.m. local time.<ref name="AB-Store">{{cite web|url=https://news.yahoo.com/angry-birds-opens-first-store-175717241.html|title=Angry Birds Opens First Store|publisher=Yahoo!|date=11 November 2011|access-date=12 November 2011|archive-date=14 November 2011|archive-url=https://web.archive.org/web/20111114201545/http://news.yahoo.com/angry-birds-opens-first-store-175717241.html|url-status=live}}</ref> It expects to open its next retail store somewhere in China, considered the game's fastest-growing market.<ref name="AB-Store" /> Merchandise has been successful, with 45% of Rovio's revenues in 2012 coming from branded merchandise.<ref>{{Cite web |last=Nesterenko |first=Oleg |date=2019-05-29 |title=Rovio: 10 years of making and licensing Angry Birds IP |url=https://gameworldobserver.com/2019/05/29/1659 |access-date=2026-10-20 |website=Game World Observer |language=en-US}}</ref>
+
+The most notable ''Angry Birds'' toy line is Telepods, manufactured by [[Hasbro]]. Originally created for ''Angry Birds Star Wars II'',<ref>{{cite web|url=https://www.engadget.com/2013/07/19/angry-birds-telepods-hands-on/|title=Hands-on with Angry Birds Star Wars 2 and Hasbro's Telepods (video)|author=Sarah Silbert|work=Engadget|date=19 July 2013 |access-date=24 August 2017|archive-date=5 January 2018|archive-url=https://web.archive.org/web/20180105011809/https://www.engadget.com/2013/07/19/angry-birds-telepods-hands-on/|url-status=live}}</ref> ''Angry Birds Go!'', ''Angry Birds Stella'', and ''Angry Birds Transformers''.<ref>{{cite web|url=http://www.rovio.com/en/news/blog/467/rovio-and-hasbro-announce-angry-birds-stella-telepods/2014 |title=Rovio and Hasbro announce Angry Birds Stella Telepods! – Rovio Entertainment Ltd |url-status=dead |archive-url=https://web.archive.org/web/20140512221612/http://www.rovio.com/en/news/blog/467/rovio-and-hasbro-announce-angry-birds-stella-telepods/2014 |archive-date=12 May 2014 }}</ref> Telepods are a series of [[toys-to-life]] figures using a similar digital toy hybrid concept as ''[[Skylanders]]'' or ''[[Disney Infinity]]'' characters.<ref>{{cite web|url=https://www.nytimes.com/2013/07/18/technology/personaltech/play-angry-birds-you-will.html|title=Play Angry Birds, You Will|date=18 July 2013|website=The New York Times|access-date=5 June 2017|archive-date=3 November 2017|archive-url=https://web.archive.org/web/20171103000944/http://www.nytimes.com/2013/07/18/technology/personaltech/play-angry-birds-you-will.html|url-status=live}}</ref> These are figures used to "teleport" a character of the corresponding figure into the game by scanning a miniature [[QR code]] via the device's camera. The Telepod platform technology was invented by ReToy, a bMuse company, in partnership with Hasbro.<ref>{{cite web|url=https://www.rovio.com/news/angry-birds-star-wars-ii-30-million-telepods-scans-and-counting|title=Angry Birds Star Wars II: 30 million TELEPODS scans and counting!|date=28 May 2014}}</ref>
+
+In 2012, [[Mattel]] produced [[Hot Wheels]] cars based on ''Angry Birds'' characters: Red, the Blues, Chuck, and a Minion Pig.{{citation needed|date=December 2024}}
+
+In 2016, [[Lego]] released six [[Lego The Angry Birds Movie|construction sets based on ''The Angry Birds Movie'']].<ref>{{cite magazine|last1=Kamen|first1=Matt|title=Lego Angry Birds flock around upcoming movie|url=https://www.wired.co.uk/article/angry-birds-lego-revealed|access-date=29 May 2017|magazine=Wired UK|date=11 January 2016|archive-date=1 July 2017|archive-url=https://web.archive.org/web/20170701210720/http://www.wired.co.uk/article/angry-birds-lego-revealed|url-status=live}}</ref>
+
+===Print publications===
+In 2011, Rovio published a cookbook titled ''Bad Piggies: Egg Recipes'' which was filled with egg recipes, along with doodle books based on some characters of the game. After a few weeks of the release of ''Angry Birds Space'', they also released ''Angry Birds Space''-themed books about numbers, alphabets, and stickers.{{citation needed|date=September 2025}}
+
+On 20 March 2012, ''[[National Geographic]]'' published a paperback book titled ''Angry Birds Space: A Furious Flight Into The Final Frontier''<ref>{{cite web|title=National Geographic publishing Angry Birds book|url=http://www.edge-online.com/news/national-geographic-publishing-angry-birds-book|work=Edge|publisher=Future Publishing Limited|access-date=26 July 2012|author=Nathan Brown|date=19 March 2012|archive-date=23 May 2012|archive-url=https://web.archive.org/web/20120523235916/http://www.edge-online.com/news/national-geographic-publishing-angry-birds-book|url-status=live}}</ref><ref>{{cite web|title="Angry Birds Space" Q&A: Your Guide to the Angry Universe|url=http://newswatch.nationalgeographic.com/2012/03/08/angry-birds-space-qa-your-guide-to-the-angry-universe/|archive-url=https://web.archive.org/web/20120309200716/http://newswatch.nationalgeographic.com/2012/03/08/angry-birds-space-qa-your-guide-to-the-angry-universe/|url-status=dead|archive-date=9 March 2012|work=National Geographic News|publisher=National Geographic Society|access-date=26 July 2012|author=Victoria Jaggard|date=8 March 2012}}</ref> shortly before the release of ''Angry Birds Space'' which became available on 22 March 2012. National Geographic also has a book titled ''Angry Birds Feathered Fun'' for learning all about birds.<ref name="Hollywood Daily Star Real Angry Birds">{{cite web| title=Nat Geo Wild Animals in the Real World, the Real Angry Birds| publisher=HollywoodDailyStar.com| author=Gabrielle Pantera| url=http://www.hollywooddailystar.com/?p=4060| archive-url=https://web.archive.org/web/20231112160924/http://www.hollywooddailystar.com/?p=4060| url-status=dead| archive-date=12 November 2023| access-date=12 July 2015}}</ref>
+
+In the same year, Rovio created a contest with the prize ''Angry Birds: Hatching a Universe'', a book about the franchise and all the characters. It was released for sale by Titan Books on 24 May 2013;<ref>{{Cite web|title=Angry Birds: Hatching a Universe|url=https://titanbooks.com/7107-angry-birds-hatching-a-universe/|access-date=2021-03-17|website=Titan Books|language=en|archive-date=17 April 2021|archive-url=https://web.archive.org/web/20210417175944/https://titanbooks.com/7107-angry-birds-hatching-a-universe/|url-status=live}}</ref> And again by Insight Editions on 4 June 2013.<ref>{{Cite web|date=2013-07-24|title=Angry Birds: Hatching a Universe : All Titles|url=https://insighteditions.com/Angry-Birds-Hatching-Danny-Graydon/dp/1608872114|access-date=2021-03-17|archive-url=https://web.archive.org/web/20130724100618/https://insighteditions.com/Angry-Birds-Hatching-Danny-Graydon/dp/1608872114|archive-date=24 July 2013}}</ref> The book was written by Danny Gordon with a foreword by Mikael Hed.{{citation needed|date=September 2025}}
+
+As of 10 March 2014, [[IDW Publishing]] announced<ref>{{cite web|url=http://www.idwpublishing.com/news/article/2734/ |title=Angry Birds Launches from IDW |access-date=14 May 2014 |url-status=dead |archive-url=https://web.archive.org/web/20140513054827/http://www.idwpublishing.com/news/article/2734/ |archive-date=13 May 2014 }}</ref> that they will be publishing Angry Birds Comics starting in June 2014, with Paul Tobin being the writer.<ref>{{cite web|url=http://www.angrybirdsnest.com/exclusive-interview-with-angry-birds-comic-book-writer-paul-tobin/|title=Exclusive interbiew with Angry Birds comic book writer, Paul Tobin|date=10 March 2014 |publisher=Angry Birds Nest|access-date=25 May 2014|archive-date=26 August 2018|archive-url=https://web.archive.org/web/20180826145431/http://www.angrybirdsnest.com/exclusive-interview-with-angry-birds-comic-book-writer-paul-tobin/|url-status=live}}</ref>
+
+In the summer of 2017, [[GoComics]] announced that it would be running a [[comic strip]] series based on the world of ''The Angry Birds Movie'', with each issue available to view on its website.<ref>{{cite web |last1=Goellner |first1=Caleb |title=New Comics Alert: 'Angry Birds' |url=https://www.gocomics.com/blog/4152/new-comics-alert-angry-birds |website=GoComics |access-date=18 March 2019 |date=7 August 2017 |archive-date=28 September 2020 |archive-url=https://web.archive.org/web/20200928060839/https://www.gocomics.com/blog/4152/new-comics-alert-angry-birds |url-status=live }}</ref> The strip ran for over a year, from 3 August 2017 to 20 September 2018.{{citation needed|date=September 2025}}
+
+===Food products===
+In early 2012, [[Olvi]] started to manufacture Angry Birds [[soft drink]]s, after licensing with Rovio<ref name="De">{{cite web|title=Olvi pistää Angry Birdsit tölkkiin|url=http://www.mikropc.net/kaikki_uutiset/olvi+pistaa+angry+birdsit+tolkkiin/a772515?service=mobile&page=2|archive-url=https://archive.today/20130221205030/http://www.mikropc.net/kaikki_uutiset/olvi+pistaa+angry+birdsit+tolkkiin/a772515?service=mobile&page=2|url-status=dead|archive-date=21 February 2013|date=9 September 2012|language=fi}}</ref> with two different tastes: ''Tropic'' (tropical fruits)<ref name="De" /> and ''Paradise'' ([[pineapple]]-[[mandarin orange|mandarin]]).<ref name="De" /> In September 2012 Olvi released two new tastes to the soft drink collection: ''Lagoon'' ([[pear]]-[[apple]]) and ''Space Comet'' ([[Orange (fruit)|orange]]-[[cola]]).<ref>{{cite web|title=Angry Birds Lagoon|url=http://www.olvi.fi/web/fi/angrybirdslagoon|date=9 September 2012|language=fi|access-date=23 October 2012|archive-url=https://web.archive.org/web/20120911022609/http://www.olvi.fi/web/fi/angrybirdslagoon|archive-date=11 September 2012|url-status=dead}}</ref><ref>{{cite web|title=Angry Birds Space Comet|url=http://www.olvi.fi/web/fi/angrybirdsspacecomet|date=9 September 2012|language=fi|access-date=23 October 2012|archive-url=https://web.archive.org/web/20121128160301/http://www.olvi.fi/web/fi/angrybirdsspacecomet|archive-date=28 November 2012|url-status=dead}}</ref>
+
+==Parks and attractions==
+[[File:Angry Birds Land Särkänniemi 11.jpg|thumb|Angry Birds Land in the [[Särkänniemi]] amusement park in [[Tampere]], Finland]]
+[[File:Angry Birds Activity Park.jpg|thumb|Angry Birds Activity Park in [[Johor Bahru]], [[Malaysia]]]]
+
+===Angry Birds Land===
+The game's characters have been used, officially or otherwise, in amusement park attractions. In September 2011, the [[Window of the World]] theme park in [[Changsha]], China opened an unlicensed ''Angry Birds'' attraction.<ref name="AB-China">{{cite news|url=https://www.cbsnews.com/news/china-steals-angry-birds-for-theme-park/|title=China steals 'Angry Birds' for theme park|author=Charles Cooper|date=16 September 2011|access-date=12 November 2011|work=CBS News|archive-date=10 October 2013|archive-url=https://web.archive.org/web/20131010065707/http://www.cbsnews.com/stories/2011/09/16/scitech/main20107294.shtml|url-status=live}}</ref> Visitors to the park use a large slingshot to launch stuffed versions of the bird characters at green balloons that represent the pigs.<ref name="AB-China" />
+
+Upon learning of the attraction, Rovio Entertainment was reported to be considering working with the theme park to officially license it.<ref name="AB-Store" /> In March 2012, Rovio announced plans for an official ''Angry Birds'' Land, that opened on 28 April 2012, at the [[Särkänniemi]] adventure park in Finland.<ref>{{cite web |author=Andrew Wooden |url=http://www.t3.com/news/angry-birds-land-to-hit-theme-park-in-finland |title=Angry Birds Land to hit theme park in Finland |publisher=T3 |date=2 March 2012 |access-date=24 April 2012 |archive-date=9 May 2012 |archive-url=https://web.archive.org/web/20120509124133/http://www.t3.com/news/angry-birds-land-to-hit-theme-park-in-finland |url-status=live }}</ref> Angry Birds Land opened in May 2014 at Johor Bahru City Centre in Malaysia.<ref>{{cite web|url=http://scandasia.com/angry-birds-malaysia-theme-park-to-open-in-2014/ |title=Angry Birds Malaysia Theme Park To Open In 2014 « Scandasia |publisher=Scandasia.com |date=5 June 2013 |access-date=28 August 2013 |url-status=dead |archive-url=https://web.archive.org/web/20130613085557/http://scandasia.com/angry-birds-malaysia-theme-park-to-open-in-2014/ |archive-date=13 June 2013 }}</ref>
+
+The first Angry Birds themed park in the UK was created in [[Sundown Adventureland]], in the Nottinghamshire countryside.<ref>{{Cite news|url=https://www.theguardian.com/travel/shortcuts/2012/aug/22/angry-birds-uk-theme-park|title=Angry Birds gets its own UK theme park|last=Saner|first=Emine|date=22 August 2012|work=The Guardian|access-date=30 August 2017|language=en-GB|issn=0261-3077|archive-date=30 August 2017|archive-url=https://web.archive.org/web/20170830154354/https://www.theguardian.com/travel/shortcuts/2012/aug/22/angry-birds-uk-theme-park|url-status=live}}</ref>
+
+It was announced that UK theme park [[Thorpe Park]] would open their own Angry Birds Land themed area within the park, opening in May 2014, with a [[4D cinema]] showing a 10-minute ''Angry Birds'' film with 4D effects, and a slight re-theme of existing drop tower ride [[Detonator (Thorpe Park)|Detonator]].<ref>{{Cite web |title=Thorpe Park Mania - Angry Birds Land |url=https://www.thorpeparkmania.co.uk/area/Angry+Birds+Land |access-date=2023-12-04 |website=www.thorpeparkmania.co.uk}}</ref> This Angry Birds Land operated until the end of the 2023 season, being rebranded for the 2024 season.<ref>{{Cite web |last=Chris |date=2023-11-18 |title=Big Easy Boulevard to replace Angry Birds Land at Thorpe Park Resort |url=https://www.attractionsource.com/2023/11/18/big-easy-boulevard-to-replace-angry-birds-land-at-thorpe-park-resort/ |access-date=2023-12-04 |website=Attraction Source |language=en-GB}}</ref>
+
+===Angry Birds Activity Parks===
+Rovio opened "Activity Parks" of the game. The first one opened in [[Lightwater Valley]], England, with dance floors, playgrounds that include slides, and touchscreen devices for visitors to play Angry Birds.{{citation needed|date=May 2020}} The attraction also opened in [[Vuokatti]], Finland, with obstacle courses and races,<ref>{{cite web|url=http://www.angrybirdsvuokatti.fi/en/Activity-Park/Angry-Birds-Arena|title=Angry Birds Arena|publisher=Angry Birds Vuokatti|archive-url=https://web.archive.org/web/20140516183258/http://www.angrybirdsvuokatti.fi/en/Activity-Park/Angry-Birds-Arena|archive-date=16 May 2014|url-status=unfit<!--Finnish-->}}</ref> and a separate "Angry Birds Town" with kids' cars.
+
+A park opened in Malaysia, but closed after six years on 5 April 2021 due to the [[COVID-19 pandemic]].<ref>{{Cite web|last=Cho|first=Janet|date=2021-03-16|title=Angry Birds Activity Park In JB To Close Its Doors On 5th April|url=https://thesmartlocal.com/malaysia/angry-birds-activity-park-closure/|website=TheSmartLocal Malaysia – Travel, Lifestyle, Culture & Language Guide|language=en-GB|archive-date=10 July 2021|archive-url=https://web.archive.org/web/20210710083023/https://thesmartlocal.com/malaysia/angry-birds-activity-park-closure/|url-status=live}}</ref>
+
+===Angry Birds Space Encounter===
+In June 2013, Rovio and NASA opened the ''[[Angry Birds Space]] Encounter'' theme park at the [[Kennedy Space Center Visitor Complex|Kennedy Space Center]].<ref>{{cite web|url=http://www.kennedyspacecenter.com/the-experience/angrybirds.aspx|title=The experience, Angry Birds|publisher=Kennedy Space Center|access-date=25 May 2014|url-status=dead|archive-url=https://web.archive.org/web/20140514154231/https://www.kennedyspacecenter.com/the-experience/angrybirds.aspx|archive-date=14 May 2014}}</ref> It offers creating characters and shooting birds at pigs, as in the video game. It also opened in the [[Space Center Houston]].{{citation needed|date=November 2025}}
+
+===Angry Birds World===
+Angry Birds World theme park at [[Doha Festival City]] opened in April 2019; the indoor part had opened in June 2018.<ref>{{Cite press release |title=Angry Birds World opens its outdoor park at Doha Festival City |author= |work=The Peninsula – Qatar |date=1 November 2021|orig-date=27 April 2019 |url= https://thepeninsulaqatar.com/article/27/04/2019/Angry-Birds-World-opens-its-outdoor-park-at-Doha-Festival-City}}</ref>
+
+===Angry Birds Not-So-Mini Golf===
+Rovio opened a miniature Angry Birds golf course at [[American Dream (shopping mall)|American Dream Meadowlands]] in [[East Rutherford, New Jersey|East Rutherford NJ USA]] on 1 October 2020.<ref>{{Cite web|url=https://www.northjersey.com/story/news/business/2019/09/23/american-dream-mall-nj-what-open-when/2418349001/|title=American Dream: Here's which attractions are opening when this fall|website=North Jersey|language=en|access-date=24 September 2019|archive-date=24 September 2019|archive-url=https://web.archive.org/web/20190924131005/https://www.northjersey.com/story/news/business/2019/09/23/american-dream-mall-nj-what-open-when/2418349001/|url-status=live}}</ref><ref>{{Cite press release|last=Dream|first=American|date=2020-09-25|title=ANGRY BIRDS NOT SO MINI GOLF CLUB DEBUTS AT AMERICAN DREAM|url=http://www.globenewswire.com/news-release/2020/09/25/2099344/0/en/ANGRY-BIRDS-NOT-SO-MINI-GOLF-CLUB-DEBUTS-AT-AMERICAN-DREAM.html|access-date=2020-09-25|website=GlobeNewswire News Room|archive-date=11 October 2020|archive-url=https://web.archive.org/web/20201011075159/http://www.globenewswire.com/news-release/2020/09/25/2099344/0/en/ANGRY-BIRDS-NOT-SO-MINI-GOLF-CLUB-DEBUTS-AT-AMERICAN-DREAM.html|url-status=live}}</ref>
+
+==Reception==
+{{expand section|date=November 2025|small=no}}
+{{Video game series reviews
+| updated = 8 November 2025
+| gr = no
+| game1 = [[Angry Birds (video game)|Angry Birds]]
+| year1 = 2009
+| mc1 = '''iOS:''' 80<br>'''PSP:''' 77<br>'''PC:''' 60<ref>{{cite Metacritic|id=angry-birds|type=game|access-date=8 November 2025}}</ref>
+| oc1 = –
+| game3 = [[Angry Birds Rio]]
+| year3 = 2011
+| mc3 = 87<ref>{{cite Metacritic|id=angry-birds-seasons|title=Angry Birds Seasons|type=game|access-date=8 November 2025}}</ref>
+| oc3 = –
+| game4 = [[Angry Birds Friends]]
+| year4 = 2012
+|mc4 = 65<ref>{{cite Metacritic|id=angry-birds-friends|title=Angry Birds Friends|type=game|access-date=8 November 2025}}</ref>
+| oc4 = –
+| game5 = [[Angry Birds Space]]
+| year5 = 2012
+| mc5 = 83<ref>{{cite Metacritic|id=angry-birds-space|title=Angry Birds Space|type=game|access-date=8 November 2025}}</ref>
+| oc5 = –
+| game6 = [[Angry Birds Trilogy]]
+| year6 = 2012
+| mc6 = '''3DS:''' 62<br>'''PS3''': 66<br>'''X360:''' 63<ref>{{cite Metacritic|id=angry-birds-trilogy|title=Angry Birds Trilogy|type=game|access-date=8 November 2025}}</ref>
+| oc6 = –
+| game7 = [[Angry Birds Star Wars]]
+| year7 = 2012
+| mc7 = '''iOS:''' 88<br>'''PS3:''' 49<br>'''X360:''' 59<ref>{{cite Metacritic|id=angry-birds-star-wars|title=Angry Birds Star Wars|type=game|access-date=8 November 2025}}</ref>
+| oc7 = 49<ref>{{cite web |title=''Angry Birds Star Wars'' |url=https://opencritic.com/game/314/angry-birds-star-wars |publisher=[[OpenCritic]] |access-date=8 November 2025}}</ref>
+| game8 = [[Angry Birds Star Wars II]]
+| year8 = 2013
+| mc8 = 77<ref>{{cite Metacritic|id=angry-birds-star-wars-ii|title=Angry Birds Star Wars II|type=game|access-date=8 November 2025}}</ref>
+| oc8 = –
+| game9 = [[Angry Birds Go!]]
+| year9 = 2013
+| mc9 = 60<ref>{{cite Metacritic|id=angry-birds-go|title=Angry Birds Go!|type=game|access-date=8 November 2025}}</ref>
+| oc9 = –
+| game10 = [[Angry Birds Epic]]
+| year10 = 2014
+| mc10 = 70<ref>{{cite Metacritic|id=angry-birds-epic|title=Angry Birds Epic|type=game|access-date=8 November 2025}}</ref>
+| oc10 = –
+| game11 = [[Angry Birds Transformers]]
+| year11 = 2014
+| mc11 = 70<ref>{{cite Metacritic|id=angry-birds-transformers|title=Angry Birds Transformers|type=game|access-date=8 November 2025}}</ref>
+| oc11 = –
+| game12 = [[Angry Birds Fight!]]
+| year12 = 2015
+| mc12 = 54<ref>{{cite Metacritic|id=angry-birds-fight|title=Angry Birds Fight!|type=game|access-date=8 November 2025}}</ref>
+| oc12 = –
+| game13 = [[Angry Birds 2]]
+| year13 = 2015
+| mc13 = 66<ref>{{cite Metacritic|id=angry-birds-2|title=Angry Birds 2|type=game|access-date=8 November 2025}}</ref>
+| oc13 = –
+| game14 = [[Angry Birds Action!]]
+| year14 = 2016
+| mc14 = 75<ref>{{cite Metacritic|id=angry-birds-action|title=Angry Birds Action!|type=game|access-date=8 November 2025}}</ref>
+| oc14 = –
+| game15 = [[Angry Birds Blast!]]
+| year15 = 2016
+| mc15 = 66<ref>{{cite Metacritic|id=angry-birds-blast|title=Angry Birds Blast|type=game|access-date=8 November 2025}}</ref>
+| oc15 = –
+| game16 = Angry Birds VR: Isle of Pigs
+| year16 = 2019
+| mc16 = 79<ref>{{cite Metacritic|id=angry-birds-vr-isle-of-pigs|title=Angry Birds VR: Isle of Pigs|type=game|access-date=8 November 2025}}</ref>
+| oc16 = 77<br>60% recommend<ref>{{cite web |title=''Angry Birds VR: Isle of Pigs'' |url=https://opencritic.com/game/7301/angry-birds-vr-isle-of-pigs |publisher=[[OpenCritic]] |access-date=8 November 2025}}</ref>
+| game17 = The Angry Birds Movie 2 VR: Under Pressure
+| year17 = 2019
+| mc17 = 70<ref>{{cite Metacritic|id=the-angry-birds-movie-2-vr-under-pressure|title=The Angry Birds Movie 2 VR: Under Pressure|type=game|access-date=8 November 2025}}</ref>
+| oc17 = 66<br>38% recommend<ref>{{cite web |title=''The Angry Birds Movie 2 VR: Under Pressure'' |url=https://opencritic.com/game/8141/the-angry-birds-movie-2-vr-under-pressure |publisher=[[OpenCritic]] |access-date=8 November 2025}}</ref>
+}}
+The first ''Angry Birds'' game received critical acclaim for its gameplay and style, and is considered [[List of video games considered the best|one of the greatest video games ever made]],<ref>{{Cite web |date=2014-11-23 |title=G4TV's Top 100 Games |url=http://www.g4tv.com/top-100 |access-date=2022-02-14 |website= |archive-url=https://web.archive.org/web/20141123063703/http://www.g4tv.com/top-100 |archive-date=23 November 2014 |url-status=dead}}</ref> having also been inducted into the [[World Video Game Hall of Fame]].<ref>{{cite web|url=https://www.museumofplay.org/games/angry-birds/|title=Angry Birds|publisher=[[The Strong National Museum of Play]]|access-date=17 May 2026}}</ref><ref>{{cite web|url=https://variety.com/2026/gaming/news/angry-birds-world-video-game-hall-of-fame-1236739560/|title='Angry Birds' Inducted Into World Video Game Hall of Fame|first=Payton|last=Turkeltaub|work=[[Variety (magazine)|Variety]]|date=7 May 2026|access-date=17 May 2026}}</ref>
+
+According to [[review aggregator]] website [[Metacritic]], four games in the franchise received a score of 80% and above, while the other games received scores below 60%.
+
+===Video game sales===
+On Christmas Day 2011 alone, 6.5{{nbsp}}million copies of the various ''Angry Birds'' games were downloaded across all supported platforms.<ref>{{cite web|url=http://www.gamespot.com/news/angry-birds-downloaded-65m-times-on-christmas-day-6348171?tag=updates%3Beditor%3Ball%3Btitle%3B8|title=Angry Birds downloaded 6.5M times on Christmas Day|author=Eddie Makuch|work=[[GameSpot]]|date=January 4, 2012|access-date=January 5, 2012}}</ref> In 2012, Matt Brian from ''[[The Next Web]]'' reported that players logged more than 300{{nbsp}}million minutes of game time daily across all platforms, with the series having 200 million monthly [[active users]], as of May 2012.<ref>{{cite web|url=https://thenextweb.com/mobile/2012/05/09/rovios-angry-birds-titles-hit-1-billion-cumulative-downloads/|title=Rovios Angry Birds Titles Hit 1 Billion Cumulative Downloads|first=Matt |last=Brian|website=[[The Next Web]]|date=May 9, 2012|access-date=May 9, 2012}}</ref> By January 2014, the ''Angry Birds'' series had reached 4{{nbsp}}billion downloads, including ''Angry Birds'', ''[[Angry Birds Seasons]]'', ''Rio'', ''Space'', ''Star Wars'', ''Star Wars{{nbsp}}II'', and ''Go!''<ref>{{cite web|url=https://hardcoregamer.com/2018/01/17/rovio-hits-astounding-4-billion-downloads-across-all-games/286843/|title=Rovio Hits Astounding 4 Billion Downloads Across All Games|work=Hardcore Gamer|access-date=March 14, 2020|date=January 17, 2018|archive-date=April 17, 2021|archive-url=https://web.archive.org/web/20210417200755/https://hardcoregamer.com/2018/01/17/rovio-hits-astounding-4-billion-downloads-across-all-games/286843/|url-status=dead}}</ref> 
+{{clear}}
+===Box office performance===
+{{Hatnote|Each film is linked to the "Box office" section of its article.}}
+{| class="wikitable plainrowheaders sortable" style="text-align: center; font-size:95%"
+|-
+! scope="col" rowspan="2" | Film
+! scope="col" rowspan="2" | Year
+! colspan="3" |Box office gross
+! scope="col" rowspan="2" | Budget
+! scope="col" rowspan="2" class=unsortable | {{refh}}
+|-
+! United States
+! Other
+! Worldwide
+|-
+! scope="row" | ''[[The Angry Birds Movie#Box office|The Angry Birds Movie]]''
+|2016
+|$107,509,366
+|$244,824,563
+|$352,333,929
+|$73 million
+|<ref>{{cite Box Office Mojo|id=1985949|title=The Angry Birds Movie|access-date=January 23, 2021|archive-date=January 23, 2021|archive-url=https://web.archive.org/web/20210123230056/https://www.boxofficemojo.com/title/tt1985949/|url-status=live}}</ref>
+|-
+! scope="row" | ''[[The Angry Birds Movie 2#Box office|The Angry Birds Movie 2]]''
+|2019
+|$41,667,116
+|$106,124,931
+|$147,792,047
+|$65 million
+|<ref>{{Cite Box Office Mojo |id=6095472 |title=The Angry Birds Movie 2 |access-date=January 23, 2021 |archive-date=January 23, 2021 |archive-url=https://web.archive.org/web/20210123230511/https://www.boxofficemojo.com/title/tt6095472/ |url-status=live }}</ref>
+|}
+
+===Film accolades===
+{| class="wikitable sortable" style="width:99%;"
+! Award
+! Date
+! Category
+! Recipient(s)
+! Result
+! class="unsortable" | {{nowrap|{{refh}}}}
+|-
+| [[Jussi Awards]]
+| March 24, 2017
+| Best Film
+| John Cohen, [[Catherine Winder]], Mikael Hed, David Maisel
+| {{nom}}
+| align="center" | <ref>{{cite web |url=https://www.iltalehti.fi/viihde/a/201703242200091505 |title=Tässä ovat Jussi-gaalan kaikki voittajat: Hymyilevä mies on paras elokuva - voitti yhteensä 8 palkintoa |publication-place=Iltalehti |publication-date=March 25, 2017 |access-date=March 25, 2017 |archive-date=March 24, 2017 |archive-url=https://web.archive.org/web/20170324202908/http://www.iltalehti.fi/viihde/201703242200091505_vi.shtml |url-status=live }}</ref>
+|-
+| [[Hollywood Music in Media Awards]]
+| November 17, 2016
+| [[Hollywood Music in Media Award for Best Original Score in an Animated Film|Best Original Score – Animated Film]]
+| [[Heitor Pereira]], ''The Angry Birds Movie''
+| {{nom}}
+| align="center" | <ref>{{cite web |url=https://deadline.com/2016/11/hollywood-music-in-media-awards-justin-timberlake-alexandre-desplat-trent-reznot-1201857357/ |title=Justin Timberlake & Alexandre Desplat Among Winners At Hollywood Music In Media Awards |date=November 18, 2016 |publication-place=Deadline |publication-date=November 18, 2016 |access-date=November 18, 2016 |archive-date=November 19, 2016 |archive-url=https://web.archive.org/web/20161119181845/http://deadline.com/2016/11/hollywood-music-in-media-awards-justin-timberlake-alexandre-desplat-trent-reznot-1201857357/ |url-status=live }}</ref><ref>{{cite web | url=https://variety.com/2016/film/news/la-la-land-hollywood-music-in-media-nominations-1201907464/ | title='La La Land' Scores Three Hollywood Music in Media Nominations | work=Variety | date=November 2, 2016 | access-date=November 3, 2016 | author=McNary, Dave | author-link=Dave McNary |archive-date=November 3, 2016 | archive-url=https://web.archive.org/web/20161103124719/http://variety.com/2016/film/news/la-la-land-hollywood-music-in-media-nominations-1201907464/ | url-status=live }}</ref>
+|-
+| [[2017 Kids' Choice Awards|Kids' Choice Awards]]
+| March 11, 2017
+| Most Wanted Pet, ''The Angry Birds Movie''
+| rowspan="2" | [[Jason Sudeikis]], ''The Angry Birds Movie''
+| {{nom}}
+| align="center" | <ref>{{cite web|url=https://variety.com/2017/tv/news/nickelodeon-kids-choice-awards-nominations-2017-full-list-1201975603/|title=Justin Timberlake and Kevin Hart Lead Nickelodeon's Kids' Choice Awards Nominations|publisher=Variety|date=February 24, 2017|access-date=February 24, 2017|archive-date=February 5, 2017|archive-url=https://web.archive.org/web/20170205052915/http://variety.com/2017/tv/news/nickelodeon-kids-choice-awards-nominations-2017-full-list-1201975603/|url-status=live}}</ref>
+|-
+| rowspan="2" | [[2016 Teen Choice Awards|Teen Choice Awards]]
+| rowspan="2" | July 31, 2016
+| [[Teen Choice Award for Choice Hissy Fit|Choice Movie: Hissy Fit]], ''The Angry Birds Movie''
+| {{nom}}
+| rowspan="2" align="center" | <ref name="TeenChoice">{{cite web |url=http://www.eonline.com/news/767635/teen-choice-awards-2016-nominations-announced-see-the-first-wave-of-potential-winners |title=Teen Choice Awards 2016 Nominations Announced: See the "First Wave" of Potential Winners |last=Vulpo |first=Mike |publisher=[[E!]] |date=May 24, 2016 |access-date=May 25, 2016 |archive-url=https://web.archive.org/web/20160526090121/http://www.eonline.com/news/767635/teen-choice-awards-2016-nominations-announced-see-the-first-wave-of-potential-winners |archive-date=May 26, 2016 |url-status=live |df=mdy-all }}</ref>
+|-
+| Choice Music: Song from a Movie or TV Show
+| "I Will Survive" by [[Demi Lovato]]
+| {{nom}}
+|-
+| rowspan="2" | [[People's Choice Awards]]
+| rowspan="2" | [[45th People's Choice Awards|November 10, 2019]]
+| Family Movie of 2019
+| {{sort|Angry Birds 2|''The Angry Birds Movie 2''}}
+| {{nom}}
+| rowspan="2" align="center" | <ref>{{Cite web |last1=Nordyke |first1=Kimberly |last2=Howard |first2=Annie |date=November 10, 2019 |title=People's Choice Awards: 'Avengers: Endgame' Named Best Movie |url=https://www.hollywoodreporter.com/lists/2019-peoples-choice-awards-winners-list-full-1250529/item/comedy-movie-2019-peoples-choice-awards-nominations-2019-1236415 |url-status=live |archive-url=https://web.archive.org/web/20191111054342/https://www.hollywoodreporter.com/lists/2019-peoples-choice-awards-winners-list-full-1250529/item/movie-2019-peoples-choice-awards-nominations-2019-1236394 |archive-date=November 11, 2019 |access-date=November 11, 2019 |website=[[The Hollywood Reporter]]}}</ref>
+|-
+| Animated Movie Star of 2019
+| [[Awkwafina]]
+| {{nom}}
+|-
+| rowspan="2" | [[Nickelodeon Kids' Choice Awards]]
+| rowspan="2"| [[2020 Kids' Choice Awards|May 2, 2020]]
+| [[Kids' Choice Award for Favorite Animated Movie|Favorite Animated Movie]]
+| {{sort|Angry Birds 2|''The Angry Birds Movie 2''}}
+| {{nom}}
+| rowspan="2" align="center" | <ref>{{Cite web |url=https://deadline.com/2020/02/avengers-end-game-leads-nickelodeons-kids-choice-awards-nominations-billie-eilish-taylor-swift-chance-the-rapper-full-list-1202859259/ |title='Avengers: Endgame' Leads Nickelodeon's Kids' Choice Awards Nominations; Chance The Rapper Set As Host
+|website=[[Deadline Hollywood]] |last=Petski |first=Denise |date=February 13, 2020 |access-date=May 6, 2020 |archive-date=February 13, 2020 |archive-url=https://web.archive.org/web/20200213182951/https://deadline.com/2020/02/avengers-end-game-leads-nickelodeons-kids-choice-awards-nominations-billie-eilish-taylor-swift-chance-the-rapper-full-list-1202859259/ |url-status=live }}</ref>
+|-
+| Favorite Male Voice for an Animated Movie
+| Josh Gad (sharing his award with ''[[Frozen II]]''), ''The Angry Birds Movie 2''
+| {{won}}
+|}
+
+==Global impact==
+===Television===
+The ''Angry Birds'' characters have been referenced in television programs throughout the world. The Israeli comedy show ''[[Eretz Nehederet]]'' (in English: ''a Wonderful Country''), one of the [[Television in Israel|nation's most popular TV programs]], satirized recent failed [[2010–11 Israeli–Palestinian peace talks|Israeli-Palestinian peace attempts]] by featuring the Angry Birds in peace negotiations with the pigs. Clips of the segment went [[Viral video|viral]], getting viewers from all around the world. The sketch received favorable coverage from a variety of independent blogs such as [[Digital Trends|digitaltrends.com]],<ref name="dt">{{cite news|url=http://www.digitaltrends.com/gaming/israeli-angry-birds-satire-goes-viral/?news=123|title=Israeli Angry Birds satire goes viral|date=23 November 2010|access-date=26 November 2010|first=Jeffrey|last=Van Camp|publisher=[[Digital Trends]]|archive-date=17 December 2010|archive-url=https://web.archive.org/web/20101217003355/http://www.digitaltrends.com/gaming/israeli-angry-birds-satire-goes-viral/?news=123|url-status=live}}</ref> [[Hot Air|hotair.com]]<ref>{{cite news|url=http://hotair.com/archives/2010/11/25/breakthrough-peace-talks-begin-to-settle-bitter-longstanding-conflict/|publisher=Hot Air|date=25 November 2010|access-date=26 November 2010|title=Breakthrough: Peace talks begin to settle bitter longstanding conflict| archive-url= https://web.archive.org/web/20101128062704/http://hotair.com/archives/2010/11/25/breakthrough-peace-talks-begin-to-settle-bitter-longstanding-conflict/| archive-date= 28 November 2010 | url-status= live}}</ref> and intomobile.com,<ref>{{cite news|title=The Angry Birds Peace Treaty didn't turn out so well|url=http://www.intomobile.com/2010/11/23/the-angry-birds-peace-treaty-didnt-turn-out-so-well/|date=23 November 2010|access-date=26 November 2010|publisher=intomobile|archive-url=https://web.archive.org/web/20101127132708/http://www.intomobile.com/2010/11/23/the-angry-birds-peace-treaty-didnt-turn-out-so-well/|archive-date=27 November 2010|url-status=dead}}</ref> as well as from online news media agencies such as ''[[Haaretz]]'',<ref>{{cite news|url=https://www.haaretz.com/news/national/israeli-satire-show-goes-viral-with-angry-bird-take-on-peace-talks-1.326157|date=22 November 2010|access-date=26 November 2010|title=Israeli satire show goes viral with Angry Bird take on peace talks|work=[[Haaretz]]| archive-url= https://web.archive.org/web/20101124022450/http://www.haaretz.com/news/national/israeli-satire-show-goes-viral-with-angry-bird-take-on-peace-talks-1.326157| archive-date= 24 November 2010 | url-status= dead}}</ref> ''[[The Christian Science Monitor]]'',<ref name="shaer">{{cite news|first=Matthew|last=Shaer|date=29 November 2010|url=https://www.csmonitor.com/Innovation/Horizons/2010/1129/Angry-Birds-bound-for-Xbox-PlayStation|title=Angry Birds bound for Xbox, PlayStation|access-date=29 November 2010| archive-url= https://web.archive.org/web/20101204195828/http://www.csmonitor.com/Innovation/Horizons/2010/1129/Angry-Birds-bound-for-Xbox-PlayStation| archive-date= 4 December 2010 | url-status= live}}</ref> ''[[The Guardian]]'',<ref>{{cite news|url=https://www.theguardian.com/technology/gamesblog/2010/nov/23/games-controversy|title=Angry Birds Treaty brings casual gaming into the world of satire|first=Keith|last=Stewart|work=The Guardian |location=UK |access-date=29 November 2010|date=23 November 2010| archive-url= https://web.archive.org/web/20101125194328/http://www.guardian.co.uk/technology/gamesblog/2010/nov/23/games-controversy| archive-date= 25 November 2010 | url-status= live}}</ref> and [[MSNBC]].<ref name="msnbc">{{cite news|url=http://technolog.msnbc.msn.com/_news/2010/11/22/5509508-angry-birds-fail-to-negotiate-peace-treaty |publisher=[[MSNBC]] |access-date=29 November 2010 |title='Angry Birds' fail to negotiate peace treaty |first=Helen A.S. |last=Popkin |date=22 November 2010 |url-status=dead |archive-url=https://web.archive.org/web/20101125132521/http://technolog.msnbc.msn.com/_news/2010/11/22/5509508-angry-birds-fail-to-negotiate-peace-treaty |archive-date=25 November 2010 }}</ref> American television hosts [[Conan O'Brien]], [[Jon Stewart]] and [[Daniel Tosh]] have referenced the game in comedy sketches on their respective series, ''[[Conan (talk show)|Conan]]'', ''[[The Daily Show]]'', and ''[[Tosh.0]]''.<ref>{{Cite AV media |people=Conan O'Brien (host) |date=15 December 2010 |title=Conan's Message to Finland |url=https://www.youtube.com/watch?v=sU6ierlsI0I |medium=Television production |publisher=TBS |access-date=21 December 2010 |time=1:38| archive-url= https://web.archive.org/web/20101228092442/https://www.youtube.com/watch?v=sU6ierlsI0I| archive-date= 28 December 2010 | url-status= live}}</ref><ref>{{Cite AV media |people=Jon Stewart (host) |date=16 February 2011 |title=Intro – Watson Competes on Jeopardy |url=http://www.thedailyshow.com/watch/wed-february-16-2011/intro---watson-competes-on-jeopardy |medium=Television production}}</ref><ref>{{Cite AV media |people=Daniel Tosh|date=11 January 2011 |title=Tosh.0: Angry Birds |url=http://tosh.comedycentral.com/video-clips/angry-birds |medium=Television production}}</ref> In the ''[[30 Rock]]'' episode [[Plan B (30 Rock)|"Plan B"]], guest star [[Aaron Sorkin]] laments to [[Liz Lemon]], "Our craft is dying while people are playing ''Angry Birds'' and poking each other on Facebook". He then provides a tip for Liz to improve her score in the game.{{citation needed|date=December 2015}} In February 2011, American journalist [[Jake Tapper]] mockingly introduced U.S. Senator [[Chris Coons]] as the "Angry Birds champion of the Senate" during the [[National Press Club (United States)|National Press Club's]] annual dinner.<ref>{{cite news|url=https://www.huffingtonpost.com/2011/02/10/chris-coons-mocks-jake-tapper_n_821246.html|title=Chris Coons Mocks Jake Tapper|work=[[HuffPost]]|location=USA|date=10 February 2011|access-date=17 February 2011|first=Jack|last=Mirkinson|archive-date=15 February 2011|archive-url=https://web.archive.org/web/20110215114543/http://www.huffingtonpost.com/2011/02/10/chris-coons-mocks-jake-tapper_n_821246.html|url-status=live}}</ref> Some of the game's more notable fans include ex-Prime Minister [[David Cameron]] of the United Kingdom, who plays the iPad version of the game, and author [[Salman Rushdie]], who claims he is "something of a master at ''Angry Birds''".<ref>{{cite news|url=https://www.wsj.com/articles/SB10001424052748703945904575644940111605862|title=Why We Can't Stop Playing|author=Nick Wingfield|work=The Wall Street Journal|date=30 November 2010|access-date=27 March 2011|archive-date=17 July 2015|archive-url=https://web.archive.org/web/20150717090431/https://www.wsj.com/articles/SB10001424052748703945904575644940111605862|url-status=live}}</ref> Basketball star [[Kevin Durant]] is an avid fan of ''Angry Birds'', and regularly plays other NBA stars in matches, although he is wary of cheating.<ref>{{cite web |url=http://www.celebritytweet.com/KDthunderup/link/69991866069827584/ |title=Man they be cheatin terrible on angry birds...make me wanna throw my phone out the window. |author=Kevin Durant @KDThunderup |work=celebritytweet.com |access-date=6 May 2012 |archive-date=25 January 2022 |archive-url=https://web.archive.org/web/20220125060449/https://globalgrind.com/4249709/link-up-are-you-here-for-an-a-boogie-alkaline-collab/ |url-status=live }}</ref> In August 2011, the [[Milwaukee Brewers]] played the ''Angry Birds'' theme song during the pre-game introductions of the arch-rival [[St. Louis Cardinals]] players, in reference to former Cardinals' manager [[Tony La Russa|Tony LaRussa's]] propensity to [[Beanball|bean]] opposing players.{{citation needed|date=December 2015}} ''Angry Birds'' also appears briefly, for comic relief, during a scene in the 2013 film ''[[G.I. Joe: Retaliation]]'', in which Zartan plays the game while waiting for the world leaders' response to his threats of annihilation.{{citation needed|date=December 2015}} Angry Birds were featured in the 2013 Helsinki episode of ''[[Veep]]''.{{citation needed|date=December 2015}} ''Angry Birds'' was referenced in the film ''[[The Starving Games]]'', a parody of ''[[The Hunger Games (film series)|The Hunger Games]]''.{{citation needed|date=December 2015}} A group in the Indian show ''[[Dance Plus|Dance+]]'' have done a dance based on Angry Birds.{{citation needed|date=December 2015}} ''Angry Birds'' was referenced in the ''[[Family Guy]]'' episode "[[Turban Cowboy]]" where one failed skydiving attempt by Peter results in him landing in a level. The TV show ''[[Robot Chicken]]'' also parodied ''Angry Birds'' in one sketch.{{citation needed|date=July 2025}}
+
+[[File:T-Mobile Angry Birds Advert.png|thumb|right|A screenshot from the T-Mobile advertisement. The advertisement was shown in [[Spain]] by [[Cosmote]].]]
+
+===Advertisements===
+''Angry Birds'' and its characters have been featured in advertisements for other products. In March 2011, the characters began appearing in a series of advertisements for Microsoft's [[Bing (search engine)|Bing]] search engine.<ref>{{Cite AV media|url=https://www.youtube.com/watch?v=WQiH4Hl4wE4| archive-url=https://ghostarchive.org/varchive/youtube/20211107/WQiH4Hl4wE4| archive-date=2021-11-07 | url-status=live|title=Angry Birds Bing Video – Episode 1|publisher=Rovio Mobile|access-date=7 March 2011}}{{cbignore}}</ref> At the 2011 [[South by Southwest]] festival in [[Austin, Texas]], Nokia used [[scrim (lighting)|scrim]]s on a downtown building to project an advertisement for its new [[Nokia N8|N8 handset]] that included the game's characters.<ref>{{Cite AV media|url=https://www.youtube.com/watch?v=BlWQjEZgO7M| archive-url=https://web.archive.org/web/20110317051840/http://www.youtube.com/watch?v=BlWQjEZgO7M| archive-date=2011-03-17 | url-status=dead|title=Angry Birds On A 15 Storey Building At SXSW|date=12 March 2011|access-date=9 June 2011}}</ref> A June 2011 [[T-Mobile International AG|T-Mobile]] advertisement filmed in Barcelona, Spain included a real-life mock-up of the game in a city plaza,<ref>{{Cite AV media|url=https://www.youtube.com/watch?v=jzIBZQkj6SY&feature=player_embedded| archive-url=https://ghostarchive.org/varchive/youtube/20211107/jzIBZQkj6SY| archive-date=2021-11-07 | url-status=live|title=T-Mobile Angry Birds Live|access-date=9 June 2011}}{{cbignore}}</ref> while Nokia used the game in [[Kuala Lumpur]], Malaysia to promote an attempt to set a world record for the largest number of people playing a single mobile game.<ref>{{cite web|url=http://www.greyreview.com/2011/06/11/photos-world-record-attempt-at-worlds-biggest-angry-birds-playground-in-kuala-lumpur|title=Guinness World Record at Nokia World's Biggest Angry Birds Playground in Kuala Lumpur|author=Lim Yung Hui|work=greyreview.com|date=11 June 2011|access-date=14 December 2011|archive-date=24 November 2011|archive-url=https://web.archive.org/web/20111124004324/http://www.greyreview.com/2011/06/11/photos-world-record-attempt-at-worlds-biggest-angry-birds-playground-in-kuala-lumpur/|url-status=live}}</ref> [[Finnair]] has also used Angry Birds in their advertising, including taping an [[Airbus A340]] airliner with the Angry Birds figures and holding an Angry Birds tournament on board a flight to Singapore.<ref>{{cite web|url=http://nycaviation.com/2011/09/angry-birds-take-over-finnair-flight/|title=Angry Birds Take Over Finnair Flight to Singapore – NYCAviation|author=Matt Molnar|date=21 September 2011|access-date=22 January 2012|archive-date=24 January 2012|archive-url=https://web.archive.org/web/20120124135410/http://nycaviation.com/2011/09/angry-birds-take-over-finnair-flight/|url-status=live}}</ref> Rovio has also prepared a number of web-based promotional variants of ''Angry Birds'' themed around creations of other companies, such as Finnish snack company Fazer,<ref>{{cite web|url=http://fazer.angrybirds.com|title=Angry Birds Volcano|access-date=25 January 2022|archive-date=18 November 2018|archive-url=https://web.archive.org/web/20181118010507/http://fazer.angrybirds.com/|url-status=live}}</ref> Spanish pizza delivery chain Telepizza,<ref>{{cite web|url=http://telepizza.angrybirds.com|title=Angry Birds Тelepizza|access-date=25 January 2022|archive-date=4 November 2012|archive-url=https://web.archive.org/web/20121104093036/http://telepizza.angrybirds.com/|url-status=live}}</ref> and Japanese television network [[Fuji Television|Fuji TV]],<ref>{{cite web|url=http://angrybirds.fujitv.co.jp |title=Angry Birds Fujitv |url-status=dead |archive-url=https://web.archive.org/web/20121016192250/http://angrybirds.fujitv.co.jp/ |archive-date=16 October 2012 }}</ref> as well as promotions of American brands including Cheetos,<ref>{{cite web|url=https://www.cheetos-angrybirds.com |title=Cheetos Angry Birds |work=Rovio |url-status=dead |archive-url=https://web.archive.org/web/20130308025937/http://www.cheetos-angrybirds.com/ |archive-date= 8 March 2013 }}</ref> [[The Wonderful Company|Wonderful Pistachios]]<ref>{{cite web|url=http://getcrackin.angrybirds.com|title=Angry Birds Pistachios|access-date=25 January 2022|archive-date=21 October 2012|archive-url=https://web.archive.org/web/20121021162453/http://getcrackin.angrybirds.com/|url-status=live}}</ref> and [[Coca-Cola]].<ref>{{cite web|url=http://coca-cola.angrybirds.com/ |title=Angry Birds Coca-Cola |work=Angry Birds |url-status=dead |archive-url=https://web.archive.org/web/20120828104146/http://coca-cola.angrybirds.com/ |archive-date=28 August 2012 }}</ref> In November 2013, Indian brand [[Parle Products|Parle]] started a marketing campaign in which a trading card is included in each packet of Parle's Wafers and it included a related contest to win Angry Birds merchandise.<ref>[http://article.wn.com/view/2013/12/17/After_cookies_Parle_gets_Big_B_for_confectionery/ After cookies, Parle gets Big B for confectionery ] {{Webarchive|url=https://web.archive.org/web/20150204014650/http://article.wn.com/view/2013/12/17/After_cookies_Parle_gets_Big_B_for_confectionery/ |date=4 February 2015 }} Retrieved 3 February 2015.</ref> In February 2016, [[Cadbury#India|Cadbury India]] had Angry Birds small figurines or tattoos in Cadbury Gems packs or Surprise balls.<ref>[https://www.youtube.com/watch?v=dK3FGBMFD0k Angry Birds Gems Surprise Ball Limited Edition Mega Unboxing] {{Webarchive|url=https://web.archive.org/web/20161123150816/https://www.youtube.com/watch?v=dK3FGBMFD0k |date=23 November 2016 }} Retrieved 11 March 2016.</ref> In June 2016, [[Kurkure|Kurkure India]] started an offer to win daily themed prizes and a trip to Angry Birds Activity Park in Malaysia.<ref>{{Citation|title=Kurkure Cheese Balls – Angry Birds Promotion| date=23 June 2016 |url=https://www.youtube.com/watch?v=vfIdU2hrlcw| archive-url=https://ghostarchive.org/varchive/youtube/20211107/vfIdU2hrlcw| archive-date=2021-11-07 | url-status=live|access-date=16 July 2016}}{{cbignore}}</ref>
+
+[[File:Hockey VM maskot.jpg|thumb|Hockey VM mascot]]
+
+[[File:Heikki Kovalainen 2012 Malaysia FP2.jpg|thumb|right|Kovalainen wearing an Angry Birds-themed helmet at the [[2012 Malaysian Grand Prix]]]]
+[[File:Séamus_Coleman_-_Everton_Football_Club.png|thumb|right|Angry Birds logo on [[Everton F.C.|Everton]] shirt sleeves]]
+Finnish [[Formula One]] driver Heikki Kovalainen used an Angry Birds-themed helmet in the [[2012 FIA Formula One World Championship|2012 season]], following a sponsorship deal with Rovio. Angry Birds also sponsored the [[Lotus F1|Lotus F1 Team]] that year, with its logo on the top of each Lotus Renault F1 car's nosecone. As part of the deal, fellow Finn [[Kimi Räikkönen]] ran an Angry Birds 'Space' logo on his branded caps.<ref>[http://www.lotusf1team.com/Watch-Out-The-Birds-Have-Landed.html Watch Out ! The Birds Have Landed ! 'Lotus F1 Team Angry Birds' Game Goes Live !] {{webarchive|url=https://web.archive.org/web/20121001035222/http://www.lotusf1team.com/Watch-Out-The-Birds-Have-Landed.html|date=1 October 2012}}. Lotus F1 Team (23 May 2012). Retrieved 5 September 2012.</ref>
+
+Hockey Bird, an angry hockey playing bird, was the official mascot of the [[2012 IIHF World Championship|2012 IIHF Ice Hockey World Championships]]. It was designed by Toni Kysenius and Rovio Entertainment.<ref>{{cite web|url=http://www.iihf.com/nc/home-of-hockey/news/news-singleview/article/born-hockey-bird.html |title=Born: Hockey Bird! |publisher=Iihf.com |access-date=22 May 2012 |url-status=dead |archive-url=https://web.archive.org/web/20120117144053/http://www.iihf.com/nc/home-of-hockey/news/news-singleview/article/born-hockey-bird.html |archive-date=17 January 2012 }}</ref>
+
+[[Premier League]] association football club [[Everton F.C.]] signed a deal with Rovio in 2017, whereby the Angry Birds logo appears on the club shirt's left sleeve beginning from the [[2017–18 Premier League]] campaign.<ref>{{cite web |title=Everton Sign Sleeve Deal With Games Giant Rovio Entertainment |url=http://www.evertonfc.com/news/2017/09/16/everton-sign-sleeve-deal-with-games-giant-rovio-entertainment |work=Everton FC |access-date=17 September 2017 |archive-url=https://web.archive.org/web/20170919014136/http://www.evertonfc.com/news/2017/09/16/everton-sign-sleeve-deal-with-games-giant-rovio-entertainment |archive-date=19 September 2017 |url-status=dead }}</ref>
+
+===Video games===
+The game's popularity has spawned knock-off and parody games that utilize the same basic mechanics as ''Angry Birds''. For example, ''Angry Turds'' features monkeys hurling feces and other objects at hunters who have stolen their babies.<ref>{{cite web|url=http://www.intomobile.com/2011/01/31/bored-with-angry-birds-try-angry-turds/|title=Bored with Angry Birds? Try Angry Turds|author=Marc Flores|work=IntoMobile.com|date=31 January 2011|access-date=5 February 2011|archive-url=https://web.archive.org/web/20110204184608/http://www.intomobile.com/2011/01/31/bored-with-angry-birds-try-angry-turds/|archive-date=4 February 2011|url-status=dead}}</ref> Another game, titled ''Chicks'n'Vixens'' and released in beta form on Windows Phone devices, replaces the birds and pigs with chickens and foxes, respectively.<ref name="CnV">{{cite web|url=http://www.slashgear.com/chicksnvixens-brings-angry-birds-clone-to-wp7-as-rovio-protest-video-02129963/|title=Chicks'n'Vixens brings Angry Birds clone to WP7 as Rovio protest|author=Chris Davies|work=Slashgear.com|date=2 February 2011|access-date=5 February 2011|archive-date=5 February 2011|archive-url=https://web.archive.org/web/20110205032412/http://www.slashgear.com/chicksnvixens-brings-angry-birds-clone-to-wp7-as-rovio-protest-video-02129963/|url-status=live}}</ref> The developer of ''Chicks'n'Vixens'' intended the game as a challenge to Rovio Mobile, which stated at the time that a Windows Phone port of ''Angry Birds'' would not be ready until later in 2011.<ref name="CnV" /> The ''Angry Birds'' theme song (''Balkan Blast Remix'') and its characters appear in ''[[Just Dance 2016]]''.<ref>{{cite web|last1=Cardoso|first1=Jose|title=Angry Birds infiltrates Just Dance 2016's tracklist|url=http://www.gamezone.com/news/angry-birds-infiltrates-just-dance-2016-s-tracklist-3422776|publisher=Gamezone|access-date=20 August 2015|date=5 August 2015|archive-date=9 August 2015|archive-url=https://web.archive.org/web/20150809060110/http://www.gamezone.com/news/angry-birds-infiltrates-just-dance-2016-s-tracklist-3422776|url-status=live}}</ref>
+
+===Religion===
+''Angry Birds'' has inspired works of religious analogy. A five-part essay titled "Angry Birds Yoga&nbsp;— How to Eliminate the Green Pigs in Your Life" was written by Giridhari Dasa of the [[International Society for Krishna Consciousness]] of Brazil, utilizing the characters and gameplay mechanics to explain various concepts of [[yoga]] in [[Gaudiya Vaishnavism]] as understood and interpreted by the Hare Krishna.<ref name="ab1">{{cite web |url=http://pandavas.wordpress.com/2011/05/02/angry-birds%E2%84%A2-yoga-%E2%80%93-how-to-eliminate-the-green-pigs-in-your-life-part-i/ |title=Angry Birds™ Yoga – How to Eliminate the Green Pigs in Your Life, Part I |work=Giridhari's Blog |date=2 May 2011 |publisher=Giridhari Dasa |access-date=26 June 2011 |archive-date=3 July 2011 |archive-url=https://web.archive.org/web/20110703080611/http://pandavas.wordpress.com/2011/05/02/angry-birds%E2%84%A2-yoga-%E2%80%93-how-to-eliminate-the-green-pigs-in-your-life-part-i/ |url-status=live }}</ref><ref name="ab2">{{cite web |url=http://pandavas.wordpress.com/2011/05/02/angry-birds%E2%84%A2-yoga-%E2%80%93-how-to-eliminate-the-green-pigs-in-your-life-part-ii/ |title=Angry Birds™ Yoga – How to Eliminate the Green Pigs in Your Life, Part II |work=Giridhari's Blog |date=2 May 2011 |publisher=Giridhari Dasa |access-date=26 June 2011 |archive-date=3 July 2011 |archive-url=https://web.archive.org/web/20110703081500/http://pandavas.wordpress.com/2011/05/02/angry-birds%E2%84%A2-yoga-%E2%80%93-how-to-eliminate-the-green-pigs-in-your-life-part-ii/ |url-status=live }}</ref><ref name="ab3">{{cite web |url=http://pandavas.wordpress.com/2011/05/06/angry-birds%E2%84%A2-yoga-%E2%80%93-how-to-eliminate-the-green-pigs-in-your-life-part-iii/ |title=Angry Birds™ Yoga – How to Eliminate the Green Pigs in Your Life, Part III |work=Giridhari's Blog |date=6 May 2011 |publisher=Giridhari Dasa |access-date=26 June 2011 |archive-date=19 July 2011 |archive-url=https://web.archive.org/web/20110719180538/http://pandavas.wordpress.com/2011/05/06/angry-birds%E2%84%A2-yoga-%E2%80%93-how-to-eliminate-the-green-pigs-in-your-life-part-iii/ |url-status=live }}</ref><ref name="ab4">{{cite web |url=http://pandavas.wordpress.com/2011/05/10/angry-birds%E2%84%A2-yoga-%E2%80%93-how-to-eliminate-the-green-pigs-in-your-life-part-iv/ |title=Angry Birds™ Yoga – How to Eliminate the Green Pigs in Your Life, Part IV |work=Giridhari's Blog |date=10 May 2011 |publisher=Giridhari Dasa |access-date=26 June 2011 |archive-date=3 July 2011 |archive-url=https://web.archive.org/web/20110703081546/http://pandavas.wordpress.com/2011/05/10/angry-birds%E2%84%A2-yoga-%E2%80%93-how-to-eliminate-the-green-pigs-in-your-life-part-iv/ |url-status=live }}</ref><ref name="ab5">{{cite web |url=http://pandavas.wordpress.com/2011/05/12/angry-birds%E2%84%A2-yoga-%E2%80%93-how-to-eliminate-the-green-pigs-in-your-life-final-part/ |title=Angry Birds™ Yoga – How to Eliminate the Green Pigs in Your Life, Final Part |work=Giridhari's Blog |date=12 May 2011 |publisher=Giridhari Dasa |access-date=26 June 2011 |archive-date=17 July 2011 |archive-url=https://web.archive.org/web/20110717101420/http://pandavas.wordpress.com/2011/05/12/angry-birds%E2%84%A2-yoga-%E2%80%93-how-to-eliminate-the-green-pigs-in-your-life-final-part/ |url-status=live }}</ref> The piece attracted much media attention, in Brazil and abroad, for its unique method of philosophico-religious presentation.<ref>{{cite news|url=https://www.telegraph.co.uk/technology/video-games/8303173/Angry-Birds-the-story-behind-iPhones-gaming-phenomenon.html|title=Angry Birds: the story behind iPhone's gaming phenomenon|date=7 February 2011|access-date=26 June 2011|first=Paul|last=Kendall|work=[[The Daily Telegraph]]|location=London| archive-url= https://web.archive.org/web/20110726150815/http://www.telegraph.co.uk/technology/video-games/8303173/Angry-Birds-the-story-behind-iPhones-gaming-phenomenon.html| archive-date= 26 July 2011 | url-status= live}}</ref><ref>{{cite web |url=http://pandavas.wordpress.com/2011/06/15/angry-birds-yoga-making-a-splash-in-brazil/ |title=Angry Birds Yoga Making a Splash in Brazil &#124; Giridhari's Blog |publisher=Pandavas.wordpress.com |date=15 June 2011 |access-date=1 February 2012 |archive-date=26 April 2012 |archive-url=https://web.archive.org/web/20120426051604/http://pandavas.wordpress.com/2011/06/15/angry-birds-yoga-making-a-splash-in-brazil/ |url-status=live }}</ref><ref>{{cite web |url=http://www.dzai.com.br/fredbottrel/blog/topics?tv_pos_id=84461 |title=topics |publisher=Dzai.com.br |access-date=1 February 2012 |archive-url=https://web.archive.org/web/20120422002147/http://www.dzai.com.br/fredbottrel/blog/topics?tv_pos_id=84461 |archive-date=22 April 2012 |url-status=dead }}</ref><ref>{{cite news|url=http://news.iskcon.com/node/3726/2011-06-25/is_iskcon_devotee_s_angry_birds_yoga_set_to_go_viral|title=Is ISKCON Devotee's "Angry Birds Yoga" Set To Go Viral?|date=25 June 2011|access-date=26 June 2011|first=Madhava|last=Smullen|publisher=[[International Society for Krishna Consciousness]]|archive-url=https://web.archive.org/web/20110629003429/http://news.iskcon.com/node/3726/2011-06-25/is_iskcon_devotee_s_angry_birds_yoga_set_to_go_viral|archive-date=29 June 2011|url-status=dead}}</ref> The piece was also recognized and appreciated by Rovio Mobile's Peter Vesterbacka, who was prompted to comment on Twitter, "Very cool! I can see Angry Birds Yoga becoming a worldwide craze;-)".<ref name="ab1" />
+
+===Education===
+Rovio also launched the Angry Birds Playground in partnership with [[University of Helsinki]]. Based on the Finnish national curriculum the program covers maths, science, music, language, arts & crafts, physical education and social interaction. Focused on preschoolers of kindergarten age, the program introduced interactive learning material including books, posters, games and digital content.<ref>{{Cite news|url=https://www.theguardian.com/technology/appsblog/2013/sep/16/angry-birds-playground-education-rovio|title=Angry Birds Playground: Rovio catapults gaming into the classroom|last=Dredge|first=Stuart|date=16 September 2013|work=The Guardian|access-date=30 July 2018|archive-date=30 July 2018|archive-url=https://web.archive.org/web/20180730170551/https://www.theguardian.com/technology/appsblog/2013/sep/16/angry-birds-playground-education-rovio|url-status=live}}</ref> In 2015, a spin-off from the Rovio Angry Birds Playground was established as [https://funacademy.fi/ Fun Academy] by co-founder and CEO Sanna Lukander, former Rovio's vice president of learning and book publishing, and co-founder {{interlanguage link|Peter Vesterbacka|fi|Peter_Vesterbacka}}, former Rovio's 'Mighty Eagle'.<ref>{{Cite web|url=https://www.businesswire.com/news/home/20160128005521/en/Rovio-Entertainment-Rovio-Spins-Education-Business-Create|title=Rovio Entertainment: Rovio Spins off Education Business to Create Fun Academy|date=28 January 2016|website=Business Wire|access-date=30 July 2018|archive-date=30 July 2018|archive-url=https://web.archive.org/web/20180730170718/https://www.businesswire.com/news/home/20160128005521/en/Rovio-Entertainment-Rovio-Spins-Education-Business-Create|url-status=live}}</ref> Fun Academy is currently{{when|date=December 2022}} present in 9 countries across the world.{{citation needed|date=December 2022}}
+
+==Criticism and controversies==
+===Leaking user data===
+In January 2014, it was revealed that ''Angry Birds'' was considered a "leaky app" and was used to collect data about its users including their sexual orientation and location by the [[National Security Agency]] (NSA) and [[Government Communications Headquarters|GCHQ]]. In retaliation, anti-NSA hackers defaced Rovio's website. Claims were made by [[Edward Snowden]] that the app was ''leaky'' and that they were capable of [[siphon]]ing data.
+
+According to ''[[The Register]]'', the information was leaked through the in-game advertisement code like that embedded by [[One by AOL|Millennial Media]]: "Millennial's tracking software generates a personal record for each user that can store information from their political affiliation and sexual orientation to whether their marital state was single, married, divorced, engaged or 'swinger'. This information is used to target in-app ads more effectively, and can be collected by UK and US intelligence agencies for analysis."<ref>{{cite web|url=https://www.theregister.co.uk/2014/01/27/leaking_smartphone_apps_nsa_gchq/|title=Fancy a little kinky sex? GCHQ+NSA will know – thanks to ANGRY BIRDS|work=The Register|access-date=24 August 2017|archive-date=29 June 2017|archive-url=https://web.archive.org/web/20170629055158/https://www.theregister.co.uk/2014/01/27/leaking_smartphone_apps_nsa_gchq/|url-status=live}}</ref> In a statement to the press, Rovio denied that they were providing any information to the intelligence agencies, but did not exclude the possibility that their advertisers might do so.<ref name="spybirds" />
+
+Following this revelation, on 29 January, the Angry Birds site was defaced by hackers who replaced it with "Spying Birds" via a [[DNS hijacking]] attack. According to Rovio, "The defacement was caught in minutes and corrected immediately".<ref name="spybirds">{{cite web|url=http://www.pcworld.com/article/2092560/hackers-deface-angry-birds-website-following-nsa-spying-claims.html|title=Hackers transform Angry Birds website into 'Spying Birds' following NSA claims|author=Lucian Constantin|date=29 January 2014|work=PC World|access-date=31 January 2014|archive-date=31 January 2014|archive-url=https://web.archive.org/web/20140131094319/http://www.pcworld.com/article/2092560/hackers-deface-angry-birds-website-following-nsa-spying-claims.html|url-status=live}}</ref> The [[Syrian Electronic Army]] tweeted after the incident that the attack had been carried out by "a friend" of theirs.<ref>{{cite web|url=https://www.pcmag.com/article2/0,2817,2430080,00.asp|title=Angry Birds Website Defaced After NSA Spying Allegations|work=PC Magazine|date=29 January 2014 |access-date=24 August 2017|archive-date=17 July 2017|archive-url=https://web.archive.org/web/20170717132920/http://www.pcmag.com/article2/0,2817,2430080,00.asp|url-status=live}}</ref>
+
+===Gaza war ads===
+During the [[Gaza war]], graphic ads supporting Israel showed up in ''Angry Birds'' and other video games for children. The [[Ministry of Foreign Affairs (Israel)|Israeli Foreign Ministry]] said it had instructed advertisers to block the ads for viewers under the age of 18. Rovio subsequently banned the ads manually.<ref>{{cite news |last1=Satter |first1=Raphael |last2=Paul |first2=Katie |last3=Dang |first3=Sheila |last4=Satter |first4=Raphael |title=Graphic pro-Israel ads make their way into children's video games |url=https://www.reuters.com/world/graphic-pro-israel-ads-make-their-way-into-childrens-video-games-2023-10-30/ |work=Reuters |date=30 October 2023 |language=en}}</ref>
+
+==See also==
+* ''[[Boom Blox]]''
+
+==References==
+{{Reflist}}
+
+==Further reading==
+{{Refbegin}}
+* {{Cite web |last1=Carpenter |first1=Nicole |title=Angry Birds continued influencing games long after its big moment |work=[[Polygon (website)|Polygon]] |date=7 November 2019 |url=https://www.polygon.com/mobile/2019/11/7/20953428/angry-birds-decade-retrospective-10-year-anniversary |language=en-US |access-date=10 November 2019 |archive-date=9 November 2019 |archive-url=https://web.archive.org/web/20191109012528/https://www.polygon.com/mobile/2019/11/7/20953428/angry-birds-decade-retrospective-10-year-anniversary |url-status=live }}
+{{Refend}}
+
+==External links==
+{{commons}}
+{{Spoken Wikipedia|date=2016-01-27|En-Angry_Birds-article.ogg|En-Angry_Birds_2of2-article.ogg|}}
+<!-- Do NOT add ANY unofficial fan sites to this list, per WP:GAMEGUIDE and WP:VG/EL; see talk page for discussion. -->
+* {{Official website}}
+
+{{Rovio Games}}
+{{Sony franchises}}
+{{Sega Sammy franchises}}
+{{Portal bar|2000s|2010s|Finland|Video games}}
+
+[[Category:2010s fads and trends]]
+[[Category:Angry Birds]]
+[[Category:Columbia Pictures franchises]]
+[[Category:Culture of Finland]]
+[[Category:Rovio Entertainment]]
+[[Category:Sega video game franchises]]
+[[Category:Sony Pictures Animation franchises]]
+[[Category:Sony Pictures franchises]]
+[[Category:Video game franchises introduced in 2009]]
+[[Category:Video games adapted into comics]]
+[[Category:Video games adapted into films]]
+[[Category:Video games adapted into television shows]]
+[[Category:Guinness World Records holders]]

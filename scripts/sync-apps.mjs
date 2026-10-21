@@ -13,6 +13,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { applyPatches } from './patches.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..');
@@ -21,15 +22,19 @@ const dry = process.argv.includes('--dry');
 
 /** 顶层允许复制的文件 */
 const ALLOW_FILES = new Set([
-  'package.json', 'package-lock.json', 'vite.config.js', 'vite.config.ts', 'index.html',
-  'README.md', 'QA.md', 'CONTROLS.md', 'LICENSE', 'LICENSES.md', 'SOURCES.md',
-  'REFERENCE-DESIGN.md', 'catalog.json', 'QA-MATRIX.md', 'issues.json', 'manifest.json',
-  'design-tokens.json', 'asset-manifest.json', 'index.data.json',
-  'TOP3.md', 'RANKING.md', 'cases.json', 'STATUS.md', 'TASK.md',
+  'package.json', 'package-lock.json', 'vite.config.js', 'vite.config.ts', 'vite.config.mjs',
+  'index.html', 'README.md', 'QA.md', 'CONTROLS.md', 'LICENSE', 'LICENSES.md', 'SOURCES.md',
+  'REFERENCE-DESIGN.md', 'DIFF-AUDIT.md', 'HANDOFF-14.md', 'QA-MATRIX.md', 'QA-CHECKLIST.md',
+  'catalog.json', 'issues.json', 'manifest.json', 'design-tokens.json', 'asset-manifest.json',
+  'index.data.json', 'TOP3.md', 'RANKING.md', 'cases.json', 'STATUS.md', 'TASK.md',
+  'SOURCE.md', 'tsconfig.json', 'tsconfig.app.json', 'tsconfig.node.json',
+  'svelte.config.js', 'astro.config.mjs', 'next.config.js', 'vercel.json',
 ]);
 
 /** 顶层允许复制的目录 */
-const ALLOW_DIRS = new Set(['src', 'public', 'scripts', 'models', 'assets', 'exhibits', 'data']);
+const ALLOW_DIRS = new Set([
+  'src', 'public', 'scripts', 'models', 'assets', 'exhibits', 'data', 'fonts', 'static', 'lib',
+]);
 
 /** 明确排除（体积大 / 属于私有原始素材 / 构建垃圾） */
 const DENY = new Set([
@@ -65,7 +70,12 @@ function copyDir(src, dest, rel = '') {
       copyDir(s, d, r);
     } else if (e.isFile()) {
       if (DENY_EXT.has(path.extname(e.name).toLowerCase())) continue;
-      fs.copyFileSync(s, d);
+      try {
+        fs.copyFileSync(s, d);
+      } catch (e) {
+        // 上游正在改写文件：源文件可能在这一瞬间被替换或删除，跳过即可
+        console.warn(`[sync] ! 跳过消失的文件 ${r}/${e.name}`);
+      }
     }
   }
 }
@@ -92,18 +102,21 @@ function main() {
       continue;
     }
 
-    if (!dry) {
+    if (!dry && fs.existsSync(dest)) {
       // 只清理本脚本会写入的条目，保留 node_modules（避免重复安装）
       for (const e of fs.readdirSync(dest, { withFileTypes: true })) {
-        if (e.isFile() && ALLOW_FILES.has(e.name)) fs.rmSync(path.join(dest, e.name), { force: true });
-        else if (e.isDirectory() && ALLOW_DIRS.has(e.name)) rmrf(path.join(dest, e.name));
+        if (e.isFile() && (ALLOW_FILES.has(e.name) || e.name.endsWith('.html'))) {
+          fs.rmSync(path.join(dest, e.name), { force: true });
+        } else if (e.isDirectory() && ALLOW_DIRS.has(e.name)) {
+          rmrf(path.join(dest, e.name));
+        }
       }
     }
     fs.mkdirSync(dest, { recursive: true });
 
     let n = 0;
     for (const e of fs.readdirSync(src, { withFileTypes: true })) {
-      if (e.isFile() && ALLOW_FILES.has(e.name)) {
+      if (e.isFile() && (ALLOW_FILES.has(e.name) || (e.name.endsWith('.html') && e.name !== 'index.html'))) {
         fs.copyFileSync(path.join(src, e.name), path.join(dest, e.name));
         n++;
       } else if (e.isDirectory() && ALLOW_DIRS.has(e.name)) {
@@ -116,6 +129,14 @@ function main() {
     if (fs.existsSync(overlay)) {
       copyDir(overlay, dest);
       n++;
+    }
+
+    // 部署补丁层：修复上游已确认但尚未修复的缺陷（只改副本，不动上游）
+    const applied = applyPatches(path.basename(dest), dest);
+    for (const p of applied) {
+      console.log(`[patch] ⚠  ${p.upstream} → ${p.file}`);
+      console.log(`[patch]    ${p.reason}`);
+      console.log(`[patch]    上游修复建议：${p.upstreamFix}`);
     }
 
     // 每个应用补一份标准 manifest.json

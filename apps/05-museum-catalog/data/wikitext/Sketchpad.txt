@@ -1,0 +1,78 @@
+{{Short description|Computer program written by Ivan Sutherland in 1963}}
+{{For-multi|the physical item|Sketchbook|the coworking space in Chicago|SketchPad}}
+{{Infobox software
+| name = Sketchpad
+| screenshot = Sketchpad-Apple.jpg
+| caption = Ivan Sutherland demonstrating Sketchpad (UVC via IA: [https://archive.org/details/AlanKeyD1987 video] and [https://archive.org/movies/thumbnails.php?identifier=AlanKeyD1987 thumbnails])
+| author = [[Ivan Sutherland]]
+| developer = [[MIT Lincoln Laboratory]]
+| released = {{Start date and age|1963}}
+| programming language = TX-2 [[assembly language]]
+| operating system = none
+| platform = [[MIT Lincoln Laboratory|Lincoln]] [[TX-2]]
+| language = English
+| genre = [[animation]], [[drawing]], [[Technical drawing|drafting]], [[Computer-aided design|CAD]]
+| license = 
+| website = 
+}}
+'''Sketchpad''' (a.k.a. '''Robot Draftsman'''<ref>{{Cite book |last1=Armstrong |first1=Helen |date=7 June 2016 |title=Digital design theory: readings from the field |publisher=Princeton Architectural Press |isbn=978-1-61689-308-8 |location=New York |page=9}}</ref>) is a computer program written by [[Ivan Sutherland]] in 1963 in the course of his [[Doctor of Philosophy|PhD]] [[thesis]], for which he received the [[Turing Award]] in 1988, and the [[Kyoto Prize]] in 2012. It pioneered [[human–computer interaction]] (HCI),<ref name="SearsJacko2007">{{cite book |last1=Sears |first1=Andrew |last2=Jacko |first2=Julie A. |date=19 September 2007 |title=The Human–Computer Interaction Handbook: Fundamentals, Evolving Technologies and Emerging Applications, Second Edition |url=https://books.google.com/books?id=A8TPF_O385AC&pg=PA5 |access-date=1 March 2013 |publisher=CRC Press |page=5 |isbn=978-1-4106-1586-2 |archive-date=5 June 2024 |archive-url=https://web.archive.org/web/20240605131630/https://books.google.com/books?id=A8TPF_O385AC&pg=PA5 |url-status=live }}</ref> and is considered the ancestor of modern [[computer-aided design]] (CAD) programs and as a major breakthrough in the development of [[computer graphics]] in general. For example, Sketchpad inspired the [[graphical user interface]] (GUI) and [[object-oriented programming]]. Using the program, Sutherland showed that computer graphics could be used for both [[computer art|artistic]] and [[Computer-aided design|technical]] purposes and for demonstrating a novel method of [[human–computer interaction]].
+
+== History ==
+See [[History of the graphical user interface]] for a more detailed discussion of GUI development.
+
+== Software ==
+[[File:Sketchpad N-Component Element.png|thumb|The geometric data or "N-component element" for a straight line is composed of addresses to two other N-component elements representing the end points of the line, which each contain an X and Y coordinate.<ref name=IES-thesis />]]
+
+Sketchpad was the earliest program ever to use a complete [[graphical user interface]].<ref name="SearsJacko2007"/>
+
+The clever way the program organizes its [[Geometry|geometric]] data pioneered the use of ''master'' ([[Object (computer science)|objects]]) and ''occurrences'' ([[Instance (computer science)|instances]]) in computing and pointed forward to [[object-oriented programming]]. The main idea was to have master drawings which can be instantiated into many duplicates. When a master drawing is changed, then all instances change also.
+
+This was the first known form of the [[entity component system|Entity-Component-System]] model: for example instead of encapsulating points inside of a line object, the points are stored in a [[circular buffer|ring buffer]] as described in pages 48 to 52 of the paper,<ref name=IES-thesis>{{cite web |last1=Sutherland |first1=Ivan Edward |author1-link=Ivan Sutherland |title=Sketchpad: A man-machine graphical communication system (courtesy Computer Laboratory, University of Cambridge UCAM-CL-TR-574 September 2003) |publisher=Massachusetts Institute of Technology |date=January 1963 |url=http://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-574.html |access-date=2006-12-26 |archive-date=2025-02-02 |archive-url=https://web.archive.org/web/20250202084507/https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-574.html |url-status=live }}</ref> and the line only points to them. This allowed moving one point to alter all the shapes that use it in a single operation.
+
+The structures in Sketchpad were also able to store pointers to functions, to achieve a different behavior depending on the kind of object. In figure 3.8 of the paper, the "instances generic block" stores several "subroutine entries" which are pointers to functions: "display", "howbig" etc. This was an early form of [[virtual function]]s.
+
+Geometric [[Constraint programming|constraints]] was another major invention in Sketchpad, letting a user easily constrain geometric properties in the drawing: for instance, the length of a line or the angle between two lines could be fixed.
+
+As a trade magazine said, clearly Sutherland "broke new ground in 3D computer modeling and visual simulation, the basis for computer graphics and CAD/CAM".<ref name=Penton>{{cite news |url=http://americanmachinist.com/cadcam-software/cadcam-hall-fame |title=The CAD/CAM Hall of Fame |work=American Machinist |publisher=Penton Media |date=November 1, 1998 |access-date=March 18, 2013 |archive-date=March 6, 2023 |archive-url=https://web.archive.org/web/20230306073804/http://americanmachinist.com/cadcam-software/cadcam-hall-fame |url-status=live }}</ref> Very few programs can be called precedents for his achievements. [[Patrick J. Hanratty]] is sometimes called the "father of CAD/CAM"<ref>{{cite news |title=Patrick Hanratty spotlight |url=http://www.ics.uci.edu/community/news/spotlight/spotlight_hanratty.php |date=October 18, 2012 |publisher=The Regents of the University of California |access-date=March 17, 2013 |archive-date=November 17, 2012 |archive-url=https://web.archive.org/web/20121117184347/https://www.ics.uci.edu/community//news/spotlight/spotlight_hanratty.php |url-status=dead }}</ref> and wrote PRONTO, a [[numerical control]] language at [[General Electric]] in 1957, and wrote CAD software while working for [[General Motors]] beginning in 1961. Sutherland wrote in his thesis that [[BBN Technologies|Bolt, Beranek and Newman]] had a "similar program"<ref name=IES-thesis/> and [[T-Square (software)|T-Square]] was developed by [[Peter Samson]] and one or more fellow MIT students in 1962, both for the [[PDP-1]].<ref>{{cite web |title=The Mouse that Roared: PDP-1 Celebration Event (running time: 01:53:46) |date=15 May 2006 |url=http://archive.computerhistory.org/resources/moving-image/DEC/PDP-1_Online/dec.the_mouse_that_roared_pdp_1_celebration_event.lecture.2006.102654189.wmv |website=[[Computer History Museum]] |access-date=2013-03-14 |archive-date=2025-03-20 |archive-url=https://web.archive.org/web/20250320234743/http://archive.computerhistory.org/resources/moving-image/DEC/PDP-1_Online/dec.the_mouse_that_roared_pdp_1_celebration_event.lecture.2006.102654189.wmv |url-status=live }}</ref>
+
+The [[Computer History Museum]] holds [[Listing (computer)|program listings]] for Sketchpad.<ref>{{cite web |last1=Sutherland |first1=Ivan E. |author1-link=Ivan Sutherland |date=1963 |title=Sketchpad listings |url=https://www.computerhistory.org/collections/catalog/102726903 |access-date=2021-10-30 |archive-date=2025-01-14 |archive-url=https://web.archive.org/web/20250114123411/https://www.computerhistory.org/collections/catalog/102726903 |url-status=live }}</ref>
+
+==Hardware==
+Sketchpad ran on the [[MIT Lincoln Laboratory]] [[TX-2]] (1958) computer at the [[Massachusetts Institute of Technology]] (MIT), which had 64k of [[36-bit computing|36-bit]] [[Word (computer architecture)|words]]. The user drew on the [[computer monitor]] screen with the recently invented [[light pen]], which relayed information on its position by computing at what time the light from the scanning [[cathode-ray tube]] screen is detected.
+
+To configure the initial position of the light pen, the word <code>INK</code> was displayed on the screen, which, upon tapping, initialised the program with a white cross to continue keeping track of the pen's movement relative to its prior position.<ref name=IES-thesis /> Of the 36 bits available to store each display spot in the display file, 20 gave the coordinates of that spot for the display system and the remaining 16 gave the [[Address space|address]] of the n-component element responsible for adding that spot to display.
+
+The TX-2 was an experimental machine and the hardware changed often (on Wednesdays, according to Sutherland<ref name="LookingBack">{{cite journal |last1=Sutherland |first1=Ivan |author1-link=Ivan Sutherland |date=2012 |title=The TX-2 Computer and Sketchpad |journal=Lincoln Laboratory Journal |volume=19 |issue=1 |pages=82–84 |url=https://www.ll.mit.edu/sites/default/files/page/doc/2018-05/LookingBack_19_1.pdf |access-date=6 November 2022 |archive-date=28 November 2022 |archive-url=https://web.archive.org/web/20221128111328/https://www.ll.mit.edu/sites/default/files/page/doc/2018-05/LookingBack_19_1.pdf |url-status=live }}</ref>). By 1975, the [[light pen]] and the [[cathode-ray tube]] with which it had been used had been removed.<ref name="SequenceChanges">{{cite web |last1=Youngman |first1=James |date=<!-- Undated --> |title=Sequence Changes |url=https://tx-2.github.io/commentary/sequence-changes#crt |website=TX-2 Project |access-date=26 November 2024 |archive-date=27 December 2024 |archive-url=https://web.archive.org/web/20241227184010/https://tx-2.github.io/commentary/sequence-changes#crt |url-status=live }}</ref>
+
+== Publications ==
+The Sketchpad program was part and parcel of Sutherland's [[Doctor of Philosophy|Ph.D.]] thesis at [[Massachusetts Institute of Technology|MIT]] and peripherally related to the [http://images.designworldonline.com.s3.amazonaws.com/CADhistory/8436-TM-4.pdf Computer-Aided Design project] at that time.
+[http://images.designworldonline.com.s3.amazonaws.com/CADhistory/Sketchpad_A_Man-Machine_Graphical_Communication_System_Jan63.pdf ''Sketchpad: A Man-Machine Graphical Communication System''].
+
+== See also ==
+*[[Comparison of computer-aided design software|Comparison of CAD software]]
+
+==References==
+{{Reflist}}
+
+==Bibliography==
+* {{Cite web |last1=Coons |first1=Steven |author1-link=Steven Anson Coons |editor1-last=Fitch |editor1-first=John |year=1964 |title=Computer Sketchpad |url=http://www.wgbh.org/article?item_id=3360989 |type=episode |series=Science Reporter}} Explains basic Sketchpad principles.
+* {{Cite AV media |last1=Kay |first1=Alan |author1-link=Alan Kay |date=16 July 2007 |title=Sketchpad, by Dr. Ivan Sutherland with comments by Alan Kay |url=https://m.youtube.com/watch?v=495nCzxM9PI |type=video |language=en |place=Palo Alto, California |publisher=[[PARC (company)|Xerox PARC]] |via=David Carroll; [[YouTube]] |url-status=live |archive-url=https://web.archive.org/web/20091218123245/http://www.youtube.com/watch?v=495nCzxM9PI |archive-format=[[Adobe Flash|Flash]] |archive-date=18 December 2009 |access-date=25 April 2025}} Archive 2: [https://ghostarchive.org/varchive/youtube/20211211/495nCzxM9PI Ghostarchive]{{Cbignore}}
+* {{Cite AV media |last1=Kay |first1=Alan |author1-link=Alan Kay |date=1987 |title=Doing with Images Makes Symbols |chapter=Pt 1 |url=https://archive.org/details/AlanKeyD1987 |type=video presentation |at=4min5 |publisher=University Video Communications |via=Archive}}
+* {{Cite AV media |last1=Kay |first1=Alan |author1-link=Alan Kay |date=21 February 2024 |title=Alan Kay's talk at UCLA 2024 February 21st |url=https://m.youtube.com/watch?v=dZQ7x0-MZcI |type=video |language=en |publication-place=Los Angeles, California |place=London, England |publisher=Yoshiki Ohshima (大島芳樹) |via=[[YouTube]] |time=44:15–51:46 |time-caption=Kay narrates Sketchpad operation at |access-date=24 April 2025}}
+* {{Cite web |last1=Müller-Prove |first1=Matthias |date=<!-- Undated --> |url=http://www.mprove.de/diplom/text/3.1.2_sketchpad.html |title=Graphical User Interface of Sketchpad |publisher=MProve |place=[[Germany]]}}
+* {{Cite thesis |last1=Sutherland |first1=Ivan Edward |author1-link=Ivan Sutherland |year=1980 |title=Sketchpad: A Man-Machine Graphical Communication System |degree=PhD |place=New York |publisher=Garland Publishers |isbn=0-8240-4411-8}}
+* {{Cite thesis |last1=Sutherland |first1=Ivan Edward |author1-link=Ivan Sutherland |url=http://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-574.pdf |title=Sketchpad: A man-machine graphical communication system |degree=PhD |publisher=CAM |place=UK |id=Technical Report No. 574}}
+* {{Cite thesis |last1=Sutherland |first1=Ivan Edward |author1-link=Ivan Sutherland |url=http://www.aci.com.pl/mwichary/guidebook/articles/historical/sketchpad |contribution=Sketchpad: A Man-Machine Graphical Communication System |degree=PhD |title=AFIPS conference proceedings |publisher=ACI |place=PL |url-status=dead |archive-url=https://web.archive.org/web/20050422075646/http://www.aci.com.pl/mwichary/guidebook/articles/historical/sketchpad |archive-date=2005-04-22}}
+* {{Cite journal |last1=Yares |first1=Evan |date=February 2013 |title=50 Years of CAD |url=http://www.designworldonline.com/50-years-of-cad/ |journal=Design World |pages=66–71}}
+
+==External links==
+* {{cite AV media |last1=Fitch |first1=John |last2=Coons |first2=Steven |author2-link=Steven Anson Coons |last3=Johnson |first3=Timothy |date=1964 |title=Computer Sketchpad [Ivan Sutherland – Sketchpad Demo (1/2)] |url=https://www.youtube.com/watch?v=zFWBQKrvz24 |type=video |language=en |location=[[Lexington, Massachusetts]] |publisher=[[MIT Lincoln Laboratory]] |via=[[Association for Computing Machinery]] |access-date=6 January 2025}}
+* {{cite AV media |last1=Fitch |first1=John |last2=Johnson |first2=Timothy |last3=Roberts |first3=Lawrence |author3-link=Larry Roberts (computer scientist) |date=1964 |title=Computer Sketchpad [Ivan Sutherland – Sketchpad Demo (2/2)] |url=https://www.youtube.com/watch?v=gWVzLKq-0sw |type=video |language=en |location=[[Lexington, Massachusetts]] |publisher=[[MIT Lincoln Laboratory]] |via=[[Association for Computing Machinery]] |access-date=6 January 2025}}
+* {{Cite report |last1=Sutherland |first1=Ivan Edward |author1-link=Ivan Sutherland |title=Sketchpad: A Man-Machine Graphical Communication System |date=30 January 1963 |url=http://stinet.dtic.mil/cgi-bin/GetTRDoc?AD=AD404549&Location=U2&doc=GetTRDoc.pdf |publisher=Lincoln Laboratory, Massachusetts Institute of Technology |via=Defense Technical Information Center |access-date=2007-11-03 |id=Technical Report No. 296 |url-status=unfit |archive-url=https://web.archive.org/web/20130408133119/http://stinet.dtic.mil/cgi-bin/GetTRDoc?AD=AD404549&Location=U2&doc=GetTRDoc.pdf |archive-date=April 8, 2013}}
+
+{{CAD software}}
+
+[[Category:1963 software]]
+[[Category:Computer graphics]]
+[[Category:Graphical user interfaces]]
+[[Category:History of human–computer interaction]]

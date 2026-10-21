@@ -1,0 +1,44 @@
+{
+  "generatedAt": "2026-10-21T10:30:34.122Z",
+  "halls": [
+    {
+      "id": "origins",
+      "task": "08-era-origins",
+      "status": "pending",
+      "entryPath": null,
+      "note": "08-era-origins：临时构建产物未通过部署性检查：引用了不存在的静态资源 ./SOURCES.md"
+    },
+    {
+      "id": "arcade",
+      "task": "09-era-arcade",
+      "status": "integrated",
+      "entryPath": "arcade/index.html",
+      "note": "已从 ../09-era-arcade/dist 复制（可静态部署）",
+      "bytes": 90877
+    },
+    {
+      "id": "console",
+      "task": "10-era-console",
+      "status": "integrated",
+      "entryPath": "console/index.html",
+      "note": "已从 ../10-era-console/dist 复制（可静态部署）",
+      "bytes": 127359
+    },
+    {
+      "id": "online",
+      "task": "11-era-online",
+      "status": "integrated",
+      "entryPath": "online/index.html",
+      "note": "已从 ../11-era-online/dist 复制（可静态部署）",
+      "bytes": 136224
+    },
+    {
+      "id": "modern",
+      "task": "12-era-modern",
+      "status": "integrated",
+      "entryPath": "modern/index.html",
+      "note": "已从 ../12-era-modern/dist 复制（可静态部署）",
+      "bytes": 785146
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{{Short description|Virtual reality headset}}
+{{about|the first-generation Oculus Quest|the line of VR headsets previously called Oculus Quest|Meta Quest}}
+{{Infobox information appliance
+| name = Oculus Quest
+| image = Oculus Quest.jpeg
+| logo = Oculus Quest logo black.svg
+| caption = Oculus Quest
+| developer = [[Oculus VR]]
+| manufacturer = 
+| codename = Monterey<ref>{{cite web | last=Roettgers | first=Janko | title=Facebook to Put Spotlight on Virtual Reality at F8 Conference, May Show Off New Headset | website=Variety | date=2017-04-13 | url=https://variety.com/2017/digital/news/facebook-f8-vr-headset-1202029560/ | access-date=2026-01-06}}</ref><ref>{{cite web | title=Facebook Job Listing Confirms Social VR Plans For PSVR, Mystery 'Monterey' Headset | website=UploadVR | date=2018-02-20 | url=https://www.uploadvr.com/facebook-psvr-monterey/ | access-date=2026-01-06 | last=Feltham | first=Jamie}}</ref>
+| type = [[Virtual reality headset]]
+| lifespan = 2019–2020
+| discontinued = September 2020
+| media = 
+| os = [[Meta Quest Platform|Quest system software]], based on [[Android (operating system)|Android]] source code.<ref name="specs">{{Cite web|title=Oculus Device Specifications|url=https://developer.oculus.com/learn/oculus-device-specs|access-date=2020-09-16|website=Oculus Developers}}</ref>
+'''Original:''' [[Android Nougat|Android 7.1.1 "Nougat"]]
+'''Current:''' [[Android 10]]
+| power = 
+| system_on_chip = [[Qualcomm]] [[List of Qualcomm Snapdragon systems-on-chip#Snapdragon 835 and 845 (2017/18)|Snapdragon 835]]
+| cpu = 4x [[Kryo#Kryo 280|Kryo 280 Gold]] ([[Arm Holdings|ARM]] [[ARM Cortex-A73|Cortex-A73]] based) @ 2.45 [[GHz]] + 4x [[Kryo#Kryo 280|Kryo 280 Silver]] ([[Arm Holdings|ARM]] [[ARM Cortex-A73|Cortex-A73]] based) @ 1.9 [[GHz]]
+| memory = 4 [[Gigabyte|GB]] [[LPDDR4X]]<ref name="time-review"/>
+| storage = 64 GB, 128 GB
+| display = [[PenTile matrix family|PenTile]] [[OLED]] 1440 × 1600 per eye @ 72 Hz
+| graphics = [[Adreno|Adreno 540]] @ 670 MHz
+(Up to 343 [[FLOPS|GFLOPS]] FP32)<ref>{{cite web|title=vr-compare|url=https://vr-compare.com/headset/oculusquest|website=www.vr-compare.com}}</ref><ref>{{cite web|title=GPU GFLOPS Calculation|url=https://www.azcalculator.com/calc/GPU-gflops-calculator.php|website=azcalculator.com}}</ref><ref>{{cite web|title=CPU and GPU levels|url=https://developers.meta.com/horizon/documentation/unity/os-cpu-gpu-levels|website=meta.com}}</ref>
+| sound = {{ubl|Integrated stereo speakers|2 × [[Phone connector (audio)|3.5 mm headphone jack]]}}
+| input = [[6DOF]] inside-out tracking through 4 built-in cameras
+| controllers = [[Oculus Touch]]
+| camera = 4 cameras
+| touchpad = 
+| connectivity = {{ubl|[[USB-C]]|[[Bluetooth 5]]|[[Wi-Fi 5]]}}
+| dimensions = 
+| weight = {{convert|571|g|abbr=on}}
+| compatibility = 
+| predecessor = [[Oculus Go]]
+| successor = [[Oculus Quest 2]]
+| related = [[Oculus Rift S]]
+| website = {{Official URL}}
+| founder = 
+| release_date = May 21, 2019
+| price = US$399 (64&nbsp;GB)<br/>US$499 (128&nbsp;GB)<ref name="mashable-review"/>
+| units_sold = 
+| units_shipped = 
+| online_services = Quest Store
+| top_game = 
+}}
+{{Meta sidebar}}
+
+The '''first-generation Oculus Quest''' is a [[virtual reality headset]] developed by Oculus (now [[Reality Labs]]), a brand of [[Meta Platforms|Facebook, Inc.]], and released on May 21, 2019. Similar to its predecessor, [[Oculus Go]], it is a standalone device, that can run games and software wirelessly under an [[Android (operating system)|Android]]-based operating system. It supports [[VR positional tracking|positional tracking]] with [[six degrees of freedom]], using internal sensors and an array of cameras in the front of the headset rather than external sensors. The cameras are also used as part of the safety feature "Passthrough", which shows a view from the cameras when the user exits their designated boundary area known as "Guardian". A later software update added "Oculus Link", a feature that allows [[Oculus Rift]]-compatible software and games to be streamed to the headset from a [[Personal computer|PC]] over [[USB]].<ref name="roadtovr-tether-usb2"/>
+
+The Oculus Quest received praise for its price and convenience, and for having improved graphical fidelity and tracking over Oculus Go, but was panned for its front-heavy build and downgraded graphics quality over PC-based VR games. At launch, it also faced criticism for being limited to software available on the Oculus Store, and not having backwards compatibility with Oculus Go software. However, the introduction of Oculus Link led to reappraisals of the Quest, with critics praising the device's increased flexibility, and foreseeing the Quest as the main Oculus product line going forward. A successor, the [[Quest 2|Oculus Quest 2]], was released in 2020.
+
+==History==
+At Oculus Connect 3 in 2016, Facebook CEO [[Mark Zuckerberg]] revealed that Oculus was working on a standalone virtual reality headset codenamed "Santa Cruz".<ref name="uploadvr-santacruz"/><ref name="roadtovr-santacruz"/> At Oculus Connect 4 the following year, it was announced that Oculus planned to issue [[software development kit]]s for the new model in 2018. They also revealed the accompanying controllers, which would be similar to the Oculus Rift's touch controllers.<ref name="roadtovr-oc4-roundup"/>
+
+In 2018 at Connect 5, it was announced that the new headset would be known as the Oculus Quest and would be priced at US$399. At [[Facebook F8|F8]] 2019 it was announced that the Quest would ship on May 21, 2019.<ref name="verge-OC5"/><ref>{{Cite web|title=Facebook is trying to make VR a thing… again|url=https://qz.com/1609126/facebook-launches-vr-headsets-oculus-go-and-quest|last=Murphy|first=Mike|website=Quartz|date=30 April 2019|language=en|access-date=2020-05-10}}</ref> At launch, the device was priced at US$399 for the 64 [[Gigabyte|GB]] version, and US$499 for the 128 GB version.<ref name="uploadvr-review"/><ref name="androidcentral-which"/>
+
+A successor model, the [[Quest 2|Oculus Quest 2]], was announced on September 16, 2020. It was released on October 13 starting at $299 for the 64GB version and $399 for the 128 GB version.<ref>{{Cite web|date=2020-09-16|title=Oculus Quest 2 delivers standalone VR with sharper 90Hz screens for $299|url=https://www.engadget.com/oculus-quest-2-vr-299-171715370.html|access-date=2020-09-16|website=Engadget|language=en}}</ref> Software support for the first-generation Quest began to be phased out in 2023, with support for certain social features ending in March 2023, and updates limited to maintenance and security patches until 2024.<ref>{{Cite web|title=Meta to Halt Support for Quest 1, End New Feature Rollouts|url=https://www.pcmag.com/news/meta-to-halt-support-for-quest-1-end-new-feature-rollouts|access-date=2023-02-22|website=PCMAG|date=10 January 2023 |language=en}}</ref>
+
+==Specifications==
+The Oculus Quest uses a [[Qualcomm Snapdragon]] 835 [[System on a chip|system-on-chip]] (SoC) with 4&nbsp;GB of RAM. Three of the four 2.3&nbsp;GHz CPU cores of the chip are reserved for software, while the remaining core and its four lower-power cores are reserved for motion tracking and other background functions.<ref name="time-review"/><ref>{{Cite news|title=Down The Rabbit Hole w/ Oculus Quest: The Hardware + Software|url=https://developer.oculus.com/blog/down-the-rabbit-hole-w-oculus-quest-the-hardware-software|access-date=2020-12-11|website=Oculus |last1=Pruett |first1=Chris }}</ref> It runs operating system software based on [[Android (operating system)|Android Open Source Project]] (AOSP) source code, with modifications to enhance performance in VR applications.<ref name="specs"/> A [[smartphone]] running the Oculus app is required in order to conduct first-time setup.<ref>{{Cite web|last=Fenollol|first=Hunter|date=2021-12-21|title=How to set up and use your Oculus Quest 2|url=https://www.tomsguide.com/how-to/how-to-setup-and-use-your-oculus-quest-2|access-date=2022-02-16|website=Tom's Guide|language=en}}</ref>
+
+A diamond [[PenTile matrix family|Pentile]] [[OLED]] display is used for each eye, with an individual resolution of 1440 × 1600 and a refresh rate of 72&nbsp;Hz.<ref name="gamespot-questdetails"/> The headset uses the "next generation" lens technology originally introduced in Oculus Go, which helps to enlarge the sweet spot of the lens. Visual artifacts such as [[God rays]] are less prominent but still visible in scenes with high contrast.<ref name="roadtovr-review"/><ref name="roadtovr-handson"/> It also features physical [[interpupillary distance]] (IPD) adjustment.<ref name="ign-quest-howto"/>
+
+===Tracking===
+Unlike the Oculus Go, which used a limited handheld remote that only supported limited motion tracking,<ref>{{Cite web|last=Robertson|first=Adi|date=2018-05-01|title=The Oculus Go improves mobile VR, but there's still a long way to go|url=https://www.theverge.com/2018/5/1/17306458/oculus-go-standalone-vr-headset-review|access-date=2020-12-11|website=The Verge|language=en}}</ref> the Quest supports [[VR positional tracking|positional tracking]] with [[six degrees of freedom]] (compared to the Go's three).<ref name="polygon-simplicity"/>
+
+Rather than use external sensor cameras in the play area to spatially track the headset and controllers (as was the case with the original [[Oculus Rift CV1]]), Oculus Quest utilizes an "inside-out" tracking system known as "Oculus Insight". Based on the concept of [[simultaneous localization and mapping]] (SLAM), infrared diodes on the Oculus Touch controllers are tracked via four wide-angle cameras built into the front of the headset. This is combined with [[accelerometer]] input from the controllers and headset, as well as [[Artificial intelligence|AI]] algorithms to predict the path of motion when the controllers are outside of the cameras' field of view.<ref name="engadget-review"/><ref>{{Cite web|last=Ellis|first=Cat|date=2019-09-14|title=Oculus Insight: how Facebook unplugged VR and opened virtual worlds to everyone|url=https://www.techradar.com/news/oculus-insight-how-facebook-unplugged-vr-and-opened-virtual-worlds-to-everyone|access-date=2020-11-17|website=TechRadar|language=en}}</ref><ref>{{Cite web|date=2019-08-22|title=Facebook opens up about the AI powering its Oculus virtual reality headsets|url=https://siliconangle.com/2019/08/22/facebook-opens-ai-powering-virtual-reality-headsets|access-date=2020-11-17|website=SiliconANGLE|language=en-US}}</ref>
+
+The cameras are also used as part of a safety feature known as "Passthrough", which displays a [[grayscale]] view from the cameras when the player exits their defined playing area.<ref name="polygon-review"/> At Oculus Connect 6, it was announced that the feature would be upgraded to "Passthrough+" as on the [[Oculus Rift S]] (which also uses Insight), making it stereoscopic and stereo-correct.<ref name="uploadvr-OC6"/> A "Passthrough on Demand" feature was added in Quest system software version 15, allowing the user to quickly access the Passthrough view by double-tapping the left or right side of the headset.<ref>{{cite web|title=What is Passthrough for Oculus Quest?|url=https://support.oculus.com/609948326077538/#faq_609948326077538}}</ref>
+
+===Hand tracking===
+During Oculus Connect 6, it was announced that hand tracking would be added to the Quest in early-2020, utilizing machine learning, Oculus Insight, and "model-based tracking" to recognize the position and gesture of the user's hands without additional hardware.<ref name=":3">{{Cite web|last=Faulkner|first=Cameron|date=2019-12-09|title=The Oculus Quest is getting controller-free hand tracking this week|url=https://www.theverge.com/2019/12/9/21003333/oculus-quest-vr-headset-hand-tracking-controller-2020-update-launch|access-date=2020-11-17|website=The Verge|language=en}}</ref><ref name="uploadvr-fingertracking"/><ref>{{Cite web|last=Pocket-lint|date=2019-12-10|title=The Oculus Quest gets hand tracking this week, well ahead of schedule|url=https://www.pocket-lint.com/ar-vr/news/oculus-rift/150369-the-oculus-quest-gets-its-hand-tracking-this-week-well-ahead-of-schedule|access-date=2020-11-17|website=Pocket-lint|language=en-gb}}</ref>
+
+Hand tracking was initially introduced as an experimental feature in December 2019, as part of Quest system software version 12. It was limited to the main user interface and selected built-in apps, such as the web browser. It was also announced that the Oculus Quest SDK would be updated to add support for the feature.<ref name=":3"/><ref>{{Cite web|last=Lang|first=Ben|date=2019-12-09|title=Oculus Quest Hand-tracking Starts Rolling Out This Week, Developer SDK Next Week|url=https://www.roadtovr.com/oculus-quest-hand-tracking-update|access-date=2020-11-17|website=Road to VR|language=en-US}}</ref> In May 2020, hand tracking exited beta, and became available for use in third-party software beginning May 28.<ref>{{Cite web|last=Robertson|first=Adi|date=2020-05-18|title=Oculus Quest games are getting controller-free hand tracking this month|url=https://www.theverge.com/2020/5/18/21260554/oculus-quest-anniversary-hand-tracking-third-party-games-beat-saber-tracks|access-date=2020-11-17|website=The Verge|language=en}}</ref>
+
+===Controllers===
+[[File:Second generation Oculus Touch controllers.jpg|thumb|Second-generation Oculus Touch controllers]]
+The Oculus Quest uses second-generation [[Oculus Touch]] controllers. Their designs were modified to accommodate Oculus Insight, with their tracking rings moved from the back of the controllers to their tops so that they can be tracked by the headset's cameras.<ref name="uploadvr-rifts"/>
+
+===Audio===
+The Quest has embedded speakers, as well as a pair of [[3.5 mm audio jack]]s on each side for use with external headphones.<ref name=":2"/>
+
+==Accessories==
+Though the Oculus Quest has built-in audio, it was possible to purchase official in-ear headphones from Facebook. There is also an official travel case.<ref name="oculus.com-accessories"/><ref name="androidcentral-cases"/><ref name="mashable-review"/>
+
+Following the release of the Oculus Link feature, Facebook released an official {{Convert|5|m|feet|abbr=on}}-long [[USB-C]] cable designed for use with the feature.<ref name=":0">{{Cite web|date=2020-02-07|title=Oculus Link review: This $80 cable is worth every penny to turn Quest into a Rift rival|url=https://www.pcworld.com/article/3519488/oculus-link-review-this-80-cable-is-worth-every-penny-to-turn-quest-into-a-rift-rival.html|access-date=2020-08-11|website=PCWorld|language=en}}</ref> The cable is [[optical fiber|fiber optic]], as the reliability of non-powered USB cables with [[Copper conductor|copper-based]] wires diminishes at {{Convert|10|feet|meters|abbr=|sp=|adj=off}}.<ref name=":0"/>
+
+==Software==
+{{See also|List of Oculus Quest games|Meta Horizon OS}}
+
+Facebook enforces stricter content and quality standards for software distributed on Oculus Quest in comparison to Oculus Go and Gear VR, including requiring developers to undergo a pre-screening of their concepts to demonstrate "quality and probable market success".<ref>{{Cite web|last=Robertson|first=Adi|date=2019-02-28|title=Oculus won't approve Quest games unless it thinks people will buy them|url=https://www.theverge.com/2019/2/28/18245125/oculus-quest-vr-headset-developer-standards-store-screening-policy|access-date=2019-11-27|website=The Verge|language=en}}</ref> In 2021, Facebook introduced "App Lab", a new section within the storefront allowing developers to upload and distribute Quest apps without going through the formal review process. App Lab is designed primarily to support [[early access]] models, and can support public and invite-based distribution.<ref>{{Cite web|last=Faulkner|first=Cameron|date=2021-02-02|title=Oculus' App Lab offers a new way to try early access VR apps without sideloading|url=https://www.theverge.com/2021/2/2/22262794/oculus-update-app-lab-vr-early-access-sideloading|access-date=2021-02-28|website=The Verge|language=en}}</ref>
+
+Facebook launched the headset with over 50 titles consisting of a mix of new and ported games,<ref name="wired-review"/> including titles such as ''[[Beat Saber]]'', ''[[Moss (video game)|Moss]],'' ''[[Robo Recall]], [[Superhot VR]],'' and ''[[VRChat]]''.<ref name="uploadvr-titles"/> Some games support [[Cross-platform play|cross-play]] with their PC versions.<ref name="roadtovr-recroom-vrchat"/>
+
+At Oculus Connect 6 in September 2019, it was announced that [[backward compatibility]] with over 50 Oculus Go applications and games would be added to the Quest. In addition, users who had purchased Oculus Go apps would be eligible to download Oculus Quest-specific versions of them for free through the end of 2019.<ref name="uploadvr-go-apps"/>
+
+===Oculus Link===
+At Oculus Connect 6, Facebook announced Oculus Link, a function which allows the Quest to be used with Oculus Rift-compatible software on a PC over [[USB]].<ref name="anandtech-oculuslink"/> It became available in beta on November 12, 2019, as part of system software version 11.<ref name=":1">{{Cite web|date=2019-11-20|title=Oculus Link beta hands-on: How Quest might kill Rift S for wired PC VR|url=https://venturebeat.com/2019/11/20/oculus-link-beta-hands-on-how-quest-might-kill-rift-s-for-wired-pc-vr|access-date=2020-11-17|website=VentureBeat|language=en-US}}</ref> Initially, Link only supported [[USB 3.0]] connections. In May 2020, support for [[USB 2.0]] was added, although Facebook still recommends use of USB 3.0 cables.<ref>{{Cite web|last=Lang|first=Ben|date=2020-05-14|title=Oculus Quest Can Now Tether to PC with Its Included USB 2.0 Cable|url=https://www.roadtovr.com/oculus-link-usb-2-0-tether-quest-charging-cable|access-date=2020-11-17|website=Road to VR|language=en-US}}</ref>
+
+On June 13, 2021, Zuckerberg stated that Oculus Air Link, a feature from the Quest 2 that allows Link to be used over a local [[Wi-Fi]] connection, would also be made available for the original Quest.<ref>{{cite web|title=Air Link Is Coming To Quest 1, Zuckerberg Teases v30 Multitasking|url=https://uploadvr.com/air-link-quest-1|access-date=2021-06-20|website=UploadVR|date=16 June 2021|language=en}}</ref>
+
+==Reception==
+Scott Stein of ''[[CNET]]'' considered the Quest to be "improbably amazing for its size and $399 price tag", and compared it to [[Nintendo Switch]] in terms of convenience. Stein praised its camera system and motion controls, and its graphics quality for being nearer to PC-quality than Oculus Go (albeit still limited in detail due to its use of mobile computing hardware). The Quest was panned for being a [[closed platform]] at launch — with software limited to the Oculus Store, and not being backwards compatible with software released for Oculus Go.<ref>{{Cite web|last=Stein|first=Scott|title=Oculus Quest review: It's amazing, even months later|url=https://www.cnet.com/reviews/oculus-quest-review|access-date=2020-07-26|website=CNET|language=en}}</ref> Adi Robertson of ''[[The Verge]]'' shared similar opinions, noting that the Quest was heavier and not as comfortable as Rift S, and that its launch titles were not at the same caliber as the PC Oculus Rift in terms of size or graphical fidelity, but that the Quest still included a physical IPD slider unlike the Rift S.<ref name=":2">{{Cite web|last=Robertson|first=Adi|date=2019-04-30|title=Oculus Quest review: a great vision with a frustrating compromise|url=https://www.theverge.com/2019/4/30/18523000/oculus-quest-review-vr-headset-price-specs-features|access-date=2020-07-26|website=The Verge|language=en}}</ref>
+
+In May 2020, ''The Verge'' acknowledged that the Quest had improved since its launch to become "the closest thing that exists to a sleek, almost mainstream VR headset", citing an expanding software library, and the ability to use the headset with a PC over USB via the Oculus Link feature (and over Wi-Fi using the [[Sideloading|sideloaded]] third-party software [[Virtual Desktop]], which was not "noticeably worse" than doing so over USB in their experience). It was argued that the Quest "works so well by itself that it's a great system in its own right", while Oculus Link allowed it to double as a "credible" PC VR headset as well. While it was noted that the Rift S was less front-heavy and that its display "trades contrast for slightly higher resolution and refresh rate",  it was argued that neither it or the [[Valve Index]] "works as a perfectly good standalone wireless VR headset".<ref>{{Cite web|last=Byford|first=Sam|date=2020-05-21|title=One year on, the Oculus Quest is the VR headset to get|url=https://www.theverge.com/21266152/oculus-quest-one-year-review-best-vr-headset-pc|access-date=2020-07-26|website=The Verge|language=en}}</ref> ''[[VentureBeat]]'' felt that Oculus was "setting the stage" for discontinuing the Rift line in favor of Quest, arguing "if Link performs as expected, most users will have little to no idea of what they're missing — Rift S' extra camera, FPS, and resolution differences won't matter much."<ref name=":1"/>
+
+===Sales===
+Two weeks after launch, Oculus announced that it had sold $5 million worth of content for the Oculus Quest.<ref name="techcrunch-content-5m"/>  At Oculus Connect 6, it was announced that the Quest had created over 20% of the generated revenue from all platforms at Oculus, totaling at $20 million.<ref name="andcentral-contentsales"/><ref name="techcrunch-content-100m"/> It was also reported during the same event that the Quest has by far the highest retention rate of all their headsets.<ref name="uploadvr-retention"/> 317,000 units were sold over the 4th quarter of 2019, and was sold out at times.<ref>{{Cite web|url=https://www.superdataresearch.com/blog/superdata-xr-update|archive-url=https://web.archive.org/web/20200129165255/https://www.superdataresearch.com/blog/superdata-xr-update/|url-status=usurped|archive-date=January 29, 2020|title=SuperData XR Quarterly Update|website=SuperData, a Nielsen Company}}</ref>
+
+==References==
+<references>
+<ref name="uploadvr-rifts">{{Cite web|url=https://uploadvr.com/oculus-rift-s-official|title=Oculus Rift S Is Official: Higher Resolution, 5 Camera Inside-Out, $399|date=2019-03-20|website=UploadVR|language=en-US|access-date=2019-03-21}}</ref>
+
+<ref name="androidcentral-which">{{Cite web|url=https://www.androidcentral.com/which-oculus-quest-should-you-buy|title=Which Oculus Quest should you buy?|date=2019-04-30|website=Android Central|language=en|access-date=2019-06-02}}</ref>
+
+<ref name="uploadvr-santacruz">{{Cite web|url=https://uploadvr.com/hands-santa-cruz-inside-out|title=Hands-on With 'Santa Cruz' Inside Out Position Tracking Oculus Prototype|date=2016-10-06|website=UploadVR|language=en-US|access-date=2019-06-02}}</ref>
+
+<ref name="roadtovr-santacruz">{{Cite web|url=https://www.roadtovr.com/hands-on-oculus-wireless-santa-cruz-prototype-makes-standalone-room-scale-tracking-a-reality|title=Hands-on: Oculus' Wireless 'Santa Cruz' Prototype Makes Standalone Room-scale Tracking a Reality|last=Lang|first=Ben|date=2016-10-06|website=Road to VR|language=en-US|access-date=2019-06-02}}</ref>
+
+<ref name="roadtovr-oc4-roundup">{{Cite web|url=https://www.roadtovr.com/oculus-connect-4-day-1-roundup-oculus-go-rift-price-drop-new-santa-cruz-prototype-rift-core-2-0-ui-overhaul-new-games|title=Oculus Connect 4 Day 1 Roundup: Oculus Go, Rift Price Drop, New 'Santa Cruz' Prototype, and More|last=Brennan|first=Dominic|date=2017-10-12|website=Road to VR|language=en-US|access-date=2019-06-02}}</ref>
+
+<ref name="verge-OC5">{{Cite web|url=https://www.theverge.com/2018/10/2/17911662/oculus-connect-vr-virtual-reality-quest-headset|title=5 big questions after VR's big week at Oculus Connect|last=Robertson|first=Adi|date=2018-10-02|website=The Verge|access-date=2019-06-02}}</ref>
+
+<ref name="polygon-simplicity">{{Cite web|url=https://www.polygon.com/2019/4/30/18518019/oculus-quest-facebook-jason-rubin|title=The best part of Oculus Quest: It makes the hard stuff look easy|last=Kuchera|first=Ben|date=2019-04-30|website=Polygon|access-date=2019-06-02}}</ref>
+
+<ref name="gamespot-questdetails">{{Cite web|url=https://www.gamespot.com/articles/new-oculus-vr-headsets-coming-in-spring-for-400-ri/1100-6465711|title=New Oculus VR Headsets Coming In Spring For $400: Rift S And Quest Details|last=Higham|first=Michael|date=2019-04-30|website=GameSpot|language=en-US|access-date=2019-06-02}}</ref>
+
+<ref name="roadtovr-handson">{{Cite web|url=https://www.roadtovr.com/oculus-quest-hands-specs-tech-details-oculus-connect-5/2|title=Oculus Quest Hands-on and Tech Details|last=Lang|first=Ben|date=2018-09-27|website=Road to VR|language=en-US|access-date=2019-06-02}}</ref>
+
+<ref name="ign-quest-howto">{{Cite web|url=https://www.ign.com/articles/2019/05/21/how-to-setup-and-calibrate-your-oculus-quest-vr-kit|title=How to Set Up and Calibrate Your Oculus Quest VR Kit|last=Gordon|first=Whitson|date=2019-05-21|website=IGN|language=en-US|access-date=2019-06-02}}</ref>
+
+<ref name="oculus.com-accessories">{{Cite web|url=https://www.oculus.com/quest/accessories|title=Oculus Quest Accessories {{!}} Oculus|website=www.oculus.com|language=en|access-date=2019-06-02}}</ref>
+
+<ref name="androidcentral-cases">{{Cite web|url=https://www.androidcentral.com/best-travel-case-oculus-quest|title=Take your Oculus Quest anywhere in one of these cases|date=2019-05-26|website=Android Central|language=en|access-date=2019-06-02}}</ref>
+
+<ref name="uploadvr-titles">{{Cite web|url=https://uploadvr.com/quest-50-launch-titles-list|title=Here Are The 50+ Titles Launching For Oculus Quest On Day One|date=2019-04-30|website=UploadVR|language=en-US|access-date=2019-06-02}}</ref>
+
+<ref name="roadtovr-recroom-vrchat">{{Cite web|url=https://www.roadtovr.com/rec-room-and-vrchat-oculus-quest-support-cross-platform-multiplayer|title=Social VR Hits 'Rec Room' and 'VRChat' Coming to Oculus Quest|last=Lang|first=Ben|date=2019-03-28|website=Road to VR|language=en-US|access-date=2019-06-02}}</ref>
+
+<ref name="uploadvr-OC6">{{Cite web|url=https://uploadvr.com/oc6-quest-passthrough|title=OC6: Passthrough On Demand, Passthrough+ Coming To Quest Soon|last=Feltham|first=Jamie|date=2019-09-25|website=UploadVR|language=en-US|access-date=2019-09-28}}</ref>-->
+
+<ref name="anandtech-oculuslink">{{cite web|url=https://www.anandtech.com/show/14907/oculus-link-connects-oculus-quest-to-a-gaming-pc|archive-url=https://web.archive.org/web/20190927041853/https://www.anandtech.com/show/14907/oculus-link-connects-oculus-quest-to-a-gaming-pc|url-status=dead|archive-date=September 27, 2019|title=Oculus Link Software: Connecting Oculus Quest to a Gaming PC|date=2019-09-26|work=AnandTech}}</ref>
+
+<ref name="uploadvr-fingertracking">{{Cite web|url=https://uploadvr.com/oculus-quest-finger-tracking|title=OC6: Oculus Quest Is Getting Camera-Based Finger Tracking Early Next Year|last=Heaney|first=David|date=2019-09-25|website=UploadVR|language=en-US|access-date=2019-09-28}}</ref>
+
+<ref name="techcrunch-content-5m">{{Cite web|url=https://techcrunch.com/2019/06/10/oculus-sold-5-million-worth-of-quest-content-in-first-2-weeks-on-sale/|title=Oculus sold $5 million worth of Quest content in first 2 weeks on sale|website=TechCrunch|date=11 June 2019 |language=en-US|access-date=2019-06-23}}</ref>
+
+<ref name="andcentral-contentsales">{{Cite web|url=https://www.androidcentral.com/people-have-spent-over-100-million-oculus-store-20-percent-which-oculus-quest|title=People have spent over $100 million in the Oculus Store|date=2019-09-25|website=Android Central|language=en|access-date=2019-09-28}}</ref>
+
+<ref name="techcrunch-content-100m">{{Cite web|url=https://techcrunch.com/2019/09/25/oculus-eclipses-100-million-in-vr-content-sales/|title=Oculus eclipses $100 million in VR content sales|website=TechCrunch|date=25 September 2019 |language=en-US|access-date=2019-09-28}}</ref>
+
+<ref name="uploadvr-retention">{{Cite web|url=https://uploadvr.com/oculus-quest-rift-s-retention|title=Carmack: Quest 'By Far Our Most Retentive Hardware', Rift S Surpasses Rift|date=2019-09-26|website=UploadVR|language=en-US|access-date=2019-09-30}}</ref>
+
+<ref name="roadtovr-tether-usb2">{{Cite web|title=Oculus Quest Can Now Tether to PC with Its Included USB 2.0 Cable|url=https://www.roadtovr.com/oculus-link-usb-2-0-tether-quest-charging-cable|last=Lang|first=Ben|date=2020-05-14|website=Road to VR|language=en-US|access-date=2020-05-16}}</ref>
+
+<ref name="uploadvr-go-apps">{{Cite web|last=Harry|first=Baker|date=2019-09-25|title=OC6: Oculus Are Bringing 50+ Popular Go Apps To The Quest|url=https://uploadvr.com/oc6-oculus-go-apps-quest|access-date=2020-08-26|website=UploadVR|language=en-US}}</ref>
+
+<!-- REVIEWS -->
+
+<ref name="time-review">{{Cite magazine|url=https://time.com/5584275/oculus-quest-review/|title=Review: The Oculus Quest Is Virtual Reality's Best Bet Yet|magazine=Time|language=en|access-date=2019-06-02}}</ref>
+
+<ref name="uploadvr-review">{{Cite web|url=https://uploadvr.com/oculus-quest-review|title=Oculus Quest Review: Facebook's VR Savior Mostly Keeps Its Promises|date=2019-05-22|website=UploadVR|language=en-US|access-date=2019-06-02}}</ref>
+
+<ref name="polygon-review">{{Cite web|url=https://www.polygon.com/reviews/2019/4/30/18521409/oculus-quest-review-virtual-reality|title=The Oculus Quest is virtual reality's next big leap forward|last=Kuchera|first=Ben|date=2019-04-30|website=Polygon|access-date=2019-06-02}}</ref>
+
+<ref name="mashable-review">{{Cite web|url=https://mashable.com/feature/oculus-quest-vr-review|title=Oculus Quest review: A new milestone for VR|last=Wong|first=Raymond|website=Mashable|date=30 April 2019 |language=en|access-date=2019-06-02}}</ref>
+
+<ref name="wired-review">{{Cite magazine|url=https://www.wired.com/review/oculus-quest|title=The Oculus Quest Finally Sets VR Free|magazine=WIRED|access-date=2019-06-02}}</ref>
+
+<ref name="roadtovr-review">{{Cite web|url=https://www.roadtovr.com/oculus-quest-review-the-first-great-standalone-vr-headset|title=Oculus Quest Review – The First Great Standalone VR Headset|last=Lang|first=Ben|date=2019-05-21|website=Road to VR|language=en-US|access-date=2019-06-02}}</ref>
+
+<ref name="engadget-review">{{Cite web|url=https://www.engadget.com/2019/04/30/oculus-quest-review-wireless-vr|title=Oculus Quest review: VR freedom comes at a cost|last=devindra|website=Engadget|date=30 April 2019 |language=en|access-date=2019-06-02}}</ref>
+</references>
+
+==External links==
+{{commons category}}
+* {{Official website}}
+* [https://vr-compare.com/headset/oculusquest Oculus Quest on VRcompare]
+{{Meta Horizon}}{{Mixed reality}}
+{{Facebook navbox}}
+
+[[Category:Meta Quest| ]]
+[[Category:Products introduced in 2019]]
+[[Category:Products and services discontinued in 2020]]
+[[Category:Virtual reality headsets]]
+[[Category:American inventions]]

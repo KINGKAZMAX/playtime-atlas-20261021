@@ -1,0 +1,47 @@
+{
+  "id": "05-museum-research",
+  "title": "游戏博物馆联网策展研究",
+  "description": "为「回响电玩馆 / PLAYTIME ATLAS」提供的联网策展底稿：14 个真实游戏博物馆/时间线/可玩展览的横向比较，以及 140 条覆盖 1950s 实验游戏至 2020s VR/独立游戏的代表硬件与作品目录（每条附年代、平台、创作者与可点击来源）。交付 catalog.json / SOURCES.md / REFERENCE-DESIGN.md 与给 06 的首批 20 条切片。",
+  "entry": "catalog.json",
+  "buildCommand": "python3 scripts/build_catalog.py",
+  "outputDir": ".",
+  "status": "completed",
+  "upstream": "05-museum-research",
+  "license": {
+    "code": "MIT",
+    "assets": "文本条目与来源链接；配图为程序化抽象图形"
+  },
+  "sources": [
+    {
+      "title": "来源台账 SOURCES.md（随 05 交付）",
+      "url": "",
+      "note": "每条至少一条可访问来源 URL。"
+    }
+  ],
+  "entryFiles": [
+    "catalog.json",
+    "catalog.meta.json",
+    "SOURCES.md",
+    "REFERENCE-DESIGN.md",
+    "handoff/first-20.json"
+  ],
+  "artifacts": {
+    "catalogItems": 140,
+    "eras": 7,
+    "referenceSites": 14,
+    "screenshots": "screenshots/",
+    "rawFetchData": "data/raw_sources.json"
+  },
+  "consumers": [
+    "06-museum-core",
+    "07-museum-art",
+    "08-era-origins",
+    "09-era-arcade",
+    "10-era-console",
+    "11-era-online",
+    "12-era-modern",
+    "13-qa-curation",
+    "14-publish"
+  ],
+  "notes": "纯资料任务，无前端构建步骤。buildCommand 为可选的目录重建命令（从 data/ 重新生成 catalog.json 与 SOURCES.md），直接分发目录即可使用。部署由 14-publish 负责。"
+}

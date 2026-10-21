@@ -1,0 +1,174 @@
+{
+  "id": "07-museum-art",
+  "title": "回响电玩馆 / PLAYTIME ATLAS — 原创美术与硬件模型包",
+  "description": "电子游戏硬件年代馆的整套原创视觉资产：深墨蓝+暖纸白+信号橙视觉方案、自托管 SIL OFL 字体（4 家族，已子集化）、48 枚手绘 SVG 图标、7 张年代海报（1200×1800）、8 张封面（1600×900）、6 组展柜（1000×1250）、6 件原创跨时代硬件 3D 模型（GLB + 实机渲染图 + 技术插画降级图），以及统一设计令牌（130 项）与四级降级方案。全部资产本地自托管，运行期零外部请求。",
+  "entry": "index.html",
+  "buildCommand": "npm run build",
+  "outputDir": "dist",
+  "status": "completed",
+  "upstream": "07-museum-art",
+  "license": {
+    "artwork": "CC0-1.0",
+    "fonts": "SIL Open Font License 1.1",
+    "thirdPartyAssets": 0
+  },
+  "sources": [
+    {
+      "title": "原创资产，无外部素材来源",
+      "url": "",
+      "note": "硬件外形为跨时代通用造型的简化再创作，无品牌 logo 与商标字体。"
+    }
+  ],
+  "version": "1.0.0",
+  "generated": "2026-10-21",
+  "author": "MiniMax Code (M3.1-Flash / max)",
+  "preview": {
+    "command": "npm run dev",
+    "port": 4327,
+    "url": "http://127.0.0.1:4327"
+  },
+  "integration": {
+    "target": "14-publish",
+    "note": "复制 dist/ 即可静态部署；如需与 06-museum-core 合并，把 public/assets/ 放入站点 assets/ 目录即可，路径契约见 INTERFACE.md。",
+    "basePath": "./",
+    "runtimeExternalRequests": 0
+  },
+  "assets": {
+    "root": "public/assets",
+    "manifest": "public/assets/assets.manifest.json",
+    "tokens": {
+      "json": "design-tokens.json",
+      "css": "public/assets/tokens.css",
+      "js": "public/assets/tokens.js",
+      "count": 130
+    },
+    "fonts": {
+      "count": 4,
+      "families": [
+        "Space Grotesk",
+        "Inter",
+        "Space Mono",
+        "Noto Sans SC"
+      ],
+      "license": "SIL Open Font License 1.1",
+      "selfHosted": true,
+      "cjkSubsetChars": 746
+    },
+    "icons": {
+      "count": 48,
+      "sprite": "public/assets/icons/icons.svg"
+    },
+    "posters": {
+      "count": 7,
+      "size": "1200x1800",
+      "format": [
+        "svg",
+        "png"
+      ]
+    },
+    "covers": {
+      "count": 8,
+      "size": "1600x900",
+      "format": [
+        "svg",
+        "png"
+      ]
+    },
+    "cases": {
+      "count": 6,
+      "size": "1000x1250",
+      "format": [
+        "svg",
+        "png"
+      ]
+    },
+    "models": {
+      "count": 6,
+      "format": [
+        "glb",
+        "png",
+        "tech.svg",
+        "json"
+      ],
+      "renderSize": "1024x1024",
+      "ids": [
+        "cabinet-01",
+        "console-02",
+        "console-03",
+        "handheld-04",
+        "hybrid-05",
+        "modern-06"
+      ]
+    },
+    "fallback": {
+      "count": 5,
+      "files": [
+        "poster-fallback.svg",
+        "cover-fallback.svg",
+        "model-fallback.svg",
+        "no-webgl.svg",
+        "offline-notice.svg"
+      ]
+    }
+  },
+  "eras": [
+    {
+      "id": "dawn",
+      "index": 1,
+      "name": "街机初萌",
+      "latin": "ARCADE DAWN",
+      "range": "1972 — 1978"
+    },
+    {
+      "id": "golden",
+      "index": 2,
+      "name": "街机黄金",
+      "latin": "GOLDEN ARCADE",
+      "range": "1978 — 1983"
+    },
+    {
+      "id": "home8",
+      "index": 3,
+      "name": "八位年代",
+      "latin": "8-BIT HOME",
+      "range": "1983 — 1993"
+    },
+    {
+      "id": "disc16",
+      "index": 4,
+      "name": "光盘纪元",
+      "latin": "16-BIT DISC",
+      "range": "1991 — 1996"
+    },
+    {
+      "id": "poly3d",
+      "index": 5,
+      "name": "三维与网络",
+      "latin": "3D & NETWORK",
+      "range": "1996 — 2005"
+    },
+    {
+      "id": "pocket",
+      "index": 6,
+      "name": "掌机与联机",
+      "latin": "POCKET & ONLINE",
+      "range": "2004 — 2013"
+    },
+    {
+      "id": "converge",
+      "index": 7,
+      "name": "融合与云",
+      "latin": "CONVERGENCE & CLOUD",
+      "range": "2013 — 至今"
+    }
+  ],
+  "documents": {
+    "task": "TASK.md",
+    "status": "STATUS.md",
+    "readme": "README.md",
+    "interface": "INTERFACE.md",
+    "licenses": "LICENSES.md",
+    "qa": "QA.md"
+  },
+  "notes": "本任务不部署公网；部署统一由 14-publish 负责。所有展品为原创虚构展品，无品牌标识；年代分段为本馆原创策展划分，不宣称穷尽全部作品。"
+}

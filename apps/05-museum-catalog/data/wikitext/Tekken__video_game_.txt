@@ -1,0 +1,167 @@
+{{Short description|1994 video game}}
+{{About|the first game in the series|the video game series|Tekken {{!}}Tekken |other uses|Tekken (disambiguation)}}
+{{Use mdy dates|date=September 2026}}
+
+{{Infobox video game
+| title = Tekken
+| image = Tekken 1 game cover.jpg
+| developer = [[Namco]]
+| publisher = Namco<br>'''PlayStation'''{{vgrelease|NA|Namco Hometek|EU|[[Sony Computer Entertainment]]}}
+| director = [[Seiichi Ishii]]
+| producer = Hajime Nakatani
+| designer = Seiichi Ishii
+| programmer = Masanori Yamada
+| composer = {{Unbulleted list|Yoshie Arakawa|Yoshie Takayanagi|[[Shinji Hosoe]] (PS)|Nobuyoshi Sano (PS)}}
+| series = ''[[Tekken]]''
+| released = {{Unbulleted list|'''Arcade'''{{Video game release|JP|December 9, 1994<ref name="eventhubs">{{cite web |url=https://www.eventhubs.com/news/2019/dec/09/tekken-series-celebrates-its-25th-birthday-today |title=The Tekken series celebrates its 25th birthday today |last=DarkHorse Hills |first=Dakota |date=2019-12-09 |accessdate=2024-12-08 |website=Eventhubs}}</ref><ref>{{cite web | url=http://kakuge.info/k/history/ac.htm | title=格闘ゲーム歴史年表 アーケード版 （仮） }}</ref><ref name="akagi"/>|NA|February 1995<ref name="akagi">{{cite book|url=https://archive.org/details/ArcadeGameList1971-2005/page/n127|title=
+アーケードTVゲームリスト国内•海外編(1971-2005)|author=Masumi Akagi|date=
+2005}}</ref>|WW|May 12, 1995}}'''PlayStation'''{{Video game release|JP|March 31, 1995|EU|November 7, 1995|NA|November 8, 1995}}}}
+| genre = [[Fighting game|Fighting]]
+| modes = [[Single-player]], [[multiplayer]]
+| platforms = {{Unbulleted list|[[Arcade game|Arcade]]|[[PlayStation (console)|PlayStation]]|[[Xbox Series X]]|[[Nintendo Switch 2]] }}
+| arcade system = [[Namco System 11]]
+}}
+
+{{Nihongo|'''''Tekken'''''|鉄拳}} is a 1994 [[fighting game]] developed and published by [[Namco]]. It was originally released on [[Arcade game|arcades]], then [[Porting#Porting of video games|ported]] to the [[PlayStation (console)|PlayStation]] home console in 1995. One of the earliest [[3D computer graphics|3D]] [[Polygonal modeling|polygon]]-based games of the genre, ''Tekken'' was Namco's answer to ''[[Virtua Fighter (video game)|Virtua Fighter]]'' and was designed by [[Seiichi Ishii]], who himself was also the game's designer when he worked at [[Sega]] previously.<ref>{{Cite web |last=Evenden |first=Ian |date=2024-01-26 |title=Rule with an Iron Fist: how Tekken changed fighting games forever |url=https://www.stuff.tv/features/rule-with-an-iron-fist-how-tekken-changed-fighting-games-forever/ |access-date=2024-08-28 |website=Stuff |language=en-US}}</ref> The game was developed on the purpose-built low-cost [[Namco System 11|System 11]] board, based on PlayStation hardware.<ref name="Low cost" />
+
+Plotwise, the game revolves around a tournament set up by [[Heihachi Mishima]], who attempts to prove his power to his revenge-seeking son and protagonist, [[Kazuya Mishima|Kazuya]]. ''Tekken'' initially divided opinion regarding its presentation, character designs and unusual control system, which consisted of one button per [[Limb (anatomy)|limb]].<ref name=":0">{{cite magazine |author= |date=1996 |title=Virtual Combat |url=https://archive.org/details/GameOnMagazine/Game%20On!%2002%20(1996)%20Virtual%20Combat/page/n5/ |magazine=Game On! USA |publisher=[[Viz Media]] |pages=5 |issue=2 |issn=}}</ref><ref name=":1">{{cite magazine |author= |date=1996 |title=Full Motion |url=https://archive.org/details/GameOnUSA/Game_On_USA_03 |magazine=Game On! USA |publisher=[[Viz Media]] |pages=72 |issue=3 |issn=}}</ref> However, following its home console port originally released in March 1995 — only the third 3D console fighter following ''Virtua Fighter'' and ''[[Battle Arena Toshinden (video game)|Battle Arena Toshinden]]'' — it quickly rose in popularity and eventually became a PlayStation best seller based on copies sold, even quickly surpassing its two fighting game rivals. It started the ''[[Tekken]]'' series, with a sequel, ''[[Tekken 2]]'', coming later in 1995.<ref name=":1" /> On June 25, 2026, the arcade version of the game got ported for modern consoles as part of the [[Arcade Archives 2]] series.<ref>{{Cite news |date=2026-06-24 |title=Arcade Archives 2 Tekken launches June 25 |url=https://www.gematsu.com/2026/06/arcade-archives-2-tekken-launches-june-25 |access-date=2026-06-24 |work=Gematsu |language=en-US}}</ref>
+
+==Gameplay==
+[[File:Tekken.jpg|left|thumb|Gameplay screenshot]]
+Players choose a character from a lineup and engage in hand-to-hand combat with an opponent. ''Tekken'' allows the player to control each of the fighter's four limbs independently.<ref name="GPro68">{{cite magazine|title=Tekken|magazine=[[GamePro]]|issue=68|publisher=[[International Data Group|IDG]]|date=March 1995|page=38}}</ref> The player can watch the animation on screen and figure out the appropriate command (if the character kicks low with their right leg, the move is likely to be executed by pressing down and right kick or a similar variation). By default, there are two rounds of combat. However, the players have a choice from one to five rounds, as well as options for the time limit of each round. If the time limit for the round expires, the character with more health remaining will be declared the winner; if one does not exist, the round will be a draw.
+
+The name of the location is displayed in the bottom right corner of the screen. The locations are representations of real places and included [[Acropolis of Athens|Acropolis]], [[Angkor Wat]], [[Chicago]], [[Fiji]], [[King George Island (South Shetland Islands)|King George Island]], [[Kyoto]], [[Zozo Marine Stadium|Marine Stadium]], [[Monument Valley]], [[Sichuan]], [[Venice]], and [[Windermere]]. In addition, unlike most fighting games of the period, the locations are not linked to a specific character, being randomised during gameplay with no ability for players to select a stage in Vs mode.
+
+==Characters==
+{{See also|Characters of the Tekken series#Introduced in Tekken}}
+
+The original arcade version features eight playable fighters. Each has a special "sub-boss" associated with them, who will be fought in Stage 8, followed by the final boss, [[Heihachi Mishima]]. The sub-boss characters are clones in terms of moveset (though not always clones of the player character facing them), with only a handful of moves distinguishing them from the original.
+
+All sub-bosses and Heihachi were never made playable in the original arcade version. When the game was [[Porting|ported]] to the PlayStation, however, they were made [[Player character#Secret characters|unlockable]] by clearing Arcade Mode using different characters. In addition, the console version also adds [[Kazuya Mishima|Kazuya]]'s [[alter ego]], [[Kazuya Mishima#Devil persona and voice actors|Devil]], who serves as Heihachi's final boss and who can be unlocked as a costume for Kazuya by completing the ''[[Galaga]]''-based minigame. The console version features a total of 18 playable fighters. A [[cutscene]] is unlocked when the player finishes the home version's Arcade Mode with each of the original eight characters.
+
+===Playable characters===
+{{Columns-list|colwidth=20em|
+* [[Anna Williams (Tekken)|Anna Williams]] (Nina's sub-boss) {{ref|a|a}}
+* [[Characters of the Tekken series#Armor King I/II|Armor King I]] (King's sub-boss) {{ref|a|a}}
+* [[Kazuya Mishima#Devil persona and voice actors|Devil]] (Heihachi's final boss, when Heihachi himself is unlocked) {{ref|b|b}}
+* [[Characters of the Tekken series#Ganryu|Ganryu]] (Yoshimitsu's sub-boss) {{ref|a|a}}
+* [[Heihachi Mishima]] {{ref|a|a}}
+* [[Characters of the Tekken series#JACK (series)/Prototype Jack|JACK]]
+* [[Kazuya Mishima]]
+* [[King (Tekken)|King I]]
+* [[Characters of the Tekken series#Kuma I/II|Kuma I]] (Paul's sub-boss) {{ref|a|a}}
+* [[Kunimitsu and Kunimitsu II|Kunimitsu]] {{ref|a|a}} (Michelle's sub-boss)
+* [[Lee Chaolan]] (Kazuya's sub-boss) {{ref|a|a}}
+* [[Marshall Law (Tekken)|Marshall Law]]
+* [[Michelle Chang (Tekken)|Michelle Chang]]
+* [[Nina Williams]]
+* [[Characters of the Tekken series#Paul Phoenix|Paul Phoenix]]
+* [[Prototype Jack]] {{ref|a|a}} (Jack's sub-boss)
+* [[Wang Jinrei]] (Marshall Law's sub-boss) {{ref|a|a}}
+* [[Characters of the Tekken series#Yoshimitsu|Yoshimitsu]]
+}}
+
+<small>{{note|a|a}} Unlockable character in home version, unplayable in arcade version</small><br />
+<small>{{note|b|b}} Home version-exclusive, unlockable and palette swap</small>
+
+==Plot==
+When [[Kazuya Mishima]] was only five years old, his father, [[Heihachi Mishima]], carried him to the summit of a mountain and threw him off to test his strength and determine whether he was fit to inherit the Mishima Zaibatsu. Although Kazuya survived the fall, he bore a large scar on his chest and later made a pact with an entity known as Devil, which enabled him to not only survive the fall but gain immense strength and power but at the cost of his soul. Kazuya climbed back to the top, but Heihachi, still deeming him too weak to inherit the Zaibatsu, later adopted the orphan [[Lee Chaolan]] to become his rival.
+
+21 years later, Kazuya travels across the world competing in martial arts competitions and emerging as an undefeated champion, with the only draw against [[Paul Phoenix (Tekken)|Paul Phoenix]], an American fighter. Heihachi organizes and announces the King of Iron Fist Tournament to prove his power and worth. Kazuya enters the tournament, defeats many competitors, including Lee, and narrowly beats Paul after an intense battle. Reaching the final round, he takes on Heihachi and is ultimately victorious. Upon his victory, he exacts his revenge by throwing Heihachi off the same summit Kazuya was thrown from as a child, and smiles, gaining control of the Mishima Zaibatsu.
+
+==Development and release==
+
+Namco's earliest design documents for ''Tekken'' were revealed to be known as “Kamui.” <ref>{{cite web | url=https://www.youtube.com/watch?v=Jc8MkFdTCq0 | title=Tekken PlayStation Beta Disc Uncovered + 神威 Kamui & Rave War Revealed {{!}} 鉄拳 Tekken 30th Anniversary | website=[[YouTube]] | date=31 March 2025 }}</ref>
+
+''Tekken'' was not originally conceived as a fighting game. The project began as an internal [[Namco]] [[Test case (software)|test case]] for animating [[3D computer graphics|3D]] character models, and eventually incorporated [[texture mapping]] similar to that found in Namco's 1993 racing game ''[[Ridge Racer (1993 video game)|Ridge Racer]]''.<ref name="Harada"/> In 1994, Namco acquired developers from longtime competitor [[Sega]], which had recently created the first 3D fighting game with 1993's ''[[Virtua Fighter (video game)|Virtua Fighter]]''.<ref name="NG">{{cite journal|title=Namco|journal=Next Generation|volume=1|issue=1|date=January 1995|pages=70–73}}</ref><ref name="VF">{{cite web|last=Leone |first=Matt |url=http://www.1up.com/features/essential-50-virtua-fighter |archive-url=https://archive.today/20120719110526/http://www.1up.com/features/essential-50-virtua-fighter |url-status=dead |archive-date=2012-07-19 |title=The Essential 50: ''Virtua Fighter'' |website=[[1UP.com]] |access-date=2014-11-21 }}</ref> Namco's research managing director Shegeichi Nakamura had met with [[Sony Computer Entertainment]] head [[Ken Kutaragi]] in 1993 to discuss the preliminary PlayStation specifications, with Namco subsequently developing the [[Namco System 11]] arcade board based on PlayStation hardware and ''Tekken'' as their answer to Sega's popular ''Virtua Fighter''. ''Tekken'' was initially planned for the [[Namco System 22]], the board used by ''Ridge Racer'' after Namco heard Sega was developing ''[[Virtua Fighter 2]]'' for their new [[Sega Model 2]] arcade board. However, this would have made the machine too expensive, so development of ''Tekken'' was moved to the System 11 after the meeting with Kutaragi.<ref name="Low cost"/>
+
+The game was originally going to be titled ''Rave War''.<ref name="Rave War">{{cite web |date=5 July 2010 |title=Tekken (Rave War) [Arcade - Beta] |url=https://www.unseen64.net/2010/07/05/tekken-rave-war-arcade-beta/ |url-status=live |archive-url=https://web.archive.org/web/20160503104435/https://www.unseen64.net/2010/07/05/tekken-rave-war-arcade-beta/ |archive-date=May 3, 2016 |access-date=8 October 2021 |website=Unseen64}}</ref> This name was suggested by Jerry Momoda, Namco America's product manager, who felt the name ''Tekken'' had "zero meaning to English-speaking people".<ref>{{Cite web |last=Extension |first=Time |date=2024-03-25 |title=Interview: "It's Rare That You Can Identify A Winner" - How Namco Brought Tekken To The West |url=https://www.timeextension.com/news/2024/03/interview-itrs-rare-that-you-can-identify-a-winner-how-namco-brought-tekken-to-the-west |access-date=2024-08-28 |website=Time Extension |language=en-GB}}</ref> However the final name in all territories would remain ''Tekken''. Also known as ''Rave Wars'', the prototype was demonstrated at the Amusement & Music Operators Association (AMOA) Expo in September 1994, before being renamed ''Tekken'' upon release.<ref>{{cite magazine |title=Hot Off The Press: How Street It Is |magazine=RePlay |date=January 1995 |volume=20 |issue=4 |page=3 |url=https://archive.org/details/re-play-volume-20-issue-no.-4-january-1995/RePlay%20-%20Volume%2020%2C%20Issue%20No.%204%20-%20January%201995%20%28Compressed%29/page/n2}}</ref>
+
+Directed by ''Virtua Fighter'' designer [[Seiichi Ishii]], ''Tekken'' was intended to have a fundamentally similar gameplay to Sega's, with the addition of detailed textures and twice the [[frame rate]] (at 60 frames)<ref name="Harada">{{cite magazine|url=http://www.edge-online.com/features/an-audience-with-katsuhiro-harada/|archive-url=https://web.archive.org/web/20130926003747/http://www.edge-online.com/features/an-audience-with-katsuhiro-harada/|url-status=dead|archive-date=2013-09-26|title=An Audience With: Katsuhiro Harada – on 20 years of ''Tekken'' and the future of fighting games|magazine=[[Edge (magazine)|Edge]]|date=2013-09-23|access-date=2014-11-21}}</ref> Although ''[[Virtua Fighter 2]]'' was released a few weeks before and running at 60 frames per second, Tekken had preceded it in home consoles in 1995, and when considering its September AMOA presentation, it becomes the first-ever publicized 3D fighting game in 60 fps.<ref>{{cite magazine |date=February 1995 |title=A Technical Knockout: Sega Comes Out Swinging With 'Virtua Fighter 2', A Worth Successor To Their Champion Video Fighter |url=https://archive.org/details/re-play-volume-20-issue-no.-5-february-1995/RePlay%20-%20Volume%2020%2C%20Issue%20No.%205%20-%20February%201995/page/44 |magazine=RePlay |pages=44, 46 |volume=20 |issue=5}}</ref> Originally released for the arcades on December 9, 1994, followed by a global release soon after,<ref name="eventhubs" /><ref name="akagi" /> it was the first arcade game to use this board.<ref name="GPro68" /> ''Tekken'' was marketed to small arcades as a cheaper alternative to Sega's ''Virtua Fighter 2'', which was released for the more expensive Model 2 arcade board, though the opposite is true in consoles since Tekken was in the more premium [[PlayStation (console)|PlayStation]] rather than the [[Sega Saturn]].<ref name="Low cost" /> Namco held a promotional tour to market the arcade game across North America in early 1995, holding [[video game competition]] tournaments in twelve cities.<ref>{{cite magazine |date=February 1995 |title=''Tekken'' On Tour: Namco America Takes Its Newest Video Fighter To The Front Lines On A 12-City Promotional Blitz Across The U.S. And Canada |url=https://archive.org/details/re-play-volume-20-issue-no.-5-february-1995/RePlay%20-%20Volume%2020%2C%20Issue%20No.%205%20-%20February%201995/page/41 |magazine=RePlay |pages=41–2 |volume=20 |issue=5}}</ref>
+
+Because it was developed for Namco's System 11 arcade board, which was based on raw [[PlayStation (console)|PlayStation]] hardware, ''Tekken'' was easily ported to the latter<ref name="NG" /><ref name="Low cost">{{cite magazine|title=Tekken|magazine=Edge|issue=21|volume=3|date=June 1995|pages=66–70|url=https://archive.org/details/EDGE.N021.1995.06/page/n65/mode/2up}}</ref> and this was released by March 31, 1995, in Japan. The console version allowed players to unlock mid-boss characters when the game was beaten and had [[full-motion video]]s, which was a first for fighting games. Additionally the background music was [[arranged]], taking advantage of the [[Compact Disc Digital Audio|CD audio]] capabilities, although the original arcade's chip-generated music can be selected in the console version.<ref name="Low cost" /> The [[PlayStation 2]] version of ''[[Tekken 5]]'' features the arcade version of ''Tekken'' (being an [[Emulator|emulated]] version of its arcade counterpart as well as the other two that were included in the arcade history mode). In 2005, Namco re-released ''Tekken'' as part of the ''[[NamCollection]]'' compilation for the PlayStation 2 to celebrate the company's 50th anniversary.
+
+[[Hamster Corporation]] released the arcade version as part of their ''[[Arcade Archives 2]]'' series for the [[Nintendo Switch 2]], [[PlayStation 5]] and [[Xbox Series X/S]] in June 2025; it is the first game in the series to not be released in the ''[[Arcade Archives]]'' series.<ref>{{Cite web |last=Yarwood |first=Jack |date=2026-06-24 |title=Namco's Legendary Arcade Fighting Game 'Tekken' Is Coming To Arcade Archives 2 |url=https://www.timeextension.com/news/2026/06/namcos-legendary-arcade-fighting-game-tekken-is-coming-to-arcade-archives-2 |access-date=2026-08-27 |website=Time Extension |language=en-US}}</ref>
+
+==Reception==
+{{Video game reviews
+| GR = 75%<ref>{{cite web |url=http://www.gamerankings.com/ps/366755-tekken/index.html |title=''Tekken'' Reviews |access-date=September 25, 2012 |publisher=[[GameRankings]] |archive-date=July 24, 2012 |archive-url=https://web.archive.org/web/20120724062942/http://www.gamerankings.com/ps/366755-tekken/index.html |url-status=live }}</ref>
+| CVG = 97% (PS)<ref>{{cite magazine |title=Tekken |magazine=[[Computer and Video Games]] |publisher=[[EMAP]] |location=United Kingdom |issue=163 (June 1995) |date=May 1995 |pages=26–31 |url=https://retrocdn.net/images/7/7c/CVG_UK_163.pdf#page=26 |access-date=October 15, 2021 |archive-date=January 30, 2022 |archive-url=https://web.archive.org/web/20220130215808/https://retrocdn.net/images/7/7c/CVG_UK_163.pdf#page=26 |url-status=live }}</ref>
+| Edge = 9/10 (PS)<ref name="Low cost"/>
+| Fam = 10/10, 9/10, 9/10, 10/10 (PS)<ref name=fam1>{{cite magazine |date=April 14, 1995 |magazine=[[Famitsu]] |publisher=[[ASCII Corporation]]| title=New Games Cross Review |language=ja|issue=330|page=29|first1=Nada|last1=Sawadhi|first2=Mizu|last2=Pinnu|first3=Isabella|last3=Nagano|first4=Rōringu|last4=Uchisawa}}</ref><ref name=fam2>Playstation Cross Review: 鉄拳. Weekly Famicom Tsūshin. No.333. Pg.21. 5 May 1995.</ref>
+| Hyper = 83% (PS)<ref>{{cite magazine |title=R.I.P. PlayStation: The best of 1995-2001 |magazine=[[Hyper (magazine)|Hyper]] |date=28 February 2001 |issue=90 (April 2001) |pages=44–51 |url=https://archive.org/details/hyper-090/page/44/mode/2up}}</ref>
+| IGN = 7.5/10 (PS)<ref>{{cite web|title=Tekken Review|url=http://www.ign.com/articles/1996/11/27/tekken|date=1996-10-26|website=IGN|access-date=2008-10-04|archive-date=August 26, 2014|archive-url=https://web.archive.org/web/20140826161659/http://www.ign.com/articles/1996/11/27/tekken|url-status=live}}</ref>
+| OPMUK = 8/10 (PS)<ref>{{cite journal |title=Play Test: Tekken |journal=[[Official UK PlayStation Magazine]] |date=1999 |issue=Platinum Special |page=115 |url=https://archive.org/details/Official_UK_Playstation_Magazine_1999_Future_Publishing_GB_platinum_special/page/n114}}</ref>
+| rev1 = ''Maximum''
+| rev1Score = 5/5 (PS)<ref name="Max2"/>
+| NGen = 4/5 (PS)<ref name="NGen7">{{cite magazine|title=Crushing|magazine=[[Next Generation (magazine)|Next Generation]]|issue=7|publisher=[[Imagine Media]] |date=July 1995|page=65}}</ref>
+| award1Pub = AMOA Awards
+| award1 = Most Innovative New Technology <br /> (nomination)<ref name="AMOA"/>
+}}
+
+===Commercial===
+In Japan, ''Game Machine'' listed it on their February 1, 1995 issue as the fifth most-popular arcade game for the previous two weeks.<ref>{{cite magazine|title=Game Machine's Best Hit Games 25 - TVゲーム機ーソフトウェア (Video Game Software)|magazine=Game Machine|issue=488|publisher=Amusement Press, Inc.|date=1 February 1995|page=25|lang=ja}}</ref> It went on to be Japan's fourth highest-grossing [[1995 in video games|arcade game of 1995]], below ''Virtua Fighter 2'', ''[[Street Fighter Zero]]'' and ''[[Vampire Hunter: Darkstalkers' Revenge]]''.<ref>{{cite magazine |script-title=ja:第９回 ゲーメスト大賞 |trans-title=9th Gamest Awards |magazine=[[Gamest]] |date=December 27, 1995 |volume=162 (January 1995) |url=http://www.netlaputa.ne.jp/~dummy/gamest/magazine/gamest/v162.html |pages=36–53 |lang=ja |access-date=October 10, 2021 |archive-date=December 19, 2022 |archive-url=https://web.archive.org/web/20221219124547/http://www.netlaputa.ne.jp/~dummy/gamest/magazine/gamest/v162.html |url-status=live }}</ref> In the US, it was one of top five highest-grossing [[arcade conversion]] kits of 1995.<ref name="AMOA">{{cite magazine |title=Coin Machine: AMOA JB And Games Awards Nominees Announced |magazine=[[Cash Box]] |date=July 22, 1995 |page=30 |url=https://worldradiohistory.com/Archive-All-Music/Cash-Box/90s/1995/CB-1995-07-22.pdf#page=30 |access-date=October 10, 2021 |archive-date=October 10, 2021 |archive-url=https://web.archive.org/web/20211010194034/https://worldradiohistory.com/Archive-All-Music/Cash-Box/90s/1995/CB-1995-07-22.pdf#page=30 |url-status=live }}</ref>
+
+''Tekken'' was the first PS1 game to sell over 1 million units.<ref>[http://www.absolute-playstation.com/api_faqs/faq20.htm PlayStation History – PlayStation Frequently Asked Questions in Absolute PlayStation<!-- Bot generated title -->] {{webarchive|url=https://web.archive.org/web/20110810075112/http://www.absolute-playstation.com/api_faqs/faq20.htm |date=2011-08-10 }}</ref> In Japan, it sold 942,000 units in 1995, making it the fourth best-selling home video game of 1995, below ''[[Dragon Quest VI]]'', ''[[Chrono Trigger]]'' and ''Virtua Fighter 2''.<ref name="Dengeki">{{cite magazine |title=1995年のコンシューマーゲームソフトの売上 |trans-title=1995 Consumer Game Software Sales |magazine=[[Dengeki Oh]] |publisher=[[MediaWorks (publisher)|MediaWorks]] |lang=ja |url=http://www.rnac.ne.jp/~zangel/1995.htm |url-status=dead |archive-url=https://web.archive.org/web/20020822155020/http://www.rnac.ne.jp/~zangel/1995.htm |archive-date=22 August 2002 |access-date=16 September 2021}}</ref> ''Tekken'' was also a best-seller in the UK,<ref>Gallup UK PlayStation sales chart, January 1996.</ref> where it was the top-selling game in October<ref>{{cite magazine |title=Editorial |magazine=[[Computer and Video Games]] |publisher=[[EMAP]] |issue=170 (January 1996) |date=10 December 1995 |pages=6–7 |url=https://archive.org/details/Computer_and_Video_Games_Issue_170_1996-01_EMAP_Images_GB/page/n5/mode/2up}}</ref> and December 1995.<ref>{{cite magazine |title=Editorial |magazine=[[Computer and Video Games]] |publisher=[[EMAP]] |issue=172 (March 1996) |date=9 February 1996 |pages=6–7 |url=https://archive.org/details/Computer_and_Video_Games_Issue_172_1996-03_EMAP_Images_GB/page/n5/mode/2up}}</ref> In the US, the game sold 786,556 units,<ref>{{cite web |title=PlayStation US Sales from 1995-2003 |url=http://www.gamepilgrimage.com/Ps1ussales.htm |publisher=[[NPD Group]] |website=Game Pilgrimage |access-date=18 October 2020 |archive-date=May 20, 2005 |archive-url=https://web.archive.org/web/20050520021742/http://www.gamepilgrimage.com/Ps1ussales.htm |url-status=live }}</ref> for a combined {{formatnum:{{#expr:942000+786556}}|}} units sold in Japan and the USA. It has currently sold 2.8 million copies as of 2024, according to Tekken developer and future director [[Katsuhiro Harada]], which outsold all the Virtua Fighter iterations.<ref>{{YouTube|feYvGQ1CzO4}}</ref>
+
+''[[Guinness World Records]]'' awarded ''Tekken'' with multiple records in the ''[[Guinness World Records Gamer's Edition]] 2008''. These include "First PlayStation Game to Sell Over One Million Units", "First Fighting Game To Feature Simulated 3D", as well as a record for the entire series as "The Best Selling Fighting Series for PlayStation Consoles."
+
+===Critical===
+''Tekken'' was well received by game critics. The arcade prototype ''Rave War'' demonstrated at AMOA 1994 received a positive preview from ''[[Electronic Gaming Monthly]]'', with a writer for the magazine comparing it favorably with ''Virtua Fighter 2'' and stating "I found Rave War quite a bit more fun to play."<ref>{{cite magazine |title=Arcade Action: Rave War by Namco |magazine=[[Electronic Gaming Monthly]] |date=December 1994 |issue=65 |page=77 |url=https://archive.org/details/Electronic_Gaming_Monthly_65/page/n89}}</ref> There was a mixed reception, however, regarding ''Tekken''<nowiki/>'s characters which were considered by some to be "weird" compared to those of ''[[Virtua Fighter 2]]'', and its "a button for each limb" control system.<ref name=":0" /> Other critics praised its intuitive control scheme and characters.<ref>{{cite book |last=Mott |first=Tony |title=[[1001 Video Games You Must Play Before You Die]] |publisher=Universe Publishing |year=2013 |isbn=978-0-7893-2090-2 |location=New York, New York |page=254}}</ref>
+
+On release of the PlayStation version, ''Famicom Tsūshin'' (''[[Famitsu]]'') scored ''Tekken'' a 38 out of 40,<ref name=fam1/><ref name=fam2/> while giving it an 8 out of 10 in their Reader Cross Review.<ref>読者 クロスレビュー: 鉄拳. Weekly Famicom Tsūshin. No.335. Pg.30. 12–19 May 1995.</ref> ''[[Edge (magazine)|Edge]]'' opined that, despite "lacking the overall visual allure" of ''Virtua Fighter 2'', ''Tekken'' "not only matches" the "style and quality of Sega's character animation, but it pushes its rival to the wire in playability terms, too."<ref name="Low cost"/> ''[[GamePro]]'' called the PlayStation version "one of the best arcade-to-home translations ever" and commented that while the graphics look rough and blocky compared to ''[[Battle Arena Toshinden (video game)|Battle Arena Toshinden]]'', the moves all have a clear and definite usefulness. They also praised the absence of ring-outs and the sound effects, and concluded "With impressive controls, lots of fighters, and strategic gameplay, ''Tekken'' makes ''Toshinden'' look more like pretty fighting than a real fight."<ref>{{cite magazine|title=ProReview: Tekken|magazine=[[GamePro]]|issue=86|publisher=[[International Data Group|IDG]]|date=November 1995|page=48}}</ref> ''Maximum'' called it "far and away the finest beat 'em up to grace this super console so far", citing the well-balanced player characters, "innovative" control mechanic of assigning one button to each limb, complexity of the moves, and ten playable boss characters, and arguing that the game is superior to ''Toshinden'' in both gameplay and graphics. However, they did criticize the poor PAL optimization of the European release.<ref name="Max2">{{cite magazine|title=Maximum Reviews: Tekken|magazine=Maximum: The Video Game Magazine|issue=2|publisher=[[Emap International Limited]]|date=1995|pages=150–1}}</ref> Like ''GamePro'', ''[[Next Generation (magazine)|Next Generation]]'' considered the game's graphics to be its weakest point, specifically the lack of animation on the backgrounds. They nonetheless considered it a new standard for polygonal fighting games, remarking in particular that the controls are easy to master and every character in the game has their own unique and compelling special move.<ref name="NGen7"/> In 1996, [[GamesMaster (magazine)|''GamesMaster'']] ranked the game 49th on their "Top 100 Games of All Time."<ref>{{Cite journal |date=July 1996 |title=Top 100 Games of All Time |url=https://retrocdn.net/images/c/cf/GamesMaster_UK_044.pdf |journal=GamesMaster |issue=44 |pages=76 |access-date=July 9, 2022 |archive-date=July 5, 2022 |archive-url=https://web.archive.org/web/20220705151248/https://retrocdn.net/images/c/cf/GamesMaster_UK_044.pdf |url-status=live }}</ref>
+
+== See also ==
+
+* ''[[Soul Edge|Soul Edge/Soul Blade]]'', also by Namco
+
+Other early 3D fighters:
+
+* ''[[Battle Arena Toshinden (video game)|Battle Arena Toshinden]]'' (''[[Battle Arena Toshinden 2]]'')
+* ''[[Criticom]]''
+* ''[[Dead or Alive (video game)|Dead or Alive]]''
+* ''[[Fighting Vipers]]''
+* ''[[FX Fighter]]''
+* ''[[Virtua Fighter (video game)|Virtua Fighter]]'' (''[[Virtua Fighter 2]]'')
+* ''[[Zero Divide]]''
+
+==References==
+{{Reflist}}
+
+==External links==
+*[https://web.archive.org/web/20090417123130/http://www.bandainamcogames.co.jp/cs/list/tekken/ Official website] {{in lang|ja}} (archived)
+*{{MobyGames | /3612/tekken/ }}
+
+{{Tekken series}}
+{{Authority control}}
+
+{{DEFAULTSORT:Tekken (video game)}}
+[[Category:1994 video games]]
+[[Category:Android (operating system) games]]
+[[Category:Angkor Wat]]
+[[Category:Arcade Archives 2 games]]
+[[Category:Hamster Corporation games]]
+[[Category:Lake District in fiction]]
+[[Category:Multiplayer and single-player video games]]
+[[Category:Namco arcade games]]
+[[Category:PlayStation (console) games]]
+[[Category:PlayStation 2 games]]
+[[Category:PlayStation Network games]]
+[[Category:Sichuan in fiction]]
+[[Category:Sony Interactive Entertainment games]]
+[[Category:Tekken games]]
+[[Category:Video games developed in Japan]]
+[[Category:Video games directed by Seiichi Ishii]]
+[[Category:Video games scored by Nobuyoshi Sano]]
+[[Category:Video games scored by Shinji Hosoe]]
+[[Category:Video games set in Antarctica]]
+[[Category:Video games set in Arizona]]
+[[Category:Video games set in Athens]]
+[[Category:Video games set in Cambodia]]
+[[Category:Video games set in Chiba Prefecture]]
+[[Category:Video games set in Chicago]]
+[[Category:Video games set in China]]
+[[Category:Video games set in Cumbria]]
+[[Category:Video games set in Fiji]]
+[[Category:Video games set in Kyoto]]
+[[Category:Video games set in Venice]]

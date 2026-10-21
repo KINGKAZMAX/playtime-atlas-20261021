@@ -1,0 +1,73 @@
+{{short description|1952 video game/naughts-and-crosses simulator}}
+{{Other uses|Oxo (disambiguation){{!}}Oxo}}
+{{Use dmy dates|date=April 2022}}
+{{good article}}
+{{Infobox video game
+| title = OXO
+| image = OXO emulated screenshot.png
+| caption = ''OXO'' played in an [[EDSAC]] simulator for the [[Classic Mac OS]]
+| designer = [[A S Douglas]]
+| platforms = [[EDSAC]]
+| released = {{Video game release|UK|1952}}
+| genre = [[Puzzle video game|Puzzle]]
+| modes = [[Single-player video game|Single-player]]
+}}
+
+'''''OXO''''' is a [[video game]] developed by [[A S Douglas]] in 1952 which simulates a game of [[noughts and crosses]] (tic-tac-toe). It was one of the first games developed in the [[early history of video games]]. Douglas programmed the game as part of a thesis on [[human-computer interaction]] at the [[University of Cambridge]].
+
+The program was written for the [[EDSAC|Electronic Delay Storage Automatic Calculator]] (EDSAC). EDSAC was one of the first [[stored-program computer]]s, with memory that could be [[random-access memory|read from or written to]], and had three small [[cathode-ray tube]] screens to display the state of the memory; Douglas re-purposed one screen to demonstrate portraying other information to the user, such as the state of a noughts and crosses game. After the game served its purpose, it was discarded on the original hardware but later successfully reconstructed.
+
+''OXO'', along with a [[Checkers (1952 video game)|checkers]] game by [[Christopher Strachey]] completed around the same time, is one of the earliest known games to display [[video game graphics|visuals]] on an electronic screen. Under some definitions, it thus may qualify as the first video game, though other definitions exclude it due to its lack of moving or real-time updating graphics.
+
+==History==
+[[File:EDSAC (19).jpg|thumb|The [[Electronic Delay Storage Automatic Calculator]] in 1948]]
+The [[EDSAC|Electronic Delay Storage Automatic Calculator]] (EDSAC) mainframe computer was built in the [[University of Cambridge]]'s [[Computer Laboratory, University of Cambridge|Mathematical Laboratory]] between 1946 and 6 May 1949, when it ran its first program,<ref name="AOTE"/><ref name="PCTBR"/> and remained in use until 11 July 1958.<ref name="EDSAC99"/> The EDSAC was one of the first [[stored-program computer]]s, with memory that could be [[random-access memory|read from or written to]], and filled an entire room; it included three 35×16 dot matrix [[cathode-ray tube]]s (CRTs) to graphically display the state of the computer's memory.<ref name="Replay50s"/><ref name="OXO"/> As a part of a thesis on [[human-computer interaction]], [[Sandy Douglas]], a doctoral candidate in mathematics at the university, used one of these screens to portray other information to the user; he chose to do so via displaying the current state of a game.<ref name="HCIAS"/><ref name="Priest"/>
+
+Douglas used the EDSAC to simulate a game of [[noughts and crosses]], and display the state of the game on the screen. Like other early video games, after serving Douglas's purpose, the game was discarded.<ref name="Replay50s"/> Douglas did not give the game a name beyond "noughts and crosses"; the name ''OXO'' first appeared as the name of the simulation file created by computer historian [[Martin Campbell-Kelly]] while creating a simulation of the EDSAC several decades later.<ref name="TCU"/> Around the same time that ''OXO'' was completed, [[Christopher Strachey]] expanded a [[checkers (1952 video game)|checkers]] program he had originally written in 1951 and ported it to the [[Ferranti Mark 1]], which showed the state of the game on a CRT display.<ref name="Draughts52"/> ''OXO'' and Strachey's checkers program are the earliest known games to display [[video game graphics|visuals]] on an electronic screen, though it is unclear which of the two games was displayed first.<ref name="Priest"/> As it ran on a computing device and used a graphical display, ''OXO'' is considered under some definitions to be a contender for the first video game,<ref name="EVG"/> though under others it does not due to its lack of moving graphics or graphics which update continuously.<ref name="TVGD"/>
+
+==Interaction==
+Each game was played by one user against an [[artificial intelligence in video games|artificially intelligent]] opponent, which could play a "perfect" game. The player entered their input using a [[rotary dial|rotary telephone]] controller, selecting which of the nine squares on the board they wished to move next. Their move would appear on the screen, and then the computer's move would follow; the game display only updated when the game state changed. ''OXO'' was not available to the general public and could only be played in the University of Cambridge's Mathematical Laboratory by special permission, as the EDSAC could not be moved, and both the computer and the game were only intended for academic research purposes.<ref name="TCU"/>
+{{clear}}
+
+==References==
+<references>
+
+<ref name="TVGD">{{cite book |title=The Video Game Debate: Unravelling the Physical, Social, and Psychological Effects of Video Games |last1=Kowert |first1=Rachel |last2=Quandt |first2=Thorsten |date=27 August 2015 |publisher=[[Routledge]] |isbn=978-1-138-83163-6 |page=3}}</ref>
+
+<ref name="TCU">{{cite book |title=The Computing Universe: A Journey through a Revolution |last1=Hey |first1=Tony |last2=Pápay |first2=Gyuri |publisher=[[Cambridge University Press]] |date=30 November 2014 |isbn=978-0-521-15018-7 |page=174}}</ref>
+
+<ref name="HCIAS">{{cite book |title=Human-Computer Interaction Applications and Services: 16th International Conference, HCI International 2014, Heraklion, Crete, Greece, June 22-27, 2014, Proceedings, Part 3 |editor=Kurosu, Masaaki |date=9 June 2014 |publisher=[[Springer Publishing]] |page=561 |url=https://books.google.com/books?id=d4W6BQAAQBAJ&q=OXO+game+1952&pg=PA561|isbn=9783319072272 }}</ref>
+
+<ref name="Replay50s">{{cite book |title=Replay: The History of Video Games |last=Donovan |first=Tristan |publisher=Yellow Ant |date=20 April 2010 |isbn=978-0-9565072-0-4 |pages=1–9|title-link=Replay: The History of Video Games }}</ref>
+
+<ref name="OXO">{{cite web |url=http://www.dcs.warwick.ac.uk/~edsac/Software/EdsacTG.pdf |title=A Tutorial Guide to the EDSAC Simulator |last=Campbell-Kelly |first=Martin |author-link=Martin Campbell-Kelly |publisher=[[University of Warwick]] |date=2001 |access-date=18 December 2015 |archive-url=https://web.archive.org/web/20151222132057/http://www.dcs.warwick.ac.uk/~edsac/Software/EdsacTG.pdf |archive-date=22 December 2015 |url-status=dead }}</ref>
+
+<ref name="Priest">{{cite web |url=https://videogamehistorian.wordpress.com/2014/01/22/the-priesthood-at-play-computer-games-in-the-1950s/ |title=The Priesthood At Play: Computer Games in the 1950s |work=They Create Worlds |last=Smith |first=Alexander |date=22 January 2014 |access-date=18 December 2015 |archive-url=https://web.archive.org/web/20151222172058/https://videogamehistorian.wordpress.com/2014/01/22/the-priesthood-at-play-computer-games-in-the-1950s/ |archive-date=22 December 2015 |url-status=live}}</ref>
+
+<ref name="Draughts52">{{cite journal |title=Programming ENTER: Christopher Strachey's Draughts Program |last=Link |first=David |journal=Resurrection |publisher=[[Computer Conservation Society]] |issue=60 |pages=23–31 |date=2012 |url=http://www.alpha60.de/research/programming_enter/DavidLink_ProgrammingEnter_ComputerResurrection60_2012.pdf}}</ref>
+
+<ref name="AOTE">{{cite journal |title=Arithmetic on the EDSAC |journal=[[IEEE Annals of the History of Computing]] |publisher=[[IEEE]] |volume=19 |issue=1 |last=Wilkes |first=M.V. |pages=13–15 |issn=1058-6180 |date=January 1997 |doi=10.1109/85.560726}}</ref>
+
+<ref name="PCTBR">{{cite journal |title=Pioneer computer to be rebuilt |journal=Cam |publisher=[[University of Cambridge]] |volume=62 |date=2011 |page=5 |url=http://issuu.com/cambridgealumnirelationsoffice/docs/cam_62_web/7 |archive-date=26 April 2019 |access-date=31 December 2015 |archive-url=https://web.archive.org/web/20190426044126/https://issuu.com/cambridgealumnirelationsoffice/docs/cam_62_web/7 |url-status=dead }}</ref>
+
+<ref name="EDSAC99">{{cite web |url=http://www.cl.cam.ac.uk/events/EDSAC99/booklet.pdf |title=EDSAC 99: 15–16 April 1999 |publisher=[[University of Cambridge Computer Laboratory]] |date=6 May 1999 |access-date=29 June 2013 |pages=68–69}}</ref>
+
+<ref name="EVG">{{cite book |title=Encyclopedia of Video Games: The Culture, Technology, and Art of Gaming |last=Wolf |first=Mark J. P. |date=16 August 2012 |publisher=[[Greenwood Publishing Group]] |isbn=978-0-313-37936-9 |pages=3–7}}</ref>
+
+</references>
+
+== External links ==
+{{Portal|1950s}}
+* [https://www.dcs.warwick.ac.uk/~edsac/ The Edsac Simulator&nbsp;— An emulator of the EDSAC developed by Martin Campbell-Kelly that includes ''OXO'']
+
+{{Early history of video games}}
+{{Tic-Tac-Toe}}
+
+[[Category:1952 video games]]
+[[Category:Early history of video games]]
+[[Category:History of computing in the United Kingdom]]
+[[Category:Puzzle video games]]
+[[Category:Tic-tac-toe]]
+[[Category:University of Cambridge Computer Laboratory]]
+[[Category:Video games developed in the United Kingdom]]
+[[Category:Single-player video games]]

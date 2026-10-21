@@ -1,0 +1,119 @@
+{
+  "id": "handheld-04",
+  "name": "余烬掌机",
+  "latin": "POCKET EMBER",
+  "range": "2004 — 2010",
+  "form": "双屏翻盖掌机",
+  "story": "合上时是一枚温热的小方块，摊开就变成两屏。上下分工：上面看世界，下面摸世界。公交车上的一次单局，不必回家、不必开机、不必插卡。",
+  "note": "原创提炼：取双屏翻盖掌机的双层结构与合盖动作，屏幕比例、键位与外壳分色为原创。",
+  "parts": [
+    {
+      "name": "下机身",
+      "material": "shell-mid"
+    },
+    {
+      "name": "上机身",
+      "material": "shell-mid"
+    },
+    {
+      "name": "转轴",
+      "material": "metal-dark"
+    },
+    {
+      "name": "下屏边框",
+      "material": "shell-deep"
+    },
+    {
+      "name": "下屏玻璃",
+      "material": "screen-glass"
+    },
+    {
+      "name": "下屏辉光",
+      "material": "screen-glow"
+    },
+    {
+      "name": "上屏边框",
+      "material": "shell-deep"
+    },
+    {
+      "name": "上屏玻璃",
+      "material": "screen-glass"
+    },
+    {
+      "name": "上屏辉光",
+      "material": "screen-glow"
+    },
+    {
+      "name": "十字键",
+      "material": "shell-deep"
+    },
+    {
+      "name": "按键A",
+      "material": "accent"
+    },
+    {
+      "name": "按键B",
+      "material": "cream"
+    },
+    {
+      "name": "开始键",
+      "material": "cream-dim"
+    },
+    {
+      "name": "选择键",
+      "material": "cream-dim"
+    },
+    {
+      "name": "肩键左",
+      "material": "shell-light"
+    },
+    {
+      "name": "肩键右",
+      "material": "shell-light"
+    },
+    {
+      "name": "扬声器格栅",
+      "material": "shell-deep"
+    },
+    {
+      "name": "状态灯",
+      "material": "accent-lit"
+    },
+    {
+      "name": "正面饰条",
+      "material": "accent"
+    }
+  ],
+  "partCount": 19,
+  "triangleCount": 748,
+  "dimensions": {
+    "w": 0.14,
+    "h": 0.16,
+    "d": 0.03
+  },
+  "measuredBounds": {
+    "min": [
+      -0.07,
+      0,
+      -0.037
+    ],
+    "max": [
+      0.07,
+      0.1254,
+      0.083
+    ],
+    "size": [
+      0.14,
+      0.1254,
+      0.12
+    ]
+  },
+  "files": {
+    "glb": "./model-handheld-04.glb",
+    "png": "./model-handheld-04.png",
+    "techSvg": "./model-handheld-04.tech.svg",
+    "json": "./model-handheld-04.json"
+  },
+  "license": "CC0-1.0",
+  "origin": "本馆原创虚构展品"
+}

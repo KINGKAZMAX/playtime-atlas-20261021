@@ -1,0 +1,164 @@
+{{Short description|Virtual reality rhythm game}}
+{{Use American English|date=May 2019}}
+{{Use mdy dates|date=May 2019}}
+{{Infobox video game
+| title = Beat Saber
+| image = Beat Saber logo.jpg
+| developer = Beat Games
+| publisher = Beat Games<br/>[[Oculus Studios]] (2019-present)
+| engine = [[Unity (game engine)|Unity]]
+| platforms = {{ubl|[[PlayStation 4]]|[[PlayStation 5]]|[[Meta Quest]]|[[SteamVR]]|[[Windows Mixed Reality]]}}
+| released = May 21, 2019
+| genre = [[Rhythm game|Rhythm]]
+| modes = [[Single-player]], [[multiplayer]]
+| designer = {{Unbulleted list|Ján Ilavský|Vladimír Hrinčár|Peter Hrinčár}}
+| artist = Jan Ilavský
+| composer = [[Jaroslav Beck]]
+}}
+
+'''''Beat Saber''''' is a [[virtual reality]] [[rhythm game]] developed by Beat Games. The game was originally published by Beat Games before the studio was acquired by [[Oculus Studios]] in 2019. It takes place in many different surrealistic neon environments and features the player slicing blocks representing musical beats with a pair of brightly colored sabers. Following an [[early access]] release on May 1, 2018, the game was fully released for [[PlayStation 4]] and [[Windows]]  (compatible with [[Steam VR]] and [[Oculus VR]]) on May 21, 2019, and for the [[Meta Quest]] (Oculus Quest) in standalone mode. It is one of the best selling virtual reality games of all time.<ref>{{Cite web |last=Heaney |first=David |date=2025-04-22 |title=Meta Revealed The 50 Best-Selling Quest Games Of All Time |url=https://www.uploadvr.com/meta-revealed-the-50-best-selling-quest-games-of-all-time/ |access-date=2026-09-24 |website=UploadVR |language=en}}</ref><ref>{{Cite web |last=Stockdale |first=Henry |date=2023-04-15 |title=Beat Saber Reportedly Reached $255 Million Revenue |url=https://www.uploadvr.com/beat-saber-255-million-revenue/ |access-date=2026-09-24 |website=UploadVR |language=en}}</ref>
+
+== Gameplay ==
+[[File:Beat Saber gameplay screenshot.jpg|thumb|left|In ''Beat Saber'', players use a pair of glowing sabers to cut through approaching blocks which are in sync with a song's beats and notes.]]
+The player uses VR [[Game controller|controllers]] to relocate a pair of glowing sabers, which by default are colored red and blue for left and right respectively, although the colors are changeable to any color. In each song, the game presents the player with a stream of approaching blocks laid out in sync with the song's beats and notes, located in one of the 12 possible positions of a 4x3 grid.  Each one may also be marked with an arrow indicating one of eight possible directions in which the block may be required to be cut through. There are also blocks with dots instead of arrows, which players may hit in any direction from the sides (not poked through the dot). When a block is properly cut by a saber, it is destroyed and a score is awarded, based on the length and angle of the swing and the accuracy of the cut. In addition, there are sometimes bombs that the player should not hit, and obstacles in the form of oncoming walls that the player's head should avoid. The term "map" refers to the layout of these blocks, walls, and bombs in a song.
+
+Underneath the path where the blocks travel is a white "energy bar," also called "battery". At the beginning of every song, the bar is halfway full, slowly filling up as the player hits notes correctly. If the player makes mistakes, such as hitting a note in the incorrect direction or with the wrong saber, missing a note, hitting a bomb, or running into a wall, the bar will decrease. If the bar becomes empty, the level will end.
+
+Since the addition of Original Soundtrack (OST) 5, two new mechanics were introduced to the game. One of them features a new block called a Chain, which starts with a block which indicates which direction to cut. After the lead slice, there are several smaller blocks which can be cut. The other new mechanic is the Arc, a line showing the recommended path for a saber to follow. It is connected to a block and continues on until it either connects to another block or stops altogether. Both of these new mechanics calculate score differently than the original blocks.<ref>{{Citation |title=Arc And Chain Notes Tutorial {{!}} Beat Saber Explained |url=https://www.youtube.com/watch?v=S5EnYBttaaA |access-date=2022-03-19}}</ref>
+
+Before the start of each song, the game offers the option to enable [[Video game modding|Modifiers]]. These are options that affect different aspects of gameplay, such as the presence of bombs, or the speed at which the song plays. Modifiers can either increase or lower the player's rank depending on the impact on difficulty. For example, the "No Fail" modifier allows the player to complete the song without fail if the energy bar depletes, but the final rank will be lowered. The "Super Fast Song" modifier will increase the player's rank, but the song will progress at 150% speed.
+
+In 2024, songs with explicit lyrics were added to the game. Players ages 13 and over may choose to remove or include uncensored explicit songs in the game settings. Players between the ages of 10 and 12 using a child account have explicit songs removed by default.<ref>{{Cite web |last=studio |first=Ler digital |title=Beat Saber - VR rhythm game |url=https://beatsaber.com/faq.html |access-date=2024-05-19 |website=beatsaber.com |language=en}}</ref>
+
+== Development ==
+Work on ''Beat Saber'' began after the completion of Hyperbolic Magnetism's previous title, ''[[Chameleon Run]]''. Slovak developers Vladimír Hrinčár and Ján Ilavský began creating demos and prototypes, and some of these were posted on Facebook. Czech composer [[Jaroslav Beck]] saw some of these prototypes and met the team in [[Prague]] to convince them to let him create the soundtrack for the game. After around two years of development, the game was released in early access on May 1, 2018.<ref>{{Cite web|title=How Beat Saber beat the odds|url=https://techcrunch.com/2019/05/08/how-beat-saber-beat-the-odds/|access-date=2021-05-23|website=TechCrunch|date=May 8, 2019|archive-date=December 7, 2023|archive-url=https://web.archive.org/web/20231207095701/https://techcrunch.com/2019/05/08/how-beat-saber-beat-the-odds/|url-status=live|last=Matney|first=Lucas}}</ref> Hyperbolic Magnetism changed its name to Beat Games.
+
+==Release==
+{{main|List of songs in Beat Saber}}
+[[File:Beat saber team gdca 2019.jpg|thumb|right|L-R: programmer Vladimir "Loki" Hrinčár, head of marketing Michaela Dvořáková, and composer [[Jaroslav Beck]] at the Game Developers Choice Awards 2019]]
+The game was first released in [[early access]] on [[Windows]] on May 1, 2018.<ref name="Windows Central Beat Saber">{{cite web|url=https://www.windowscentral.com/beat-saber-everything-we-know-about-vr-rhythm-game|title=Beat Saber: Everything we know about the VR rhythm game|last=Hunt|first=Cale|date=April 5, 2018|website=Windows Central|access-date=May 9, 2018|archive-date=January 20, 2021|archive-url=https://web.archive.org/web/20210120222745/https://www.windowscentral.com/beat-saber-everything-we-know-about-vr-rhythm-game|url-status=live}}</ref> The game was released on PlayStation 4 on November 20, 2018.<ref>{{cite web|url=https://www.playstation.com/en-ca/games/beat-saber-ps4/|title=Beat Saber|website=PlayStation|access-date=November 28, 2018|archive-date=November 28, 2018|archive-url=https://web.archive.org/web/20181128211210/https://www.playstation.com/en-ca/games/beat-saber-ps4/|url-status=live}}</ref> An editor was announced for release in May 2018, which would allow for the creation of custom user songs, but it was postponed,<ref name="Beat Saber Level Editor">{{cite magazine|url=https://www.pcgamer.com/vr-rhythm-game-beat-saber-now-the-highest-rated-game-on-steam-releasing-level-editor-next-week/|title=VR rhythm game Beat Saber, now the highest rated game on Steam, releasing level editor next week|last=Horti|first=Samuel|date=May 6, 2018|magazine=[[PC Gamer]]|access-date=May 9, 2018|archive-date=February 28, 2021|archive-url=https://web.archive.org/web/20210228074256/https://www.pcgamer.com/vr-rhythm-game-beat-saber-now-the-highest-rated-game-on-steam-releasing-level-editor-next-week/|url-status=live}}</ref> and added in May 2019.<ref name="RPS 2019-05-21" />
+
+In March 2019, Beat Games released its first paid [[downloadable content|song pack]], featuring 10 songs from electronic music record label [[Monstercat]].<ref>{{cite magazine|url=https://www.pcgamer.com/beat-saber-releases-first-paid-dlc-song-pack-contains-10-tracks/|title=Beat Saber releases first paid DLC music pack|last=Horti|first=Samuel|date=March 16, 2019|magazine=[[PC Gamer]]|access-date=March 16, 2019|archive-date=March 17, 2019|archive-url=https://web.archive.org/web/20190317112719/https://www.pcgamer.com/beat-saber-releases-first-paid-dlc-song-pack-contains-10-tracks/|url-status=live}}</ref> "[[Crab Rave]]" was added as a free update on [[April Fools' Day]] that year.<ref>{{Cite web|url=https://www.playstationlifestyle.net/2019/04/01/crab-rave-beat-saber-free-song/|title=Crab Rave is the Latest Free Beat Saber Song, Available Now|date=April 1, 2019|website=PlayStation LifeStyle|access-date=April 14, 2019|archive-date=April 3, 2019|archive-url=https://web.archive.org/web/20190403014515/https://www.playstationlifestyle.net/2019/04/01/crab-rave-beat-saber-free-song/|url-status=live}}</ref> On May 2, 2019, to celebrate the game's first anniversary, a prototype version created three years prior was released to the public as ''Beat Saber Origins''.<ref>{{Cite web|url=https://techmoneyfit.com/blog/beat-saber-releases-origins-early-build-to-celebrate-first-anniversary/|title=Beat Saber Releases Origins Early Build To Celebrate First Anniversary|date=March 4, 2019|website=techmoneyfit.com|access-date=May 10, 2019|archive-date=May 10, 2019|archive-url=https://web.archive.org/web/20190510172005/https://techmoneyfit.com/blog/beat-saber-releases-origins-early-build-to-celebrate-first-anniversary/|url-status=dead}}</ref> The game was fully released out of early access on PC on May 21, 2019.<ref name="RPS 2019-05-21">{{cite news|url=https://www.rockpapershotgun.com/2019/05/22/beat-saber-out/|title=Beat Saber bops out of early access|first=Matt|last=Cox|date=May 21, 2019|access-date=May 21, 2019|website=[[Rock Paper Shotgun]]|archive-date=May 22, 2019|archive-url=https://web.archive.org/web/20190522005443/https://www.rockpapershotgun.com/2019/05/22/beat-saber-out/|url-status=live}}</ref> On January 29, 2020, the game received a free pack featuring three songs by Japanese artist [[Camellia (musician)|Camellia]].<ref>{{cite web|url=https://uploadvr.com/beat-saber-new-track/|title=Three New Free Beat Saber Songs Arrive In New Update From Cametek|date=2019-01-29|access-date=January 29, 2020|archive-date=January 29, 2020|archive-url=https://web.archive.org/web/20200129211343/https://uploadvr.com/beat-saber-new-track/|url-status=live}}</ref> Many other songs and song packs, both paid and free, were released afterwards in updates.<ref>{{Cite web |last= |first= |title=Beat Saber - VR rhythm game |url=https://beatsaber.com/ |access-date=2024-01-01 |website=beatsaber.com |language=en |archive-date=January 2, 2024 |archive-url=https://web.archive.org/web/20240102195450/https://beatsaber.com/ |url-status=live }}</ref>
+
+[[Facebook, Inc.|Facebook]] via [[Oculus Studios]] acquired Beat Games in November 2019. The company stated that the purchase would not affect future development of ''Beat Saber'' on third-party VR platforms besides Oculus.<ref name="facebook acq">{{Cite web|url=https://www.theverge.com/2019/11/26/20984468/facebook-acquisition-beat-games-beat-saber-vr-studio|title=Facebook is buying Beat Saber's development studio|last=Robertson|first=Adi|date=2019-11-26|website=The Verge|access-date=2019-11-27|archive-date=November 27, 2019|archive-url=https://web.archive.org/web/20191127012026/https://www.theverge.com/2019/11/26/20984468/facebook-acquisition-beat-games-beat-saber-vr-studio|url-status=live}}</ref> Beat Games will continue to operate in [[Prague]] as an independent studio, although under the umbrella of Oculus Studios.
+
+In December 2024, a 17-song [[Metallica]] song pack was released.<ref>{{Cite web |date=2024-12-10 |title=Beat Saber's Metallica Music Pack out today |url=https://blog.playstation.com/2024/12/10/beat-sabers-metallica-music-pack-out-today/ |access-date=2025-04-23 |website=PlayStation.Blog |language=en-US |archive-date=April 28, 2025 |archive-url=https://web.archive.org/web/20250428051503/https://blog.playstation.com/2024/12/10/beat-sabers-metallica-music-pack-out-today/ |url-status=live }}</ref>
+
+On June 18, 2025, Beat Games announced that support for [[PlayStation VR]] and [[PlayStation VR2]] would be discontinued with no new music packs being released, and multiplayer support being dropped in January 2026.<ref>{{cite web |last1=Blake |first1=Vikki |title=Beat Saber Ends Support on PS4 and PS5 in Yet Another Blow for PSVR2 |url=https://www.ign.com/articles/beat-saber-ends-support-on-ps4-and-ps5-in-yet-another-blow-for-psvr2 |website=IGN |access-date=20 July 2025 |archive-date=June 25, 2025 |archive-url=https://web.archive.org/web/20250625044833/https://www.ign.com/articles/beat-saber-ends-support-on-ps4-and-ps5-in-yet-another-blow-for-psvr2 |url-status=live }}</ref><ref>{{cite web |title=Beat Saber - VR rhythm game - End of Support for PS4/PS5 |url=https://beatsaber.com/faq.html#PS4-PS5 |website=Beat Saber |access-date=20 July 2025 |archive-date=July 28, 2025 |archive-url=https://web.archive.org/web/20250728201230/https://beatsaber.com/faq.html#PS4-PS5 |url-status=live }}</ref>
+
+== Reception ==
+{{Video game reviews
+| MC = PS4: 86/100<ref>{{cite web|url=https://www.metacritic.com/game/beat-saber/critic-reviews/?platform=playstation-4|title=Beat Saber for PlayStation 4 Reviews|website=[[Metacritic]]|publisher=[[CBS Interactive]]|access-date=May 22, 2019|archive-date=November 26, 2023|archive-url=https://web.archive.org/web/20231126015914/https://www.metacritic.com/game/beat-saber/critic-reviews/?platform=playstation-4|url-status=live}}</ref><br />PC: 93/100<ref>{{cite web|url=https://www.metacritic.com/game/beat-saber/critic-reviews/?platform=pc|title=Beat Saber for PC Reviews|website=[[Metacritic]]|publisher=[[CBS Interactive]]|access-date=May 30, 2019}}</ref>
+| Edge = 8/10<ref name="Edge Review" />
+| GSpot = 8/10<ref name="GameSpot Review" />
+| IGN = 9.5/10<ref name="IGN Review" />
+| OPMUK = 8/10
+| GI = 9/10<ref>{{cite web|url=https://www.gameinformer.com/review/beat-saber/engrossing-musical-swordplay|archive-url=https://web.archive.org/web/20181212015239/https://www.gameinformer.com/review/beat-saber/engrossing-musical-swordplay|url-status=live|archive-date=December 12, 2018|title=Beat Saber Engrossing Musical Swordplay|website=[[Game Informer ]]|date=November 20, 2018 |access-date=May 22, 2019}}</ref>
+| rev1 = [[Road to VR]]
+| rev1Score = 8.9/10<ref>{{cite web|url=https://www.roadtovr.com/beat-saber-psvr-review-move-and-groove-slice-and-dice/|title='Beat Saber' PSVR Review – Move & Groove as You Slice & Dice|website=[[Road to VR]]|date=November 20, 2018|access-date=May 22, 2019|archive-date=August 26, 2019|archive-url=https://web.archive.org/web/20190826072151/https://www.roadtovr.com/beat-saber-psvr-review-move-and-groove-slice-and-dice/|url-status=live}}</ref>
+| JXV = 17/20<ref>{{cite web|url=https://www.jeuxvideo.com/test/976715/beat-saber-une-version-ps4-de-haute-volee.htm|title=Test Beat Saber : une version PS4 de haute volée !|website=[[Jeuxvideo.com]]|date=December 21, 2018|access-date=May 22, 2019|archive-date=July 15, 2019|archive-url=https://web.archive.org/web/20190715183731/http://www.jeuxvideo.com/test/976715/beat-saber-une-version-ps4-de-haute-volee.htm|url-status=live}}</ref>
+| rev2 = [[UploadVR]]
+| rev2Score = 8.5/10<ref>{{cite web|url=https://uploadvr.com/beat-saber-psvr-review-the-most-addictive-vr-game-to-date/|title=Beat Saber PSVR Review – The Most Addictive VR Game To Date|website=[[UploadVR]]|date=November 20, 2018|access-date=May 22, 2019|archive-date=May 27, 2019|archive-url=https://web.archive.org/web/20190527175901/https://uploadvr.com/beat-saber-psvr-review-the-most-addictive-vr-game-to-date/|url-status=live}}</ref>
+}}
+
+During its [[early access]] phase, ''Beat Saber'' received numerous positive reviews, becoming the highest rated game on [[Steam (service)|Steam]] less than a week after its early access release.<ref name="Beat Saber Level Editor" /> The game sold over a million copies by March 2019.<ref>{{cite web|last1=Princ|first1=Zdeněk|title=Beat Saber překonal hranici milionu prodaných kusů|url=https://www.vortex.cz/beat-saber-prekonal-hranici-milionu-prodanych-kusu/|website=www.vortex.cz|publisher=Vortex|access-date=March 15, 2019|language=cs|archive-date=September 29, 2019|archive-url=https://web.archive.org/web/20190929125336/https://www.vortex.cz/beat-saber-prekonal-hranici-milionu-prodanych-kusu/|url-status=dead}}</ref> By February 2021, the game had sold over 4 million copies and 40 million songs have been sold through paid DLC.<ref>{{cite web |last1=Verdu |first1=Mike |title=From Bear to Bull: How Oculus Quest 2 Is Changing the Game for VR |url=https://www.oculus.com/blog/from-bear-to-bull-how-oculus-quest-2-is-changing-the-game-for-vr/ |website=Oculus.com |publisher=[[Facebook, Inc.]] |access-date=February 7, 2021 |date=February 2, 2021 |archive-date=February 7, 2021 |archive-url=https://web.archive.org/web/20210207070533/https://www.oculus.com/blog/from-bear-to-bull-how-oculus-quest-2-is-changing-the-game-for-vr/ |url-status=live }}</ref>
+
+''[[Edge (magazine)|Edge]]'' thought the game was an excellent fit for VR as a medium, writing "At this point in virtual reality's development, it's still rare to encounter a game that feels native to the technology. ''Beat Saber'' is an exception."<ref name="Edge Review">{{cite magazine |author=<!--Staff writer(s); no by-line--> |title=Beat Saber Review |magazine=[[Edge (magazine)|Edge]] |issue=328|publisher=[[Future plc|Future]] |pages=120|date=February 2019}}</ref>
+''[[IGN]]'' noted that while the game "doesn't push the limits of [VR tech] too far", it is extremely effective at communicating the appeal of VR, and considered the game "a go-to for introducing anyone to virtual reality."<ref name="IGN Review">{{cite web |url=https://www.ign.com/articles/2019/05/28/beat-saber-review |title=Beat Saber Review |last=Stapleton |first=Dan |work=[[IGN]] |publisher=[[Ziff Davis]] |date=May 28, 2019 |access-date=January 2, 2020 |archive-date=March 5, 2020 |archive-url=https://web.archive.org/web/20200305104027/https://www.ign.com/articles/2019/05/28/beat-saber-review |url-status=live }}</ref>
+''[[GameSpot]]'' noted that at launch the supported song library was "slim", but nevertheless concluded that "''Beat Saber'' is an exhilarating rush and an exhausting game to play in the best way."<ref name="GameSpot Review">{{cite web |url=https://www.gamespot.com/reviews/beat-saber-review-bass-boosted/1900-6417044/ |title=Beat Saber Review – Bass-Boosted |last=Barbosa |first=Alessandro |work=[[GameSpot]] |publisher=[[CBS Interactive]] |date=November 26, 2018 |access-date=January 2, 2019 |archive-date=December 27, 2018 |archive-url=https://web.archive.org/web/20181227190928/https://www.gamespot.com/reviews/beat-saber-review-bass-boosted/1900-6417044/ |url-status=live }}</ref>
+
+In 2025, [[Meta Platforms|Meta]] compiled its "50 best-selling paid Quest games of all time", with ''Beat Saber'' topping the list at number 1.<ref>{{Cite web |date=2025-04-22 |title=Meta Revealed The 50 Best-Selling Quest Games Of All Time |url=https://www.uploadvr.com/meta-revealed-the-50-best-selling-quest-games-of-all-time/ |access-date=2025-04-23 |website=UploadVR |language=en |archive-date=April 23, 2025 |archive-url=https://web.archive.org/web/20250423030624/https://www.uploadvr.com/meta-revealed-the-50-best-selling-quest-games-of-all-time/ |url-status=live }}</ref>
+
+=== Awards ===
+{| class="wikitable sortable"
+|-
+! Year !! Award !! Category !! Result !! {{Refh}}
+|-
+| style="text-align:center;" rowspan="2" | 2018
+| [[The Game Awards 2018]]
+| Best VR/AR Game
+| {{Nom}}
+| style="text-align:center;" | <ref>{{cite web|url=https://www.polygon.com/game-awards-tga/2018/12/6/18130000/the-game-awards-winners-2018|title=The Game Awards 2018: Here are all the winners|last=Grant|first=Christopher|date=December 6, 2018|website=[[Polygon (website)|Polygon]]|access-date=December 8, 2018|archive-date=December 7, 2018|archive-url=https://web.archive.org/web/20181207114102/https://www.polygon.com/game-awards-tga/2018/12/6/18130000/the-game-awards-winners-2018|url-status=live}}</ref>
+|-
+| [[Gamers' Choice Awards]]
+| Fan Favorite VR Game
+| {{Won}}
+| style="text-align:center;" | <ref>{{cite web|url=http://www.gamerschoice.tv/index.aspx|title=2018 Gamers' Choice Awards|website=[[Gamers' Choice Awards]]|date=December 9, 2018|access-date=January 4, 2019|archive-url=https://web.archive.org/web/20190103210647/http://www.gamerschoice.tv/index.aspx|archive-date=January 3, 2019|url-status=dead}}</ref>
+|-
+| rowspan="12" |2019
+| rowspan="2" | [[22nd Annual D.I.C.E. Awards]]
+| [[D.I.C.E. Award for Immersive Reality Game of the Year|Immersive Reality Game of the Year]]
+| {{Won}}
+| rowspan="2" style="text-align:center;" | <ref>{{cite web|url=https://www.gamespot.com/articles/god-of-war-spider-man-lead-dice-awards-heres-all-t/1100-6464345/|title=God Of War, Spider-Man Lead DICE Awards; Here's All The Nominees|last=Makuch|first=Eddie|date=January 10, 2019|website=[[GameSpot]]|access-date=January 14, 2019|archive-date=January 11, 2019|archive-url=https://web.archive.org/web/20190111065623/https://www.gamespot.com/articles/god-of-war-spider-man-lead-dice-awards-heres-all-t/1100-6464345/|url-status=live}}</ref><ref>{{cite web|url=https://www.polygon.com/2019/2/14/18224190/dice-awards-2019-winners-god-of-war-ps4|title=God of War wins big at DICE Awards 2019|last=McWhertor|first=Michael|date=February 14, 2019|website=[[Polygon (website)|Polygon]]|access-date=February 14, 2019|archive-date=February 14, 2019|archive-url=https://web.archive.org/web/20190214103957/https://www.polygon.com/2019/2/14/18224190/dice-awards-2019-winners-god-of-war-ps4|url-status=live}}</ref>
+|-
+| [[D.I.C.E. Award for Immersive Reality Technical Achievement|Immersive Reality Technical Achievement]]
+| {{Nom}}
+|-
+| rowspan="4" | [[SXSW Gaming Awards]]
+| Excellence in Gameplay
+| {{Nom}}
+| rowspan="4" style="text-align:center;" | <ref>{{cite web|url=https://gaming.sxsw.com/news/2019/2019-sxsw-gaming-awards-finalists/|title=Here Are Your 2019 SXSW Gaming Awards Finalists!|last=Trent|first=Logan|date=February 11, 2019|website=[[South by Southwest]]|access-date=February 15, 2019|archive-date=February 15, 2019|archive-url=https://web.archive.org/web/20190215051341/https://gaming.sxsw.com/news/2019/2019-sxsw-gaming-awards-finalists/|url-status=dead}}</ref><ref>{{cite web|url=https://www.playstationlifestyle.net/2019/03/17/sxsw-gaming-awards-winners-2019/#/slide/1|title=God of War Takes Home 'Game of the Year' at SXSW 2019 Gaming Awards|last=Khan|first=Zarmena|date=March 17, 2019|website=PlayStation LifeStyle|access-date=March 17, 2019|archive-date=April 4, 2019|archive-url=https://web.archive.org/web/20190404044729/https://www.playstationlifestyle.net/2019/03/17/sxsw-gaming-awards-winners-2019/#/slide/1|url-status=live}}</ref>
+|-
+| Most Promising New Intellectual Property
+| {{Won}}
+|-
+| Trending Game of the Year
+| {{Nom}}
+|-
+| VR Game of the Year
+| {{Won}}
+|-
+| rowspan="2" | [[Game Developers Choice Awards]]
+| Best VR/AR Game
+| {{Won}}
+| rowspan="2" style="text-align:center;" | <ref>{{cite web|url=https://www.polygon.com/2019/1/4/18168931/gdc-choice-awards-2019-nominees-red-dead-redemption-2-spider-man-god-of-war-celeste|title=Red Dead Redemption 2 tops list of Game Developers Choice nominees|last=Good|first=Owen S.|date=January 4, 2019|website=[[Polygon (website)|Polygon]]|access-date=January 6, 2019|archive-date=January 5, 2019|archive-url=https://web.archive.org/web/20190105145410/https://www.polygon.com/platform/amp/2019/1/4/18168931/gdc-choice-awards-2019-nominees-red-dead-redemption-2-spider-man-god-of-war-celeste|url-status=dead}}</ref><ref>{{cite web|url=https://www.usgamer.net/articles/god-of-war-wins-another-goty-at-2019-game-developers-choice-awards|title=God of War Wins Another GOTY at 2019 Game Developers Choice Awards|last=Williams|first=Mike|date=March 20, 2019|website=[[Eurogamer|USGamer]]|access-date=March 21, 2019|archive-date=March 21, 2019|archive-url=https://web.archive.org/web/20190321035132/https://www.usgamer.net/articles/god-of-war-wins-another-goty-at-2019-game-developers-choice-awards|url-status=dead}}</ref>
+|-
+| Audience Award
+| {{Won}}
+|-
+| [[15th British Academy Games Awards]]
+| Debut Game
+| {{Nom}}
+| style="text-align:center;" | <ref>{{cite web|url=https://variety.com/2019/gaming/news/british-academy-games-awards-2019-nominees-1203163369/|title='God of War,' 'Red Dead 2' Lead BAFTA Game Awards Nominations|last=Fogel|first=Stefanie|date=March 14, 2019|website=[[Variety (magazine)|Variety]]|access-date=March 14, 2019|archive-date=March 15, 2019|archive-url=https://web.archive.org/web/20190315135246/https://variety.com/2019/gaming/news/british-academy-games-awards-2019-nominees-1203163369/|url-status=live}}</ref>
+|-
+| [[Golden Joystick Awards]]
+| rowspan="2" | Best VR/AR Game
+| {{Won}}
+| style="text-align:center;" | <ref>{{cite web|url=http://www.pushsquare.com/news/2019/09/days_gone_rides_off_with_three_nominations_in_this_years_golden_joystick_awards|title=Days Gone Rides Off with Three Nominations in This Year's Golden Joystick Awards|last=Tailby|first=Stephen|date=September 20, 2019|website=Push Square|access-date=September 21, 2019|archive-date=September 20, 2019|archive-url=https://web.archive.org/web/20190920222955/http://www.pushsquare.com/news/2019/09/days_gone_rides_off_with_three_nominations_in_this_years_golden_joystick_awards|url-status=live}}</ref><ref>{{cite web|url=https://www.gamesradar.com/Golden-Joystick-awards-2019-winners/|title=Here's every winner from this year's Golden Joystick Awards, including the Ultimate Game of the Year|author=GamesRadar staff|date=November 15, 2019|website=[[GamesRadar+]]|access-date=November 16, 2019|archive-date=November 15, 2019|archive-url=https://web.archive.org/web/20191115184820/https://www.gamesradar.com/Golden-Joystick-awards-2019-winners/|url-status=live}}</ref>
+|-
+| [[The Game Awards 2019]]
+| {{Won}}
+| style="text-align:center;" | <ref>{{cite web|url=https://www.gamespot.com/articles/the-game-awards-2019-nominees-full-list/1100-6471564/|title=The Game Awards 2019 Nominees Full List|last=Winslow|first=Jeremy|date=November 19, 2019|website=[[GameSpot]]|access-date=November 20, 2019|archive-date=November 23, 2019|archive-url=https://web.archive.org/web/20191123042344/https://www.gamespot.com/articles/the-game-awards-2019-nominees-full-list/1100-6471564/|url-status=live}}</ref><ref>{{cite web|url=https://www.gamespot.com/articles/the-game-awards-2019-winners-sekiro-takes-game-of-/1100-6472169/|title=The Game Awards 2019 Winners: Sekiro Takes Game Of The Year|last=Makuch|first=Eddie|date=December 13, 2019|website=[[GameSpot]]|access-date=December 13, 2019|archive-date=December 13, 2019|archive-url=https://web.archive.org/web/20191213184227/https://www.gamespot.com/articles/the-game-awards-2019-winners-sekiro-takes-game-of-/1100-6472169/|url-status=live}}</ref>
+|-
+|[[The Steam Awards]]
+|The "VR Game of the Year" Award
+| {{won}}
+| style="text-align:center;" | <ref>{{cite web|url=https://www.gamespot.com/articles/steam-awards-2019-winners-announced/1100-6472457/|title=Steam Awards 2019 Winners Announced|last=Watts|first=Steve|date=December 31, 2019|access-date=November 30, 2024|publisher=Gamespot|archive-date=December 31, 2019|archive-url=https://web.archive.org/web/20191231200357/https://www.gamespot.com/articles/steam-awards-2019-winners-announced/1100-6472457/|url-status=live}}</ref>
+|}
+
+== References ==
+{{Reflist}}
+
+== External links ==
+* {{Official website|http://beatsaber.com/}}
+
+[[Category:2019 video games]]
+[[Category:Dance video games]]
+[[Category:Early access video games]]
+[[Category:The Game Awards winners]]
+[[Category:Golden Joystick Award winners]]
+[[Category:HTC Vive games]]
+[[Category:Indie games]]
+[[Category:Meta Quest games]]
+[[Category:Music generated games]]
+[[Category:Oculus Rift games]]
+[[Category:Oculus Studios games]]
+[[Category:PlayStation 4 games]]
+[[Category:PlayStation VR games]]
+[[Category:Rhythm games]]
+[[Category:Single-player video games]]
+[[Category:Unity (game engine) games]]
+[[Category:Valve Index games]]
+[[Category:Video games developed in the Czech Republic]]
+[[Category:Virtual reality games]]
+[[Category:Windows games]]

@@ -299,6 +299,9 @@ function openDrawer(id) {
       : esc(s.title);
     return `<li><span>${title}${s.note ? ` — <span class="note">${esc(s.note)}</span>` : ''}</span></li>`;
   }).join('');
+  const artifacts = (work.artifacts || [])
+    .map((a) => `<li><a href="${esc(a.path)}" download>${esc(a.label)}</a></li>`)
+    .join('');
   const lic = work.license || {};
 
   const statusBlock = online
@@ -335,7 +338,9 @@ function openDrawer(id) {
       </dl>
     </div>
     ${controls ? `<div class="d-block"><h4>操作说明</h4><ul>${controls}</ul></div>` : ''}
+    ${artifacts ? `<div class="d-block"><h4>可下载产物</h4><ul>${artifacts}</ul></div>` : ''}
     ${work.differences ? `<div class="d-block"><h4>与参考作品的差异</h4><ul><li>${esc(work.differences)}</li></ul></div>` : ''}
+    ${work.notes ? `<div class="d-block"><h4>部署备注</h4><ul><li>${esc(work.notes)}</li></ul></div>` : ''}
     ${sources ? `<div class="d-block"><h4>来源与出处</h4><ul>${sources}</ul></div>` : ''}
     ${tags ? `<div class="d-block"><h4>标签</h4><div class="card-meta" style="padding-top:0">${tags}</div></div>` : ''}
     <div class="d-actions">${actions.join('')}</div>`;

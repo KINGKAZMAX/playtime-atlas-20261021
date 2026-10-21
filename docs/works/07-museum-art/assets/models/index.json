@@ -1,0 +1,987 @@
+{
+  "count": 6,
+  "models": [
+    {
+      "id": "cabinet-01",
+      "name": "星港立式机柜",
+      "latin": "STARLIGHT CABINET",
+      "range": "1972 — 1979",
+      "form": "立式投币机柜",
+      "story": "一台把「街机」这件事浓缩到最小空间的机器：上方灯箱负责招徕，中段屏幕负责留人，下方操作台负责让手比脑子快。投币口旁边那枚橙色小灯，是它唯一的成绩。",
+      "note": "原创提炼：所有早期投币机柜共有的「灯箱—屏幕—控制台」三段式比例，无任何具体机型的标识、贴图或独特造型。",
+      "parts": [
+        {
+          "name": "底座底墩",
+          "material": "shell-deep"
+        },
+        {
+          "name": "机身主体",
+          "material": "shell-dark"
+        },
+        {
+          "name": "顶部压条",
+          "material": "shell-mid"
+        },
+        {
+          "name": "灯箱外壳",
+          "material": "shell-deep"
+        },
+        {
+          "name": "灯箱灯面",
+          "material": "accent-lit"
+        },
+        {
+          "name": "灯箱标记1",
+          "material": "shell-deep"
+        },
+        {
+          "name": "灯箱标记2",
+          "material": "shell-deep"
+        },
+        {
+          "name": "灯箱标记3",
+          "material": "shell-deep"
+        },
+        {
+          "name": "屏幕边框",
+          "material": "shell-deep"
+        },
+        {
+          "name": "屏幕玻璃",
+          "material": "screen-glass"
+        },
+        {
+          "name": "屏幕辉光",
+          "material": "screen-glow"
+        },
+        {
+          "name": "操作台",
+          "material": "shell-mid"
+        },
+        {
+          "name": "操作台面板",
+          "material": "cream"
+        },
+        {
+          "name": "摇杆底座",
+          "material": "shell-deep"
+        },
+        {
+          "name": "摇杆杆",
+          "material": "metal-dark"
+        },
+        {
+          "name": "摇杆球头",
+          "material": "accent"
+        },
+        {
+          "name": "按键A",
+          "material": "cream"
+        },
+        {
+          "name": "按键B",
+          "material": "accent"
+        },
+        {
+          "name": "投币门",
+          "material": "shell-deep"
+        },
+        {
+          "name": "投币口上",
+          "material": "metal"
+        },
+        {
+          "name": "投币口下",
+          "material": "metal"
+        },
+        {
+          "name": "退币口",
+          "material": "metal-dark"
+        },
+        {
+          "name": "侧板左",
+          "material": "shell-mid"
+        },
+        {
+          "name": "侧板斜纹左-1",
+          "material": "accent"
+        },
+        {
+          "name": "侧板斜纹左-2",
+          "material": "accent"
+        },
+        {
+          "name": "侧板斜纹左-3",
+          "material": "accent"
+        },
+        {
+          "name": "侧板右",
+          "material": "shell-mid"
+        },
+        {
+          "name": "侧板斜纹右-1",
+          "material": "accent"
+        },
+        {
+          "name": "侧板斜纹右-2",
+          "material": "accent"
+        },
+        {
+          "name": "侧板斜纹右-3",
+          "material": "accent"
+        },
+        {
+          "name": "散热百叶1",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热百叶2",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热百叶3",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热百叶4",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热百叶5",
+          "material": "shell-deep"
+        },
+        {
+          "name": "正面框条",
+          "material": "accent"
+        }
+      ],
+      "partCount": 36,
+      "triangleCount": 1076,
+      "dimensions": {
+        "w": 0.72,
+        "h": 1.78,
+        "d": 0.85
+      },
+      "measuredBounds": {
+        "min": [
+          -0.4772,
+          0,
+          -0.65
+        ],
+        "max": [
+          0.4772,
+          1.765,
+          0.8283
+        ],
+        "size": [
+          0.9544,
+          1.765,
+          1.4783
+        ]
+      },
+      "files": {
+        "glb": "./model-cabinet-01.glb",
+        "png": "./model-cabinet-01.png",
+        "techSvg": "./model-cabinet-01.tech.svg",
+        "json": "./model-cabinet-01.json"
+      },
+      "license": "CC0-1.0",
+      "origin": "本馆原创虚构展品"
+    },
+    {
+      "id": "console-02",
+      "name": "小行星卡带机",
+      "latin": "ASTER CONSOLE",
+      "range": "1983 — 1990",
+      "form": "八位家用主机",
+      "story": "巴掌大的扁平机身，插在电视下方，像一块被压扁的糖果。游戏的全部内容都住进一张比邮票略大的卡带，插下去时那声「咔哒」，是那个年代最精准的交互反馈。",
+      "note": "原创提炼：取八位主机通行的「扁平方盒 + 顶部卡槽 + 十字键」语汇，比例与配色为原创。",
+      "parts": [
+        {
+          "name": "主机本体",
+          "material": "shell-mid"
+        },
+        {
+          "name": "顶盖面板",
+          "material": "cream"
+        },
+        {
+          "name": "卡槽",
+          "material": "shell-deep"
+        },
+        {
+          "name": "卡带",
+          "material": "cream-dim"
+        },
+        {
+          "name": "卡带标签",
+          "material": "accent"
+        },
+        {
+          "name": "前面板",
+          "material": "shell-deep"
+        },
+        {
+          "name": "电源灯",
+          "material": "accent-lit"
+        },
+        {
+          "name": "手柄口左",
+          "material": "metal-dark"
+        },
+        {
+          "name": "手柄口右",
+          "material": "metal-dark"
+        },
+        {
+          "name": "散热槽1",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热槽2",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热槽3",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热槽4",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热槽5",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热槽6",
+          "material": "shell-deep"
+        },
+        {
+          "name": "脚垫0-后",
+          "material": "shell-deep"
+        },
+        {
+          "name": "脚垫0-前",
+          "material": "shell-deep"
+        },
+        {
+          "name": "脚垫1-后",
+          "material": "shell-deep"
+        },
+        {
+          "name": "脚垫1-前",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄左外壳",
+          "material": "shell-light"
+        },
+        {
+          "name": "手柄左握把",
+          "material": "shell-light"
+        },
+        {
+          "name": "手柄左十字键",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄左按键A",
+          "material": "accent"
+        },
+        {
+          "name": "手柄左按键B",
+          "material": "cream"
+        },
+        {
+          "name": "手柄左启动键",
+          "material": "cream-dim"
+        },
+        {
+          "name": "手柄左线缆",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄右外壳",
+          "material": "shell-light"
+        },
+        {
+          "name": "手柄右握把",
+          "material": "shell-light"
+        },
+        {
+          "name": "手柄右十字键",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄右按键A",
+          "material": "accent"
+        },
+        {
+          "name": "手柄右按键B",
+          "material": "cream"
+        },
+        {
+          "name": "手柄右启动键",
+          "material": "cream-dim"
+        },
+        {
+          "name": "手柄右线缆",
+          "material": "shell-deep"
+        }
+      ],
+      "partCount": 33,
+      "triangleCount": 1652,
+      "dimensions": {
+        "w": 0.22,
+        "h": 0.07,
+        "d": 0.16
+      },
+      "measuredBounds": {
+        "min": [
+          -0.193,
+          0,
+          -0.08
+        ],
+        "max": [
+          0.193,
+          0.094,
+          0.1998
+        ],
+        "size": [
+          0.386,
+          0.094,
+          0.2798
+        ]
+      },
+      "files": {
+        "glb": "./model-console-02.glb",
+        "png": "./model-console-02.png",
+        "techSvg": "./model-console-02.tech.svg",
+        "json": "./model-console-02.json"
+      },
+      "license": "CC0-1.0",
+      "origin": "本馆原创虚构展品"
+    },
+    {
+      "id": "console-03",
+      "name": "子午线光盘机",
+      "latin": "MERIDIAN DECK",
+      "range": "1994 — 2000",
+      "form": "16 位光盘主机",
+      "story": "圆角取代了直角，像一枚被磨圆的光盘。托盘弹出时那句机械合拢声，比任何开机画面都更有仪式感。两只摇杆开始分工：左手转向，右手确认。",
+      "note": "原创提炼：取光盘主机通行的圆角机身与托盘结构，具体曲线、开孔与配色均为原创。",
+      "parts": [
+        {
+          "name": "机身",
+          "material": "shell-mid"
+        },
+        {
+          "name": "顶盖",
+          "material": "shell-light"
+        },
+        {
+          "name": "光盘托槽",
+          "material": "shell-deep"
+        },
+        {
+          "name": "光盘",
+          "material": "metal"
+        },
+        {
+          "name": "光盘内圈",
+          "material": "cream"
+        },
+        {
+          "name": "光盘托盘唇",
+          "material": "shell-deep"
+        },
+        {
+          "name": "前面板",
+          "material": "shell-deep"
+        },
+        {
+          "name": "状态灯条",
+          "material": "accent-lit"
+        },
+        {
+          "name": "电源键",
+          "material": "accent"
+        },
+        {
+          "name": "手柄口左",
+          "material": "metal-dark"
+        },
+        {
+          "name": "手柄口右",
+          "material": "metal-dark"
+        },
+        {
+          "name": "侧面散热槽1",
+          "material": "shell-deep"
+        },
+        {
+          "name": "侧面散热槽2",
+          "material": "shell-deep"
+        },
+        {
+          "name": "侧面散热槽3",
+          "material": "shell-deep"
+        },
+        {
+          "name": "侧面散热槽4",
+          "material": "shell-deep"
+        },
+        {
+          "name": "侧面散热槽5",
+          "material": "shell-deep"
+        },
+        {
+          "name": "侧面散热槽6",
+          "material": "shell-deep"
+        },
+        {
+          "name": "侧面散热槽7",
+          "material": "shell-deep"
+        },
+        {
+          "name": "侧面散热槽8",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄外壳",
+          "material": "shell-light"
+        },
+        {
+          "name": "手柄左握把",
+          "material": "shell-light"
+        },
+        {
+          "name": "手柄右握把",
+          "material": "shell-light"
+        },
+        {
+          "name": "左摇杆座",
+          "material": "shell-deep"
+        },
+        {
+          "name": "左摇杆帽",
+          "material": "shell-deep"
+        },
+        {
+          "name": "右摇杆座",
+          "material": "shell-deep"
+        },
+        {
+          "name": "右摇杆帽",
+          "material": "shell-deep"
+        },
+        {
+          "name": "面键1",
+          "material": "accent"
+        },
+        {
+          "name": "面键2",
+          "material": "cream"
+        },
+        {
+          "name": "面键3",
+          "material": "cream"
+        },
+        {
+          "name": "面键4",
+          "material": "cream"
+        },
+        {
+          "name": "手柄十字键",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄线缆",
+          "material": "shell-deep"
+        }
+      ],
+      "partCount": 32,
+      "triangleCount": 2472,
+      "dimensions": {
+        "w": 0.32,
+        "h": 0.1,
+        "d": 0.24
+      },
+      "measuredBounds": {
+        "min": [
+          -0.16,
+          -0.0007,
+          -0.12
+        ],
+        "max": [
+          0.163,
+          0.1167,
+          0.281
+        ],
+        "size": [
+          0.323,
+          0.1173,
+          0.401
+        ]
+      },
+      "files": {
+        "glb": "./model-console-03.glb",
+        "png": "./model-console-03.png",
+        "techSvg": "./model-console-03.tech.svg",
+        "json": "./model-console-03.json"
+      },
+      "license": "CC0-1.0",
+      "origin": "本馆原创虚构展品"
+    },
+    {
+      "id": "handheld-04",
+      "name": "余烬掌机",
+      "latin": "POCKET EMBER",
+      "range": "2004 — 2010",
+      "form": "双屏翻盖掌机",
+      "story": "合上时是一枚温热的小方块，摊开就变成两屏。上下分工：上面看世界，下面摸世界。公交车上的一次单局，不必回家、不必开机、不必插卡。",
+      "note": "原创提炼：取双屏翻盖掌机的双层结构与合盖动作，屏幕比例、键位与外壳分色为原创。",
+      "parts": [
+        {
+          "name": "下机身",
+          "material": "shell-mid"
+        },
+        {
+          "name": "上机身",
+          "material": "shell-mid"
+        },
+        {
+          "name": "转轴",
+          "material": "metal-dark"
+        },
+        {
+          "name": "下屏边框",
+          "material": "shell-deep"
+        },
+        {
+          "name": "下屏玻璃",
+          "material": "screen-glass"
+        },
+        {
+          "name": "下屏辉光",
+          "material": "screen-glow"
+        },
+        {
+          "name": "上屏边框",
+          "material": "shell-deep"
+        },
+        {
+          "name": "上屏玻璃",
+          "material": "screen-glass"
+        },
+        {
+          "name": "上屏辉光",
+          "material": "screen-glow"
+        },
+        {
+          "name": "十字键",
+          "material": "shell-deep"
+        },
+        {
+          "name": "按键A",
+          "material": "accent"
+        },
+        {
+          "name": "按键B",
+          "material": "cream"
+        },
+        {
+          "name": "开始键",
+          "material": "cream-dim"
+        },
+        {
+          "name": "选择键",
+          "material": "cream-dim"
+        },
+        {
+          "name": "肩键左",
+          "material": "shell-light"
+        },
+        {
+          "name": "肩键右",
+          "material": "shell-light"
+        },
+        {
+          "name": "扬声器格栅",
+          "material": "shell-deep"
+        },
+        {
+          "name": "状态灯",
+          "material": "accent-lit"
+        },
+        {
+          "name": "正面饰条",
+          "material": "accent"
+        }
+      ],
+      "partCount": 19,
+      "triangleCount": 748,
+      "dimensions": {
+        "w": 0.14,
+        "h": 0.16,
+        "d": 0.03
+      },
+      "measuredBounds": {
+        "min": [
+          -0.07,
+          0,
+          -0.037
+        ],
+        "max": [
+          0.07,
+          0.1254,
+          0.083
+        ],
+        "size": [
+          0.14,
+          0.1254,
+          0.12
+        ]
+      },
+      "files": {
+        "glb": "./model-handheld-04.glb",
+        "png": "./model-handheld-04.png",
+        "techSvg": "./model-handheld-04.tech.svg",
+        "json": "./model-handheld-04.json"
+      },
+      "license": "CC0-1.0",
+      "origin": "本馆原创虚构展品"
+    },
+    {
+      "id": "hybrid-05",
+      "name": "光环平板",
+      "latin": "HALO SLATE",
+      "range": "2012 — 2017",
+      "form": "平板混合主机",
+      "story": "一块玻璃板，加上一对可以摘下来的手柄。放进客厅是主机，拿在手里是平板，接上电视又是另一台机器。它的机身薄得能透出桌面的木纹。",
+      "note": "原创提炼：取平板加可拆手柄的通用架构，手柄形态与轨道接口为原创设计。",
+      "parts": [
+        {
+          "name": "平板本体",
+          "material": "shell-deep"
+        },
+        {
+          "name": "平板边框",
+          "material": "shell-mid"
+        },
+        {
+          "name": "平板屏幕",
+          "material": "screen-glass"
+        },
+        {
+          "name": "平板屏幕辉光",
+          "material": "screen-glow"
+        },
+        {
+          "name": "摄像头",
+          "material": "metal-dark"
+        },
+        {
+          "name": "支撑脚",
+          "material": "shell-light"
+        },
+        {
+          "name": "侧轨左",
+          "material": "metal"
+        },
+        {
+          "name": "侧轨右",
+          "material": "metal"
+        },
+        {
+          "name": "后盖散热",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄左外壳",
+          "material": "shell-light"
+        },
+        {
+          "name": "手柄左连接臂",
+          "material": "shell-mid"
+        },
+        {
+          "name": "手柄左摇杆座",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄左摇杆帽",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄左十字键",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄左按键A",
+          "material": "accent"
+        },
+        {
+          "name": "手柄左按键B",
+          "material": "cream"
+        },
+        {
+          "name": "手柄左按键C",
+          "material": "cream-dim"
+        },
+        {
+          "name": "手柄右外壳",
+          "material": "shell-light"
+        },
+        {
+          "name": "手柄右连接臂",
+          "material": "shell-mid"
+        },
+        {
+          "name": "手柄右摇杆座",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄右摇杆帽",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄右十字键",
+          "material": "shell-deep"
+        },
+        {
+          "name": "手柄右按键A",
+          "material": "accent"
+        },
+        {
+          "name": "手柄右按键B",
+          "material": "cream"
+        },
+        {
+          "name": "手柄右按键C",
+          "material": "cream-dim"
+        }
+      ],
+      "partCount": 25,
+      "triangleCount": 1932,
+      "dimensions": {
+        "w": 0.24,
+        "h": 0.02,
+        "d": 0.17
+      },
+      "measuredBounds": {
+        "min": [
+          -0.184,
+          0,
+          -0.108
+        ],
+        "max": [
+          0.184,
+          0.0509,
+          0.108
+        ],
+        "size": [
+          0.368,
+          0.0509,
+          0.216
+        ]
+      },
+      "files": {
+        "glb": "./model-hybrid-05.glb",
+        "png": "./model-hybrid-05.png",
+        "techSvg": "./model-hybrid-05.tech.svg",
+        "json": "./model-hybrid-05.json"
+      },
+      "license": "CC0-1.0",
+      "origin": "本馆原创虚构展品"
+    },
+    {
+      "id": "modern-06",
+      "name": "矢量节点",
+      "latin": "VECTOR NODE",
+      "range": "2020 — 至今",
+      "form": "立式模块化主机",
+      "story": "一台更像「设备」而不是「玩具」的机器。侧板可以整块抽走，格栅后面是沉默的算力。橙色指示灯只亮一次，意思是：它在等你打开自己。",
+      "note": "原创提炼：取当代主机/PC 融合形态的立式机箱与模块化侧板，通风栅格样式与分色为原创。",
+      "parts": [
+        {
+          "name": "底座",
+          "material": "shell-deep"
+        },
+        {
+          "name": "机箱",
+          "material": "shell-mid"
+        },
+        {
+          "name": "顶盖",
+          "material": "shell-light"
+        },
+        {
+          "name": "顶盖饰条",
+          "material": "accent"
+        },
+        {
+          "name": "散热格栅1",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅2",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅3",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅4",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅5",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅6",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅7",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅8",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅9",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅10",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅11",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅12",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅13",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅14",
+          "material": "shell-deep"
+        },
+        {
+          "name": "散热格栅15",
+          "material": "shell-deep"
+        },
+        {
+          "name": "前面板饰框",
+          "material": "shell-deep"
+        },
+        {
+          "name": "状态指示灯",
+          "material": "accent-lit"
+        },
+        {
+          "name": "指示灯槽",
+          "material": "shell-deep"
+        },
+        {
+          "name": "可拆侧板",
+          "material": "shell-light"
+        },
+        {
+          "name": "侧板接缝",
+          "material": "shell-deep"
+        },
+        {
+          "name": "侧板扣手",
+          "material": "metal"
+        },
+        {
+          "name": "脚垫左后",
+          "material": "shell-deep"
+        },
+        {
+          "name": "脚垫右后",
+          "material": "shell-deep"
+        },
+        {
+          "name": "脚垫左前",
+          "material": "shell-deep"
+        },
+        {
+          "name": "脚垫右前",
+          "material": "shell-deep"
+        },
+        {
+          "name": "后部散热槽1",
+          "material": "shell-deep"
+        },
+        {
+          "name": "后部散热槽2",
+          "material": "shell-deep"
+        },
+        {
+          "name": "后部散热槽3",
+          "material": "shell-deep"
+        },
+        {
+          "name": "后部散热槽4",
+          "material": "shell-deep"
+        },
+        {
+          "name": "后部散热槽5",
+          "material": "shell-deep"
+        },
+        {
+          "name": "后部散热槽6",
+          "material": "shell-deep"
+        },
+        {
+          "name": "接口面板",
+          "material": "shell-deep"
+        }
+      ],
+      "partCount": 36,
+      "triangleCount": 1044,
+      "dimensions": {
+        "w": 0.18,
+        "h": 0.34,
+        "d": 0.18
+      },
+      "measuredBounds": {
+        "min": [
+          -0.095,
+          0,
+          -0.136
+        ],
+        "max": [
+          0.096,
+          0.3375,
+          0.205
+        ],
+        "size": [
+          0.191,
+          0.3375,
+          0.341
+        ]
+      },
+      "files": {
+        "glb": "./model-modern-06.glb",
+        "png": "./model-modern-06.png",
+        "techSvg": "./model-modern-06.tech.svg",
+        "json": "./model-modern-06.json"
+      },
+      "license": "CC0-1.0",
+      "origin": "本馆原创虚构展品"
+    }
+  ]
+}

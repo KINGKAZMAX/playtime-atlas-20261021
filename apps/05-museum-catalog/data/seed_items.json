@@ -1,0 +1,1392 @@
+[
+ {
+  "id": "hw-whirlwind",
+  "wiki": "Whirlwind (computer)",
+  "era": "origins",
+  "kind": "hardware",
+  "year": 1951,
+  "platform": "MIT Whirlwind / real-time cathode-ray-tube display",
+  "creator": "MIT Lincoln Laboratory (Jay Forrester)",
+  "title": "Whirlwind (computer)"
+ },
+ {
+  "id": "hw-nim",
+  "wiki": "Nim",
+  "era": "origins",
+  "kind": "hardware",
+  "year": 1952,
+  "platform": "W. L. Maxson Corporation 继电器式取石子机（后来的 NIMROD）",
+  "creator": "Herbert Koppel、Eugene Grant、Howard Baller（W. L. Maxson Corporation）",
+  "title": "Nimrod 取石子计算机"
+ },
+ {
+  "id": "hw-tx0",
+  "wiki": "TX-0",
+  "era": "origins",
+  "kind": "hardware",
+  "year": 1956,
+  "platform": "MIT TX-0 laboratory computer",
+  "creator": "MIT (Ben Gurley, Bob Everett)",
+  "title": "TX-0"
+ },
+ {
+  "id": "hw-pdp1",
+  "wiki": "PDP-1",
+  "era": "origins",
+  "kind": "hardware",
+  "year": 1959,
+  "platform": "Digital Equipment Corporation PDP-1",
+  "creator": "Digital Equipment Corporation",
+  "title": "PDP-1"
+ },
+ {
+  "id": "hw-plato",
+  "wiki": "PLATO (computer system)",
+  "era": "origins",
+  "kind": "hardware",
+  "year": 1960,
+  "platform": "University of Illinois PLATO system",
+  "creator": "University of Illinois at Urbana-Champaign",
+  "title": "PLATO (computer system)"
+ },
+ {
+  "id": "hw-imlac",
+  "wiki": "Imlac",
+  "era": "origins",
+  "kind": "hardware",
+  "year": 1969,
+  "platform": "Imlac vector display computer",
+  "creator": "Imlac / Evans & Sutherland",
+  "title": "Imlac PDS-1 图形显示系统"
+ },
+ {
+  "id": "sw-little-computer-program",
+  "wiki": "Early history of video games",
+  "era": "origins",
+  "kind": "work",
+  "year": 1951,
+  "platform": "CSIRAC / A.C.T. (Australia)",
+  "creator": "Geoff Hill",
+  "title": "Little Computer Program"
+ },
+ {
+  "id": "sw-tennis-for-two",
+  "wiki": "Tennis for Two",
+  "era": "origins",
+  "kind": "work",
+  "year": 1958,
+  "platform": "Donner Model 30 analog computer + oscilloscope",
+  "creator": "William Higinbotham (Brookhaven National Laboratory)",
+  "title": "Tennis for Two"
+ },
+ {
+  "id": "sw-space-travel",
+  "wiki": "Space Travel (video game)",
+  "era": "origins",
+  "kind": "work",
+  "year": 1969,
+  "platform": "Multics / GECOS / PDP-7（1969 年版；其 1961 年前身运行于 IBM 7090）",
+  "creator": "Ken Thompson",
+  "title": "Space Travel"
+ },
+ {
+  "id": "sw-spacewar",
+  "wiki": "Spacewar!",
+  "era": "origins",
+  "kind": "work",
+  "year": 1962,
+  "platform": "PDP-1 (MIT)",
+  "creator": "Steve Russell, Wayne Wiitanen, Bob Wiitanen, Carl Frederic",
+  "title": "Spacewar!"
+ },
+ {
+  "id": "sw-sketchpad",
+  "wiki": "Sketchpad",
+  "era": "origins",
+  "kind": "work",
+  "year": 1963,
+  "platform": "Sketchpad (TX-2 / IBM 7090)",
+  "creator": "Ivan Sutherland",
+  "title": "Sketchpad"
+ },
+ {
+  "id": "sw-sumerian-game",
+  "wiki": "The Sumerian Game",
+  "era": "origins",
+  "kind": "work",
+  "year": 1966,
+  "platform": "Modified IBM 1620",
+  "creator": "Mabel Addis",
+  "title": "The Sumerian Game"
+ },
+ {
+  "id": "hw-brown-box",
+  "wiki": "First generation of video game consoles",
+  "era": "origins",
+  "kind": "hardware",
+  "year": 1969,
+  "platform": "Brown Box / Television Trainer prototype console",
+  "creator": "Ralph Baer (with Bill Harrison)",
+  "title": "Brown Box (prototype)"
+ },
+ {
+  "id": "sw-volleyball",
+  "wiki": "Checkers (1952 video game)",
+  "era": "origins",
+  "kind": "work",
+  "year": 1952,
+  "platform": "Ferranti Mark 1 计算机（与 NIMROD 同期）",
+  "creator": "Christopher Strachey",
+  "title": "Checkers（1952 版）"
+ },
+ {
+  "id": "sw-computer-space",
+  "wiki": "Computer Space",
+  "era": "arcade",
+  "kind": "work",
+  "year": 1971,
+  "platform": "Nutting Associates Computer Space cabinet (Pong hardware, 1971)",
+  "creator": "Atari 前身 Syzygy Engineering（Nolan Bushnell、Andy Cappock）设计，Nutting Associates 制造与发行",
+  "title": "Computer Space"
+ },
+ {
+  "id": "hw-magnavox-odyssey",
+  "wiki": "Magnavox Odyssey",
+  "era": "arcade",
+  "kind": "hardware",
+  "year": 1972,
+  "platform": "Magnavox Odyssey first-gen console",
+  "creator": "Magnavox / Ralph Baer team",
+  "title": "Magnavox Odyssey"
+ },
+ {
+  "id": "sw-pong",
+  "wiki": "Pong",
+  "era": "arcade",
+  "kind": "work",
+  "year": 1972,
+  "platform": "Atari 专用街机硬件（1972 年 11 月 29 日北美首发）；1975 年 10 月推出 Atari VCS/2600 家用卡带版",
+  "creator": "Atari (Allan Alcorn, Ted Dabney, Nolan Bushnell)",
+  "title": "Pong"
+ },
+ {
+  "id": "sw-noughts-and-crosses",
+  "wiki": "OXO (video game)",
+  "era": "origins",
+  "kind": "work",
+  "year": 1952,
+  "platform": "EDSAC 计算机",
+  "creator": "A. S. Douglas（剑桥大学）",
+  "title": "OXO（井字棋模拟器）"
+ },
+ {
+  "id": "sw-gun-fight",
+  "wiki": "Gun Fight",
+  "era": "arcade",
+  "kind": "work",
+  "year": 1975,
+  "platform": "Taito 专用街机硬件（1975 年 9 月日本首发），后移植至 Astrocade 与 Atari 8-bit",
+  "creator": "Taito（Tomohiro Nishikado 设计；美版由 Dave Nutting 参与设计，Midway Manufacturing 发行）",
+  "title": "Gun Fight"
+ },
+ {
+  "id": "hw-channel-f",
+  "wiki": "Fairchild Channel F",
+  "era": "arcade",
+  "kind": "hardware",
+  "year": 1976,
+  "platform": "Fairchild Channel F second-gen console",
+  "creator": "Fairchild Semiconductor (Jerry Lawson)",
+  "title": "Fairchild Channel F"
+ },
+ {
+  "id": "sw-blockade",
+  "wiki": "Blockade (video game)",
+  "era": "arcade",
+  "kind": "work",
+  "year": 1976,
+  "platform": "Gremlin Industries coin-op",
+  "creator": "Gremlin Industries (Lane Davis)",
+  "title": "Blockade (video game)"
+ },
+ {
+  "id": "hw-atari-vcs",
+  "wiki": "Atari 2600",
+  "era": "arcade",
+  "kind": "hardware",
+  "year": 1977,
+  "platform": "Atari VCS / 2600 cartridge console",
+  "creator": "Atari, Inc.",
+  "title": "Atari 2600"
+ },
+ {
+  "id": "sw-speed-race",
+  "wiki": "Speed Race",
+  "era": "arcade",
+  "kind": "work",
+  "year": 1974,
+  "platform": "Exidy Vintage Speed Race coin-op",
+  "creator": "Taito（Masahiro Fukuchi、Yoshiki Okamoto）",
+  "title": "Speed Race"
+ },
+ {
+  "id": "sw-death-race",
+  "wiki": "Death Race (1976 video game)",
+  "era": "arcade",
+  "kind": "work",
+  "year": 1976,
+  "platform": "Exidy coin-op",
+  "creator": "Exidy (Larry Kaplan)",
+  "title": "Death Race"
+ },
+ {
+  "id": "sw-space-invaders",
+  "wiki": "Space Invaders",
+  "era": "arcade",
+  "kind": "work",
+  "year": 1978,
+  "platform": "Taito 8100 / arcade cabinet",
+  "creator": "Taito (Tomohiro Nishikado)",
+  "title": "Space Invaders"
+ },
+ {
+  "id": "sw-asteroids",
+  "wiki": "Asteroids (video game)",
+  "era": "arcade",
+  "kind": "work",
+  "year": 1979,
+  "platform": "Atari vector-graphics arcade hardware",
+  "creator": "Atari (Ed Logg, Lyle Rains)",
+  "title": "Asteroids (video game)"
+ },
+ {
+  "id": "sw-galaxian",
+  "wiki": "Galaxian",
+  "era": "arcade",
+  "kind": "work",
+  "year": 1979,
+  "platform": "Namco arcade hardware",
+  "creator": "Namco (Kazunori Sawano)",
+  "title": "Galaxian"
+ },
+ {
+  "id": "sw-adventure-atari",
+  "wiki": "Adventure (1980 video game)",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1980,
+  "platform": "Atari 2600 (VCS) cartridge",
+  "creator": "Atari (Warren Robinett)",
+  "title": "Adventure (1980 video game)"
+ },
+ {
+  "id": "sw-mud1",
+  "wiki": "Multi-user dungeon",
+  "era": "arcade",
+  "kind": "work",
+  "year": 1978,
+  "platform": "Mainframe computer via telnet (University of Essex)",
+  "creator": "Roy Trubshaw, Richard Bartle",
+  "title": "MUD1 (University of Essex)"
+ },
+ {
+  "id": "sw-arkanoid",
+  "wiki": "Arkanoid",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1986,
+  "platform": "Romstar arcade hardware",
+  "creator": "Taito（Akira Fujita、Hiroshi Tsujino 设计；北美由 Romstar 发行）",
+  "title": "Arkanoid"
+ },
+ {
+  "id": "sw-odyssey2-pong",
+  "wiki": "Magnavox Odyssey",
+  "era": "arcade",
+  "kind": "work",
+  "year": 1972,
+  "platform": "Magnavox Odyssey",
+  "creator": "Magnavox / Ralph Baer",
+  "title": "Pong (Magnavox Odyssey version)"
+ },
+ {
+  "id": "hw-vic20",
+  "wiki": "VIC-20",
+  "era": "home8bit",
+  "kind": "hardware",
+  "year": 1980,
+  "platform": "Commodore VIC-20 home computer",
+  "creator": "Commodore Business Machines",
+  "title": "VIC-20"
+ },
+ {
+  "id": "hw-game-and-watch",
+  "wiki": "Game & Watch",
+  "era": "home8bit",
+  "kind": "hardware",
+  "year": 1980,
+  "platform": "Nintendo handheld electronic game line",
+  "creator": "Nintendo (Gumpei Yokoi)",
+  "title": "Game & Watch"
+ },
+ {
+  "id": "hw-zx-spectrum",
+  "wiki": "ZX Spectrum",
+  "era": "home8bit",
+  "kind": "hardware",
+  "year": 1982,
+  "platform": "Sinclair Research home computer",
+  "creator": "Sinclair Research",
+  "title": "ZX Spectrum"
+ },
+ {
+  "id": "hw-commodore-64",
+  "wiki": "Commodore 64",
+  "era": "home8bit",
+  "kind": "hardware",
+  "year": 1982,
+  "platform": "Commodore 64 home computer",
+  "creator": "Commodore International (Jack Tramiel, Robert Yannes)",
+  "title": "Commodore 64"
+ },
+ {
+  "id": "hw-colecovision",
+  "wiki": "ColecoVision",
+  "era": "home8bit",
+  "kind": "hardware",
+  "year": 1982,
+  "platform": "ColecoVision cartridge console",
+  "creator": "Coleco / Sok-Yon Lee",
+  "title": "ColecoVision"
+ },
+ {
+  "id": "hw-famicom",
+  "wiki": "Famicom",
+  "era": "home8bit",
+  "kind": "hardware",
+  "year": 1983,
+  "platform": "Nintendo Family Computer",
+  "creator": "Nintendo (Masayuki Uemura)",
+  "title": "Famicom"
+ },
+ {
+  "id": "hw-nes",
+  "wiki": "Nintendo Entertainment System",
+  "era": "home8bit",
+  "kind": "hardware",
+  "year": 1985,
+  "platform": "Famicom/NES 8-bit console",
+  "creator": "Nintendo",
+  "title": "Nintendo Entertainment System"
+ },
+ {
+  "id": "hw-amiga",
+  "wiki": "Amiga",
+  "era": "home8bit",
+  "kind": "hardware",
+  "year": 1985,
+  "platform": "Commodore Amiga home computer",
+  "creator": "Commodore International (Jay Miner)",
+  "title": "Amiga"
+ },
+ {
+  "id": "hw-master-system",
+  "wiki": "Sega Master System",
+  "era": "home8bit",
+  "kind": "hardware",
+  "year": 1986,
+  "platform": "Sega 8-bit console",
+  "creator": "Sega",
+  "title": "Sega Master System"
+ },
+ {
+  "id": "hw-mega-drive",
+  "wiki": "Sega Genesis",
+  "era": "home8bit",
+  "kind": "hardware",
+  "year": 1988,
+  "platform": "Sega Mega Drive / Genesis 16-bit console",
+  "creator": "Sega (Hideki Sato)",
+  "title": "Sega Genesis"
+ },
+ {
+  "id": "sw-pac-man",
+  "wiki": "Pac-Man",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1980,
+  "platform": "Namco arcade hardware",
+  "creator": "Namco (Toru Iwatani)",
+  "title": "Pac-Man"
+ },
+ {
+  "id": "sw-donkey-kong",
+  "wiki": "Donkey Kong",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1981,
+  "platform": "Nintendo arcade hardware",
+  "creator": "Nintendo (Shigeru Miyamoto)",
+  "title": "Donkey Kong"
+ },
+ {
+  "id": "sw-tetris",
+  "wiki": "Tetris",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1984,
+  "platform": "Cross-platform (NES, Game Boy, IBM PC)",
+  "creator": "Alexey Pajitnov, Vadim Gerasimov (Elorg)",
+  "title": "Tetris"
+ },
+ {
+  "id": "sw-elite",
+  "wiki": "Elite (video game)",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1984,
+  "platform": "BBC Micro, ZX Spectrum, Commodore 64, Amstrad CPC",
+  "creator": "David Braben, Ian Bell",
+  "title": "Elite"
+ },
+ {
+  "id": "sw-super-mario-bros",
+  "wiki": "Super Mario Bros.",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1985,
+  "platform": "Nintendo Entertainment System",
+  "creator": "Nintendo (Shigeru Miyamoto, Takashi Tezuka)",
+  "title": "Super Mario Bros."
+ },
+ {
+  "id": "sw-legend-of-zelda",
+  "wiki": "The Legend of Zelda",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1986,
+  "platform": "Famicom Disk System / NES",
+  "creator": "Nintendo (Shigeru Miyamoto, Takashi Tezuka)",
+  "title": "The Legend of Zelda"
+ },
+ {
+  "id": "sw-prince-of-persia",
+  "wiki": "Prince of Persia (1989 video game)",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1989,
+  "platform": "Apple II, MS-DOS, Macintosh",
+  "creator": "Jordan Mechner (Brøderbund)",
+  "title": "Prince of Persia (1989 video game)"
+ },
+ {
+  "id": "sw-simcity",
+  "wiki": "SimCity",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1989,
+  "platform": "IBM PC compatible, Macintosh",
+  "creator": "Maxis (Will Wright, Jeff Braun)",
+  "title": "SimCity"
+ },
+ {
+  "id": "sw-space-quest",
+  "wiki": "Space Quest",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1986,
+  "platform": "IBM PC, Apple II, Macintosh",
+  "creator": " Sierra On-Line (Mark Crowe, Scott Murphy)",
+  "title": "Space Quest"
+ },
+ {
+  "id": "sw-gradius",
+  "wiki": "Gradius (video game)",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1985,
+  "platform": "Konami arcade hardware",
+  "creator": "Konami",
+  "title": "Gradius (video game)"
+ },
+ {
+  "id": "sw-dragons-lair",
+  "wiki": "Dragon's Lair",
+  "era": "home8bit",
+  "kind": "work",
+  "year": 1983,
+  "platform": "LaserDisc / Cinematronics hardware",
+  "creator": "Cinematronics (Don Bluth, Rick Dyer)",
+  "title": "Dragon's Lair"
+ },
+ {
+  "id": "hw-snes",
+  "wiki": "Super Nintendo Entertainment System",
+  "era": "console16",
+  "kind": "hardware",
+  "year": 1990,
+  "platform": "Super Famicom / SNES 16-bit console",
+  "creator": "Nintendo (Masayuki Uemura)",
+  "title": "Super Nintendo Entertainment System"
+ },
+ {
+  "id": "hw-3do",
+  "wiki": "3DO Interactive Multiplayer",
+  "era": "console16",
+  "kind": "hardware",
+  "year": 1993,
+  "platform": "3DO/Panasonic 32-bit console",
+  "creator": "3DO Company (Trip Hawkins)",
+  "title": "3DO Interactive Multiplayer"
+ },
+ {
+  "id": "hw-jaguar",
+  "wiki": "Atari Jaguar",
+  "era": "console16",
+  "kind": "hardware",
+  "year": 1993,
+  "platform": "Atari Jaguar 64-bit hybrid console",
+  "creator": "Atari Corporation",
+  "title": "Atari Jaguar"
+ },
+ {
+  "id": "hw-playstation",
+  "wiki": "PlayStation (console)",
+  "era": "console16",
+  "kind": "hardware",
+  "year": 1994,
+  "platform": "Sony PlayStation CD-ROM console",
+  "creator": "Sony Computer Entertainment (Ken Kutaragi)",
+  "title": "PlayStation (console)"
+ },
+ {
+  "id": "hw-saturn",
+  "wiki": "Sega Saturn",
+  "era": "console16",
+  "kind": "hardware",
+  "year": 1994,
+  "platform": "Sega Saturn CD-ROM console",
+  "creator": "Sega",
+  "title": "Sega Saturn"
+ },
+ {
+  "id": "hw-n64",
+  "wiki": "Nintendo 64",
+  "era": "console16",
+  "kind": "hardware",
+  "year": 1996,
+  "platform": "Nintendo 64 64-bit cartridge console",
+  "creator": "Nintendo (SGI technology)",
+  "title": "Nintendo 64"
+ },
+ {
+  "id": "hw-virtual-boy",
+  "wiki": "Virtual Boy",
+  "era": "console16",
+  "kind": "hardware",
+  "year": 1995,
+  "platform": "Nintendo Virtual Boy stereoscopic tabletop",
+  "creator": "Nintendo (Gunpei Yokoi)",
+  "title": "Virtual Boy"
+ },
+ {
+  "id": "hw-dreamcast",
+  "wiki": "Dreamcast",
+  "era": "console16",
+  "kind": "hardware",
+  "year": 1998,
+  "platform": "Sega Dreamcast 128-bit console",
+  "creator": "Sega",
+  "title": "Dreamcast"
+ },
+ {
+  "id": "sw-street-fighter-ii",
+  "wiki": "Street Fighter II",
+  "era": "console16",
+  "kind": "work",
+  "year": 1991,
+  "platform": "Arcade (CP System) then Super Famicom/Genesis",
+  "creator": "Capcom (Takashi Nishiyama, Akira Nishitani)",
+  "title": "Street Fighter II"
+ },
+ {
+  "id": "sw-doom",
+  "wiki": "Doom (1993 video game)",
+  "era": "console16",
+  "kind": "work",
+  "year": 1993,
+  "platform": "MS-DOS, Macintosh, ported to consoles",
+  "creator": "id Software (John Carmack, John Romero)",
+  "title": "Doom (1993 video game)"
+ },
+ {
+  "id": "sw-myst",
+  "wiki": "Myst",
+  "era": "console16",
+  "kind": "work",
+  "year": 1993,
+  "platform": "Macintosh, Windows 3.1, Macintosh CD-ROM",
+  "creator": "Cyan (Rand Miller, Robyn Miller)",
+  "title": "Myst"
+ },
+ {
+  "id": "sw-ocarina-of-time",
+  "wiki": "The Legend of Zelda: Ocarina of Time",
+  "era": "console16",
+  "kind": "work",
+  "year": 1998,
+  "platform": "Nintendo 64",
+  "creator": "Nintendo EAD (Shigeru Miyamoto)",
+  "title": "The Legend of Zelda: Ocarina of Time"
+ },
+ {
+  "id": "sw-ffvii",
+  "wiki": "Final Fantasy VII",
+  "era": "console16",
+  "kind": "work",
+  "year": 1997,
+  "platform": "PlayStation",
+  "creator": "Square (Hironobu Sakaguchi)",
+  "title": "Final Fantasy VII"
+ },
+ {
+  "id": "sw-half-life",
+  "wiki": "Half-Life (video game)",
+  "era": "console16",
+  "kind": "work",
+  "year": 1998,
+  "platform": "Windows, Linux, macOS, console ports",
+  "creator": "Valve (Gabe Newell, Ken Levine)",
+  "title": "Half-Life (video game)"
+ },
+ {
+  "id": "sw-tomb-raider",
+  "wiki": "Tomb Raider (1996 video game)",
+  "era": "console16",
+  "kind": "work",
+  "year": 1996,
+  "platform": "MS-DOS, Sega Saturn, PlayStation",
+  "creator": "Core Design (Toby Gard)",
+  "title": "Tomb Raider (1996 video game)"
+ },
+ {
+  "id": "sw-grand-theft-auto",
+  "wiki": "Grand Theft Auto (video game)",
+  "era": "console16",
+  "kind": "work",
+  "year": 1997,
+  "platform": "MS-DOS, Windows",
+  "creator": "DMA Design (David Jones)",
+  "title": "Grand Theft Auto"
+ },
+ {
+  "id": "sw-civilization",
+  "wiki": "Civilization (video game)",
+  "era": "console16",
+  "kind": "work",
+  "year": 1991,
+  "platform": "MS-DOS, Macintosh, Amiga",
+  "creator": "MicroProse (Sid Meier, Bruce Shelley)",
+  "title": "Sid Meier's Civilization"
+ },
+ {
+  "id": "sw-alone-in-the-dark",
+  "wiki": "Alone in the Dark (video game)",
+  "era": "console16",
+  "kind": "work",
+  "year": 1992,
+  "platform": "MS-DOS, Macintosh, FM Towns",
+  "creator": "Infogrames (Frédérick Raynal)",
+  "title": "Alone in the Dark (video game)"
+ },
+ {
+  "id": "sw-dune-ii",
+  "wiki": "Dune II",
+  "era": "console16",
+  "kind": "work",
+  "year": 1992,
+  "platform": "MS-DOS",
+  "creator": "Westwood Studios (Louis Castle, Brett Sperry)",
+  "title": "Dune II"
+ },
+ {
+  "id": "sw-tekken",
+  "wiki": "Tekken (video game)",
+  "era": "console16",
+  "kind": "work",
+  "year": 1994,
+  "platform": "PlayStation, arcade hardware",
+  "creator": "Namco (Seiichi Ishii)",
+  "title": "Tekken"
+ },
+ {
+  "id": "hw-xbox",
+  "wiki": "Xbox (console)",
+  "era": "online",
+  "kind": "hardware",
+  "year": 2001,
+  "platform": "Microsoft Xbox DVD console",
+  "creator": "Microsoft (Seamus Blackley, Kevin Bachus)",
+  "title": "Xbox (console)"
+ },
+ {
+  "id": "hw-gamecube",
+  "wiki": "GameCube",
+  "era": "online",
+  "kind": "hardware",
+  "year": 2001,
+  "platform": "Nintendo GameCube optical-disc console",
+  "creator": "Nintendo (Genyo Takeda)",
+  "title": "GameCube"
+ },
+ {
+  "id": "hw-psp",
+  "wiki": "PlayStation Portable",
+  "era": "online",
+  "kind": "hardware",
+  "year": 2004,
+  "platform": "Sony PSP handheld",
+  "creator": "Sony Computer Entertainment",
+  "title": "PlayStation Portable"
+ },
+ {
+  "id": "hw-xbox-360",
+  "wiki": "Xbox 360",
+  "era": "online",
+  "kind": "hardware",
+  "year": 2005,
+  "platform": "Microsoft Xbox 360 HD-DVD console",
+  "creator": "Microsoft",
+  "title": "Xbox 360"
+ },
+ {
+  "id": "hw-ps3",
+  "wiki": "PlayStation 3",
+  "era": "online",
+  "kind": "hardware",
+  "year": 2006,
+  "platform": "Sony PlayStation 3 Blu-ray console",
+  "creator": "Sony Computer Entertainment",
+  "title": "PlayStation 3"
+ },
+ {
+  "id": "hw-wii",
+  "wiki": "Wii",
+  "era": "online",
+  "kind": "hardware",
+  "year": 2006,
+  "platform": "Nintendo Wii motion-control console",
+  "creator": "Nintendo",
+  "title": "Wii"
+ },
+ {
+  "id": "pl-steam",
+  "wiki": "Steam (service)",
+  "era": "online",
+  "kind": "hardware",
+  "year": 2003,
+  "platform": "Steam digital distribution platform",
+  "creator": "Valve Corporation",
+  "title": "Steam (service)"
+ },
+ {
+  "id": "pl-app-store",
+  "wiki": "App Store (Apple)",
+  "era": "online",
+  "kind": "hardware",
+  "year": 2008,
+  "platform": "iOS App Store mobile storefront",
+  "creator": "Apple Inc.",
+  "title": "iOS App Store"
+ },
+ {
+  "id": "sw-world-of-warcraft",
+  "wiki": "World of Warcraft",
+  "era": "online",
+  "kind": "work",
+  "year": 2004,
+  "platform": "Windows / macOS MMORPG",
+  "creator": "Blizzard Entertainment (Allen Adham, WoW team)",
+  "title": "World of Warcraft"
+ },
+ {
+  "id": "sw-cs-source",
+  "wiki": "Counter-Strike: Source",
+  "era": "online",
+  "kind": "work",
+  "year": 2004,
+  "platform": "Windows / Linux / macOS (Steam)",
+  "creator": "Valve Corporation (Minh Le, Jess Cliffe)",
+  "title": "Counter-Strike: Source"
+ },
+ {
+  "id": "sw-league-of-legends",
+  "wiki": "League of Legends",
+  "era": "online",
+  "kind": "work",
+  "year": 2009,
+  "platform": "Windows / macOS online service",
+  "creator": "Riot Games (Marc Merrill, Brandon Beck)",
+  "title": "League of Legends"
+ },
+ {
+  "id": "sw-minecraft",
+  "wiki": "Minecraft",
+  "era": "online",
+  "kind": "work",
+  "year": 2009,
+  "platform": "Java, then multi-platform",
+  "creator": "Mojang Studios (Notch, Markus Persson)",
+  "title": "Minecraft"
+ },
+ {
+  "id": "sw-angry-birds",
+  "wiki": "Angry Birds",
+  "era": "online",
+  "kind": "work",
+  "year": 2009,
+  "platform": "iOS, Android, web",
+  "creator": "Rovio Entertainment (Peter Vesterbacka)",
+  "title": "Angry Birds"
+ },
+ {
+  "id": "sw-guitar-hero",
+  "wiki": "Guitar Hero (video game)",
+  "era": "online",
+  "kind": "work",
+  "year": 2005,
+  "platform": "PlayStation 2, Xbox",
+  "creator": "Harmonix Music Systems (Alex Rigopulos, Eran Egozy)",
+  "title": "Guitar Hero (video game)"
+ },
+ {
+  "id": "sw-garys-mod",
+  "wiki": "Garry's Mod",
+  "era": "online",
+  "kind": "work",
+  "year": 2006,
+  "platform": "Windows (Steam Workshop)",
+  "creator": "Facepunch Studios (Gary Newman)",
+  "title": "Garry's Mod"
+ },
+ {
+  "id": "sw-braid",
+  "wiki": "Braid (video game)",
+  "era": "online",
+  "kind": "work",
+  "year": 2008,
+  "platform": "Xbox 360 Live Arcade",
+  "creator": "Number None (Jonathan Blow)",
+  "title": "Braid (video game)"
+ },
+ {
+  "id": "sw-world-of-goo",
+  "wiki": "World of Goo",
+  "era": "online",
+  "kind": "work",
+  "year": 2008,
+  "platform": "Windows, WiiWare",
+  "creator": "2D Boy (Ron Carmel, Kyle Gabler)",
+  "title": "World of Goo"
+ },
+ {
+  "id": "sw-portal",
+  "wiki": "Portal (video game)",
+  "era": "online",
+  "kind": "work",
+  "year": 2007,
+  "platform": "Windows / Xbox 360 (Steam)",
+  "creator": "Valve Corporation",
+  "title": "Portal (video game)"
+ },
+ {
+  "id": "sw-left-4-dead",
+  "wiki": "Left 4 Dead",
+  "era": "online",
+  "kind": "work",
+  "year": 2008,
+  "platform": "Windows / Xbox 360 (Steam)",
+  "creator": "Valve Corporation (Michael Booth, Chet Faliszek)",
+  "title": "Left 4 Dead"
+ },
+ {
+  "id": "sw-maplestory",
+  "wiki": "MapleStory",
+  "era": "online",
+  "kind": "work",
+  "year": 2003,
+  "platform": "Windows MMORPG",
+  "creator": "Wizet (Nexon)",
+  "title": "MapleStory"
+ },
+ {
+  "id": "hw-ipad",
+  "wiki": "IPad (1st generation)",
+  "era": "mobile",
+  "kind": "hardware",
+  "year": 2010,
+  "platform": "Apple iPad tablet",
+  "creator": "Apple Inc. (Steve Jobs)",
+  "title": "IPad (1st generation)"
+ },
+ {
+  "id": "hw-3ds",
+  "wiki": "Nintendo 3DS",
+  "era": "mobile",
+  "kind": "hardware",
+  "year": 2011,
+  "platform": "Nintendo 3DS stereoscopic handheld",
+  "creator": "Nintendo",
+  "title": "Nintendo 3DS"
+ },
+ {
+  "id": "hw-ps-vita",
+  "wiki": "PlayStation Vita",
+  "era": "mobile",
+  "kind": "hardware",
+  "year": 2011,
+  "platform": "Sony PlayStation Vita handheld",
+  "creator": "Sony Computer Entertainment",
+  "title": "PlayStation Vita"
+ },
+ {
+  "id": "hw-ouya",
+  "wiki": "Ouya",
+  "era": "mobile",
+  "kind": "hardware",
+  "year": 2013,
+  "platform": "Ouya Android micro-console",
+  "creator": "Julie Uhrman / Ouya team",
+  "title": "Ouya"
+ },
+ {
+  "id": "hw-ps4",
+  "wiki": "PlayStation 4",
+  "era": "mobile",
+  "kind": "hardware",
+  "year": 2013,
+  "platform": "Sony PlayStation 4 console",
+  "creator": "Sony Computer Entertainment",
+  "title": "PlayStation 4"
+ },
+ {
+  "id": "hw-xbox-one",
+  "wiki": "Xbox One",
+  "era": "mobile",
+  "kind": "hardware",
+  "year": 2013,
+  "platform": "Microsoft Xbox One console",
+  "creator": "Microsoft",
+  "title": "Xbox One"
+ },
+ {
+  "id": "sw-flappy-bird",
+  "wiki": "Flappy Bird",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2013,
+  "platform": "iOS / Android",
+  "creator": "Dong Nguyễn (.Gears)",
+  "title": "Flappy Bird"
+ },
+ {
+  "id": "sw-candy-crush",
+  "wiki": "Candy Crush Saga",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2012,
+  "platform": "Facebook / iOS / Android",
+  "creator": "King (Sebastian Knutsson, Thomas Friend)",
+  "title": "Candy Crush Saga"
+ },
+ {
+  "id": "sw-temple-run",
+  "wiki": "Temple Run",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2011,
+  "platform": "iOS / Android",
+  "creator": "Imangi Studios (Keith Shepherd)",
+  "title": "Temple Run"
+ },
+ {
+  "id": "sw-pvz2",
+  "wiki": "Plants vs. Zombies 2",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2013,
+  "platform": "iOS / Android",
+  "creator": "PopCap Games / Electronic Arts",
+  "title": "Plants vs. Zombies 2"
+ },
+ {
+  "id": "sw-monument-valley",
+  "wiki": "Monument Valley (video game)",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2014,
+  "platform": "iOS / Android",
+  "creator": "ustwo games (Ken Wong)",
+  "title": "Monument Valley (video game)"
+ },
+ {
+  "id": "sw-2048",
+  "wiki": "2048 (video game)",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2014,
+  "platform": "Web, iOS, Android",
+  "creator": "Gabriele Cirulli",
+  "title": "2048 (video game)"
+ },
+ {
+  "id": "sw-fnaf",
+  "wiki": "Five Nights at Freddy's",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2014,
+  "platform": "Windows, then iOS / Android",
+  "creator": "Scott Cawthon",
+  "title": "Five Nights at Freddy's"
+ },
+ {
+  "id": "sw-papers-please",
+  "wiki": "Papers, Please",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2013,
+  "platform": "Windows, macOS, iOS / Android",
+  "creator": "Lucas Pope (3909 LLC)",
+  "title": "Papers, Please"
+ },
+ {
+  "id": "sw-gone-home",
+  "wiki": "Gone Home",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2013,
+  "platform": "Windows, macOS, Linux",
+  "creator": "The Fullbright Company (Steve Gaynor)",
+  "title": "Gone Home"
+ },
+ {
+  "id": "sw-vvvvvv",
+  "wiki": "VVVVVV",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2010,
+  "platform": "Windows, macOS, Linux",
+  "creator": "Terry Cavanagh",
+  "title": "VVVVVV"
+ },
+ {
+  "id": "sw-sword-sworcery",
+  "wiki": "Superbrothers: Sword & Sworcery EP",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2011,
+  "platform": "iOS, Windows, macOS, Linux",
+  "creator": "Capybara Games (Craig D. Adams)",
+  "title": "Superbrothers: Sword & Sworcery EP"
+ },
+ {
+  "id": "sw-terraria",
+  "wiki": "Terraria",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2011,
+  "platform": "Windows, macOS, Linux, consoles, mobile",
+  "creator": "Re-Logic (Andrew Spinks, Jim T. Anderson)",
+  "title": "Terraria"
+ },
+ {
+  "id": "sw-cut-the-rope",
+  "wiki": "Cut the Rope",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2010,
+  "platform": "iOS, Android",
+  "creator": "ZeptoLab (Oleg Chumakov)",
+  "title": "Cut the Rope"
+ },
+ {
+  "id": "sw-super-meat-boy",
+  "wiki": "Super Meat Boy",
+  "era": "mobile",
+  "kind": "work",
+  "year": 2010,
+  "platform": "Xbox 360, Windows",
+  "creator": "Team Meat (Tommy Refenes, Edmund McMillen)",
+  "title": "Super Meat Boy"
+ },
+ {
+  "id": "hw-ps5",
+  "wiki": "PlayStation 5",
+  "era": "modern",
+  "kind": "hardware",
+  "year": 2020,
+  "platform": "Sony PlayStation 5 console",
+  "creator": "Sony Interactive Entertainment",
+  "title": "PlayStation 5"
+ },
+ {
+  "id": "hw-nintendo-switch",
+  "wiki": "Nintendo Switch",
+  "era": "modern",
+  "kind": "hardware",
+  "year": 2017,
+  "platform": "Nintendo Switch hybrid console",
+  "creator": "Nintendo",
+  "title": "Nintendo Switch"
+ },
+ {
+  "id": "hw-steam-deck",
+  "wiki": "Steam Deck",
+  "era": "modern",
+  "kind": "hardware",
+  "year": 2022,
+  "platform": "Valve Steam Deck handheld PC",
+  "creator": "Valve Corporation",
+  "title": "Steam Deck"
+ },
+ {
+  "id": "hw-ps-vr",
+  "wiki": "PlayStation VR",
+  "era": "modern",
+  "kind": "hardware",
+  "year": 2016,
+  "platform": "Sony PlayStation VR headset",
+  "creator": "Sony Interactive Entertainment",
+  "title": "PlayStation VR"
+ },
+ {
+  "id": "hw-oculus-quest",
+  "wiki": "Oculus Quest",
+  "era": "modern",
+  "kind": "hardware",
+  "year": 2019,
+  "platform": "Oculus Quest / Meta Quest standalone VR headset",
+  "creator": "Oculus VR (Palmer Luckey)",
+  "title": "Meta Quest (Oculus Quest)"
+ },
+ {
+  "id": "hw-vision-pro",
+  "wiki": "Apple Vision Pro",
+  "era": "modern",
+  "kind": "hardware",
+  "year": 2024,
+  "platform": "Apple Vision Pro spatial computing headset",
+  "creator": "Apple Inc.",
+  "title": "Apple Vision Pro"
+ },
+ {
+  "id": "sw-botw",
+  "wiki": "The Legend of Zelda: Breath of the Wild",
+  "era": "modern",
+  "kind": "work",
+  "year": 2017,
+  "platform": "Nintendo Switch, Wii U",
+  "creator": "Nintendo EPD (Eiji Aonuma)",
+  "title": "The Legend of Zelda: Breath of the Wild"
+ },
+ {
+  "id": "sw-pokemon-go",
+  "wiki": "Pokémon Go",
+  "era": "modern",
+  "kind": "work",
+  "year": 2016,
+  "platform": "iOS / Android AR mobile game",
+  "creator": "Niantic (John Hanke)",
+  "title": "Pokémon Go"
+ },
+ {
+  "id": "sw-fortnite",
+  "wiki": "Fortnite",
+  "era": "modern",
+  "kind": "work",
+  "year": 2017,
+  "platform": "Windows, consoles, mobile",
+  "creator": "Epic Games",
+  "title": "Fortnite"
+ },
+ {
+  "id": "sw-hades",
+  "wiki": "Hades (video game)",
+  "era": "modern",
+  "kind": "work",
+  "year": 2020,
+  "platform": "Windows, macOS, Switch, consoles",
+  "creator": "Supergiant Games (Greg Kasavin)",
+  "title": "Hades (video game)"
+ },
+ {
+  "id": "sw-elden-ring",
+  "wiki": "Elden Ring",
+  "era": "modern",
+  "kind": "work",
+  "year": 2022,
+  "platform": "Windows, PlayStation, Xbox",
+  "creator": "FromSoftware (Hidetaka Miyazaki)",
+  "title": "Elden Ring"
+ },
+ {
+  "id": "sw-disco-elysium",
+  "wiki": "Disco Elysium",
+  "era": "modern",
+  "kind": "work",
+  "year": 2019,
+  "platform": "Windows, macOS, Linux, consoles",
+  "creator": "ZA/UM (Robert Kurvitz, Aleksi Briclot)",
+  "title": "Disco Elysium"
+ },
+ {
+  "id": "sw-outer-wilds",
+  "wiki": "Outer Wilds",
+  "era": "modern",
+  "kind": "work",
+  "year": 2019,
+  "platform": "Windows, macOS, Linux, consoles",
+  "creator": "Mobius Digital (Alex Beachum)",
+  "title": "Outer Wilds"
+ },
+ {
+  "id": "sw-celeste",
+  "wiki": "Celeste (video game)",
+  "era": "modern",
+  "kind": "work",
+  "year": 2018,
+  "platform": "Windows, macOS, Linux, Switch, consoles",
+  "creator": "Maddy Makes Games (Noel Berry, Amora Bettany)",
+  "title": "Celeste (video game)"
+ },
+ {
+  "id": "sw-slay-the-spire",
+  "wiki": "Slay the Spire",
+  "era": "modern",
+  "kind": "work",
+  "year": 2019,
+  "platform": "Windows, macOS, Linux, consoles, mobile",
+  "creator": "Mega Crit (Anthony Giovannetti, Casey Yano)",
+  "title": "Slay the Spire"
+ },
+ {
+  "id": "sw-hollow-knight",
+  "wiki": "Hollow Knight",
+  "era": "modern",
+  "kind": "work",
+  "year": 2017,
+  "platform": "Windows, macOS, Linux, Switch, consoles",
+  "creator": "Team Cherry (Ari Gibson, William Pellen)",
+  "title": "Hollow Knight"
+ },
+ {
+  "id": "sw-among-us",
+  "wiki": "Among Us",
+  "era": "modern",
+  "kind": "work",
+  "year": 2018,
+  "platform": "Windows, macOS, consoles, mobile",
+  "creator": "InnerSloth (Forest Willard)",
+  "title": "Among Us"
+ },
+ {
+  "id": "sw-animal-crossing-nh",
+  "wiki": "Animal Crossing: New Horizons",
+  "era": "modern",
+  "kind": "work",
+  "year": 2020,
+  "platform": "Nintendo Switch",
+  "creator": "Nintendo EPD (Hisashi Nogami)",
+  "title": "Animal Crossing: New Horizons"
+ },
+ {
+  "id": "sw-half-life-alyx",
+  "wiki": "Half-Life: Alyx",
+  "era": "modern",
+  "kind": "work",
+  "year": 2020,
+  "platform": "Windows (SteamVR) / Meta Quest",
+  "creator": "Valve Corporation",
+  "title": "Half-Life: Alyx"
+ },
+ {
+  "id": "sw-vampire-survivors",
+  "wiki": "Vampire Survivors",
+  "era": "modern",
+  "kind": "work",
+  "year": 2021,
+  "platform": "Windows, macOS, Linux, Switch, mobile",
+  "creator": "poncle (Luca Galante)",
+  "title": "Vampire Survivors"
+ },
+ {
+  "id": "sw-balatro",
+  "wiki": "Balatro (video game)",
+  "era": "modern",
+  "kind": "work",
+  "year": 2024,
+  "platform": "Windows, macOS, Linux, consoles, mobile",
+  "creator": "LocalThunk (Dean)",
+  "title": "Balatro (video game)"
+ },
+ {
+  "id": "sw-black-myth-wukong",
+  "wiki": "Black Myth: Wukong",
+  "era": "modern",
+  "kind": "work",
+  "year": 2024,
+  "platform": "Windows, PlayStation, Xbox",
+  "creator": "Game Science (Feng Ji)",
+  "title": "Black Myth: Wukong"
+ },
+ {
+  "id": "sw-dave-the-diver",
+  "wiki": "Dave the Diver",
+  "era": "modern",
+  "kind": "work",
+  "year": 2023,
+  "platform": "Windows, macOS, Switch, PlayStation",
+  "creator": "MINTROCKET (Kyle Kwon)",
+  "title": "Dave the Diver"
+ },
+ {
+  "id": "sw-beat-saber",
+  "wiki": "Beat Saber",
+  "era": "modern",
+  "kind": "work",
+  "year": 2018,
+  "platform": "Meta Quest / Oculus Rift VR",
+  "creator": "Beat Games (Jiri Hrasko, Ján Ilavský)",
+  "title": "Beat Saber"
+ },
+ {
+  "id": "sw-tetris-effect",
+  "wiki": "Tetris Effect: Connected",
+  "era": "modern",
+  "kind": "work",
+  "year": 2018,
+  "platform": "PlayStation VR, Windows, consoles",
+  "creator": "Enhance Games (Tetsuya Mizuguchi)",
+  "title": "Tetris Effect: Connected"
+ },
+ {
+  "id": "sw-superhot",
+  "wiki": "Superhot VR",
+  "era": "modern",
+  "kind": "work",
+  "year": 2016,
+  "platform": "Windows, macOS, Linux, consoles, VR",
+  "creator": "Superhot Team (Piotr Iwanicki)",
+  "title": "Superhot"
+ },
+ {
+  "id": "sw-return-of-the-obsidian",
+  "wiki": "Return of the Obra Dinn",
+  "era": "modern",
+  "kind": "work",
+  "year": 2018,
+  "platform": "Windows, macOS, Linux, consoles",
+  "creator": "Lucas Pope (3909 LLC)",
+  "title": "Return of the Obra Dinn"
+ }
+]

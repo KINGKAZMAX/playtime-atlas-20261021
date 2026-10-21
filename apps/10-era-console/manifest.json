@@ -1,0 +1,41 @@
+{
+  "id": "10-era-console",
+  "title": "色块远征 · 1990s 家用机可玩展厅",
+  "description": "回响电玩馆（PLAYTIME ATLAS）的 1990s 家用机时代展厅：原创 16 位风格横版平台冒险《色块远征：棱晶峡谷》（3 关可通关，含跳跃/碰撞/检查点/收集物/胜负/重开，键盘与触控双输入）与等距探索互动场景《等距测绘所》（30×22 等距庭院，9 处可点击展台）。附 20 条带来源链接的科普展品与 15 款机型导览。全部美术、字体与音乐在运行时程序化生成，零外部资源、零 CDN，可静态构建并适配 GitHub Pages 任意子路径与 iframe 嵌入。",
+  "entry": "index.html",
+  "buildCommand": "npm run build",
+  "outputDir": "dist",
+  "status": "complete",
+  "upstream": "10-era-console",
+  "license": {
+    "code": "MIT",
+    "assets": "原创图形与程序化音乐"
+  },
+  "sources": [
+    {
+      "title": "时代史料来源（随展厅交付）",
+      "url": "",
+      "note": "展厅内附史料来源链接。"
+    }
+  ],
+  "era": "console16",
+  "eraLabel": "1990s 家用机时代",
+  "port": 4330,
+  "base": "./",
+  "embeddable": true,
+  "externalAssets": false,
+  "offline": true,
+  "tests": {
+    "unit": "npm test",
+    "browser": "node tools/qa/browser-check.mjs"
+  },
+  "artifacts": {
+    "platformGame": "src/platform/",
+    "isoScene": "src/iso/",
+    "exhibits": "src/data/exhibits.js",
+    "audio": "src/audio/AudioEngine.js",
+    "qa": "QA.md",
+    "sources": "SOURCES.md",
+    "licenses": "LICENSES.md"
+  }
+}

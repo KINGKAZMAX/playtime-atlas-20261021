@@ -1,0 +1,84 @@
+{{Short description|1969 video game}}
+{{About|the 1969 videogame|the general videogaming topic|Space flight simulation game}}
+{{Good article}}
+{{Infobox video game
+| title = Space Travel
+| image = Space Travel Screenshot.png
+| alt = 
+| caption = Gameplay image
+| designer = [[Ken Thompson]]
+| platforms = [[Multics]], [[General Comprehensive Operating System|GECOS]], [[PDP-7]]
+| released = {{Start date and age|1969}}
+| genre = [[Simulation video game|Simulation game]]
+| modes = [[Single-player video game|Single-player]]
+}}
+
+'''''Space Travel''''' is an early [[video game]] developed by [[Ken Thompson]] in 1969 that [[simulation video game|simulates]] travel in the [[Solar System]]. The player flies their ship around a two-dimensional scale model of the Solar System with no objectives other than to attempt to land on various planets and moons. The player can move and turn the ship, and adjust the overall speed by adjusting the scale of the simulation. The ship is affected by the single strongest [[gravity|gravitational pull]] of the astronomical bodies.
+
+The game was [[Software development|developed]] at [[Bell Labs]] before the rise of the commercial [[video game industry]] in the [[early history of video games]], and was ported during 1969 from the [[Multics]] [[operating system]] to the [[General Comprehensive Operating System|GECOS]] operating system on the [[GE-600 series|GE 635]] computer, and then to the [[PDP-7]] computer. As a part of porting the game to the PDP-7, Thompson developed his own operating system, which later formed the core of the [[Unix]] operating system. ''Space Travel'' never spread beyond Bell Labs or had an effect on future games, leaving its primary legacy as part of the original push for the development of Unix.
+
+==Gameplay==
+''Space Travel'' is a spaceflight [[simulation video game]], presented in a two-dimensional top-down view, with [[monochrome]] graphics consisting of white lines on a black background. In it, the player controls a spaceship as it flies through a representation of the [[Solar System]]. The game has no specific objectives, other than to attempt to land on the various planets and moons of the system. The planets and most of the moons in the Solar System are represented to scale both in size and distance from each other, though the orbits are simplified to be circles. To land on a body, the player's ship must cross the line representing the surface while moving at a low enough speed. The player is able to control the ship to go forwards and backwards and turn. The ship moves at a constant level of acceleration relative to the scale of the screen, which the player can control; scaling the screen up high enough allows the player to travel across the Solar System in seconds, though they risk overshooting their target and becoming unable to find the Solar System again, and scaling down allows the player to be moving slowly enough to land. The ship is always in the center of the screen, facing the top; turning the ship right or left therefore rotates the Solar System around the ship instead.<ref name="BL"/>
+
+Each planet or moon has a mass, and therefore a [[gravity|gravitational pull]], though they do not affect one another and only the single strongest pull affects the player's ship. This sometimes results in odd behavior; for example, the gravitational effect of [[Mars]] is much stronger than that of its moon [[Phobos (moon)|Phobos]]. This means that a player attempting to land on Phobos needs to allow the ship to fall below the moon's surface until it is close enough to Phobos's center that Phobos's pull becomes the dominant force, at which point the ship snaps back to be landed on the surface. The name of the planet or moon with the current strongest pull is displayed on the screen. Players are able to edit the program to change the conditions; popular variations by the original players were increasing the gravity level and thus the difficulty, or an adjustment to the coordinate display system so that, rather than the ship staying in the center of the screen and the planets moving relative to it, the current dominant planet would always be at the bottom of the screen, with the ship moving relative to it.<ref name="BL"/>
+
+==Development==
+
+[[File:Ken Thompson and Dennis Ritchie--1973.jpg|thumb|right|[[Ken Thompson]] and [[Dennis Ritchie]]]]
+[[File:Pdp7-oslo-2005.jpeg|thumb|[[Digital Equipment Corporation|DEC]] [[PDP-7]]]]
+In 1969, programmer [[Ken Thompson]] worked for [[Bell Labs]] on the [[Multics]] operating system on a [[GE 645]] [[mainframe]]. During his work, Thompson developed ''Space Travel'' on the system. Multics was a collaborative project between several institutions for an interactive, multi-user operating system that provided convenient access for programming. It was also growing very large and complex, and Bell Labs decided to exit the project in 1969.<ref name="Hist"/>
+
+Thompson then ported the ''Space Travel'' code to [[Fortran]] so that it could run on the [[General Comprehensive Operating System|GECOS]] operating system already present on the GE 645.<ref name="BL"/><ref name="Byte"/> Thompson and other Bell Labs employees, such as [[Ravi Sethi]] and [[Dennis Ritchie]], played the game on the system. GECOS, however, used an "interactive batch" model, meaning that while several [[computer terminal]]s were attached to the central computer, each terminal's program jobs had to be submitted in a queue, resulting in long pauses in the game while the GE 645 worked on jobs for other terminals.<ref name="BL"/> Additionally, the system required the user to type in commands rather than press buttons, resulting in the ship being difficult to control.<ref name="Harvard"/>
+
+That same year Bell's internal computer departments were split, with the teams working on development put into a new computing research department, while the operation of the internal computing resources, including the GE machines, moved to the computing services department.<ref name="Hist"/> As a result, computing services tracked the computer usage internally with a cost system, meaning that each session of playing the game cost US$50 to US$75 on the internal balance sheet.<ref name="BL"/><ref name="Harvard"/>
+
+Thompson learned that a neighboring department had an older, little-used [[PDP-7]] [[minicomputer]].<ref name="BL"/> This was equipped with a [[graphics terminal]] which gave it excellent graphics capabilities for the time. As this machine would solve the problems with playing the game, he ported ''Space Travel'' to this platform using a [[cross compiler]] on the GECOS system, writing the resulting [[machine code]] to [[punch tape]] and then loading it into the PDP-7. Thompson did not use any of the provided PDP-7 code, writing everything from scratch, including a [[floating point]] library and other low-level tools.<ref name="Hist"/>
+
+The tedium of moving the code between the two machines prompted Thompson to design his own simple [[file system]] based on some chalkboard ideas by Dennis Ritchie and [[Rudd Canaday]], rooted in their experience with the Multics file system.<ref name="Harvard"/><ref name="TIE"/><ref name="ART"/> This, in turn, demanded some way to start the process running once loaded. More features were continually added to print, edit, delete and move files. Before long, it had become a simple operating system of its own.<ref name="Hist"/> Thompson then wrote an [[assembler (computing)|assembler]] for the PDP-7 to avoid using the GECOS computer entirely.<ref name="Harvard"/><ref name="TIE"/><ref name="ART"/>
+
+==Legacy==
+Space Travel was one of the [[early mainframe games]] developed before the rise of the commercial [[video game industry]] in the [[early history of video games]], and was never distributed beyond its initial locations. As a result, it had no effect on future video games, and its primary legacy is that of sparking the creation of Unix.<ref name="Byte"/><ref name="Bloomberg"/>
+
+===Role in the creation of Unix===
+While Thompson continued working on the PDP-7, the original Multics team had concluded that as Bell had exited the Multics program, there was no reason for the company to continue operating the expensive GE 645, and they believed it would be removed within a few months. They repeatedly asked management for a new machine to continue their operating system work. This ultimately culminated in a lengthy proposal to buy some parts and rent others of DEC's new [[PDP-10]] system, then US$120,000, but this too was rejected. Ritchie later surmised that the company had just exited one operating system project and was in no hurry to spend money to start another.<ref name="Hist"/><ref name="TIE"/>
+
+In 1970, however, DEC introduced the PDP-11, which cost $65,000 and could be operated directly by the team without support from the computing services department. The team also changed their proposal; the machine was not being requested to develop an operating system, but a system for "editing and formatting text", essentially a [[word processor]]. Management saw merit in this proposal and the machine was ordered in May 1970.<ref name="Hist"/> By this point, the PDP-7 was already considered completely obsolete. The PDP-11 arrived in the summer, without a [[hard drive]], and the entire team began porting the rudimentary operating system from the PDP-7 to the new machine. During this time it gained the slash-separated hierarchical directories and other features of the [[Unix]] system.<ref name="Hist"/> When the hard drive arrived in December the rest of the basic features were added. The team was now committed to the new system, and Brian Kernighan gave it the name Unix, a "somewhat treacherous pun" on Multics.<ref name="Hist"/>
+
+==References==
+{{Reflist|refs=
+<ref name="BL">{{cite web |url=https://www.bell-labs.com/usr/dmr/www/spacetravel.html |title=Space Travel: Exploring the solar system and the PDP-7 |first=Dennis M. |last=Ritchie |authorlink=Dennis Ritchie |publisher=[[Bell Labs]] |date=2001 |access-date=2016-02-04 |archive-url=https://web.archive.org/web/20151226030544/https://www.bell-labs.com/usr/dmr/www/spacetravel.html |archive-date=2015-12-26 |url-status=live}}</ref>
+
+<ref name="Hist">{{cite web |title=The Evolution of the Unix Time-sharing System |date=October 1984 |first=Dennis M. |last=Ritchie |authorlink=Dennis Ritchie |publisher=[[Bell Labs]] |url=https://www.bell-labs.com/usr/dmr/www/hist.html |access-date=2022-07-17 |archive-date=2015-06-11 |archive-url=https://web.archive.org/web/20150611114353/https://www.bell-labs.com/usr/dmr/www/hist.html |url-status=live }}</ref>
+
+<ref name="Byte">{{cite news |url=https://archive.org/stream/byte-magazine-1983-08/1983_08_BYTE_08-08_The_C_Language#page/n189/mode/2up |title=The History of Unix |work=[[Byte (magazine)|Byte]] |publisher=[[McGraw-Hill Education|McGraw-Hill]] |date=August 1983 |volume=8 |number=8 |last=Fiedler |first=David |access-date=2016-02-04 |page=188 |issn=0360-5280}}</ref>
+
+<ref name="Harvard">{{cite web |url=http://sites.fas.harvard.edu/~lib215/reference/history/spacetravel.html |title=Yes, A video game contributed to Unix Development |first=Dennis M. |last=Ritchie |authorlink=Dennis Ritchie |publisher=[[Harvard University]] |access-date=2016-02-04 |archive-url=https://web.archive.org/web/20151210211809/http://sites.fas.harvard.edu/~lib215/reference/history/spacetravel.html |archive-date=2015-12-10 |url-status=dead}}</ref>
+
+<ref name="TIE">{{cite book |url=https://books.google.com/books?id=wshm3f0hyI8C&dq=%22space+travel%22+game+1969&pg=PA495 |title=The Internet Encyclopedia, Volume 3 |editor-last=Bidgoli |editor-first=Hossein |last=Abzug |first=Charles |publisher=[[John Wiley & Sons]] |pages=495–496 |date=2003-12-26 |isbn=978-0-471-22203-3 |access-date=2021-12-04 |archive-date=2022-07-21 |archive-url=https://web.archive.org/web/20220721201207/https://books.google.com/books?id=wshm3f0hyI8C&dq=%22space+travel%22+game+1969&pg=PA495 |url-status=live }}</ref>
+
+<ref name="ART">{{cite book |title=[[The Art of Unix Programming]] |last=Raymond |first=Eric S. |authorlink=Eric S. Raymond |publisher=[[Addison-Wesley]] |pages=30–31 |isbn=978-0-13-246588-5 |date=2003-09-23}}</ref>
+
+<ref name="Bloomberg">{{cite web |url=https://www.bloomberg.com/slideshow/2012-11-16/-pong-turns-40-but-it-s-not-the-oldest-video-game.html#slide6 |title='Pong' Turns 40, But It's Not the Oldest Video Game |last1=Milian |first1=Mark |last2=Chan |first2=Marcus |publisher=[[Bloomberg L.P.|Bloomberg]] |date=2012-11-15 |access-date=2016-02-04 |archive-url=https://web.archive.org/web/20150216133759/http://www.bloomberg.com/slideshow/2012-11-16/-pong-turns-40-but-it-s-not-the-oldest-video-game.html#slide6 |archive-date=2015-02-16 |url-status=live}}</ref>
+}}
+
+==External links==
+*''[https://computerhistory.org/blog/the-earliest-unix-code-an-anniversary-source-code-release/ Unix Book II]'', printed PDP-7 source code of ''Space Travel'' and other early Unix programs, via the [[Computer History Museum]]
+*[https://www.youtube.com/watch?v=bZfhKPoKVXg Video] of installation and gameplay of PDP-7 version of ''Space Travel''
+*[https://github.com/mohd-akram/st Source code] for a [[C (programming language)|C]] port of ''Space Travel''
+
+{{Ken Thompson navbox}}
+{{Early history of video games}}
+{{Multics}}
+
+[[Category:1969 video games]]
+[[Category:Bell Labs]]
+[[Category:Early history of video games]]
+[[Category:Mainframe games]]
+[[Category:Multics software]]
+[[Category:Science fiction video games]]
+[[Category:Space flight simulator games]]
+[[Category:Unix history]]
+[[Category:Video games developed in the United States]]
+[[Category:Unix games]]
+[[Category:Single-player video games]]
+[[Category:Proprietary software]]

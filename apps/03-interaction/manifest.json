@@ -1,0 +1,21 @@
+{
+  "id": "03-interaction",
+  "title": "织造车间调度台",
+  "description": "原创改编的浏览器端实时织造调度台：经线排布、梭子调度、开口与张力控制，附实时统计与可保存的排布方案。",
+  "entry": "works/03-interaction/index.html",
+  "buildCommand": "npm run build",
+  "outputDir": "docs/works/03-interaction",
+  "status": "ready",
+  "upstream": "03-interaction",
+  "license": {
+    "code": "MIT",
+    "assets": "程序化几何与纯色材质，无第三方植物或器物模型"
+  },
+  "sources": [
+    {
+      "title": "原创作品（无复刻来源）",
+      "url": "",
+      "note": "为「交互界面」维度独立设计的原创作品。"
+    }
+  ]
+}

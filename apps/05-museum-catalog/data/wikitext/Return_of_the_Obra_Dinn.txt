@@ -1,0 +1,226 @@
+{{short description|2018 video game}}
+{{good article}}
+{{Use mdy dates|date=February 2025}}
+{{Infobox video game
+| title      = Return of the Obra Dinn
+| image      = Return of the Obra Dinn logo-title.jpg
+| developer  = <!--Wikidata-->
+| publisher  = 3909 LLC.
+| designer   = [[Lucas Pope]]
+| artist     = Lucas Pope
+| engine     = [[Unity (game engine)|Unity]]
+| platforms  = {{Unbulleted list|[[macOS]]|[[Windows]]|[[Nintendo Switch]]|[[PlayStation 4]]|[[Xbox One]]}}
+| released   = {{Unbulleted list|'''macOS''', '''Windows'''|October 18, 2018|'''Switch''', '''PS4''', '''Xbox One'''|October 18, 2019}}
+| genre      = [[Adventure game|Adventure]], [[puzzle]]
+| modes      = [[Single-player]]
+}}
+'''''Return of the Obra Dinn''''' is a 2018 [[adventure game|adventure]] and [[puzzle video game]] created by [[Lucas Pope]] and published by 3909 LLC. It was Pope's second commercial game, following 2013's ''[[Papers, Please]]'', and was first released for [[macOS]] and [[Windows]] before being ported to [[Nintendo Switch]], [[PlayStation 4]], and [[Xbox One]] a year later. ''Return of the Obra Dinn'' was praised for its gameplay, art style, and narrative; it won several awards, including the [[Seumas McNally Grand Prize]].
+
+The game is set in 1807 with the player assuming the role of an unnamed [[Insurance investigator|investigator]] for the [[East India Company]]. The ''Obra Dinn'', a merchant ship missing for five years, has reappeared off the coast of England with no known surviving crew or passengers. The player is dispatched to the [[ghost ship]] to perform an appraisal, reconstruct the events of the voyage, and determine the fates of all sixty souls aboard, providing a cause of death for those deceased or a probable current location for those presumed living. Investigation is accomplished through the use of the "Memento Mortem", a [[pocket watch]] capable of recreating a death at the moment it occurred. The game, played in [[First-person (video games)|first-person perspective]], uses a [[Binary image|"1-bit" monochromatic graphical style]] inspired by games on early [[Macintosh]] computers.
+
+''Return of Obra Dinn'' first released on macOS and Windows on October 18, 2018. It received generally positive reviews from critics who praised its story, puzzles, creativity, and favorably compared it to ''[[Her Story (video game)|Her Story]]'' (2015). It was cited by several outlets as among the best video games of 2018, and retrospectively, one of the [[List of video games considered the best|greatest of all time]].
+
+== Gameplay ==
+[[File:Return of the obra dinn screenshot.png|thumb|right|upright=1.4|alt=Screenshot from the game. Someone holding a pocketwatch above a dead body|The ''Memento Mortem'' being used to investigate the cause of death of one of the crewmembers]]
+The ''Obra Dinn'', insured by the East India Company, went missing in 1803 as it was to sail around the [[Cape of Good Hope]]. It has since reappeared with all sixty passengers and crew dead or missing.<ref name="eg dev" /> The player is tasked with determining the fate of all souls on board, including their names, how they met their fate, who or what their killer was, and their location should they be alive.<ref name=":1">{{Cite news |last=Wood |first=Austin |date=August 15, 2017 |title=Papers, Please creator Lucas Pope details his next game |language=en |work=[[PC Gamer]] |url=http://www.pcgamer.com/papers-please-creator-lucas-pope-details-his-next-game/ |url-status=live |access-date=November 24, 2017 |archive-url=https://web.archive.org/web/20210109123638/https://www.pcgamer.com/papers-please-creator-lucas-pope-details-his-next-game/ |archive-date=January 9, 2021}}</ref>
+
+''Return of the Obra Dinn'' is effectively one large [[logic puzzle]].<ref>{{Cite web |last=Francis |first=Bryant |date=November 25, 2018 |title=For Lucas Pope, Return of the Obra Dinn was a bunch of appealing design problems |url=https://www.gamedeveloper.com/design/for-lucas-pope-i-return-of-the-obra-dinn-i-was-a-bunch-of-appealing-design-problems |access-date=August 30, 2021 |website=[[Gamasutra]] |archive-url=https://web.archive.org/web/20260703184008/https://www.gamedeveloper.com/design/for-lucas-pope-i-return-of-the-obra-dinn-i-was-a-bunch-of-appealing-design-problems |archive-date=July 3, 2026 |url-status=live}}</ref><ref>{{Cite web |last=Schreier |first=Jason |date=December 2, 2018 |title=Why Obra Dinn Is One Of The Year's Best Games |url=https://kotaku.com/why-obra-dinn-is-one-of-the-years-best-games-1830749972 |access-date=August 30, 2021 |website=[[Kotaku]] |archive-url=https://web.archive.org/web/20241212133732/https://kotaku.com/why-obra-dinn-is-one-of-the-years-best-games-1830749972 |archive-date=December 12, 2024 |url-status=live}}</ref> The game is played as a first-person [[adventure game]], allowing the player to fully explore the ''Obra Dinn'', using a monochromatic [[dither]]ing style to mimic the shading and color methods of early computer games.<ref name="kotaku review" /><ref>{{Cite web |last=Gault |first=Matthew |date=October 18, 2018 |title='Return of the Obra Dinn' Is a Beautiful Murder Mystery by the Creator of 'Papers, Please' |url=https://www.vice.com/en/article/return-of-the-obra-dinn-review-papers-please/ |access-date=August 30, 2021 |website=[[Vice (magazine)|Vice]]}}</ref><ref>{{Cite web |last=Goodman |first=Ben |date=February 18, 2021 |title=Our favorite low-click PC games |url=https://www.pcgamer.com/our-favorite-low-click-pc-games/ |access-date=August 30, 2021 |website=[[PC Gamer]] |archive-url=https://web.archive.org/web/20251205232958/https://www.pcgamer.com/our-favorite-low-click-pc-games/ |archive-date=December 5, 2025 |url-status=live}}</ref> To help track their progress, the player is given a logbook that includes a drawing of all the crew members, the crew roster, and a plan of the ship. They are also given the ''Memento Mortem'', a pocket watch that can be used on a corpse to hear the events that transpired in the seconds immediately before death and [[retrocognition|explore the moment of death frozen in time]]. This is used to identify who was present, to examine moments in other rooms or on other decks, and to note details at the scene. These are used to help connect the faces of crewmates to their names and roles. While exploring a moment of death, the player can use the pocket watch again to explore the fates of other corpses in the vision.<ref name="eg review" />
+
+With each death, the logbook automatically fills in basic information. The player is tasked only with naming those present and accurately describing their cause of death. Naming the crew is done through small clues, inferences, and [[logical deduction]]—mainly, narrowing possibilities as the game progresses. The causes of death are selected out of a catalogue, and some deaths will accept more than one solution. The player can revise their logbook as they gain more information, but to deter guesswork, correct fates are validated only in sets of three, with the exception of the last six fates discovered in a playthrough, which are validated in sets of two until closer to the end when the player accurately logs the names and causes of death for fifty-eight of the sixty who were on board.<ref name="kotaku review">{{Cite web |last=Kohler |first=Chris |date=October 18, 2018 |title=Return of the Obra Dinn: The Kotaku Review |url=https://kotaku.com/return-of-the-obra-dinn-the-kotaku-review-1829797772 |url-status=live |archive-url=https://web.archive.org/web/20210118143920/https://kotaku.com/return-of-the-obra-dinn-the-kotaku-review-1829797772 |archive-date=January 18, 2021 |access-date=October 18, 2018 |website=[[Kotaku]]}}</ref>
+
+== Plot ==
+{{hatnote|The game is presented in a [[nonlinear narrative]]. The following is a linear summary of the plot.}}
+
+The ''Obra Dinn'', an [[East Indiaman]] under the command of Captain Robert Witterel, departs with 52 crewmen and 8 passengers from [[Falmouth, Cornwall]], to the [[Orient]] in 1802. Among the ship's passengers are Witterel's wife Abigail; musician Nunzio Pasqua; wealthy Englishwoman Jane Bird; and two [[Taiwan under Qing rule|Formosan]] nobles and their guards transporting an exquisite chest. The ship fails to keep her rendezvous at the Cape of Good Hope and is declared lost. Five years later, the vessel reappears off the coast of England [[Ghost ship|with every soul dead or missing]]. The [[East India Company]] sends a newly appointed [[Insurance investigator|chief inspector]] to determine what happened. The inspector receives a copy of the ''Obra Dinn''{{'s}} [[logbook]], drawings of the passengers and crew, and the ''Memento Mortem''—a magical pocket watch—from the ship's [[naval surgeon|surgeon]] Henry Evans, who lives in [[Alawi Sultanate|Morocco]]. The ''Mortem'', when used on a corpse or its traces, enables the user to observe the exact moment of the corpse's death, frozen in time.
+
+Early in the voyage, a seaman and a stowaway are crushed to death by unsecured cargo, and two seamen die of [[pneumonia]]. As the ship passes the [[Canary Islands]], Pasqua discovers the [[second mate]], Edward Nichols, skulking after the Formosans' chest in the cargo hold. Nichols stabs Pasqua dead and frames one of the Formosan guards. Witterel, bound to Company regulations, has the guard executed by [[firing squad]]. Nichols and a small party of defectors steal the chest, abduct the Formosan nobles, and make for the Canaries in the ship's two [[jollyboat]]s. Three [[mermaid]]s ambush and kill most of the group. One of the nobles uses a magical shell pulled from the chest to stun the mermaids at the cost of his life. Nichols, now the sole survivor, captures the mermaids and returns to the ''Obra Dinn'' with the chest and the dead nobles, but is fatally shot by the surviving Formosan guard as he approaches. As they are brought aboard, the mermaids, who hold shells of their own, lash out and kill several crewmen before they are locked away in the [[lazarette]]. Witterel's steward Fillip Dahl kills a seaman and proclaims that the mermaids are cursed, so he is locked in the lazarette alongside the mermaids and the chest.
+
+Captain Witterel orders the ship to return to England. The mermaids summon a storm and a pair of [[merman|mermen]] mounted on giant [[spider crabs]] to attempt to rescue them. The mermen and their mounts are killed, but the crew suffer heavy casualties. The mermaids then summon a [[kraken]], whose assault kills Abigail and more crew members and badly damages the ship. In the lazarette, Dahl reaches into the chest and retrieves a shell before he is killed by a [[mercury (element)|quicksilver]]-like substance inside. Witterel enters the lazarette and kills two of the mermaids before the third finally sends the kraken away. The [[third mate]] Martin Perrott and some men enter the lazarette later to set the last mermaid free. The mermaid instinctively spikes Perrott, who in his dying moments asks her to see the ''Obra Dinn'' home in exchange for her freedom. The others return the shell to the mermaid before putting her back in the sea.
+
+Evans decides to abandon the ''Obra Dinn'' and make for Africa. Before leaving, Evans ties a rope to his monkey's wrist and sends it into the locked lazarette. He shoots the monkey dead and uses the rope to retrieve its [[wiktionary:monkey's_paw|paw]], intending to use the ''Mortem'' on it later. Evans escapes with some others in a jollyboat, and a series of scuffles reduces the ''Obra Dinn''<nowiki/>'s crew to four, including Witterel. The three others [[mutiny]], seeking the shells, but Witterel states that he has thrown them into the sea and kills the mutineers in combat. Now the only one left, Witterel commits suicide near the body of his wife.
+
+Unable to access the lazarette, the inspector catalogues the fates of 58 of the 60 souls aboard and leaves before a storm sinks the ''Obra Dinn''. The inspector writes an insurance report, compensating or fining the estates of lost crewmen and passengers depending on their conduct, and mails the logbook back to Evans. A year later, Jane Bird—one of the three survivors who escaped with Evans—mails back the book alongside the monkey's paw and a letter explaining that Evans, now dead of an illness, requested that the inspector be given the means to complete the book as an expression of his gratitude. The inspector uses the ''Mortem'' on the monkey's paw to determine what happened in the lazarette and catalogue the last two fates, completing the story of the ''Obra Dinn'' for their collection.
+
+=== Alternative endings ===
+Bird reports Evans's death in every ending, but she only sends the book and the monkey's paw if the inspector determined all available fates. Otherwise, she will report that Evans appreciated the investigator's attempt or regretted trusting the investigator, depending on how many fates were determined.
+
+==Development==
+Over the course of his career, American video game designer [[Lucas Pope]] had developed an appreciation of [[Binary image|"1-bit" graphics]] used in many early Macintosh games. Following his prior game ''[[Papers, Please]]'', Pope had wanted to use the 1-bit aesthetic in an experimental game, leading him to develop a game engine that allowed the player to move in a [[three dimensional]] space, rendered in a vintage style.<ref name="eg dev">{{Cite web |last=Wood |first=Austin |date=November 2, 2017 |title=Lucas Pope on life after Papers, Please |url=https://www.eurogamer.net/articles/2017-11-02-lucas-pope-on-life-after-papers-please-and-the-road-to-the-return-of-the-obra-dinn |url-status=live |archive-url=https://web.archive.org/web/20210124211915/https://www.eurogamer.net/articles/2017-11-02-lucas-pope-on-life-after-papers-please-and-the-road-to-the-return-of-the-obra-dinn |archive-date=January 24, 2021 |access-date=October 19, 2018 |website=[[Eurogamer]]}}</ref> Pope wanted to ensure the game was visually legible from most angles, challenging him on some of the rendering aspects. Separately, he found that while the 1-bit graphics worked fine when displayed in an on-screen window, at full screen resolution, players suffered from [[motion sickness]]. Rendering routines were modified to create the equivalent of [[motion blur]] for this dithering approach. At one point, Pope had considered creating a [[cathode ray tube]] render effect, but opted against this.<ref>{{Cite web |last=Wright |first=Steven |date=January 23, 2019 |title=Lucas Pope on the challenge of creating Obra Dinn's 1-bit aesthetic |url=https://www.pcgamer.com/lucas-pope-on-the-challenge-of-creating-obra-dinns-1-bit-aesthetic/ |url-status=live |archive-url=https://web.archive.org/web/20210108172829/https://www.pcgamer.com/lucas-pope-on-the-challenge-of-creating-obra-dinns-1-bit-aesthetic/ |archive-date=January 8, 2021 |access-date=January 23, 2019 |website=[[PC Gamer]]}}</ref>
+
+With the style in place, Pope worked backwards to determine what game to make. His initial idea was one where the player character repeatedly died; the player would see the events of the death from their corpse, and would then be transported back one minute to manipulate the environment so as to recreate that death. However, Pope found this technically challenging, and instead sparked the idea of using freeze-frame flashbacks depicting moments of death to tell a story.<ref name="eg dev" />
+
+The game's narrative took the longest portion of development. Pope teased ''Return of the Obra Dinn'' in 2014 while completing ''Papers, Please'', anticipating a release the next year.<ref name="eg dev" /> Instead, it took four more years. Pope released a limited demo for the 2016 [[Game Developers Conference]], which had only six fates for the player to deduce.<ref name="rps mechanism" /> Feedback from this was positive, so he began to expand the game's story more than he expected. Internally, Pope created [[spreadsheet]]s to link all the various characters and their fates, and to ensure that players would be able to logically follow chains of deaths.<ref name="rps mechanism">{{Cite news |last=Wiltshire |first=Alex |date=November 7, 2018 |title=How a book binds the Return of the Obra Dinn |work=[[Rock Paper Shotgun]] |url=https://www.rockpapershotgun.com/2018/11/07/how-a-book-binds-the-return-of-the-obra-dinn/ |url-status=live |access-date=November 7, 2018 |archive-url=https://web.archive.org/web/20201205160328/https://www.rockpapershotgun.com/2018/11/07/how-a-book-binds-the-return-of-the-obra-dinn/ |archive-date=December 5, 2020}}</ref> This ended with him writing the necessary dialog for some scenes and hiring voice actors, provided by locals Pope auditioned, who could mimic the accents of the time period.<ref name="eg dev" /><ref name="rps mechanism" />
+
+With a more complete story, Pope created a new demo to take to [[PAX (event)|PAX]] Australia in November 2016, adding thirteen additional characters to the original demo. However, unlike the first demo, the deaths were presented out of chronological order, and players were confused about how to progress.<ref name="rps mechanism" /> Pope realized this confusion would become worse with the full cast of characters. He found a solution by having ten events in the narrative serve as a catalyst for deaths, breaking the story into sections and allowing the plot to be more digestible to the player.<ref name="eg dev" /><ref name="rps mechanism" /> Dividing the game into "chapters" then led to the creation of the logbook, serving as the timeline for the game and cataloguing the ship's crew in the same manner as the real East India Company.<ref name="rps mechanism" />
+
+Pope stated he was not worried about how well ''Return of the Obra Dinn'' would perform financially, as he was still earning appreciable revenue from ''Papers, Please''. He considered ''Obra Dinn'' a passion project and did not pressure himself with deadlines or marketing.<ref name="eg dev" /> ''Return of the Obra Dinn'' was released for [[macOS]] and [[Windows]] computers on October 17, 2018, published by the Japanese-based studio 3909. Versions for the [[Nintendo Switch]], [[PlayStation 4]], and [[Xbox One]], ported by Warp Digital, were released on October 18, 2019.<ref>{{Cite web |last=Wales |first=Matt |date=September 4, 2019 |title=Papers, Please dev's marvellous nautical mystery Obra Dinn coming to consoles |url=https://www.eurogamer.net/articles/2019-09-05-papers-please-devs-marvellous-nautical-mystery-obra-dinn-coming-to-consoles-this-autumn |url-status=live |archive-url=https://web.archive.org/web/20190904233350/https://www.eurogamer.net/articles/2019-09-05-papers-please-devs-marvellous-nautical-mystery-obra-dinn-coming-to-consoles-this-autumn |archive-date=September 4, 2019 |access-date=September 4, 2019 |website=[[Eurogamer]]}}</ref><ref>{{Cite web |last=Romano |first=Sal |date=October 2, 2019 |title=Return of the Obra Dinn for PS4, Xbox One, and Switch launches October 18 |url=https://gematsu.com/2019/10/return-of-the-obra-dinn-for-ps4-xbox-one-and-switch-launches-october-18 |url-status=live |archive-url=https://web.archive.org/web/20191003012314/https://gematsu.com/2019/10/return-of-the-obra-dinn-for-ps4-xbox-one-and-switch-launches-october-18 |archive-date=October 3, 2019 |access-date=October 2, 2019 |website=Gematsu}}</ref> Physical editions were released through Limited Run Games for the PS4 and Nintendo Switch in 2020.<ref>{{Cite web |date=June 22, 2020 |title=Return of the Obra Dinn will get a physical run on PS4 and Switch this Friday. |url=https://limitedrungames.com/blogs/news/return-of-the-obra-dinn-will-get-a-physical-run-on-ps4-and-switch-this-friday |url-status=live |archive-url=https://web.archive.org/web/20201025163111/https://limitedrungames.com/blogs/news/return-of-the-obra-dinn-will-get-a-physical-run-on-ps4-and-switch-this-friday |archive-date=October 25, 2020 |access-date=July 29, 2020 |website=[[Limited Run Games]] |language=en}}</ref>
+
+In an interview with the YouTuber Cressup, Lucas Pope stated that the game was originally supposed to be a series and that the ending scene of ''Obra Dinn'', if the game was 100% completed, would have given a clue as to the adventures the character was supposed to go on in later games. However, the length of time it took to create the game meant that Lucas then decided to move onto something else rather than continue with the series.<ref>{{Cite AV media |url=https://www.youtube.com/watch?v=a8IMDfnLULI |title=Lucas Pope Interview {{!}} Obra Dinn Sequels & New Game Mars After Midnight |date=May 28, 2024 |last=Cressup |access-date=May 29, 2024 |via=YouTube}}</ref>
+
+==Reception==
+{{Video game reviews
+| MC = PC: 89/100<ref name="mc">{{Cite web |title=Return of the Obra Dinn for PC Reviews |url=https://www.metacritic.com/game/return-of-the-obra-dinn/critic-reviews/?platform=pc |url-status=live |archive-url=https://web.archive.org/web/20200727025523/https://www.metacritic.com/game/pc/return-of-the-obra-dinn |archive-date=July 27, 2020 |access-date=November 3, 2018 |publisher=[[Metacritic]]}}</ref><br />NS: 86/100<ref>{{Cite web |title=Return of the Obra Dinn for Swittch Reviews |url=https://www.metacritic.com/game/return-of-the-obra-dinn/critic-reviews/?platform=nintendo-switch |url-status=live |archive-url=https://web.archive.org/web/20200610062809/https://www.metacritic.com/game/switch/return-of-the-obra-dinn |archive-date=June 10, 2020 |access-date=April 13, 2020 |publisher=[[Metacritic]]}}</ref>
+| Destruct = 9.5/10<ref name="dtoid review">{{Cite web |last=Hancock |first=Patrick |date=October 18, 2018 |title=Review: Return of the Obra Dinn |url=https://www.destructoid.com/review-return-of-the-obra-dinn-527519.phtml |url-status=live |archive-url=https://web.archive.org/web/20210322191303/https://www.destructoid.com/review-return-of-the-obra-dinn-527519.phtml |archive-date=March 22, 2021 |access-date=October 19, 2018 |website=[[Destructoid]]}}</ref>
+| EuroG = Essential<ref name="eg review">{{Cite web |last=Donlan |first=Christian |date=October 18, 2018 |title=Return of the Obra Dinn review - prepare to be transported |url=https://www.eurogamer.net/articles/2018-10-18-return-of-the-obra-dinn-review-prepare-to-be-transported |url-status=live |archive-url=https://web.archive.org/web/20201109003826/https://www.eurogamer.net/articles/2018-10-18-return-of-the-obra-dinn-review-prepare-to-be-transported |archive-date=November 9, 2020 |access-date=October 19, 2018 |website=[[Eurogamer]]}}</ref>
+| GI = 8.75/10<ref name="gi review">{{Cite magazine |last=Gwaltney |first=Javy |date=October 18, 2018 |title=Return Of The Obra Dinn |url=https://www.gameinformer.com/review/return-of-the-obra-dinn/hauntingly-good |url-status=live |magazine=[[Game Informer]] |archive-url=https://web.archive.org/web/20201112042544/https://www.gameinformer.com/review/return-of-the-obra-dinn/hauntingly-good |archive-date=November 12, 2020 |access-date=October 19, 2018}}</ref>
+| GSpot = 9/10<ref name="gspot review">{{Cite web |last=Wildgoose |first=David |date=October 22, 2018 |title=Return Of The Obra Dinn Review - The Good Ship |url=https://www.gamespot.com/reviews/return-of-the-obra-dinn-review-the-good-ship/1900-6417017/ |url-status=live |archive-url=https://web.archive.org/web/20210215121218/https://www.gamespot.com/reviews/return-of-the-obra-dinn-review-the-good-ship/1900-6417017/ |archive-date=February 15, 2021 |access-date=October 22, 2018 |website=[[GameSpot]]}}</ref>
+| IGN = 9.2/10<ref name="ign review">{{Cite web |last=Marks |first=Tom |date=October 22, 2018 |title=Return of the Obra Dinn Review |url=https://www.ign.com/articles/2018/10/22/return-of-the-obra-dinn-review |url-status=live |archive-url=https://web.archive.org/web/20201128122806/https://www.ign.com/articles/2018/10/22/return-of-the-obra-dinn-review |archive-date=November 28, 2020 |access-date=October 22, 2018 |website=[[IGN]]}}</ref>
+| PCGUS = 90/100<ref name="pcgamer review">{{Cite web |last=Kelly |first=Andy |date=October 19, 2018 |title=Return of the Obra Dinn Review |url=https://www.pcgamer.com/return-of-the-obra-dinn-review/ |url-status=live |archive-url=https://web.archive.org/web/20201123165449/https://www.pcgamer.com/return-of-the-obra-dinn-review/ |archive-date=November 23, 2020 |access-date=October 19, 2018 |website=[[PC Gamer]]}}</ref>
+| rev1 = ''[[PC World]]''
+| rev1Score = 4.5/5<ref name="pcworld review">{{Cite web |last=Dingman |first=Hayden |date=October 18, 2018 |title=Return of the Obra Dinn review: A phenomenal detective story invoking old Macintosh adventures |url=https://www.pcworld.com/article/3314936/gaming/return-of-the-obra-dinn-review.html |url-status=live |archive-url=https://web.archive.org/web/20181018185532/https://www.pcworld.com/article/3314936/gaming/return-of-the-obra-dinn-review.html |archive-date=October 18, 2018 |access-date=October 19, 2018 |website=[[PC World]]}}</ref>
+}}
+
+''Return of the Obra Dinn'' received "generally favorable reviews", according to [[review aggregator]] website [[Metacritic]].<ref name="mc" /> ''[[Polygon (website)|Polygon]]''{{'s}} Colin Campbell recommended the game, saying "''Return of the Obra Dinn'' takes the whodunit's conventions and twists them into kaleidoscopic narratives that are perplexing and delightful. This isn't merely a great game, it's the work of an intense and creative intelligence."<ref name="polygon review" /> Patrick Hancock for ''[[Destructoid]]'' commented that Pope had "knocked it out of the park" as a follow-up to ''Papers, Please'', and commented that even after finishing the game, he "could not stop thinking about" it.<ref name="dtoid review" /> ''[[Game Informer]]''{{'}}s Javy Gwaltney called the art style "visually arresting", and praised the pacing and thought put into the game. However, they were less praising of the ending, commenting that the "ultimate payoff fails to complement the thoughtful gameplay".<ref name="gi review" />
+
+The game received praise for being unique. Andreas Inderwildi of ''[[Rock Paper Shotgun]]'' commented that the game was more than just about logical reasoning, but that players were supposed to take into account how humans would act in an emergency.<ref name="rock_Retu">{{Cite web |last=Inderwildi |first=Andreas |date=January 3, 2019 |title=Return of the Obra Dinn's nautical nightmare |url=https://www.rockpapershotgun.com/return-of-the-obra-dinn-draws-on-stories-of-nautical-disasters |access-date=August 24, 2021 |website=[[Rock Paper Shotgun]] |archive-url=https://web.archive.org/web/20250110115811/https://www.rockpapershotgun.com/return-of-the-obra-dinn-draws-on-stories-of-nautical-disasters |archive-date=January 10, 2025 |url-status=live}}</ref> In his review for ''[[Eurogamer]]'', Christian Donlan commented that the graphical style in the game made it "feel like no other", and likened it to [[Sudoku]].<ref name="eg review" /> ''[[Gamasutra]]''{{'}}s Katherine Cross praised the game's minimalist feel, and that the characters "came off as people".<ref name="gama_Opin">{{Cite web |last=Cross |first=Katherine |date=November 8, 2018 |title=Opinion: Return of the Obra Dinn is a work of art |url=https://www.gamasutra.com/view/news/330300/Opinion_Return_of_the_Obra_Dinn_is_a_work_of_art.php |archive-url=https://web.archive.org/web/20181112043130/http://gamasutra.com/view/news/330300/Opinion_Return_of_the_Obra_Dinn_is_a_work_of_art.php |url-status=dead |archive-date=November 12, 2018 |access-date=August 25, 2021 |website=[[Gamasutra]]}}</ref> Tom Marks for ''[[IGN]]'' described the game as being full of life, despite the use of still images to convey the story.<ref name="ign review" /> GameSpot's David Wildgoose praised the game's book-based interface as a "masterpiece of interconnected design," and that it trusts the player to find the correct answers independently.<ref>{{cite web |last=Wildgoose |first=David |date=2018-10-17 |title=Return Of The Obra Dinn Review - The Good Ship |url=https://www.gamespot.com/reviews/return-of-the-obra-dinn-review-the-good-ship/1900-6417017/ |website=[[GameSpot]] |access-date=2026-03-27 |language=en |archive-url=https://web.archive.org/web/20210215121218/https://www.gamespot.com/reviews/return-of-the-obra-dinn-review-the-good-ship/1900-6417017/ |archive-date=February 15, 2021 |url-status=live }}</ref>
+
+Some outlets favorably compared the game to ''[[Her Story (video game)|Her Story]]'', a similar mystery-driven game where the player must work out the timeline of events and come to conclusions using numerous video clips. Campbell commented that the two games both made him reach for "a notepad and pen",<ref name="polygon review">{{Cite web |last=Campbell |first=Colin |date=October 19, 2018 |title=Return of the Obra Dinn is a superb murder mystery game |url=https://www.polygon.com/reviews/2018/10/19/18001242/return-of-the-obra-dinn-review-windows-pc-mac-steam |url-status=live |archive-url=https://web.archive.org/web/20201109013115/https://www.polygon.com/reviews/2018/10/19/18001242/return-of-the-obra-dinn-review-windows-pc-mac-steam |archive-date=November 9, 2020 |access-date=October 19, 2018 |website=[[Polygon (website)|Polygon]]}}</ref> whilst Andrew Webster writing for ''[[The Verge]]'' commented that both games were about creating clarity even in confusing situations. Webster went on to comment that there were many ways to enjoy the game, that a player could obsessively find the mysteries in the game, or simply enjoy the "grim, shocking story".<ref name="verge review">{{Cite web |last=Webster |first=Andrew |date=October 18, 2018 |title=The grisly mystery of Return of the Obra Dinn will make you obsessed |url=https://www.theverge.com/2018/10/18/17993710/return-of-the-obra-dinn-review-lucas-pope-pc-mac |url-status=live |archive-url=https://web.archive.org/web/20210210185516/https://www.theverge.com/2018/10/18/17993710/return-of-the-obra-dinn-review-lucas-pope-pc-mac |archive-date=February 10, 2021 |access-date=October 19, 2018 |website=[[The Verge]]}}</ref>
+
+In a review of ''Return of the Obra Dinn'' in ''[[Black Gate (magazine)|Black Gate]]'', Joshua Dinges said "It being a very well-constructed mystery game, there's not going to be a lot of replay value, but the modest entry price is more than worth it for the sheer gaming bliss you'll encounter in that single play through."<ref>{{cite web | url=https://www.blackgate.com/2020/01/31/mystery-that-surrounds-everything-the-return-of-the-obra-dinn-by-lucas-pope/ | title=Mystery Surrounds Everything: Return of the Obra Dinn, by Lucas Pope – Black Gate | date=January 31, 2020 }}</ref>
+
+===Awards===
+Several video game publications named ''Return of the Obra Dinn'' among 2018's best games,<ref>{{Cite web |last=Hudson |first=Laura |date=December 21, 2018 |title=Why Return of the Obra Dinn is my game of the year |url=https://www.theverge.com/2018/12/21/18151422/return-of-the-obra-dinn-game-of-the-year-lucas-pope |url-status=live |archive-url=https://web.archive.org/web/20210210031301/https://www.theverge.com/2018/12/21/18151422/return-of-the-obra-dinn-game-of-the-year-lucas-pope |archive-date=February 10, 2021 |access-date=December 25, 2018 |website=[[The Verge]]}}</ref> including ''[[Edge (magazine)|Edge]]'',<ref name="EdgeAwards">{{Cite magazine |last=<!--Staff writer(s); no by-line--> |date=February 2019 |title=The Edge Awards |magazine=[[Edge (magazine)|Edge]] |publisher=[[Future plc|Future]] |issue=328 |pages=72–91}}</ref> ''[[Polygon (website)|Polygon]]'',<ref>{{Cite web |last=Gilliam |first=Ryan |date=December 21, 2018 |title=GOTY 2018: #2 Return of the Obra Dinn |url=https://www.polygon.com/best-games-2018/2018/12/20/18144225/return-of-the-obra-dinn-games-of-the-year-goty-2018-lucas-pope |url-status=live |archive-url=https://web.archive.org/web/20210107150753/https://www.polygon.com/best-games-2018/2018/12/20/18144225/return-of-the-obra-dinn-games-of-the-year-goty-2018-lucas-pope |archive-date=January 7, 2021 |access-date=January 8, 2018 |website=[[Polygon (website)|Polygon]] |at=2nd place}}</ref> ''[[USGamer]]'',<ref>{{Cite web |last=McCarthy |first=Caty |date=December 24, 2018 |title=USG's Top 20 Games of 2018 |url=https://www.usgamer.net/articles/usg-top-20-games-of-the-year |url-status=dead |archive-url=https://web.archive.org/web/20181221041525/https://www.usgamer.net/articles/usg-top-20-games-of-the-year |archive-date=December 21, 2018 |access-date=December 25, 2018 |website=[[Eurogamer|USgamer]] |at=14th place}}</ref> ''[[GameSpot]]'',<ref>{{Cite web |last=Espineli |first=Matt |date=December 19, 2018 |title=Game Of The Year: 2018's 10 Best Games |url=https://www.gamespot.com/gallery/game-of-the-year-2018s-10-best-games/2900-2463/7/ |url-status=live |archive-url=https://web.archive.org/web/20190112095041/https://www.gamespot.com/gallery/game-of-the-year-2018s-10-best-games/2900-2463/7/ |archive-date=January 12, 2019 |access-date=January 11, 2019 |website=[[GameSpot]]}}</ref> ''[[The Nerdist]]'',<ref>{{Cite web |last=Casey |first=Dan |date=December 17, 2018 |title=The 10 Best Video Games Of 2018 |url=https://archive.nerdist.com/best-video-games-2018-red-dead-redemption-2-god-of-war-spider-man-super-smash-bros/ |url-status=live |archive-url=https://web.archive.org/web/20181222035035/https://nerdist.com/best-video-games-2018-red-dead-redemption-2-god-of-war-spider-man-super-smash-bros/ |archive-date=December 22, 2018 |access-date=January 11, 2019 |website=[[The Nerdist]] |at=9th place}}</ref> ''[[The Daily Telegraph]]'',<ref>{{Cite news |last=Hoggins |first=Tom |date=December 21, 2018 |title=The 50 best games of 2018 &#124; Our guide to the top titles of the year |work=[[The Daily Telegraph]] |url=https://www.telegraph.co.uk/gaming/features/best-games-2018/ |url-status=live |access-date=January 11, 2019 |archive-url=https://web.archive.org/web/20210115161551/https://www.telegraph.co.uk/gaming/features/best-games-2018/ |archive-date=January 15, 2021}}</ref> ''[[The New Yorker]]'',<ref>{{Cite magazine |last=Parkin |first=Simon |date=November 28, 2018 |title=The Best Video Games of 2018 |url=https://www.newyorker.com/culture/2018-in-review/the-best-video-games-of-2018 |url-status=live |magazine=[[The New Yorker]] |archive-url=https://web.archive.org/web/20201204055430/https://www.newyorker.com/culture/2018-in-review/the-best-video-games-of-2018 |archive-date=December 4, 2020 |access-date=January 11, 2019}}</ref> and ''[[The Escapist (magazine)|The Escapist]]''.<ref>{{Cite web |last=Croshaw |first=Ben "Yahtzee" |date=January 2, 2019 |title=2018's Best Worst and Blandest |url=https://www.escapistmagazine.com/v2/2019/01/02/2018s-best-worst-and-blandest/ |url-status=dead |archive-url=https://web.archive.org/web/20190103005218/https://www.escapistmagazine.com/v2/2019/01/02/2018s-best-worst-and-blandest/ |archive-date=January 3, 2019 |access-date=January 2, 2019 |website=[[The Escapist (magazine)|The Escapist]]}}</ref> A 2023 poll published by ''[[GQ]]'' listed ''Return of the Obra Dinn'' as among the greatest games of all time.<ref>{{Cite web |last1=White |first1=Sam |last2=Leedham |first2=Robert |date=May 10, 2023 |title=The 100 greatest video games of all time, ranked by experts |url=https://www.gq-magazine.co.uk/article/best-video-games-all-time |access-date=May 10, 2023 |website=[[British GQ]] |language=en-GB |archive-url=https://web.archive.org/web/20230510142624/https://www.gq-magazine.co.uk/article/best-video-games-all-time |archive-date=May 10, 2023 |url-status=live}}</ref>
+{| class="wikitable sortable"
+|+Awards won
+|-
+! Year !! Award !! Category !! Result !! {{Reference column heading}}
+|-
+| rowspan="3" style="text-align:center;" | 2018
+| rowspan="1" | [[Peabody Awards]]
+| Facebook Futures of Media Award - Video Game
+| {{won}}
+| {{fact|date=May 2026}}
+|-
+| rowspan="2" | [[The Game Awards 2018]]
+| Best Independent Game
+| {{nom}}
+| rowspan="2" style="text-align:center;" | <ref>{{Cite web |last=Crecente |first=Brian |date=November 13, 2018 |title='God of War,' 'Red Dead Redemption II' Tie For Most Game Awards Noms |url=https://variety.com/2018/gaming/news/game-awards-nominees-1203027128/ |url-status=live |archive-url=https://web.archive.org/web/20181113195202/https://variety.com/2018/gaming/news/game-awards-nominees-1203027128/ |archive-date=November 13, 2018 |access-date=November 13, 2018 |website=[[Variety (magazine)|Variety]]}}</ref><ref>{{Cite web |last=Grant |first=Christopher |date=December 6, 2018 |title=The Game Awards 2018: Here are all the winners |url=https://www.polygon.com/game-awards-tga/2018/12/6/18130000/the-game-awards-winners-2018 |url-status=live |archive-url=https://web.archive.org/web/20200812123112/https://www.polygon.com/game-awards-tga/2018/12/6/18130000/the-game-awards-winners-2018 |archive-date=August 12, 2020 |access-date=December 7, 2018 |website=[[Polygon (website)|Polygon]]}}</ref>
+|-
+| Best Art Direction
+| {{won}}
+|-
+| rowspan="23" |2019
+| rowspan="6" | [[22nd Annual D.I.C.E. Awards]]
+| [[D.I.C.E. Award for Game of the Year|Game of the Year]]
+| {{nom}}
+| rowspan="6" style="text-align:center;" | <ref>{{Cite web |last=Chalk |first=Andy |date=January 10, 2019 |title=Return of the Obra Dinn claims six DICE Award nominations |url=https://www.pcgamer.com/return-of-the-obra-dinn-claims-six-dice-award-nominations/ |url-status=live |archive-url=https://web.archive.org/web/20210110045857/https://www.pcgamer.com/return-of-the-obra-dinn-claims-six-dice-award-nominations/ |archive-date=January 10, 2021 |access-date=January 10, 2019 |website=[[PC Gamer]]}}</ref>
+|-
+| [[D.I.C.E. Award for Adventure Game of the Year|Adventure Game of the Year]]
+| {{nom}}
+|-
+| [[D.I.C.E. Award for Outstanding Achievement for an Independent Game|Outstanding Achievement for an Independent Game]]
+| {{nom}}
+|-
+| [[D.I.C.E. Award for Outstanding Achievement in Game Direction|Outstanding Achievement in Game Direction]]
+| {{nom}}
+|-
+| [[D.I.C.E. Award for Outstanding Achievement in Game Design|Outstanding Achievement in Game Design]]
+| {{nom}}
+|-
+| [[D.I.C.E. Award for Outstanding Achievement in Story|Outstanding Achievement in Story]]
+| {{nom}}
+|-
+| rowspan="2" | [[SXSW Gaming Awards]]
+| Excellence in Art
+| {{nom}}
+| rowspan="2" style="text-align:center;" | <ref>{{Cite web |last=Trent |first=Logan |date=February 11, 2019 |title=Here Are Your 2019 SXSW Gaming Awards Finalists! |url=https://gaming.sxsw.com/news/2019/2019-sxsw-gaming-awards-finalists/ |url-status=live |archive-url=https://web.archive.org/web/20190215051341/https://gaming.sxsw.com/news/2019/2019-sxsw-gaming-awards-finalists/ |archive-date=February 15, 2019 |access-date=February 14, 2019 |website=[[South by Southwest]]}}</ref>
+|-
+| Excellence in Design
+| {{nom}}
+|-
+| rowspan="5" | [[Independent Games Festival Awards]]
+| [[Seumas McNally Grand Prize]]
+| {{won}}
+| rowspan="5" style="text-align:center;" | <ref>{{Cite web |last=Fogel |first=Stephanie |date=January 3, 2019 |title='Return of the Obra Dinn' Leads IGF Awards Nominees |url=https://variety.com/2019/gaming/news/igf-awards-2019-nominees-1203098551/ |url-status=live |archive-url=https://web.archive.org/web/20190105043155/https://variety.com/2019/gaming/news/igf-awards-2019-nominees-1203098551/ |archive-date=January 5, 2019 |access-date=January 3, 2019 |website=[[Variety (magazine)|Variety]]}}</ref><ref name="igf2019 winners">{{Cite web |date=March 20, 2019 |title=Return of the Obra Dinn takes Grand Prize at the 21st IGF Awards! |url=https://www.gamasutra.com/view/news/339066/Return_of_the_Obra_Dinn_takes_Grand_Prize_at_the_21st_IGF_Awards.php |url-status=dead |archive-url=https://web.archive.org/web/20201113095220/https://www.gamasutra.com/view/news/339066/Return_of_the_Obra_Dinn_takes_Grand_Prize_at_the_21st_IGF_Awards.php |archive-date=November 13, 2020 |access-date=March 20, 2019 |website=[[Gamasutra]]}}</ref>
+|-
+| Excellence in Visual Art
+| {{nom}}
+|-
+| Excellence in Narrative
+| {{won}}
+|-
+| Excellence in Audio
+| {{nom}}
+|-
+| Excellence in Design
+| {{nom}}
+|-
+| rowspan="4" | [[Game Developers Choice Awards]]
+| Game of the Year
+| {{nom}}
+| rowspan="4" style="text-align:center;" | <ref>{{Cite web |date=January 4, 2019 |title=Red Dead Redemption 2 leads list of GDC 2019 Choice Awards nominees! |url=https://www.gamasutra.com/view/news/333754/Red_Dead_Redemption_2_leads_list_of_GDC_2019_Choice_Awards_nominees.php |url-status=dead |archive-url=https://web.archive.org/web/20201115052221/https://www.gamasutra.com/view/news/333754/Red_Dead_Redemption_2_leads_list_of_GDC_2019_Choice_Awards_nominees.php |archive-date=November 15, 2020 |access-date=January 4, 2019 |website=[[Gamasutra]]}}</ref><ref>{{Cite web |last=Williams |first=Mike |date=March 20, 2019 |title=God of War Wins Another GOTY at 2019 Game Developers Choice Awards |url=https://www.usgamer.net/articles/god-of-war-wins-another-goty-at-2019-game-developers-choice-awards |url-status=dead |archive-url=https://web.archive.org/web/20190321035132/https://www.usgamer.net/articles/god-of-war-wins-another-goty-at-2019-game-developers-choice-awards |archive-date=March 21, 2019 |access-date=March 20, 2019 |website=[[Eurogamer|USGamer]]}}</ref>
+|-
+| Best Narrative
+| {{won}}
+|-
+| Best Visual Art
+| {{nom}}
+|-
+| Innovation Award
+| {{nom}}
+|-
+| rowspan="6" | [[15th British Academy Games Awards]]
+| Best Game
+| {{nom}}
+| rowspan="6" style="text-align:center" | <ref>{{Cite web |date=March 14, 2019 |title=BAFTA Games Awards nominations 2019 |url=http://www.bafta.org/games/awards/bafta-games-awards-nominations-winners-2019 |url-status=live |archive-url=https://web.archive.org/web/20191029172316/http://www.bafta.org/games/awards/bafta-games-awards-nominations-winners-2019 |archive-date=October 29, 2019 |access-date=March 14, 2019 |website=[[BAFTA]]}}</ref><ref>{{Cite web |last1=Fox |first1=Chris |last2=Kleinman |first2=Zoe |date=April 4, 2019 |title=God of War wins best game at Bafta Awards |url=https://www.bbc.com/news/technology-47817730 |url-status=live |archive-url=https://web.archive.org/web/20190828222157/https://www.bbc.com/news/technology-47817730 |archive-date=August 28, 2019 |access-date=April 4, 2019 |website=[[BBC]]}}</ref>
+|-
+| Artistic Achievement
+| {{won}}
+|-
+| Game Design
+| {{won}}
+|-
+| Game Innovation
+| {{nom}}
+|-
+| Narrative
+| {{nom}}
+|-
+| Original Property
+| {{nom}}
+|}
+
+== Legacy ==
+''Return of the Obra Dinn'' is credited with inspiring a wave of deduction-based games over the following years, such as ''[[The Case of the Golden Idol]]'' (2022) and ''[[The Roottrees are Dead]]'' (2023).<ref>{{cite web |title=The Rise of the Golden Idol review - the best detective game since Obra Dinn makes a killer return |url=https://www.eurogamer.net/the-rise-of-the-golden-idol-review |website=Eurogamer.net |language=en |date=11 November 2024}}</ref><ref>{{cite web |title=One of our favorite games of 2023 just got a gorgeous new version |url=https://www.avclub.com/game-theory-roottrees-are-dead-remaster |website=AV Club}}</ref> In particular, the mechanic that requires players to have three correct pieces of information before anything can be "locked in" became commonplace in the detective genre after its release, as other games used it to prevent [[Brute-force search|brute-force]] tactics. By 2026, the lack of such a mechanic was a point of note in reviews for the deduction game ''[[TR-49]]''.<ref name = PCGamer>{{cite web |title=This puzzle game has me obsessed with solving a deadly mystery on an 80 year old PC |url=https://www.pcgamer.com/games/puzzle/tr-49-review/ |website=PC Gamer |language=en |date=21 January 2026}}</ref>
+
+== See also ==
+* [[Ditherpunk]]
+
+== References ==
+{{Reflist}}
+
+== External links ==
+* {{official website|obradinn.com/}}
+* {{IMDb title|9433398}}
+
+{{Lucas Pope}}
+{{Seumas McNally Grand Prize}}
+
+[[Category:2018 video games]]
+[[Category:British Academy Games Award for Game Design winners]]
+[[Category:Detective video games]]
+[[Category:Works set in 1807]]
+[[Category:Game Developers Choice Award winners]]
+[[Category:Independent Games Festival winners]]
+[[Category:Indie games]]
+[[Category:Kraken in popular culture]]
+[[Category:MacOS games]]
+[[Category:Monochrome video games]]
+[[Category:Murder mystery video games]]
+[[Category:Mystery adventure games]]
+[[Category:Nintendo Switch games]]
+[[Category:Occult detective fiction]]
+[[Category:PlayStation 4 games]]
+[[Category:Retro-style video games]]
+[[Category:Seumas McNally Grand Prize winners]]
+[[Category:Single-player video games]]
+[[Category:The Game Awards winners]]
+[[Category:Video games about death]]
+[[Category:Video games about mermaids]]
+[[Category:Video games designed by Lucas Pope]]
+[[Category:Video games developed in Japan]]
+[[Category:Video games set in Cornwall]]
+[[Category:Video games set in the 1800s]]
+[[Category:Video games set on ships]]
+[[Category:Windows games]]
+[[Category:Xbox One games]]

@@ -1,0 +1,148 @@
+{{Short description|Video game franchise}}
+{{Use mdy dates|date=September 2024}}
+{{Redirect|Om Nom|the television series|Om Nom Stories{{!}}''Om Nom Stories''}}{{about|the franchise|the video game|Cut the Rope (video game){{!}}''Cut the Rope'' (video game)}}
+{{multiple issues|
+{{Rewrite|date=September 2024}}
+{{unreliable sources|date=June 2026}}
+}}
+{{Infobox video game series
+|image                  = Cut the Rope Logo.png
+|caption                = Logo since 2010
+|genre                  = [[Puzzle video game|Puzzle]]
+|developer              = [[ZeptoLab]]<br>Paladin Studios
+|publisher              = ZeptoLab{{efn|[[Chillingo]] published the original version. [[Activision]] published various console versions. [[Netflix]] published ''Cut the Rope Daily''. Paladin Studios published the remaster.}}
+|creator                =
+|artist                 =
+|writer                 =
+|composer               =
+|platforms              = {{cslist|[[iOS]]|[[Android (operating system)|Android]]|[[Windows Phone]]|[[Leap Motion]]|[[BlackBerry 10]]|[[Symbian]]|[[BlackBerry PlayBook]]<ref>{{Cite news | url=http://crackberry.com/press-release-research-motion-previews-blackberry-playbook-os-20-ces-2012 | title=Press Release: Research in Motion previews BlackBerry PlayBook OS 2.0 at CES 2012 | newspaper=Crackberry | date=9 January 2012 }}</ref>|[[Nintendo DS]] ([[DSiWare]])|[[Mac OS X]]|[[Web browser|Browser]]<ref>"Behind the Scenes at Cut the Rope for HTML5." Cut The Rope. ZeptoLab. Web. 01 Apr. 2012.<{{cite web |url=http://www.cuttherope.ie/dev/ |title=Cut the Rope &#124; Behind the Scenes |access-date=2012-04-02 |url-status=dead |archive-url=https://web.archive.org/web/20120404201105/http://www.cuttherope.ie/dev/ |archive-date=2012-04-04 }}>.</ref><ref>{{cite web|url=http://mashable.com/2012/01/10/cut-the-rope-internet-explore/|title=Cut the Rope Hits the Web via Internet Explorer 9|date=2012-01-10|publisher=[[Mashable]]}}</ref>|[[Windows]]|[[BlackBerry]]|[[Nintendo 3DS]] ([[Nintendo eShop]])|[[ChromeOS]]<ref>{{cite web|url=https://chrome.google.com/webstore/detail/cut-the-rope/jfbadlndcminbkfojhlimnkgaackjmdo|title=Cut the Rope|work=google.com}}</ref>|[[Firefox OS]]|[[Nook]]<ref>{{cite web|url=http://www.zeptolab.com/about/press/zeptolab_s_award_winning_cut_the_rope_now_available_on_nook_by_barnes_noble/|title=ZeptoLab's Award-Winning "Cut the Rope" Now Available on NOOK™ by Barnes & Noble|work=zeptolab.com|date=17 February 2011|access-date=October 2, 2014|archive-date=October 6, 2015|archive-url=https://web.archive.org/web/20151006093650/http://www.zeptolab.com/about/press/zeptolab_s_award_winning_cut_the_rope_now_available_on_nook_by_barnes_noble/|url-status=dead}}</ref>}}
+|first release version  = ''[[Cut the Rope (video game)|Cut the Rope]]''
+|first release date     = October 4, 2010
+|latest release version = ''Cut the Rope 3''
+|latest release date    = October 13, 2023
+}}
+'''''Cut the Rope''''' is a [[media franchise]] and series of [[puzzle video game]]s developed and published by [[ZeptoLab]]. It consists of the original game ''[[Cut the Rope (video game)|Cut the Rope]]'' (2010), ''Cut the Rope: Holiday Gift'' (2010), ''Cut the Rope: Experiments'' (2011), ''[[Cut the Rope: Time Travel]]'' (2013), ''[[Cut the Rope 2]]'' (2013 iOS; 2014 Android), ''My Om Nom'' (2014 iOS; 2015 Android), ''Cut the Rope: Magic'' (2015), ''Cut the Rope Remastered'' (2021), ''Cut the Rope: BLAST'' (2022), ''Cut the Rope Daily'' (2023), and ''Cut the Rope 3'' (2023). 
+
+The objective of the ''Cut the Rope'' games is to feed candy to a little green creature named Om Nom while collecting stars. As of May 2015, ''Cut the Rope'' games have been downloaded more than 600 million times<ref>{{cite web|url=https://venturebeat.com/2015/05/06/cut-the-rope-maker-zeptolab-grabs-10m-downloads-for-king-of-thieves/ |title=Cut the Rope maker ZeptoLab grabs 10M downloads for King of Thieves (updated) |archive-url=https://web.archive.org/web/20170820034225/https://venturebeat.com/2015/05/06/cut-the-rope-maker-zeptolab-grabs-10m-downloads-for-king-of-thieves/ |archive-date=August 20, 2017 |access-date= 1 August 2015}}</ref>{{incomplete short citation|date=June 2026}} and had surpassed over a billion downloads by 2018.<ref>{{Cite web|url=https://www.zeptolab.com/about|title=About company. ZeptoLab|website=www.zeptolab.com|language=en|access-date=2018-03-27}}</ref>{{primary source inline|date=June 2026}}
+
+==Games==
+{{Video game timeline
+| subtitle = Main releases in '''bold'''
+| 2010 = '''''[[Cut the Rope (video game)|Cut the Rope]]'''''
+| 2011 = ''[[Cut the Rope: Experiments]]''
+| 2013a = ''[[Cut the Rope: Time Travel]]''
+| 2013b = '''''[[Cut the Rope 2]]'''''
+| 2014a = ''[[Cut the Rope: Triple Treat]]''
+| 2014b = ''[[My Om Nom]]''
+| 2015 = ''[[Cut the Rope: Magic]]''
+| 2019 = ''[[Om Nom: Merge]]''
+| 2020 = ''[[Om Nom: Run]]''
+| 2021 = ''[[Cut the Rope Remastered]]''
+| 2022 = ''[[Cut the Rope: BLAST]]''
+| 2023a = ''[[Cut the Rope Daily]]''
+| 2023b = '''''[[Cut the Rope 3]]'''''
+}}
+===''Cut the Rope'' (2010)===
+{{main article|Cut the Rope (video game)}}
+''Cut the Rope'', the first game in the series, was released initially on October 4, 2010 and published by [[Chillingo]]. A native (HD) version for the iPad was released on October 6, 2010. This was followed by the release of a free version with fewer levels for each device, called ''Cut the Rope Free'' and ''Cut the Rope HD Free'' respectively.<ref>{{Cite web |title=Full-cycle game and software development services {{!}} Our Works |url=https://www.datasakura.com/works-games |access-date=2022-11-14 |website=DataSakura |language=en}}</ref>
+
+===''Cut the Rope: Experiments'' (2011)===
+{{Main|Cut the Rope: Experiments}}
+''Cut the Rope: Experiments'' was released on August 4, 2011, as a sequel to ''Cut the Rope''.<ref>{{cite web|last=KUMPARAK|first=GREG|title="Cut The Rope" Sequel Will Be Called "Cut The Rope: Experiments", Launching August 4th|date=2 August 2011 |url=https://techcrunch.com/2011/08/02/cut-the-rope-sequel-will-be-called-cut-the-rope-experiments-launching-august-4th/|publisher=TechCrunch}}</ref> While its gameplay and presentation closely match that of ''Cut the Rope'', the sequel introduces new gameplay elements as well as a new storyline and characters. The Professor, for example, “provides running commentary”<ref>{{cite web|last=Grothaus|first=Michael|title=Cut the Rope: Experiments brings some new twists to the popular property|url=http://www.tuaw.com/2011/08/08/cut-the-rope-experiments-brings-some-new-twists-to-the-popular/|access-date=September 25, 2012|archive-date=January 31, 2015|archive-url=https://web.archive.org/web/20150131152253/http://www.tuaw.com/2011/08/08/cut-the-rope-experiments-brings-some-new-twists-to-the-popular/|url-status=usurped}}</ref> throughout the game as players unlock new levels and collect "hidden" photos that reveal more information about the little green creature's character.
+
+===''Cut the Rope: Time Travel'' (2013)===
+{{Main|Cut the Rope: Time Travel}}
+The third sequel, ''Cut the Rope: Time Travel'', was released on April 17, 2013. It sees Om Nom travel back to the time of his ancestors, which means in terms of gameplay that players now feed candy to two monsters rather than to only one.
+
+===''Cut the Rope 2'' (2013)===
+{{Main|Cut the Rope 2}}
+''Cut the Rope 2'' was released on December 19, 2013, for iOS devices. It expands on the previous games with Om Nom no longer being a static stage object, additional creature characters and a more dynamic environment. There are many of these characters, such as Blue, Toss, Lick, Boo, and Roto.<ref>{{cite news|last=Lien|first=Tracey|title=Cut the Rope 2 coming to iOS devices Dec. 19|url=http://www.polygon.com/2013/12/6/5182578/cut-the-rope-2-coming-to-ios-devices-dec-19|access-date=6 December 2013|newspaper=Polygon|date=6 December 2013}}</ref> The Android version was released on March 28, 2014, on Google Play<ref>{{Cite news |url=http://www.androidshock.com/news/om-nom-prepares-new-adventures-nommies-cut-rope-2-now-android/ |title=Om Nom Prepares for New Adventures with Nommies in Cut the Rope 4, Out Now on Android |publisher=AndroidShock |date=2014-03-28 |access-date=2014-03-28 |archive-date=August 4, 2021 |archive-url=https://web.archive.org/web/20210804083721/http://www.androidshock.com/news/om-nom-prepares-new-adventures-nommies-cut-rope-2-now-android/ |url-status=dead }}</ref> and on April 3 on [[Amazon Appstore|Amazon AppStore]].<ref>{{cite web|url=https://www.amazon.com/ZeptoLab-Cut-the-Rope-2/dp/B00IINPXLW|title=Amazon.com: Cut the Rope 2: Appstore for Android|work=amazon.com}}</ref> Unlike the iOS version, ''Cut the Rope 2'' for Android adds [[free-to-play]] elements such as an [[energy system]], and features a map like structure instead of level packs; these features would eventually be added to the iOS version of the game.
+
+===''Cut the Rope: Triple Treat'' (2014)===
+{{main|Cut the Rope: Triple Treat}}
+''Cut the Rope: Triple Treat'' was released on March 25, 2014, for [[Nintendo 3DS]], including levels from the three previous Cut the Rope games, ''Cut the Rope'', ''Cut the Rope: Experiments'' and ''Cut the Rope: Time Travel''.<ref name="3dscatalog">{{cite web|url=https://www.nintendo.com/games/detail/bgpmuhxRhSe4AFGH6Yae7M-XvpPzN9LF|title=Cut the Rope: Triple Treat|publisher=[[Nintendo]]|access-date=April 7, 2014|archive-date=December 19, 2014|archive-url=https://web.archive.org/web/20141219103107/http://www.nintendo.com/games/detail/bgpmuhxRhSe4AFGH6Yae7M-XvpPzN9LF|url-status=dead}}</ref> It was published by [[Activision]].<ref>{{cite web|url=http://www.joystiq.com/2014/01/22/activision-bringing-cut-the-rope-triple-threat-3-game-pack-to-3/|title=Activision bringing Cut the Rope: Triple Treat 3-game pack to 3DS|publisher=[[Joystiq]]|author=Xav de Matos|date=January 22, 2014}}</ref>
+
+===''My Om Nom'' (2014)===
+''My Om Nom'' was released on December 18, 2014, for iOS devices and 2015 for Android devices. In this game, the player has their own Om Nom to feed, dress up, and play with. It includes some simple games to play with Om Nom, and it is reminiscent of the ''[[Tamagotchi]]'' franchise and similar to ''[[Pou (video game)|Pou]]''.<ref>[http://www.imore.com/my-om-nom-offers-your-own-pet-cut-rope My Om Nom offers your own pet from Cut the Rope] December 18, 2014</ref>
+
+===''Cut the Rope: Magic'' (2015)===
+''Cut the Rope: Magic'' was released on December 17, 2015, for both [[iOS]] and [[Android (operating system)|Android]] devices.<ref name="CtMagic">{{cite web | url=http://www.phonearena.com/news/Cut-the-Rope-Magic-now-available_id76791 | title=Cut the Rope: Magic now available | publisher=Phone Arena | date=December 18, 2015 | access-date=December 19, 2015 | author=H., Michael}}</ref> This game sees Om Nom being transported to a [[Fictional universe|storybook world]] where the levels involve magical elements as well as battling an equally candy-loving spider wizard. ''Magic'' added a new transformation element to Om Nom, allowing him to shrink or turn into a completely different animal.<ref name=CtMagic/><ref>{{cite web | url=http://www.gamezebo.com/2015/12/17/cut-the-rope-magic-review-my-magical-om-nom/ | title=Cut the Rope: Magic Review – My Magical Om Nom | publisher=Gamezebo | date=December 17, 2015 | access-date=December 19, 2015 | author=Oxford, Nadia}}</ref> The game also uses a map element seen in the Android version and later versions of the iOS version of ''Cut the Rope 2''. While the iOS version was exclusively paid, the Android version is free-to-play, and thus, added an energy system that could be removed with a one-time micropayment, which was later replaced with a paid subscription. A free version was eventually added to iOS but did not carry the energy system from the Android release.
+
+===''Om Nom: Merge'' (2019)===
+''Om Nom: Merge'' was released on November 28, 2019, and is the first video game entry in the franchise in four years, due to the success of ''[[Om Nom Stories]]''.
+
+===''Om Nom: Run'' (2020)===
+''Om Nom: Run'' is a free-to-play endless runner [[mobile game]], released on February 27, 2020. It is available on Android, iOS platforms and the [[Nintendo Switch]]. The game follows Om Nom running through the dangerous streets of the city.<ref>{{cite web |title=Gameplay |date=3 February 2020 |url=https://www.pocketgamer.biz/news/72505/zeptolab-soft-launches-om-nom-run/}}</ref> The game starts by tapping the touchscreen, while Om Nom (the game's starter character) or any other character exits the base, and then starts running through the streets of the city.
+
+The game has multiple gameplay modes. The main mode, called Free Run, is a traditional endless runner game. The mission mode gives players tasks to complete as they run. This mode ends when the player crashes or completes the mission objectives.<ref>{{cite web |title=Game play by TouchArcade |url=https://toucharcade.com/games/om-nom-run}}</ref>
+
+The initial release has been a success.<ref>{{cite web |title=Pre release success |date=3 March 2020|url=https://www.thegamer.com/best-mobile-ios-games-february-2020/}}</ref> In a span of one month, it has been downloaded for over 5 million times.<ref>{{cite web |title=Milestone of 50 million downloads |date=30 March 2020 |url=https://www.pocketgamer.biz/news/72764/om-nom-run-five-million-downloads/}}</ref>
+
+=== ''Cut the Rope Remastered'' (2021) ===
+A remastered version of ''Cut the Rope'' was released on April 2, 2021 on [[Apple Arcade]] by Paladin Studios. In the game, Om Nom and his family celebrate his birthday; on this special occasion, Nibble Nom takes out a few books as birthday presents, which are based on the events on the previous games in the series. In the game, there are five level packs, this time presented as books, with levels either taken from or are based on five of the previous entries: Evan's House, based on [[Cut the Rope (video game)|the original]], Experiments and Time Travel, both based on the games of the same name, Road Trip, based on ''Cut the Rope 2'' and Magic (based on the game of the same name). New to the series are levels containing Nibble Nom instead of Om Nom; the player has to guide three candies to the tiny creature instead of one, and Nibble Nom himself can be pushed about and interact with other objects, while Om Nom remains stationary in levels until Road Trip. Another new feature is bonus levels containing Om Nelle (released in a post-launch update); the player has to give her the candy with the box filled with water. ''Remastered'' also features new [[3D computer graphics|3D graphics]], an interactive map where power-ups ([[magnets]], candy rain and [[teleporter]]) and "worldstars", which are added to certain levels for [[replay value]], can be found, and an account system, where up to six saves can be used. The game shut down in early 2024 and was removed from the App Store in 2026.
+
+=== ''Cut the Rope Daily'' (2023) ===
+''Cut the Rope Daily'' was released exclusively through [[Netflix]] Games on August 1, 2023.<ref>{{cite web |title=Cut the Rope Daily marks the legendary franchise's return on mobile through Netflix gaming |date=1 August 2023 |url=https://www.pocketgamer.com/cut-the-rope-daily/official-launch-android-ios-netflix/}}</ref> The game offers a single unique level every day, the same for the whole world. The challenge is to deliver the candy to Om Nom while collecting as many stars as possible (there are 10 in each level). The scoring is based on the number of collected stars and the number of tries. Results are shareable on social media. The progress and winstreak can be tracked in the in-game calendar, and each month has a separate theme with a themed costume for Om Nom to be won with winstreak.
+
+=== ''Cut the Rope 3'' (2023) ===
+''Cut the Rope 3'' was released on October 13, 2023 on [[Apple Arcade]].<ref>{{Cite web |title=Cut the Rope 3 |url=https://apps.apple.com/us/app/cut-the-rope-3/id997332884 |access-date=2023-10-09 |website=App Store |language=en-US}}</ref> It focuses on Om Nom and his son, Nibble Nom setting out on a journey to discover new creatures. The gameplay replaces pieces of candy with Nibble Nom, who must reach Om Nom's location in each level. The game features several different locations, with the location that the player explores being selected by Om Nom's [[compass]]. In each search for a creature, the player will go through three random levels in order to discover and take a picture of one. It is also the second main ''Cut the Rope'' title to feature 3D graphics after ''Cut the Rope Remastered''. On February 2, 2024, [[augmented reality]] features became accessible to support the release of the [[Apple Vision Pro]].<ref>{{cite web|url=https://www.apple.com/newsroom/2024/02/apple-announces-more-than-600-new-apps-built-for-apple-vision-pro/|title=Apple announces more than 600 new apps built for Apple Vision Pro|publisher=Apple Inc.|date=2024-02-01}}</ref> ''Cut the Rope 3'' was the final game to be developed by Paladin Studios before its closure.<ref>{{Cite web |last=Kerr |first=Chris |date=May 2, 2024 |title=Paladin Studios laying off 45 workers and shutting down |url=https://www.gamedeveloper.com/business/paladin-studios-laying-off-45-workers-and-shutting-down |access-date=2024-09-18 |website=www.gamedeveloper.com |language=en}}</ref>
+
+==Reception==
+In addition to its commercial success, ''Cut the Rope'' was very well received by critics. It has a score of 93 on [[Metacritic]], indicating "universal acclaim".<ref name=Metacritic>{{cite web|title=Cut the Rope iOS|url=https://www.metacritic.com/game/cut-the-rope/critic-reviews/?platform=ios-iphoneipad|publisher=[[Metacritic]]|access-date=20 April 2013}}</ref>
+
+''Cut the Rope: Experiments'' reached an aggregate Metacritic score of 85 out of 100,<ref>{{cite web|title=Cut the Rope: Experiments iOS|url=https://www.metacritic.com/game/cut-the-rope-experiments/critic-reviews/?platform=ios-iphoneipad|publisher=[[Metacritic]]|access-date=10 October 2014}}</ref> ''Cut the Rope: Time Travel'' — a score of 84,<ref>{{cite web|title=Cut the Rope: Time Travel iOS|url=https://www.metacritic.com/game/cut-the-rope-time-travel/critic-reviews/?platform=ios-iphoneipad|publisher=[[Metacritic]]|access-date=10 October 2014}}</ref> and ''Cut the Rope 2'' a score of 81.<ref>{{cite web|title=Cut the Rope 2 iOS|url=https://www.metacritic.com/game/cut-the-rope-2/critic-reviews/?platform=ios-iphoneipad|publisher=[[Metacritic]]|access-date=10 October 2014}}</ref>
+
+==Adaptations, spin-offs and merchandise==
+''[[Om Nom Stories]]'', an animated [[web series]] on ZeptoLab's YouTube channel and several kid-oriented streaming sites, is based on the game series and revolves around Om Nom's life out of the game.{{cn|date=June 2026}}
+
+In July 2011, ZeptoLab and comics publisher [[Ape Entertainment]] published a comic book series to be published as a stand-alone app. The comics tell the backstory of the candy-eating monster Om Nom and introduce new characters.<ref>{{cite web|last=Rosenblatt|first=Seth|title=iOS game Cut the Rope jumps to comics|url=http://news.cnet.com/8301-17938_105-20082335-1/ios-game-cut-the-rope-jumps-to-comics/|website=[[CNET]]|archive-url=https://web.archive.org/web/20130523121233/http://news.cnet.com/8301-17938_105-20082335-1/ios-game-cut-the-rope-jumps-to-comics/|archive-date=May 23, 2013|date=July 22, 2011}}</ref>
+
+The character Om Nom has become the subject of a [[viral video]],<ref>{{cite web|title=Cut the Rope animated short makes its debut|date=9 December 2011|url=http://www.gamezebo.com/news/2011/12/09/cut-rope-animated-short-makes-its-debut|access-date=25 September 2012|archive-date=17 June 2013|archive-url=https://web.archive.org/web/20130617060802/http://www.gamezebo.com/news/2011/12/09/cut-rope-animated-short-makes-its-debut|url-status=dead}}</ref> plush toys,<ref>{{cite web|title=Cut the Rope toys coming from Vivid|url=http://www.toynews-online.biz/news/37007/Cut-the-Rope-toys-coming-from-Vivid|access-date=2012-09-25|archive-url=https://web.archive.org/web/20120921043905/http://www.toynews-online.biz/news/37007/Cut-the-Rope-toys-coming-from-Vivid|archive-date=2012-09-21|url-status=dead}}</ref> and a [[Mattel]] Apptivity game.<ref>{{cite web|title=Apptivity™ Cut The Rope™|url=http://mattelapptivity.com/app-toys-games/cut-the-rope/|access-date=2012-09-25|archive-date=2014-12-27|archive-url=https://web.archive.org/web/20141227133645/http://www.mattelapptivity.com/app-toys-games/cut-the-rope/|url-status=dead}}</ref>
+
+In August 2014, ZeptoLab and [[McDonald's]] Europe announced<ref>{{cite web|url=http://www.licensemag.com/license-global/cut-rope-arrives-mcdonalds-europe|title=McDonald's Features Cut the Rope|work=licensemag.com|access-date=2014-10-02|archive-date=2014-10-06|archive-url=https://web.archive.org/web/20141006145254/http://www.licensemag.com/license-global/cut-rope-arrives-mcdonalds-europe|url-status=dead}}</ref> a multi-market [[Happy Meal]] promotional campaign, which featured various ''Cut the Rope''-themed kitchen accessories, such as banana splitter and juicer. "Hungry for fruit and fun?" was the key message of the campaign. As part of the promotion, ZeptoLab also released the game called ''Cut the Rope: Hungry for Fruit''.{{cn|date=June 2026}}
+
+In June 2015, Zeptolab partnered with Blockade Entertainment for a [[feature film]] based on the mobile game, a film titled ''Om Nom: The Movie'', that was set for release in 2016, but it never came to fruition.<ref name="movie">{{cite web|url=https://www.ign.com/articles/2015/06/08/om-nom-the-movie-announced|title=Om Nom: The Movie Announced|work=[[IGN]]|date=2015-06-08}}</ref> Starting in 2023, the ''Cut the Rope'' [[X (social network)|X]] account repeatedly hinted at another [[film adaptation]] there are no confirmation announcements yet.<ref>{{Cite tweet |date=June 29, 2023 |user=Cut_The_Rope |title=No, we won't give up on the movie. Its time just hasn't come yet |number=1674461672692494355 |access-date=}}</ref><ref>{{Cite tweet|date=Jan 3, 2024 |title=what do we have to do to get Jack Black for our movie... |user=Cut_The_Rope|number=1742492757451571365}}</ref><ref>{{Cite tweet|date=Jan 4, 2024 |title=still in the plans|user=Cut_The_Rope|number=1742942785299271728}}</ref><ref>{{Cite tweet |date=March 12, 2024 |title=where are these rumors about a movie coming from? stop it, you |user=Cut_The_Rope|number=1767600544175018101 |access-date=}}</ref>{{primary source inline|date=June 2026}}
+
+In March 2021, ZeptoLab created a [[personalized book]]<ref>{{cite web|url=https://lionstory.com/stories/adventure-with-om-nom|title=Adventure With Om Nom|work=lionstory.com}}</ref> for children in collaboration with LionStory. The book features Om Nom, Om Nelle, Toss, Snail Brow, Roto, Lick, Ginger, Blue and a personalized character of a child (appearance, name, dedication and a back cover photo).{{cn|date=June 2026}}
+
+==See also==
+* [[List of most downloaded Android applications]]
+
+== Notes ==
+<references group="lower-alpha" />
+
+==References==
+{{Reflist}}
+
+==External links==
+* [https://www.cuttherope.net Official website] (English)
+
+{{Cut the Rope}}
+
+[[Category:Puzzle video games]]
+[[Category:IOS games]]
+[[Category:MacOS games]]
+[[Category:Casual games]]
+[[Category:Browser games]]
+[[Category:DSiWare games]]
+[[Category:Physics-based video games]]
+[[Category:Symbian games]]
+[[Category:Windows games]]
+[[Category:Firefox OS games]]
+[[Category:Netflix games]]
+[[Category:Windows Phone games]]
+[[Category:BlackBerry 10 games]]
+[[Category:Nintendo 3DS eShop games]]
+[[Category:Nintendo 3DS games]]
+[[Category:BlackBerry PlayBook games]]
+[[Category:Android (operating system) games]]
+[[Category:Russian inventions]]
+[[Category:Russian brands]]
+[[Category:Apple Design Awards recipients]]
+[[Category:Video game franchises]]
+[[Category:Video games adapted into television shows]]
+[[Category:Video games adapted into comics]]
+[[Category:Video games scored by Alberto Jose González]]
+[[Category:Video games developed in Russia]]
+[[Category:Video game franchises introduced in 2010]]
+[[Category:Cut the Rope|*]]

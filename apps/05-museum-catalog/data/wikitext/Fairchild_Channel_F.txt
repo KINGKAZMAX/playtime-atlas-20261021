@@ -1,0 +1,412 @@
+{{Short description|First ROM cartridge–based video game console}}
+{{use mdy|date=August 2026}}
+{{Infobox computer
+| aka           = Fairchild Video Entertainment System
+| logo          = Channel_F_Logo.svg
+| image         = Fairchild-Channel-F.jpg
+| caption       = Channel F and its two controllers
+| developer     = [[Jerry Lawson (engineer)|Jerry Lawson]]
+| manufacturer  = [[Fairchild Camera and Instrument]]
+| type          = [[Home video game console]]
+| generation    = [[Second generation of video game consoles|Second]]
+| release_date  = {{vgrelease|NA|November 1976|JP|October 1977}}
+| lifespan      = 1976–1983
+| price         = {{USD|169.95|1976|round=-1}}
+| discontinued  = 1983
+| units_sold    = 350,000 (as of 1979){{sfn|Edwards|2015}}
+| units_shipped = 
+| media         = [[ROM cartridge]]
+| power         = 
+| cpu           = [[Fairchild F8]]
+| memory        = 64 bytes RAM<br>2 KB video buffer
+| display       = {{circa}} 104 × 60 pixels<br>(of 128 x 64 VRAM)
+| graphics      = 
+| sound         = 
+| controllers   = Joystick/digital paddle, JetStik (has added fire button)
+| dimensions    = 
+| weight        = 
+| top_game       = Videocart-17: Pinball Challenge
+| successor     = 
+| related       = 
+}}
+
+The '''Fairchild Channel F''', short for "Channel Fun",{{sfn|Edwards|2015}} is a [[home video game console]], the first to be based on a [[microprocessor]] and to use [[ROM cartridge]]s (branded "[[Fairchild Channel F Videocarts|Videocarts]]") instead of having games built in. It was released by [[Fairchild Camera and Instrument]] in November 1976 across North America at a retail price of {{USD|169.95|1976|round=-1}}. It was launched as the "Video Entertainment System", but Fairchild rebranded their console as "Channel F" the next year while keeping the Video Entertainment System descriptor.
+
+The Fairchild Channel F sold only about 350,000 units before Fairchild sold the technology to Zircon International in 1979, trailing well behind the [[Atari 2600]].{{sfn|Edwards|2015}} The system was discontinued in 1983.{{sfn|Wolf|2018}}
+
+==History==
+{{expand section|date=June 2020}}
+
+=== Background ===
+
+In the 1950s, [[Fairchild Semiconductor]], a subsidiary of Fairchild Camera and Instrument, became a leader in the [[transistor]] industry by developing the [[planar process]], a technique that facilitated the development of the first [[integrated circuits]].{{sfn|Bassett|2007|page=46}} Following the launch of the first 8-bit microprocessors from [[Intel]], Fairchild developed its own 8-bit microprocessor called the [[Fairchild F8]] which launched in 1975. During this time, Fairchild also attempted to enter the [[consumer electronics]] market by producing digital watches following the collapse of the digital calculator market. When the digital watch market also collapsed, Fairchild sought new avenues for selling semiconductor based products to consumers.{{sfn|Smith|Daum|2018|loc= at 28:56}}
+
+=== Alpex and RAVEN ===
+
+The Alpex Computer Corporation was a small research and development firm based in Stamford, Connecticut.{{sfn|Smith|Daum|2018|loc= at 31:42}} It was formed by former employees of [[American Machine and Foundry]] (AMF) in opposition to a relocation to North Carolina. After losing a contract with [[Pitney Bowes]] to develop electronic cash registers in late 1973, Alpex decided to pivot into video games.{{sfn|Edwards|2015}} At the time, ''[[Pong]]'' and the ''[[Magnavox Odyssey]]'' had been on the market for less than two years and no video game product had yet implemented a microprocessor. Alpex engineer Wallace Kirschner set out plans to develop a microprocessor based home console, later joined by former AMF software engineer Lawrence Haskel.{{sfn|Smith|Daum|2018|loc= at 34:02}} The project, dubbed "RAVEN" for "Remote Access Video Entertainment", began in early 1974.{{sfn|Edwards|2015}}
+
+Kirschner and Haskel developed a system based around the [[Intel 8008]] processor (later upgraded to the [[Intel 8080]]). It kept track of the entirety of a 128 x 64 pixel black and white display using 1 kilobyte of RAM, an expensive quanitity at the time.{{sfn|Edwards|2015}} Haskel's first game for the system was a version of ''Pong'' based around the sport of [[ice hockey]].{{sfn|Edwards|2015}} Inspired by [[EEPROM]] chips used in development, which were inserted and removed directly from the circuit board, Alpex developed a prototype cartridge which allowed a ROM chip to connect to the RAVEN in a more durable and user-friendly way. According to Kirschner, the original prototypes were built out of small plastic boxes bought from [[RadioShack]].{{sfn|Edwards|2015}}
+
+Alpex lacked the capability to manufacture and distribute the RAVEN themselves and so sought a business partner. After failing to court consumer electronics companies like [[RCA Corporation|RCA]] and [[Motorola]], they managed to secure a meeting with Fairchild through a sales rep they had done business with in the past.{{sfn|Edwards|2015}} Fairchild sent the former head of consumer products for [[National Semiconductor]], Gene Landrum, and an engineer named [[Jerry Lawson (engineer)|Jerry Lawson]] to Connecticut to evaluate the viability of the product. Lawson was impressed by the system and suggested Fairchild license the technology, which the company did in January 1976.{{sfn|Edwards|2015}}{{sfn|Zell-Breier|2021}}
+
+=== Fairchild redesign ===
+
+Lawson, who had first been hired by Fairchild in 1970, already had prior experience with video games. In 1972, while attempting to sell a character generator chip to Syzygy Co. (later renamed to [[Atari Inc.|Atari]]), Lawson meet [[Al Alcorn]] and saw an early version of ''Pong''.{{sfn|White|de Boer|2016|page=24-25}} Lawson later developed his own arcade game in 1975, ''Demolition Derby'', which used the F8 processor but was never mass produced.{{sfn|Saucier|2013}} After meeting with Alpex, Lawson was picked to head a new video game division aimed at turning the RAVEN prototype into a viable product using an F8 processor.{{sfn|Edwards|2015}}{{sfn|Weber|2011}}
+
+Lawson worked on the project with industrial designer Nick Talesfore and mechanical engineer Ronald A. Smith. Lawson replaced the 8080 with Fairchild's own [[Fairchild F8|F8]] [[Central processing unit|CPU]], while Nick Talesfore and Ron Smith were responsible for adapting the prototype's complex keyboard controls into a single control stick and encasing the ROM circuit boards into plastic cartridges reminiscent of 8-track tapes.{{sfn|Zell-Breier|2021}}{{sfn|Smith|2019|page=318-320}}{{sfn|Fairchild Patent|1978|p=1}} Talesfore and Smith collaborated on the styling and function of the 8 degrees of freedom hand controller. They were responsible for the design of the hand controllers, console, and video game cartridges. Talesfore also worked with graphic designer Tom Kamafugi, who did the original graphic design for the early video cartridges cartons.
+
+John Donatoni, the marketing director of Fairchild's video games division, stated that the console followed the [[razor and blades model]] where they would sell the "hardware, and then we're going to make the profit on the cartridge sales". Their marketing campaign was conducted by [[Ogilvy (agency)|Ogilvy]].{{sfn|Bunch|2023}}
+
+Fairchild announced the console at the [[Consumer Electronics Show]] on June 14, 1976, and the [[Federal Communications Commission]] approved it for sale on October 20.{{sfn|Fairchild|1977|p=6}}{{sfn|TV Digest|1976|page=13}}{{sfn|Whitney|1976|page=60}} It was released as the Video Entertainment System (VES) at the price of $169.95, but renamed to the Channel F the next year. Channel F was unable to compete against Atari's [[Atari 2600]] as the console only had 22 games compared to Atari's 187.{{sfn|Whalen|2012|p=62-64}} Marketing for the console included an event featuring [[Ken Uston]] playing Video Blackjack{{sfn|Ken Uston Ad|1977}} and commercials starring [[Milton Berle]].{{sfn|Bunch|2023}}
+
+The console was licensed in Europe to television manufacturers{{sfn|Fairchild|1977|p=15}} and led to the clone consoles of Ingelen Telematch Processor in Austria, Barco Challenger in Belgium, ITT Telematch-Processor and Nordmende Color Teleplay μP in Germany, Dumont Videoplay System and Emerson Videoplay System in Italy, [[Luxor AB|Luxor TV]]-Datorspel and Luxor Video Entertainment Computer in Sweden, and Grandstand Video Entertainment Computer in the United Kingdom. Both models of the Saba Videoplay were sold in Germany and Italy.{{sfn|Whalen|2012|p=64}}<ref>{{Cite news |title=Fairchild Channel F Models & Clones |work=Video Game Console Library |url=https://www.videogameconsolelibrary.com/pg70-fairchild.htm#page=models |url-status=live |archive-url=https://web.archive.org/web/20240903161800/https://www.videogameconsolelibrary.com/pg70-fairchild.htm#page=models |archive-date=September 3, 2024}}</ref>
+
+===Channel F System II===
+[[file:Fairchild-Channel-F-System-II-Console.png|thumb|Channel F System II]]
+
+Lawson moved on to form his own company, Video Soft in 1980.{{sfn|Huddleston Jr.|2021}} Talesfore continued working on the system at Fairchild, and eventually a number of these improvements resulted in the improved System II. The major changes were that the controllers were now removable, using the [[Atari joystick port]] connector (not Atari compatible), and their storage was moved to the back of the machine. The sound was now mixed into the RF modulator so the user could adjust it on their TV set instead of a fixed volume internal speaker. The internal electronics were also simplified, with two custom logic chips replacing the standard TTL logic chips. This resulted in a much smaller motherboard which allowed for a smaller, simpler and more modern-looking case design.
+
+Fairchild left the video game market in April 1979.{{sfn|Bunch|2023}} Zircon International acquired the rights to the system and related assets in 1979. The company redesigned the console into the Channel F System II. This featured removable controllers and audio coming from the TV rather than a speaker within the console. It was sold at the price point of $99.95 or $69.95 if the previous console was traded in. Zircon released an additional four games for a final library of 26 games on the console.{{sfn|Whalen|2012|pp=63-64}}
+
+=== European models ===
+<gallery class="center">
+File:Saba Video Play.jpg|SABA Videoplay
+File:Nordmende_COLOR_TelePlay.jpg|Nordmende Color TelePlay μP<br>
+File:Adman_Grandstand_Fairchild.jpg|Adman Grandstand Video Entertainment Computer<br>
+File:LuxorVideoEntertainmentComputer.jpg|Luxor Video Entertainment Computer
+</gallery>
+
+==Design==
+
+[[File:Fairchild Channel F Patent Page 1.png|thumb|200px|Patent diagrams for the Channel F giving an overview of the system architecture]]
+
+The Channel F is a video game [[home console]] which uses inputs provided by a player to update the state of a game program and generate a television video signal. It was the first home console to accept cartridges, which allow the player to swap between different games, each represented as [[software]] written in computer code.{{sfn|Edwards|2015}} Prior to its development, most video games were represented through [[discrete logic]] circuits which intepreted the rules of the game through physical components.{{sfn|Edwards|2015}} The system produces an [[radio frequency]] (RF) video signal which is sent directly to a television's antenna port.{{sfn|Smith|Daum|2018|loc=at 54:10}} On the original model this signal contains no audio, which is generated instead by a speaker within the machine itself.{{sfn|Kaplan|1978|page=12}} The outside of the console contains five push buttons with various functions, a cartridge port, two wired controllers, and a slot to store those controllers while not in use.{{sfn|Buchsbaum|Mauro|1979|page=293}}
+
+[[File:KL Fairchild F3850 edit.jpg|thumb|The 3850 CPU, half of a complete F8 microprocessor]]
+
+The Channel F is based on the [[Fairchild F8]] microprocessor, which splits its functionality onto two chips, the 3850 [[central processing unit]] (CPU) and the 3851 programmable storage unit (PSU).{{sfn|White|de Boer|2016|page=25}} The F8's CPU can perform arithmetic operations but does not have direct access to the system's memory, for which it relies on the PSU. Put together the CPU and PSU become a microcontroller, containing the full functionality of a small computer.{{sfn|White|de Boer|2016|page=25}} This includes 64 bytes of scratchpad memory ([[RAM]]) present on the 3850 CPU and 1 kilobyte (KB) of program ROM present on the 3851 PSU.{{sfn|F8|1975|page=2}} In addition, both chips contain input/output ports which allow them to communicate with devices such as the system's face buttons and controllers.{{sfn|Buchsbaum|Mauro|1979|page=294}} Multiple PSUs can be hooked up to one CPU, with the Channel F containing two 3851 PSUs for a total of 2 KB of built-in ROM.{{sfn|Whalen|2012|page=65}}
+
+These PSUs contain two built-in games, ''Hockey'' and ''Tennis'', as well as code for powering on the system and some common functionality shared between all games.{{sfn|Buchsbaum|Mauro|1979|page=294}} This shared code, known as the [[BIOS]], set the Channel F apart from its main competitor, the [[Atari 2600]], which had no built-in ROM whatsoever.{{sfn|Whalen|2012|page=65}} For example, the Channel F BIOS contained functionality for displaying numbers and letters, functionality that would need to be included separately on each Atari 2600 cartridge.{{sfn|Whalen|2012|page=66}} The Channel F is the first video game console to feature a pause function; there is a 'Hold' button on the main unit of the console which allows players to freeze time inside the two built-in games. This 'Hold' button was implemented through software and was not fully implemented in all games.{{sfn|Hanson|2018|page=61}}
+
+=== Graphics ===
+
+[[File:Fairchild Channel F test picture.svg|thumb|The [[Palette (computing)|palette]] of the Channel F]]
+
+The Channel F uses a [[framebuffer]] to render its graphics, each on-screen pixel is kept track of by a dedicated two bits of the system's two kilobytes of [[video random access memory]] (VRAM).{{sfn|Whalen|2012|page=65}} Each pixel can either be transparent or take one of three colors (red, green, and blue). In addition, each row of pixels can take one of four background colors (light grey, light green, light blue, and black). A black background turns every other color white, bringing the total number of colors to eight.{{sfn|Fairchild Patent|1978}} A maximum resolution of 128&nbsp;×&nbsp;64 pixels is supported by the hardware, however [[cathode ray tube|CRT televisions]] of the time could not fit every pixel on screen, so only a resolution of about 102&nbsp;×&nbsp;58 pixels was generally visible.{{sfn|Whalen|2012|page=65}}
+
+Zach Whalen's essay "Channel F for Forgotten" from ''Before the Crash: Early Video Game History'', compared the Channel F's graphics directly with the Atari 2600 and its [[Television Interface Adaptor|TIA]] graphics chip.{{sfn|Whalen|2012|page=66}} Unlike the Channel F, the Atari 2600 contains no framebuffer and renders all of its graphics line by line, which due to the high cost of memory, lowered its production costs significantly.{{sfn|Smith|Daum|2018|loc=at 36:30}} It uses a sprite system which allowed a small number of objects to be moved dynamically around the screen.{{sfn|Montfort|Bogost|2009|page=73}} The Channel F has no sprite system and relies entirely on its framebuffer, in effect allowing a limitless number of game elements to appear on screen. According to Whalen, this came at the cost of a much more limited color palette, which he posits left less creative possibilities for Channel F programmers.{{sfn|Whalen|2012|page=66}}
+
+===Controllers===
+
+[[File:ControllerSabaVideoplay.jpg|thumb|220px|The internal components of a Channel F controller]]
+
+The controller included with the Channel F takes the form of a single black handgrip shaft with a triangular spring loaded knob at its top.{{sfn|White|de Boer|2016|page=26}} This knob can be moved like a [[joystick]] in eight directions. It can also be pushed in or pulled out or twisted both clockwise and counterclockwise to simulate the effect of a [[paddle (game controller)|paddle]].{{sfn|Buchsbaum|Mauro|1979|page=293}} Two controllers were included with the system, for one player each. The design permits a player to hold the handgrip with one hand and manipulate the knob with another, or to handle all of the controls with only one hand.{{sfn|Whalen|2012|page=68-69}}
+
+The initial design was created by Jerry Lawson and Nick Talesfore to accommodate all of the controls necessary for the system's built in ''Hockey'' game (which initially used an awkward keyboard control scheme).{{sfn|Edwards|2015}} Later the design was refined by Ron Smith and Rich Rhodes to for practicality and mass-producability.{{sfn|Edwards|2015}} In the original model, the controllers were hard wired into the system. A compartment was included inside the console for storing the controllers while not in use.{{sfn|White|de Boer|2016|page=26}} The System II featured detachable controllers with two holders at the back to wind the cable around and to store the controller in.{{fact|date=August 2026}} Zircon later offered a special controller that featured an action button on the front of the joystick. It was marketed by Zircon as "Channel F Jet-Stick" in a letter sent out to registered owners before Christmas 1982.{{sfn|Jet-Stick Ad}}{{better source|date=August 2026}} Zircon also released an version compatible with the [[Atari joystick port]], the Video Command Joystick,{{sfn|Ahl|1983|page=106}} first released without the extra fire button.
+
+The design was considered unique for the time,{{sfn|Buchsbaum|Mauro|1979|page=293}} and is a common source of alienation for modern players who are used to [[gamepads]] and Atari 2600-style joysticks.{{sfn|Whalen|2012|page=68}} ''[[Video (magazine)|Video]]'' magazine in 1978 considered the controllers to be "confusing" and not as easy to use as other controllers.{{sfn|Kaplan|1978|page=13}} ''[[Creative Computing]]'' on the other hand called them an "outstanding replacement for the Atari joystick in most games".{{sfn|Ahl|1983|page=106}}
+
+=== Cartridges ===
+
+[[File:Cartridge Fairchild Channel F.jpg|thumb|150px|The backside of a videocart, with the contact cover pulled back]]
+
+Cartridges, referred to as "Videocarts", were designed as small yellow boxes made of plastic with colorful artwork on their front.{{sfn|Kent|2001|page=98}} They were designed by Nick Talesfore to resemble the size and texture of an [[8 track tape]] cartridge.{{sfn|Edwards|2015}} Inside are at least two 3581 PSU chips, the companion chip to the 3580 CPU that creates the complete F8 microprocessor. Each provides 1 KB of read only memory for each game.{{sfn|White|de Boer|2016|page=25}} Some games also included a limited amount of additional RAM.{{sfn|White|de Boer|2016|page=25}} Early labels were designed by Tom Kamifuji, an artist with previous experience at National Semiconductor.{{sfn|Edwards|2015}}
+
+Fairchild engineers were challenged in designing the first [[printed circuit board]] meant to be inserted into an electronic device by the average consumer.{{sfn|Smith|Daum|2018|loc=at 47:25}} Concerns were raised about the cartridges withstanding physical wear and tear as well as exposure to [[static electricity]] from the user.{{sfn|Edwards|2015}} Ron Smith designed a latching mechanism that would secure the cartridge inside the console and ground it from static shocks.{{sfn|White|de Boer|2016|page=25}} The design includes a spring-loaded cover for each cartridge, opened automatically by the latching mechanism, which protects the [[electrical contacts]] from damage.{{sfn|Edwards|2015}} An eject button at the front of the cartridge slot releases the latching mechansim so the cartridge can be easily removed.{{sfn|Edwards|2015}} Doug Hardy, one of the engineers involved with the cartridge mechanism, would go on to develop the cartirdge design for the Atari 2600.{{sfn|Smith|Daum|2018|loc=at 52:15}}
+
+===Technical specifications===
+[[File:Grandstand-video-entertainment-computer-pcb.jpg|thumb|PCB Scan of the Grandstand Video Entertainment Computer (UK Channel F II variant)]]
+
+* [[Central processing unit|CPU]] [[microprocessor]]: [[Fairchild F8]] ([[8-bit computing|8-bit]]) (3580 CPU and two 3581 PSUs){{sfn|Buchsbaum|Mauro|1979|page=294}} [[Clock rate|operating]] at 1.7897725&nbsp;[[megahertz|MHz]] ([[NTSC]] [[color burst]]/2). [[PAL]] gen. 1: 2.0000&nbsp;MHz, gen. 2: 1.9704972&nbsp;MHz (PAL [[color burst]]*4/9)
+* [[Read Only Memory|ROM]]: 2 [[kilobyte|KB]] (3581 PSU x2) with a [[BIOS]] and two games{{sfn|Buchsbaum|Mauro|1979|page=294}}{{sfn|F8|1975|page=2}}
+* [[Random-access memory|RAM]]: 2 [[kilobyte|KB]] [[VRAM]] (128&nbsp;×&nbsp;64&nbsp;×&nbsp;2 bits) for the write only [[framebuffer]]{{sfn|Whalen|2012|page=65}} (four Mostek MK4027 or MK4015 4Kx1bit [[DRAM]]s), plus 64 [[bytes]] of [[scratchpad memory]] (on-board 3580 CPU).{{sfn|White|de Boer|2016|page=25}}
+* Additional [[Static random-access memory|SRAM]] supported via add-in cartridges. Maze and Hangman has 1K x 1 bit, expanded with [[Fairchild_F8|3853 SMI]] Chess has 2048 Bytes.{{fact|date=August 2026}}
+* [[Display resolution|Resolution]]: Roughly 102&nbsp;×&nbsp;58 pixels, depending on [[TV]], although [[VRAM]] could cover 128&nbsp;×&nbsp;64 [[pixel]]s.{{sfn|Whalen|2012|page=65}} (Columns 125 and 126 controls palette per row).{{sfn|Fairchild Patent|1978}}
+* [[Refresh rate]]: 60&nbsp;Hz
+* [[List_of_video_game_console_palettes#Channel_F|Colors]]: 8 colors{{sfn|Whalen|2012|p=65}} (either black/white lines or lines using background grey/blue/green with red, green or blue pixels){{sfn|Fairchild Patent|1978}}
+* Audio: 120&nbsp;Hz, 500&nbsp;Hz and 1&nbsp;kHz beeps (can be [[Pulse-frequency modulation|modulated]] to produce different tones), produced by an on-board speaker on original release,{{sfn|Kaplan|1978|page=12}} sent through the video signal on System II.{{sfn|Smith|Daum|2018|loc=at 1:15:20}}
+* Input: two custom game controllers, hardwired to the console in original release and removable in System II{{sfn|White|de Boer|2016|page=26}}
+* Output: [[RF modulator|RF modulated]] composite video signal, cord hardwired to console in original release, detachable in System II.{{fact|date=August 2026}}
+
+==Games==
+{{Main|Fairchild Channel F Videocarts}}
+{{More citations needed section|date=August 2019}}
+
+Twenty-seven cartridges, termed "Videocarts", were officially released to consumers in the [[United States]] during the ownership of Fairchild and Zircon, the first twenty-one of which were released by Fairchild. Several of these cartridges were capable of playing more than one game. The console contained two built-in games, Tennis and Hockey, which were both advanced ''[[Pong]]'' clones. In Hockey, the reflecting bar could be changed to different diagonals by twisting the controller knob and could move all over the playing field. Tennis was similar to the original Pong, albeit players could move forwards and backwards.
+
+A sales brochure from 1978 listed "Keyboard Videocarts" for sale. The three shown were ''K-1 Casino Poker'', ''K-2 Space Odyssey'', and ''K-3 Pro-Football''. These were intended to use the Keyboard accessory, which is displayed on the Channel F II box. All further brochures, released after Zircon took over from Fairchild, never listed this accessory nor anything called a Keyboard Videocart.
+
+There was one cartridge released outside the numbered series, listed as Videocart-51 and simply titled "Demo 1". This Videocart was shown in a single sales brochure released shortly after Zircon acquired the company. It has not been seen listed for sale after this single brochure which was sent out in the winter of 1979.
+
+Apart from Chess, the German electronics manufacturer [[SABA (electronics manufacturer)|SABA]] also released a few compatible, localized, carts different from the originals: German translation of Videocart-1 ''Tic-Tac-Toe'', Videocart-3 released with different, German, abbreviations, and Videocart-18 changed graphics and has a German word list.
+
+{| class="wikitable sortable"
+|+ List of physical Videocart releases
+|-
+!Cartridge
+! Title
+! Release date{{sfn|Bunch}}
+! Description{{sfn|Weiss|2007|page=203-208}}
+|-
+! class=rowgroup rowspan=2 | Built-in
+| ''Hockey''
+|! rowspan = 2 | {{dts|1976|11}}
+| based on the sport of [[ice hockey]], similar to ''[[Pong]]''
+|-
+| ''Tennis''
+| based on the sport of [[tennis]], similar to ''[[Pong]]''
+|-
+! class=rowgroup rowspan=4 | Videocart-1
+| ''Tic-Tac-Toe''
+|! rowspan = 4 | {{dts|1976|11}}
+| based on the pen and paper game [[tic-tac-toe]]
+|-
+| ''Shooting Gallery''
+| a [[skeet shooting]] game with random positions and angles
+|-
+| ''Doodle''
+| a drawing program with three colors
+|-
+| ''Quadra-Doodle''
+| an interactive program that procedurally generates images
+|-
+! class=rowgroup rowspan=2 | Videocart-2
+| ''Desert Fox''
+|! rowspan = 2 | {{dts|1976|12}}
+| a [[tank game]] similar to Atari's ''[[Tank (video game)|Tank]]''
+|-
+| ''Shooting Gallery''
+| identical to the game on Videocart-1
+|-
+! class=rowgroup | Videocart-3
+| ''Video Blackjack''
+| {{dts|1976|12}}
+| based on the card game [[blackjack]]
+|-
+! class=rowgroup | Videocart-4
+| ''Spitfire''
+| {{dts|1977|4}}
+| a [[dogfighting]] game
+|-
+! class=rowgroup | Videocart-5
+| ''Space War''
+| {{dts|1977|4}}
+| a one-on-one space shoot 'em up similar to ''[[Spacewar!]]''
+|-
+! class=rowgroup | Videocart-6
+| ''Math Quiz I''
+| {{dts|1977|5}}
+| a math program with addition and subtraction problems
+|-
+! class=rowgroup | Videocart-7
+| ''Math Quiz II''
+| {{dts|1977|8}}
+| a math program with multiplication and division problems
+|-
+! class=rowgroup rowspan=2 | Videocart-8
+| ''Mind Reader''
+|! rowspan=2 | {{dts|1977|9}}
+| based on the board game ''[[Mastermind (game)|Mastermind]]''
+|-
+| ''Nim''
+| based on the classic chinese game of [[nim]]
+|-
+! class=rowgroup | Videocart-9
+| ''Drag Strip''
+| {{dts|1977|9}}
+| a [[drag racing]] game
+|-
+! class=rowgroup | Videocart-10
+| ''Maze''
+| {{dts|1977|11}}
+| a collection of four similar [[maze game]]s
+|-
+! class=rowgroup rowspan=2 | Videocart-11
+| ''Backgammon''
+|! rowspan=2 | {{dts|1977|12}}
+| based on the board game [[backgammon]]
+|-
+| ''Acey-Deucey''
+| based on the board game [[acey-deucey]]
+|-
+! class=rowgroup | Videocart-12
+| ''Baseball''
+| {{dts|1977|9}}
+| based on the sport of [[baseball]]
+|-
+! class=rowgroup rowspan=2 | Videocart-13
+| ''Robot War''
+|! rowspan=2 | {{dts|1978|1}}
+| an action game where robots are lured into force fields
+|-
+| ''Torpedo Alley''
+| an underwater [[shooting gallery game]]
+|-
+! class=rowgroup | Videocart-14
+| ''Sonar Search''
+| {{dts|1978|5}}
+| similar to the board game ''[[Battleship (game)|Battleship]]''
+|-
+! class=rowgroup | Videocart-15
+| ''Memory Match''
+| {{dts|1978|5}}
+| based on the card game [[concentration (game)|concentration]]
+|-
+! class=rowgroup | Videocart-16
+| ''Dodge' It''
+| {{dts|1978|5}}
+| an action game where players avoid moving balls in a small arena
+|-
+! class=rowgroup | Videocart-17
+| ''Pinball Challenge''
+| {{dts|1978|4}}
+| similar to ''[[Breakout (video game)|Breakout]]'', despite the name
+|-
+! class=rowgroup | Videocart-18
+| ''Hangman''
+| {{dts|1978|11}}
+| based on the pen and paper game [[hangman (game)|hangman]]
+|-
+! class=rowgroup | Videocart-19
+| ''Checkers''
+| {{dts|1980|8}}
+| based on the board game [[checkers]]
+|-
+! class=rowgroup | Videocart-20
+| ''Video Whizball''
+| {{dts|1978|11}}
+| a sports game where players shoot at balls to knock them into an opponent's goal
+|-
+! class=rowgroup | Videocart-21
+| ''Bowling''
+| {{dts|1978|11}}
+| based on the sport of [[bowling]]
+|-
+| {{N/A}}
+| ''Schach''
+| 1979
+| based on [[chess]] and exclusive to the SABA Videoplay released in West Germany
+|-
+! class=rowgroup | Videocart-22
+| ''Slot Machine''
+| {{dts|1980|8}}
+| a [[slot machine]] game
+|-
+! class=rowgroup rowspan=2 | Videocart-23
+| ''Galactic Space Wars''
+|! rowspan=2 | {{dts|1980|8}}
+| a first person space [[shoot 'em up]]
+|-
+| ''Lunar Lander''
+| a [[Lunar Lander (video game)|lunar lander]] game
+|-
+! class=rowgroup | Videocart-24
+| ''Pro Football''
+| {{dts|1980|8}}
+| based on the sport of [[american football]]
+|-
+! class=rowgroup | Videocart-25
+| ''Casino Poker''
+| 1981
+| based on [[five-card draw]] poker
+|-
+! class=rowgroup | Videocart-26
+| ''Alien Invasion''
+| 1981
+| A space [[shoot 'em up]] similar to ''[[Space Invaders]]''
+|-
+|}
+
+* Democart (was briefly available to the general public)
+* Democart 2 
+
+Unreleased carts:
+* Keyboard Videocart-1: ''Casino Poker''
+* Keyboard Videocart-2: ''Space Odyssey''
+* Keyboard Videocart-3: ''Pro-Football''
+
+==Reception==
+[[File:Two people playing a Fairchild Channel F.jpg|thumb|Gamers playing on a Fairchild Channel F]]
+
+Atari 2600 engineer [[Joe Decuir]] attributed its success to Atari being a game company, while competitors like Fairchild were technology companies without entertainment experience.{{sfn|Decuir|2019|loc=at 24:33}} The Channel F had beaten the 2600 to the market, but once the 2600 was released, sales of the Channel F fell, attributed to the types of games that were offered. Most of the Channel F titles were slow-paced educational and intellectual games, compared to the action-driven games that launched with the 2600. Even with the redesigned Channel F II in 1978, Fairchild was unable to meet the sales that the 2600 and its games were generating. By the time Fairchild sold the technology to Zircon in 1979, around 350,000 total units had been sold.{{sfn|Edwards|2015}}
+
+''[[Video (magazine)|Video]]'' magazine reviewed the system in 1978. They initially struggled for an interference-free picture due to a difference in resistance ratings between different TV antenna. After some troubleshooting they say the system performed well. They were "favorably impressed by the detail and sharpness" of the graphics and decided the game selection had "something for everyone" and most were fun to play.{{sfn|Kaplan|1978|page=10-14}} In 1982, ''Video'' gave it another review following the reintroduction by Zircon, written by [[Bill Kunkel (journalist)|Bill Kunkel]] and Arnie Katz (under the pseudonym Frank Laney Jr.) for "[[Arcade Alley]]". They called the Channel F System II "remarkably durable and attractive" and the games "good solid designs with entertaining play-action."{{sfn|Kunkel|Katz|1982|page=18}}
+
+[[Ken Uston]] (who had previously been a part of the system's marketing) reviewed 32 games in his book ''[[Ken Uston's Guide to Buying and Beating the Home Video Games]]'' in 1982, and rated some of the Channel F's titles highly; of these, ''Alien Invasion'' and ''Video Whizball'' were considered by Uston to be "the finest adult cartridges currently available for the Fairchild Channel F System".{{sfn|Uston|1982|page=605}} The games on a whole, however, rated last on his survey of over 200 games for the Atari, Intellivision, Astrocade and Odyssey consoles, and contemporary games were rated "Average" with future Channel F games rated "below average".{{sfn|Uston|1982|page=20}} Uston rated almost one-half of the Channel F games as "high in interest" and called that "an impressive proportion" and further noted that "Some of the Channel F cartridges are timeless; no matter what technological developments occur, they will continue to be of interest." His overall conclusion was that the games "serve a limited, but useful, purpose" and that the "strength of the Channel F offering is in its excellent educational line for children".{{sfn|Uston|1982|page=23, 603}}
+
+In 1983, after Zircon announced its discontinuation of the Channel F, ''Video Games'' reviewed the console. Calling it "the system nobody knows", the magazine described its graphics and sounds as "somewhat primitive by today's standards". It described ''Space War'' as "may be the most antiquated game of its type still on the market", and rated the 25 games for the console with an average "interest grade" of three ("not too good") on a scale from one to ten and "skill rating" at an average 4,5 of 10. The magazine stated, however, that Fairchild "managed to create some fascinating games, even by today's standards", calling the poker game ''Casino Royale'' (actually Videocart-25, ''Casino Poker'') "the best card game, from blackjack to bridge, made for ''any'' TV-game system". It also favorably reviewed ''Dodge-It'' ("simple but great"), ''Robot War'' ("Berzerk without guns"), and ''Whizball'' ("thoroughly original ... hockey ''with'' guns"), but concluded that only those interested in nostalgia, [[video game collecting]], or card games would purchase the Channel F in 1983.{{sfn|Dionne|1983|page=73-75}}
+
+== Legacy ==
+
+In 1977, Alpex Corporation received a patent on their original RAVEN design, the basis for the Channel F.{{sfn|Alpex Patent|1977}} US Patent 4,026,555, often known simply as the "555 patent", held jurisdiction over almost every cartridge based video game console released following the Channel F. Alpex enforced this patent by contacting over 80 companies, settling out of court with six and successfully suing ten. Atari settled with Alpex for $380,000. In 1983, Alpex declared Chapter 11 bankruptcy and the company was restructured entirely around their only valuable asset, the 555 patent.{{sfn|Kent|2001|page=392-396}} [[Nintendo]] refused to pay the patent licensing fee over the [[NES]] which lead Alpex to sue in February 1986.{{sfn|Alpex v. Nintendo|1997}} The suit was resolved in 1991,{{sfn|Alpex v. Nintendo|1991}} A U.S. district court finding Nintendo liable for over $250 million. The judgement was overruled in Federal Appeals court later in 1997.{{sfn|Alpex v. Nintendo|1997}}{{sfn|Kent|2001|page=392-396}}
+
+==See also==
+* ''[[TV Powww]]''
+
+==References==
+{{refs}}
+
+=== Works cited ===
+{{refbegin|60em|indent=yes}}
+* {{cite magazine | first1 = David H. | last1 = Ahl | author-link = David H. Ahl | title = Blisters And Frustration: Joysticks, Paddles, Buttons and Game Port Extenders for Apple, Atari and VIC | journal = Creative Computing Video & Arcade Games | volume = 1 | issue = 1 | pages = 106 | year = 1983 | url = http://www.atarimagazines.com/cva/v1n1/joysticks.php | issn = 0097-8140}}
+*{{cite book|last1=Bassett|first1=Ross Knox|url=https://books.google.com/books?id=UUbB3d2UnaAC&pg=PA46|title=To the Digital Age: Research Labs, Start-up Companies, and the Rise of MOS Technology|date=2007|publisher=[[Johns Hopkins University Press]]|isbn=9780801886393|page=46}}
+* {{cite book | last1 = Buchsbaum | first1 = Walter H. | last2 = Mauro | first2 = Robert | title = Electronic Games: Design, Programming, Troubleshooting | date = 1979 | isbn = 9780070087217 | publisher = [[McGraw Hill]] | page = 292-294}}
+* {{cite journal|last=Bunch |first=Kevin |title=Selling the First Programmable Game Console: An Interview with John Donatoni about the Channel F |journal=ROMchip: A Journal of Game Histories |date=2023 |volume=5 |issue=2 |url=https://www.romchip.org/index.php/romchip-journal/article/view/195}}
+*{{cite web| last = Bunch | first = Kevin | website = Atari Archive | title = Farichild Channel F Game Release Dates | url = https://www.atariarchive.org/fairchild-channel-f-game-release-dates/ | access-date = August 18, 2026 | archive-date = January 24, 2026 | archive-url = https://web.archive.org/web/20260124184607/https://www.atariarchive.org/fairchild-channel-f-game-release-dates/ | url-status = live}}
+* {{Cite conference |url=https://www.youtube.com/watch?v=dlVpu_QSHyw | last = Decuir | first = Joe | title= Atari 800 Series Computers: 40 Years |date=2019 |publisher=[[Vintage Computer Federation]] | event = VCF East 2019 |orig-date=Presentation on 2019-05-05 |time=24:33 |access-date=2026-05-24 |via=YouTube}}
+* {{cite magazine | url = https://archive.gamehistory.org/item/19d542da-1bc1-4341-81c7-3e93976b1916 | title = Channel F: The System Nobody Knows | magazine = Video Games | date = March 1983 | last = Dionne | first = Roger | publisher = Pumpkin Press | volume = 1 | number = 6 | pages= 73–75 | issn = 0733-6780}}
+* {{cite web | url = https://www.fastcompany.com/3040889/the-untold-story-of-the-invention-of-the-game-cartridge | title = The Untold Story Of The Invention Of The Game Cartridge | first = Benj | last = Edwards | date = January 22, 2015 | access-date = July 29, 2020 | work = [[Fast Company]] | archive-url = https://web.archive.org/web/20200715045155/https://www.fastcompany.com/3040889/the-untold-story-of-the-invention-of-the-game-cartridge | archive-date = July 15, 2020 | url-status = live}}
+* {{Cite book | last = Hanson | first = Christopher | title = Game Time: Understanding Temporality in Video Games | publisher = [[Indiana University Press]] | year = 2018 | page = 61 | doi = 10.2307/j.ctv176q4.7 }}
+* {{cite web | url=https://www.homecomputermuseum.nl/en/collectie/fairchild/fairchild-channel-f-saba/ | title = Fairchild Channel-F / Saba | website = Home Computer Museum | access-date = August 28, 2026 | location = [[Helmond]], NL | archive-url = https://web.archive.org/web/20260512010551/https://www.homecomputermuseum.nl/en/collectie/fairchild/fairchild-channel-f-saba/ | archive-date = May 12, 2026 | url-status = live | ref={{sfnref|Home Computer Museum}}}}
+* {{cite web | last = Huddleston Jr. | first = Tom | url = https://www.cnbc.com/2021/10/30/jerry-lawson-black-silicon-valley-pioneer-changed-video-games-forever.html | archive-url = https://web.archive.org/web/20211030134338/https://www.cnbc.com/2021/10/30/jerry-lawson-black-silicon-valley-pioneer-changed-video-games-forever.html | title = Jerry Lawson is one of the most important Silicon Valley pioneers you've never heard of — here's why | website = [[CNBC]] | archive-date = October 30, 2021 | date = 30 October 2021 | access-date = January 21, 2024}}
+*{{cite magazine |date= Summer 1978 |editor-last=Kaplan| editor-first=Deeny|title= VideoTest Report Number 1: Fairchild's Channel F |magazine= [[Video (magazine)|Video]]|publisher= Reese Communications|volume= 1|issue= 2|pages= 10–14|issn= 0147-8907}}
+* {{ cite book | last = Kent | first = Steven L. | authorlink= Steven L. Kent | title = [[The Ultimate History of Video Games]] | year = 2001 | publisher = Three Rivers Press | isbn = 0-7615-3643-4 }}
+* {{cite magazine | magazine = [[Video (magazine)|Video]] | title = [[Arcade Alley]]: Zircon Resurrects Channel F | last1 = Kunkel | first1 = Bill | last2 = Katz | first2 = Arnie | date = February 1982 | volume = 5 | number = 11 | page = 18, 80-81 | issn = 0147-8907 | publisher = Reese Publishing}}
+* {{Cite book | last1 = Montfort | first1 = Nick | last2 = Bogost | first2 = Ian | title = [[Racing the Beam: The Atari Video Computer System]] | date = 2009 | publisher = MIT Press | isbn = 978-0-262-01257-7}}
+* {{Cite web | url=https://www.museumofplay.org/blog/chegheads/2013/12/collection-documents-the-career-of-video-game-pioneer-jerry-lawson | title = Collection Documents the Career of Video Game Pioneer Jerry Lawson | last = Saucier | first = Jeremy | date = December 2, 2013 | website = The Strong: National Museum of Play | access-date = December 2, 2019 | archive-date = November 2, 2019 | archive-url = https://web.archive.org/web/20191102202649/https://www.museumofplay.org/blog/chegheads/2013/12/collection-documents-the-career-of-video-game-pioneer-jerry-lawson | url-status=live }}
+* {{cite podcast | last1 = Smith | first1 = Alexander | last2 = Daum | first2 = Jeffrey | work = They Create Worlds | title = A Fairchild Story | number = 76 | date = October 15, 2018 | url = https://www.theycreateworlds.com/episodes/TCW076-a-fairchild-story }}
+* {{ cite book | title = They Create Worlds: The Story of the People and Companies That Shaped the Video Game Industry, Volume I | last = Smith | first = Alexander | publisher = [[CRC Press]] | year = 2019 | isbn = 978-1-1383-8990-8 | pages = 318–320 }}
+* {{cite book | title = [[Ken Uston's Guide to Buying and Beating the Home Video Games]] | first1 = Ken | last1 = Uston | publisher = [[Signet Books]] | isbn = 0-451-11901-0 | date = 1982 }}
+*{{cite magazine | editor-first = Albert | editor-last = Warren | magazine = Television Digest Weekly | volume = 16 | number = 25 | date = June 21, 1976 | title = Games - New CES Star | page = 13 | issn = 9127-1592 | ref = {{sfnref|TV Digest|1976}}}}
+* {{cite news | url=https://www.nytimes.com/2011/04/14/technology/personaltech/14lawson.html | work=The New York Times | first=Bruce | last=Weber | title=Gerald A. Lawson, Video Game Pioneer, Dies at 70 | date=April 13, 2011 | access-date=February 27, 2017 | archive-date=May 12, 2019 | archive-url=https://web.archive.org/web/20190512050222/https://www.nytimes.com/2011/04/14/technology/personaltech/14lawson.html | url-status=live }}
+* {{cite book | title = Classic Home Video Games, 1972-1984: A Complete Reference Guide | chapter = Fairchild Channel F | first1 = Brett | last1 = Weiss | publisher = [[McFarland & Company]] | isbn = 978-0786487554 | date = 2007 | page = 203-208 }}
+* {{cite book | title = Before the Crash: Early Video Game History | editor-first = Mark J.P. | editor-last = Wolf | first = Zach | last = Whalen | chapter = Channel F for Forgotten | publisher = Wayne State University Press | date = 2012 | isbn = 978-0-8143-3722-6 | page=60-77}}
+*{{cite book | title = Videogames Hardware Handbook - Volume 1 | chapter = Fairchild Channel F | editor-first1 = Jon | editor-last1 = White | editor-first2 = Sanne | editor-last2 = de Boer | publisher = [[Imagine Publishing]] | isbn = 978-1785462399 | date = 2016 | page = 22-27 }}
+* {{Cite news | last = Whitney | first = Peter D. |date = June 16, 1976 | title = Games TV viewers play | page = 60 |work=[[San Francisco Examiner]] | url = https://www.newspapers.com/article/the-san-francisco-examiner/154572488/ | url-status = live |archive-url=https://web.archive.org/web/20240903164128/https://www.newspapers.com/article/the-san-francisco-examiner/154572488/ |archive-date = September 3, 2024 | via = [[Newspapers.com]] }}
+* {{ cite book | last = Wolf | first = Mark J. P. | url = https://books.google.com/books?id=oYZ-DwAAQBAJ&q=fairchild+channel+f+production+end&pg=PT851 | title = The Routledge Companion to Media Technology and Obsolescence | date = 2018 | publisher = Routledge | isbn = 978-1-315-44266-2 | language = en }}
+* {{cite web |title=The Untold Truth Of Jerry Lawson, The Father Of The Video Game Cartridge |url=https://www.looper.com/434774/the-untold-truth-of-jerry-lawson-the-father-of-the-video-game-cartridge |first=Sam |last=Zell-Breier |publisher=[[Looper_(website)|Looper]] | archive-url = https://web.archive.org/web/20210615144212/https://www.looper.com/434774/the-untold-truth-of-jerry-lawson-the-father-of-the-video-game-cartridge/ | archive-date = June 15, 2021 | url-status = dead |date=June 11, 2021 |access-date=June 17, 2021}}
+
+=== Primary Sources ===
+* {{cite tech report |publisher=Fairchild Semiconductor |url=https://bitsavers.trailing-edge.com/components/fairchild/f8/Fairchild_Semiconductor_-_F8_Microprocessor_brochure_-_1975.pdf |title=F8 Microprocessor |date=1975 | ref = {{sfnref|F8|1975}} }}
+* {{cite press release |date=1977 |title=Fairchild Annual Report to Employees 1976 |volume= |issue=45 |publisher=[[Fairchild Camera and Instrument]] |url=http://fndcollectables.com/CHANNEL_F_INFO/U_S_/TimeLine/fairannualreport76.pdf |archive-url=https://web.archive.org/web/20190510112515/http://fndcollectables.com/CHANNEL_F_INFO/U_S_/TimeLine/fairannualreport76.pdf |archive-date=2019-05-10 |ref={{harvid|Fairchild|1977}}}}
+*{{cite video | title = Fairchild Channel F Commercial | url = https://www.youtube.com/watch?v=jXvpsmanhsk | date = 1976 | via = YouTube }}
+*{{ cite web | url = http://classicdev.org/images/thumb/3/31/FVE100_schematic_sheet_1of3.gif/1280px-FVE100_schematic_sheet_1of3.gif | title = FVE100 Schematic Sheet 1 of 3 | access-date = February 5, 2016 | url-status = dead | archive-url = https://web.archive.org/web/20110725180144/http://classicdev.org/images/thumb/3/31/FVE100_schematic_sheet_1of3.gif/1280px-FVE100_schematic_sheet_1of3.gif | archive-date = July 25, 2011 | ref = {{sfnref|FVE100 No. 1}} }}
+*{{ cite web | url = http://classicdev.org/images/thumb/5/55/FVE100_schematic_sheet_2of3.png/1280px-FVE100_schematic_sheet_2of3.png | title = FVE100 Schematic Sheet 2 of 3 | access-date = February 5, 2016 | url-status = dead | archive-url = https://web.archive.org/web/20110725180151/http://classicdev.org/images/thumb/5/55/FVE100_schematic_sheet_2of3.png/1280px-FVE100_schematic_sheet_2of3.png | archive-date = July 25, 2011 | ref = {{sfnref|FVE100 No. 2}} }}
+* {{ cite web | url = http://fndcollectables.com/CHANNEL_F_INFO/U_S_/Adds___Offers/LETTERS/x82fr1f.jpg | archive-url = https://web.archive.org/web/20110816131033/http://fndcollectables.com/CHANNEL_F_INFO/U_S_/Adds___Offers/LETTERS/x82fr1f.jpg | archive-date = August 16, 2011 | url-status = dead | format = JPG | title = Channel F Jet-Stick Advert | website = Fndcollectables.com | access-date = January 7, 2019 | ref = {{sfnref|Jet-Stick Ad}} }}
+* {{Cite news |date=August 10, 1977 | title = Ken Uston Advert | quote = Meet Ken Uston author of 'The Big Player' and watch him play blackjack on the Fairchild programable[sic] Channel F |page=43 |work=[[Reno Gazette-Journal]] |url=https://www.newspapers.com/article/reno-gazette-journal/154342326/ |url-status=live |archive-url=https://web.archive.org/web/20240831040624/https://www.newspapers.com/article/reno-gazette-journal/154342326/ |archive-date=August 31, 2024 |via=[[Newspapers.com]] | ref = {{sfnref|Ken Uston Ad|1977}}}}
+* {{ cite web | date = May 31, 1977 | title = U.S Patent 4,026,555 | publisher = [[United States Patent and Trademark Office]] | url=https://patents.google.com/patent/US4026555A/en | ref = {{harvid|Alpex Patent|1977}} | url-status = live }}
+* {{ cite web |date=June 20, 1978 |title=U.S Patent 4,095,791 |publisher=[[United States Patent and Trademark Office]] |url=https://patents.google.com/patent/US4095791 |archive-url=https://web.archive.org/web/20190510110809/http://fndcollectables.com/CHANNEL_F_INFO/U_S_/TimeLine/us4095791.pdf |archive-date=2019-05-10 |ref={{harvid|Fairchild Patent|1978}} | url-status = live}}
+*{{cite court | litigants = Alpex Computer Corporation v. Nintendo Co., Ltd. | vol = 770 | reporter = F. Supp. | opinion = 161 | court = S.D.N.Y. | date = 1991 | url = https://law.justia.com/cases/federal/district-courts/FSupp/770/161/2129751/ | ref = {{sfnref|Alpex v. Nintendo|1991}} }}
+*{{cite court | litigants = Alpex Computer Corporation v. Nintendo Company Ltd. and Nintendo of America | vol = 102 | reporter = F.3d | opinion = 1214 | court = Fed. Cir. | date = 1997 | url = https://law.justia.com/cases/federal/appellate-courts/F3/102/1214/637698/ | ref = {{sfnref|Alpex v. Nintendo|1997}} }}
+{{refend}}
+
+==External links==
+{{commonscat}}
+* [http://thedoteaters.com/?bitstory=channel-f The Dot Eaters article] with a history of the Channel F and games
+* [http://www.vintagecomputing.com/index.php/archives/545 Interview with designer Jerry Lawson]
+* [http://channelf.se/ Channel F wiki] programming and electronics as well as a gallery of labels, instructions, and boxes.
+* [https://www.avclub.com/channel-f-was-1977-s-top-game-system-before-atari-wiped-1798260297 Channel F was 1977's top game system—before Atari wiped it out] at ''[[The A.V. Club]]''{{'}}s AUX (4/09/2017)
+* [https://veniamin-ilmer.github.io/fairchild_ves/?bios=https://archive.org/download/Fairchild_Video_Entertainment_System_Fairchild_Channel_F/BIOS%20(GoodChaF%20V3.13)/Fairchild_Channel_F_BIOS_(1976)_(Fairchild).7z/Fairchild%20Channel%20F%20BIOS%20(With%20Hockey%2BTennis).bin Channel F emulation of the BIOS]
+* [https://www.youtube.com/watch?v=Nnx-oNHtz6I The Fairchild Channel F Story] by Atari Archive (Kevin Bunch) on [[YouTube]]
+
+{{Second generation game consoles}}
+{{Home video game consoles}}
+{{Fairchild Industries}}
+
+[[Category:Computer-related introductions in 1976]]
+[[Category:Home video game consoles]]
+[[Category:Second-generation video game consoles]]
+[[Category:Fairchild Corporation]]
+[[Category:Products introduced in 1976]]
+[[Category:1976 in video gaming]]
+[[Category:Discontinued video game consoles]]

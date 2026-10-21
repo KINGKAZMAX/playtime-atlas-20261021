@@ -1,0 +1,1200 @@
+/* 由 scripts/build-manifest.mjs 自动生成 */
+export const ATLAS = {
+  "id": "playtime-atlas-art",
+  "title": "回响电玩馆 / PLAYTIME ATLAS — 原创美术与硬件模型包",
+  "titleCn": "回响电玩馆",
+  "titleLatin": "PLAYTIME ATLAS",
+  "subtitle": "电子游戏硬件年代馆 · 美术资产包",
+  "version": "1.0.0",
+  "generated": "2026-10-21",
+  "scheme": {
+    "name": "深墨蓝 + 暖纸白 + 信号橙",
+    "ink": "#0C1726",
+    "paper": "#FBF7EF",
+    "signal": "#F0601F"
+  },
+  "license": {
+    "artwork": "CC0-1.0（本馆原创）",
+    "fonts": "SIL Open Font License 1.1",
+    "thirdParty": "无"
+  },
+  "tokens": {
+    "json": "./design-tokens.json",
+    "css": "./assets/tokens.css",
+    "js": "./assets/tokens.js"
+  },
+  "fonts": {
+    "stylesheet": "./assets/fonts/fonts.css",
+    "families": [
+      {
+        "family": "Space Grotesk",
+        "role": "display / 展示体",
+        "license": "OFL-1.1",
+        "file": "OFL-space-grotesk.txt"
+      },
+      {
+        "family": "Inter",
+        "role": "sans / 正文",
+        "license": "OFL-1.1",
+        "file": "OFL-inter.txt"
+      },
+      {
+        "family": "Space Mono",
+        "role": "mono / 编号与标签",
+        "license": "OFL-1.1",
+        "file": "OFL-space-mono-regular.txt"
+      },
+      {
+        "family": "Noto Sans SC",
+        "role": "cjk / 中文",
+        "license": "OFL-1.1",
+        "file": "OFL-noto-sans-sc.txt"
+      }
+    ],
+    "files": [
+      {
+        "file": "./fonts/inter-latin.ttf",
+        "bytes": 329028,
+        "format": "ttf"
+      },
+      {
+        "file": "./fonts/inter-latin.woff2",
+        "bytes": 132684,
+        "format": "woff2"
+      },
+      {
+        "file": "./fonts/noto-sans-sc-subset.ttf",
+        "bytes": 333512,
+        "format": "ttf"
+      },
+      {
+        "file": "./fonts/noto-sans-sc-subset.woff2",
+        "bytes": 197600,
+        "format": "woff2"
+      },
+      {
+        "file": "./fonts/space-grotesk-latin.ttf",
+        "bytes": 91924,
+        "format": "ttf"
+      },
+      {
+        "file": "./fonts/space-grotesk-latin.woff2",
+        "bytes": 34788,
+        "format": "woff2"
+      },
+      {
+        "file": "./fonts/space-mono-bold.ttf",
+        "bytes": 39412,
+        "format": "ttf"
+      },
+      {
+        "file": "./fonts/space-mono-bold.woff2",
+        "bytes": 15000,
+        "format": "woff2"
+      },
+      {
+        "file": "./fonts/space-mono-regular.ttf",
+        "bytes": 40044,
+        "format": "ttf"
+      },
+      {
+        "file": "./fonts/space-mono-regular.woff2",
+        "bytes": 14884,
+        "format": "woff2"
+      }
+    ],
+    "totalBytes": 1228876
+  },
+  "icons": {
+    "sprite": "./assets/icons/icons.svg",
+    "index": "./assets/icons/index.json",
+    "sheet": "./assets/icons/sheet.svg",
+    "count": 48,
+    "categories": {
+      "nav": "导航",
+      "era": "年代",
+      "action": "操作",
+      "media": "媒体",
+      "audio": "声音",
+      "state": "状态"
+    },
+    "items": [
+      {
+        "name": "arrow-left",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "返回",
+        "file": "./arrow-left.svg",
+        "sprite": "#atlas-icon-arrow-left"
+      },
+      {
+        "name": "arrow-right",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "前进",
+        "file": "./arrow-right.svg",
+        "sprite": "#atlas-icon-arrow-right"
+      },
+      {
+        "name": "arrow-up-right",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "外链",
+        "file": "./arrow-up-right.svg",
+        "sprite": "#atlas-icon-arrow-up-right"
+      },
+      {
+        "name": "menu",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "菜单",
+        "file": "./menu.svg",
+        "sprite": "#atlas-icon-menu"
+      },
+      {
+        "name": "close",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "关闭",
+        "file": "./close.svg",
+        "sprite": "#atlas-icon-close"
+      },
+      {
+        "name": "search",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "搜索",
+        "file": "./search.svg",
+        "sprite": "#atlas-icon-search"
+      },
+      {
+        "name": "filter",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "筛选",
+        "file": "./filter.svg",
+        "sprite": "#atlas-icon-filter"
+      },
+      {
+        "name": "grid",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "网格视图",
+        "file": "./grid.svg",
+        "sprite": "#atlas-icon-grid"
+      },
+      {
+        "name": "list",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "列表视图",
+        "file": "./list.svg",
+        "sprite": "#atlas-icon-list"
+      },
+      {
+        "name": "map",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "展厅平面",
+        "file": "./map.svg",
+        "sprite": "#atlas-icon-map"
+      },
+      {
+        "name": "clock",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "年代",
+        "file": "./clock.svg",
+        "sprite": "#atlas-icon-clock"
+      },
+      {
+        "name": "compass",
+        "category": "nav",
+        "categoryLabel": "导航",
+        "label": "导览",
+        "file": "./compass.svg",
+        "sprite": "#atlas-icon-compass"
+      },
+      {
+        "name": "era-01",
+        "category": "era",
+        "categoryLabel": "年代",
+        "label": "街机初萌",
+        "file": "./era-01.svg",
+        "sprite": "#atlas-icon-era-01"
+      },
+      {
+        "name": "era-02",
+        "category": "era",
+        "categoryLabel": "年代",
+        "label": "街机黄金",
+        "file": "./era-02.svg",
+        "sprite": "#atlas-icon-era-02"
+      },
+      {
+        "name": "era-03",
+        "category": "era",
+        "categoryLabel": "年代",
+        "label": "八位年代",
+        "file": "./era-03.svg",
+        "sprite": "#atlas-icon-era-03"
+      },
+      {
+        "name": "era-04",
+        "category": "era",
+        "categoryLabel": "年代",
+        "label": "光盘纪元",
+        "file": "./era-04.svg",
+        "sprite": "#atlas-icon-era-04"
+      },
+      {
+        "name": "era-05",
+        "category": "era",
+        "categoryLabel": "年代",
+        "label": "三维与网络",
+        "file": "./era-05.svg",
+        "sprite": "#atlas-icon-era-05"
+      },
+      {
+        "name": "era-06",
+        "category": "era",
+        "categoryLabel": "年代",
+        "label": "掌机与联机",
+        "file": "./era-06.svg",
+        "sprite": "#atlas-icon-era-06"
+      },
+      {
+        "name": "era-07",
+        "category": "era",
+        "categoryLabel": "年代",
+        "label": "融合与云",
+        "file": "./era-07.svg",
+        "sprite": "#atlas-icon-era-07"
+      },
+      {
+        "name": "play",
+        "category": "action",
+        "categoryLabel": "操作",
+        "label": "开始游玩",
+        "file": "./play.svg",
+        "sprite": "#atlas-icon-play"
+      },
+      {
+        "name": "pause",
+        "category": "action",
+        "categoryLabel": "操作",
+        "label": "暂停",
+        "file": "./pause.svg",
+        "sprite": "#atlas-icon-pause"
+      },
+      {
+        "name": "collect",
+        "category": "action",
+        "categoryLabel": "操作",
+        "label": "收藏",
+        "file": "./collect.svg",
+        "sprite": "#atlas-icon-collect"
+      },
+      {
+        "name": "bookmark",
+        "category": "action",
+        "categoryLabel": "操作",
+        "label": "标记",
+        "file": "./bookmark.svg",
+        "sprite": "#atlas-icon-bookmark"
+      },
+      {
+        "name": "share",
+        "category": "action",
+        "categoryLabel": "操作",
+        "label": "分享",
+        "file": "./share.svg",
+        "sprite": "#atlas-icon-share"
+      },
+      {
+        "name": "download",
+        "category": "action",
+        "categoryLabel": "操作",
+        "label": "下载",
+        "file": "./download.svg",
+        "sprite": "#atlas-icon-download"
+      },
+      {
+        "name": "external",
+        "category": "action",
+        "categoryLabel": "操作",
+        "label": "在新窗口打开",
+        "file": "./external.svg",
+        "sprite": "#atlas-icon-external"
+      },
+      {
+        "name": "reset",
+        "category": "action",
+        "categoryLabel": "操作",
+        "label": "重置",
+        "file": "./reset.svg",
+        "sprite": "#atlas-icon-reset"
+      },
+      {
+        "name": "fullscreen",
+        "category": "action",
+        "categoryLabel": "操作",
+        "label": "全屏",
+        "file": "./fullscreen.svg",
+        "sprite": "#atlas-icon-fullscreen"
+      },
+      {
+        "name": "camera",
+        "category": "action",
+        "categoryLabel": "操作",
+        "label": "截图",
+        "file": "./camera.svg",
+        "sprite": "#atlas-icon-camera"
+      },
+      {
+        "name": "volume",
+        "category": "media",
+        "categoryLabel": "媒体",
+        "label": "音量",
+        "file": "./volume.svg",
+        "sprite": "#atlas-icon-volume"
+      },
+      {
+        "name": "volume-mute",
+        "category": "media",
+        "categoryLabel": "媒体",
+        "label": "静音",
+        "file": "./volume-mute.svg",
+        "sprite": "#atlas-icon-volume-mute"
+      },
+      {
+        "name": "headphone",
+        "category": "media",
+        "categoryLabel": "媒体",
+        "label": "耳机",
+        "file": "./headphone.svg",
+        "sprite": "#atlas-icon-headphone"
+      },
+      {
+        "name": "image",
+        "category": "media",
+        "categoryLabel": "媒体",
+        "label": "图像",
+        "file": "./image.svg",
+        "sprite": "#atlas-icon-image"
+      },
+      {
+        "name": "video",
+        "category": "media",
+        "categoryLabel": "媒体",
+        "label": "视频",
+        "file": "./video.svg",
+        "sprite": "#atlas-icon-video"
+      },
+      {
+        "name": "disc",
+        "category": "media",
+        "categoryLabel": "媒体",
+        "label": "光盘",
+        "file": "./disc.svg",
+        "sprite": "#atlas-icon-disc"
+      },
+      {
+        "name": "joystick",
+        "category": "media",
+        "categoryLabel": "媒体",
+        "label": "摇杆",
+        "file": "./joystick.svg",
+        "sprite": "#atlas-icon-joystick"
+      },
+      {
+        "name": "handheld",
+        "category": "media",
+        "categoryLabel": "媒体",
+        "label": "掌机",
+        "file": "./handheld.svg",
+        "sprite": "#atlas-icon-handheld"
+      },
+      {
+        "name": "waveform",
+        "category": "audio",
+        "categoryLabel": "声音",
+        "label": "波形",
+        "file": "./waveform.svg",
+        "sprite": "#atlas-icon-waveform"
+      },
+      {
+        "name": "note",
+        "category": "audio",
+        "categoryLabel": "声音",
+        "label": "音符",
+        "file": "./note.svg",
+        "sprite": "#atlas-icon-note"
+      },
+      {
+        "name": "piano",
+        "category": "audio",
+        "categoryLabel": "声音",
+        "label": "键盘",
+        "file": "./piano.svg",
+        "sprite": "#atlas-icon-piano"
+      },
+      {
+        "name": "radio",
+        "category": "audio",
+        "categoryLabel": "声音",
+        "label": "收音机",
+        "file": "./radio.svg",
+        "sprite": "#atlas-icon-radio"
+      },
+      {
+        "name": "check",
+        "category": "state",
+        "categoryLabel": "状态",
+        "label": "已完成",
+        "file": "./check.svg",
+        "sprite": "#atlas-icon-check"
+      },
+      {
+        "name": "warning",
+        "category": "state",
+        "categoryLabel": "状态",
+        "label": "注意",
+        "file": "./warning.svg",
+        "sprite": "#atlas-icon-warning"
+      },
+      {
+        "name": "error",
+        "category": "state",
+        "categoryLabel": "状态",
+        "label": "错误",
+        "file": "./error.svg",
+        "sprite": "#atlas-icon-error"
+      },
+      {
+        "name": "info",
+        "category": "state",
+        "categoryLabel": "状态",
+        "label": "说明",
+        "file": "./info.svg",
+        "sprite": "#atlas-icon-info"
+      },
+      {
+        "name": "pending",
+        "category": "state",
+        "categoryLabel": "状态",
+        "label": "待整理",
+        "file": "./pending.svg",
+        "sprite": "#atlas-icon-pending"
+      },
+      {
+        "name": "locked",
+        "category": "state",
+        "categoryLabel": "状态",
+        "label": "未公开",
+        "file": "./locked.svg",
+        "sprite": "#atlas-icon-locked"
+      },
+      {
+        "name": "offline",
+        "category": "state",
+        "categoryLabel": "状态",
+        "label": "离线",
+        "file": "./offline.svg",
+        "sprite": "#atlas-icon-offline"
+      }
+    ]
+  },
+  "eras": [
+    {
+      "id": "dawn",
+      "index": 1,
+      "name": "街机初萌",
+      "latin": "ARCADE DAWN",
+      "range": "1972 — 1978",
+      "tagline": "光点第一次有了边界",
+      "story": "最早的电子游戏还只是示波器上跳动的几何光斑。木板、旋钮、发光二极管，被塞进一间间狭小的店面。玩家挤在机器前，盯着两块色块互相追逐——他们还不知道自己正在参与一场关于「画面」的革命。",
+      "keywords": [
+        "光斑",
+        "旋钮",
+        "街机店面",
+        "木壳",
+        "排队"
+      ],
+      "exhibits": [
+        "cabinet-01"
+      ],
+      "icon": "./assets/icons/era-01.svg",
+      "poster": {
+        "svg": "./assets/posters/poster-dawn.svg",
+        "png": "./assets/posters/poster-dawn.png",
+        "key": "./assets/posters/key/poster-dawn.jpg"
+      },
+      "cover": {
+        "svg": "./assets/covers/cover-dawn.svg",
+        "png": "./assets/covers/cover-dawn.png",
+        "key": "./assets/covers/key/cover-dawn.jpg"
+      }
+    },
+    {
+      "id": "golden",
+      "index": 2,
+      "name": "街机黄金",
+      "latin": "GOLDEN ARCADE",
+      "range": "1978 — 1983",
+      "tagline": "投币口之后的黄金年代",
+      "story": "街机厅成为城市的夜间客厅。太空侵略者、格斗、赛车，一台台色彩浓烈的机器被投币声点亮。那几年里，游戏设计几乎等于工业设计：一张海报、一段音效，就能决定一款机器的生死。",
+      "keywords": [
+        "霓虹",
+        "投币",
+        "格斗",
+        "彩显",
+        "夜店"
+      ],
+      "exhibits": [
+        "cabinet-01"
+      ],
+      "icon": "./assets/icons/era-02.svg",
+      "poster": {
+        "svg": "./assets/posters/poster-golden.svg",
+        "png": "./assets/posters/poster-golden.png",
+        "key": "./assets/posters/key/poster-golden.jpg"
+      },
+      "cover": {
+        "svg": "./assets/covers/cover-golden.svg",
+        "png": "./assets/covers/cover-golden.png",
+        "key": "./assets/covers/key/cover-golden.jpg"
+      }
+    },
+    {
+      "id": "home8",
+      "index": 3,
+      "name": "八位年代",
+      "latin": "8-BIT HOME",
+      "range": "1983 — 1993",
+      "tagline": "客厅里的第一台机器",
+      "story": "主机从街机厅搬进了客厅。插卡、搓摇杆、把手柄线缠到脖子上——八位机时代最真实的触感，是塑料按键的回弹和电视机的闪烁。四年一次的游戏震荡之后，家用机器重新长回了根。",
+      "keywords": [
+        "卡带",
+        "手柄",
+        "客厅",
+        "电视闪烁",
+        "磁带"
+      ],
+      "exhibits": [
+        "console-02"
+      ],
+      "icon": "./assets/icons/era-03.svg",
+      "poster": {
+        "svg": "./assets/posters/poster-home8.svg",
+        "png": "./assets/posters/poster-home8.png",
+        "key": "./assets/posters/key/poster-home8.jpg"
+      },
+      "cover": {
+        "svg": "./assets/covers/cover-home8.svg",
+        "png": "./assets/covers/cover-home8.png",
+        "key": "./assets/covers/key/cover-home8.jpg"
+      }
+    },
+    {
+      "id": "disc16",
+      "index": 4,
+      "name": "光盘纪元",
+      "latin": "16-BIT DISC",
+      "range": "1991 — 1996",
+      "tagline": "光盘带来彩色与声音",
+      "story": "一张银色的圆盘，装下了过去需要十几张卡带的内容。16 位主机把调色板推向几百种颜色，把立体声推上电视；同时，掌机第一次长大，长到能装下自己的世界。",
+      "keywords": [
+        "银盘",
+        "调色板",
+        "立体声",
+        "掌机",
+        "打包盒"
+      ],
+      "exhibits": [
+        "console-03",
+        "handheld-04"
+      ],
+      "icon": "./assets/icons/era-04.svg",
+      "poster": {
+        "svg": "./assets/posters/poster-disc16.svg",
+        "png": "./assets/posters/poster-disc16.png",
+        "key": "./assets/posters/key/poster-disc16.jpg"
+      },
+      "cover": {
+        "svg": "./assets/covers/cover-disc16.svg",
+        "png": "./assets/covers/cover-disc16.png",
+        "key": "./assets/covers/key/cover-disc16.jpg"
+      }
+    },
+    {
+      "id": "poly3d",
+      "index": 5,
+      "name": "三维与网络",
+      "latin": "3D & NETWORK",
+      "range": "1996 — 2005",
+      "tagline": "多边形与网线",
+      "story": "画面从平面向深处炸开。摇杆开始长出第二个同伴，线缆从客厅爬向远方，声音在耳机里变成包围感。互联网把「一台机器」变成「一张网」，也让玩法第一次有了不靠实体卡带的存在方式。",
+      "keywords": [
+        "多边形",
+        "光线追踪",
+        "网线",
+        "耳机",
+        "摇杆"
+      ],
+      "exhibits": [
+        "console-03"
+      ],
+      "icon": "./assets/icons/era-05.svg",
+      "poster": {
+        "svg": "./assets/posters/poster-poly3d.svg",
+        "png": "./assets/posters/poster-poly3d.png",
+        "key": "./assets/posters/key/poster-poly3d.jpg"
+      },
+      "cover": {
+        "svg": "./assets/covers/cover-poly3d.svg",
+        "png": "./assets/covers/cover-poly3d.png",
+        "key": "./assets/covers/key/cover-poly3d.jpg"
+      }
+    },
+    {
+      "id": "pocket",
+      "index": 6,
+      "name": "掌机与联机",
+      "latin": "POCKET & ONLINE",
+      "range": "2004 — 2013",
+      "tagline": "口袋里的世界，永远在线",
+      "story": "掌机有了两块屏幕，机能有了彩色，地铁上的一小段时间被填得满满当当。同一时期，服务器开始不睡觉：在线排行、赛季、跨服对战——游戏的时间第一次从「一局」变成了「每天」。",
+      "keywords": [
+        "双屏",
+        "口袋",
+        "赛季",
+        "服务器",
+        "随身"
+      ],
+      "exhibits": [
+        "handheld-04",
+        "hybrid-05"
+      ],
+      "icon": "./assets/icons/era-06.svg",
+      "poster": {
+        "svg": "./assets/posters/poster-pocket.svg",
+        "png": "./assets/posters/poster-pocket.png",
+        "key": "./assets/posters/key/poster-pocket.jpg"
+      },
+      "cover": {
+        "svg": "./assets/covers/cover-pocket.svg",
+        "png": "./assets/covers/cover-pocket.png",
+        "key": "./assets/covers/key/cover-pocket.jpg"
+      }
+    },
+    {
+      "id": "converge",
+      "index": 7,
+      "name": "融合与云",
+      "latin": "CONVERGENCE & CLOUD",
+      "range": "2013 — 至今",
+      "tagline": "机器、屏幕与云合为一体",
+      "story": "主机变成了平板，电视变成了游戏机，运算搬进了没人看得见的机房。展厅的尽头不再是一排机器，而是一片随时在线的云——博物馆的墙，试着从混凝土变成了信号。",
+      "keywords": [
+        "平板",
+        "模块",
+        "云端",
+        "触屏",
+        "无缝"
+      ],
+      "exhibits": [
+        "hybrid-05",
+        "modern-06"
+      ],
+      "icon": "./assets/icons/era-07.svg",
+      "poster": {
+        "svg": "./assets/posters/poster-converge.svg",
+        "png": "./assets/posters/poster-converge.png",
+        "key": "./assets/posters/key/poster-converge.jpg"
+      },
+      "cover": {
+        "svg": "./assets/covers/cover-converge.svg",
+        "png": "./assets/covers/cover-converge.png",
+        "key": "./assets/covers/key/cover-converge.jpg"
+      }
+    }
+  ],
+  "covers": [
+    {
+      "id": "atlas-hero",
+      "name": "全馆封面",
+      "svg": "./assets/covers/cover-atlas-hero.svg",
+      "png": "./assets/covers/cover-atlas-hero.png",
+      "key": "./assets/covers/key/cover-atlas-hero.jpg"
+    },
+    {
+      "id": "dawn",
+      "name": "街机初萌 封面",
+      "svg": "./assets/covers/cover-dawn.svg",
+      "png": "./assets/covers/cover-dawn.png",
+      "key": "./assets/covers/key/cover-dawn.jpg"
+    },
+    {
+      "id": "golden",
+      "name": "街机黄金 封面",
+      "svg": "./assets/covers/cover-golden.svg",
+      "png": "./assets/covers/cover-golden.png",
+      "key": "./assets/covers/key/cover-golden.jpg"
+    },
+    {
+      "id": "home8",
+      "name": "八位年代 封面",
+      "svg": "./assets/covers/cover-home8.svg",
+      "png": "./assets/covers/cover-home8.png",
+      "key": "./assets/covers/key/cover-home8.jpg"
+    },
+    {
+      "id": "disc16",
+      "name": "光盘纪元 封面",
+      "svg": "./assets/covers/cover-disc16.svg",
+      "png": "./assets/covers/cover-disc16.png",
+      "key": "./assets/covers/key/cover-disc16.jpg"
+    },
+    {
+      "id": "poly3d",
+      "name": "三维与网络 封面",
+      "svg": "./assets/covers/cover-poly3d.svg",
+      "png": "./assets/covers/cover-poly3d.png",
+      "key": "./assets/covers/key/cover-poly3d.jpg"
+    },
+    {
+      "id": "pocket",
+      "name": "掌机与联机 封面",
+      "svg": "./assets/covers/cover-pocket.svg",
+      "png": "./assets/covers/cover-pocket.png",
+      "key": "./assets/covers/key/cover-pocket.jpg"
+    },
+    {
+      "id": "converge",
+      "name": "融合与云 封面",
+      "svg": "./assets/covers/cover-converge.svg",
+      "png": "./assets/covers/cover-converge.png",
+      "key": "./assets/covers/key/cover-converge.jpg"
+    }
+  ],
+  "cases": [
+    {
+      "id": "cabinet-01",
+      "name": "星港立式机柜",
+      "latin": "STARLIGHT CABINET",
+      "label": "立式投币机柜（虚构展品）",
+      "index": 1,
+      "svg": "./assets/cases/case-cabinet-01.svg",
+      "png": "./assets/cases/case-cabinet-01.png"
+    },
+    {
+      "id": "console-02",
+      "name": "小行星卡带机",
+      "latin": "ASTER CONSOLE",
+      "label": "八位家用主机（虚构展品）",
+      "index": 2,
+      "svg": "./assets/cases/case-console-02.svg",
+      "png": "./assets/cases/case-console-02.png"
+    },
+    {
+      "id": "console-03",
+      "name": "子午线光盘机",
+      "latin": "MERIDIAN DECK",
+      "label": "16 位光盘主机（虚构展品）",
+      "index": 3,
+      "svg": "./assets/cases/case-console-03.svg",
+      "png": "./assets/cases/case-console-03.png"
+    },
+    {
+      "id": "handheld-04",
+      "name": "余烬掌机",
+      "latin": "POCKET EMBER",
+      "label": "双屏翻盖掌机（虚构展品）",
+      "index": 4,
+      "svg": "./assets/cases/case-handheld-04.svg",
+      "png": "./assets/cases/case-handheld-04.png"
+    },
+    {
+      "id": "hybrid-05",
+      "name": "光环平板",
+      "latin": "HALO SLATE",
+      "label": "平板混合主机（虚构展品）",
+      "index": 5,
+      "svg": "./assets/cases/case-hybrid-05.svg",
+      "png": "./assets/cases/case-hybrid-05.png"
+    },
+    {
+      "id": "modern-06",
+      "name": "矢量节点",
+      "latin": "VECTOR NODE",
+      "label": "立式模块化主机（虚构展品）",
+      "index": 6,
+      "svg": "./assets/cases/case-modern-06.svg",
+      "png": "./assets/cases/case-modern-06.png"
+    }
+  ],
+  "models": [
+    {
+      "id": "cabinet-01",
+      "name": "星港立式机柜",
+      "latin": "STARLIGHT CABINET",
+      "range": "1972 — 1979",
+      "form": "立式投币机柜",
+      "story": "一台把「街机」这件事浓缩到最小空间的机器：上方灯箱负责招徕，中段屏幕负责留人，下方操作台负责让手比脑子快。投币口旁边那枚橙色小灯，是它唯一的成绩。",
+      "note": "原创提炼：所有早期投币机柜共有的「灯箱—屏幕—控制台」三段式比例，无任何具体机型的标识、贴图或独特造型。",
+      "partCount": 36,
+      "triangleCount": 1076,
+      "dimensions": {
+        "w": 0.72,
+        "h": 1.78,
+        "d": 0.85
+      },
+      "parts": [
+        "底座底墩",
+        "机身主体",
+        "顶部压条",
+        "灯箱外壳",
+        "灯箱灯面",
+        "灯箱标记1",
+        "灯箱标记2",
+        "灯箱标记3",
+        "屏幕边框",
+        "屏幕玻璃",
+        "屏幕辉光",
+        "操作台",
+        "操作台面板",
+        "摇杆底座",
+        "摇杆杆",
+        "摇杆球头",
+        "按键A",
+        "按键B",
+        "投币门",
+        "投币口上",
+        "投币口下",
+        "退币口",
+        "侧板左",
+        "侧板斜纹左-1",
+        "侧板斜纹左-2",
+        "侧板斜纹左-3",
+        "侧板右",
+        "侧板斜纹右-1",
+        "侧板斜纹右-2",
+        "侧板斜纹右-3",
+        "散热百叶1",
+        "散热百叶2",
+        "散热百叶3",
+        "散热百叶4",
+        "散热百叶5",
+        "正面框条"
+      ],
+      "glb": "./assets/models/model-cabinet-01.glb",
+      "png": "./assets/models/model-cabinet-01.png",
+      "techSvg": "./assets/models/model-cabinet-01.tech.svg",
+      "json": "./assets/models/model-cabinet-01.json",
+      "glbBytes": 68080
+    },
+    {
+      "id": "console-02",
+      "name": "小行星卡带机",
+      "latin": "ASTER CONSOLE",
+      "range": "1983 — 1990",
+      "form": "八位家用主机",
+      "story": "巴掌大的扁平机身，插在电视下方，像一块被压扁的糖果。游戏的全部内容都住进一张比邮票略大的卡带，插下去时那声「咔哒」，是那个年代最精准的交互反馈。",
+      "note": "原创提炼：取八位主机通行的「扁平方盒 + 顶部卡槽 + 十字键」语汇，比例与配色为原创。",
+      "partCount": 33,
+      "triangleCount": 1652,
+      "dimensions": {
+        "w": 0.22,
+        "h": 0.07,
+        "d": 0.16
+      },
+      "parts": [
+        "主机本体",
+        "顶盖面板",
+        "卡槽",
+        "卡带",
+        "卡带标签",
+        "前面板",
+        "电源灯",
+        "手柄口左",
+        "手柄口右",
+        "散热槽1",
+        "散热槽2",
+        "散热槽3",
+        "散热槽4",
+        "散热槽5",
+        "散热槽6",
+        "脚垫0-后",
+        "脚垫0-前",
+        "脚垫1-后",
+        "脚垫1-前",
+        "手柄左外壳",
+        "手柄左握把",
+        "手柄左十字键",
+        "手柄左按键A",
+        "手柄左按键B",
+        "手柄左启动键",
+        "手柄左线缆",
+        "手柄右外壳",
+        "手柄右握把",
+        "手柄右十字键",
+        "手柄右按键A",
+        "手柄右按键B",
+        "手柄右启动键",
+        "手柄右线缆"
+      ],
+      "glb": "./assets/models/model-console-02.glb",
+      "png": "./assets/models/model-console-02.png",
+      "techSvg": "./assets/models/model-console-02.tech.svg",
+      "json": "./assets/models/model-console-02.json",
+      "glbBytes": 84452
+    },
+    {
+      "id": "console-03",
+      "name": "子午线光盘机",
+      "latin": "MERIDIAN DECK",
+      "range": "1994 — 2000",
+      "form": "16 位光盘主机",
+      "story": "圆角取代了直角，像一枚被磨圆的光盘。托盘弹出时那句机械合拢声，比任何开机画面都更有仪式感。两只摇杆开始分工：左手转向，右手确认。",
+      "note": "原创提炼：取光盘主机通行的圆角机身与托盘结构，具体曲线、开孔与配色均为原创。",
+      "partCount": 32,
+      "triangleCount": 2472,
+      "dimensions": {
+        "w": 0.32,
+        "h": 0.1,
+        "d": 0.24
+      },
+      "parts": [
+        "机身",
+        "顶盖",
+        "光盘托槽",
+        "光盘",
+        "光盘内圈",
+        "光盘托盘唇",
+        "前面板",
+        "状态灯条",
+        "电源键",
+        "手柄口左",
+        "手柄口右",
+        "侧面散热槽1",
+        "侧面散热槽2",
+        "侧面散热槽3",
+        "侧面散热槽4",
+        "侧面散热槽5",
+        "侧面散热槽6",
+        "侧面散热槽7",
+        "侧面散热槽8",
+        "手柄外壳",
+        "手柄左握把",
+        "手柄右握把",
+        "左摇杆座",
+        "左摇杆帽",
+        "右摇杆座",
+        "右摇杆帽",
+        "面键1",
+        "面键2",
+        "面键3",
+        "面键4",
+        "手柄十字键",
+        "手柄线缆"
+      ],
+      "glb": "./assets/models/model-console-03.glb",
+      "png": "./assets/models/model-console-03.png",
+      "techSvg": "./assets/models/model-console-03.tech.svg",
+      "json": "./assets/models/model-console-03.json",
+      "glbBytes": 105612
+    },
+    {
+      "id": "handheld-04",
+      "name": "余烬掌机",
+      "latin": "POCKET EMBER",
+      "range": "2004 — 2010",
+      "form": "双屏翻盖掌机",
+      "story": "合上时是一枚温热的小方块，摊开就变成两屏。上下分工：上面看世界，下面摸世界。公交车上的一次单局，不必回家、不必开机、不必插卡。",
+      "note": "原创提炼：取双屏翻盖掌机的双层结构与合盖动作，屏幕比例、键位与外壳分色为原创。",
+      "partCount": 19,
+      "triangleCount": 748,
+      "dimensions": {
+        "w": 0.14,
+        "h": 0.16,
+        "d": 0.03
+      },
+      "parts": [
+        "下机身",
+        "上机身",
+        "转轴",
+        "下屏边框",
+        "下屏玻璃",
+        "下屏辉光",
+        "上屏边框",
+        "上屏玻璃",
+        "上屏辉光",
+        "十字键",
+        "按键A",
+        "按键B",
+        "开始键",
+        "选择键",
+        "肩键左",
+        "肩键右",
+        "扬声器格栅",
+        "状态灯",
+        "正面饰条"
+      ],
+      "glb": "./assets/models/model-handheld-04.glb",
+      "png": "./assets/models/model-handheld-04.png",
+      "techSvg": "./assets/models/model-handheld-04.tech.svg",
+      "json": "./assets/models/model-handheld-04.json",
+      "glbBytes": 43604
+    },
+    {
+      "id": "hybrid-05",
+      "name": "光环平板",
+      "latin": "HALO SLATE",
+      "range": "2012 — 2017",
+      "form": "平板混合主机",
+      "story": "一块玻璃板，加上一对可以摘下来的手柄。放进客厅是主机，拿在手里是平板，接上电视又是另一台机器。它的机身薄得能透出桌面的木纹。",
+      "note": "原创提炼：取平板加可拆手柄的通用架构，手柄形态与轨道接口为原创设计。",
+      "partCount": 25,
+      "triangleCount": 1932,
+      "dimensions": {
+        "w": 0.24,
+        "h": 0.02,
+        "d": 0.17
+      },
+      "parts": [
+        "平板本体",
+        "平板边框",
+        "平板屏幕",
+        "平板屏幕辉光",
+        "摄像头",
+        "支撑脚",
+        "侧轨左",
+        "侧轨右",
+        "后盖散热",
+        "手柄左外壳",
+        "手柄左连接臂",
+        "手柄左摇杆座",
+        "手柄左摇杆帽",
+        "手柄左十字键",
+        "手柄左按键A",
+        "手柄左按键B",
+        "手柄左按键C",
+        "手柄右外壳",
+        "手柄右连接臂",
+        "手柄右摇杆座",
+        "手柄右摇杆帽",
+        "手柄右十字键",
+        "手柄右按键A",
+        "手柄右按键B",
+        "手柄右按键C"
+      ],
+      "glb": "./assets/models/model-hybrid-05.glb",
+      "png": "./assets/models/model-hybrid-05.png",
+      "techSvg": "./assets/models/model-hybrid-05.tech.svg",
+      "json": "./assets/models/model-hybrid-05.json",
+      "glbBytes": 82408
+    },
+    {
+      "id": "modern-06",
+      "name": "矢量节点",
+      "latin": "VECTOR NODE",
+      "range": "2020 — 至今",
+      "form": "立式模块化主机",
+      "story": "一台更像「设备」而不是「玩具」的机器。侧板可以整块抽走，格栅后面是沉默的算力。橙色指示灯只亮一次，意思是：它在等你打开自己。",
+      "note": "原创提炼：取当代主机/PC 融合形态的立式机箱与模块化侧板，通风栅格样式与分色为原创。",
+      "partCount": 36,
+      "triangleCount": 1044,
+      "dimensions": {
+        "w": 0.18,
+        "h": 0.34,
+        "d": 0.18
+      },
+      "parts": [
+        "底座",
+        "机箱",
+        "顶盖",
+        "顶盖饰条",
+        "散热格栅1",
+        "散热格栅2",
+        "散热格栅3",
+        "散热格栅4",
+        "散热格栅5",
+        "散热格栅6",
+        "散热格栅7",
+        "散热格栅8",
+        "散热格栅9",
+        "散热格栅10",
+        "散热格栅11",
+        "散热格栅12",
+        "散热格栅13",
+        "散热格栅14",
+        "散热格栅15",
+        "前面板饰框",
+        "状态指示灯",
+        "指示灯槽",
+        "可拆侧板",
+        "侧板接缝",
+        "侧板扣手",
+        "脚垫左后",
+        "脚垫右后",
+        "脚垫左前",
+        "脚垫右前",
+        "后部散热槽1",
+        "后部散热槽2",
+        "后部散热槽3",
+        "后部散热槽4",
+        "后部散热槽5",
+        "后部散热槽6",
+        "接口面板"
+      ],
+      "glb": "./assets/models/model-modern-06.glb",
+      "png": "./assets/models/model-modern-06.png",
+      "techSvg": "./assets/models/model-modern-06.tech.svg",
+      "json": "./assets/models/model-modern-06.json",
+      "glbBytes": 67972
+    }
+  ],
+  "fallback": [
+    {
+      "id": "cover-fallback",
+      "svg": "./assets/fallback/cover-fallback.svg",
+      "png": "./assets/fallback/cover-fallback.png",
+      "purpose": "年代封面主视觉缺失时的占位"
+    },
+    {
+      "id": "model-fallback",
+      "svg": "./assets/fallback/model-fallback.svg",
+      "png": "./assets/fallback/model-fallback.png",
+      "purpose": "3D 模型不可用时的占位"
+    },
+    {
+      "id": "no-webgl",
+      "svg": "./assets/fallback/no-webgl.svg",
+      "png": "./assets/fallback/no-webgl.png",
+      "purpose": "浏览器未启用 WebGL 时的提示图"
+    },
+    {
+      "id": "offline-notice",
+      "svg": "./assets/fallback/offline-notice.svg",
+      "png": "./assets/fallback/offline-notice.png",
+      "purpose": "离线状态提示图"
+    },
+    {
+      "id": "poster-fallback",
+      "svg": "./assets/fallback/poster-fallback.svg",
+      "png": "./assets/fallback/poster-fallback.png",
+      "purpose": "年代海报主视觉缺失时的占位"
+    }
+  ],
+  "counts": {
+    "eras": 7,
+    "covers": 8,
+    "cases": 6,
+    "models": 6,
+    "icons": 48,
+    "fonts": 10,
+    "fallback": 5
+  }
+};
+export default ATLAS;

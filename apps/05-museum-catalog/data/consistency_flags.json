@@ -1,0 +1,103 @@
+{
+ "creatorConflicts": [
+  {
+   "id": "hw-nim",
+   "title": "Nimrod 取石子计算机",
+   "creator": "Herbert Koppel、Eugene Grant、Howard Baller（W. L. Maxson Corporation）",
+   "ib_creator": "     ",
+   "creator_conflict": true,
+   "platform": "W. L. Maxson Corporation 继电器式取石子机（后来的 NIMROD）",
+   "ib_platforms": "",
+   "platform_conflict": false
+  },
+  {
+   "id": "sw-little-computer-program",
+   "title": "Little Computer Program",
+   "creator": "Geoff Hill",
+   "ib_creator": "     ",
+   "creator_conflict": true,
+   "platform": "CSIRAC / A.C.T. (Australia)",
+   "ib_platforms": "",
+   "platform_conflict": false
+  },
+  {
+   "id": "sw-mud1",
+   "title": "MUD1 (University of Essex)",
+   "creator": "Roy Trubshaw, Richard Bartle",
+   "ib_creator": "     ",
+   "creator_conflict": true,
+   "platform": "Mainframe computer via telnet (University of Essex)",
+   "ib_platforms": "",
+   "platform_conflict": false
+  }
+ ],
+ "platformNotes": [
+  {
+   "id": "sw-sketchpad",
+   "title": "Sketchpad",
+   "curated_platform": "Sketchpad (TX-2 / IBM 7090)",
+   "ib_platforms": "Lincoln TX-2"
+  },
+  {
+   "id": "sw-computer-space",
+   "title": "Computer Space",
+   "curated_platform": "Nutting Associates Computer Space cabinet (Pong hardware, 1971)",
+   "ib_platforms": "Arcade }}"
+  },
+  {
+   "id": "sw-pong",
+   "title": "Pong",
+   "curated_platform": "Atari 专用街机硬件（1972 年 11 月 29 日北美首发）；1975 年 10 月推出 Atari VCS/2600 家用卡带版",
+   "ib_platforms": "Arcade dedicated console"
+  },
+  {
+   "id": "sw-death-race",
+   "title": "Death Race",
+   "curated_platform": "Exidy coin-op",
+   "ib_platforms": "Arcade"
+  },
+  {
+   "id": "sw-tetris",
+   "title": "Tetris",
+   "curated_platform": "Cross-platform (NES, Game Boy, IBM PC)",
+   "ib_platforms": "List of Tetris variants"
+  },
+  {
+   "id": "sw-simcity",
+   "title": "SimCity",
+   "curated_platform": "IBM PC compatible, Macintosh",
+   "ib_platforms": "Windows Linux Mac Wii PlayStation Nintendo 64 Nintendo 64DD Nintendo DS Saturn PlayStation 3 Palm OS Archimedes Acorn Electron Amiga"
+  },
+  {
+   "id": "sw-dragons-lair",
+   "title": "Dragon's Lair",
+   "curated_platform": "LaserDisc / Cinematronics hardware",
+   "ib_platforms": "cslist | ArcadeAdamCommodore 64ZX SpectrumAmstrad CPCAmigaAtari STMacMS-DOSNESGame BoySNESSega CD3DOCD-iJaguar CDWindowsGame Boy ColorGameCu"
+  },
+  {
+   "id": "sw-alone-in-the-dark",
+   "title": "Alone in the Dark (video game)",
+   "curated_platform": "MS-DOS, Macintosh, FM Towns",
+   "ib_platforms": "MS-DOSPC-98FM Towns3DOClassic Mac OSRISC OSiOSSaturnPlayStationWindowsGame Boy ColorDreamcastPlayStation 2WiiXbox 360PlayStation 3PlayStatio"
+  },
+  {
+   "id": "pl-steam",
+   "title": "Steam (service)",
+   "curated_platform": "Steam digital distribution platform",
+   "ib_platforms": "Unbulleted list|Windows|macOS|Linux|iOS|Android"
+  },
+  {
+   "id": "sw-minecraft",
+   "title": "Minecraft",
+   "curated_platform": "Java, then multi-platform",
+   "ib_platforms": "Collapsible list | Windows | macOS | Linux | Android | iOS | iPadOS | Xbox 360 | Raspberry Pi | Windows Phone | PlayStation 3 | Fire OS | Pl"
+  },
+  {
+   "id": "sw-candy-crush",
+   "title": "Candy Crush Saga",
+   "curated_platform": "Facebook / iOS / Android",
+   "ib_platforms": "cslist|App Store|Google Play|Windows Phone Store|Windows|macOS|Linux"
+  }
+ ],
+ "creatorUnverifiable": []
+}

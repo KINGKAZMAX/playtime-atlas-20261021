@@ -1,0 +1,73 @@
+{
+  "id": "abyss-carapace-salvager",
+  "title": "渊甲拾遗者 · ABYSS-CARAPACE SALVAGER",
+  "description": "原创深海甲壳式矿脉采集体 3D 交互模型：760 米分段叠瓦甲壳、扁平螺旋刀片磨削冠、压力气囊尾与腹面矿仓。全部几何与贴图程序化生成，可旋转缩放、分解检视、X 光透视、双模式剖切、21 项实时参数编辑与 GLB 导出。运行期零 CDN、零 API、零外部素材。交互机制参考自 MiniMax M3.1 Flash 社区 3D 案例，作品名 / 模型形态 / 文案 / 字体 / 配色 / 布局七项均为原创设计。",
+  "entry": "dist/index.html",
+  "buildCommand": "npm install --no-audit --no-fund && npm run build",
+  "outputDir": "dist",
+  "status": "completed",
+  "upstream": "02-model",
+  "license": "本批交付物自带；依赖 three (MIT)、vite (MIT)。未使用任何游戏 ROM、商业游戏资源或品牌视觉。",
+  "sources": [
+    {
+      "title": "机制参考：MiniMax M3.1 Flash 社区流传的 3D 建模案例",
+      "url": "",
+      "note": "原帖精确 URL 尚未由 00-research 锁定；本条出处待补，不作已核验陈述。实际作品《渊甲拾遗者 AC-VII》为原创重新设计。"
+    }
+  ],
+  "version": "1.0.0",
+  "project": "flash-showcase-20261021/02-model",
+  "previewCommand": "npm run preview",
+  "devCommand": "npm run dev",
+  "port": 4312,
+  "category": "3d-model",
+  "originality": "original-adaptation",
+  "reference": {
+    "note": "仅参考交互机制（可拖拽 / 可旋转 / 可分解的真 3D 机器页）。未复制其代码、模型、贴图或素材。",
+    "case": "《沙丘》机械沙虫 3D 网页",
+    "url": "https://x.com/AYi_AInotes/status/2104826052979597409",
+    "author": "AYi (@AYi_AInotes)",
+    "publishedAt": "2026-09-29T06:50:11Z",
+    "modelAttribution": "作者第一人称自述 M3.1-Flash-Preview（预览版）",
+    "engagementObservedAt": "2026-10-21",
+    "engagement": {
+      "likes": 199,
+      "retweets": 9,
+      "replies": 37,
+      "bookmarks": 409,
+      "quotes": 17,
+      "views": 76322
+    },
+    "claimsAllFirstParty": false
+  },
+  "artifacts": {
+    "model": "models/abyss-salvager-ac-vii.glb",
+    "screenshots": "screenshots/",
+    "qaReport": "screenshots/qa-results.json",
+    "source": "SOURCE.md",
+    "changelog": "CHANGELOG.md",
+    "task": "TASK.md",
+    "status": "STATUS.md",
+    "readme": "README.md",
+    "qa": "QA.md"
+  },
+  "qa": {
+    "method": "headless Google Chrome + CDP real input events",
+    "assertionsPassed": 15,
+    "assertionsFailed": 0,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "glbBytes": 9134284,
+    "triangles": 104468,
+    "vertices": 248706,
+    "meshes": 548
+  },
+  "runtime": {
+    "externalRequests": 0,
+    "cdn": false,
+    "api": false,
+    "externalFonts": false,
+    "externalModels": false,
+    "externalTextures": false
+  }
+}

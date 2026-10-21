@@ -1,0 +1,56 @@
+{
+  "id": "01-web-chroma-s1",
+  "title": "CHROMA S1 · 千色仪 — 原创产品发布落地页",
+  "description": "一页式虚构产品发布站：CHROMA S1 是一台口袋光谱色度仪。包含可交互光谱实验室（CIE 1931 配色函数积分 + CIEDE2000 实时色差）、12 块程序化表面样本库、两处 Three.js 程序化建模的三维展示（主视图与拆解视图）、规格矩阵、FAQ 与本地校验的预约表单。",
+  "entry": "index.html",
+  "buildCommand": "npm ci && npm run build",
+  "outputDir": "dist",
+  "status": "completed",
+  "upstream": "01-web",
+  "license": {
+    "code": "本仓库任务产物，随仓库授权",
+    "thirdParty": "MIT (three, vite, typescript) / OFL-1.1 (@fontsource fonts)"
+  },
+  "sources": [
+    {
+      "title": "机制参考：公开案例的掌机落地页",
+      "url": "https://x.com/nutlope/status/2112238098147135880",
+      "note": "2026-10-19 发布，观测于 2026-10-21：1416 赞 / 84 回复。作者未公开源码。实际交付物《千色仪 CHROMA S1》为原创重新设计，不等同于该案例，也不等同于研究阶段的 TOP3 候选规格。"
+    }
+  ],
+  "language": "zh-CN",
+  "category": "web",
+  "previewCommand": "npm run preview",
+  "devCommand": "npm run dev",
+  "devPort": 4311,
+  "qaCommand": "npm run qa",
+  "qaReport": "qa/report.json",
+  "screenshots": "screenshots/",
+  "runtimeDependencies": [
+    "three@0.186.1",
+    "@fontsource/martian-mono@5.3.0",
+    "@fontsource/space-grotesk@5.3.0",
+    "@fontsource/jetbrains-mono@5.3.0"
+  ],
+  "devDependencies": [
+    "vite@7.1.7",
+    "typescript@5.9.2",
+    "@types/three@0.186.0",
+    "playwright@1.64.1"
+  ],
+  "externalRuntimeRequests": [],
+  "cdn": false,
+  "externalApi": false,
+  "assets": {
+    "images": "全部在运行时用 Canvas 2D 程序化生成（12 块样本贴图、仪表读数、地面网格、机身屏幕）",
+    "models": "全部用 Three.js 图元程序化建模（机身、光学窗口、传感器、主板、电池、屏幕、校准色片）",
+    "fonts": "npm 本地安装的 @fontsource woff2 子集，latin 字形；中文使用系统字体栈",
+    "environment": "Three.js 自带 RoomEnvironment 程序化生成，无 HDR 文件"
+  },
+  "source": {
+    "selection": "../00-research/SOURCE.md",
+    "differences": "DIFF-vs-SOURCE.md",
+    "assets": "SOURCES.md"
+  },
+  "notes": "按 MASTER-UPDATE.md 要求，本作品为对公开案例工艺水准的原创改编，非原样复制；作品名、文案、字体、配色、布局与产品形态均重新设计。证据缺口：参考原帖的转发数与收藏数未能核到，已在 SOURCES.md 标注。"
+}

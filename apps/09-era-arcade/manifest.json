@@ -1,0 +1,21 @@
+{
+  "id": "09-era-arcade",
+  "title": "霓虹街廊",
+  "description": "街机时代展厅：晶格迷宫追逐与流星编队射击，像素美术与可关闭的 CRT 效果，键盘与触控双支持。",
+  "entry": "works/09-era-arcade/index.html",
+  "buildCommand": "npm run build",
+  "outputDir": "docs/works/09-era-arcade",
+  "status": "ready",
+  "upstream": "09-era-arcade",
+  "license": {
+    "code": "MIT",
+    "assets": "程序化像素图与合成音效"
+  },
+  "sources": [
+    {
+      "title": "时代史料来源（随展厅交付）",
+      "url": "",
+      "note": "展厅内附史料来源链接。"
+    }
+  ]
+}

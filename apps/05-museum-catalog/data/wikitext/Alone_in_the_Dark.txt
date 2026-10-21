@@ -1,0 +1,165 @@
+{{other uses|Alone in the Dark (disambiguation)}}
+{{Infobox video game series
+| title = Alone in the Dark
+| image = Alone in the Dark 1-2-3 logo.png
+| genre = [[Survival horror]]
+| developer = [[Infogrames]]<br />[[Krisalis Software]]<br />Darkworks<br />Spiral House<br />Pocket Studios<br />[[Eden Games]]<br />Hydravision Entertainment<br />Pure FPS<br />Pieces Interactive
+| publisher = [[Infogrames]] {{small|(1992–2008)}}<br />[[Interplay Entertainment]] {{small|(1994–1995)}}<br />[[Atari, Inc. (1993–present)|Atari]] {{small|(2008–2018)}}<br />[[THQ Nordic]] {{small|(2018–present)}}
+| platforms = [[MS-DOS]]<br>[[PC-98]]<br>[[FM Towns]]<br>[[3DO]]<br>[[Classic Mac OS]]<br>[[RISC OS]]<br>[[iOS]]<br>[[Sega Saturn|Saturn]]<br>[[PlayStation (console)|PlayStation]]<br>[[Windows]]<br>[[Game Boy Color]]<br>[[Dreamcast]]<br>[[PlayStation 2]]<br>[[Wii]]<br>[[Xbox 360]]<br>[[PlayStation 3]]<br>[[PlayStation 5]]<br>[[Xbox Series X/S]]
+| first release version = ''[[Alone in the Dark (1992 video game)|Alone in the Dark]]''
+| first release date = 1992
+| latest release version = ''[[Alone in the Dark (2024 video game)|Alone in the Dark]]''
+| latest release date = 20 March 2024
+}}
+
+'''''Alone in the Dark''''' is a [[survival horror]] video game series originally developed by [[Infogrames]].<ref>{{cite web | url=http://www.krawall.de/web/Alone_in_the_Dark_4/review/id,554/s,, | title=Alone in the Dark 4: Edward Carnby strikes back! | publisher=krawall.de | date=October 7, 2001 | access-date=June 9, 2012|language=de}} {{Dead link|date=December 2015}}</ref> In most of the games, the player controls [[private investigator]] Edward Carnby, who goes to investigate a [[haunted house]] or town that is full of [[undead]] creatures.
+
+The series, particularly for its [[Alone in the Dark (1992 video game)|debut game]], is widely acknowledged as an early instance of survival horror video games and (along with ''[[Sweet Home (video game)|Sweet Home]]'') is often credited with the creation of the genre.<ref>{{cite web |url=https://www.cbr.com/alone-dark-kicked-off-video-game-horror-genre/ |title = Alone in the Dark: The Game That Kicked Off the Horror Genre|date = 30 October 2020}}</ref><ref>{{cite web |url=https://www.thegamer.com/best-stories-in-90s-horror-video-games/ |title = The 10 Best Stories In '90s Horror Video Games|date = 7 June 2019}}</ref><ref>{{cite web |url=https://gamingbolt.com/will-alone-in-the-dark-ever-come-back |title = Will Alone in the Dark Ever Come Back?}}</ref><ref>{{cite web |url=https://techraptor.net/originals/game-changers-alone-in-dark |title = Game Changers: Alone in the Dark {{!}} TechRaptor| date=23 October 2015 }}</ref> The original story was based on the writings of [[H. P. Lovecraft]]; later games in the series drew inspiration from other sources including [[Haitian Vodou|voodoo]], the [[Wild West]], and the works of [[H. R. Giger]]. Seven installments of the series have been created, with various themes and locations. Two comic books and two films were created based upon the games.
+
+In September 2018, [[Atari SA]] sold the ''Alone in the Dark'' franchise to [[THQ Nordic]].<ref>{{Cite web|url=https://www.eurogamer.net/articles/2018-09-19-thq-nordic-has-now-acquired-survival-horror-classic-alone-in-the-dark|title = THQ Nordic has now acquired survival horror classic Alone in the Dark|website = [[Eurogamer]]|date = 19 September 2018}}</ref>
+
+As of 2007, over 6 million units have been sold.<ref>{{Cite web |title=RES ANNUELS 0607 EUR |url=http://files.atari.com/corporate/RES_ANNUELS_0607_EUR.pdf |archive-url=https://web.archive.org/web/20150409211432/http://files.atari.com/corporate/RES_ANNUELS_0607_EUR.pdf |archive-date=April 9, 2015 |access-date=November 20, 2025 |website=files.atari.com}}</ref>
+
+==Games==
+{{VG Series Reviews
+| game1 = [[Alone in the Dark (1992 video game)|Alone in the Dark]] (1992)
+| mc1 = (3DO) 70/100<ref>{{cite web |url=https://www.gamerankings.com/3do/584305-alone-in-the-dark/index.html |title=''Alone in the Dark'' (1992) Reviews |publisher=[[GameRankings]] |access-date=December 8, 2014}}</ref>{{efn|name=GRs|[[GameRankings]] score}}<br>(iOS) 50/100<ref>{{cite web |url=https://www.metacritic.com/game/alone-in-the-dark/critic-reviews/?platform=ios-iphoneipad |title=''Alone in the Dark'' (1992) Reviews |website=[[Metacritic]] |access-date=December 8, 2014}}</ref><br>(PC) 90/100<ref>{{cite web |url=https://www.gamerankings.com/pc/564567-alone-in-the-dark-1992/index.html |title=''Alone in the Dark'' (1992) Reviews |publisher=[[GameRankings]] |access-date=December 8, 2014}}</ref>{{efn|name=GRs}}
+| game2 = [[Jack in the Dark]]
+| mc2 = (PC) 60/100<ref>{{cite web |url=https://www.gamerankings.com/pc/564569-jack-in-the-dark/index.html |title=''Jack in the Dark'' Reviews |publisher=[[GameRankings]] |access-date=December 8, 2014}}</ref>{{efn|name=GRs}}
+| game3 = [[Alone in the Dark 2 (video game)|Alone in the Dark 2]]
+| mc3 = (PC) 70/100<ref>{{cite web |url=https://www.gamerankings.com/pc/564568-alone-in-the-dark-2/index.html |title=''Alone in the Dark 2'' Reviews |publisher=[[GameRankings]] |access-date=December 8, 2014}}</ref>{{efn|name=GRs}}<br>(SAT) 42/100<ref>{{cite web |url=https://www.gamerankings.com/saturn/573922-alone-in-the-dark-one-eyed-jacks-revenge/index.html |title=''Alone in the Dark: One-Eyed Jack's Revenge'' Reviews |publisher=[[GameRankings]] |access-date=December 8, 2014}}</ref>{{efn|name=GRs}}
+| game4 = [[Alone in the Dark 3]]
+| mc4 = (PC) 60/100<ref>{{cite web |url=https://www.gamerankings.com/pc/565051-alone-in-the-dark-3/index.html |title=''Alone in the Dark 3'' Reviews |publisher=[[GameRankings]] |access-date=December 8, 2014}}</ref>{{efn|name=GRs}}
+| game5 = [[Alone in the Dark: The New Nightmare]]
+| mc5 = (DC) 75/100<ref>{{cite web |url=https://www.metacritic.com/game/alone-in-the-dark-the-new-nightmare/critic-reviews/?platform=dreamcast |title=''Alone in the Dark: The New Nightmare'' Reviews |website=[[Metacritic]] |access-date=December 8, 2014}}</ref><br>(GBC) 62/100<ref>{{cite web |url=https://www.gamerankings.com/gbc/375070-alone-in-the-dark-the-new-nightmare/index.html |title=''Alone in the Dark: The New Nightmare'' Reviews |publisher=[[GameRankings]] |access-date=December 8, 2014}}</ref>{{efn|name=GRs}}<br>(PC) 66/100<ref>{{cite web |url=https://www.metacritic.com/game/alone-in-the-dark-the-new-nightmare/critic-reviews/?platform=pc |title=''Alone in the Dark: The New Nightmare'' Reviews |website=[[Metacritic]] |access-date=December 8, 2014}}</ref><br>(PS) 77/100<ref>{{cite web |url=https://www.metacritic.com/game/alone-in-the-dark-the-new-nightmare/critic-reviews/?platform=playstation |title=''Alone in the Dark: The New Nightmare'' Reviews |website=[[Metacritic]] |access-date=December 8, 2014}}</ref>
+| game6 = [[Alone in the Dark (2008 video game)|Alone in the Dark]] (2008)
+| mc6 = (PC) 55/100<ref>{{cite web |url=https://www.metacritic.com/game/alone-in-the-dark/critic-reviews/?platform=pc |title=''Alone in the Dark'' (2008) Reviews |website=[[Metacritic]] |access-date=December 8, 2014}}</ref><br>(PS2) 47/100<ref>{{cite web |url=https://www.metacritic.com/game/alone-in-the-dark/critic-reviews/?platform=playstation-2 |title=''Alone in the Dark'' (2008) Reviews |website=[[Metacritic]] |access-date=December 8, 2014}}</ref><br>(PS3) 69/100<ref>{{cite web |url=https://www.metacritic.com/game/playstation-3/alone-in-the-dark-infernoo |title=''Alone in the Dark: Inferno'' Reviews |website=[[Metacritic]] |access-date=December 8, 2014}}{{dead link|date=November 2023|bot=medic}}{{cbignore|bot=medic}}</ref><br>(Wii) 39/100<ref>{{cite web |url=https://www.metacritic.com/game/alone-in-the-dark/critic-reviews/?platform=wii |title=''Alone in the Dark'' (2008) Reviews |website=[[Metacritic]] |access-date=December 8, 2014}}</ref><br>(X360) 58/100<ref>{{cite web |url=https://www.metacritic.com/game/alone-in-the-dark/critic-reviews/?platform=xbox-360 |title=''Alone in the Dark'' (2008) Reviews |website=[[Metacritic]] |access-date=December 8, 2014}}</ref>
+| game7 = [[Alone in the Dark: Illumination]]
+| mc7 = (PC) 19/100<ref>{{cite web |url=https://www.metacritic.com/game/alone-in-the-dark-illumination/critic-reviews/?platform=pc |title=''Alone in the Dark: Illumination'' Reviews |website=[[Metacritic]] |access-date=December 8, 2014}}</ref>
+| game8 = [[Alone in the Dark (2024 video game)|Alone in the Dark]] (2024)
+| mc8 = (PC) 67/100<ref>{{Cite web|title=Alone in the Dark for PC reviews|url=https://www.metacritic.com/game/alone-in-the-dark/critic-reviews/?platform=pc|access-date=2024-03-20|website=Metacritic |language=en}}</ref><br>(PS5) 63/100<ref>{{Cite web|title=Alone in the Dark for PlayStation 5 reviews|url=https://www.metacritic.com/game/alone-in-the-dark/critic-reviews/?platform=playstation-5|access-date=2024-03-20|website=Metacritic |language=en}}</ref><br>(XSX) 66/100<ref>{{Cite web|title=Alone in the Dark for Xbox Series X |url=https://www.metacritic.com/game/alone-in-the-dark/critic-reviews/?platform=xbox-series-x|access-date=2024-03-20|website=Metacritic |language=en}}</ref>
+}}
+
+=== Main series ===
+{{Timeline of release years
+| compressempty =
+| range1 = 1992 –
+| range1_color = #ccaa00 #886600 <!-- colors are based on the series' logos -->
+| 1992 = '''''[[Alone in the Dark (1992 video game)|Alone in the Dark]]'''''
+| 1993a = ''Jack in the Dark''
+| 1993b = '''''[[Alone in the Dark 2 (video game)|Alone in the Dark 2]]'''''
+| 1995 = '''''[[Alone in the Dark 3]]'''''
+| 2001 = '''''[[Alone in the Dark: The New Nightmare]]'''''
+| 2008 = '''''[[Alone in the Dark (2008 video game)|Alone in the Dark]]'''''
+| 2015 = '''''[[Alone in the Dark: Illumination]]'''''
+| 2023 = ''Grace in the Dark: Prologue''
+| 2024 = '''''[[Alone in the Dark (2024 video game)|Alone in the Dark]]'''''
+}}
+
+===''Alone in the Dark'' (1992)===
+{{Main|Alone in the Dark (1992 video game)}}
+The first game in the series was developed by [[Infogrames]] and released for [[Personal computer|PC]] in 1992. It was one of the first two games to use [[polygonal]] characters over pre-rendered backgrounds. [[Guinness World Records]] awarded it the record of "First Ever 3D [[Survival Horror]] Game" in the [[Guinness World Records Gamer's Edition]] 2008 edition. [[Krisalis Software]] made a port for the [[3DO Interactive Multiplayer|3DO]] in 1994 that was released by [[Interplay Entertainment]]. A [[Macintosh|Mac]] version was released in 1994. In 2014, [[Atari, Inc. (1993–present)|Atari]] published a port to [[iOS]] developed by [[Kung Fu Factory]] but was pulled out of the [[App Store (Apple)|App Store]] after the latest iOS updates.
+
+===''Jack in the Dark'' (1993)===
+A small game made during the second game's production, ''Jack in the Dark'', was used as a promotional game distributed during Christmas of 1993, just before the second installment's release. The game was on a single floppy disk in a golden wrapping featuring a [[Jack-in-the-box]] illustration on the top. It is a short adventure featuring the young child Grace Saunders. During [[Halloween]], she enters a small toy store after dark and gets locked inside. There, the toys are alive, and Grace must save [[Santa Claus]] from an evil Jack-in-the-box. ''Jack in the Dark'' is an [[adventure game]] that focuses purely on puzzles and has no combat. Later CD versions of both ''Alone in the Dark'' and ''Alone in the Dark 2'' came packaged with this game.
+
+===''Alone in the Dark 2'' (1993)===
+{{Main|Alone in the Dark 2 (video game)}}
+Developed by [[Infogrames]] and released for [[Personal computer|PC]] in 1993, ''Alone in the Dark 2'' was a drastic departure from the original game, being more action-oriented than its predecessor, with a much greater emphasis on firearms and shootouts, and resulting in more difficult combat. Like the original, it was ported to the 3DO by Krisalis and released by Interplay. An enhanced port under the name of ''Alone in the Dark: Jack is Back'' (''Alone in the Dark: One-Eyed Jack's Revenge'' in the United States) was released in 1996 for the [[PlayStation (console)|PlayStation]] and [[Sega Saturn]]. Both versions were also released in Japan under the original name.
+
+===''Alone in the Dark 3'' (1995)===
+{{Main|Alone in the Dark 3}}
+''Alone in the Dark 3'' was the last game to utilize the same [[game engine|engine]] and characters as the original game. Released for [[Personal computer|PC]] in 1995, the game returned to the gameplay style of the original game. A version of the game for [[Windows 95]] was released as ''Alone in the Dark: Ghosts in Town'' in 1996.
+
+===''Alone in the Dark: The New Nightmare'' (2001)===
+{{Main|Alone in the Dark: The New Nightmare}}
+The next generation game of the ''Alone in the Dark'' series was created by Darkworks as a [[video game console|console]] [[survival horror]] title, and shows significant influence from the ''[[Resident Evil]]'' series. The control scheme and gameplay are much closer to that of ''Resident Evil'' than the original ''Alone in the Dark'' games. Internally known as ''Alone in the Dark 4'', the game was released in 2001, developed by Darkworks for the [[PlayStation (console)|PlayStation]] and [[Dreamcast]], and by Spiral Studios for [[Personal computer|PC]] and [[PlayStation 2]], also with an alternative portable [[Game Boy Color]] version developed by Pocket Studios. The game unlike its predecessors is set in modern settings, features new main character design and no longer features [[Savate]] as unarmed combat method.
+
+===''Alone in the Dark'' (2008)===
+{{Main|Alone in the Dark (2008 video game)}}
+Developed by [[Eden Games]] for [[Personal computer|PC]], [[PlayStation 3]] and [[Xbox 360]], and by Hydravision Entertainment for the [[PlayStation 2]] and [[Wii]], ''Alone in the Dark'' changed the focus of the series back to [[survival horror]]. Initially known as ''Alone in the Dark: Near Death Investigation'', the game was re-branded as ''Alone in the Dark'' despite having few connections with the original game. The game introduced 3D generated scenarios and interchangeable first and third-person view to the series. The environment plays a large role in core gameplay; any object, even decorative, can be used as a melee weapon or combined to make different styles of weapons. The [[PlayStation 3]] version was released several months after the other versions as ''Alone in the Dark: Inferno''. It had a few gameplay changes and fewer glitches.
+
+===''Alone in the Dark: Illumination'' (2015)===
+{{Main|Alone in the Dark: Illumination}}
+''Alone in the Dark: Illumination'' was released on June 11, 2015. Unlike the previous installments, the game is only played online. The game was [[List of video games notable for negative reception|heavily panned]] by critics.
+
+===''Alone in the Dark'' (2024)===
+{{Main|Alone in the Dark (2024 video game)}}
+Developed by Pieces Interactive, ''Alone in the Dark'' is a reimagining of the original 1992 video game in a similar style to the ''[[Resident Evil (franchise)|Resident Evil]]'' remakes. The game features a single-player narrative set in the 1930s, where players can choose to play as Edward Carnby ([[David Harbour]]) or Emily Hartwood ([[Jodie Comer]]), as they make their way through Derceto Mansion to uncover the mysteries within. It was released for [[Microsoft Windows]], [[PlayStation 5]] and [[Xbox Series X and Series S|Xbox Series X/S]] on March 20, 2024.<ref>{{cite web |url=https://www.polygon.com/23303045/alone-in-the-dark-remake-2023-release-date-thq-nordic |title=New Alone in the Dark remake announced for PS5, Xbox Series X, PC |last=McWhertor |first=Michael |date=2022-08-12 |website=Polygon |publisher= Vox Media|access-date= 2022-08-13}}</ref><ref>{{Cite web |last=Square |first=Push |date=2023-12-07 |title=Alone in the Dark Delayed Once More, Now Out in March 2024 |url=https://www.pushsquare.com/news/2023/12/alone-in-the-dark-delayed-once-more-now-out-in-march-2024 |access-date=2023-12-07 |website=Push Square |language=en-GB}}</ref><ref>{{Cite web |last=Poropat |first=Valeria |date=2024-01-31 |title=Silent Hill 2 Remake, che fine ha fatto il gioco Konami? Tutto ciò che sappiamo sull'esclusiva PS5 |url=https://www.zak-site.com/2024/01/31/silent-hill-2-remake-che-fine-ha-fatto-il-gioco-konami-tutto-cio-che-sappiamo-sullesclusiva-ps5/ |access-date=2024-03-17 |website=zak-site |language=it-IT}}</ref>
+
+==Storyline==
+{{Infobox character
+| name         = Edward Carnby
+| image        =
+| caption      = 
+| series       = [[Alone in the Dark (series)|Alone in the Dark]]
+| first_game   = ''[[Alone in the Dark (1992 video game)|Alone in the Dark]]'' (1992)
+| creator      = 
+| designer     = 
+| voice        = [[David Gasman]] (''Alone in the Dark: The New Nightmare'')<ref name="IMDB1">[https://www.imdb.com/title/tt0913951/ Alone in the Dark II] at Internet Movie Database</ref><br/>[[James McCaffrey (actor)|James McCaffrey]] (''Alone in the Dark'' 2008)<ref name="IMDB1"/><br/>[[David Harbour]] (''Alone in the Dark'' 2024)
+| motion_actor = 
+| portrayer    = [[Christian Slater]] (''Alone in the Dark'' film)<br/>[[Rick Yune]] (''Alone in the Dark II'' film)<ref name="IMDB1"/> 
+}}
+
+[[Image:AITDscreenshot.gif|thumb|right|Carnby opening a trunk at the Derceto mansion]]
+
+Edward Carnby is the main protagonist of the series, and is a private detective.<ref name="Variety">{{cite magazine | url=https://variety.com/2005/film/markets-festivals/alone-in-the-dark-2-1200528442/ | title=Alone in the Dark | magazine=[[Variety (magazine)|Variety Magazine]] | date=January 27, 2005 | access-date=June 9, 2012 | author=Chang, Justin}}</ref> In the first three games, he is depicted as a middle-aged private investigator during the 1920s. ''The New Nightmare'' depicts him as a younger adult in 2001. In the 2008 installment of the series, Carnby's appearance was drastically changed. He has been the main protagonist in every game to date,<ref>{{cite web | url=http://www.focus.de/kultur/kino_tv/tid-18329/game-verfilmungen-alone-in-the-dark-christian-slater-als-privatschnueffler_aid_510076.html | title="Alone in the Dark": Christian Slater as a private eye| work=FOCUS Online| publisher=Focus Magazine | access-date=June 9, 2012|language=de}}</ref> with the exception of the mini game, ''[[Jack in the Dark]]'', which instead features Grace Saunders, a character who appears in ''[[Alone in the Dark 2 (video game)|Alone in the Dark 2]]''.<ref name="Variety"/> He is also the main character in two movies loosely based upon the games.<ref name="IMDB1"/>
+
+The three original games take place in the 1920s and depict the paranormal cases of private eye Edward Carnby. In 1924 (''[[Alone in the Dark (1992 video game)|Alone in the Dark]]'') he is commissioned by an antique dealer to investigate a piano in the loft of the [[Louisiana]] mansion Derceto, which was abandoned after its owner Jeremy Hartwood committed suicide. On [[Christmas Eve]] 1924 (''[[Alone in the Dark 2 (video game)|Alone in the Dark 2]]'') Carnby goes on to solve a case involving the kidnapping of young [[Grace Saunders]] after the investigating procedures of his deceased partner [[Alone in the Dark 2 (video game)|Ted Stryker]], with all the clues leading to an old [[California]] mansion named "Hell's Kitchen"<ref>Alone in the Dark 2 Manual</ref> and an infamous gangster who inhabited it. In July 1925 (''[[Alone in the Dark 3]]'') he is called to investigate the disappearance of a film crew at a two-bit ghost town known by the name of Slaughter Gulch located in the [[Mojave Desert]] in California. The first game shares the protagonist role with Jeremy Hartwood's niece, Emily Hartwood, who also takes a role of damsel-in-distress in ''Alone in the Dark 3''.
+
+In ''[[Alone in the Dark: The New Nightmare]]'' Carnby is investigating the death of his best friend, Charles Fiske. He teams up with Aline Cedrac, a young University professor specializing in ancient [[Indigenous languages of the Americas|Indian languages]], on a mission to Shadow Island.<ref>Alone in the Dark: The New Nightmare Manual</ref> When ''Alone in the Dark: The New Nightmare'' was made, the setting was moved from the 1920s to 2001, and a background legend was made up in order to explain that Edward Carnby belonged to a lineage of Shadow Hunters who were born the 29th of February of every 40 years and raised as orphan children in St George's Orphanage, all of them going by the name of Edward Carnby. The name is depicted as a literal anglicized form of "El War Qarn'bi", which means "the one who battles evil incarnate and hunts out the shadows". According to this legend, the original Edward Carnby was born in 1888 and went out of record after engaging several strange affairs in the years 1920 to 1939. The Edward Carnby that plays the main role in ''Alone in the Dark: The New Nightmare'' was born in 1968.
+
+The 2008 ''[[Alone in the Dark (2008 video game)|Alone in the Dark]]'' reinterpreted once again the series storyline. It follows the canon of the first three games, and ignores the events of ''Alone in the Dark: The New Nightmare''. The story takes place in [[Central Park]], [[New York City|New York]], both inside the park and in its surroundings. Taking place in 2008, the game claims that there has only ever been one Edward Carnby, who has been possessed since the late 1920s, and is now over 100 years old, though he retains a youthful appearance.
+
+''[[Alone in the Dark: Illumination]]'' takes place in the mining town of Lorwich, [[Virginia]] and harkens back to the series' Lovecraftian background. Theodore "Ted" Carnby, one of ''Illumination'''s four protagonists, is a direct descendent of Edward Carnby. Ted is actually implied to be Edward Carnby himself living under an assumed identity, still alive in the modern era due to the events of the 2008 ''Alone in the Dark'' game.
+
+==Development==
+The original game engine was created by [[Frédérick Raynal]] as a pet project while working at [[Infogrames]].<ref name="EdgeMak">{{cite magazine|date=May 11, 2010 |title=The Making Of: Alone In The Dark |url=http://www.edge-online.com/features/making-alone-dark/ |magazine=[[Edge (magazine)|Edge]] |url-status=dead |archive-url=https://web.archive.org/web/20130531065843/http://www.edge-online.com/features/making-alone-dark/ |archive-date=May 31, 2013}}</ref> With the help of Didier Chanfray, who made the 3D models, a working prototype of the attic (the game's first room) was designed. An internal contest was held to create the art to complete the 3D prototype. Yaël Barroz's art was selected and she was introduced into the game's core team.<ref name="EdgeMak"/> Frédérick Raynal directed the project.
+
+Shortly after ''Alone in the Dark'''s initial release, a major disagreement between the team and Infogrames' director ([[Bruno Bonnell]]) took place regarding the direction of the sequel. As a result, most of the original team left [[Infogrames]] to create a new studio named [[Adeline Software International]].
+
+According to an interview<ref name=CatTOM>''EDGE'' Magazine 150, pages 104-107</ref> made just after the release of ''Alone in the Dark'', portions of the sequels were designed by the original team before leaving. The interview presented a sketch of the house that was used in the sequel and mentioned the fact that Carnby could be dressed as Santa Claus.
+
+The original game's engine is the first known to use [[Interpolation (computer graphics)|interpolated]] animation, relying on the computer to render the frames between [[key frame]]s. This approach has the advantages of reducing the game's [[memory footprint]] (requiring less memory to store) and adapting to each computer's power.
+
+The game engine developed for ''Alone in the Dark'' was reused in its first two sequels (''Alone in the Dark 2'' and ''Alone in the Dark 3'') without substantial changes. [[Infogrames]] updated it for use in 1996's ''[[Time Gate: Knight's Chase]]''.
+
+==Adaptations==
+
+=== Films ===
+In 2005, an ''[[Alone in the Dark (2005 film)|Alone in the Dark]]'' film was released starring [[Christian Slater]] as Edward Carnby. The film has little-to-no relation to the games from the 1990s or the 2008 continuation. The film is known as [[List of films considered the worst|one of the worst ever made]]. Guinness World Records named the film the "Lowest-Grossing Game Based Movie" in Guinness World Records: Gamer's Edition 2008.
+In 2008, a low-budget sequel titled ''[[Alone in the Dark II (film)|Alone in the Dark II]]'' was released, starring [[Rick Yune]] as Edward Carnby and featuring an entirely new cast and a story centered on witch hunting.
+
+===Reboot film and television series===
+In December 2025, [[Uwe Boll]] director of the 2005 film adaptation was announced a reboot film, based on the [[Alone in the Dark (2024 video game)|2024 reboot game]], with a planned television series is also in development.<ref>{{cite web|url=https://www.hollywoodreporter.com/movies/movie-news/uwe-boll-reboots-alone-in-the-dark-franchise-1236448842/|title=Uwe Boll Reboots 'Alone in the Dark' (Exclusive)|work=[[The Hollywood Reporter]]|last=Roxborough|first=Scott|date=December 12, 2025|access-date=February 22, 2026}}</ref>
+
+=== Comic ===
+An ''Alone in the Dark'' one-shot [[comic book]] entitled ''Life is a Hideous Thing'' was published by [[Semic Comics]] in 2001 in France and translated by [[Image Comics]] in the U.S. in September 2002. It was also translated and published in [[Italy]] and [[Spain]]. Written by [[Jean-Marc Lofficier]] and drawn by [[Matt Haley]] and Aleksi Briclot, it takes place just before ''Alone in the Dark: The New Nightmare''. It stars Edward Carnby and introduces Aline Cedrac, both on the trail of a mysterious lost city of Aggartha in [[Tibet]]. The comic also features Frank Stone, a young scientist who accompanies Aline, Ganesha, a fortune hunter, and Dr. Leng, a wise man who lives in his private flying ship along with his beautiful assistant Monplaisir (the two characters also appear in a French comic book based on "Motor Mayhem").
+
+The characters travel to Aggartha in order to destroy the Crown of Genghis Khan, a powerful artifact able to summon a powerful creature known as the Creeping Chaos. Frank Stone is revealed to be possessed by a demon, and unleashes the Creeping Chaos. Its up to Carnby and Cedrac to defeat him and cast the creature back. The Creeping Chaos's appearance is based on a deity from Lovecraft's lore, [[Shub-Niggurath]].
+
+==Notes==
+{{notelist}}
+
+==References==
+{{reflist}}
+
+==Additional sources==
+* {{cite web | url=http://www.gamer.no/artikler/11673/edward-carnby-er-klar-for-nye-eventyr/ | archive-url=https://archive.today/20130222210154/http://www.gamer.no/artikler/11673/edward-carnby-er-klar-for-nye-eventyr/ | url-status=dead | archive-date=February 22, 2013 | title=Edward Carnby is ready for adventure | publisher=gamer.no | date=March 13, 2008 | access-date=June 9, 2012 | author=Haug, Vegard|language=no}}
+* {{cite news | url=https://pqasb.pqarchiver.com/chicagotribune/access/785195751.html?dids=785195751:785195751&FMT=ABS&FMTS=ABS:FT&type=current&date=Jan+28%2C+2005&author=Kevin+Williams%2C+Tribune+staff+reporter&pub=Chicago+Tribune&desc=%27Alone%27+should+stay+that+way&pqatl=google | archive-url=https://archive.today/20130131195150/http://pqasb.pqarchiver.com/chicagotribune/access/785195751.html?dids=785195751:785195751&FMT=ABS&FMTS=ABS:FT&type=current&date=Jan+28,+2005&author=Kevin+Williams,+Tribune+staff+reporter&pub=Chicago+Tribune&desc='Alone'+should+stay+that+way&pqatl=google | url-status=dead | archive-date=January 31, 2013 | title='Alone' should stay that way | newspaper=Chicago Tribune | date=January 28, 2005 | access-date=June 9, 2012 | author=Williams, Kevin}} {{subscription required}}
+
+==External links==
+{{Portal|Video games}}
+* {{moby game|id=-group/alone-in-the-dark-series}}
+
+{{Alone in the Dark}}
+{{Embracer Group}}
+
+{{DEFAULTSORT:Alone In The Dark (Series)}}
+[[Category:Alone in the Dark| ]]
+[[Category:Embracer Group franchises]]
+[[Category:Video game franchises]]
+[[Category:Horror mass media franchises]]
+[[Category:Occult detective fiction]]
+[[Category:Video game franchises introduced in 1992]]
+[[Category:Video games adapted into films]]

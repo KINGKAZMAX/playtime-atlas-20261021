@@ -1,0 +1,72 @@
+{
+  "id": "11-era-online",
+  "title": "联机曙光 LINK DAWN · 2000s 可玩展厅",
+  "description": "原创 2000 年代 PC / 掌机 / 联机主题的可玩展厅子站。含两件完全原创的可玩展项——微型策略防守《灯塔协议 BEACON PROTOCOL》与掌机风冒险区域《口袋回声 POCKET ECHO》——以及一份逐条挂来源链接的 2000–2009 年史料导览。全站本地单机运行，无服务器、无真人匹配；展项 A 的对手为明确标注的本机 AI。",
+  "entry": "index.html",
+  "buildCommand": "npm ci && npm run build",
+  "outputDir": "dist",
+  "status": "complete",
+  "upstream": "11-era-online",
+  "license": {
+    "code": "MIT",
+    "assets": "原创模型、UI 与命名"
+  },
+  "sources": {
+    "count": 65,
+    "official": 5,
+    "reference": 60,
+    "checkedOn": "2026-10-21"
+  },
+  "port": 4331,
+  "basePath": "./",
+  "runtimeDependencies": [],
+  "devDependencies": {
+    "typescript": "5.6.3",
+    "vite": "5.4.11"
+  },
+  "exhibits": [
+    {
+      "id": "defense",
+      "title": "灯塔协议 BEACON PROTOCOL",
+      "type": "strategy-defense",
+      "engine": "canvas-2d",
+      "features": [
+        "资源",
+        "建造",
+        "升级",
+        "战斗",
+        "胜负",
+        "暂停",
+        "存读档",
+        "触屏",
+        "键盘",
+        "AI对手"
+      ]
+    },
+    {
+      "id": "handheld",
+      "title": "口袋回声 POCKET ECHO",
+      "type": "handheld-adventure",
+      "engine": "canvas-2d",
+      "features": [
+        "探索",
+        "拾取",
+        "NPC对话",
+        "机关",
+        "体力",
+        "暂停",
+        "存读档",
+        "触屏",
+        "键盘",
+        "双屏"
+      ]
+    }
+  ],
+  "deployment": {
+    "owner": "14-publish",
+    "static": true,
+    "githubPagesSubpathCompatible": true,
+    "iframeEmbeddable": true,
+    "notes": "本任务不部署。产物为纯静态 dist/，可直接放入任意子路径。"
+  }
+}

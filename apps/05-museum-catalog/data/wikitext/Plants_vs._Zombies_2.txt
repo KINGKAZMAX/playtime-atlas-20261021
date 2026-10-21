@@ -1,0 +1,97 @@
+{{Short description|2013 video game}}
+{{Use American English|date=March 2021}}
+{{Use mdy dates|date=July 2026}}
+{{Infobox video game
+| title = Plants vs. Zombies 2
+| image = Plants vs Zombies 2 logo.png
+| developer = [[PopCap Games]]{{efn|Talkweb Games developed the game's Chinese-only version. [[Tencent Games]] ported the original version for China.}}
+| publisher = [[Electronic Arts]]
+| director = {{ubl|Dan Fruchter|Jeremy Vanhoozer}}
+| designer = Mohan Rajagopalan
+| producer = Allen Murray
+| artist = David Ryan Paul
+| programmer = Terry Franguiadakis
+| writer = {{ubl|Rob McDaniel|Allen Murray|Mohan Rajagopalan}}
+| engine = [[PopCap Framework]]
+| composer = {{ubl|[[Peter McConnell]]|[[Laura Shigihara]]}}
+| series = ''[[Plants vs. Zombies]]''
+| platforms = {{ubl|[[iOS]]|[[Android (operating system)|Android]]|}}
+| released = '''iOS'''<br/>August 15, 2013<br/>'''Android'''<br/>{{video game release|CHN|September 12, 2013}}{{video game release|WW|October 2, 2013}}
+| genre = [[Tower defense]]
+| modes = [[Single-player video game|Single-player]], [[Multiplayer video game|multiplayer]]
+}}
+'''''Plants vs. Zombies 2''''' (originally '''''Plants vs. Zombies 2: It's About Time''''') is a [[tower defense]] video game developed by [[PopCap Games]] and published by [[Electronic Arts]]. It is the sequel to ''[[Plants vs. Zombies (video game)|Plants vs. Zombies]]'', and was released worldwide as a  [[free-to-play]] game on the [[Apple App Store]] on August 15, 2013, and [[Google Play]] on October 2, 2013. The player defends the lawn from zombies by placing a variety of plants. The player must battle the zombies in different time periods, featuring [[Ancient Egypt]], the [[Golden Age of Piracy]], the [[American frontier|Wild West]], the [[3rd millennium|24th century]], the [[Early Middle Ages]], the 1960s, the [[Last Glacial Period|Last Ice Age]], [[Mesoamerica]], the 1980s, the [[Jurassic|Jurassic Period]], and the present.
+
+== Gameplay ==
+''Plants vs. Zombies 2'' is a [[free-to-play]]<ref name=wired/> [[tower defense]] game where players defend the left side of the screen from hordes of [[zombie]]s approaching from the right side.<ref name="euro">{{Cite web|website=[[Eurogamer]]|last=Whitehead|first=Dan|date=August 16, 2013|url=https://www.eurogamer.net/plants-vs-zombies-2-review|archivedate=May 22, 2024|archiveurl=https://web.archive.org/web/20240522191512/https://www.eurogamer.net/plants-vs-zombies-2-review|title=Plants vs. Zombies 2 review}}</ref> The player uses various plants with different abilities to combat these zombies.<ref name="des">{{cite web|url=https://www.destructoid.com/reviews/review-plants-vs-zombies-2-its-about-time/|archiveurl=https://web.archive.org/web/20240805214433/https://www.destructoid.com/reviews/review-plants-vs-zombies-2-its-about-time/|title=Review: Plants vs. Zombies 2: It's About Time|last=Carter|first=Chris|date=August 15, 2013|archivedate=August 5, 2024|website=[[Destructoid]]}}</ref> Some plants attack zombies directly while others are designed to slow them down, allowing the player to attack them.<ref name=journal>{{Cite journal|first1=Valerie J.|last1=Shute|first2=Gregory R.|last2=Moore|first3=Lubin|last3=Wang|title=Measuring Problem Solving Skills in Plants vs. Zombies 2|url=https://files.eric.ed.gov/fulltext/ED560876.pdf|journal=International Educational Data Mining Society|year=2015|archive-date=March 27, 2024|access-date=August 22, 2024|archive-url=https://web.archive.org/web/20240327072118/https://files.eric.ed.gov/fulltext/ED560876.pdf|url-status=live}}</ref> The game is set on a five-row grid, where the player places plants to prevent the zombies from reaching the end of each row.<ref name="euro"/> Plants are purchased using "sun," a currency obtained by clicking sun icons that randomly drop from the sky or are produced by certain plants, such as Sunflowers.<ref name=journal/><ref name=TA/> If a zombie breaches all lines of defense, a lawn mower—or other similar, relevant object—will activate and clear the row, but if the lawn mower has already been used, and another zombie crosses, the [[Game over|game is over]].<ref name=euro/> Unlike its predecessor, ''Plants vs. Zombies'', this installment introduces a time-travel theme. The player, alongside the character Crazy Dave and his sentient van Penny,<ref name="gamezebo">{{Cite web|url=https://www.gamezebo.com/reviews/plants-vs-zombies-2-its-about-time-review/|date=August 15, 2013|last=Jasko|first=Joe|title=Plants vs. Zombies 2: It's About Time Review|archivedate=April 5, 2023|archiveurl=https://web.archive.org/web/20230405134719/https://www.gamezebo.com/reviews/plants-vs-zombies-2-its-about-time-review/|website=[[Gamezebo]]}}</ref> journeys through different historical periods, including [[Ancient Egypt]], [[Golden Age of Piracy|Pirate Seas]], and the [[American frontier|Wild West]], among others.<ref name="IGN">{{Cite web|website=[[IGN]]|url=https://www.ign.com/articles/2013/07/17/plants-vs-zombies-2-review|last=Shea|first=Cam|title=Plants vs. Zombies 2 Review|date=July 17, 2013|archivedate=February 26, 2023|archiveurl=https://web.archive.org/web/20230226145600/https://www.ign.com/articles/2013/07/17/plants-vs-zombies-2-review}}</ref>
+
+Each era introduces different plants,<ref name=gamezebo/> such as Bonk Choy and Coconut Cannon,<ref name=des/><ref name=macworld>{{Cite web|website=[[Macworld]]|title=Plants vs Zombies 2 review: Sticks to its roots, but paywall leaves us feeling dead inside|last=Holt|first=Chris|date=August 19, 2013|archivedate=August 13, 2023|archiveurl=https://web.archive.org/web/20230813080257/https://www.macworld.com/article/221697/review-plants-vs-zombies-2-sticks-to-its-roots-but-paywall-leaves-us-feeling-dead-inside.html|url=https://www.macworld.com/article/221697/review-plants-vs-zombies-2-sticks-to-its-roots-but-paywall-leaves-us-feeling-dead-inside.html}}</ref> and multiple unique zombies, such as [[pharaoh]]-suited zombies that can steal sun in Ancient Egypt. The game also adds Plant Food, a power-up that temporarily activates a plant's ability,<ref name=des/> such as Peashooters firing powerful volleys of peas or Sunflowers producing a large amount of sun at once.<ref name=euro/><ref name=IGN/> Plant Food can be obtained by killing special zombies or through [[Microtransaction|in-game purchases]].<ref name=euro/> An online [[player versus player]] "Arena" mode was introduced in a later update, along with a plant leveling system which allows plants to become stronger.<ref name=":0">{{Cite web |last=Rahat |first=Saif Sammi |date=April 13, 2023 |title=Plants Vs. Zombies 2: It's About Time we talk about it |url=https://images.thedailystar.net/shout/news/plants-vs-zombies-2-its-about-time-we-talk-about-it-3295526 |url-status=live |archive-url=https://web.archive.org/web/20230807212832/https://images.thedailystar.net/shout/news/plants-vs-zombies-2-its-about-time-we-talk-about-it-3295526 |archive-date=August 7, 2023 |access-date=July 30, 2025 |website=The Daily Star |language=en}}</ref>
+
+== Development ==
+[[File:PvZ2_Early_Sunflower_Concepts.webp|thumb|right|Early concept art of Sunflower by Mark Barrett and Taylor Krahenbuhl]]
+In August 2012, PopCap announced that they were working on a sequel to their previous game, ''[[Plants vs. Zombies (video game)|Plants vs. Zombies]]'', and that it would include "new features, settings, and situations".<ref name="shack2012">{{cite news | url=https://www.shacknews.com/article/75360/plants-vs-zombies-sequel-announced-for-2013 | title=Plants vs. Zombies 2 announced for 2013 | work=Shacknews | date=August 20, 2012 | access-date=May 11, 2013 | author=O'Connor, Alice | archive-date=January 26, 2021 | archive-url=https://web.archive.org/web/20210126133024/https://www.shacknews.com/article/75360/plants-vs-zombies-sequel-announced-for-2013 | url-status=live }}</ref> In a later announcement, the company confirmed that the new game would be released on July 18, 2013.<ref name="softDate">{{cite news | url=http://news.softpedia.com/news/Plants-Vs-Zombies-2-Launch-Date-Confirmed-351201.shtml | title=Plants vs. Zombies 2 Launch Date Confirmed | work=Softpedia | date=May 7, 2013 | access-date=May 11, 2013 | author=Truta, Filip | archive-date=July 14, 2014 | archive-url=https://web.archive.org/web/20140714184126/http://news.softpedia.com/news/Plants-Vs-Zombies-2-Launch-Date-Confirmed-351201.shtml | url-status=live }}</ref> On June 26, 2013, PopCap announced on their Twitter page that the game would release later than previously announced. On July 9, the game was released in Australia and New Zealand on the iOS App Store<ref name="Launched">{{cite news | url=http://ios.appsgoer.com/plants-vs-zombies-2-released-in-australia-and-new-zealand-ahead-of-schedule-13027.html | title=Plants vs. Zombies 2 Launches | work=AppsGoer | date=July 9, 2013 | access-date=July 10, 2013 | author=Timmy Feng | url-status=dead | archive-url=https://web.archive.org/web/20130801182248/http://ios.appsgoer.com/plants-vs-zombies-2-released-in-australia-and-new-zealand-ahead-of-schedule-13027.html | archive-date=August 1, 2013 | df=mdy-all }}</ref> and came out worldwide on August 15, 2013.<ref name="usrelease">{{cite news | url=http://www.macrumors.com/2013/08/14/plants-vs-zombies-2-launched-worldwide-on-august-15/ | title=Plants vs. Zombies 2 Launching Worldwide on August 15 | work=macrumors | date=August 14, 2013 | access-date=August 14, 2013 | author=Clover, Juli }}{{dead link|date=January 2018 |bot=InternetArchiveBot |fix-attempted=yes }}</ref> The Android version was released worldwide on October 23, 2013.<ref>{{cite web|author=AndrewH|title=PopCap finally plants plants vs zombies 2 andrew releases Plants vs Zombies 2, no really it is out now for everyone|url=http://www.droidgamers.com/index.php/game-news/android-game-news/6872-popcap-finally-releases-plants-vs-zombies-2-no-really-it-is-out-now|website=DroidGamers|access-date=June 24, 2014|date=October 24, 2013|archive-url=https://web.archive.org/web/20140417185522/http://www.droidgamers.com/index.php/game-news/android-game-news/6872-popcap-finally-releases-plants-vs-zombies-2-no-really-it-is-out-now|archive-date=April 17, 2014|url-status=dead}}</ref>
+
+=== Release ===
+The game was first expected to launch on [[iOS]] on July 18, 2013. On June 26, it was announced that the game was delayed until later in the summer on the game's official Twitter account.<ref>[https://twitter.com/PlantsvsZombies/statuses/349935260085129218 Twitter / PlantsvsZombies: Plants vs. Zombies 2, originally] {{Webarchive|url=https://web.archive.org/web/20211229221153/https://twitter.com/PlantsvsZombies/statuses/349935260085129218 |date=December 29, 2021 }}. Twitter.com. Retrieved on October 9, 2013.</ref> The game soft-launched in Australian and New Zealand [[App Store (iOS)|App Store]]s on July 9 to test server capacity. It launched worldwide on iOS on August 15, and within 5 days it topped the free app charts in 137 countries. On September 12, PopCap Games soft-launched the game for [[Android (operating system)|Android]] in China in Baidu AppSearch and announced that it would be coming to [[Google Play]] worldwide later in the year. On October 2, the game soft-launched on the Australian and New Zealand Google Play stores.<ref>[http://www.gamesradar.com/plants-vs-zombies-2-android-version-gets-soft-launch/ Plants vs Zombies 2 Android version gets soft launch] {{Webarchive|url=https://web.archive.org/web/20170818215738/http://www.gamesradar.com/plants-vs-zombies-2-android-version-gets-soft-launch/ |date=August 18, 2017 }}. GamesRadar (October 3, 2013). Retrieved on October 9, 2013.</ref>
+
+=== Chinese version ===
+Shortly after its release, a Chinese-exclusive version of ''Plants vs. Zombies 2'' was released.<ref>{{Cite web |last=Cannon |first=William |date=September 12, 2013 |title='Plants Vs. Zombies 2' Lands On Android Phones In China; Still No US Release Date Yet |url=https://www.latintimes.com/plants-vs-zombies-2-lands-android-phones-china-still-no-us-release-date-yet-131102 |access-date=July 1, 2025 |website=Latin Times |language=en}}</ref> It contains several plants, zombies, worlds, and game modes not present in international releases.{{Citation needed|date=July 2025}} In September 2013, Talkweb Games, who had previously operated the Chinese versions of ''Plants vs. Zombies'', ''[[Bejeweled (video game)|Bejeweled]]'', and [[Zuma (video game)|''Zuma'']], became the operators of ''Plants vs. Zombies 2''. An agreement between Talkweb and EA made the former the "Chinese mainland operating agency" of both ''Plants vs. Zombies 2'' and ''[[Bejeweled Blitz]]''.<ref name=ChinaTechNewsTalkweb /> As their operator, Talkweb gains 25% of the total revenue made from both games.<ref name=ChinaTechNewsTalkweb>{{Cite web |date=September 18, 2013 |title=Talkweb Gains Operating Right Of Plants Vs Zombies 2 In Mainland China |url=https://www.chinatechnews.com/2013/09/18/19732-talkweb-gains-operating-right-of-plants-vs-zombies-2-in-mainland-china |access-date=July 1, 2025 |website=ChinaTechNews |archive-date=February 16, 2025 |archive-url=https://web.archive.org/web/20250216024601/https://www.chinatechnews.com/2013/09/18/19732-talkweb-gains-operating-right-of-plants-vs-zombies-2-in-mainland-china |url-status=live }}</ref>
+
+In addition to the main Chinese version, a port created by [[Tencent]] was also made. The company had previously worked on ''Plants vs. Zombies: Great Wall Edition'', a version of the first installment adapted for Chinese audiences.<ref>{{Cite web |last=C. |first=Custer |date=July 3, 2013 |title=Tencent Partners with EA for Exclusive Version of Plants vs. Zombies 2 in China |url=https://www.techinasia.com/tencent-partners-ea-exclusive-version-plants-zombies-2-china |access-date=July 1, 2025 |website=www.techinasia.com |language=en-US |archive-date=June 25, 2015 |archive-url=https://web.archive.org/web/20150625134735/https://www.techinasia.com/tencent-partners-ea-exclusive-version-plants-zombies-2-china/ |url-status=live }}</ref>
+
+== Reception ==
+{{Video game reviews
+| MC = 86/100<ref name="MC">{{cite Metacritic |id=plants-vs-zombies-2-its-about-time |type=game |vgtype=ios |title=Plants vs Zombies 2: It's About Time |access-date=February 18, 2021}}</ref>
+| Destruct = 9/10<ref name=des/>
+| Edge = 9/10
+| EuroG = 8/10<ref name=euro/>
+| GSpot = 8.9/10
+| Gamezebo = 4.5/5<ref name="gamezebo"/>
+| IGN = 8.7/10<ref name=IGN/>
+| MW = 4.5/5<ref name=macworld/>
+| TA = 5/5<ref name="TA">{{cite web |url=https://toucharcade.com/2013/08/14/plants-vs-zombes-2-its-about-time-review-a-fantastic-sequel-to-the-classic-original-this-time-for-free/ |title='Plants vs. Zombies 2: It's About Time' Review – A Fantastic Sequel to the Classic Original, This Time for Free |last=Hodapp |first=Eli |date=August 14, 2013 |website=[[TouchArcade]] |access-date=July 5, 2018 |archive-date=August 6, 2018 |archive-url=https://web.archive.org/web/20180806155949/https://toucharcade.com/2013/08/14/plants-vs-zombes-2-its-about-time-review-a-fantastic-sequel-to-the-classic-original-this-time-for-free/ |url-status=live }}</ref>
+| rev1 = ''[[Wired (magazine)|Wired]]''
+| rev1Score = 19/26<ref name=wired>{{cite web|url=https://www.wired.com/story/plants-vs-zombies-2-review|last=Lanxon|first=Nate|title=Plants vs. Zombies 2 review: it's about in-app payments ruining sequels|date=August 15, 2013|archiveurl=https://web.archive.org/web/20240822070446/https://www.wired.com/story/plants-vs-zombies-2-review/|archivedate=August 22, 2024|website=[[Wired (magazine)|Wired]]}}</ref>
+}}
+
+The game received mostly positive feedback from users and critics. Critics mostly praised the gameplay and graphics, though others criticized the game's [[microtransaction]]s and lack of mechanics in later updates. It has a [[Metacritic]] score of 86/100 based on 36 reviews.<ref name="MC" /> PopCap Games announced at [[Gamescom]] on August 20, 2013, that the game had been downloaded 15&nbsp;million times, making it the most successful EA mobile game launch. Ten days later, it was announced that the game had been downloaded 25&nbsp;million times, exceeding the lifetime downloads of the first game.<ref>{{cite web|url=http://blog.popcap.com/2013/08/30/plants-vs-zombies-2-big-numbers/|title=Plants vs. Zombies 2: Big Numbers|author=Philip|date=August 30, 2013|work=[[PopCap Games]]|publisher=[[Electronic Arts]]|access-date=September 2, 2013|url-status=dead|archive-url=https://web.archive.org/web/20130902192335/http://blog.popcap.com/2013/08/30/plants-vs-zombies-2-big-numbers/|archive-date=September 2, 2013}}</ref> Apple chose ''Plants vs. Zombies 2'' as a runner-up for the 2013 iPhone game of the year.<ref>{{cite web|url=http://www.polygon.com/2013/12/17/5219420/apple-names-ridiculous-fishing-badland-its-2013-games-of-the-year|title=Apple names Ridiculous Fishing, Badland its 2013 games of the year|last=Corriea|first=Alexa Ray|date=December 17, 2013|work=[[Polygon (website)|Polygon]]|publisher=[[Vox Media]]|access-date=December 17, 2013|archive-date=June 9, 2014|archive-url=https://web.archive.org/web/20140609171157/http://www.polygon.com/2013/12/17/5219420/apple-names-ridiculous-fishing-badland-its-2013-games-of-the-year|url-status=live}}</ref> During the [[17th Annual D.I.C.E. Awards]], the [[Academy of Interactive Arts & Sciences]] awarded ''Plants vs. Zombies 2'' with both "[[D.I.C.E. Award for Outstanding Achievement for an Independent Game|Casual Game of the Year]]" and "[[D.I.C.E. Award for Mobile Game of the Year|Mobile Game of the Year]]".<ref>{{cite web |url=https://www.interactive.org/games/video_game_details.asp?idAward=2014&idGame=1341 |title=D.I.C.E. Awards By Video Game Details Plants vs. Zombies 2 |publisher=[[Academy of Interactive Arts & Sciences]] |website=interactive.org |access-date=November 27, 2023 |archive-date=December 12, 2023 |archive-url=https://web.archive.org/web/20231212210639/https://www.interactive.org/games/video_game_details.asp?idAward=2014&idGame=1341 |url-status=live }}</ref> The game has garnered a [[Video game modding|modding]] community.<ref name=":0" />
+
+{{Clear}}
+
+== Notes == 
+{{Notelist}}
+
+== References ==
+{{Reflist}}
+
+== External links ==
+* {{Official website}}
+
+{{PopCap}}
+
+{{DEFAULTSORT:Plants Vs. Zombies}}
+[[Category:2013 video games]]
+[[Category:Android (operating system) games]]
+[[Category:Free-to-play video games]]
+[[Category:IOS games]]
+[[Category:Electronic Arts games]]
+[[Category:Plants vs. Zombies|2]]
+[[Category:PopCap Games games]]
+[[Category:Single-player video games]]
+[[Category:Spike Video Game Award winners]]
+[[Category:Tower defense video games]]
+[[Category:Sequel video games]]
+[[Category:Video games about time travel]]
+[[Category:Video games about zombies]]
+[[Category:Apocalyptic video games]]
+[[Category:Video games developed in the United States]]
+[[Category:Video games scored by Peter McConnell]]
+[[Category:Video games set in the American frontier]]
+[[Category:Video games set in the 24th century]]
+[[Category:Video games set in the Golden Age of Piracy]]
+[[Category:Video games set in the Mesozoic]] <!-- Jurassic Marsh -->
+[[Category:Works set in the Old Kingdom of Egypt]]
+[[Category:Video games set in ancient Egypt]] <!-- "Welcome to Ancient Egypt! Please wait 4500 years for your taco to be ready.. more or less." -->
+[[Category:Video games set in the Pleistocene]] <!-- Frostbite Caves -->
+[[Category:Video games set in the 1960s]]
+[[Category:Video games set in the 1980s]]

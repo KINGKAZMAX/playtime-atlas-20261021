@@ -1,0 +1,356 @@
+{{short description|2020 video game}}
+{{Use mdy dates|date=May 2025}}
+{{Use American English|date=May 2025}}
+{{Infobox video game
+| title = Hades
+| image = Hades cover art.jpg
+| developer = [[Supergiant Games]]{{efn|iOS version ported by Secret 6}}
+| publisher = Supergiant Games{{efn|The PlayStation and Xbox versions were published on physical media by [[Private Division]]. iOS port published by [[Netflix]].}}
+| producer = <!-- Blank because of Wikidata -->
+| designer = {{Unbulleted list|[[Amir Rao]]|Gavin Simon|[[Greg Kasavin]]|Eduardo Gorinstein|Alice Lai}}
+| programmer = {{Unbulleted list|Gavin Simon|Andrew Wang|Dexter Friedman|Alice Lai|Nikola Sobajic}}
+| artist = [[Jen Zee]]
+| writer = [[Greg Kasavin]]
+| composer = [[Darren Korb]]
+| platforms = {{Unbulleted list|[[macOS]]|[[Nintendo Switch]]|[[Windows]]|[[PlayStation 4]]|[[PlayStation 5]]|[[Xbox One]]|[[Xbox Series X/S]]|[[iOS]]}}
+| released = {{Unbulleted list|'''macOS''', '''Switch''', '''Windows'''|September 17, 2020|'''PS4''', '''PS5''', '''Xbox One''', '''Series X/S'''|August 13, 2021|'''iOS'''|March 19, 2024}}
+| genre = [[Roguelike]], [[action role-playing]], [[hack and slash]]
+| modes = [[Single-player]]
+}}'''''Hades''''' is a 2020 [[roguelike]] [[action role-playing game]] developed and published by [[Supergiant Games]]. It was released for [[macOS]], [[Nintendo Switch]], and [[Windows]] on September 17, 2020, following an [[early access]] release in December 2018. It was later released for [[PlayStation 4]], [[PlayStation 5]], [[Xbox One]], and [[Xbox Series X/S]] in August 2021, and was released for [[iOS]] in March 2024 through [[Netflix Games]].
+
+Players control [[Zagreus (Hades)|Zagreus]], the son of [[Hades]], in his many attempts to escape from [[Greek underworld|the Underworld]] and find his mother, [[Persephone]]. Aided by [[Power-up|boons]] the [[Twelve Olympians|Olympians]] bestow on him, he battles through a random series of rooms populated with enemies and [[Boss (video games)|bosses]] at the end of each section. The game features a [[hack and slash]] combat system; the player uses a combination of a main weapon attack, a special attack, a dash ability, and a magic ability to defeat enemies while avoiding damage to progress as far as possible. While Zagreus will often die, he can use the treasure gained during these failed runs to improve certain attributes or unlock new weapons and abilities to increase the chance of escaping on subsequent runs.
+
+''Hades'' was developed following Supergiant's ''[[Pyre (video game)|Pyre]]'', in which they wanted to explore procedural narrative storytelling. However, due to the nature of the gameplay, they found that players did not play through it multiple times to explore this. The roguelike structure of ''Hades'' allowed them to tell these branching stories to the player over the course of multiple playthroughs.
+
+''Hades'' has been cited among the [[greatest video games of all time]], with critics praising its narrative, gameplay, art style, music, and voice acting. It sold more than one million copies and was named [[List of Game of the Year awards|game of the year]] by several award ceremonies and media publications. A sequel, ''[[Hades II]]'', was released in early access in 2024, and had its full release in 2025.
+
+==Gameplay==
+[[File:Hades_video_game_screenshot.jpg|thumb|left|''Hades'' is presented in an [[Isometric video game graphics|isometric view]], with the player controlling Zagreus (center) as he fights his way out of the Underworld.]]
+The player controls [[Zagreus (Hades)|Zagreus]], the prince of the [[Greek underworld|Underworld]], who seeks to escape the realm to get away from his unloving father [[Hades]] and reach his mother [[Persephone]] in the mortal world. Along his quest, the other [[Twelve Olympians|Olympians]] support him, granting him gifts called [[Power-up|Boons]] to help him fight the beings that guard the exit to the Underworld. He is also aided by notorious residents of the Underworld, such as [[Sisyphus]], [[Eurydice]], and [[Patroclus]]. The game world is divided between four main dungeons; [[Tartarus]], [[Asphodel Meadows|Asphodel]], [[Elysium]], and the Temple of [[Styx]], each representing one of the regions of the Underworld, with each new region being unlocked upon clearing the previous.
+
+The game is presented in an [[Isometric video game graphics|isometric view]], with the player controlling Zagreus. The player starts a run by fighting through several rooms drawn from a pool of pre-determined layouts, with the order they appear in and the enemies that appear being randomized. The game features a [[hack and slash]] combat system.<ref name="RPS">{{cite news |last1=Cassidy |first1=Ruth |title=How Supergiant Games made the hack'n'slash accessible with Hades |url=https://www.rockpapershotgun.com/2020/06/24/how-supergiant-games-made-the-hacknslash-accessible-with-hades/ |website=[[Rock, Paper, Shotgun]] |publisher=[[Gamer Network]] |access-date=11 December 2020 |date=24 June 2020 |archive-date=18 January 2021 |archive-url=https://web.archive.org/web/20210118234325/https://www.rockpapershotgun.com/2020/06/24/how-supergiant-games-made-the-hacknslash-accessible-with-hades/ |url-status=live}}</ref> 
+
+The player has a primary attack and a secondary "special" attack depending on their pre-determined weapon of choice, a magic "cast" that can be used from a distance, a dash that provides momentary intangibility and mobility, allowing the player to phase through thin enough walls and gaps, and can deal damage when combined with an attack or Boon, and a summon attack that can call upon the power of one of the Gods. Throughout a run, the Olympians will provide Boons, each of which provides a choice of three persistent boosts and effects for that run that the player can select from. The Boons are themed based on the Olympian; for example, [[Zeus]]'s Boons provide lightning damage effects and [[Poseidon]]'s provide push-back wave effects.
+
+The player moves through rooms to gradually ascend through the Underworld; after clearing a room, the player is given the room's rewards, allowing them to grow stronger or recover lost health points. However, if Zagreus' health points drop to zero while he has no [[Life (video games)|"death defiance" tokens]] left, he is defeated and taken by the river Styx back to the House of Hades, which effectively acts as the game's [[overworld]] between attempts. ''Hades'' features a combination of [[roguelike]] and [[dungeon-crawler]] elements, where [[Charon's obol|obols]] and certain types of upgrades are lost upon death and must be collected anew each time, while other types of currency can be used at the House to purchase permanent upgrades that affect future attempts. After clearing a certain number of rooms in a region, the player must fight the bosses of the region to advance to the next; at least one of the three [[Erinyes|Furies]] in Tartarus, the [[Lernaean Hydra]] in Asphodel, [[Theseus]] and [[Minotaur|Asterius the Minotaur]] in Elysium, and Hades at the gates of the Underworld.<ref name="poly early"/>
+
+Between runs, Zagreus can explore the House of Hades before setting out on a new escape attempt. Here, the player can use items recovered from runs to impact the meta-game. The player can unlock and upgrade abilities for Zagreus, order construction of new Underworld features that can appear in future runs, or obtain or upgrade new weapons. They can also have Zagreus interact with the various characters of the Underworld and improve his standing with them, which provide narrative elements to the game and can also provide quests with additional rewards.<ref name="poly early">{{cite web | url = https://www.polygon.com/2018/12/7/18131003/hades-supergiant-games-impressions | title = Hades blends God of War with Binding of Isaac in marvelous ways | first = Rush | last = Frustick | date = December 7, 2018 | access-date = December 7, 2018 | work = [[Polygon (website)|Polygon]] | archive-date = November 8, 2020 | archive-url = https://web.archive.org/web/20201108192459/https://www.polygon.com/2018/12/7/18131003/hades-supergiant-games-impressions | url-status = live}}</ref><ref name="kotaku early">{{cite web | url = https://kotaku.com/i-am-going-to-play-a-ton-of-hades-1830948807 | title = I Am Going To Play A Ton Of Hades | first = Heather | last = Alexandria | date = December 7, 2018 | access-date = December 10, 2018 | work = [[Kotaku]] | archive-date = February 26, 2021 | archive-url = https://web.archive.org/web/20210226122745/https://kotaku.com/i-am-going-to-play-a-ton-of-hades-1830948807 | url-status = live}}</ref><ref>{{cite web | url = https://www.pcgamer.com/hades-is-already-a-killer-combat-game-in-early-access/ | title = Hades is already a killer combat game in early access | first = Tom | last = Senior | date = December 10, 2018 | access-date = December 10, 2018 | work = [[PC Gamer]] | archive-date = November 23, 2020 | archive-url = https://web.archive.org/web/20201123225548/https://www.pcgamer.com/hades-is-already-a-killer-combat-game-in-early-access/ | url-status = live}}</ref> The player can also romance [[non-player character]]s (NPCs) as the plot progresses, including [[Megaera (Hades)|Megaera]] and [[Thanatos (Hades)|Thanatos]].
+
+After defeating Hades at least once, the player can manually customize and increase the difficulty of the gameplay by using the Pact of Punishment, allowing them to add extra challenges or modify aspects of the game. For example, the Pact can increase the attack power, health or the number of enemies on runs, and change parts of gameplay by changing boss fights, such as allowing Theseus to use a machine-gun-mounted chariot or adding an extra phase to Hades' boss fight. By continuously increasing difficulty, the player can continue to receive rare rewards after runs, unlock special decorative items at the House, and progress certain NPC subplots.
+
+Alternatively, the player can activate a setting called God Mode, which makes the player character stronger after each failed run through the Underworld. This allows players who struggle with the game to progress more easily and experience the full story of the game.
+
+==Plot==
+[[Zagreus (Hades)|Zagreus]] ([[Darren Korb]]), the [[firstborn]] son of [[Hades]] ([[Logan Cunningham (actor)|Logan Cunningham]]), seeks to escape his father's realm in the [[Greek underworld|Underworld]]. He is aided in his quest by his adoptive mother [[Nyx]] (Jamie Landrum), the [[Twelve Olympians|Gods of Olympus]] to whom he has reached out, and other inhabitants of the Underworld. Hades claims that escape is impossible and hinders Zagreus by unleashing the Underworld's monsters on him. Each time Zagreus is slain, he is revived at the House of Hades, a palace where he and other [[Chthonic gods]] reside, which he leaves to attempt another escape.
+
+It is eventually revealed that Zagreus wishes to escape the Underworld to find his biological mother [[Persephone]] (Laila Berzins) whom he never knew due to being told that he was the child of Nyx. Hades refuses to allow her name to be spoken in his House, and it is said that those who disobey this order will be punished. Nyx decides to help Zagreus find the truth about his birth mother by putting him in contact with his relatives on [[Mount Olympus]], including [[Zeus]] (Peter Canavese), [[Poseidon]] (Logan Cunningham), [[Ares]] (Cyrus Nemati), [[Aphrodite]] (Courtney Vineys), [[Artemis]] (Jamie Landrum), [[Athena]] (Marianne Miller), [[Demeter]] (Laila Berzins), [[Dionysus]] (Cyrus Nemati), and [[Hermes]] (Andrew Marks). After eventually reaching the exit to the Underworld and defeating Hades, Zagreus finds Persephone at a cottage in [[Greece]]. After they reunite, Zagreus discovers that since he, like Hades, is bound to the Underworld, he will quickly die after reaching the surface. Despite this, he promises to keep escaping the Underworld to spend time with Persephone and learn the truth about her absence.
+
+Over the course of these visits, it is revealed that Zeus "gave" Persephone to Hades as a reward for ruling over the Underworld with the other Olympians believing that she simply disappeared. The two had a loving marriage until Zagreus was [[stillborn]] due to the [[Moirai|Fates]] having decreed that Hades would never have an heir. Persephone ran away in grief, but refused to return to her birthplace on Olympus which she disliked due to the Olympians' constant bickering. Nyx eventually resurrected Zagreus after making a deal with the Fates. Persephone refuses to return to the Underworld because she fears retribution towards Hades if the Olympians discover the truth about her disappearance. Zagreus eventually convinces her to return after reminding her of the bonds of family, and [[Charon]] (Logan Cunningham) ferries them to the House of Hades. Persephone resumes her duties as Queen of the Underworld. Now with renewed respect for his son, Hades requests that Zagreus continue his escape attempts to identify further security vulnerabilities in the Underworld.
+
+In an epilogue, Persephone tells Zagreus of her idea of reconciling with the Olympians by inviting them to a feast in the House. At the feast, they claim that Hades and Persephone [[eloped]] and had Zagreus, while saying that due to her having eaten Underworld [[pomegranate]] seeds, she can only leave the Underworld a few months out of the year. The Olympians accept this explanation, though it is implied they know the truth and wish to move on. With everyone reconciled, Zagreus' duties to escape his home continue.
+
+==Development==
+Following the release of their previous game, ''[[Pyre (video game)|Pyre]]'', Supergiant Games was interested in opening up their development process, intending to use player feedback to improve both gameplay and narrative elements. The studio thus opted for an [[early access]] approach in developing ''Hades'', after establishing the game's foundation.<ref name="gamasutra">{{cite web | url = http://www.gamasutra.com/view/news/333495/Supergiants_fourth_outing_Hades_introduces_a_more_mature_organized_dev_process.php | title = Supergiant's fourth outing Hades introduces a more mature, organized dev process | first = Bryant | last = Francis | date = January 17, 2019 | access-date = January 17, 2019 | work = [[Gamasutra]] | archive-date = April 15, 2021 | archive-url = https://web.archive.org/web/20210415110158/https://gamasutra.com/view/news/333495/Supergiants_fourth_outing_Hades_introduces_a_more_mature_organized_dev_process.php | url-status = dead }}</ref> 
+
+As Supergiant was still a small team of about 20 employees, they knew they could only support early access across one platform, with the intent to port to other platforms near the completion of the game. Supergiant had spoken to [[Epic Games]] and learned of their intent to launch their own [[Epic Games Store]], and felt the experimental platform was an appropriate match with ''Hades''. Supergiant's decision was made in part due to Epic's focus on content creators, as Supergiant had developed ''Hades'' in mind to be a game favorable to streamers, which would be benefited through the Epic Games Store.<ref name="gamasutra"/> Supergiant anticipated that ''Hades'' would take about three years to complete, comparable to the development time of their previous titles.<ref name="gamasutra"/>
+
+In terms of the game's narrative and approach, the Supergiant team had discussed what type of game they wanted to make next, and settled on a concept that would be easy to pick up and play, which could be played in very short periods, and had opportunities for expanding on after release, driving them towards a [[roguelike]] game, which have generally best utilized the early access approach.<ref name="gamasutra"/> The roguelike approach also fit well with their past gameplay design goals, where they aimed to continue to add in new tricks or tools for the player that would make them reconsider how they have been playing the game to that point.<ref name="gamasutra"/> ''Pyre'' had been an attempt to create a branching open-ended narrative, but once the game was released, Supergiant recognized that most players would only play through the game once and thus lose out on the branching narrative perspective. With ''Hades'' established as a roguelike, the team felt the branching narrative approach would be much more appropriate since the genre calls for players to repeatedly play through the game.<ref name="rpg mechanic">{{cite news | url = https://www.rockpapershotgun.com/2020/02/12/how-hades-plays-with-greek-myths/ | title = How Hades plays with Greek myths | first = Alex | last = Wiltshire | date = February 12, 2020 | access-date = February 12, 2020 | work = [[Rock Paper Shotgun]] | archive-date = January 16, 2021 | archive-url = https://web.archive.org/web/20210116000722/https://www.rockpapershotgun.com/2020/02/12/how-hades-plays-with-greek-myths/ | url-status = live }}</ref>
+
+For the setting, Supergiant considered revisiting the worlds from their previous games but felt a wholly new setting would be better. Supergiant's creative director [[Greg Kasavin]] came onto the idea of [[Greek mythology]], a topic he had been interested in since his youth.<ref name="gamasutra"/> Originally, it was planned to name the game ''Minos'', with the hero [[Theseus]] as the player-character seeking an exit from the ever-shifting mazes of [[Minos]]. The mazes readily supported the roguelike facets but Supergiant found it difficult to incorporate the branching narrative factors.<ref name="rpg mechanic"/> They also found that Theseus was too generic of a character to fit their narrative.<ref name="verge theseus">{{cite web | url = https://www.theverge.com/2021/3/5/22315749/hades-theseus-worst-character-zagreus-supergiant | title = Hades almost starred its worst character | first = Megan | last = Farokhmanesh | date = March 5, 2021 | access-date = March 7, 2021 | work = [[The Verge]] | archive-date = November 29, 2022 | archive-url = https://web.archive.org/web/20221129142106/https://www.theverge.com/2021/3/5/22315749/hades-theseus-worst-character-zagreus-supergiant | url-status = live }}</ref>
+
+During a development break, Kasavin researched more into Greek myths and found that Hades was underrepresented in these stories, as the Olympians feared him. This discovery led Kasavin towards having the game centered on Zagreus attempting to escape from Hades and the Underworld as a more interesting narrative approach.<ref name="verge theseus"/> Kasavin compared the gods as "a big dysfunctional family that we can see ourselves in", and that by having Zagreus repeatedly try and fail to escape from Hades, it would provide both the type of slapstick comedy that he felt captured the relationships in this "family", as well as the player experience typically associated with roguelikes where one moment the player may feel invincible only to be quickly defeated and brought back to the start the next moment.<ref name="gamasutra"/><ref name="rpg mechanic"/> The change from Theseus to Zagreus had minimal impact on the game content they had developed to that point, and helped in establishing the gameplay connection to the narrative; Theseus remained in the game but his role became that of a [[boss (video games)|boss]] character, transforming him to a boastful villain along with a tag-team partner of Asterius the [[Minotaur]].<ref name="verge theseus"/> The Greek God narrative also informs the benefits that the player obtains as they progress through the game, representing the different powers of the gods, and various gameplay elements such as Trials of the Gods, emphasizing the fickle relationship the gods had with each other.<ref name="rpg mechanic"/> These bits of dialog are advanced with each run through the game, thus making each attempt to escape meaningful compared to traditional roguelikes, which Supergiant felt would help draw more players into the game.<ref name="vice">{{cite web | url = https://www.vice.com/en/article/how-hades-made-a-genre-known-for-being-impossibly-hard-accessible/ | title = How 'Hades' Made a Genre Known For Being Impossibly Hard Accessible | first = Patrick | last = Klepek | date = October 5, 2020 | access-date = October 5, 2020 | work = [[Vice (magazine)|Vice]] | archive-date = May 22, 2021 | archive-url = https://web.archive.org/web/20210522213122/https://www.vice.com/en/article/889zqa/how-hades-made-a-genre-known-for-being-impossibly-hard-accessible | url-status = live }}</ref>
+
+In contrast to ''Bastion'' and ''Transistor'', which were more linear games and thus had more control over how the player progressed, ''Hades'' presented the challenge of writing dialog for the multitude of routes the player could progress in the game. Kasavin and his writers drafted out about ten hours' worth of dialog between Zagreus and the non-player characters based on a large number of potential chained events that could happen to the player. For example, while in a run, the player may encounter [[Eurydice]], and on return to the main hub after failing the run, meet Eurydice's husband [[Orpheus]], who, because of that prior meeting, asks the player to deliver a message to Eurydice the next time they encounter her.<ref name="rpg mechanic"/> These dialog events also tied into improvements at the hub once the player saw through the chain of events.<ref name="rpg mechanic"/>
+
+Supergiant remained committed to honoring the Greek mythology throughout the game. The game's art, primarily by in-house artist [[Jen Zee]], show all of the Olympians as attractive with tasteful homage to the "heroic nudity" of ancient Greek art, according to Kasavin.<ref name="kotaku art">{{cite web | url = https://kotaku.com/why-everyones-horny-for-hades-1845245468 | title = Why Everyone's Horny For Hades | first = Ash | last = Parrish | date = October 1, 2020 | access-date = March 7, 2021 | work = [[Kotaku]] | archive-date = March 16, 2023 | archive-url = https://web.archive.org/web/20230316181944/https://kotaku.com/why-everyones-horny-for-hades-1845245468 | url-status = live }}</ref> The game also explores the diverse sexuality that was present in the Greek myths; Zagreus is [[bisexual]] and in certain routes polyamorous, while one side narrative explores the [[gay]] relationship between [[Achilles and Patroclus]].<ref>{{cite magazine | url = https://www.wired.com/story/hades-ancient-greek-masculinity-classics-representation/ | title = What Hades Can Teach Us About Ancient Greek Masculinity | first = Autumn | last = Wright | date = January 16, 2021 | access-date = March 7, 2021 | magazine = [[Wired (magazine)|Wired]] | archive-date = December 4, 2022 | archive-url = https://web.archive.org/web/20221204124301/https://www.wired.com/story/hades-ancient-greek-masculinity-classics-representation/ | url-status = live }}</ref>
+
+During the development process of ''Hades'', Supergiant decided to rewrite their custom [[game engine]] to provide better game performance and better cross platform support. Their original engine, which was written in [[C Sharp (programming language)|C#]] and used the Microsoft XNA framework, had been used by the studio for all of their games since ''Bastion''. While making ''Hades'', due to the technical limitations and difficulties of hardware porting and other performance aspects, Supergiant decided to rewrite their engine using [[C++]] based on the framework The Forge to benefit from the increased performance that [[Low-level programming language|native code]] provides.<ref>{{cite web |title=The Forge |url=https://github.com/ConfettiFX/The-Forge#supergiant-games-hades |website=GitHub |access-date=12 August 2022 |archive-date=2 August 2022 |archive-url=https://web.archive.org/web/20220802081546/https://github.com/ConfettiFX/The-Forge#supergiant-games-hades |url-status=live }}</ref>
+
+===Audio===
+The soundtrack was composed by [[Darren Korb]], audio director at Supergiant games.<ref name="the_sound_of">{{Cite web |date=2020-12-23 |title=The Sound of Hades |url=https://gameplay.co/hades-game-music-sound-design-darren-korb-supergiant-games/ |access-date=2026-09-26 |website=Gameplay |language=en}}</ref> The soundtrack also features Ashley Barrett, Masahiro Aoki and Daisuke Kurosawa.<ref>{{Cite web |title=Hades: Original Soundtrack|url=https://supergiantgames.bandcamp.com/album/hades-original-soundtrack |access-date=2026-09-26 |website=supergiantgames.bandcamp.com}}</ref>
+
+According to [[Darren Korb|Korb]] "''...one of the unique challenges of this game, in particular, is we expect people to play it for dozens, hundreds of hours, you know. So I wrote about two and a half hours of music for'' Hades''. And it's got to stand up to people playing the game for maybe a couple hundred hours.''"<ref name="the_sound_of" />{{expand section|date=January 2026}}
+
+==Release==
+''Hades'' was announced at [[The Game Awards 2018]] on December 6, 2018, and confirmed as one of the first third-party titles to be offered on the newly-announced [[Epic Games Store]].<ref>{{cite web|url=https://www.theverge.com/2018/12/6/18129873/hades-supergiant-games-trailer-release-date-now|title=Hades is a new game from the makers of Pyre and Transistor, and it's out now in early access|last=Byford|first=Sam|date=December 6, 2018|work=[[The Verge]]|access-date=December 10, 2018|archive-date=February 10, 2021|archive-url=https://web.archive.org/web/20210210062407/https://www.theverge.com/2018/12/6/18129873/hades-supergiant-games-trailer-release-date-now|url-status=live}}</ref> According to [[Geoff Keighley]], the host and organizer of the Game Awards show, Supergiant's Amir Rao and [[Greg Kasavin]] approached him at the 2018 [[D.I.C.E. Summit]] in February about ''Hades'' and their intention to release it as an [[early access]] title on the same day of the Game Awards.<ref>{{cite web|url=https://kotaku.com/how-the-game-awards-big-announcements-came-together-1831079796|title=How The Game Awards' Big Announcements Came Together|last=Schreier|first=Jason|date=December 13, 2018|work=[[Kotaku]]|access-date=December 13, 2018|archive-date=April 2, 2019|archive-url=https://web.archive.org/web/20190402145231/https://kotaku.com/how-the-game-awards-big-announcements-came-together-1831079796|url-status=live}}</ref> 
+
+''Hades'' was a timed-exclusive on the Epic Games Store, later releasing for [[Steam (service)|Steam]] on December 10, 2019.<ref name="Q3n4">{{cite web | url = https://www.pcgamesn.com/hades/release-date-steam | title = The first Epic Games store exclusive, Hades, hits Steam in December | first = Dustin | last = Bailey | date = August 22, 2019 | access-date = August 22, 2019 | work = [[PCGamesN]] | archive-date = August 22, 2019 | archive-url = https://web.archive.org/web/20190822205414/https://www.pcgamesn.com/hades/release-date-steam | url-status = live }}</ref> Supergiant officially released the game out of early access on September 17, 2020, coinciding with the release on the [[Nintendo Switch]] platform.<ref>{{cite web | url = https://kotaku.com/hades-is-out-of-early-access-now-and-we-love-it-1845088035 | title = Hades Is Out Of Early Access Now, And We Love It | first = Nathan | last = Grayson | date = September 17, 2020 | access-date = December 16, 2020 | work = [[Kotaku]] | archive-date = May 14, 2021 | archive-url = https://web.archive.org/web/20210514145437/https://kotaku.com/hades-is-out-of-early-access-now-and-we-love-it-1845088035 | url-status = live }}</ref> Though cross-save between the Windows and Switch version had been planned at that point, Supergiant had to put this off until a patch that was released in December 2020, with cross-saving enabled through the Epic Games Store account platform.<ref>{{cite web | url = https://www.gamespot.com/articles/hades-cross-saves-update-is-now-available-on-nintendo-switch/1100-6485610/ | title = Hades Cross-Saves Update Is Now Available On Nintendo Switch | first = Aron | last = Garst | date = December 16, 2020 | access-date = December 16, 2020 | work = [[GameSpot]] | archive-date = December 18, 2020 | archive-url = https://web.archive.org/web/20201218172435/https://www.gamespot.com/articles/hades-cross-saves-update-is-now-available-on-nintendo-switch/1100-6485610/ | url-status = live }}</ref><ref>{{Cite web |last=Kaser |first=Rachel |date=2024-03-05 |title=Hades launches on mobile via Netflix on March 19 |url=https://venturebeat.com/games/hades-launches-on-mobile-via-netflix-on-march-19/ |access-date=2024-03-08 |website=VentureBeat |language=en-US |archive-date=March 5, 2024 |archive-url=https://web.archive.org/web/20240305172533/https://venturebeat.com/games/hades-launches-on-mobile-via-netflix-on-march-19/ |url-status=live }}</ref>
+
+A physical Nintendo Switch edition of Hades was released on March 19, 2021.<ref>{{Cite web|title=Hades deserves a physical edition and it's getting one on Nintendo Switch|url=https://www.destructoid.com/stories/hades-deserves-a-physical-edition-and-it-s-getting-one-on-nintendo-switch-620081.phtml|access-date=2021-02-17|website=Destructoid|language=english|archive-date=2021-02-17|archive-url=https://web.archive.org/web/20210217232115/https://www.destructoid.com/stories/hades-deserves-a-physical-edition-and-it-s-getting-one-on-nintendo-switch-620081.phtml|url-status=live}}</ref> Ports for [[PlayStation 4]], [[PlayStation 5]], [[Xbox One]], and [[Xbox Series X/S]] were released on August 13, 2021.<ref>{{cite web | url = https://www.vg247.com/2021/06/13/hades-finally-arrives-xbox-playstation-august/ | title = Hades finally arrives on Xbox and PlayStation in August | first = Dom | last = Peppiatt | date = June 13, 2021 | accessdate = June 13, 2021 | work = [[VG247]] | archive-date = June 13, 2021 | archive-url = https://web.archive.org/web/20210613183322/https://www.vg247.com/2021/06/13/hades-finally-arrives-xbox-playstation-august/ | url-status = live }}</ref> An [[iOS]] port was released on March 19, 2024 through [[Netflix Games]],<ref>{{Cite web |date=November 12, 2023 |title=HADES: Coming to iOS via Netflix Games! |url=https://www.supergiantgames.com/blog/hades-coming-to-ios-via-netflix-games/ |access-date=2023-11-12 |website=www.supergiantgames.com |archive-date=November 12, 2023 |archive-url=https://web.archive.org/web/20231112020343/https://www.supergiantgames.com/blog/hades-coming-to-ios-via-netflix-games/ |url-status=live }}</ref> but was removed from the platform on July 14, 2025.<ref>{{Cite web |last=Griffin |first=Marc |date=2025-06-25 |title=This is your last chance to play Hades, Monument Valley and more free games with your Netflix subscription |url=https://www.polygon.com/news/608829/netflix-games-removed-leaving-hades-monument-valley/ |access-date=2025-09-15 |website=Polygon |language=en |archive-date=July 23, 2025 |archive-url=https://web.archive.org/web/20250723130121/https://www.polygon.com/news/608829/netflix-games-removed-leaving-hades-monument-valley |url-status=live }}</ref>
+
+==Reception==
+{{Video game reviews
+| MC = NS: 93/100<ref name="MC Switch">{{cite web | url = https://www.metacritic.com/game/hades/critic-reviews/?platform=nintendo-switch | title = Hades for Switch Reviews | publisher = [[Metacritic]] | access-date = November 19, 2020 | url-status = live |archive-url= https://web.archive.org/web/20220809021032/https://www.metacritic.com/game/switch/hades |archive-date= August 9, 2022}}</ref><br />PC: 93/100<ref name="MC PC">{{cite web | url = https://www.metacritic.com/game/hades/critic-reviews/?platform=pc | title = Hades for PC Reviews | publisher = [[Metacritic]] | access-date = December 19, 2020 | url-status = live |archive-url= https://web.archive.org/web/20220318050501/https://www.metacritic.com/game/pc/hades |archive-date = March 18, 2022 }}</ref><br />PS5: 93/100<ref name="MC PS5">{{cite web | url = https://www.metacritic.com/game/hades/critic-reviews/?platform=playstation-5 | title = Hades for PlayStation 5 Reviews | publisher = [[Metacritic]] | access-date = August 27, 2021 | url-status = live |archive-url= https://web.archive.org/web/20220809021023/https://www.metacritic.com/game/playstation-5/hades |archive-date = August 9, 2022}}</ref><br />XSX: 93/100<ref name="MC XSXS">{{cite web | url = https://www.metacritic.com/game/hades/critic-reviews/?platform=xbox-series-x | title = Hades for Xbox Series X Reviews | publisher = [[Metacritic]] | access-date = August 27, 2021 | url-status = live |archive-url= https://web.archive.org/web/20220809020812/https://www.metacritic.com/game/xbox-series-x/hades |archive-date= August 9, 2022 }}</ref>
+| OC = 99% recommend<ref name="opencritic">{{cite web|url=https://opencritic.com/game/10181/hades|title=''Hades''|publisher=[[OpenCritic]]|access-date=November 17, 2025}}</ref>
+| Destruct = 9/10<ref name="dtoid review">{{cite web | url = https://www.destructoid.com/stories/review-hades-603497.phtml | title = Review: Hades | first= Jordon | last = Devore | date = September 20, 2020 | access-date = September 20, 2020 | work = [[Destructoid]] |archive-url= https://web.archive.org/web/20220416142519/https://www.destructoid.com/reviews/review-hades/ |archive-date= April 16, 2022 }}</ref>
+| Edge = 9/10
+| Fam = 38/40
+| GI = 8.5/10<ref name="gi review">{{cite magazine | url = https://www.gameinformer.com/review/hades/hades-review-the-highs-and-lows-of-repetition | title = Hades Review – The Highs And Lows Of Repetition | first = Matt | last = Miller | date= September 17, 2020 | access-date = September 17, 2020 | magazine = [[Game Informer]] | url-status = live |archive-url= https://web.archive.org/web/20220318204329/https://www.gameinformer.com/review/hades/hades-review-the-highs-and-lows-of-repetition |archive-date= March 18, 2022}}</ref>
+| GSpot = 9/10<ref name="gamespot review">{{cite web | url = https://www.gamespot.com/reviews/hades-review-however-long-it-takes/1900-6417568/| title = Hades Review – However Long It Takes | first= Suriel | last= Vazquez | date = September 18, 2020 | access-date = September 20, 2020 | work = [[GameSpot]] |archive-url= https://web.archive.org/web/20220531092949/https://www.gamespot.com/reviews/hades-review-the-long-hard-road-out-of-hell/1900-6417568/ |archive-date = May 31, 2022}}</ref>
+| IGN = 9/10<ref name="ign review">{{cite web | url = https://www.ign.com/articles/hades-review | title = Hades Review | first = Nick | last = Lemon | date = September 17, 2020 | access-date = September 20, 2020 | work = [[IGN]] |archive-url= https://web.archive.org/web/20220614163730/https://www.ign.com/articles/hades-review |archive-date= June 14, 2022 }}</ref>
+| JXV = 18/20<ref>{{Cite web |last=Gregoire |first=Aubin |date=September 23, 2020 |title=Test Hades : Tout droit au Panthéon du Rogue-Lite ! |trans-title=Hades Test: Straight to the Rogue-Lite Pantheon! |url=https://www.jeuxvideo.com/test/1292489/hades-tout-droit-au-pantheon-du-rogue-lite.htm |archive-url=https://web.archive.org/web/20220531141820/https://www.jeuxvideo.com/test/1292489/hades-tout-droit-au-pantheon-du-rogue-lite.htm |archive-date=May 31, 2022 |access-date=June 1, 2021 |website=[[Jeuxvideo.com]] |language=fr}}</ref>
+| NLife = 10/10<ref name="nintendo life review">{{cite web | url = https://www.nintendolife.com/reviews/switch-eshop/hades | title = Hades Review (Switch eShop) | first = PJ| last = O'Reilly| date = September 20, 2020 | access-date = February 17, 2021 | work = [[Nintendo Life]] |archive-url= https://web.archive.org/web/20220820201551/https://www.nintendolife.com/reviews/switch-eshop/hades |archive-date= August 20, 2022 }}</ref>
+| NWR = 10/10<ref name="nintendo world report review">{{cite web | url = https://www.nintendoworldreport.com/review/55013/hades-switch-review | title = Hades (Switch) Review | first = Joe| last = DeVader| date = September 24, 2020 | access-date = February 17, 2021 | work = Nintendo World Report |archive-url= https://web.archive.org/web/20220531173648/https://www.nintendoworldreport.com/review/55013/hades-switch-review |archive-date= May 31, 2022 }}</ref>
+| PCGUS = 90/100<ref name="pcgamer review">{{cite web | url = https://www.pcgamer.com/hades-review/ | title = Hades Review | first = Jody | last = MacGregor | date = September 18, 2020 | access-date = September 20, 2020 | work = [[PC Gamer]] |archive-url= https://web.archive.org/web/20220531054618/https://www.pcgamer.com/hades-review/ |archive-date= May 31, 2022 }}</ref>
+| TG = 5/5<ref name="the guardian review">{{cite web | url = https://www.theguardian.com/games/2020/oct/01/hades-review-a-sexy-scintillating-sojourn-in-the-greek-underworld | title = Hades review: a sexy, scintillating sojourn in the Greek underworld | first = Keza| last = MacDonald| date = October 1, 2020 | access-date = February 17, 2021 | work = [[The Guardian]] |archive-url= https://web.archive.org/web/20220626175517/https://www.theguardian.com/games/2020/oct/01/hades-review-a-sexy-scintillating-sojourn-in-the-greek-underworld |archive-date= June 26, 2022 |url-status= live}}</ref>
+| EuroG = Essential<ref name="Eurogamer review">{{cite web |last1=Donlan |first1=Christian |title=Hades review - Of myth and mayhem |url=https://www.eurogamer.net/articles/2020-09-17-hades-review-of-myth-and-mayhem |website=[[Eurogamer]] |date=21 December 2020 |access-date=3 October 2021 |archive-url= https://web.archive.org/web/20220531054615/https://www.eurogamer.net/hades-review-of-myth-and-mayhem |archive-date= May 31, 2022 |url-status= live}}</ref>
+}}
+
+''Hades'' received "universal acclaim", according to [[review aggregator]] website [[Metacritic]].<ref name="MC Switch" /><ref name="MC PC" /> Fellow review aggregator [[OpenCritic]] assessed that the game received "mighty" approval, being recommended by 99% of critics.<ref name="opencritic"/> Critics praised ''Hades'' for its story, characters, gameplay and soundtrack.<ref>{{Cite web |last=Gilliam |first=Ryan |date=2020-09-24 |title=Hades is a near-flawless romp through hell after two years of early access |url=https://www.polygon.com/reviews/2020/9/24/21453043/hades-review-switch-windows-early-access-supergiant-roguelite-impressions |access-date=2020-11-08 |website=Polygon |language=en |archive-date=2021-05-22 |archive-url=https://web.archive.org/web/20210522213122/https://www.polygon.com/reviews/2020/9/24/21453043/hades-review-switch-windows-early-access-supergiant-roguelite-impressions |url-status=live }}</ref><ref name="Eurogamer review"/><ref>{{Cite news |last=Castello |first=Jay |date=2020-09-17 |title=Hades review |language=en-US |website=Rock, Paper, Shotgun |url=https://www.rockpapershotgun.com/2020/09/17/hades-review/ |access-date=2020-11-08 |archive-date=2021-01-26 |archive-url=https://web.archive.org/web/20210126104732/https://www.rockpapershotgun.com/2020/09/17/hades-review/ |url-status=live }}</ref> ''IGN'' praised the characters, writing that they each "[felt] like an authentic reinterpretation of a classic Greek myth...they're all a joy to behold."<ref name="ign review"/> ''[[The Guardian]]'' liked art director [[Jen Zee]]'s work on the game, particularly her portraits of the characters, calling them "wonderfully drawn" and "with appropriate godlike profiles."<ref name="the guardian review"/> Jordan Devore of ''[[Destructoid]]'' enjoyed the story, feeling the dialogue made use of its non-linear nature "without coming across as artificial".<ref>{{Cite web |last=Devore |first=Jordan |date=2020-09-20 |title=Review: Hades |url=https://www.destructoid.com/reviews/review-hades/ |url-status=live |archive-url=https://web.archive.org/web/20210723022241/https://www.destructoid.com/reviews/review-hades/ |archive-date=2021-07-23 |access-date=2021-06-18 |website=[[Destructoid]] |language=en-CA}}</ref> ''[[Game Informer]]''{{'}}s Matt Miller felt that "the combat is fast-paced and challenging" and there was variety in the enemies Zagreus would face, although Miller thought that the combat could rely on button mashing at certain points.<ref name="gi review"/> Suriel Vazquez, writing for ''[[GameSpot]]'' felt that the worldbuilding complimented "a robust postgame that... offers even more reasons to play an already entrancing mix of RPG and action combat".<ref>{{Cite web |last=Vazquez |first=Suriel |date=2021-08-11 |title=Hades Review – The Long, Hard Road Out of Hell |url=https://www.gamespot.com/reviews/hades-review-the-long-hard-road-out-of-hell/1900-6417568/ |url-status=live |archive-url=https://web.archive.org/web/20201112230826/https://www.gamespot.com/reviews/hades-review-the-long-hard-road-out-of-hell/1900-6417568/ |archive-date=2020-11-12 |access-date=2021-06-18 |website=[[GameSpot]] |language=en-US}}</ref>
+
+During its nearly two-year long early access period, ''Hades'' sold 700,000 copies. Within three days of its official release, it sold an additional 300,000 copies for a sales total of over one million.<ref>{{cite web |last=Gurwin |first=Gabe |date=September 20, 2020 |title=Hades Has Sold 1 Million Copies, Nearly One-Third Sold In Last Few Days |url=https://www.gamespot.com/articles/hades-has-sold-1-million-copies-nearly-one-third-sold-in-last-few-days/1100-6482388/?ftag=CAD-01-10abi2f |access-date=September 20, 2020 |work=[[GameSpot]] |archive-date=November 28, 2020 |archive-url=https://web.archive.org/web/20201128153906/https://www.gamespot.com/articles/hades-has-sold-1-million-copies-nearly-one-third-sold-in-last-few-days/1100-6482388/?ftag=CAD-01-10abi2f |url-status=live }}</ref> ''Hades'' has been described by several outlets as one of the greatest games of all time.<ref>{{Cite web |last1=West |first1=Josh |last2=Donnelly |first2=Joe |last3=Weber |first3=Rachel |last4=Wald |first4=Heather |date=2021-11-23 |title=The 50 best games of all time |url=https://www.gamesradar.com/best-games-of-all-time/ |access-date=2023-12-23 |website=[[GamesRadar+]] |language=en |archive-date=November 24, 2021 |archive-url=https://web.archive.org/web/20211124001852/https://www.gamesradar.com/best-games-of-all-time/ |url-status=live }}</ref><ref>{{Cite web |author= |date=2021-12-31 |title=The Top 100 Video Games of All Time |url=https://www.ign.com/articles/the-best-100-video-games-of-all-time |access-date=2023-12-23 |website=IGN |language=en |archive-date=December 31, 2021 |archive-url=https://web.archive.org/web/20211231162533/https://www.ign.com/articles/the-best-100-video-games-of-all-time |url-status=live }}</ref><ref>{{Cite web |last=Sinha |first=Ravi |date=2022-04-11 |title=Top 30 Video Games of All Time |url=https://gamingbolt.com/top-30-video-games-of-all-time |access-date=2023-12-23 |website=GamingBolt |language=en-US |archive-date=April 11, 2022 |archive-url=https://web.archive.org/web/20220411083601/https://gamingbolt.com/top-30-video-games-of-all-time |url-status=live }}</ref><ref>{{Cite web |date=2022-09-10 |title=The 100 best video games of all time, ranked |url=https://ftw.usatoday.com/lists/best-video-games |access-date=2023-12-23 |website=For The Win |language=en-US |archive-date=December 6, 2022 |archive-url=https://web.archive.org/web/20221206112627/https://ftw.usatoday.com/lists/best-video-games |url-status=live }}</ref><ref>{{Cite web |last=Young |first=Georgina |date=2023-01-27 |title=The best 100 games of all time, ranked |url=https://videogames.si.com/guides/best-games |access-date=2023-12-23 |website=Video Games on Sports Illustrated |language=en |archive-date=January 29, 2023 |archive-url=https://web.archive.org/web/20230129174343/https://videogames.si.com/guides/best-games |url-status=live }}</ref><ref>{{Cite web |last1=Colantonio |first1=Giovanni |last2=Franzese |first2=Tomas |last3=Hill |first3=Sam |date=2023-05-05 |title=The 50 best video games of all time |url=https://www.digitaltrends.com/gaming/50-best-games-of-all-time/ |access-date=2023-12-23 |website=[[Digital Trends]] |language=en |archive-date=May 5, 2023 |archive-url=https://web.archive.org/web/20230505205316/https://www.digitaltrends.com/gaming/50-best-games-of-all-time/ |url-status=live }}</ref><ref>{{Cite web |last1=White |first1=Sam |last2=Leedham |first2=Robert |date=2023-05-10 |title=The 100 greatest video games of all time, ranked by experts |url=https://www.gq-magazine.co.uk/article/best-video-games-all-time |access-date=2023-12-23 |website=[[British GQ]] |language=en-GB |archive-date=May 10, 2023 |archive-url=https://web.archive.org/web/20230510142624/https://www.gq-magazine.co.uk/article/best-video-games-all-time |url-status=live }}</ref>
+
+===Speedrunning community===
+''Hades'' has attracted a large [[speedrunning]] community due to the roguelike nature of the game and high replayability.<ref>{{Cite web |last=Notis |first=Ari |date=2020-10-13 |title=How Hades Speedrunners Clear The Game In Under Eight Minutes |url=https://kotaku.com/how-hades-speedrunners-clear-the-game-in-under-eight-mi-1845352749 |access-date=2023-08-04 |website=[[Kotaku]] |language=en |archive-date=August 4, 2023 |archive-url=https://web.archive.org/web/20230804212118/https://kotaku.com/how-hades-speedrunners-clear-the-game-in-under-eight-mi-1845352749 |url-status=live }}</ref> In August 2023, a speedrun of the game received attention from the media and developers for successfully beating the game on maximum difficulty, which was previously thought to be impossible.<ref>{{Cite web |last=Bardhan |first=Ashley |date=2023-08-04 |title=Hades' 'Impossible' Setting Just Got Beaten For The First Time |url=https://kotaku.com/hades-impossible-run-haelian-64-heat-angel1c-youtube-1850708543 |access-date=2023-08-04 |website=[[Kotaku]] |language=en |archive-date=August 4, 2023 |archive-url=https://web.archive.org/web/20230804212118/https://kotaku.com/hades-impossible-run-haelian-64-heat-angel1c-youtube-1850708543 |url-status=live }}</ref><ref>{{Cite web |last=Cryer |first=Hirun |date=2023-08-03 |title=Days after it's deemed impossible, Hades god beats unmodded 64 Heat run "arguably unachievable in thousands of hours" |url=https://www.gamesradar.com/days-after-its-deemed-impossible-hades-god-beats-unmodded-64-heat-run-arguably-unachievable-in-thousands-of-hours/ |access-date=2023-08-04 |website=[[GamesRadar+]] |language=en |archive-date=August 4, 2023 |archive-url=https://web.archive.org/web/20230804212119/https://www.gamesradar.com/days-after-its-deemed-impossible-hades-god-beats-unmodded-64-heat-run-arguably-unachievable-in-thousands-of-hours/ |url-status=live }}</ref><ref>{{Cite web |last=Allsop |first=Ken |date=2023-08-03 |title=A Hades player just beat one of gaming's most 'impossible' challenges |url=https://www.pcgamesn.com/hades/64-heat-run-angel1c |access-date=2023-08-04 |website=[[PCGamesN]] |language=en-US}}</ref>
+
+===Awards===
+''Hades'' won several awards and honors. At the 10th Annual New York Game Awards, it won in the Game of the Year, Best Music, Best Writing, and Best Acting categories.<ref>{{Cite web |last=Stockdale |first=Henry |date=2021-01-27 |title=Hades Takes Game Of The Year At 10th Annual New York Game Awards |url=https://www.nintendolife.com/news/2021/01/hades_takes_game_of_the_year_at_10th_annual_new_york_game_awards |url-status=live |archive-url=https://web.archive.org/web/20210127110058/https://www.nintendolife.com/news/2021/01/hades_takes_game_of_the_year_at_10th_annual_new_york_game_awards |archive-date=2021-01-27 |access-date=2021-02-15 |website=[[Nintendo Life]] |language=en-GB}}</ref> Several publications considered it one of the best video games of 2020, including ''[[Polygon (website)|Polygon]]'',<ref>{{Cite web|last=Myers|first=Maddy|date=2020-12-14|title=Why Hades is Polygon's game of the year|url=https://www.polygon.com/22167819/hades-game-of-the-year-2020|access-date=2020-12-15|website=Polygon|language=en|archive-date=2021-05-13|archive-url=https://web.archive.org/web/20210513194351/https://www.polygon.com/22167819/hades-game-of-the-year-2020|url-status=live}}</ref> ''[[Giant Bomb]]'',<ref>{{Cite AV media |url=https://www.giantbomb.com/shows/game-of-the-year-2020-day-five/2970-20912 |title=Giant Bombcast Game of the Year 2020: Day Five |date=2021-01-22 |language=en |access-date=2021-01-23 |archive-url=https://web.archive.org/web/20210124143025/https://www.giantbomb.com/shows/game-of-the-year-2020-day-five/2970-20912 |archive-date=2021-01-24 |url-status=live |via=[[Giant Bomb]]}}</ref> ''[[IGN]]'',<ref>{{Cite web |date=21 December 2020 |title=IGN's Game of the Year 2020 |url=https://www.ign.com/articles/game-of-the-year-2020 |url-status=live |archive-url=https://web.archive.org/web/20201227203833/https://www.ign.com/articles/game-of-the-year-2020 |archive-date=2020-12-27 |access-date=2020-12-22 |website=[[IGN]] |language=en}}</ref> ''[[USGamer]]'',<ref>{{cite web | url = https://www.usgamer.net/articles/usg-game-of-the-year-2020-hades-rebuilding-home | title = USG Game of the Year 2020: Hades Isn't Just About Escaping Home, But Rebuilding It | first = Eric | last = Van Allen | date = December 23, 2020 | access-date = December 23, 2020 | work = [[USGamer]] | archive-date = April 29, 2021 | archive-url = https://web.archive.org/web/20210429110028/https://www.usgamer.net/articles/usg-game-of-the-year-2020-hades-rebuilding-home | url-status = dead }}</ref> ''[[Destructoid]]'',<ref>{{cite web | url = https://www.destructoid.com/stories/destructoid-s-award-for-overall-best-game-of-2020-goes-to--614228.phtml | title = Destructoid's award for Overall Best Game of 2020 goes to... | first = Chris | last = Carter | date = December 23, 2020 | access-date = December 23, 2020 | work = [[Destructoid]] | archive-date = April 15, 2021 | archive-url = https://web.archive.org/web/20210415195401/https://www.destructoid.com/stories/destructoid-s-award-for-overall-best-game-of-2020-goes-to--614228.phtml | url-status = live }}</ref> ''[[Time (magazine)|Time]]'',<ref>{{Cite magazine |last1=Austin |first1=Patrick Lucas |last2=Dockterman |first2=Eliana |last3=Clark |first3=Peter Allen |last4=Fitzpatrick |first4=Alex |date=2020-11-20 |title=The 10 Best Video Games of 2020 |url=https://time.com/5912417/best-video-games-2020/ |url-status=live |archive-url=https://web.archive.org/web/20201120144443/https://time.com/5912417/best-video-games-2020/ |archive-date=2020-11-20 |access-date=2020-12-03 |magazine=Time}}</ref> ''[[The Washington Post]]'',<ref>{{Cite news |last=Park |first=Gene |display-authors=etal |date=2020-12-07 |title=The best video games of 2020 |url=https://www.washingtonpost.com/video-games/reviews/best-video-games-2020/?arc404=true |url-status=live |archive-url=https://web.archive.org/web/20210205175204/https://www.washingtonpost.com/video-games/reviews/best-video-games-2020/?arc404=true |archive-date=2021-02-05 |access-date=2020-12-11 |newspaper=[[The Washington Post]]}}</ref> ''[[Slant Magazine]]'',<ref>{{Cite web |last=Clark |first=Justin |display-authors=etal |date=7 December 2020 |title=The 25 Best Video Games of 2020 |url=https://www.slantmagazine.com/features/the-25-best-video-games-of-2020/ |url-status=live |archive-url=https://web.archive.org/web/20210219072156/https://www.slantmagazine.com/features/the-25-best-video-games-of-2020/ |archive-date=2021-02-19 |access-date=2020-12-11 |website=Slant}}</ref> and ''[[Entertainment Weekly]]''.<ref>{{Cite web |last1=Romano |first1=NIck |last2=Lewis |first2=Evan |date=2020-12-18 |title=The best videogames of 2020 |url=https://ew.com/gaming/best-videogames-of-2020/ |url-status=live |archive-url=https://web.archive.org/web/20201218131104/https://ew.com/gaming/best-videogames-of-2020/ |archive-date=2020-12-18 |access-date=2020-12-28 |website=[[EW.com]] |language=EN}}</ref> It won [[List of Game of the Year awards|Game of the Year]] at the [[17th British Academy Games Awards]],<ref name="bafta award"/> the [[24th Annual D.I.C.E. Awards]],<ref name="dice award"/> the 10th Annual [[New York Game Awards]],<ref name="New York Game Awards">{{cite web | url=https://gamerant.com/new-york-game-awards-2021-winners/ | title=The 2021 New York Game Awards Winners List | first=Hunter | last=Mass | date=January 27, 2021 | access-date=July 7, 2025 | work=[[GameRant]] | archive-date=January 9, 2025 | archive-url=https://web.archive.org/web/20250109061843/https://gamerant.com/new-york-game-awards-2021-winners/ | url-status=live }}</ref> the inaugural [[Gayming Awards]],<ref>{{Cite web |last=Wen |first=Alan |date=2021-01-26 |title=Gayming Awards announce winners of inaugural 2021 event |url=https://www.nme.com/news/gaming-news/gayming-awards-2021-winners-2888516 |url-status=live |archive-url=https://web.archive.org/web/20210419231043/https://www.nme.com/news/gaming-news/gayming-awards-2021-winners-2888516 |archive-date=2021-04-19 |access-date=2021-04-05 |website=[[NME]]}}</ref> the [[21st Game Developers Choice Awards]],<ref name="gdc awards"/> and the inaugural Global Industry Game Awards.<ref>{{Cite web|title=IGDA Announces First Global Industry Game Awards Winners|url=https://igda.org/news-archive/igda-announces-first-global-industry-game-awards-winners/|date=2021-08-30|website=IGDA|language=en-US|access-date=2021-09-05|archive-date=2021-09-01|archive-url=https://web.archive.org/web/20210901160605/https://igda.org/news-archive/igda-announces-first-global-industry-game-awards-winners/|url-status=live}}</ref> ''Hades'' also was the first game to be awarded a [[Hugo Award]] as part of a [[Hugo Award for Best Game or Interactive Work|special video games category]] introduced for the 2021 Hugo Awards.<ref name="hugo win"/>
+
+In a review of ''Hades'' in ''[[Black Gate (magazine)|Black Gate]]'', John ONeill said of its Hugo Award win, "I hope the WSFS decides to continue this category. Video games have become a solid reservoir for powerful storytelling, and 16 years after [[Roger Ebert]] infamously [[Video games as an art form#Roger Ebert on video games as art|said that they will never be art]], the craftsmen behind the industry have proven him wrong. But if they do not and ''Hades'' remains the only Hugo-winning video game, it will wear the laurel well."<ref>{{cite web | url=https://www.blackgate.com/2021/12/30/five-reasons-why-hades-deserves-that-hugo/ | title=Five Reasons Hades Deserved that Hugo – Black Gate | date=January 2022 }}</ref>
+
+{| class="wikitable sortable"
+!Year
+!Award
+!Category
+!Result
+!{{Abbr|Ref.|Reference}}
+|-
+| rowspan="16" style="text-align:center;" |2020
+| rowspan="6" |[[Golden Joystick Awards]]
+|Ultimate Game of the Year
+| {{Nominated}}
+| rowspan="6" style="text-align:center;" |<ref>{{Cite web |last=Tyrer |first=Ben |date=24 November 2020 |title=Every winner at the Golden Joystick Awards 2020 |url=https://www.gamesradar.com/every-winner-at-the-golden-joystick-awards-2020/ |archive-url=https://web.archive.org/web/20220318194338/https://www.gamesradar.com/every-winner-at-the-golden-joystick-awards-2020/ |archive-date=March 18, 2022 |access-date=2021-02-03 |website=[[GamesRadar+]] |language=en}}</ref>
+|-
+|PC Game of the Year
+| {{Nominated}}
+|-
+|Best Storytelling
+| {{Nominated}}
+|-
+|Best Visual Design
+| {{Nominated}}
+|-
+|Best Indie Game
+| {{Won}}
+|-
+|Critic's Choice
+| {{Won}}
+|-
+| rowspan="9" |[[The Game Awards 2020]]
+|[[The Game Award for Game of the Year|Game of the Year]]
+| {{Nominated}}
+| rowspan="9" style="text-align:center;" |<ref>{{Cite web|last=Stedman|first=Alex|date=2020-12-10|title=The Game Awards 2020: Complete Winners List|url=https://variety.com/2020/digital/news/the-game-awards-winners-list-2020-1234850547/|access-date=2020-12-12|website=Variety|language=en-US |archive-url= https://web.archive.org/web/20220407022138/https://variety.com/2020/digital/news/the-game-awards-winners-list-2020-1234850547/ |archive-date= April 7, 2022}}</ref>
+|-
+|Best Game Direction
+| {{Nominated}}
+|-
+|Best Narrative
+| {{Nominated}}
+|-
+|Best Art Direction
+| {{Nominated}}
+|-
+|Best Score and Music
+| {{nominated}}
+|-
+|Best Performance for [[Logan Cunningham (actor)|Logan Cunningham]]
+| {{nominated}}
+|-
+|Best Indie
+| {{Won}}
+|-
+|Best Action
+| {{Won}}
+|-
+|Player's Voice
+| {{nominated}}
+|-
+|[[The Steam Awards]]
+|Game of the Year
+|{{Nom}}
+|style="text-align:center;" |<ref>{{Cite web |last=Devore |first=Jordan |date=2021-01-04 |title=The 2020 Steam Awards ended up with some unexpected winners |url=https://www.destructoid.com/the-2020-steam-awards-ended-up-with-some-unexpected-winners/ |url-status=live |archive-url=https://web.archive.org/web/20240102003125/https://www.destructoid.com/the-2020-steam-awards-ended-up-with-some-unexpected-winners/ |archive-date=2024-01-02 |access-date=2024-01-02 |website=Destructoid |language=en-US}}</ref>
+|-
+| rowspan="34" style="text-align:center;" |2021
+| rowspan="8" | [[17th British Academy Games Awards]]
+| [[British Academy Games Award for Best Game|Best Game]]
+| {{won}}
+| rowspan="8" style="text-align:center;" | <ref>{{cite web | url = https://www.eurogamer.net/articles/2021-03-02-the-last-of-us-part-2-receives-record-number-of-bafta-nominations | title = The Last of Us Part 2 receives record number of BAFTA nominations | first = Tom | last= Phillips | date = 2 March 2021 | access-date = 2 March 2021 | work = [[Eurogamer]] |archive-url= https://web.archive.org/web/20210302115939/https://www.eurogamer.net/articles/2021-03-02-the-last-of-us-part-2-receives-record-number-of-bafta-nominations |archive-date= March 2, 2021 }}</ref><ref name="bafta award">{{cite web | url = https://deadline.com/2021/03/bafta-games-awards-2021-hades-takes-home-top-prize-complete-winners-list-1234721128/ | title = BAFTA Games Awards: Supergiant Games' 'Hades' Takes Home Top Prize – Complete Winners List | first = Alexandra | last = Del Rosario | date = 25 March 2021 | access-date = 25 March 2021 | work = [[Deadline Hollywood]] | url-status = live |archive-url= https://web.archive.org/web/20211026105422/https://deadline.com/2021/03/bafta-games-awards-2021-hades-takes-home-top-prize-complete-winners-list-1234721128/ |archive-date= October 26, 2021 }}</ref>
+|-
+| Artistic Achievement
+| {{won}}
+|-
+| Audio Achievement
+| {{nom}}
+|-
+| [[British Academy Games Award for Game Design|Game Design]]
+| {{won}}
+|-
+| Music
+| {{nom}}
+|-
+| Narrative
+| {{won}}
+|-
+| Original Property
+| {{nom}}
+|-
+| [[British Academy Games Award for Performer in a Supporting Role|Performer in a Supporting Role]] for Logan Cunningham
+| {{won}}
+|-
+|[[32nd GLAAD Media Awards]]
+|[[GLAAD Media Award for Outstanding Video Game|Outstanding Video Game]]
+|{{nom}}
+| style="text-align:center;" |<ref>{{Cite web |date=28 January 2021 |title=The Nominees for the 32nd Annual GLAAD Media Awards |url=https://www.glaad.org/mediaawards/32/nominees |archive-url=https://web.archive.org/web/20210130005439/https://www.glaad.org/mediaawards/32/nominees |archive-date=January 30, 2021 |website=GLAAD}}</ref>
+|-
+| rowspan="8" |[[24th Annual D.I.C.E. Awards]]
+|[[D.I.C.E. Award for Game of the Year|Game of the Year]]
+|{{won}}
+| rowspan="8" style="text-align:center;" |<ref>{{Cite web |last=Nunneley-Jackson |first=Stephany |date=2021-01-26 |title=2021 DICE Awards: Ghost of Tsushima and The Last of Us: Part 2 lead with the most nominations |url=https://www.vg247.com/2021/01/26/2021-dice-awards/ |archive-url=https://web.archive.org/web/20210127014425/https://www.vg247.com/2021/01/26/2021-dice-awards/ |archive-date=January 27, 2021 |access-date=2021-02-03 |website=[[VG247]]}}</ref><ref name="dice award">{{cite web | url = https://www.gamesindustry.biz/articles/2021-04-21-hades-wins-game-of-the-year-at-dice-awards-2021 | title = Hades wins Game of the Year at DICE Awards 2021 | first = Jeffrey | last = Rousseau | date = April 22, 2021 | access-date = April 22, 2021 | work = [[GamesIndustry.biz]] |archive-url = https://web.archive.org/web/20210422185226/https://www.gamesindustry.biz/articles/2021-04-21-hades-wins-game-of-the-year-at-dice-awards-2021 |archive-date= April 22, 2021}}</ref>
+|-
+|[[D.I.C.E. Award for Action Game of the Year|Action Game of the Year]]
+|{{won}}
+|-
+|[[D.I.C.E. Award for Outstanding Achievement for an Independent Game|Outstanding Achievement for an Independent Game]]
+|{{won}}
+|-
+|[[D.I.C.E. Award for Outstanding Achievement in Game Direction|Outstanding Achievement in Game Direction]]
+|{{won}}
+|-
+|[[D.I.C.E. Award for Outstanding Achievement in Game Design|Outstanding Achievement in Game Design]]
+|{{won}}
+|-
+|[[D.I.C.E. Award for Outstanding Achievement in Art Direction|Outstanding Achievement in Art Direction]]
+|{{nom}}
+|-
+|[[D.I.C.E. Award for Outstanding Achievement in Character|Outstanding Achievement in Character]] <small>([[Zagreus (Hades)|Zagreus]])</small>
+|{{nom}}
+|-
+|[[D.I.C.E. Award for Outstanding Achievement in Story|Outstanding Achievement in Story]]
+|{{nom}}
+|-
+|[[Nebula Award]]
+|[[Nebula Award for Best Game Writing|Best Game Writing]]
+|{{won}}
+|style="text-align:center;" |<ref name="SFWA21">{{Cite web |date=2021-06-05 |title=SFWA Announces 56th Annual Nebula Award Winners |url=https://www.sfwa.org/2021/06/05/sfwa-announces-56th-annual-nebula-award-winners/ |archive-url=https://web.archive.org/web/20210607224941/https://www.sfwa.org/2021/06/05/sfwa-announces-56th-annual-nebula-award-winners/ |archive-date=2021-06-07 |access-date=2021-06-07 |website=SFWA}}</ref><ref name="nebula award">{{cite web | url = https://www.gamasutra.com/view/news/382788/Hades_wins_the_Nebula_Award_for_Best_Game_Writing.php | title = Hades wins the Nebula Award for Best Game Writing | first = Chris | last = Kerr | date = June 7, 2021 | accessdate = June 7, 2021 | work = [[Gamasutra]] |archive-url= https://web.archive.org/web/20210823175323/https://www.gamasutra.com/view/news/382788/Hades_wins_the_Nebula_Award_for_Best_Game_Writing.php |archive-date= August 23, 2021 }}</ref>
+|-
+|[[Hugo Award]]
+|[[Hugo Award for Best Game or Interactive Work|Best Video Game (Special Award)]]
+|{{won}}
+|style="text-align:center;" |<ref>{{cite web |last=Bonifacic |first=Igor |date=April 14, 2021 |title=2021 Hugo Award game finalists include 'Hades' and 'Animal Crossing' |url=https://www.engadget.com/2021-hugo-award-game-finalists-210602810.html |archive-url=https://web.archive.org/web/20210415000305/https://www.engadget.com/2021-hugo-award-game-finalists-210602810.html |archive-date=April 15, 2021 |accessdate=April 14, 2021 |work=[[Engadget]]}}</ref><ref name="hugo win">{{cite web | url = https://www.pcgamer.com/hades-is-the-first-videogame-to-win-a-hugo-award/ | title = Hades is the first videogame to win a Hugo Award | first = Jody | last =MacGregor | date = December 18, 2021 | accessdate = December 18, 2021 | work = [[PCGamer]] |archive-url= https://web.archive.org/web/20220313090308/https://www.pcgamer.com/hades-is-the-first-videogame-to-win-a-hugo-award/ |archive-date= March 13, 2022 }}</ref>
+|-
+|rowspan="6" | 10th Annual [[New York Game Awards]]
+|Big Apple Award for Best Game of the Year
+|{{won}}
+|rowspan="6" style="text-align:center;" | <ref name="New York Game Awards"/>
+|-
+|Off Broadway Award for Best Indie Game
+|{{won}}
+|-
+|Tin Pan Alley Award for Best Music in a Game
+|{{won}}
+|-
+|Statue of Liberty Award for Best World
+|{{nom}}
+|-
+|Herman Melville Award for Best Writing
+|{{won}}
+|-
+|Great White Way Award for Best Acting in a Game <br />for Logan Cunningham
+|{{won}}
+|-
+|rowspan="6" | [[21st Game Developers Choice Awards]]
+|Game of the Year
+|{{won}}
+|rowspan="6" style="text-align:center;" | <ref name="gdc awards">{{cite web | url = https://www.hollywoodreporter.com/news/general-news/hades-game-developers-choice-awards-winners-list-1234983585/ | title = 2021 Game Developers Choice Award Winners | first = Trilby | last = Beresford | date = July 21, 2021 |access-date=July 21, 2021 |work =[[The Hollywood Reporter]] |archive-url= https://web.archive.org/web/20220416142218/https://www.hollywoodreporter.com/news/general-news/hades-game-developers-choice-awards-winners-list-1234983585/ |archive-date= April 16, 2022 }}</ref>
+|-
+|Best Audio
+|{{won}}
+|-
+|Best Design
+|{{won}}
+|-
+|Innovation Award
+|{{nom}}
+|-
+|Best Narrative
+|{{nom}}
+|-
+|Best Visual Art
+|{{nom}}
+|-
+|rowspan="3"| [[SXSW Gaming Awards|SXSW Gaming Awards 2021]]
+|Video Game of the Year
+|{{Won}}
+|rowspan="3" style="text-align:center;" |<ref>{{Cite web |last=Roberts |first=Jordan |date=2021-03-20 |title=2021 Gaming Awards Winners Announced |url=https://www.sxsw.com/news/2021/2021-gaming-awards-winners-across-12-categories-announced/ |url-status=live |archive-url=https://web.archive.org/web/20240102003514/https://www.sxsw.com/news/2021/2021-gaming-awards-winners-across-12-categories-announced/ |archive-date=2024-01-02 |access-date=2024-01-02 |website=SXSW |language=en-US}}</ref><ref>{{Cite web |last=Ankers-Range |first=Adele |date=2021-03-20 |title=SXSW Gaming Awards 2021 Winners Announced: Hades Awarded Video Game of the Year |url=https://www.ign.com/articles/sxsw-gaming-awards-2021-winners-announced-hades-video-game-of-year-award |url-status=live |archive-url=https://web.archive.org/web/20240102004435/https://www.ign.com/articles/sxsw-gaming-awards-2021-winners-announced-hades-video-game-of-year-award |archive-date=2024-01-02 |access-date=2024-01-02 |website=IGN |language=en}}</ref>
+|-
+| Excellence in Narrative
+| {{nom}}
+|-
+| Excellence in Game Design
+|{{Won}}
+|}
+
+==Sequel==
+{{Main article|Hades II}}
+A sequel, ''Hades II'', was announced at [[The Game Awards 2022]],<ref>{{cite web | url = https://www.videogameschronicle.com/news/hades-2-announced-at-the-game-awards/ | title = Hades 2 announced at The Game Awards | first = Jordan | last = Middler | date = December 8, 2022 | accessdate = December 8, 2022 | work = [[Video Games Chronicle]] | archive-date = December 9, 2022 | archive-url = https://web.archive.org/web/20221209012940/https://www.videogameschronicle.com/news/hades-2-announced-at-the-game-awards/ | url-status = live }}</ref> and launched in early access for Windows in May 2024,<ref>{{cite web |last=Peters |first=Jay |date=14 September 2023 |title=Hades II will launch in early access in 2024 |url=https://www.theverge.com/2023/9/14/23873654/hades-ii-early-access-launch-q2-2024 |website=[[The Verge]] |access-date=September 14, 2023 |archive-date=September 15, 2023 |archive-url=https://web.archive.org/web/20230915031339/https://www.theverge.com/2023/9/14/23873654/hades-ii-early-access-launch-q2-2024 |url-status=live }}</ref> and in October 2024 for MacOS. The full game was released on September 25, 2025, alongside versions for the Nintendo Switch and [[Nintendo Switch 2]].<ref>{{Cite web |title=Hades 2 finally gets a 1.0 release date |website=[[Polygon (website)|Polygon]] |url=https://www.polygon.com/hades-2-release-date-switch-2-pc/}}</ref>  Its protagonist is [[Melinoë (Hades)|Melinoë]], the Princess of the Underworld and sister of Zagreus, who seeks to defeat [[Chronos]], the Titan of Time, with help from [[Hecate]], the goddess of witchcraft, and other Olympian gods and figures.<ref>{{Cite magazine |last=Miller |first=Matt |date=2022-12-08 |title=Supergiant Games Announces Hades 2 |url=https://www.gameinformer.com/the-game-awards-2022/2022/12/08/supergiant-games-announces-hades-ii |access-date=2022-12-09 |magazine=[[Game Informer]] |publisher=[[GameSpot]] |language=en |archive-date=2022-12-09 |archive-url=https://web.archive.org/web/20221209015535/https://www.gameinformer.com/the-game-awards-2022/2022/12/08/supergiant-games-announces-hades-2 |url-status=live }}</ref> Besides similar melee combat moves from the first game, Melinoë has access to spells that consume mana, and can collect ingredients while traversing the Underworld to craft boons and other gear at special rooms.<ref>{{Cite web |last=Wood |first=Austin |date=2024-04-17 |title=Hades 2 gets a huge gameplay stream out of nowhere: devs reveal new features, characters, Boons, and more in the roguelike sequel ahead of its technical test |url=https://www.gamesradar.com/hades-2-gets-a-huge-gameplay-stream-out-of-nowhere-devs-reveal-new-features-characters-boons-and-more-in-the-roguelike-sequel-ahead-of-its-technical-test/ |access-date=2024-05-07 |website=[[GamesRadar+]] |language=en |archive-date=April 17, 2024 |archive-url=https://web.archive.org/web/20240417185007/https://www.gamesradar.com/hades-2-gets-a-huge-gameplay-stream-out-of-nowhere-devs-reveal-new-features-characters-boons-and-more-in-the-roguelike-sequel-ahead-of-its-technical-test/ |url-status=live }}</ref>
+
+==Notes==
+{{notelist}}
+
+==References==
+{{Reflist}}
+
+==External links==
+{{commonscat}}
+* {{official website|http://www.supergiantgames.com/games/hades}}
+
+{{Supergiant Games}}
+{{BAFTA Games BG}}
+{{DICE GOTY}}
+{{GDCA GOTY}}
+{{Authority control}}
+
+[[Category:2020 video games]]
+[[Category:Action role-playing video games]]
+[[Category:British Academy Games Award for Best Game winners]]
+[[Category:British Academy Games Award for Game Design winners]]
+[[Category:Coming-of-age fiction]]
+[[Category:Dungeon crawler video games]]
+[[Category:Early access video games]]
+[[Category:Fiction about father–son relationships]]
+[[Category:Fiction about mother–son relationships]]
+[[Category:The Game Awards winners]]
+[[Category:Game Developers Choice Award for Game of the Year winners]]
+[[Category:Golden Joystick Award winners]]
+[[Category:Greek and Roman deities in fiction]]
+[[Category:Greek underworld in popular culture]]
+[[Category:Hack and slash games]]
+[[Category:Hades (series)|*]]
+[[Category:Hugo Award–winning works]]
+[[Category:Hugo Award for Best Game or Interactive Work–winning works]]
+[[Category:Indie games]]
+[[Category:IOS games]]
+[[Category:LGBTQ-related video games]]
+[[Category:Lua (programming language)-scripted video games]]
+[[Category:MacOS games]]
+[[Category:Nebula Award for Best Game Writing–winning works]]
+[[Category:Netflix games]]
+[[Category:Nintendo Switch games]]
+[[Category:PlayStation 4 games]]
+[[Category:PlayStation 5 games]]
+[[Category:Private Division games]]
+[[Category:Roguelike video games]]
+[[Category:Fantasy video games]]
+[[Category:Single-player video games]]
+[[Category:Supergiant Games games]]
+[[Category:Take-Two Interactive games]]
+[[Category:Video games about royalty]]
+[[Category:Video games about the afterlife]]
+[[Category:Video games based on Greek mythology]]
+[[Category:Video games developed in the United States]]
+[[Category:Video games scored by Darren Korb]]
+[[Category:Video games with isometric graphics]]
+[[Category:Windows games]]
+[[Category:Xbox Cloud Gaming games]]
+[[Category:Xbox One games]]
+[[Category:Xbox Series X and Series S games]]

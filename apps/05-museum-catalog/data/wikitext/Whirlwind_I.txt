@@ -1,0 +1,173 @@
+{{Short description|Vacuum tube computer developed by the MIT Servomechanisms Laboratory}}
+{{Infobox computer
+| aka = 
+| logo = 
+| image = Museum of Science, Boston, MA - IMG 3168.JPG
+| caption = Whirlwind computer elements: [[Magnetic-core memory|core memory]] (left) and operator console
+| developer = 
+| manufacturer = 
+| family = "Whirlwind Program"<ref name=Smith_Redmond_1980>{{cite book |author-last1=Redmond |author-first1=Kent C. |author-last2=Smith |author-first2=Thomas M. |year=1980 |title=Project Whirlwind: The History of a Pioneer Computer |url=https://books.google.com/books?id=CmBTAAAAMAAJ&q=1947 |publisher=[[Digital Press]] |location=Bedford, MA |isbn=0-932376-09-6 |access-date=2012-12-31}}</ref><ref name=Smith_Redmond_manuscript>{{cite book |last1=Redmond |first1=Kent C. |last2=Smith |first2=Thomas M. |title=Project Whirlwind - A Case History in Contemporary Technology |orig-date=1967|date=November 1975 |publisher=[[MITRE Corporation|The MITRE Corporation]] |location=Bedford, Mass.|url=https://archive.org/details/bitsavers_mitwhirlwirlwindACaseHistoryInContemporaryTechnolo_14582082}} Reprint of a 1967 manuscript; earlier version (or earlier printing?) of Redmond and Smith (1980)</ref>/"Whirlwind Project"<ref>{{Cite journal |journal=MITnews |date=September 26, 2001 |title=Compaq donates historic SAGE, Whirlwind artifacts to museum |url=http://web.mit.edu/newsoffice/2001/compaq-0926.html |access-date=2013-08-12}}</ref>
+| type = 
+| generation = 1st
+| release_date = {{Start date|1951|04|20}}
+| lifespan = 
+| price = 
+| discontinued = 
+| units_sold = 
+| units_shipped = 
+| media = 
+| os = 
+| power = More than 100 kW
+| system_on_chip = 
+| cpu = 16 bits, parallel. Uses about 5000 vacuum tubes
+| memory = Core memory, 1 kiloword of 16 bits words (2 kilobytes). Ultimately 2048 words (4KB).
+| storage = 
+| memory_card = 
+| display = 
+| graphics = 
+| sound = 
+| input = 
+| controllers = 
+| camera = 
+| touchpad = 
+| connectivity = 
+| currentfw = 
+| platform = 
+| online_services = 
+| dimensions = 2,000 sq.ft (185 m2)
+| weight = 20,000 lbs (9.1t)
+| top_game = 
+| compatibility = 
+| predecessor = 
+| successor = [[TX-0]], TX-2, DEC [[PDP-1]]
+| related = 
+| website = 
+}}
+
+'''Whirlwind I''' is a [[vacuum-tube computer]] developed by the [[Massachusetts Institute of Technology|MIT]] [[MIT Laboratory for Information and Decision Systems|Servomechanisms Laboratory]] for the [[United States Navy|U.S. Navy]]. Operational in 1951, it was among the first digital electronic computers that operated in real-time for output, and the first that was not simply an electronic replacement of older mechanical systems.
+
+It was one of the first computers to calculate in [[Bit-level parallelism|bit-parallel]] (rather than [[serial computer|bit-serial]]), and was the second to use [[magnetic-core memory]] after it had been proven to work for some months of use on the [[Memory Test Computer]] (MTC).  (The MTC received a new core stack later so that some of the work for Whirlwind could instead be done on the MTC.  The MTC was a complete, functional computer similar in capability to Whirlwind.)
+
+Its development led directly to the Whirlwind II design used as the basis for the [[United States Air Force]] [[Semi-Automatic Ground Environment|SAGE]] air defense system, and indirectly to almost all business computers and [[minicomputer]]s in the 1960s,<ref>{{cite book
+   |title=Grace Hopper and the Invention of the Information Age
+   |publisher=Book Baby |year=2015  |chapter=IBM Benefits from the Cold War}}</ref> particularly because of the mantra "short word length, speed, people."<ref>{{cite magazine  |magazine=Hardcopy  |author=Larry Watkins
+|title=A DEC History of Minicomputers
+|quote=Of these, speed is the least important factor from a historical standpoint .. people are a very important factor .. [[Ken Olsen]] .. Ben Gurley 
+|date=May 1982  |pages=12–19}}</ref>
+
+==Background==
+During [[World War II]], the [[United States Navy|U.S. Navy]]'s [[Naval Research Lab]] approached MIT about the possibility of creating a computer to drive a [[flight simulator]] for training [[bomber]] crews. They envisioned a fairly simple system in which the computer would continually update a simulated instrument panel based on control inputs from the pilots. Unlike older systems such as the [[Link Trainer]], the system they envisioned would have a considerably more realistic [[aerodynamics]] model that could be adapted to any type of plane. This was an important consideration at the time, when many new designs were being introduced into service.
+
+The Servomechanisms Lab in MIT building 32<ref>{{Citation |format=pdf transcript of vocal recording |title=An Interview with DOUGLAS T. ROSS |date=21 February 1984 |url=http://purl.umn.edu/107610 |access-date=2013-08-12|last1=Ross |first1=Douglas T. |last2=Aspray |first2=William }}</ref> conducted a short survey that concluded such a system was possible. The Navy's [[Office of Naval Research]] decided to fund development under ''Project Whirlwind'' (and its sister projects, Project Typhoon and [[Project Cyclone]], with other institutions),<ref>[https://www.computer.org/csdl/proceedings-article/afips/1951/50400070/12OmNBvkdmJ Project Whirlwind is a high-speed computer activity sponsored at the Digital Computer Laboratory, formerly a part of the Servomechanisms Laboratory, of the Massachusetts Institute of Technology (MIT) by the US Office of Naval Research (ONR) and the United States Air Force. IEEE Computer Society]</ref> and the lab placed [[Jay Forrester]] in charge of the project. They soon built a large [[analog computer]] for the task, but found that it was inaccurate and inflexible. Solving these problems in a general way would require a much larger system, perhaps one so large as to be impossible to construct. [[Judy Clapp]] was an early senior technical member of this team.
+
+[[Perry O. Crawford, Jr.|Perry Crawford]], another member of the MIT team, saw a demonstration of [[ENIAC]] in 1945. He then suggested that a digital computer would be the best solution. Such a machine would allow the accuracy of simulations to be improved with the addition of more code in the [[computer program]], as opposed to adding parts to the machine. As long as the machine was fast enough, there was no theoretical limit to the complexity of the simulation.
+
+Until this point, all computers constructed were dedicated to single tasks, and run in [[batch mode]]. A series of inputs were set up in advance and fed into the computer, which would work out the answers and print them. This was not appropriate for the Whirlwind system, which needed to operate continually on an ever-changing series of inputs. Speed became a major issue: whereas with other systems it simply meant waiting longer for the printout, with Whirlwind it meant seriously limiting the amount of complexity the simulation could include.
+
+==Technical description==
+
+===Design and construction===
+By 1947, Forrester and collaborator [[Robert Everett (computer scientist)|Robert Everett]] completed the design of a high-speed [[stored-program computer]] for this task. Most computers of the era operated in [[serial computer|''bit-serial'' mode]], using single-bit arithmetic and feeding in large words, often 48 or 60 bits in size, one bit at a time. This was simply not fast enough for their purposes, so Whirlwind included sixteen such math units, operating on a complete 16-bit word every cycle in ''bit-parallel'' mode. Ignoring memory speed, Whirlwind ("20,000 single-address operations per second" in 1951)<ref>{{Cite book |author-last=Everett |author-first=R. R.  |title=Papers and discussions presented at the Dec. 10-12, 1951, joint AIEE-IRE computer conference: Review of electronic digital computers on - AIEE-IRE '51 |chapter=The Whirlwind I computer |year=1951 |publisher=[[Association for Computing Machinery|ACM]] |pages=70–74 |doi=10.1145/1434770.1434781 |s2cid=14937316 |chapter-url=http://research.microsoft.com/en-us/um/people/gbell/Computer_Structures__Readings_and_Examples/00000157.htm |access-date=2013-08-12|doi-access=free }}</ref> was essentially sixteen times as fast as other machines. Today, almost all [[Central processing unit|CPU]]s perform arithmetic in "bit-parallel" mode.
+
+The word size was selected after some deliberation. The machine worked by passing in a single address with almost every instruction, thereby reducing the number of memory accesses. For operations with two operands, adding for instance, the "other" operand was assumed to be the last one loaded. Whirlwind operated much like a [[reverse Polish notation]] [[calculator]] in this respect; except there was no operand stack, only an [[accumulator (computing)|accumulator]]. The designers felt that 2048 words of memory would be the minimum usable amount, requiring 11 bits to represent an address, and that 16 to 32 instructions would be the minimum for another five bits&nbsp;— and so it was 16 bits.<ref name="EverettSwain">{{Cite report |url=http://www.bitsavers.org/pdf/mit/whirlwind/R-series/R-127_Whirlwind_I_Computer_Block_Diagrams_Volume_1_Sep47.pdf |title=Report R-127 Whirlwind I Computer Block Diagrams |author-first1=R. R. |author-last1=Everett |author-first2=F. E. |author-last2=Swain |publisher=Servomechanisms Laboratory, MIT |date=September 4, 1947 |page=2 |archive-url=https://web.archive.org/web/20060908172605/http://www.cs.stthomas.edu/faculty/resmith/papers/WhirlwindR-127.pdf |archive-date=2006-09-08 |access-date=2012-12-31 |quote=The basic impulse rate for operation of the computer will be one megacycle. […] The Whirlwind I Computer is being planned for a storage capacity of 2,048 numbers of 16 binary digits each.}}</ref>
+
+The Whirlwind design incorporated a [[control store]] driven by a master clock. Each step of the clock selected one or more signal lines in a [[diode matrix]] that enabled gates and other circuits on the machine. A special switch directed signals to different parts of the matrix to implement different instructions.{{Citation needed|date=July 2009}}  In the early 1950s, Whirlwind I "would crash every 20 minutes on average."<ref>{{Citation |format=pdf transcript of vocal recording |title=An Interview With Fernando J. Corbató |date=14 November 1990 |url=http://purl.umn.edu/107230 |access-date=2013-08-12|last1=Corbató |first1=F. J. }}</ref>
+
+Whirlwind construction started in 1948, an effort that employed 175 people, including 70 engineers and technicians. The use of carry-save [[binary multiplier|binary multiplication]] appears to have been first introduced in the Whirlwind computer in the late 1940s.<ref>{{cite book |title=Computer Architecture and Organization |last=Hayes |first=John .P |isbn=0-07-027363-4 |year=1978 |page=190 |publisher=McGraw-Hill International Book Company }}</ref> In the third quarter of 1949, the computer was advanced enough to solve an equation and display its solution on an oscilloscope,.<ref name="ProjectWhirlwind" />{{Rp|11.13}}<ref name=":0">{{Cite journal|date=1950-01-01|title=2. Whirlwind I|url=https://apps.dtic.mil/sti/citations/AD0694596|archive-url=https://web.archive.org/web/20210311004157/http://www.dtic.mil/docs/citations/AD0694596|url-status=live|archive-date=March 11, 2021|journal=Digital Computer Newsletter|language=en|volume=2|issue=1|pages=1–2}}</ref> (By 1953 an animated, interactive [[Bouncing Ball (computer program)|bouncing-ball physics demonstration]] had been developed for the display and then further evolved into a simple game.<ref>{{Cite book |last=Smith |first=Alexander |url=https://doi.org/10.1201/9780429423642 |title=They Create Worlds |date=2019-11-19 |publisher=CRC Press |isbn=978-0-429-42364-2}}</ref><ref>{{Cite book|url=https://books.google.com/books?id=6a8_AAAAQBAJ&q=Whirlwind+bouncing+ball&pg=PA81|title=The History of Visual Magic in Computers: How Beautiful Images are Made in CAD, 3D, VR and AR|last=Peddie|first=Jon|date=2013-06-13|publisher=Springer Science & Business Media|isbn=9781447149323|pages=81–82|language=en}}</ref><ref>{{Cite book|url=https://books.google.com/books?id=JshzAAAAIAAJ&q=Whirlwind+charlie+adams|title=Computer graphics; utility, production, art|date=1967|publisher=Thompson Book Co.|pages=106|language=en}}</ref>) Finally Whirlwind "successfully accomplished digital computation of interception courses" on April 20, 1951.<ref>{{Cite book|url=https://books.google.com/books?id=Mi8MhzheOokC&q=Whirlwind+1951&pg=PA102|title=When Computers Went to Sea: The Digitization of the United States Navy|last=Boslaugh|first=David L.|date=2003-04-16|publisher=John Wiley & Sons|isbn=9780471472209|pages=102|language=en}}</ref><ref name="ProjectWhirlwind" />{{Rp|11.20–21}} The project's budget was approximately $1 million a year, which was vastly higher than the development costs of most other computers of the era. After three years, the Navy had lost interest. However, during this time the Air Force had become interested in using computers to help the task of [[Semi-Automatic Ground Environment|ground controlled interception]], and the Whirlwind was the only machine suitable to the task. They took up development under ''Project Claude''.
+
+Whirlwind weighed {{Convert|20000|lb|ST MT}} and occupied over {{Convert|2000|sqft|m2}}.<ref>10 short tons:
+*{{Cite web|url=http://ed-thelen.org/comp-hist/BRL-t-z.html#WHIRLWIND-I|title=WHIRLWIND-I|last=Weik|first=Martin H.|date=December 1955|website=ed-thelen.org|series=A Survey of Domestic Electronic Digital Computing Systems}},
+20,000 lbs:
+*{{Cite web|url=http://ed-thelen.org/comp-hist/BRL2nd/BRL-2ndCompSurv.html|title=WHIRLWIND I|last=Weik|first=Martin H.|date=June 1957|website=ed-thelen.org|series=A Second Survey of Domestic Electronic Digital Computing Systems}}
+</ref>
+
+===The memory subsystem===
+The original machine design called for 2048 (2K) words of 16&nbsp;bits each of random-access storage. The only two available memory technologies in 1949 that could hold this much data were [[delay-line memory|mercury delay lines]] and [[storage tube|electrostatic storage]].
+
+A mercury delay line consisted of a long tube filled with [[mercury (element)|mercury]], a mechanical transducer on one end, and a microphone on the other end, much like a [[spring reverb]] unit later used in audio processing. Pulses were sent into the mercury delay line at one end, and took a certain amount of time to reach the other end. They were detected by the microphone, amplified, reshaped into the correct pulse shape, and sent back into the delay line. Thus, the memory was said to recirculate.
+
+Mercury delay lines operated at about the speed of sound, so were very slow in computer terms, even by the standards of the computers of the late 1940s and 1950s. The speed of sound in mercury was also very dependent on temperature. Since a delay line held a defined number of bits, the frequency of the clock had to change with the temperature of the mercury. If there were many delay lines and they did not all have the same temperature at all times, the memory data could easily become corrupted.
+
+The Whirlwind designers quickly discarded the delay line as a possible memory—it was both too slow for the envisioned flight simulator, and too unreliable for a reproducible production system, for which Whirlwind was intended to be a functional prototype.
+
+The alternative form of memory was known as "electrostatic". This was a cathode ray tube memory, similar in many aspects to an early [[television|TV]] [[Cathode-ray tube|picture tube]] or [[oscilloscope]] tube. An [[electron gun]] sent a beam of electrons to the far end of the tube, where they impacted a screen. The beam would be deflected to land at a particular spot on the screen. The beam could then build up a negative charge at that point, or change a charge that was already there. By measuring the beam current it could be determined whether the spot was originally a zero or a one, and a new value could be stored by the beam.
+
+There were several forms of [[Selectron tube|electrostatic memory tubes]] in existence in 1949. The best known today is the [[Williams tube]], developed in England, but there were a number of others that had been developed independently by various research labs. The Whirlwind engineers considered the Williams tube, but determined that the dynamic nature of the storage and the need for frequent [[memory refresh|refresh cycles]] was incompatible with the design goals for Whirlwind I. Instead, they settled on a design that was being developed at the [[MIT]] [[Radiation Laboratory]]. This was a dual-gun electron tube. One gun produced a sharply focused beam to read or write individual bits. The other gun was a "flood gun" that sprayed the entire screen with low-energy electrons. As a result of the design, this tube was more of a [[static RAM]] that did not require refresh cycles, unlike the [[dynamic RAM]] Williams tube.
+
+In the end the choice of this tube was unfortunate. The Williams tube was considerably better developed, and despite the need for refresh could easily hold 1024&nbsp;bits per tube, and was quite reliable when operated correctly. The MIT tube was still in development, and while the goal was to hold 1024&nbsp;bits per tube, this goal was never reached, even several years after the plan had called for full-size functional tubes. Also, the specifications had called for an [[access time]] of six microseconds, but the actual access time was around 30&nbsp;microseconds. Since the basic cycle time of the Whirlwind&nbsp;I processor was determined by the memory access time, the entire processor was slower than designed.
+
+===Magnetic-core memory===
+[[File:8863-Project-Whirlwind-CRMI.JPG|thumb|Circuitry from core memory unit of Whirlwind]]
+[[File:8868-Project-Whirlwind-CRMI.JPG|thumb|Core stack from core memory unit of Whirlwind]]
+[[File:Project Whirlwind - core memory, circa 1951 - detail 1.JPG|thumb|[[Project Whirlwind]] core memory, circa 1951]]
+Jay Forrester was desperate to find a suitable memory replacement for his computer. Initially the computer only had 32 words of storage, and 27 of these words were [[read-only memory|read-only]] registers made of [[toggle switch]]es. The remaining five registers were [[Flip-flop (electronics)|flip-flop]] storage, with each of the five registers being made from more than 30 [[vacuum tube]]s. This "test storage", as it was known, was intended to allow checkout of the processing elements while the main memory was not ready. The main memory was so late that the first experiments of tracking airplanes with live [[radar]] data were done using a program manually set into test storage. Forrester came across an advertisement for a new magnetic material being produced by a company. Recognizing that this had the potential to be a data storage medium, Forrester obtained a workbench in the corner of the lab, and got several samples of the material to experiment with. Then for several months he spent as much time in the lab as he did in the office managing the entire project.
+
+At the end of those months, he had invented the basics of [[magnetic-core memory]] and demonstrated that it was likely to be feasible. His demonstration consisted of a small core plane of 32 cores, each three-eighths of an inch in diameter. Having demonstrated that the concept was practical, it needed only to be reduced to a workable design.  In the fall of 1949, Forrester enlisted graduate student William N. Papian to test dozens of individual cores, to determine those with the best properties.<ref name="ProjectWhirlwind">{{Cite web |url=https://archive.org/details/bitsavers_mitwhirlwirlwindACaseHistoryInContemporaryTechnolo_14582082 |title=Project Whirlwind |author-last1=Redmond |author-first1=Kent C. |author-last2=Smith |author-first2=Thomas M. |date=November 1975 |publisher=The MITRE Corporation |page=11.6 |access-date=2016-07-22}}</ref> Papian's work was bolstered when Forrester asked student [[Dudley Allen Buck]]<ref>{{cite web|url=http://dome.mit.edu/bitstream/handle/1721.3/38908/MC665_r04_E-504.pdf | title=FERROELECTRICS FOR DIGITAL INFORMATION STORAGE AND SWITCHING |access-date=2023-10-19}}</ref><ref>{{cite web|url=http://dome.mit.edu/bitstream/handle/1721.3/39012/MC665_r04_E-460.pdf |title=THE FERROELECTRIC SWITCH |access-date=2023-10-19}}</ref><ref>{{Cite web|url=https://spectrum.ieee.org/computing/hardware/dudley-bucks-forgotten-cryotron-computer|archive-url=https://web.archive.org/web/20140326182703/http://spectrum.ieee.org/computing/hardware/dudley-bucks-forgotten-cryotron-computer|url-status=dead|archive-date=March 26, 2014|title = Full Page Reload}}</ref> to work on the material and assigned him to the workbench, while Forrester went back to full-time project management. (Buck would go on to invent the [[cryotron]] and [[content-addressable memory]] at the lab.)
+
+After approximately two years of further research and development, they were able to demonstrate a core plane that was made of 32 by 32, or 1024 cores, holding 1024 bits of data. Thus, they had reached the originally intended storage size of an electrostatic tube, a goal that had not yet been reached by the tubes themselves, only holding 512 bits per tube in the latest design generation. Very quickly, a 1024-word core memory was fabricated, replacing the electrostatic memory. The electrostatic memory design and production was summarily canceled, saving a good deal of money to be reallocated to other research areas. Two additional core memory units were later fabricated, increasing the total memory size available.
+
+=== Vacuum tubes ===
+The design used approximately 5,000 [[vacuum tube]]s.<!-- Ulmann has 4,221 in 1950 in table p. 62 -->
+
+The large number of tubes used in Whirlwind resulted in a problematic failure rate since a single tube failure could cause a system failure.  The standard [[pentode]] at the time was the 6AG7, but testing in 1948 determined that its expected lifetime in service was too short for this application.  Consequently, the 7AD7 was chosen instead, but this also had too high a failure rate in service.  An investigation into the cause of the failures found that [[silicon]] in the [[tungsten alloy]] of the [[heater filament]] was causing [[cathode poisoning]]; deposits of [[barium orthosilicate]] forming on the [[cathode]] reduce or prevent its function of emitting [[electron]]s.  The [[7AK7]] tube with a high-purity tungsten filament was then specially developed for Whirlwind by [[Sylvania Electric Products|Sylvania]].<ref name=Ulmann>Bernd Ulmann, ''AN/FSQ-7: The Computer that Shaped the Cold War'', Walter de Gruyter GmbH, 2014 {{ISBN|3486856707}}.</ref>{{rp|59–60}}
+
+Cathode poisoning is at its worst when the tube is being run in [[Cut-off (electronics)|cut-off]] with the heater on.  Commercial tubes were intended for radio (and later, television) applications where they are rarely run in this state.  Analog applications like these keep the tube in the linear region, whereas digital applications switch the tube between cut-off and full conduction, passing only briefly through the linear region.  Further, commercial manufacturers expected their tubes to only be in use for a few hours per day.<ref name=Ulmann/>{{rp|59}}  To ameliorate this issue, the heaters were turned off on valves not expected to switch for long periods.  The heater voltage was turned on and off with a slow [[ramp waveform]] to avoid [[thermal shock]] to the heater filaments.<ref name=RichTaylor>E.S. Rich, N.H. Taylor, "Component failure analysis in computers", ''Proceedings of Symposium on Improved Quality Electronic Components'', vol. 1, pp. 222–233, Radio-Television Manufacturers Association, 1950.</ref>{{rp|226}}
+
+Even these measures were not enough to achieve the required reliability.  Incipient faults were proactively sought by testing the valves during maintenance periods.  They were subject to [[hardware stress test|stress tests]] called ''marginal testing'' because they applied voltages and signals to the valves right up to their design margins.  These tests were designed to bring on early failure of valves that would otherwise have failed while in service.  They were carried out automatically by a test program.<ref name=Ulmann/>{{rp|60–61}}  The maintenance statistics for 1950 show the success of these measures.  Of the 1,622 7AD7 tubes in use, 243 failed, of which 168 were found by marginal testing.  Of the 1,412 7AK7 tubes in use, 18 failed, of which only 2 failed during marginal checking.  As a result, Whirlwind was far more reliable than any commercially available machine.<ref name=Ulmann/>{{rp|61–62}}
+
+Many other features of the Whirlwind tube testing regime were not standard tests and required specially built equipment.  One condition that required special testing was momentary shorting on a few tubes caused by small objects like lint inside the tube.  Occasional spurious short pulses are a minor problem, or even entirely unnoticeable, in analog circuits, but are likely to be disastrous in a digital circuit.  These did not show up on standard tests but could be discovered manually by tapping the glass envelope.  A thyratron-triggered circuit was built to automate this test.<ref name=RichTaylor/>{{rp|225}}
+
+==Air defense networks==
+After connection to the experimental Microwave Early Warning (MEW) radar at [[Hanscom Field]] using Jack Harrington's equipment and commercial phone lines,<ref>{{Cite book |format=Google Books |author-last=Jacobs |author-first=John F. |year=1986 |title=The SAGE Air Defense System: A Personal History |url=https://books.google.com/books?id=HDMhAQAAIAAJ&q=whirlwind |publisher=MITRE Corporation |access-date=2013-08-12}}</ref> aircraft were tracked by Whirlwind I.<ref>{{Cite report |author-last1=Lemnios |author-first1=William Z. |author-last2=Grometstein |author-first2=Alan A. |title=Overview of the Lincoln Laboratory Ballistic Missile Defense Program |url=http://www.ll.mit.edu/publications/journal/pdf/vol13_no1/13_1overview.pdf |page=10 |access-date=2012-12-31 |archive-date=2012-05-21 |archive-url=https://web.archive.org/web/20120521063800/http://www.ll.mit.edu/publications/journal/pdf/vol13_no1/13_1overview.pdf |url-status=dead }}</ref>  The [[Cape Cod System]] subsequently demonstrated computerized [[air defence]] covering southern [[New England]].{{Specify|did this use a Whirlwind I?|date=December 2012}} Signals from three long-range (AN/FPS-3) radars, eleven gap-filler radars, and three height-finding radars were transmitted over [[telephone line]]s to the Whirlwind I computer in [[Cambridge, Massachusetts]]. The Whirlwind II design for a larger and faster machine (never completed) was the basis for the [[Semi-Automatic Ground Environment|SAGE]] air defense system IBM [[AN/FSQ-7 Combat Direction Central]].
+
+==Legacy==
+The Whirlwind used approximately 5,000 vacuum tubes.  An effort was also started to convert the Whirlwind design to a transistorized form, led by [[Ken Olsen]] and known as the [[TX-0]]. TX-0 was very successful and plans were made to make an even larger version known as TX-1. However this project was far too ambitious and had to be scaled back to a smaller version known as [[TX-2]]. Even this version proved troublesome, and Olsen left in mid-project to start [[Digital Equipment Corporation]] (DEC). DEC's [[PDP-1]] was essentially a collection of TX-0 and TX-2 concepts in a smaller package.<ref name="PDP-1">{{cite web |url=https://www.computerhistory.org/pdp-1/_media/pdf/dec.digital_at_work.1992.102630350.pdf |title=dec.digital_at_work |author-first=Jamie P. |author-last=Pearson |publisher=Digital Equipment Corporation|page=3|date=1992}}</ref>
+
+After supporting SAGE, Whirlwind I was rented ($1/yr) from June 30, 1959, until 1974 by project member, William M. Wolf (1928-2015). The power to run the machine cost $2500 per month, and the Wolf Research and Development Corporation did work for the Air Force and [[Buckminster Fuller]]'s [[World Game]]. Ultimately moving Whirlwind I cost $250,000 and the company made $100,000 on it. Wolf R&D Corporation was sold to [[EG&G]] in 1967 for $5.5 million.<ref>{{cite book |last1=Wolf |first1=William |title=No e |date=2005 |pages=63–65|isbn=1413468462|publisher=Xlibris }}</ref><ref>{{Cite web |title=William M. Wolf&lt;br/&gt;August 29, 1928 - April 25, 2015 |author= |work=Daily Pilot |date= 28 April 2015|access-date=27 March 2024 |url= https://www.latimes.com/socal/daily-pilot/news/tn-dpt-william-m-wolfaugust-29-1928-april-25-2015-20150428-story.html}}</ref><ref>{{Cite web |title=Whirlwind Move |author= |work=cdn.libraries.mit.edu |date=28 April 1960 |access-date=27 March 2024 |url= https://cdn.libraries.mit.edu/dissemination/diponline/AC0069_NewReleases/NewsRelease_1960/AC0069_1960/AC0069_196004_004.pdf |quote=this time for the Wolf Research and Development Corporation of Boston. William M. Wolf, president of the Boston corporation, believes that the historic machine can be utilized to advantage in a number of ways.  }}</ref>
+
+[[File:Whirlwind Computer plaque - IEEE Milestone - MIT, Cambridge, Massachusetts - 20171202 141142.jpg|thumb|right|Commemorative plaque on the original Whirlwind building]]
+[[Ken Olsen]] and [[Robert Everett (computer scientist)|Robert Everett]] saved the machine, which became the basis for the [[The Computer Museum, Boston|Boston Computer Museum]] in 1979. Although much of the machine was lost when decommissioned, many of its components are now in the collection of the [[Computer History Museum]] in [[Mountain View, California]] and the [[MIT Museum]].<ref>{{Cite web |last=Fedorkow |first=Guy |date=2018-11-30 |title=The Whirlwind Computer at CHM |url=https://computerhistory.org/blog/the-whirlwind-computer-at-chm/ |url-status=live |archive-url=https://web.archive.org/web/20231130032807/https://computerhistory.org/blog/the-whirlwind-computer-at-chm/ |archive-date=2023-11-30 |access-date=2024-02-05 |website=[[Computer History Museum]] |language=en}}</ref>
+
+As of February 2009, a core memory unit is displayed at the [[Charles River Museum of Industry & Innovation]] in [[Waltham, Massachusetts]]. One plane of core memory, on loan from the [[Computer History Museum]], is on shown as part of the Historic Computer Science displays at the [[Gates Computer Science Building, Stanford]].
+
+The building which housed Whirlwind was until recently home to MIT's campus-wide IT department, Information Services & Technology and in 1997–1998, it was restored to its original exterior design.<ref name="Waugh">{{cite web |url=http://web.mit.edu/newsoffice/1998/n42-0114.html |title=Plenty of computing history in N42 |author-first=Alice C. |author-last=Waugh |publisher=MIT News Office |date=January 14, 1998}}</ref>
+
+==See also==
+*{{section link|Friden Flexowriter#Console terminals}}
+*[[List of vacuum tube computers]]
+*[[History of computing hardware]]
+*[[Laning and Zierler system]]
+*[[Roger Sisson]]
+*[[Perry O. Crawford Jr.]]
+*[[Lightgun (Whirlwind)]] lightpen designed for Whirlwind
+
+==References==
+{{reflist}}
+
+==External links==
+*[http://www.bitsavers.org/pdf/mit/whirlwind Whirlwind documentation List of Bitsavers.org webpages related to Whirlwind]
+
+{{S-start}}
+{{S-ach|rec}}
+{{S-bef|before=-}}
+{{S-ttl
+ | title = [[Mainframe computer|World's most powerful computer]]
+ | years = 1951–1954
+}}
+{{s-aft|after=[[IBM Naval Ordnance Research Calculator|IBM NORC]]}}
+{{S-end}}
+{{Authority control}}
+
+{{coord|42|21|42|N|71|5|48|W|display=title}}
+
+[[Category:Military computer systems of the U.S. Department of Defense]]
+[[Category:1940s computers]]<!--design/construction-->
+[[Category:1950s computers]]<!--debut/most powerful-->
+[[Category:Magnetic-core memory computers]]
+[[Category:One-of-a-kind computers]]
+[[Category:Real-time computing]]
+[[Category:Vacuum tube computers]]
+[[Category:Computer-related introductions in 1951]]
+[[Category:1951 establishments in Massachusetts]]
+[[Category:Massachusetts Institute of Technology]]
+[[Category:16-bit computers]]

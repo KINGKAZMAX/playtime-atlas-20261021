@@ -1,0 +1,253 @@
+{{Short description|1981 home computer by Commodore}}
+{{Lead too short|date=March 2023}}
+{{Use dmy dates|date=August 2023}}
+{{Infobox personal computer
+| logo = Commodore VIC 20 logo.svg
+| logo_upright = 0.75
+| image = Commodore-VIC-20-FL.jpg
+| caption = <!-- include if image is not a logo -->
+| developer = 
+| manufacturer = [[Commodore Business Machines]]
+| carrier = 
+| type = [[Home computer]]
+| generation = 
+| release_date = Japan: {{Start date and age|1980}}, Worldwide: {{Start date and age|1981}}
+| lifespan = 5 years
+| price = {{USD|299.95|1981|round=-1}}
+| discontinued = {{End date and age|1985|01}}
+| units_sold = 2.5 million<ref name=comm-ca/>
+| units_shipped = 
+| media = 
+| os = {{nowrap|Commodore [[KERNAL]]}}<br />{{nowrap|[[Commodore BASIC]] 2.0}}
+| power = 
+| cpu = [[MOS Technology 6502]] {{nowrap|@ 1.108 [[megahertz|MHz]] ([[PAL]])}}<ref name="mess_redump_net-vc20 ">{{cite web|title=MESS VIC20/VC20 (German) PAL|url=http://mess.redump.net/mess:drivers:vc20:vc20}} MESS&nbsp;— Multiple Emulator Super System</ref> {{nowrap|@ 1.02 MHz}} ([[NTSC]])
+| storage = [[Cassette_tape#data|Compact Cassette]], [[floppy disk]]
+| memory = {{nowrap|20 [[kilobyte|KB]] [[read-only memory|ROM]]}} + 5&nbsp;KB (3.5&nbsp;KB free) [[random-access memory|RAM]] (expandable to 32&nbsp;KB)<br />3.5&nbsp;KB for BASIC (expandable to 27.5&nbsp;KB){{efn|{{BDprefix|p=b}}}}
+| display = Commodore 1701; 176 × 184, [[List of 8-bit computer hardware graphics#VIC-20|16-color composite palette]]
+| graphics = [[MOS Technology VIC]]
+| sound = MOS Technology VIC; 1 [[white noise|noise]] and 3 [[Square wave (waveform)|square]] channels<!--, [[octave]] spaced, 7-bit frequency, 4-bit volume--><ref name="gweep_net-videogamemusic">{{cite web|title=Home Video Game Console Sound Chip Round-Up|url=http://www.gweep.net/~shifty/txt/videogamemusic.txt}} 090514 gweep.net</ref>
+| input = 
+| controllers = 
+| camera = 
+| touchpad = 
+| connectivity = 
+| online_services = <!-- online service/s offered -->
+| dimensions = 
+| weight = 
+| top_game = 
+| compatibility = 
+| successor = [[Commodore 64]], [[MAX Machine]]
+| related = 
+| website = 
+}}
+
+The '''VIC-20''' (known as the '''VC-20''' in Germany and the '''VIC-1001''' in Japan) is an [[8-bit]] entry level [[home computer]] that was sold by [[Commodore International|Commodore Business Machines]]. The VIC-20 was announced in September 1980,<ref>{{Cite web|url=http://archive.org/details/19800930CommodoreAnnouncesTheVIC20|title=Commodore Announces The VIC 20|date=30 September 1980|access-date=3 August 2026|via=Internet Archive}}</ref><ref name="administrator@commodore.ca">{{cite web|url=https://www.commodore.ca/products/vic20/commodore_vic-20.htm|title=Commodore VIC-20 History, Pictures & Time Line|last=administrator@commodore.ca|website=commodore.ca|access-date=23 March 2018|archive-url=https://web.archive.org/web/20150214045926/http://commodore.ca/products/vic20/commodore_vic-20.htm|archive-date=14 February 2015|url-status=dead}}</ref> roughly three years after Commodore's first [[personal computer]], the [[Commodore PET|PET]]. The VIC-20 was the first [[computer]] of any description to sell one million units,<ref>{{cite web|url=https://www.old-computers.com/museum/computer.asp?c=252|title=OLD-COMPUTERS.COM : The Museum|website=old-computers.com|access-date=23 March 2018|archive-url=https://web.archive.org/web/20090202120102/http://old-computers.com/MUSEUM/computer.asp?c=252|archive-date=2 February 2009|url-status=dead}}</ref> and sales of the VIC-20 eventually reached 2.5 million units.<ref>{{Cite web |date=2013-04-21 |title=VIC-20: The First Computer to Sell 1 Million Units |url=https://www.commodore.ca/commodore-products/commodore-vic-20-the-first-inexpensive-home-computer/ |access-date=2025-12-19 |website=www.commodore.ca |language=en-US}}</ref>
+
+The VIC-20 was described as "one of the first anti-spectatorial, non-esoteric computers by design...no longer relegated to hobbyist/enthusiasts or those with money, the computer Commodore developed was the computer of the future."<ref>{{cite journal |last1=Arnold |first1=Bruce Makoto |title=Twenty-Two Columns of Lowbrow Revolution: The Commodore VIC-20 and the Beginning of the Home Computer Era |journal=Journal in Humanities |date=June 2017 |volume=6 |issue=1 |pages=11–20 |doi=10.31578/hum.v6i1.342 |url=https://www.academia.edu/34293396}}</ref>
+
+== History ==
+[[File:VIC-20 Display.jpg|thumb|An early revision of the VIC-20 with several accessories. The  composite output allowed it to be connected to standard television sets of its era.]]
+
+As the [[Apple II]] gained momentum with the advent of [[VisiCalc]] in 1979, [[Jack Tramiel]] wanted a product that would compete in the same segment, to be presented at the January 1980 [[Consumer Electronics Show|CES]]. For this reason [[Chuck Peddle]] and Bill Seiler started to design a computer named ''TOI'' (The Other Intellect). The TOI computer failed to materialize, mostly because it required an 80-column character display that, in turn, required the MOS Technology 6564 chip. The chip could not be used in the TOI, however, because it required very expensive static RAM to operate fast enough.
+
+As the new decade began, the price of computer hardware was dropping and Tramiel saw an emerging market for low-price computers that could be sold at retail stores to relative novices rather than professionals or people with an electronics or programming background.<ref>{{cite web |title=Commodore VIC-20 |url=https://museum.eecs.yorku.ca/items/show/308 |publisher=York University Computer Museum Canada |access-date=2 February 2025 }}</ref> [[Radio Shack]] had been achieving considerable success with the [[TRS-80 Model I]], a relatively low-cost machine that was widely sold to novices and in 1980 released the [[TRS-80 Color Computer|Color Computer]], which was aimed at the home and educational markets, used ROM cartridges for software, and connected to a TV set. Atari also released in 1979 the low-end 400, aimed at the home and educational markets, in addition to the high-end 800, and both could also use cartridges and connected to TV sets.
+
+=== Development ===
+[[File:ViC20 Cartridge.jpg|thumb|The ''Clowns'' game on a ROM cartridge]]
+
+In the meantime, new engineer [[Robert Yannes]] at MOS Technology (then a part of Commodore) designed a computer in his home dubbed the ''MicroPET'' and finished a prototype with help from Al Charpentier and Charles Winterble. With the TOI unfinished, when Jack Tramiel was shown the MicroPET prototype, he immediately said he wanted it to be finished and ordered it to be mass-produced following a limited demonstration at CES.
+
+The prototype produced by Yannes had few of the features required for a real computer, so Robert Russell at Commodore headquarters had to coordinate and finish large parts of the design under the codename ''Vixen''. The parts contributed by Russell included a port of the [[operating system]] ([[KERNAL]] and [[BASIC interpreter]]) taken from John Feagans' design for the [[Commodore PET]], a character set with the characteristic [[PETSCII]], an [[Atari CX40 joystick]]-compatible interface, and a [[ROM cartridge]] port. The serial [[IEEE-488]]-derivative [[Commodore bus|CBM-488]] interface<ref>{{cite web|url=https://archive.org/stream/run-magazine-28/Run_Issue_28_1986_Apr#page/n105/mode/2up|title=RUN Magazine issue 28|date=April 1986}}</ref> was designed by Glenn Stark. It served several purposes, including costing substantially less than the IEEE-488 interface on the PET, using smaller cables and connectors that allowed for a more compact case design, and also complying with newly imposed [[Federal Communications Commission|FCC]] regulations on [[Electromagnetic interference|RFI]] emissions by home electronics (the PET was certified as Class B office equipment, which had less stringent RFI requirements). Some features, like the memory add-in board, were designed by Bill Seiler.{{citation needed|date=November 2013}}
+
+[[File:VIC 20 Splash Screen Screenshot.gif|alt=The startup screen of the VIC-20.|thumb|350x350px|The startup screen of the VIC-20]]
+
+Altogether, the VIC 20 development team consisted of five people led by [[Michael Tomczyk]], the product manager who recruited the group and dubbed them the VIC Commandos.  Commodore founder Jack Tramiel initially gave Tomczyk the title VIC Czar and later appointed him product manager.  Tomczyk insisted on several features including full-size [[typewriter]] keys, programmable function keys, and a built-in RS-232 interface. Michael later contracted and co-designed a $100 modem, the VICModem, which became the first modem to sell 1 million units.<ref name="DAK54">{{cite news | first = Marty | last = Herzog | date = January 1988 | title = Neil Harris | work = [[Comics Interview]] | issue = 54 | pages = 41–51 | publisher = [[Fictioneer Books]]}}</ref> According to one of the development team, Neil Harris, "[W]e couldn't get any cooperation from the rest of the company who thought we were jokers because we were working late, about an hour after everyone else had left the building. We'd swipe whatever equipment we needed to get our jobs done. There was no other way to get the work done! [...] they'd discover it was missing and they would just order more stuff from the warehouse, so everybody had what they needed to do their work."<ref name="DAK54"/>
+
+At the time, Commodore had a glut of {{nowrap|1 [[kilobit|Kbit]]×4}} [[static random-access memory|SRAM]] chips, so Tramiel decided these should be used in the new computer. The result was arguably closer to the ''PET'' or ''TOI'' computers than to Yannes' prototype, albeit with a 22-column VIC chip instead of the custom chips designed for the more ambitious computers. As the amount of memory on the VIC-20's system board was very small even for 1981 standards, the design team could get away with using more expensive SRAM due to its lower power consumption, heat output, and less supporting circuitry. The original Revision A system board found in all silver-label VIC-20s used 2114 SRAMs and due to their tiny capacity (only 512 bytes per chip), ten of them were required to reach 5&nbsp;KB of system RAM. The Revision B system board, found in rainbow logo VIC-20s switched to larger 2048-byte SRAMs, which reduced the memory count to five chips: 2× 2048-byte chips + 3× 2114 (the 1024 × 4 bits) chips.
+
+[[Image:Commodore VIC-1001 left-hand keyboard closeup.jpg|thumb|The VIC-1001 is the Japanese version of the VIC-20. It has Japanese-language characters in the ROM<ref>{{cite web|url=https://www.masswerk.at/misc/vic-1001-kana.html|title=Commodore VIC-1001 Kana (Japanese VIC-20 Characters) Demystified|access-date=17 June 2016}}</ref> and on the front of the keys.]]
+
+In April 1980, at a meeting of general managers outside London, Jack Tramiel declared he wanted a low-cost color computer. When most of the GMs argued against it, preferring Peddle's more sophisticated design, he said: "The Japanese are coming, so we must become the Japanese!" (in reference to the threats of low-cost systems from Japan).<ref>{{cite web |title=Commodore VIC-1001 |url=https://www.old-computers.com/museum/computer.asp?c=1291 |website=Old-Computers.com: The Museum |access-date=7 June 2021}}</ref><ref name="santens20211019">{{Cite interview |last=Tomczyk |first=Michael |interviewer=Tim Santens |title=Michael Tomczyk: Commodore VIC-20 Developer, Computer Pioneer |url=https://talesfromthecollection.com/2021/10/19/michael-tomczyk-commodore/ |date=2021-10-19}}</ref> This was in keeping with Tramiel's philosophy, which was to make "computers for the masses, not the classes". The concept was supported at the meeting by Tomczyk, newly hired marketing strategist and assistant to the president; Tony Tokai, General Manager of Commodore Japan; and Kit Spencer, the UK's top marketing executive. Peddle disagreed with the decision and left the company with other engineers, so an engineering team in Commodore Japan led by Yash Terakura helped finish the design. The VIC-20 was marketed in Japan as VIC-1001 before VIC-20 was introduced to the US.{{r|santens20211019}}
+
+When they returned to California from that meeting, Tomczyk wrote a 30-page memo detailing recommendations for the new computer and presented it to Tramiel. Recommendations included programmable [[function key]]s (inspired by competing Japanese computers),<ref name=tomczyk>{{cite web |url=http://www.michaeltomczyk.com/Tech-Pioneer.php |title=The Home Computer Wars |first=Michael |last=Tomczyk |url-status=dead |archive-url=https://web.archive.org/web/20150214213644/http://michaeltomczyk.com/Tech-Pioneer.php |archive-date=14 February 2015 }}</ref> full-size typewriter-style keys, and built-in [[RS-232]]. Tomczyk insisted on "[[user-friendliness]]" as the prime directive for the new computer, to engineer Terakura,<ref name=tomczyk/> and proposed a retail price of {{nowrap|US$299.95}}. He recruited a marketing team and a small group of computer enthusiasts and worked closely with colleagues in the UK and Japan to create colorful packaging, user manuals, and the first wave of games and home applications.
+
+[[Scott Adams (game designer)|Scott Adams]] was contracted to provide a series of [[text adventure]] games. With help from a Commodore engineer who came to [[Longwood, Florida]], to assist in the effort, five of Adams's [[Adventure International]] game series were ported to the VIC. They got around the limited memory of VIC-20 by having the {{nowrap|16 KB}} games reside in a ROM cartridge instead of being loaded into main memory via cassette as they were on the [[TRS-80]] and other machines. The first production run of the five cartridges generated over $1,500,000 in sales for Commodore.<ref name="comm-ca">{{Cite web|url=https://www.commodore.ca/commodore-products/commodore-vic-20-the-first-inexpensive-home-computer/|title = Commodore VIC-20: Worlds First Computer to Sell 1 Million Units}}</ref>
+
+=== Evolution ===
+{{Unreferenced section|date=October 2020}}
+
+The VIC-20 went through several variations in its three-and-a-half years of production. First-year models (1980) had a PET-style keyboard with a blocky typeface while most VIC-20s made during 1981 had a slightly different keyboard also shared with early C64s. The rainbow logo VIC-20 was introduced in early 1983 and has the newer C64 keyboard with gray function keys and the Revision B motherboard. It has a similar power supply to the C64 [[power supply unit (computer)|PSU]], although the amperage is slightly lower. A C64 "black brick" PSU is compatible with Revision B VIC-20s; the VIC's PSU is not recommended on a C64 if any external devices, such as cartridges or user port accessories, are installed, as it will overdraw the available power. Older Revision A VIC-20s cannot use a C64 PSU or vice versa as a different connector was used.
+
+=== Decline ===
+The VIC-20 became the first computer to sell over a million. In total, 2.5 million computers were sold.<ref name="comm-ca"/><ref name=":1">{{Cite web |last=Kurano |first=Lindsey |date=2025-08-02 |title=A Brief History of the Commodore VIC-20 |url=https://www.museumofplay.org/blog/a-brief-history-of-the-commodore-vic-20/ |access-date=2026-09-12 |website=The Strong National Museum of Play |language=en-US}}</ref> In summer 1982, Commodore unveiled the {{nowrap|[[Commodore 64]],}} a more advanced machine with {{nowrap|64 KB}} of RAM and considerably improved sound and graphics. Initial sales of the C64 were slow but took off in mid-1983. The VIC-20 was widely available for under $90 by that time.<ref name="lock198306">{{cite news | url=https://archive.org/stream/1983-06-compute-magazine/Compute_Issue_037_1983_Jun#page/n7/mode/2up | title=Editor's Notes | work=Compute! | date=June 1983 | access-date=30 October 2013 | author=Lock, Robert | pages=6}}</ref> Commodore discontinued the VIC-20 in January 1985.<ref name="administrator@commodore.ca"/>
+
+Perhaps the last new commercially available VIC-20 peripheral was the VIC-Talker, a [[speech synthesizer]]. ''[[Ahoy!]]'' wrote in January 1986, "Believe it or not, a new VIC accessory... We were as surprised as you".<ref name="kevelson198601">{{Cite magazine |last=Kevelson |first=Morton |date=January 1986 |title=Speech Synthesizers for the Commodore Computers / Part II |url=https://archive.org/details/ahoy-magazine-25/page/n31/mode/2up |access-date=March 2, 2026 |work=Ahoy! |pages=32 |issue=25}}</ref>
+
+== Design ==
+{{More citations needed|section|date=April 2023}}
+The VIC-20 was intended to be more economical than the PET computer<ref name=":1" />. It was equipped with 5&nbsp;[[kilobyte|KB]] of [[Static random-access memory|static RAM]] and used the same [[MOS Technology 6502|MOS 6502]] [[central processing unit|CPU]] as the PET. The VIC-20's video chip, the [[MOS Technology VIC]], was a general-purpose color video chip designed by Al Charpentier in 1977 and intended for use in inexpensive display [[Computer terminal|terminals]] and [[game consoles]], but Commodore could not find a market for the chip.
+
+While newer PETs had the upgraded BASIC 4.0, with disk commands and improved [[Garbage collection (computer science)|garbage collection]], the VIC-20 reverted to the 8&nbsp;KB BASIC 2.0 used on earlier PETs as part of another of the design team's goals: 20&nbsp;KB system ROMs. There are no dedicated sound or graphics features.
+
+The VIC-20 has a composite output, which provides a sharper, cleaner picture if a dedicated monitor is used. The TRS-80 Color Computer and [[Atari_8-bit_computers#400_and_800_release|Atari 400]] have only RF video output. An external RF modulator was necessary to use the computer with a TV set.
+
+The "20" in the computer's name was widely assumed to refer to the text width of the screen (although in fact, the VIC-20 has 22-column text, not 20) or that it referred to the combined size of the system ROMs (8&nbsp;KB BASIC+8&nbsp;KB [[KERNAL]]+4&nbsp;KB character ROM). Bob Yannes claimed that "20" meant nothing in particular and said "We simply picked '20' because it seemed like a friendly number and the computer's marketing slogan was 'The Friendly Computer'. I felt it balanced things out a bit since 'Vic' sounded like the name of a truck driver."
+
+[[File:4860 - VIC-20 Mainboard.JPG|thumb|VIC-20 mainboard]]
+
+=== Graphics ===
+[[File:MOS 6561 VIC.jpg|thumb|right|The MOS Technology 6561 VIC chip]]
+
+The graphics capabilities of the [[MOS Technology VIC|VIC chip]] (6560/6561) are limited but flexible. At startup, the screen shows 176×184 pixels, with a fixed-color border to the edges of the screen. Since a [[PAL]] or [[NTSC]] screen has a [[Aspect_ratio_(image)#4:3|4:3]] width-to-height ratio, each VIC pixel is much wider than it is high. The screen normally shows 22 columns and 23 rows of 8-by-8-pixel characters; it is possible to increase these dimensions up to 27 columns, but the characters would soon [[overscan|run out the sides of the monitor]] at about 25 columns. Just as on the PET, two different 256-character sets are included, the uppercase/graphics character set and the upper/lowercase set, and reverse video versions of both. Normally, the VIC-20 operates in a mode whereby each character is 8×8 pixels in size and uses one color. A lower-resolution multicolor mode can also be used with 4×8 characters and three colors each, but it is not used as often due to its extreme blockiness, because pixels in this mode are twice as wide as otherwise. Additionally, there is a "high-resolution" mode, in which the characters are 8x16 pixels in size.<ref>{{cite book |title=VIC 20 Programmer's Reference Guide |date=1982 |publisher=Commodore Business Machines, Inc. and Howard W. Sams & Co., Inc. |location=Indianapolis, Ind |isbn=0-672-21948-4 |pages=88-94 |edition=4th printing, 1st |ref=vic20-prg}}</ref>
+
+[[File:Screen color test CommodoreVIC20 Multicolor.png|thumb|left|16-color capability]]
+
+The VIC chip does not support a true [[bitmap]] mode, but programmers can define their own custom character sets. It is possible to get a fully addressable screen, although slightly smaller than normal, by filling the screen with a sequence of different double-height characters, then turning on the pixels selectively inside the RAM-based character definitions. The [[Super Expander]] cartridge adds BASIC commands supporting such a graphics mode using a resolution of 160×160 pixels. It is also possible to fill a larger area of the screen with addressable graphics using a more dynamic allocation scheme if the contents are sparse or repetitive enough. This is used by the port of ''[[Omega Race]]''.{{Citation needed|date=February 2020}}
+
+The VIC chip has readable [[Scan line|scan-line]] counters but cannot generate [[interrupt]]s based on the scan position. The two VIA timer chips can serve this purpose through an elaborate programming technique, allowing graphics to be mixed with text above or below it, two different backgrounds and border colors, or more than 200 characters for the pseudo-high-resolution mode.
+
+The VIC chip can process a [[light pen]] signal via the joystick port, but few appeared on the market.
+
+The VIC chip outputs [[luma (video)|Luma]]+Sync and [[chrominance|Chroma]] video signals, which are combined to create the VIC-20's [[composite video]] output. Commodore did not include an [[RF modulator]] inside the computer's case because of [[FCC]] regulations. It can either be attached to a dedicated monitor or a TV set using the external modulator included with the computer.
+
+=== Sound ===
+
+The VIC chip has three [[pulse wave]] generators and a [[white noise]] generator with overall volume control and mono output. Each pulse wave generator has a range of three [[octave]]s located on the scale about an octave apart, giving a total range of about five octaves.
+
+=== Memory ===
+[[File:4849 - VIC-1211A Super Expander w 3k RAM.JPG|thumb|A {{val|3|u=KB}} RAM expansion cartridge with BASIC extension ROM]]
+[[File:4853 - VIC-1111 16K RAM For VIC-20 open.JPG|thumb|A {{val|16|u=KB}} RAM expansion cartridge with PCB view]]
+
+The VIC-20 shipped with {{nowrap|5 KB}} [[random-access memory|RAM]], but {{nowrap|1.5 KB}} of this is used for the video display and dynamic aspects of the [[read-only memory|ROM]]-resident [[Commodore BASIC]] and [[KERNAL]] (a low-level operating system). Only 3,583 [[byte]]s of BASIC program memory for code and [[Variable (high-level programming language)|variables]] are actually available on an unexpanded machine.
+
+Unlike the PET, the VIC-20 does not include a [[Machine code monitor|machine language monitor]], but Commodore offered them on disk, tape, or cartridge, with several different [[executable]]s to load into various memory locations. The monitor programs were the same as the PET monitor but added a mini-[[Assembly language#Assembler|assembler]] instead of requiring the user to enter [[hexadecimal]] [[opcode]]s.
+
+The VIC-20's RAM is expandable through the cartridge port via a RAM cartridge. RAM cartridges were available from Commodore in several sizes: {{val|3|u=KB}} (with or without an included "Super Expander" BASIC extension ROM), {{val|8|u=KB}}, and {{val|16|u=KB}}. The internal [[memory map]] is reorganized if you plug in {{val|8|u=KB}} and {{val|16|u=KB}} cartridges, leading to a situation where some programs only work if the right amount of memory is present (the most significant divide being between a machine with no or {{val|3|u=KB}} extra memory on one hand, and a machine with {{val|8|u=KB}} or more extra memory on the other).<ref>The main issue was that BASIC could only see one contiguous chunk of memory: in other words, in order for expansion memory to be visible and useful to BASIC, it needs to be added next to the existing BASIC program area. The video buffer memory was hardwired to a position rather close to the default location of the BASIC program area, however, so expansion cartridges offering more than {{val|3|u=KB}} had to move the location where BASIC looked for its program.</ref>
+
+Most expansion cartridges featured hardware [[DIP switch]]es, allowing the RAM to be enabled in user-selectable memory blocks. Because the VIC-20 was designed to use SRAM rather than [[Dynamic random-access memory|DRAM]], the system board has no provisions for DRAM refresh.  RAM expansion cartridges ultimately allowed adding up to {{val|24|u=KB}} to the BASIC user memory; together with the {{val|3.5|u=KB}} built-in user memory, this gave a maximum of {{val|27.5|u=KB}} for BASIC programs and variables. Memory not visible to BASIC could still be used by machine code programs.{{citation needed|date=March 2023}}
+
+{| class="wikitable"
+|+ Memory map<ref name="zi_mm">{{cite web|title=VIC-20 memory map (long)|url=http://www.zimmers.net/cbmpics/cbm/vic/memorymap.txt|date=19 September 2005|access-date=2013-05-20|publisher=zimmers.net}}</ref>
+! Address<br />(hexadecimal)    || Size<br />&#91;in KB&#93; || Description || Cartridge<br />decoded<ref name="ca_pin">{{cite web|title=VIC 20 / Commodore 64 RS 232 |url=http://www.commodore.ca/manuals/pdfs/commodore_pet_vic-20_c64_port_pinouts.pdf|date=30 March 2011|access-date=2013-05-21|publisher=commodore.ca}}</ref>
+|-
+|align="right"| {{mono|0000}} <!--{{mono|03FF}}-->
+|align="right"| 1.0 || RAM with jump vectors etc.      || 
+|-
+|align="right"| {{mono|0400}} <!--{{mono|1000}}-->
+|align="right"| 3.0 || Expansion                       || *
+|-
+|align="right"| {{mono|1000}}<!--{{mono|1FFF}}-->
+|align="right"| 4.0 || RAM for BASIC and screen        || 
+|-
+|align="right"| {{mono|2000}}<!--{{mono|3FFF}}-->
+|align="right"| 8.0 || Expansion block 1               || *
+|-
+|align="right"| {{mono|4000}}<!--{{mono|5FFF}}-->
+|align="right"| 8.0 || Expansion block 2               || *
+|-
+|align="right"| {{mono|6000}}<!--{{mono|7FFF}}-->
+|align="right"| 8.0 || Expansion block 3               || *
+|-
+|align="right"| {{mono|8000}}<!--{{mono|8FFF}}-->
+|align="right"| 4.0 || ROM character bitmap            || 
+|-
+|align="right"| {{mono|9000}}<!--{{mono|93FF}}-->
+|align="right"| 1.0 || I/O for [[MOS Technology VIC|VIC]], [[MOS Technology 6522|6522]] VIA#1, 6522 VIA#2, block 0 || 
+|-
+|align="right"| {{mono|9400}}<!--{{mono|95FF}}-->
+|align="right"| 0.5 || Used for color RAM when expansion RAM at block 1 || 
+|-
+|align="right"| {{mono|9600}}<!--{{mono|97FF}}-->
+|align="right"| 0.5 || Color RAM (normally)            || 
+|-
+|align="right"| {{mono|9800}}<!--{{mono|9BFF}}-->
+|align="right"| 1.0 || I/O block 2                     || *
+|-
+|align="right"| {{mono|9C00}}<!--{{mono|9FFF}}-->
+|align="right"| 1.0 || I/O block 3                     || *
+|-
+|align="right"| {{mono|A000}}<!--{{mono|BFFF}}-->
+|align="right"| 8.0 || Decoded for expansion ROM       || *
+|-
+|align="right"| {{mono|C000}}<!--{{mono|DFFF}}-->
+|align="right"| 8.0 || ROM [[Commodore BASIC|BASIC]]   || 
+|-
+|align="right"| {{mono|E000}}<!--{{mono|FFFF}}-->
+|align="right"| 8.0 || ROM [[KERNAL]]                  || 
+|}
+
+=== Peripherals and expansion ===
+[[File:Commovc20side5580-01 (retuschiert).jpg|thumb|The side of the computer showing the joystick "control port"]]
+
+The VIC-20 has card [[edge connector]]s for program/expansion cartridges and a PET-standard [[Commodore Datasette|Datassette]] tape drive. The VIC-20 did not originally have a disk drive; the [[VIC-1540]] disk drive was released in 1981.
+
+There is one [[Atari joystick port]], compatible with the digital [[joystick]]s and [[paddle (game controller)|paddles]] used with [[Atari 2600|Atari VCS]] and [[Atari 8-bit computers]];<ref name="flynn198206">{{cite news | url=http://www.atarimagazines.com/compute/issue25/035_1_USING_ATARI_JOYSTICKS_WITH_YOUR_VIC.php | title=Using Atari Joysticks With Your VIC | work=Compute! | date=June 1982 | access-date=6 October 2013 | author=Flynn, Christopher J. | pages=79}}</ref> a serial [[Commodore bus|CBM-488]] bus (a serial version of the PET's [[IEEE-488]] bus) for [[daisy chain (electrical engineering)|daisy chain]]ing [[Commodore 1540|disk drives]] and printers; a [[transistor-transistor logic|TTL]]-level "user port" with both [[RS-232]] and [[Centronics]] signals (most frequently used as RS-232, for connecting a [[modem]]<ref>The Commodore VICModem and later models connected directly to the user port's edge connector. But in order to connect the VIC to industry-standard [[modem]]s and other [[RS-232]] devices, the user needed to purchase a separate [[transistor-transistor logic|TTL]]-to-RS232 [[volt]]age converter box (standard TTL voltages lie between 0 and 5&nbsp;V, while RS-232 uses ±12&nbsp;V).</ref>).
+
+The VIC has a [[ROM cartridge]] port for games and other software as well as for adding memory to the machine. Port expander boxes from Commodore and other vendors allow more than one cartridge to be attached at a time. Cartridge size ranges from {{nowrap|4–16 KB}} in size, although the latter was uncommon due to its cost.
+
+The VIC-20 can be hooked into external electronic circuitry via the joystick port, the "user port," or the memory expansion cartridge port, which exposes various analog to digital, memory bus, and other internal [[input/output|{{avoid wrap|I/O}}]] circuits to the experimenter. [[PEEK and POKE]] commands from BASIC can be used to perform [[data acquisition]] from temperature sensors, control robotic [[stepper motor]]s, etc.
+In 1981, Tomczyk contracted with an outside engineering group to develop a direct-connect modem-on-a-cartridge (the [[Commodore 64 peripherals#Modems|VICModem]]), which at US$99 became the first modem priced under US$100. The VICModem was also the first modem to sell over 1 million units. VICModem was packaged with US$197.50 worth of free telecomputing services from [[The Source (online service)|The Source]], [[CompuServe]], and [[Dow Jones & Company|Dow Jones]]. Tomczyk also created a [[Special interest group|SIG]] called the Commodore Information Network to enable users to exchange information and take some of the pressure off of Customer Support inquiries, which were straining Commodore's lean organization. In 1982, this network accounted for the largest traffic on CompuServe.{{Citation needed|date=March 2008}}
+
+Commodore's VIC-1010 Expansion allows the user to connect multiple devices to the VIC-20's cartridge port. It has its own power supply and six slots that can be used to connect memory extensions, game cartridges or other peripherals.<ref>{{ citation | url=https://northhertsmuseum.org/north-hertfordshire-museum/collections/object-details/330668/ | title=VIC-1010 Expansion Board | date=11 July 2014 | access-date=5 February 2024 }}</ref>
+[[File:VIC-1010-Expantion module.jpg|alt=Commodore VIC-1010 Expansion module|thumb|Commodore VIC-1010 Expansion module]]
+
+== Applications ==
+[[File:Commodore-Datasette-C2N-Mk2-Front.jpg|thumb|The Commodore 1530 C2N-B [[Commodore Datasette|Datasette]] provided inexpensive external storage for the VIC-20.]]
+
+The VIC-20's BASIC is compatible with the PET's, and the [[Commodore Datasette|Datasette]] format is the same.<ref name="butterfield198104">{{Cite magazine |last=Butterfield |first=JIm |author-link=Jim Butterfield |date=April 1981 |title=Advice to PET Owners: How To Be A VIC Expert |url=http://www.atarimagazines.com/compute/issue11/17_1_ADVICE_TO_PET_OWNERS_HOW_TO_BE_A_VIC_EXPERT.php |magazine=Compute! |issue=11 |page=34}}</ref> Before the computer's release, a Commodore executive promised it would have "enough additional documentation to enable an experienced programmer/hobbyist to get inside and let his imagination work".<ref name="kb198009">{{cite news | url=https://archive.org/stream/kilobaudmagazine-1980-09/Kilobaud_Microcomputing_1980_September#page/n23/mode/2up | title=Commodore: New Products, New Philosophies | work=Kilobaud | date=September 1980 | access-date=23 June 2014 | pages=26–28}}</ref> ''[[Compute!]]'' favorably contrasted the company's encouragement of "cottage industry software developers" to [[Texas Instruments]] discouraging [[third-party software]].<ref name="thornburg198104">{{Cite magazine |last=Thornburg |first=David D. |date=April 1981 |title=The Commodore VIC-20: A First Look |url=http://www.atarimagazines.com/compute/issue11/12_1_THE_COMMODORE_VIC-20_A_FIRST_LOOK.php |magazine=Compute! |page=26}}</ref> Because of its small memory and low-resolution display compared to some other computers of the time, the VIC-20 was primarily used for educational software and games. Productivity [[software application|application]]s such as home finance programs, spreadsheets, and [[terminal emulator|communication terminal programs]] were also made for the machine.
+
+The VIC had a sizable library of [[public domain]] and [[freeware]] software. This software was distributed via [[online service provider|online services]] such as CompuServe, [[Bulletin board system|BBS]]s, as well as offline by mail order and by user groups. Several [[computer magazine]]s sold on newsstands, such as ''[[Compute!]]'', ''[[Family Computing]]'', ''[[Run (magazine)|RUN]]'', ''Ahoy!'', and the CBM-produced ''[[Commodore Power/Play]]'', offered programming tips and [[type-in program]]s for the VIC-20.
+
+An estimated 300 commercial titles were available on [[ROM cartridge|cartridge]] and another 500+ were available on tape.{{According to whom|date=February 2020}} A handful of disk applications were released.
+
+The VIC's low cost led to it being used by the [[Fort Pierce, Florida]], Utilities Authority to measure the input and output of two of their generators and display the results on monitors throughout the plant. The utility was able to purchase multiple VIC and C64 systems for the cost of one [[IBM PC compatible]].<ref>{{cite web|url=https://archive.org/stream/run-magazine-34/Run_Issue_34_1986_Oct#page/n59/mode/2up|title=RUN Magazine Issue 34|date=October 1986}}</ref>
+
+== Marketing and retail ==
+While the PET was sold through authorized dealers the VIC-20 primarily sold at retail, especially discount and toy stores, where it could compete directly with game consoles. It was the first computer to be sold in [[Kmart|K-Mart]]. Commodore took out advertisements featuring actor [[William Shatner]] (of ''[[Star Trek: The Original Series|Star Trek]]'' fame) as its spokesman, asking: "Why buy just a video game?" and describing it as "The Wonder Computer of the 1980s". Television personality [[Henry Morgan (humorist)|Henry Morgan]] (best known as a panelist on the TV game show ''[[I've Got a Secret]]'') became the commentator in a series of Commodore product ads.
+
+The VIC-20 was called ''VC-20'' in Germany{{efn|The letter "[[V]]" is pronounced [[Voiceless labiodental fricative|⟨f⟩]] in German and "VIC" would be pronounced uncomfortably close to the vulgarity [[wikt:ficken|fick]].<ref>{{Cite web|url=https://www.zimmers.net/cbmpics/cvc.html|title=Commodore VC-20 Computer : Sehr schon!|website=Zimmers.net|access-date=3 August 2026}}</ref><ref>{{Cite web|url=http://retro.rubenerd.au/vc-20.htm|title=Commodore VC 20 (1983): Ruben's Retro Corner|website=Retro.rubenerd.au|access-date=3 August 2026}}</ref><ref>{{Cite web|url=https://www.computinghistory.org.uk/det/225/Commodore-VC-20/|title=Commodore VC-20 - Computer - Computing History|website=Computinghistory.org.uk|access-date=3 August 2026}}</ref>}} and was marketed as though it were an abbreviation of ''VolksComputer'' ("people's computer," similar to [[Volkswagen]] and ''[[Volksempfänger]]'').<ref>{{cite web|title=Commodore VC20 / VIC20|url=http://cbmmuseum.kuto.de/home_vc20.html|access-date=10 July 2018}}</ref>
+
+== Reception ==
+[[File:Commodore VIC20 16 64 foto3.jpg|thumb|The exterior design of the VIC-20 would be reused for the [[Commodore 64]] and the [[Commodore 16]].]]
+Describing it as "an astounding machine for the price", ''Compute!'' in 1981 expected the VIC-20 would be popular in classrooms and homes with small children, with "excellent graphic and sound capabilities". While predicting the 22-column screen was "too small to support any but the most rudimentary business applications" the magazine observed that "at a price of {{US$|long=no|299}}, that is hardly the point", stating that "the VIC will provide very stiff competition to the [[TRS-80 Color Computer]]" and "is a much more valuable computer literacy tool than" other products like the [[TRS-80 Pocket Computer]]. ''Compute!'' concluded "VIC will create its own market, and it will be a big one".{{r|thornburg198104}} While also noting the small screen size and RAM, ''[[Byte (magazine)|BYTE]]'' stated that the VIC-20 was "unexcelled as low-cost, consumer-oriented computer. Even with some of its limitations...it makes an impressive showing against...the [[Apple II]], the Radio Shack [[TRS-80]], and the [[Atari 8-bit computers|Atari 800]]". The magazine praised the price ("Looking at a picture...might cause you to think {{US$|long=no|600}} would be a fair price...But it does not cost {{US$|long=no|600}}—the VIC 20 retails for {{US$|long=no|299.95}}"), keyboard ("the equal of any personal-computer keyboard in both appearance and performance. This is a remarkable achievement, almost unbelievable considering the price of the entire unit"), graphics, documentation, and ease of software development with the KERNAL.<ref name="williams198105">{{cite news | url=https://archive.org/stream/byte-magazine-1981-05/1981_05_BYTE_06-05_Software_Piracy#page/n47/mode/2up | title=The Commodore VIC 20 Microcomputer: A Low-Cost, High-Performance Consumer Computer | work=BYTE | date=May 1981 | access-date=18 October 2013 | author=Williams, Gregg | pages=46}}</ref>
+
+== See also ==
+
+* {{anl|List of VIC-20 games}}
+* {{anl|VICE}}
+
+== Notes ==
+
+{{notelist}}
+
+== References ==
+
+{{refs}}
+
+== Further reading ==
+
+* {{cite journal |last1=Arnold |first1=Bruce Makoto |title=Twenty-Two Columns of Lowbrow Revolution: The Commodore VIC-20 and the Beginning of the Home Computer Era |journal=Journal in Humanities |date=June 2017 |volume=6 |issue=1 |pages=11–20 |doi=10.31578/hum.v6i1.342 |url=https://www.academia.edu/34293396}}
+* {{cite book|last=Bagnall|first=Brian|title=On The Edge: The Spectacular Rise and Fall of Commodore|url=https://books.google.com/books?id=17BFAAAACAAJ&q=On+The+Edge:+The+Spectacular+Rise+and+Fall+of+Commodore|access-date=2009-04-20|year=2005|isbn=0-9738649-0-7}}
+* {{cite book|last=Finkel|first=A.|author2=Harris, N. |author3=Higginbottom, P. |author4= Tomczyk, M. |title=VIC 20 Programmer's reference guide|url=https://books.google.com/books?id=_c1QAAAAMAAJ&q=VIC+20+Programmer%27s+reference+guide|access-date=2009-04-20|year=1982|publisher=Commodore Business Machines, Inc. and Howard W. Sams & Co, Inc.|isbn=0-672-21948-4}}
+* {{cite book|last=Jones|first=A.J.|author2=Coley, E. A. |author3=Cole, D. G. J. |title=Mastering the Vic-20|url=https://archive.org/details/Mastering_the_VIC-20|quote=Mastering the Vic-20.|access-date=2009-04-20|year=1983|location=Chichester, UK|publisher=Ellis Horwood Ltd. and John Wiley & Sons, Inc.|isbn=0-471-88892-3}}
+* {{cite book|last=Tomczyk|first= Michael S.|title=The Home Computer Wars: An Insider's Account of Commodore and Jack Tramiel|url=https://archive.org/details/the-home-computer-wars|quote=The Home Computer Wars: An Insider's Account of Commodore and Jack Tramiel.|access-date=2009-04-20|year=1984|publisher=COMPUTE! Publications, Inc.|isbn=0-942386-75-2}}
+* {{cite news | url=https://archive.org/stream/byte-magazine-1983-01/1983_01_BYTE_08-01_Looking_Ahead#page/n231/mode/2up | title=Exploring the Commodore VIC-20 | work=BYTE | date=January 1983 | author=Swank, Joel | pages=222}}
+* {{cite news | url=https://archive.org/stream/byte-magazine-1983-02/1983_02_BYTE_08-02_Standards#page/n119/mode/2up | title=The Enhanced VIC-20 / Part 1: Adding a Reset Switch | work=BYTE | date=February 1983 | author=Swank, Joel | pages=118}}
+* {{cite news | url=https://archive.org/stream/byte-magazine-1983-03/1983_03_BYTE_08-03_Mass_Storage#page/n35/mode/2up | title=The Enhanced VIC-20 / Part 2: Adding a 3K-Byte Memory Board | work=BYTE | date=March 1983 | author=Swank, Joel | pages=34}}
+* {{cite news | url=https://archive.org/stream/byte-magazine-1983-04/1983_04_BYTE_08-04_New_Chips#page/n261/mode/2up | title=The Enhanced VIC-20 / Part 3: Interfacing an MX-80 Printer | work=BYTE | date=April 1983 | author=Swank, Joel | pages=260}}
+* {{cite news | url=https://archive.org/stream/byte-magazine-1983-05/1983_05_BYTE_08-05_The_Electronic_Office#page/n331/mode/2up | title=The Enhanced VIC-20 / Part 4: Connecting Serial RS-232C Peripherals to the VIC's TTL Port | work=BYTE | date=May 1983 | author=Swank, Joel | pages=331}}
+
+== External links ==
+{{commons category}}
+
+* [https://web.archive.org/web/20090202120102/http://old-computers.com/MUSEUM/computer.asp?c=252 OLD-COMPUTERS.COM online-museum VIC-20 page]
+* [http://cbm.6502.org/etexts-vc-name.en.html VIC-20 Programmers reference guide and more]
+
+{{Commodore International}}
+{{Authority control}}
+
+{{DEFAULTSORT:Commodore Vic-20}}
+[[Category:VIC-20| ]]
+[[Category:6502-based home computers]]
+[[Category:Computer-related introductions in 1980]]
+[[Category:Commodore 8-bit computers]]

@@ -1,0 +1,137 @@
+{
+  "id": "12-era-modern",
+  "title": "折光纪 · 当代可玩展厅 / PRISM ERA",
+  "description": "回响电玩馆（PLAYTIME ATLAS）现代时代（2015–2026）分厅。三件原创可玩展品：《脉冲走廊》四轨节奏反应小游戏（谱面即乐谱、程序化合成、含完全静音的视觉节拍替代模式）、《折光阁》等距 3D 光路折射空间解谜（4 个可完成关卡、撤销/提示/重置、进度与星级存档）、《光环台》桌面端沉浸观景台（诚实标注不支持 VR 头显，附 WebXR 实测按钮）。附 2011–2026 现代游戏史时间轴（24 条，全部来源链接经核验）。全部资产程序化生成，运行期零 CDN、零外链字体，可静态部署于任意子路径。",
+  "entry": "index.html",
+  "buildCommand": "npm install && npm run build",
+  "outputDir": "dist",
+  "status": "completed",
+  "upstream": "12-era-modern",
+  "license": {
+    "code": "原创（MIT 由本批次统一约定；第三方依赖见 LICENSES.md）",
+    "assets": "100% 程序化生成（Canvas 2D / Three.js 几何体与着色器 / WebAudio 合成）",
+    "fonts": [
+      "Space Grotesk Variable (SIL OFL 1.1)",
+      "JetBrains Mono Variable (SIL OFL 1.1)"
+    ]
+  },
+  "sources": [
+    {
+      "title": "时代史料来源（随展厅交付）",
+      "url": "",
+      "note": "展厅内附史料来源链接。"
+    }
+  ],
+  "era": "modern",
+  "eraRange": "2015-2026",
+  "parentExhibit": "playtime-atlas",
+  "port": 4332,
+  "previewCommand": "npm run preview",
+  "devCommand": "npm run dev",
+  "basePath": "./",
+  "router": "hash",
+  "routes": [
+    {
+      "path": "#/",
+      "title": "展厅主站"
+    },
+    {
+      "path": "#/pulse",
+      "title": "脉冲走廊 · 节奏反应"
+    },
+    {
+      "path": "#/atrium",
+      "title": "折光阁 · 空间解谜"
+    },
+    {
+      "path": "#/halo",
+      "title": "光环台 · 桌面观景台"
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "pulse",
+      "title": "脉冲走廊",
+      "titleEn": "PULSE CORRIDOR",
+      "kind": "rhythm-reaction",
+      "route": "#/pulse",
+      "color": "#4FE3D0",
+      "controls": [
+        "D/F/J/K",
+        "方向键",
+        "触屏点按",
+        "Esc 暂停",
+        "R 重开"
+      ],
+      "accessibility": [
+        "视觉节拍（完全静音替代）",
+        "形状标识轨道",
+        "高对比",
+        "减少动效",
+        "判定校准 ±200ms"
+      ]
+    },
+    {
+      "id": "atrium",
+      "title": "折光阁",
+      "titleEn": "PRISM ATRIUM",
+      "kind": "spatial-puzzle",
+      "route": "#/atrium",
+      "color": "#FFC46B",
+      "levels": 4,
+      "controls": [
+        "WASD/方向键移动",
+        "点击或 E 旋转",
+        "Tab 切换目标",
+        "拖拽转视角",
+        "滚轮缩放"
+      ],
+      "features": [
+        "撤销",
+        "提示",
+        "重置",
+        "进度/星级/最佳用时存档"
+      ]
+    },
+    {
+      "id": "halo",
+      "title": "光环台",
+      "titleEn": "HALO DECK",
+      "kind": "desktop-immersive-demo",
+      "route": "#/halo",
+      "color": "#9D7BFF",
+      "controls": [
+        "拖拽环视",
+        "滚轮变焦",
+        "WASD 移动"
+      ],
+      "deviceSupport": {
+        "vrHeadset": false,
+        "webxrSession": false,
+        "stereoRendering": false,
+        "handTracking": false,
+        "statement": "桌面端交互演示，未接入 WebXR，不支持 VR 头显；页面提供 navigator.xr 实测按钮。"
+      }
+    }
+  ],
+  "sourceCount": 24,
+  "sourceLinks": 26,
+  "sourceVerifiedAt": "2026-10-21",
+  "offline": true,
+  "externalRuntimeRequests": 0,
+  "deliverables": {
+    "readme": "README.md",
+    "task": "TASK.md",
+    "status": "STATUS.md",
+    "sources": "SOURCES.md",
+    "licenses": "LICENSES.md",
+    "qa": "QA.md",
+    "screenshots": "screenshots/",
+    "handoff": "handoff/",
+    "source": "src/"
+  },
+  "checks": {
+    "levelSolver": "node scripts/test-levels.mjs",
+    "browserQa": "49 项自动断言（Chrome 实测，产物经 Pages 子路径复测），0 控制台错误，0 失败请求"
+  }
+}

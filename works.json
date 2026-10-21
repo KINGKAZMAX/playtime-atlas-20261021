@@ -7,347 +7,667 @@
     "repo": "playtime-atlas-20261021",
     "batch": "flash-showcase-20261021",
     "updated": "2026-10-21",
-    "note": "本清单是作品大厅与构建流程的唯一事实源。entry/outputDir 均为相对仓库根的路径，线上通过 https://<user>.github.io/<repo>/ 访问。"
+    "note": "本清单是作品大厅与构建流程的唯一事实源。entry/outputDir 均为相对仓库根的路径，线上通过 https://<user>.github.io/<repo>/ 访问。",
+    "caveat": "00-research 的 TOP3 档案是**研究阶段的候选改编规格**（NIMBUS·7 / TIDAL DRIFT / HELIOS SPECIMEN），实际交付的作品名与形态以各作品自己的 README 与本清单为准；两者不是同一批东西，站点不声称“按 TOP3 复刻”。"
   },
   "sections": [
-    { "id": "standalone", "label": "独立作品", "labelEn": "STANDALONE", "desc": "单件完整作品，可独立游玩或操作。" },
-    { "id": "museum", "label": "博物馆主站", "labelEn": "MUSEUM", "desc": "回响电玩馆主站与原创美术资产包。" },
-    { "id": "era", "label": "年代展厅", "labelEn": "ERA HALLS", "desc": "七个时代的独立可玩展厅，代表性选样而非编年全集。" },
-    { "id": "archive", "label": "来源索引", "labelEn": "ARCHIVE", "desc": "公开案例核验记录与博物馆策展资料。" },
-    { "id": "qa", "label": "验收报告", "labelEn": "QA", "desc": "全作品实机验收与原创差异审计。" }
+    {
+      "id": "standalone",
+      "label": "独立作品",
+      "labelEn": "STANDALONE",
+      "desc": "单件完整作品，可独立游玩或操作。"
+    },
+    {
+      "id": "museum",
+      "label": "博物馆主站",
+      "labelEn": "MUSEUM",
+      "desc": "回响电玩馆主站与原创美术资产包。"
+    },
+    {
+      "id": "era",
+      "label": "年代展厅",
+      "labelEn": "ERA HALLS",
+      "desc": "七个时代的独立可玩展厅，代表性选样而非编年全集。"
+    },
+    {
+      "id": "archive",
+      "label": "来源索引",
+      "labelEn": "ARCHIVE",
+      "desc": "公开案例核验记录与博物馆策展资料。"
+    },
+    {
+      "id": "qa",
+      "label": "验收报告",
+      "labelEn": "QA",
+      "desc": "全作品实机验收与原创差异审计。"
+    }
   ],
   "works": [
     {
-      "id": "01-tiny-pocket",
-      "title": "口袋终端",
-      "subtitle": "TINY//POCKET",
-      "description": "复刻公开案例「TINY//POCKET 掌机新品落地页」：奶油底与四色换肤系统、纯 CSS 绘制的掌机主机、屏幕内可玩的迷你游戏、INSERT COIN 跑马灯与四卡规格区。视觉与文案为独立重新实现。",
-      "entry": "works/01-tiny-pocket/index.html",
+      "id": "01-chroma-s1",
+      "title": "千色仪",
+      "subtitle": "CHROMA S1",
+      "description": "把颜色量出来的网页作品：奶油底与四色换肤、纯 CSS 绘制的掌机机身、屏幕内可玩的迷你游戏、跑马灯与四卡规格区。视觉、文案与规则为独立重新设计。",
+      "entry": "works/01-chroma-s1/index.html",
       "buildCommand": "npm run build",
-      "outputDir": "docs/works/01-tiny-pocket",
-      "status": "pending",
-      "statusNote": "上游 01-web 目录当前为空，尚未产出可部署包。",
-      "playable": false,
+      "outputDir": "docs/works/01-chroma-s1",
+      "status": "ready",
+      "playable": true,
       "section": "standalone",
       "era": "2020s",
       "kind": "网页 / 落地页",
-      "tags": ["CSS 硬件渲染", "换肤系统", "内嵌小游戏", "零外部请求"],
-      "upstream": "01-web",
-      "build": { "type": "npm", "appDir": "apps/01-tiny-pocket" },
-      "cover": "assets/covers/01-tiny-pocket.svg",
-      "controls": ["方向键移动", "Enter 确认", "R 重开"],
-      "license": { "code": "MIT", "assets": "纯 CSS / 内联 SVG / 系统字体栈，零第三方素材" },
-      "sources": [
-        { "title": "原案例：Nuttapong \"nutlope\" 的掌机落地页", "url": "https://x.com/nutlope/status/2112238098147135880", "note": "2026-10-19 发布，观测于 2026-10-21：1416 赞 / 84 回复。作者未公开源码。" }
+      "tags": [
+        "CSS 硬件渲染",
+        "换肤系统",
+        "内嵌小游戏",
+        "零外部请求"
       ],
-      "differences": "重新设计配色变量体系、掌机造型、文案排版与迷你游戏规则；不复制作者代码。"
+      "upstream": "01-web",
+      "build": {
+        "type": "npm",
+        "appDir": "apps/01-chroma-s1"
+      },
+      "cover": "assets/covers/01-chroma-s1.svg",
+      "controls": [
+        "方向键移动",
+        "Enter 确认",
+        "R 重开"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "纯 CSS / 内联 SVG / 系统字体栈，零第三方素材"
+      },
+      "sources": [
+        {
+          "title": "机制参考：公开案例的掌机落地页",
+          "url": "https://x.com/nutlope/status/2112238098147135880",
+          "note": "2026-10-19 发布，观测于 2026-10-21：1416 赞 / 84 回复。作者未公开源码。实际交付物《千色仪 CHROMA S1》为原创重新设计，不等同于该案例，也不等同于研究阶段的 TOP3 候选规格。"
+        }
+      ],
+      "differences": "重新设计配色变量体系、掌机造型、文案排版与迷你游戏规则；不复制作者代码，不采用 TOP3 候选命名。"
     },
     {
-      "id": "mech-sandworm",
-      "title": "机械沙虫 1312M",
-      "subtitle": "MECH-SANDWORM 1312M",
-      "description": "程序化生成的全长 1312 米机械沙虫：真实可分解几何、纵剖与头截面技术图、参数化重建、X 光与爆炸检视，并可导出标准 GLB。所有几何与贴图在运行时由代码生成。",
-      "entry": "works/mech-sandworm/index.html",
+      "id": "02-abyss-salvager",
+      "title": "渊甲拾遗者",
+      "subtitle": "AC-VII · ABYSS-CARAPACE SALVAGER",
+      "description": "程序化生成的全长机械甲壳生物：可分解检视、纵剖与头截面技术图、参数化重建、X 光与爆炸视图，并可导出标准 GLB。几何与贴图在运行时由代码生成。",
+      "entry": "works/02-abyss-salvager/index.html",
       "buildCommand": "npm run build",
-      "outputDir": "docs/works/mech-sandworm",
+      "outputDir": "docs/works/02-abyss-salvager",
       "status": "ready",
       "playable": true,
       "section": "standalone",
       "era": "2020s",
       "kind": "3D 交互模型查看器",
-      "tags": ["Three.js", "程序化几何", "参数化重建", "GLB 导出", "剖切与 X 光"],
-      "upstream": "02-model",
-      "build": { "type": "npm", "appDir": "apps/mech-sandworm" },
-      "cover": "assets/covers/mech-sandworm.svg",
-      "controls": ["左键拖拽 轨道旋转", "滚轮 缩放", "机位栏切换预设视角", "参数面板实时重建", "导出 GLB 下载模型"],
-      "license": { "code": "MIT", "assets": "几何、Canvas 纹理、环境与 UI 全部程序化生成，零第三方模型与贴图" },
-      "sources": [
-        { "title": "MiniMax M3.1 Flash 社区流传的「Dune 机械沙虫」3D 案例", "url": "", "note": "原帖精确 URL 尚未由 00-research 锁定；本条出处待补，不作已核验陈述。" }
+      "tags": [
+        "Three.js",
+        "程序化几何",
+        "参数化重建",
+        "GLB 导出",
+        "剖切与 X 光"
       ],
-      "differences": "重新设计机体分节比例、驱动齿轮、尾部刃片与参数面板；沙虫造型、命名与配色为原创演绎，非逐帧复制。"
+      "upstream": "02-model",
+      "build": {
+        "type": "npm",
+        "appDir": "apps/02-abyss-salvager"
+      },
+      "cover": "assets/covers/02-abyss-salvager.svg",
+      "controls": [
+        "左键拖拽 轨道旋转",
+        "滚轮 缩放",
+        "机位栏切换预设视角",
+        "参数面板实时重建",
+        "导出 GLB 下载模型"
+      ],
+      "artifacts": [
+        {
+          "label": "导出的 GLB 模型（9.1 MB）",
+          "path": "works/02-abyss-salvager/models/abyss-salvager-ac-vii.glb"
+        }
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "几何、Canvas 贴图、环境与 UI 全部程序化生成，零第三方模型与贴图"
+      },
+      "sources": [
+        {
+          "title": "机制参考：MiniMax M3.1 Flash 社区流传的 3D 建模案例",
+          "url": "",
+          "note": "原帖精确 URL 尚未由 00-research 锁定；本条出处待补，不作已核验陈述。实际作品《渊甲拾遗者 AC-VII》为原创重新设计。"
+        }
+      ],
+      "differences": "重新设计机体分节比例、驱动结构、尾部刃片与参数面板；命名为原创演绎，非逐帧复制。"
     },
     {
-      "id": "03-monstera-study",
-      "title": "龟背竹观察室",
-      "subtitle": "MONSTERA STUDY",
-      "description": "复刻公开案例「MONSTERA STUDY 3D 模型查看器」：程序化龟背竹与陶土花盆、影棚背景、10 键控制条、五向视角预设、线框与自转、底栏三段式物种信息。",
-      "entry": "works/03-monstera-study/index.html",
+      "id": "03-interaction",
+      "title": "织造车间调度台",
+      "subtitle": "LOOMDECK",
+      "description": "原创改编的浏览器端实时织造调度台：经线排布、梭子调度、开口与张力控制，附实时统计与可保存的排布方案。",
+      "entry": "works/03-interaction/index.html",
       "buildCommand": "npm run build",
-      "outputDir": "docs/works/03-monstera-study",
-      "status": "pending",
-      "statusNote": "上游 03-interaction 目录当前为空，尚未产出可部署包。",
-      "playable": false,
+      "outputDir": "docs/works/03-interaction",
+      "status": "ready",
+      "statusNote": "",
+      "playable": true,
       "section": "standalone",
       "era": "2020s",
-      "kind": "3D 交互查看器",
-      "tags": ["Three.js", "程序化植物", "视角预设", "线框 / 自转"],
-      "upstream": "03-interaction",
-      "build": { "type": "npm", "appDir": "apps/03-monstera-study" },
-      "cover": "assets/covers/03-monstera-study.svg",
-      "controls": ["拖拽轨道 / 滚轮缩放", "10 键控制条", "快捷键 L / R 侧视"],
-      "license": { "code": "MIT", "assets": "程序化几何与纯色材质，无第三方植物模型" },
-      "sources": [
-        { "title": "原案例：@ItsmeAjayKV 的 3D 花盆查看器", "url": "https://x.com/ItsmeAjayKV/status/2112111033359933516", "note": "2026-10-19 发布，观测于 2026-10-21：184 赞 / 4 回复。作者未公开源码。" }
+      "kind": "交互工具 / 调度台",
+      "tags": [
+        "实时调度",
+        "张力与开口",
+        "方案保存",
+        "键盘与指针"
       ],
-      "differences": "重新设计叶片轮廓、影棚布光、顶栏信息架构与底栏文案；不复用原帖任何素材。"
+      "upstream": "03-interaction",
+      "build": {
+        "type": "npm",
+        "appDir": "apps/03-interaction"
+      },
+      "cover": "assets/covers/03-interaction.svg",
+      "controls": [
+        "拖拽梭子与导轨",
+        "数字键切换机台",
+        "保存 / 读取排布方案"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "程序化几何与纯色材质，无第三方植物或器物模型"
+      },
+      "sources": [
+        {
+          "title": "原创作品（无复刻来源）",
+          "url": "",
+          "note": "为「交互界面」维度独立设计的原创作品。"
+        }
+      ],
+      "differences": "完全原创：调度模型、界面结构、音效与配色均为本批自研。"
     },
     {
-      "id": "deep-space-drifter",
-      "title": "深空漫游",
-      "subtitle": "DEEP SPACE DRIFTER",
+      "id": "04-frostgap-voyager",
+      "title": "霜隙远航",
+      "subtitle": "FROSTGAP VOYAGER",
       "description": "第一人称 6 自由度飞船驾驶：驾驶舱舷窗与仪表台、星图跃迁、天体扫描、停靠补给与任务链，全部天体与纹理程序化生成，进度写入本地存储。",
-      "entry": "works/deep-space-drifter/index.html",
+      "entry": "works/04-frostgap-voyager/index.html",
       "buildCommand": "npm run build",
-      "outputDir": "docs/works/deep-space-drifter",
+      "outputDir": "docs/works/04-frostgap-voyager",
       "status": "ready",
       "playable": true,
       "section": "standalone",
       "era": "2020s",
       "kind": "科幻驾驶模拟",
-      "tags": ["Three.js", "6DOF 飞行", "程序化天体", "星图跃迁", "WebAudio", "本地存档"],
-      "upstream": "04-spaceflight",
-      "build": { "type": "npm", "appDir": "apps/deep-space-drifter" },
-      "cover": "assets/covers/deep-space-drifter.svg",
-      "controls": ["W A S D 推进", "Space / Ctrl 升降", "Q E 滚转", "Shift 加力", "X 刹车", "F 扫描", "M 星图", "R 停靠", "V 视角", "Esc 暂停"],
-      "license": { "code": "MIT", "assets": "行星、环带、星云、贴图与音效全部由代码实时合成，无外部媒体文件" },
-      "sources": [
-        { "title": "原创作品（无复刻来源）", "url": "", "note": "机制参考 1970—1990 年代太空模拟与雷达导航界面的一般范式，不复制任何商业游戏素材。" }
+      "tags": [
+        "Three.js",
+        "6DOF 飞行",
+        "程序化天体",
+        "星图跃迁",
+        "WebAudio",
+        "本地存档"
       ],
-      "differences": "完全原创：星图分区、扫描与任务链规则、驾驶舱造型、音频合成与 HUD 布局均为本批自研。"
+      "upstream": "04-spaceflight",
+      "build": {
+        "type": "npm",
+        "appDir": "apps/04-frostgap-voyager"
+      },
+      "cover": "assets/covers/04-frostgap-voyager.svg",
+      "controls": [
+        "W A S D 推进",
+        "Space / Ctrl 升降",
+        "Q E 滚转",
+        "Shift 加力",
+        "X 刹车",
+        "F 扫描",
+        "M 星图",
+        "R 停靠",
+        "V 视角",
+        "Esc 暂停"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "行星、环带、星云、贴图与音效全部由代码实时合成，无外部媒体文件"
+      },
+      "sources": [
+        {
+          "title": "原创作品（无复刻来源）",
+          "url": "",
+          "note": "机制参考 1970—1990 年代太空模拟与雷达导航界面的一般范式，不复制任何商业游戏素材。"
+        }
+      ],
+      "differences": "完全原创：星图分区、扫描与任务链规则、驾驶舱造型、音频合成与 HUD 布局均为本批自研。",
+      "notes": "部署副本应用了一处上游缺陷修复（见 scripts/patches.mjs）：makeRingTexture() 缺少 const data = img.data;，导致启动即抛 ReferenceError。上游 04-spaceflight 尚未修复。"
     },
     {
-      "id": "museum-main",
+      "id": "06-museum-main",
       "title": "回响电玩馆",
       "subtitle": "PLAYTIME ATLAS",
-      "description": "博物馆主站：时间长廊、七个年代展厅、硬件与作品展柜、搜索筛选、收藏、展品详情与来源、可玩入口，并提供 2D 无障碍目录视图。",
-      "entry": "works/museum-main/index.html",
+      "description": "博物馆主站：十道年代门沿时间长廊排开，含检索筛选、收藏、展品来源与可玩展厅，年代展厅内嵌各时代的独立小游戏。",
+      "entry": "works/06-museum-main/index.html",
       "buildCommand": "npm run build",
-      "outputDir": "docs/works/museum-main",
-      "status": "pending",
-      "statusNote": "上游 06-museum-core 尚未产出；其依赖 05 目录与 07 美术包，均在产出中。",
-      "playable": false,
+      "outputDir": "docs/works/06-museum-main",
+      "status": "ready",
+      "playable": true,
       "section": "museum",
       "era": "1950s—2020s",
       "kind": "可漫游博物馆",
-      "tags": ["时间长廊", "年代展厅", "收藏系统", "无障碍目录", "来源标注"],
+      "tags": [
+        "时间长廊",
+        "年代展厅",
+        "收藏系统",
+        "展品来源",
+        "内嵌可玩"
+      ],
       "upstream": "06-museum-core",
-      "build": { "type": "npm", "appDir": "apps/museum-main" },
-      "cover": "assets/covers/museum-main.svg",
-      "controls": ["滚轮 / 拖拽漫游", "点击展柜查看详情", "键盘 Tab 与方向键浏览"],
-      "license": { "code": "MIT", "assets": "展品图像为程序化抽象图形，不使用任何商业游戏截帧或品牌 logo" },
+      "build": {
+        "type": "npm",
+        "appDir": "apps/06-museum-main"
+      },
+      "cover": "assets/covers/06-museum-main.svg",
+      "controls": [
+        "滚轮 / 拖拽漫游",
+        "点击展柜查看详情",
+        "键盘 Tab 与方向键浏览"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "展品图像为程序化抽象图形，不使用任何商业游戏截帧或品牌 logo"
+      },
       "sources": [
-        { "title": "策展底稿：05 联网策展目录（生成中）", "url": "", "note": "目录项逐条附来源 URL；代表性选样，不宣称穷尽全时代。" }
+        {
+          "title": "策展底稿：05 联网策展目录",
+          "url": "",
+          "note": "目录项逐条附来源 URL；代表性选样，不宣称穷尽全时代。"
+        }
       ],
       "differences": "原创建筑形态、配色与字体；参考既有游戏博物馆的展陈机制，不复制其品牌视觉与版面。"
     },
     {
-      "id": "museum-art",
-      "title": "美术资产包预览",
-      "subtitle": "ART PACK PREVIEW",
+      "id": "07-museum-art",
+      "title": "美术资产包",
+      "subtitle": "ART PACK",
       "description": "博物馆原创美术包的可浏览预览：深墨蓝 + 暖纸白 + 信号橙视觉方案、自托管许可字体、图标、年代海报与封面、展柜以及跨时代硬件简化模型。",
-      "entry": "works/museum-art/index.html",
+      "entry": "works/07-museum-art/index.html",
       "buildCommand": "npm run build",
-      "outputDir": "docs/works/museum-art",
-      "status": "pending",
-      "statusNote": "上游 07-museum-art 正在生成资产（scripts 已就位，产物尚未完成）。",
+      "outputDir": "docs/works/07-museum-art",
+      "status": "ready",
+      "statusNote": "",
       "playable": false,
       "section": "museum",
       "era": "1950s—2020s",
       "kind": "资产包预览",
-      "tags": ["设计令牌", "自托管字体", "SVG 图标", "年代海报", "GLB 硬件模型"],
+      "tags": [
+        "设计令牌",
+        "自托管字体",
+        "SVG 图标",
+        "年代海报",
+        "GLB 硬件模型"
+      ],
       "upstream": "07-museum-art",
-      "build": { "type": "npm", "appDir": "apps/museum-art" },
-      "cover": "assets/covers/museum-art.svg",
-      "controls": ["分类筛选", "点击资产查看大图", "下载 SVG / GLB"],
-      "license": { "code": "MIT", "assets": "全部由脚本程序化生成，字体为可再分发的开源字体子集" },
+      "build": {
+        "type": "npm",
+        "appDir": "apps/07-museum-art"
+      },
+      "cover": "assets/covers/07-museum-art.svg",
+      "controls": [
+        "分类筛选",
+        "点击资产查看大图",
+        "下载 SVG / GLB"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "全部由脚本程序化生成，字体为可再分发的开源字体子集"
+      },
       "sources": [
-        { "title": "原创资产，无外部素材来源", "url": "", "note": "硬件外形为跨时代通用造型的简化再创作，无品牌 logo 与商标字体。" }
+        {
+          "title": "原创资产，无外部素材来源",
+          "url": "",
+          "note": "硬件外形为跨时代通用造型的简化再创作，无品牌 logo 与商标字体。"
+        }
       ],
       "differences": "全部资产重新绘制与建模，仅借鉴“器物陈列”的展陈思路。"
     },
     {
-      "id": "era-origins",
+      "id": "08-era-origins",
       "title": "光点年代",
-      "subtitle": "ERAS · 1950—1970s",
+      "subtitle": "LUMEN ERA · 1950s—1970s",
       "description": "早期电子实验与街机机制展厅：双人 / AI 光点球与轨道引力对决，含开始、暂停、重开、计分、难度与触屏支持。",
-      "entry": "works/era-origins/index.html",
+      "entry": "works/08-era-origins/index.html",
       "buildCommand": "npm run build",
-      "outputDir": "docs/works/era-origins",
-      "status": "pending",
-      "statusNote": "上游 08-era-origins 尚未产出可部署包。",
-      "playable": false,
+      "outputDir": "docs/works/08-era-origins",
+      "status": "ready",
+      "playable": true,
       "section": "era",
       "era": "1950s—1970s",
       "kind": "年代可玩展厅",
-      "tags": ["光点球", "轨道引力", "双人对战", "触屏"],
+      "tags": [
+        "光点球",
+        "轨道引力",
+        "双人对战",
+        "触屏"
+      ],
       "upstream": "08-era-origins",
-      "build": { "type": "npm", "appDir": "apps/era-origins" },
-      "cover": "assets/covers/era-origins.svg",
-      "controls": ["方向键 / WASD 移动", "空格发球", "触屏拖拽"],
-      "license": { "code": "MIT", "assets": "几何图形与音效代码合成，零外部素材" },
-      "sources": [{ "title": "时代史料来源（随展厅交付）", "url": "", "note": "每个展厅附史料来源链接。" }],
+      "build": {
+        "type": "npm",
+        "appDir": "apps/08-era-origins"
+      },
+      "cover": "assets/covers/08-era-origins.svg",
+      "controls": [
+        "方向键 / WASD 移动",
+        "空格发球",
+        "触屏拖拽"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "几何图形与音效代码合成，零外部素材"
+      },
+      "sources": [
+        {
+          "title": "时代史料来源（随展厅交付）",
+          "url": "",
+          "note": "展厅内附史料来源链接。"
+        }
+      ],
       "differences": "原创名称、配色、规则与音效；机制沿用早期电子实验的通用形态，不复刻任何商业游戏。"
     },
     {
-      "id": "era-arcade",
+      "id": "09-era-arcade",
       "title": "霓虹街廊",
-      "subtitle": "ERAS · 1980s",
+      "subtitle": "NEON CORRIDOR · 1980s",
       "description": "街机时代展厅：晶格迷宫追逐与流星编队射击，像素美术与可关闭的 CRT 效果，键盘与触控双支持。",
-      "entry": "works/era-arcade/index.html",
+      "entry": "works/09-era-arcade/index.html",
       "buildCommand": "npm run build",
-      "outputDir": "docs/works/era-arcade",
-      "status": "pending",
-      "statusNote": "上游 09-era-arcade 尚未产出可部署包。",
-      "playable": false,
+      "outputDir": "docs/works/09-era-arcade",
+      "status": "ready",
+      "playable": true,
       "section": "era",
       "era": "1980s",
       "kind": "年代可玩展厅",
-      "tags": ["晶格迷宫", "编队射击", "像素美术", "CRT 效果"],
+      "tags": [
+        "晶格迷宫",
+        "编队射击",
+        "像素美术",
+        "CRT 效果"
+      ],
       "upstream": "09-era-arcade",
-      "build": { "type": "npm", "appDir": "apps/era-arcade" },
-      "cover": "assets/covers/era-arcade.svg",
-      "controls": ["方向键移动", "空格射击", "触屏虚拟摇杆"],
-      "license": { "code": "MIT", "assets": "程序化像素图与合成音效" },
-      "sources": [{ "title": "时代史料来源（随展厅交付）", "url": "", "note": "每个展厅附史料来源链接。" }],
+      "build": {
+        "type": "npm",
+        "appDir": "apps/09-era-arcade"
+      },
+      "cover": "assets/covers/09-era-arcade.svg",
+      "controls": [
+        "方向键移动",
+        "空格射击",
+        "触屏虚拟摇杆"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "程序化像素图与合成音效"
+      },
+      "sources": [
+        {
+          "title": "时代史料来源（随展厅交付）",
+          "url": "",
+          "note": "展厅内附史料来源链接。"
+        }
+      ],
       "differences": "原创关卡、敌机、配色与音效；不逐帧复制任何商业街机游戏。"
     },
     {
-      "id": "era-console",
+      "id": "10-era-console",
       "title": "色块远征",
-      "subtitle": "ERAS · 1990s",
-      "description": "16 位与早期 3D 时代展厅：可通关的平台冒险与等距探索互动场景，含关卡、收集物、检查点与胜负重开。",
-      "entry": "works/era-console/index.html",
+      "subtitle": "CHROMA VOYAGE · 1990s",
+      "description": "16 位与早期 3D 时代展厅：平台冒险《棱晶峡谷》与等距探索场景《等距测绘所》，美术与音乐程序化生成。",
+      "entry": "works/10-era-console/index.html",
       "buildCommand": "npm run build",
-      "outputDir": "docs/works/era-console",
-      "status": "pending",
-      "statusNote": "上游 10-era-console 需求已拆解，实现尚未完成。",
-      "playable": false,
+      "outputDir": "docs/works/10-era-console",
+      "status": "ready",
+      "playable": true,
       "section": "era",
       "era": "1990s",
       "kind": "年代可玩展厅",
-      "tags": ["平台冒险", "等距探索", "检查点", "收集物"],
+      "tags": [
+        "平台冒险",
+        "等距探索",
+        "检查点",
+        "收集物"
+      ],
       "upstream": "10-era-console",
-      "build": { "type": "npm", "appDir": "apps/era-console" },
-      "cover": "assets/covers/era-console.svg",
-      "controls": ["方向键移动", "空格跳跃", "触屏按钮"],
-      "license": { "code": "MIT", "assets": "原创图形与程序化音乐" },
-      "sources": [{ "title": "时代史料来源（随展厅交付）", "url": "", "note": "每个展厅附史料来源链接。" }],
+      "build": {
+        "type": "npm",
+        "appDir": "apps/10-era-console"
+      },
+      "cover": "assets/covers/10-era-console.svg",
+      "controls": [
+        "方向键移动",
+        "空格跳跃",
+        "触屏按钮"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "原创图形与程序化音乐"
+      },
+      "sources": [
+        {
+          "title": "时代史料来源（随展厅交付）",
+          "url": "",
+          "note": "展厅内附史料来源链接。"
+        }
+      ],
       "differences": "原创角色、关卡、命名与配色；不复制商业平台游戏素材。"
     },
     {
-      "id": "era-online",
+      "id": "11-era-online",
       "title": "联机曙光",
-      "subtitle": "ERAS · 2000s",
+      "subtitle": "LINK DAWN · 2000s",
       "description": "2000 年代 PC / 掌机 / 网络游戏展厅：可玩的微型策略防守游戏与掌机风探索区域，AI 对手明确标注。",
-      "entry": "works/era-online/index.html",
+      "entry": "works/11-era-online/index.html",
       "buildCommand": "npm run build",
-      "outputDir": "docs/works/era-online",
-      "status": "pending",
-      "statusNote": "上游 11-era-online 尚未产出可部署包。",
-      "playable": false,
+      "outputDir": "docs/works/11-era-online",
+      "status": "ready",
+      "playable": true,
       "section": "era",
       "era": "2000s",
       "kind": "年代可玩展厅",
-      "tags": ["策略防守", "AI 对手", "升级资源", "本地存档"],
+      "tags": [
+        "策略防守",
+        "AI 对手",
+        "升级资源",
+        "本地存档"
+      ],
       "upstream": "11-era-online",
-      "build": { "type": "npm", "appDir": "apps/era-online" },
-      "cover": "assets/covers/era-online.svg",
-      "controls": ["鼠标点击操作", "数字键选择单位", "触屏按钮"],
-      "license": { "code": "MIT", "assets": "原创模型、UI 与命名" },
-      "sources": [{ "title": "时代史料来源（随展厅交付）", "url": "", "note": "每个展厅附史料来源链接。" }],
+      "build": {
+        "type": "npm",
+        "appDir": "apps/11-era-online"
+      },
+      "cover": "assets/covers/11-era-online.svg",
+      "controls": [
+        "鼠标点击操作",
+        "数字键选择单位",
+        "触屏按钮"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "原创模型、UI 与命名"
+      },
+      "sources": [
+        {
+          "title": "时代史料来源（随展厅交付）",
+          "url": "",
+          "note": "展厅内附史料来源链接。"
+        }
+      ],
       "differences": "原创规则与资源体系；AI 对手明确标注为本地算法，不伪称真实多人在线。"
     },
     {
-      "id": "era-modern",
-      "title": "万象游乐",
-      "subtitle": "ERAS · 2010s—NOW",
-      "description": "现代独立 / 移动 / VR 时代展厅：节奏反应小游戏与空间解谜试玩，支持静音视觉替代与进度保存。",
-      "entry": "works/era-modern/index.html",
+      "id": "12-era-modern",
+      "title": "折光纪",
+      "subtitle": "PRISM ERA · 2010s—NOW",
+      "description": "现代独立 / 移动 / VR 时代展厅：节奏反应、空间解谜与桌面端沉浸观景台，支持静音视觉替代与进度保存。",
+      "entry": "works/12-era-modern/index.html",
       "buildCommand": "npm run build",
-      "outputDir": "docs/works/era-modern",
-      "status": "pending",
-      "statusNote": "上游 12-era-modern 尚未产出可部署包。",
-      "playable": false,
+      "outputDir": "docs/works/12-era-modern",
+      "status": "ready",
+      "playable": true,
       "section": "era",
       "era": "2010s—2020s",
       "kind": "年代可玩展厅",
-      "tags": ["节奏反应", "空间解谜", "WebAudio", "进度保存"],
+      "tags": [
+        "节奏反应",
+        "空间解谜",
+        "WebAudio",
+        "进度保存"
+      ],
       "upstream": "12-era-modern",
-      "build": { "type": "npm", "appDir": "apps/era-modern" },
-      "cover": "assets/covers/era-modern.svg",
-      "controls": ["方向键 / 触屏击打", "E 键交互", "R 重置"],
-      "license": { "code": "MIT", "assets": "原创视觉与合成音乐" },
-      "sources": [{ "title": "时代史料来源（随展厅交付）", "url": "", "note": "每个展厅附史料来源链接。" }],
+      "build": {
+        "type": "npm",
+        "appDir": "apps/12-era-modern"
+      },
+      "cover": "assets/covers/12-era-modern.svg",
+      "controls": [
+        "方向键 / 触屏击打",
+        "E 键交互",
+        "R 重置"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "原创视觉与合成音乐"
+      },
+      "sources": [
+        {
+          "title": "时代史料来源（随展厅交付）",
+          "url": "",
+          "note": "展厅内附史料来源链接。"
+        }
+      ],
       "differences": "原创作品名、文案、音乐与视觉；VR 展项明确为桌面交互演示，不虚称设备支持。"
     },
     {
-      "id": "research-top3",
-      "title": "TOP3 案例核验",
-      "subtitle": "SOURCE DOSSIER",
-      "description": "MiniMax M3.1 Flash 公开案例核验档案：逐条记录原作者、原帖 URL、发布时间、互动量快照、模型归属原文证据、页面结构拆解与复刻红线。",
-      "entry": "research/index.html",
-      "buildCommand": "node scripts/build-research-index.mjs",
-      "outputDir": "docs/research",
+      "id": "00-research-dossier",
+      "title": "公开案例索引",
+      "subtitle": "M3.1 FLASH CASE INDEX",
+      "description": "MiniMax M3.1 Flash 全球公开案例索引：134 条案例、6 平台可核验数据，逐条记录原作者、直达链接、发布时间、模型归属原文证据、平台指标与不可见项；含 TOP3 原创改编规格对照。",
+      "entry": "works/00-research-dossier/index.html",
+      "buildCommand": "静态产物（无构建步骤）",
+      "outputDir": "docs/works/00-research-dossier",
       "status": "ready",
       "playable": false,
       "section": "archive",
       "era": "2026",
-      "kind": "来源核验档案",
-      "tags": ["逐条来源", "互动量快照", "模型归属证据", "素材红线"],
-      "upstream": "00-research",
-      "build": { "type": "page", "appDir": "apps/research-top3" },
-      "cover": "assets/covers/research-top3.svg",
-      "controls": ["按案例折叠展开", "跳转原始来源链接"],
-      "license": { "code": "MIT", "assets": "仅引用公开帖文摘录与自有核验记录，不含原始视频与抓取日志" },
-      "sources": [
-        { "title": "核验方式：X syndication 端点逐条拉取正文 / 作者 / 时间 / 互动量", "url": "https://cdn.syndication.twimg.com/tweet-result", "note": "所有平台指标为 2026-10-21 观测快照，不同平台口径不可横向比较。" }
+      "kind": "来源核验索引",
+      "tags": [
+        "134 条案例",
+        "6 平台数据",
+        "逐条来源",
+        "互动量快照",
+        "模型归属证据"
       ],
-      "differences": "档案为核验记录，非作品复刻；不含任何商业游戏素材。"
+      "upstream": "00-research",
+      "build": {
+        "type": "static",
+        "appDir": "apps/00-research-dossier"
+      },
+      "cover": "assets/covers/00-research-dossier.svg",
+      "controls": [
+        "搜索 / 排序 / 平台筛选",
+        "展开单条案例的证据原文"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "仅引用公开帖文摘录与自有核验记录，不含原始视频与抓取日志"
+      },
+      "sources": [
+        {
+          "title": "核验方式：X syndication 端点逐条拉取正文 / 作者 / 时间 / 互动量",
+          "url": "https://cdn.syndication.twimg.com/tweet-result",
+          "note": "所有平台指标为 2026-10-21 观测快照，不同平台口径不可横向比较。"
+        }
+      ],
+      "differences": "档案为核验记录，非作品复刻；不含任何商业游戏素材。文件内的 TOP3 名单为研究阶段候选规格，实际交付物以各作品自身说明为准。",
+      "notes": "该索引由 00-research 自带，已在页内写明「TOP3 为原创改编规格，非一致复刻」。研究阶段的原始抓取日志与外部参考目录未随站点发布。",
+      "statusNote": ""
     },
     {
-      "id": "museum-catalog",
+      "id": "05-museum-catalog",
       "title": "博物馆策展目录",
       "subtitle": "CATALOG",
       "description": "1950s 实验电子到 2020s VR 与独立游戏的代表硬件与作品目录，逐条附年代、平台、厂商、说明、意义与来源链接，并标注配图许可状态。",
       "entry": "research/catalog.html",
       "buildCommand": "node scripts/build-catalog-page.mjs",
       "outputDir": "docs/research",
-      "status": "pending",
-      "statusNote": "上游 05-museum-research 尚未产出 catalog.json。",
+      "status": "ready",
       "playable": false,
       "section": "archive",
       "era": "1950s—2020s",
       "kind": "策展资料",
-      "tags": ["目录条目", "来源可追溯", "配图许可标注"],
+      "tags": [
+        "目录条目",
+        "来源可追溯",
+        "配图许可标注",
+        "按年代筛选"
+      ],
       "upstream": "05-museum-research",
-      "build": { "type": "page", "appDir": "apps/museum-catalog" },
-      "cover": "assets/covers/museum-catalog.svg",
-      "controls": ["按时代筛选", "按平台筛选", "搜索条目"],
-      "license": { "code": "MIT", "assets": "文本条目与来源链接；配图为程序化抽象图形" },
-      "sources": [{ "title": "来源台账 SOURCES.md（随 05 交付）", "url": "", "note": "每条至少一条可访问来源 URL。" }],
+      "build": {
+        "type": "page",
+        "appDir": "apps/05-museum-catalog"
+      },
+      "cover": "assets/covers/05-museum-catalog.svg",
+      "controls": [
+        "按时代筛选",
+        "按类型筛选",
+        "搜索条目"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "文本条目与来源链接；配图为程序化抽象图形"
+      },
+      "sources": [
+        {
+          "title": "来源台账 SOURCES.md（随 05 交付）",
+          "url": "",
+          "note": "每条至少一条可访问来源 URL。"
+        }
+      ],
       "differences": "资料型交付物，明确为代表性选样，不宣称穷尽任何时代。"
     },
     {
-      "id": "qa-report",
+      "id": "13-qa-report",
       "title": "全作品验收报告",
       "subtitle": "QA MATRIX",
       "description": "对 00—12 全部产物的实机验收：桌面与移动端、开始 / 暂停 / 重置、存档、键盘焦点、控制台错误、资源 404、子路径、模型导出、原创差异与许可审计。",
       "entry": "qa/index.html",
       "buildCommand": "node scripts/build-qa-page.mjs",
       "outputDir": "docs/qa",
-      "status": "pending",
-      "statusNote": "上游 13-qa-curation 尚未产出 QA-MATRIX.md。",
+      "status": "ready",
       "playable": false,
       "section": "qa",
       "era": "2026",
       "kind": "验收报告",
-      "tags": ["实机测试", "问题清单", "差异审计", "许可审计"],
+      "tags": [
+        "实机测试",
+        "问题清单",
+        "差异审计",
+        "许可审计"
+      ],
       "upstream": "13-qa-curation",
-      "build": { "type": "page", "appDir": "apps/qa-report" },
-      "cover": "assets/covers/qa-report.svg",
-      "controls": ["按状态筛选", "按作品筛选", "展开问题详情"],
-      "license": { "code": "MIT", "assets": "自有测试截图与结论" },
-      "sources": [{ "title": "13-qa-curation 实机测试记录", "url": "", "note": "缺失项记为未通过，不记为通过。" }],
+      "build": {
+        "type": "page",
+        "appDir": "apps/13-qa-report"
+      },
+      "cover": "assets/covers/13-qa-report.svg",
+      "controls": [
+        "按状态筛选",
+        "按作品筛选",
+        "展开问题详情"
+      ],
+      "license": {
+        "code": "MIT",
+        "assets": "自有测试截图与结论"
+      },
+      "sources": [
+        {
+          "title": "13-qa-curation 实机测试记录",
+          "url": "",
+          "note": "缺失项记为未通过，不记为通过。"
+        }
+      ],
       "differences": "审计报告，不修改实现者文件。"
     }
   ]

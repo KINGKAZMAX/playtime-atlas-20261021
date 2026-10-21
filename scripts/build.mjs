@@ -185,12 +185,40 @@ async function buildWork(work) {
       if (!src) throw new Error('构建后未找到产物目录');
       rmrf(outDir);
       copyDir(src, outDir);
+
+      // 随包模型等大件产物：Vite 不会把 appDir/models 复制进 dist，这里补齐
+      for (const extra of ['models']) {
+        const from = path.join(appDir, extra);
+        if (fs.existsSync(from) && fs.statSync(from).isDirectory()) {
+          const to = path.join(outDir, extra);
+          rmrf(to);
+          copyDir(from, to);
+        }
+      }
     } else if (type === 'static') {
-      const src = fs.existsSync(path.join(appDir, 'public'))
-        ? path.join(appDir, 'public')
-        : appDir;
       rmrf(outDir);
-      copyDir(src, outDir);
+      // 纯静态产物：只发布网页文件，不带 package.json / README 等开发文件
+      const keepDirs = ['data', 'public', 'assets', 'exhibits', 'models', 'fonts'];
+      const keepExts = new Set(['.html', '.css', '.js', '.json', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.glb', '.woff2', '.woff', '.ico', '.map']);
+      for (const e of fs.readdirSync(appDir, { withFileTypes: true })) {
+        const s = path.join(appDir, e.name);
+        try {
+          if (e.isDirectory()) {
+            if (keepDirs.includes(e.name)) copyDir(s, path.join(outDir, e.name));
+          } else if (e.isFile()) {
+            const ext = path.extname(e.name).toLowerCase();
+            if (keepExts.has(ext) && e.name !== 'package.json') {
+              fs.copyFileSync(s, path.join(outDir, e.name));
+            }
+          }
+        } catch (err) {
+          // 上游正在改写文件：源文件可能在这一瞬间被替换或删除，跳过即可
+          warn(`静态复制跳过 ${e.name}：${err.code || err.message}`);
+        }
+      }
+      if (!fs.existsSync(path.join(outDir, 'index.html'))) {
+        throw new Error('静态产物缺少 index.html');
+      }
     } else if (type === 'page') {
       if (!work.buildCommand) throw new Error('缺少 buildCommand');
       const parts = work.buildCommand.trim().split(/\s+/);
@@ -306,9 +334,12 @@ function assembleHall(runtimeWorks, report) {
 async function main() {
   log('仓库根：', ROOT);
   if (!noClean) {
-    // 只清理本次会重建的目录，保留其他内容
+    // 发布根整体重建：所有内容都是生成物，避免残留过期页面
+    rmrf(SITE);
   }
   ensure(SITE);
+  // GitHub Pages 分支式发布：跳过 Jekyll 处理，原样托管
+  fs.writeFileSync(path.join(SITE, '.nojekyll'), '');
   buildCovers();
 
   const targets = only ? works.filter((w) => only.includes(w.id)) : works;

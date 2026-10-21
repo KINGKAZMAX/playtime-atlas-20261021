@@ -1,0 +1,987 @@
+{{Short description|Home video game console by Sony}}
+{{Redirect|PS4}}
+{{good article}}
+{{pp-semi-indef}}
+{{Use mdy dates|date=November 2019}}
+{{Infobox information appliance
+| name = PlayStation 4
+| logo = [[File:PlayStation 4 logo and wordmark.svg|frameless|class=skin-invert]]
+| image = PS4 consoles montage.jpg
+| caption = {{plainlist|
+* '''Top:''' PlayStation 4 Pro (2016)
+* '''Center:''' Original PlayStation 4 (2013)
+* '''Bottom:''' PlayStation 4 Slim (2016)}}
+| aka = PS4
+| developer = [[Sony Interactive Entertainment]]
+| manufacturer = [[Sony Electronics]], [[Foxconn]]<ref>{{cite web|last=Mishkin|first=Sarah|url=https://www.ft.com/content/ea1cdd4c-4c70-11e3-958f-00144feabdc0 |title=Foxconn profits beat expectations|work=[[Financial Times]]|date=November 13, 2013 |url-access=registration|access-date=November 19, 2013|archive-url=https://web.archive.org/web/20131114230908/http://www.ft.com/cms/s/0/ea1cdd4c-4c70-11e3-958f-00144feabdc0.html|archive-date=November 14, 2013|url-status=live}}</ref>
+| family = [[PlayStation]]
+| type = [[Home video game console]]
+| generation = [[Eighth generation of video game consoles|Eighth]]
+| discontinued = {{vgrelease|JP|March 28, 2024}}<ref>{{Cite web |title=PS4 驚くべきゲームとノンストップのエンタテインメント |url=https://www.playstation.com/ja-jp/ps4/ |archive-url=https://web.archive.org/web/20240328214105/https://www.playstation.com/ja-jp/ps4/ |archive-date=March 28, 2024 |access-date=September 26, 2024 |website=PlayStation}}</ref>{{efn|All models except the 500 GB Slim model were discontinued on January 5, 2021.<ref>{{cite web |last1=Batchelor |first1=James |title=PS4 Pro and most other models discontinued in Japan |url=https://www.gamesindustry.biz/ps4-pro-and-most-other-models-discontinued-in-japan |website=GamesIndustry.biz |date=January 5, 2021 |publisher=Gamer Network Limited |archive-date=December 25, 2022 |archive-url=https://web.archive.org/web/20221225202956/https://www.gamesindustry.biz/ps4-pro-and-most-other-models-discontinued-in-japan |access-date=May 8, 2025}}</ref>}}
+| units_sold = 117 million (As of March 31, 2022)<ref>{{Cite web |title=Business Data & Sales
+|url=https://sonyinteractive.com/en/our-company/business-data-sales/ |website=|language=}}</ref>
+| media = {{Unbulleted list|[[Blu-ray]]|[[Blu-ray 3D]]|[[DVD]]|[[Digital distribution]]}}
+| os = [[PlayStation 4 system software]]
+| storage = 500&nbsp;GB, 1&nbsp;TB or 2&nbsp;TB [[Hard disk drive|HDD]]<ref>{{cite web|title=Introducing the 500 Million Limited Edition PS4 Pro, Commemorating 500 Million Systems Sold|url=https://blog.playstation.com/2018/08/09/introducing-the-500-million-limited-edition-ps4-pro-commemorating-500-million-systems-sold/|website=PlayStation.Blog|publisher=[[Sony Interactive Entertainment]]|last=Lempel|first=Eric|date=August 9, 2018|access-date=July 15, 2020|archive-date=July 16, 2020|archive-url=https://web.archive.org/web/20200716020740/https://blog.playstation.com/2018/08/09/introducing-the-500-million-limited-edition-ps4-pro-commemorating-500-million-systems-sold/|url-status=live}}</ref>
+| display = {{plainlist|
+* '''PS4 & Slim''': [[480p]],  [[720p]],  [[1080i]], [[1080p|1080p]] via [[HDMI 2.0a]]
+* '''Pro''': [[480p]],  [[720p]],  [[1080i]], [[1080p|1080p]] [[4K resolution|4K UHD]] via [[HDMI 2.0b]]
+}}
+| system_on_chip = [[AMD APU]]
+| graphics = {{Unbulleted list
+ | '''PS4 & Slim''': AMD [[Graphics Core Next|GCN]] with 18 CUs @ 800&nbsp;MHz (1.84 [[TFLOPS]])
+ | '''Pro''': AMD GCN with 36 CUs @ 911&nbsp;MHz (4.2 TFLOPS)
+ }}
+| sound = 
+| controllers = [[DualShock 4]], [[PlayStation Move]], [[PlayStation Vita]]
+| camera = [[PlayStation Camera]]
+| connectivity = {{plainlist|
+* '''All models''': [[HDMI]], [[Gigabit Ethernet]]
+* '''PS4''': [[Wi-Fi]] ([[802.11n]]), [[Bluetooth 2.1]], [[USB 3.0]]
+* '''Slim & Pro''': Wi-Fi ([[802.11ac]]), [[Bluetooth#Bluetooth 4.0|Bluetooth 4.0]], [[USB 3.1]]
+}}
+| dimensions = {{plainlist|
+* '''PS4''': {{cvt|2.09|xx|12|xx|10.8|in}}
+* '''Slim''': {{Cvt|1.54|xx|11.3|xx|10.4|in}}
+* '''Pro''': {{cvt|2.17|xx|12.9|xx|11.6|in}}
+}}
+| weight = {{plainlist|
+* '''PS4 (1st gen)''': 2.8 kg (6.2 lbs)
+* '''PS4 (2nd gen)''': 2.5 kg (5.5 lbs)
+* '''Slim''': 2.1 kg (4.6 lbs)
+* '''Pro''': 3.3 kg (7.3 lbs)
+}}
+| top_game = ''[[Grand Theft Auto V]]'' (24.66&nbsp;million) ([[List of best-selling PlayStation 4 video games|list]])
+| compatibility = 
+| predecessor = [[PlayStation 3]]
+| successor = [[PlayStation 5]]
+| related = 
+| website = {{URL|	www.playstation.com/en-us/ps4/|playstation.com/ps4/}}
+| release_date = {{vgrelease|NA|November 15, 2013<ref name=engadget />|PAL|November 29, 2013<ref name=engadget />|JP|February 22, 2014<ref name=eurogamer />}}
+| price = {{Unbulleted list
+   | {{¥|39,980|2014|round=-1|link=yes}}
+   | {{US$|399.99|2013|round=-1|link=yes}}
+   | {{€|399.99|2013|round=-1|link=yes}}
+   }}<!--  Please do not add prices from additional regions as this field should only represent the domestic and the two major global currencies. Any further or detailed information about pricing should go into the History section of the article. -->
+| cpu = AMD [[Jaguar (microarchitecture)|Jaguar]], 8-core @ 1.6&nbsp;GHz (2.13&nbsp;GHz on PS4 Pro)<ref name="ExtremeTechAMDJaguarArchitecture2013">{{cite news |first=Sebastian |last=Anthony |title=Comparison of Xbox One and the Playstation 4 |publisher=[[ExtremeTech]] |url=http://www.extremetech.com/gaming/156273-xbox-720-vs-ps4-vs-pc-how-the-hardware-specs-compare |date=November 22, 2013 |access-date=December 11, 2013 |archive-url=https://web.archive.org/web/20130607052450/http://www.extremetech.com/gaming/156273-xbox-720-vs-ps4-vs-pc-how-the-hardware-specs-compare |archive-date=June 7, 2013}}</ref> <!-- An APU is not a CPU. APU: The CPU (and the GPU) are integrated onto a single die. --><br />Secondary low power processor (for background tasks)<ref name=ifixit/>
+| memory = {{plainlist|
+* '''All models''': 8 GB [[GDDR5]] RAM
+* '''PS4 & Slim''': 256 MB [[DDR3]] RAM (for background tasks)<ref name="ifixit">{{cite web|title=PlayStation 4 iFixit Teardown|url=http://www.ifixit.com/Teardown/PlayStation+4+Teardown/19493|publisher=[[iFixit]]|date=November 15, 2013|access-date=January 17, 2014|archive-date=January 22, 2014|archive-url=https://web.archive.org/web/20140122062740/http://www.ifixit.com/Teardown/PlayStation+4+Teardown/19493|url-status=live}}</ref>
+* '''Pro''': 1 GB DDR3 RAM (for background tasks)
+}}
+| online_services = {{Unbulleted list|[[PlayStation Network]]|[[PlayStation Plus]]}}
+}}
+
+The '''PlayStation 4''' ('''PS4''') is a [[home video game console]] developed by [[Sony Interactive Entertainment]]. Announced as the successor to the [[PlayStation 3]] in February 2013, it was launched on November 15, 2013, in North America, November 29, 2013, in Europe, South America, and Australia, and on February 22, 2014, in Japan. A [[Eighth generation of video game consoles|console of the eighth generation]], it competed with [[Microsoft]]'s [[Xbox One]] and [[Nintendo]]'s [[Wii U]] and [[Nintendo Switch|Switch]].
+
+Moving away from the more complex [[Cell (processor)|Cell microarchitecture]] of its predecessor, the console features an [[AMD APU|APU]] from [[AMD]] built upon the [[x86-64]] architecture, which can theoretically peak at 1.84 [[teraflops]]; AMD stated that it was the "most powerful" APU it had developed to date. The PlayStation 4 places an increased emphasis on social interaction and integration with other devices and services, including the ability to play games off-console on [[PlayStation Vita]] and other supported devices ("[[Remote Play]]"), the ability to [[Screencast|stream]] gameplay online or to friends, with them controlling gameplay remotely ("Share Play"). The console's [[DualShock#DualShock 4|controller]] was also redesigned and improved over the PlayStation 3, with updated buttons and analog sticks, and an integrated [[touchpad]] among other changes. The console also supports [[HDR10]] [[high-dynamic-range video]] and playback of [[4K resolution]] multimedia.
+
+The PlayStation 4 was released to critical acclaim, with critics praising Sony for acknowledging its consumers' needs, embracing [[independent game development]], and for not imposing the restrictive [[digital rights management]] schemes like those originally announced by Microsoft for the Xbox One. Critics and third-party studios, before its launch, also praised the capabilities of the PlayStation 4 in comparison to its competitors. Heightened demand also helped Sony top global console sales. In September 2016, the console was refreshed with a new, smaller revision, popularly referred to as the "'''Slim'''" model, as well as a high-end version called the '''PlayStation 4 Pro''', which features an upgraded GPU and a higher CPU [[clock rate]] to support enhanced performance and 4K resolution in supported games. By October 2019, PS4 had become the second [[List of best-selling game consoles|best-selling PlayStation console]] of all time, behind the [[PlayStation 2]]. Its successor, the [[PlayStation 5]], was released in November 2020.
+
+== History ==
+[[File:The PlayStation 4. (9021900367).jpg|thumb|PlayStation 4 at E3 2013]]
+According to lead architect [[Mark Cerny]], the development of Sony's fourth video game console began as early as 2008.<ref name="PS4 announced - IGN">{{cite news |url=http://www.ign.com/articles/2013/02/20/playstation-4-revealed |title=PlayStation 4 Revealed |last=Goldfarb |first=Andrew |date=February 20, 2013 |work=IGN |publisher=Ziff Davis |access-date=February 21, 2013 |archive-url=https://web.archive.org/web/20130224160504/http://www.ign.com/articles/2013/02/20/playstation-4-revealed |archive-date=February 24, 2013}}</ref><ref name="PS4 Development">{{cite news |url=https://www.eurogamer.net/articles/2013-03-27-ps4-architect-knew-in-2007-that-clearly-we-had-some-issues-with-playstation-3 |title=PS4 architect knew in 2007 that "clearly we had some issues with PlayStation 3" |last=Purchese |first=Robert |date=March 27, 2013 |work=Eurogamer |access-date=October 9, 2018 |archive-url=https://web.archive.org/web/20181010011417/https://www.eurogamer.net/articles/2013-03-27-ps4-architect-knew-in-2007-that-clearly-we-had-some-issues-with-playstation-3 |archive-date=October 10, 2018 |url-status=live}}</ref>
+
+Less than two years earlier, the [[PlayStation 3]] had been launched after months of delays due to issues with production.<ref name="PS3 Launch">{{cite news |url=http://news.bbc.co.uk/1/hi/technology/6135452.stm |title=PlayStation 3 sells out at launch |date=November 11, 2006 |publisher=BBC News |access-date=February 22, 2013 |archive-url=https://web.archive.org/web/20070108173742/http://news.bbc.co.uk/1/hi/technology/6135452.stm |archive-date=January 8, 2007}}</ref> The delay placed Sony almost a year behind Microsoft's [[Xbox 360]], which was already approaching unit sales of 10{{nbsp}}million by the time the PS3 launched.<ref name="PS3 Launch" /> Sony Computer Entertainment Europe CEO Jim Ryan said Sony wanted to avoid repeating the same mistake with PS3's successor.<ref>{{cite news |url=http://www.eurogamer.net/articles/2011-11-23-sony-it-would-be-undesirable-for-ps4-to-launch-significantly-later-than-the-competition |title=Sony: it would be "undesirable" for PS4 to launch significantly later than the competition |last=Minkley |first=Johnny |date=November 23, 2011 |work=Eurogamer |publisher=Eurogamer Network |access-date=February 21, 2013 |archive-url=https://web.archive.org/web/20111125013817/http://www.eurogamer.net/articles/2011-11-23-sony-it-would-be-undesirable-for-ps4-to-launch-significantly-later-than-the-competition |archive-date=November 25, 2011}}</ref>
+
+In designing the system, Sony worked with software developer [[Bungie]], who offered their input on the controller and how to make it better for shooting games.<ref>{{cite news |url=http://www.techradar.com/news/gaming/bungie-and-sony-have-been-in-bed-longer-than-you-think-1254114 |title=Destiny developer Bungie and Sony have been in bed longer than you think |last=Rougeau |first=Michael |date=June 19, 2014 |publisher=Techradar |access-date=June 20, 2014 |archive-url=https://web.archive.org/web/20140620133335/http://www.techradar.com/news/gaming/bungie-and-sony-have-been-in-bed-longer-than-you-think-1254114 |archive-date=June 20, 2014 |url-status=live}}</ref> In 2012, Sony began shipping development kits to game developers, consisting of a modified PC running the AMD Accelerated Processing Unit chipset.<ref name="Dev kit ships">{{cite news |url=http://www.vg247.com/2012/11/01/ps4_details_playstation_4/ |title=PS4: new kits shipping now, AMD A10 used as base |last=Garratt |first=Patrick |date=November 2, 2012 |work=VG247 |access-date=February 22, 2013 |archive-url=https://web.archive.org/web/20121103063726/http://www.vg247.com/2012/11/01/ps4_details_playstation_4/ |archive-date=November 3, 2012}}</ref> These development kits were known as "Orbis".<ref>{{cite news |url=http://www.ign.com/articles/2012/12/11/report-xbox-720-and-ps4-codenames-and-details |title=Report: Xbox 720 And PS4 Codenames And Details |work=IGN |publisher=Ziff Davis |first=Luke |last=Karmali |date=December 11, 2012 |access-date=May 21, 2013 |archive-url=https://web.archive.org/web/20130115164704/http://www.ign.com/articles/2012/12/11/report-xbox-720-and-ps4-codenames-and-details |archive-date=January 15, 2013}}</ref><ref name="PS4 Details and Specifications released">{{cite news |url=https://www.ebloggy.net/2013/02/21/sony-playstation-4-details-and-specifications-released.html |title=PS4 Details and Specifications released |date=February 20, 2013 |work=ebloggy |access-date=February 21, 2013 |archive-date=February 24, 2013 |archive-url=https://web.archive.org/web/20130224050918/http://www.ebloggy.net/2013/02/21/sony-playstation-4-details-and-specifications-released.html |url-status=live }}</ref>
+
+In early 2013, Sony announced that an event known as PlayStation Meeting 2013 would be held in [[New York City]], U.S., on February 20, 2013, to cover the "future of PlayStation".<ref name="PS4 meeting">{{cite news |url=https://www.theguardian.com/technology/2013/feb/01/sony-playstation-4-release-consoles-wiiu-xbox |title=PlayStation 4 rumours fly as Sony invitations hint at release |last=Arthur |first=Charles |date=February 1, 2013 |newspaper=The Guardian |access-date=September 14, 2013 |archive-url=https://web.archive.org/web/20131211023948/http://www.theguardian.com/technology/2013/feb/01/sony-playstation-4-release-consoles-wiiu-xbox |archive-date=December 11, 2013}}</ref><ref name="SCEJ c">{{cite press release |url=http://www.scei.co.jp/corporate/release/130221c_e.html |title=Videogame industry's brightest minds convene in New York as part of Sony Computer Entertainment's introduction of PlayStation 4 |publisher=Sony Computer Entertainment, Inc. |date=February 20, 2013 |access-date=February 21, 2013 |archive-url=https://web.archive.org/web/20130424054856/http://scei.co.jp/corporate/release/130221c_e.html |archive-date=April 24, 2013}}</ref> Sony officially announced the PlayStation 4 at the event.<ref name=TheVergePS4AnnouncedFebruary2013>{{cite news |title=Sony announces the PlayStation 4 |author=Bishop, Bryan |work=[[The Verge]] |url=https://www.theverge.com/2013/2/20/4009410/sony-playstation-4-ps4-announcement |date=February 20, 2013 |access-date=February 20, 2013 |archive-url=https://web.archive.org/web/20131207150052/http://www.theverge.com/2013/2/20/4009410/sony-playstation-4-ps4-announcement |archive-date=December 7, 2013}}</ref><ref name="PS4 announced - TechRadar">{{cite news |url=http://www.techradar.com/us/news/gaming/consoles/ps4-release-date-news-and-features-937822 |title=The PlayStation 4 has been officially revealed in New York! |last=Rivington |first=James |date=February 20, 2013 |work=TechRadar |access-date=February 21, 2013 |archive-url=https://web.archive.org/web/20130426090607/http://www.techradar.com/us/news/gaming/consoles/ps4-release-date-news-and-features-937822 |archive-date=April 26, 2013}}</ref> It revealed details about the console's hardware and discussed some of the new features it would introduce.<ref name=TheVergePS4AnnouncedFebruary2013/><ref name=EngadgetPS4AnnouncedFebruary2013>{{cite news |title=Sony unveils its next game console, the PlayStation 4 |author=Gilbert, Ben |work=Engadget |publisher=AOL |url=https://www.engadget.com/2013/02/20/sony-ps4-announcement/ |date=February 20, 2013 |access-date=February 20, 2013 |archive-url=https://web.archive.org/web/20130221003232/http://www.engadget.com/2013/02/20/sony-ps4-announcement/ |archive-date=February 21, 2013}}</ref> Sony also showed off real-time footage of games in development, as well as some technical demonstrations.<ref>{{cite news |last=Stark |first=Chelsea |title=PlayStation 4 Gets Early Support From Publishers and Developers |url=http://mashable.com/2013/02/21/playstation-4-developers/ |access-date=February 25, 2013 |date=February 22, 2013 |publisher=Mashable |archive-url=https://web.archive.org/web/20130224051549/http://mashable.com/2013/02/21/playstation-4-developers/ |archive-date=February 24, 2013}}</ref><ref name="SCE introduces PS4">{{cite press release |title=Sony Computer Entertainment Inc. Introduces PlayStation 4 (PS4) |url=http://www.scei.co.jp/corporate/release/130221a_e.html |access-date=February 25, 2013 |date=February 21, 2013 |publisher=Sony Computer Entertainment, Inc. |archive-url=https://web.archive.org/web/20130424075309/http://scei.co.jp/corporate/release/130221a_e.html |archive-date=April 24, 2013}}</ref> The design of the console was unveiled in June at [[E3 2013]], and the initial recommended retail prices of $399 (NA), €399 (Europe), and £349 (UK) given.<ref>{{cite news |last=Kelion |first=Leo |url=https://www.bbc.co.uk/news/technology-22850409 |title=E3: PlayStation 4 console priced cheaper than Xbox One |publisher=BBC News |date=June 11, 2013 |access-date=June 11, 2013 |archive-url=https://web.archive.org/web/20140523163912/http://www.bbc.co.uk/news/technology-22850409 |archive-date=May 23, 2014 |url-status=dead}}</ref><ref name="SCEI"/> Sony took advantage of problems that Microsoft had been having with their positioning of their newly announced [[Xbox One]], which included its higher price point ($499 in North America), as well as strict regulations on how users could share game media. Besides its lower price point, Sony focused on the ease one would have in sharing media with the PS4.<ref>{{cite web | url = https://www.ign.com/articles/the-mostly-complete-history-of-the-ps4 | title = The (Mostly) Complete History of the PS4 | first = Jonathan | last = Dornbrush | date = January 17, 2021 | access-date = January 17, 2021 | work = [[IGN]] | archive-date = August 18, 2021 | archive-url = https://web.archive.org/web/20210818023912/https://www.ign.com/articles/the-mostly-complete-history-of-the-ps4 | url-status = live }}</ref>
+
+The company revealed release dates for North America, Central America, South America, Europe, and Australia, as well as final pieces of information, at a [[Gamescom]] press event in [[Cologne]], Germany, on August 20, 2013. The console was released on November 15, 2013, in the United States and [[Canada]], followed by further releases on November 29, 2013.<ref name=engadget /> By the end of 2013, the PS4 was launched in more European, Asian and South American countries.<ref name=IGNAsiaPacific>{{cite news |author=Leandre, Kenn |title=PlayStation 4 Asia Launch Date Announced |url=http://ap.ign.com/en/news/9141/playstation-4-asia-launch-date-announced |access-date=December 13, 2013 |work=IGN Asia |publisher=IGN Entertainment |date=September 18, 2013 |url-status=dead |archive-url=https://web.archive.org/web/20140105075041/http://ap.ign.com/en/news/9141/playstation-4-asia-launch-date-announced |archive-date=January 5, 2014}}</ref><ref>{{cite web |title=PS4 Release Date: PlayStation 4 hits 16 more countries |url=http://www.trustedreviews.com/news/ps4-release-date |work=Trusted Reviews |access-date=February 19, 2014 |first=Luke |last=Johnson |date=December 13, 2013 |archive-url=https://web.archive.org/web/20131022022458/http://www.trustedreviews.com/news/ps4-release-date |archive-date=October 22, 2013 |url-status=live}}</ref> The PS4 was released in Japan at ¥39,980 on February 22, 2014.<ref>{{citation |url=http://www.polygon.com/2014/2/21/5433694/ps4-japan-launch |title=Sony launches PS4 in Japan |date=February 21, 2014 |first=Samit |last=Sarkar |website=Polygon |access-date=September 22, 2015 |archive-url=https://web.archive.org/web/20150924153729/http://www.polygon.com/2014/2/21/5433694/ps4-japan-launch |archive-date=September 24, 2015 |url-status=live}}</ref>
+
+Sony finalized a deal with the Chinese government in May 2014 to sell its products in mainland China, and the PS4 was the first product to be released. [[Kazuo Hirai]], chief executive officer of Sony, said in May: "The Chinese market, just given the size of it, is obviously potentially a very large market for video game products&nbsp;... I think that we will be able to replicate the kind of success we have had with PS4 in other parts of the world in [[China]]."<ref name="Tel">{{cite news |title=Sony's Playstation to make China debut |url=https://www.telegraph.co.uk/finance/newsbysector/mediatechnologyandtelecoms/electronics/10856846/Sonys-Playstation-to-make-China-debut.html |access-date=December 12, 2014 |work=The Telegraph |date=May 26, 2014 |archive-url=https://web.archive.org/web/20141213181315/http://www.telegraph.co.uk/finance/newsbysector/mediatechnologyandtelecoms/electronics/10856846/Sonys-Playstation-to-make-China-debut.html |archive-date=December 13, 2014 |url-status=live}}</ref>
+
+In September 2015, Sony reduced the price of the PS4 in Japan to ¥34,980,<ref>{{cite web |last=Vincent |first=James |url=https://www.theverge.com/2015/9/15/9329211/sony-ps4-price-drop-japan |title=Sony announces PS4 price drop in Japan |website=The Verge |date=September 15, 2015 |access-date=July 28, 2017 |archive-url=https://web.archive.org/web/20170221221951/http://www.theverge.com/2015/9/15/9329211/sony-ps4-price-drop-japan |archive-date=February 21, 2017 |url-status=live}}</ref> with similar price drops in other Southeast Asian markets.<ref>{{cite web |last=Barker |first=Sammy |url=http://www.pushsquare.com/news/2015/09/tgs_2015_ps4s_price_drop_extends_to_asia_as_well |title=TGS 2015: PS4's Price Drop Extends to Asia As Well |website=Push Square |date=September 16, 2015 |access-date=July 28, 2015 |archive-url=https://web.archive.org/web/20150919040010/http://www.pushsquare.com/news/2015/09/tgs_2015_ps4s_price_drop_extends_to_asia_as_well |archive-date=September 19, 2015 |url-status=live}}</ref> The first official sub-£300 PS4 bundle was the £299.99 "Uncharted Nathan Drake Collection 500GB", and was released in the UK on October 9, 2015; a 1&nbsp;TB £329.99 version was offered at the same time.<ref>{{citation |url=http://www.eurogamer.net/articles/2015-09-07-uncharted-nathan-drake-collection-500gb-ps4-bundle-announced |title=Uncharted Nathan Drake Collection 500GB & 1TB PS4 bundles for Europe |first=Robert |last=Purchese |date=September 18, 2015 |website=Eurogamer |access-date=September 22, 2015 |archive-url=https://web.archive.org/web/20150925011336/http://www.eurogamer.net/articles/2015-09-07-uncharted-nathan-drake-collection-500gb-ps4-bundle-announced |archive-date=September 25, 2015 |url-status=live }}</ref> On October 9, 2015, the first official price cut of the PS4 in North America was announced: a reduction of $50 to $349.99 (US) and by $20 to $429.99 (Canada).<ref>{{citation |url=http://www.pushsquare.com/news/2015/10/ps4s_price_officially_drops_to_usd349_99_in_usa_starting_friday |title=PS4's Price Officially Drops to $349.99 in USA Starting Friday |date=October 8, 2015 |first=Sammy |last=Barker |website=Push Square |access-date=October 8, 2015 |archive-url=https://web.archive.org/web/20151009150330/http://www.pushsquare.com/news/2015/10/ps4s_price_officially_drops_to_usd349_99_in_usa_starting_friday |archive-date=October 9, 2015 |url-status=live}}</ref><ref>{{citation |url=http://blog.us.playstation.com/2015/10/08/ps4-big-holiday-lineup-lower-cost/ |title=PS4: Big Holiday Lineup, Lower Cost |first=John |last=Koller |date=October 8, 2015 |work=blog.us.playstation.com |access-date=October 8, 2015 |archive-url=https://web.archive.org/web/20151009130715/http://blog.us.playstation.com/2015/10/08/ps4-big-holiday-lineup-lower-cost/ |archive-date=October 9, 2015 |url-status=live}}</ref><ref>{{citation |url=http://www.polygon.com/2015/10/8/9477625/ps4-price-drop-349-us |title=Sony cutting PS4 price to $349.99 |first=Samit |last=Sarkar |date=October 8, 2015 |website=Polygon |access-date=October 8, 2015 |archive-url=https://web.archive.org/web/20151008194041/http://www.polygon.com/2015/10/8/9477625/ps4-price-drop-349-us |archive-date=October 8, 2015 |url-status=live}}</ref> An official price cut in Europe followed in late October 2015, reduced to €349.99/£299.99.<ref>{{citation |url=http://www.pushsquare.com/news/2015/10/ps4s_price_cut_down_to_size_in_the_uk |title=PS4's Price Cut Down to Size in the UK |date=October 21, 2015 |first=Sammy |last=Barker |website=Push Square |access-date=October 21, 2015 |archive-url=https://web.archive.org/web/20151022151236/http://www.pushsquare.com/news/2015/10/ps4s_price_cut_down_to_size_in_the_uk |archive-date=October 22, 2015 |url-status=live}}</ref>
+
+On June 10, 2016, Sony confirmed that a hardware revision of the PlayStation 4, rumored to be codenamed "Neo", was under development. The new revision was revealed to be a higher-end model meant to support gameplay in [[4K resolution|4K]]. This new model was sold alongside the existing model, and all existing software was compatible between the two models.<ref name="PS4Neo">{{cite web |url=http://www.polygon.com/2016/6/10/11902000/ps4-neo-confirmed-sony-4k |title=Sony confirms new, high-end PlayStation 4 |last=Alexander |first=Julia |work=[[Polygon (website)|Polygon]] |date=June 10, 2016 |access-date=June 10, 2016 |archive-url=https://web.archive.org/web/20160611130831/http://www.polygon.com/2016/6/10/11902000/ps4-neo-confirmed-sony-4k |archive-date=June 11, 2016 |url-status=live}}</ref> Layden stated that Sony has no plans to "bifurcate the market", only that gamers playing on the Neo will "have the same experience, but one will be delivered at a higher resolution, with an enhanced graphical experience, but everything else is going to be exactly as you'd expect".<ref>{{cite magazine |url=https://time.com/4368902/sony-playstation-neo-e3-2016-shawn-layden/?xid=tcoshare |title=We Asked Sony's Gaming Chief About the Future of PlayStation |first=Matt |last=Peckham |date=June 14, 2016 |access-date=June 17, 2016 |magazine=[[Time (magazine)|Time]] |archive-url=https://web.archive.org/web/20160616185550/http://time.com/4368902/sony-playstation-neo-e3-2016-shawn-layden/?xid=tcoshare |archive-date=June 16, 2016 |url-status=live}}</ref> The high-end console was publicly revealed on September 7, 2016, as PlayStation 4 Pro.<ref name="verge-ps4pro"/> At the same time, Sony unveiled an updated version of the original PS4 model with a smaller form factor.<ref name="ars-ps4slim" />
+
+In May 2018, during a presentation to investors, Sony Interactive Entertainment CEO John Kodera stated that the PlayStation 4 was heading into the end of its lifecycle and that the company was anticipating decreasing year-over-year hardware sales.<ref>{{Cite news|url=https://www.polygon.com/2018/5/22/17379880/ps4-life-cycle-ending-psn-psvr|title=PS4 heading into end of its life cycle, PlayStation CEO says|work=Polygon|access-date=May 23, 2018|archive-url=https://web.archive.org/web/20180522221936/https://www.polygon.com/2018/5/22/17379880/ps4-life-cycle-ending-psn-psvr|archive-date=May 22, 2018|url-status=live}}</ref> He explained that Sony would be countering the expected decline by focusing on "strengthen[ing] user engagement" including continued investments into new first-party games and other online services for PS4. "We will use the next three years to prepare the next step, to crouch down so that we can jump higher in the future," Kodera added in an interview with the press the following day.<ref>{{Cite news|url=https://www.polygon.com/2018/5/23/17384050/ps5-release-date-sony|title=The next PlayStation is at least three years away|work=Polygon|access-date=May 23, 2018|archive-url=https://web.archive.org/web/20180523181133/https://www.polygon.com/2018/5/23/17384050/ps5-release-date-sony|archive-date=May 23, 2018|url-status=live}}</ref>
+
+Following the launch of the [[PlayStation 5]] in November 2020, Sony discontinued production in Japan of all but the 500&nbsp;GB Slim model of the PlayStation 4 on January 5, 2021, with the standard PS4 and PS4 Pro still being produced for western markets.<ref>{{cite web | url = https://www.videogameschronicle.com/news/sony-japan-confirms-ps4-pro-and-all-but-one-ps4-model-have-been-discontinued/ | title = Sony Japan confirms PS4 Pro and 'all but one' PS4 model have been discontinued | first = Andy | last = Robinson | date = January 5, 2021 | access-date = January 5, 2021 | work = [[Video Games Chronicle]] | archive-date = January 5, 2021 | archive-url = https://web.archive.org/web/20210105101243/https://www.videogameschronicle.com/news/sony-japan-confirms-ps4-pro-and-all-but-one-ps4-model-have-been-discontinued/ | url-status = live }}</ref> According to a report from ''[[Bloomberg News]]'' in January 2022, Sony had been poised to discontinue the PlayStation 4 at the end of 2021 in favor of the PlayStation 5, but due to a [[2020–2023 global chip shortage|global chip shortage]] that lasted from 2020 to 2023, this made it difficult for Sony to keep up with PlayStation 5 demand. Instead, the company planned to continue PlayStation 4 production; besides helping to offset the PlayStation 5 shortage, this production method would help assure deals with its component providers for the PlayStation 5.<ref>{{cite web | url = https://www.bloomberg.com/news/articles/2022-01-12/sony-tackles-playstation-5-shortage-by-making-more-ps4-consoles | title = Sony Is Dealing With PlayStation 5 Shortage by Making More PS4s | first1 = Takashi | last1 = Mochizuki | first2 = Debby | last2 = Wu | date = January 12, 2022 | work = [[Bloomberg News]] | archive-url = https://archive.today/20220113051014/https://www.bloomberg.com/news/articles/2022-01-12/sony-tackles-playstation-5-shortage-by-making-more-ps4-consoles?sref=Yg3sQEZ2 | archive-date = January 13, 2022 | access-date = January 13, 2022 | url-status = live }}</ref>
+
+== Hardware ==
+The technology in the PlayStation 4 is similar to the hardware found in modern [[personal computer]]s.<ref name="Eurogamer PC like architecture">{{cite news |last=Yin-Poole |first=Wesley |title=PS4: PC-like architecture, 8GB RAM delight developers |url=http://www.eurogamer.net/articles/2013-02-22-ps4-pc-like-architecture-8gb-ram-delight-developers |work=Eurogamer |publisher=Eurogamer Network |access-date=February 25, 2013 |date=February 22, 2013 |archive-url=https://web.archive.org/web/20130302092730/http://www.eurogamer.net/articles/2013-02-22-ps4-pc-like-architecture-8gb-ram-delight-developers |archive-date=March 2, 2013}}</ref> This familiarity is designed to make it easier and less expensive for game studios to develop games for the PS4.<ref name="Eurogamer five analysts">{{cite news |last=Purchese |first=Robert |title=Five analysts, one consensus: PlayStation 4 impressed |url=http://www.eurogamer.net/articles/2013-02-22-five-analysts-one-consensus-playstation-4-impressed |work=Eurogamer |publisher=Eurogamer Network |access-date=February 25, 2013 |date=February 22, 2013 |archive-url=https://web.archive.org/web/20130302092624/http://www.eurogamer.net/articles/2013-02-22-five-analysts-one-consensus-playstation-4-impressed |archive-date=March 2, 2013}}</ref><ref name="cvg indie friendly">{{cite news |last=Crossley |first=Rob |title=Sony promises indie-friendly PSN: 'We believe in smaller devs' |url=http://www.computerandvideogames.com/392971/sony-promises-indie-friendly-ps4-publishing-model/ |work=Computer and Video Games |access-date=February 25, 2013 |date=February 22, 2013 |archive-url=https://web.archive.org/web/20130526191206/http://www.computerandvideogames.com/392971/sony-promises-indie-friendly-ps4-publishing-model/ |archive-date=May 26, 2013}}</ref>
+
+=== Technical specifications ===
+{{Main|PlayStation 4 technical specifications}}
+
+{{quote box|align=right|width=25em|quote="[We] have not built an APU quite like that for anyone else in the market. It is by far the most powerful APU we have built to date". (February 2013) |source=- John Taylor, AMD<ref>{{cite news |last=Parfitt |first=Ben |title=AMD says PS4's APU is "by far the most powerful" it has ever built |url=http://www.mcvuk.com/news/read/amd-says-ps4-s-apu-is-by-far-the-most-powerful-it-has-ever-built |publisher=MCV |access-date=February 28, 2013 |date=February 28, 2013 |archive-url=https://web.archive.org/web/20150403082016/https://www.mcvuk.com/news/read/amd-says-ps4-s-apu-is-by-far-the-most-powerful-it-has-ever-built |archive-date=April 3, 2015 |url-status=dead}}</ref>}}
+
+<!-- Detailed information on the APU (CPU & GPU) and less important technical information moved to the above technical article based on [[Wikipedia:Summary style]]. -->
+The PlayStation 4 uses an [[Accelerated Processing Unit]] (APU) developed by [[AMD]] in cooperation with Sony. It combines a [[central processing unit]] (CPU) and [[graphics processing unit]] (GPU), as well as other components such as a [[memory controller]] and [[video decoder]].<ref name="AMD elaborate">{{cite news |last=Taylor |first=John |title=AMD and The Sony PS4. Allow Me To Elaborate. |url=http://community.amd.com/community/amd-blogs/amd-unprocessed/blog/2013/02/21/amd-and-the-sony-ps4-allow-me-to-elaborate |publisher=AMD |access-date=February 25, 2013 |date=February 21, 2013 |archive-url=https://web.archive.org/web/20130526191443/http://community.amd.com/community/amd-blogs/amd-unprocessed/blog/2013/02/21/amd-and-the-sony-ps4-allow-me-to-elaborate |archive-date=May 26, 2013}}</ref> The CPU consists of two [[32 nm process|28&nbsp;nm]] [[quad-core]] [[Jaguar (microarchitecture)|Jaguar]] modules totaling 8 64-bit [[x86-64]] [[Multi-core processor|cores]],<ref name="AMD elaborate" /><ref name=AnandtechAMDJaguarArchitecture2013>{{cite news |title=AMD's Jaguar Architecture: The CPU Powering Xbox One, PlayStation 4, Kabini & Temash |author=Shimpi, Anand Lal |publisher=[[AnandTech]] |url=http://www.anandtech.com/show/6976/amds-jaguar-architecture-the-cpu-powering-xbox-one-playstation-4-kabini-temash/4 |date=May 23, 2013 |access-date=November 9, 2013 |archive-url=https://web.archive.org/web/20131211030440/http://www.anandtech.com/show/6976/amds-jaguar-architecture-the-cpu-powering-xbox-one-playstation-4-kabini-temash/4 |archive-date=December 11, 2013}}</ref> 7 of which are available for game developers to use.<ref name="eurogamer_7cores"/> The GPU consists of 18 compute units to produce a theoretical peak performance of 1.84&nbsp;[[TFLOPS]].<ref name="SCE introduces PS4" /> The system's GDDR5 memory is capable of running at a maximum clock frequency of 2.75&nbsp;GHz (5500 MT/s) and has a maximum memory bandwidth of 176&nbsp;GB/s.<ref name="SCE introduces PS4"/><ref>{{cite web |url=http://gamingbolt.com/playstation-4-fcc-filing-reveals-2-75-ghz-max-clock-speed-frequency |title=PlayStation 4 FCC Filing Reveals 2.75 GHz Max Clock Speed Frequency |last=Sinha |first=Ravi |publisher=GamingBolt |date=July 16, 2013 |access-date=September 12, 2013 |archive-url=https://web.archive.org/web/20130826062908/http://gamingbolt.com/playstation-4-fcc-filing-reveals-2-75-ghz-max-clock-speed-frequency |archive-date=August 26, 2013}}</ref><ref>{{cite web |url=https://www.engadget.com/2013/07/22/sony-playstation-4-fcc/ |title=Sony PlayStation 4 waltzes past the FCC |last=Santos |first=Alexis |work=Engadget |publisher=AOL |date=July 22, 2013 |access-date=September 11, 2013 |archive-url=https://web.archive.org/web/20130725061610/http://www.engadget.com/2013/07/22/sony-playstation-4-fcc/ |archive-date=July 25, 2013}}</ref> The console contains 8&nbsp;GB of [[GDDR5]] memory,<ref name="SCE introduces PS4" /><ref>{{cite web |last=Femmel |first=Kevin |url=http://gimmegimmegames.com/2013/02/sony-playstation-meeting-2013-details/ |title=Sony reveals the PS4: New controller, 8GB RAM, doesn't play PS3 discs and more |publisher=Gimme Gimme Games |date=February 20, 2013 |access-date=February 21, 2013 |archive-url=https://web.archive.org/web/20130316062350/http://gimmegimmegames.com/2013/02/sony-playstation-meeting-2013-details/ |archive-date=March 16, 2013}}</ref> 16 times the amount of RAM found in the PS3 and is expected to give the console considerable longevity.<ref name="Eurogamer PC like architecture" /><ref name="Eurogamer spec analysis">{{cite web |last=Leadbetter |first=Richard |url=http://www.eurogamer.net/articles/df-hardware-spec-analysis-playstation-4 |title=Spec Analysis: PlayStation 4 |work=Eurogamer |publisher=Eurogamer Network |date=February 21, 2013 |access-date=February 25, 2013 |archive-url=https://web.archive.org/web/20130419085348/http://www.eurogamer.net/articles/df-hardware-spec-analysis-playstation-4 |archive-date=April 19, 2013}}</ref> It also includes secondary custom chips that handle tasks associated with downloading, uploading, and social gameplay.<ref>{{cite news |last=Conditt |first=Jessica |title=PS4 allows playing games as they're downloading |url=http://www.joystiq.com/2013/02/20/ps4-allows-playing-games-as-theyre-downloading/ |work=Joystiq |publisher=AOL |access-date=February 24, 2013 |date=February 20, 2013 |archive-url=https://web.archive.org/web/20130221000153/http://www.joystiq.com/2013/02/20/ps4-allows-playing-games-as-theyre-downloading/ |archive-date=February 21, 2013}}</ref><ref>{{cite news |last=Williams |first=Mike |title=Articles Register Sony reveals developer-centric PlayStation 4 |url=http://www.gamesindustry.biz/articles/2013-02-20-sony-reveals-the-playstation-4 |access-date=February 24, 2013 |date=February 20, 2013 |work=Joystiq |publisher=AOL |archive-url=https://web.archive.org/web/20130419134822/http://www.gamesindustry.biz/articles/2013-02-20-sony-reveals-the-playstation-4 |archive-date=April 19, 2013}}</ref> These tasks can be handled in the background during gameplay or while the system is in [[sleep mode]].<ref name=TheVergePlaystation4>{{cite news |last=Seifert |first=Dan |title=Sony PlayStation 4 games can be played while they are downloading |url=https://www.theverge.com/2013/2/20/4010466/sony-playstation-4-games-downloadable-play-ps4 |work=[[The Verge]] |access-date=February 24, 2013 |date=February 20, 2013 |archive-url=https://web.archive.org/web/20130418185035/http://www.theverge.com/2013/2/20/4010466/sony-playstation-4-games-downloadable-play-ps4 |archive-date=April 18, 2013}}</ref> The console also contains an audio module, which can support in-game chat as well as "a very large number" of audio streams for use in-game.<ref name="gamasutra_interview">{{cite web |title=Inside the PlayStation 4 with Mark Cerny |first=Christian |last=Nutt |url=https://www.gamedeveloper.com/business/inside-the-playstation-4-with-mark-cerny |date=April 24, 2013 |publisher=Gamasutra |archive-url=https://web.archive.org/web/20130510090700/http://www.gamasutra.com/view/feature/191007/inside_the_playstation_4_with_mark_.php?page=3 |page=3 |archive-date=May 10, 2013 |url-status=live}}</ref> All PlayStation 4 models support [[high dynamic range]] (HDR) color profiles.<ref name="ars-hdr10">{{cite web |title=Sony will wake a sleeping HDR beast via firmware. What else hides in PS4? |date=September 8, 2016 |url=https://arstechnica.com/gaming/2016/09/whats-up-with-ps4s-surprise-firmware-update-is-4k-around-the-corner/ |publisher=Ars Technica |access-date=September 8, 2016 |archive-url=https://web.archive.org/web/20160908181356/http://arstechnica.com/gaming/2016/09/whats-up-with-ps4s-surprise-firmware-update-is-4k-around-the-corner/ |archive-date=September 8, 2016 |url-status=live}}</ref>
+
+<!-- Optical and storage -->
+Its read-only optical drive is capable of reading [[Blu-ray Disc]]s at speeds of up to three times that of its predecessor.<ref name="Eurogamer spec analysis" /><ref name="PS3 Blu-ray">{{cite web |url=https://arstechnica.com/gaming/2007/01/6658/ |title=Is Blu-ray really a good medium for games? |last=Kuchera |first=Ben |date=January 17, 2007 |publisher=Ars Technica |access-date=February 25, 2013 |archive-url=https://web.archive.org/web/20121201222226/http://arstechnica.com/gaming/2007/01/6658/ |archive-date=December 1, 2012}}</ref> The console features a hardware on-the-fly [[zlib]] decompression module.<ref name="gamasutra_interview" /> The original PS4 model supports up to [[1080p]] and [[1080i]] video standards,<ref>{{cite web |last1=Shuman |first1=Sid |title=PS4: The Ultimate FAQ – North America |url=https://blog.playstation.com/2013/10/30/ps4-the-ultimate-faq-north-america/ |website=PlayStation Blog |access-date=December 15, 2020 |date=October 30, 2013 |archive-date=October 31, 2013 |archive-url=https://web.archive.org/web/20131031051619/http://blog.us.playstation.com/2013/10/30/ps4-the-ultimate-faq-north-america/ |url-status=live }}</ref> while the Pro model supports [[4K resolution]].<ref>{{cite web |title=PS4 Pro: 4K and HDR guide |url=https://www.playstation.com/en-us/support/hardware/ps4-pro-4k-and-hdr-guide/ |website=Playstation.com |access-date=December 15, 2020 |archive-date=December 19, 2020 |archive-url=https://web.archive.org/web/20201219111937/https://www.playstation.com/en-us/support/hardware/ps4-pro-4k-and-hdr-guide/ |url-status=live }}</ref> The console includes a 500 gigabyte hard drive for additional storage,<ref name="SCEI">{{cite press release |url=http://www.scei.co.jp/corporate/release/pdf/130611a_e.pdf |title=PlayStation 4 (PS4) Design and Price Unveiled, Available at $399 in U.S. and at €399 in Europe |publisher=Sony Computer Entertainment, Inc. |date=June 11, 2013 |access-date=June 11, 2013 |archive-url=https://web.archive.org/web/20130613054228/http://www.scei.co.jp/corporate/release/pdf/130611a_e.pdf |archive-date=June 13, 2013}}</ref> which can be upgraded by the user.<ref name="hdupgrade">{{cite web |url=https://www.engadget.com/2013/06/11/sonys-playstation-4-eye-is-a-59-add-on-ps4-packs-a-500gb-hdd/ |title=Sony's PlayStation 4 Eye is a $59 add-on, PS4 packs an upgradable 500GB HDD inside |work=Engadget |publisher=AOL |date=June 10, 2013 |access-date=June 10, 2013 |archive-url=https://web.archive.org/web/20130902115543/http://www.engadget.com/2013/06/11/sonys-playstation-4-eye-is-a-59-add-on-ps4-packs-a-500gb-hdd/ |archive-date=September 2, 2013}}</ref> System Software 4.50, which was released on March 9, 2017,<ref>{{Cite web|url=http://www.playstationlifestyle.net/2017/03/09/ps4-update-4-50-now-prepare-external-hdds/|title=PS4 Update 4.50 Now Out, Full Patch Notes Released|date=March 9, 2017|website=PlayStation LifeStyle|access-date=April 2, 2017|archive-url=https://web.archive.org/web/20170403015245/http://www.playstationlifestyle.net/2017/03/09/ps4-update-4-50-now-prepare-external-hdds/|archive-date=April 3, 2017|url-status=live}}</ref> enabled the use of external USB hard drives up to 8&nbsp;TB for additional storage.<ref>{{cite web |url=https://www.theverge.com/circuitbreaker/2017/2/3/14496638/playstation-4-external-hard-drive-support-software-update |title=The PS4 will support external hard drives in upcoming update |first=Chaim |last=Gartenberg |date=February 3, 2017 |access-date=February 3, 2017 |work=[[The Verge]] |archive-url=https://web.archive.org/web/20170203151049/http://www.theverge.com/circuitbreaker/2017/2/3/14496638/playstation-4-external-hard-drive-support-software-update |archive-date=February 3, 2017 |url-status=live}}</ref>
+
+<!-- Connectivity/Input+Output -->
+The PlayStation 4 features [[Wi-Fi]] and [[Ethernet]] connectivity, [[Bluetooth]], and two [[USB 3.0]] ports.<ref name="SCE introduces PS4" /><ref name="Eurogamer spec analysis" /> An auxiliary port is also included for connection to the [[#Camera|PlayStation Camera]], a [[motion detection]] digital camera device first introduced on the PS3.<ref name="SCE introduces PS4" /> A mono headset, which can be plugged into the DualShock 4, is bundled with the system.<ref name=SCEI_DUALSHOCK4_PS4EYE>{{cite press release |title=SONY COMPUTER ENTERTAINMENT INTRODUCES WIRELESS CONTROLLER FOR PLAYSTATION 4 (DUALSHOCK 4) AND PLAYSTATION 4 EYE |url=http://www.scei.co.jp/corporate/release/130221b_e.html |access-date=February 26, 2013 |date=February 21, 2013 |publisher=Sony Computer Entertainment |archive-url=https://web.archive.org/web/20140410074503/http://scei.co.jp/corporate/release/130221b_e.html |archive-date=April 10, 2014 |url-status=dead}}</ref> Audio/video output options include [[HDMI]] TV and [[TOSLINK|optical]] [[S/PDIF]] audio.<ref name="SCE introduces PS4" /> The console does not have an [[Analog recording|analog]] audio/video output.<ref name=PlayStation4AnalogOutputExtremeTech>{{cite news |title=Sony issues correction: PS4 will not support analog output [Updated] |first=Grant |last=Brunner |work=[[ExtremeTech]] |publisher=Ziff Davis |url=http://www.extremetech.com/gaming/158916-sony-confirms-that-the-ps4-will-support-analog-output |date=June 18, 2013 |access-date=June 20, 2013 |archive-url=https://web.archive.org/web/20140708000221/http://www.extremetech.com/gaming/158916-sony-confirms-that-the-ps4-will-support-analog-output |archive-date=July 8, 2014 |url-status=dead}}</ref>
+
+The PS4 features a "[[sleep mode|Rest mode]]" feature. This places the console in a low-power state while allowing users to immediately resume their game or app once the console is awoken. The console also is able to download content such as game and OS updates while it is in this state.<ref>{{cite web |url=http://www.siliconera.com/2013/02/20/playstation-4s-suspend-mode-lets-players-jump-back-into-a-game-no-save-point-necessary/ |title=Jump Back Into A Game With PlayStation 4's Suspend Mode, No Save Point Necessary |date=February 20, 2013 |access-date=September 13, 2013 |publisher=Siliconera |author=Spencer |archive-url=https://web.archive.org/web/20140616140422/http://www.siliconera.com/2013/02/20/playstation-4s-suspend-mode-lets-players-jump-back-into-a-game-no-save-point-necessary/ |archive-date=June 16, 2014 |url-status=dead}}</ref><ref name="20ThingsDidntKnow" />
+
+=== Controllers ===
+{{Main|DualShock 4|PlayStation Move}}
+[[File:DualShock 4.jpg|thumb|right|DualShock 4 controller]]
+
+The DualShock 4 is PlayStation 4's primary controller; it maintains a similar design to previous iterations of the DualShock series, but with additional features and design refinements.<ref name="vb-controller" /> Among other tweaks, the caps of the analog sticks were given a concave design (similar to the [[Xbox 360 controller]]), the shape of the triggers and shoulder buttons was refined, the D-pad buttons were given a steeper downward angle to provide a resting space in the center for the user's thumb,<ref name="vb-controller" /><ref name=":5">{{Cite web|url=https://venturebeat.com/2013/10/22/the-playstation-4-controller-whats-new-with-the-analog-sticks-and-d-pad-part-2-exclusive/2/|title=The PlayStation 4 controller: What's new with the analog sticks and D-pad|website=VentureBeat|date=October 22, 2013|language=en-US|access-date=October 18, 2017|archive-url=https://web.archive.org/web/20171018072256/https://venturebeat.com/2013/10/22/the-playstation-4-controller-whats-new-with-the-analog-sticks-and-d-pad-part-2-exclusive/2/|archive-date=October 18, 2017|url-status=live}}</ref> and the hand grips were made thicker and given microtexturing to improve their feel.<ref name="vb-controller" /><ref name=":5" />
+
+A major addition to the DualShock 4 is a [[touchpad]]; it is capable of detecting up to two simultaneous touch presses, and can also be pressed down as a button.<ref name="vb-controller" /> The "Start" and "Select" buttons were replaced by "Options" and "Share" buttons; the latter is designed to allow access to the PlayStation 4's social features (including streaming, video recording, and screenshot tools).<ref name="vb-controller" /><ref name="Polygon controller detailed" /> The DualShock 4 is powered by a non-removable, rechargeable lithium-ion battery, which can be charged using its [[micro USB]] connector. The controller also features an internal speaker, and a [[headphone jack]] for headsets or headphones; the console is bundled with a pair of headset [[Headphones|earbuds]].<ref name="CNET controller">{{cite web |url=http://news.cnet.com/8301-17938_105-57570456-1/finer-details-about-playstation-4s-dualshock-4-controller-eye-camera/ |title=Finer details about PlayStation 4's DualShock 4 controller, Eye camera |first=Christopher |last=MacManus |date=February 21, 2013 |publisher=[[CNET]] |access-date=February 21, 2013 |archive-url=https://web.archive.org/web/20130530061919/http://news.cnet.com/8301-17938_105-57570456-1/finer-details-about-playstation-4s-dualshock-4-controller-eye-camera/ |archive-date=May 30, 2013}}</ref><ref name="polygon-whatsinbox">{{Cite web|url=https://www.polygon.com/2013/6/11/4417768/playstation-4-ps4-hardware-specificaations-hard-drive-size-eye|title=PlayStation 4: What's in the box|last=Sarkar|first=Samit|date=June 11, 2013|website=Polygon|access-date=October 18, 2017|archive-url=https://web.archive.org/web/20171018071153/https://www.polygon.com/2013/6/11/4417768/playstation-4-ps4-hardware-specificaations-hard-drive-size-eye|archive-date=October 18, 2017|url-status=live}}</ref><ref name="vb-controller">{{Cite web|url=https://venturebeat.com/2013/10/24/the-playstation-4-controller-a-close-look-at-the-touchpad-light-bar-design-and-everything-else-part-4-exclusive/|title=The PlayStation 4 controller: A close look at the touchpad, light bar, design, and everything else|work=ventureBeat|date=October 24, 2013|language=en-US|access-date=October 18, 2017|archive-url=https://web.archive.org/web/20170608060845/https://venturebeat.com/2013/10/24/the-playstation-4-controller-a-close-look-at-the-touchpad-light-bar-design-and-everything-else-part-4-exclusive/|archive-date=June 8, 2017|url-status=live}}</ref>
+
+The controller's motion tracking system is more sensitive than those of the PlayStation 3's controllers. An [[LED]] "light bar" was additionally added to the front of the controller; it is designed to allow the [[PlayStation Camera]] accessory to further track its motion, but can also be used to provide visual effects and feedback within games (such as, for instance, reflecting a player's low [[Health (gaming)|health]] by turning red).<ref>{{Cite news|url=https://www.theverge.com/2013/6/10/4417142/sony-ps4-dualshock-controller-hands-on|title=Hands-on with Sony's PlayStation 4 and DualShock controller|work=The Verge|access-date=October 18, 2017|archive-url=https://web.archive.org/web/20171018071852/https://www.theverge.com/2013/6/10/4417142/sony-ps4-dualshock-controller-hands-on|archive-date=October 18, 2017|url-status=live}}</ref><ref name="CNET controller" /><ref name="Polygon controller detailed">{{cite web |last=McWhertor |first=Michael |url=http://www.polygon.com/2013/2/20/4006374/playstation-4-dualshock-4-controller-detailed |title=PS4 touch-sensitive DualShock 4 controller revealed (update: features, scale detailed) |work=[[Polygon (website)|Polygon]] |date=January 31, 2013 |access-date=February 21, 2013 |archive-url=https://web.archive.org/web/20130223170319/http://www.polygon.com/2013/2/20/4006374/playstation-4-dualshock-4-controller-detailed |archive-date=February 23, 2013}}</ref><ref>{{Cite news|url=https://www.engadget.com/2014/11/27/all-of-the-lights-many-curious-uses-for-the-ps4-light-bar/|title=All of the Lights: Many curious uses for the PS4 light bar|work=Engadget|access-date=October 18, 2017|language=en-US|archive-url=https://web.archive.org/web/20171018071905/https://www.engadget.com/2014/11/27/all-of-the-lights-many-curious-uses-for-the-ps4-light-bar/|archive-date=October 18, 2017|url-status=live}}</ref>
+
+Although the PS4 and DualShock 4 continue to use [[Bluetooth]] for wireless connectivity, the console is incompatible with PlayStation 3 controllers.<ref>{{cite web |last=Hinkle |first=David |url=http://www.joystiq.com/2013/02/21/yoshida-dualshock-3-wont-work-with-ps4/ |title=Yoshida: DualShock 3 won't work with PS4 |work=Joystiq |publisher=AOL |access-date=February 21, 2013 |archive-url=https://web.archive.org/web/20130222224717/http://www.joystiq.com/2013/02/21/yoshida-dualshock-3-wont-work-with-ps4/ |archive-date=February 22, 2013}}</ref> An exception are the [[PlayStation Move]] [[motion controller]]s originally released for PS3, which are officially supported for use with the PlayStation Camera.<ref name="CNET controller" /><ref>{{cite web|url=https://www.engadget.com/2013/02/20/playstation-4-move-support/|title=The PlayStation 4 supports the PlayStation Move controller|last=Gilbert|first=Ben|date=February 20, 2013|work=Engadget|publisher=AOL|archive-url=https://web.archive.org/web/20130221005755/http://www.engadget.com/2013/02/20/playstation-4-move-support/|archive-date=February 21, 2013|access-date=February 21, 2013}}</ref> In October 2013, [[Shuhei Yoshida]] stated on [[Twitter]] that the DualShock 4 would support "basic functions" when attached to a PC.<ref>{{cite web |title=PlayStation 4 Controller is PC-Compatible 'for Basic Functions' |date=October 6, 2013 |url=http://kotaku.com/playstation-4-controller-is-pc-compatible-for-basic-fu-1441725631 |publisher=Kotaku |access-date=October 6, 2013 |archive-url=https://web.archive.org/web/20131211023513/http://kotaku.com/playstation-4-controller-is-pc-compatible-for-basic-fu-1441725631 |archive-date=December 11, 2013}}</ref> In August 2016, Sony unveiled an official USB wireless adapter for the DualShock 4, enabling use of all of the controller's functionality on PC.<ref>{{Cite news|url=https://www.pcworld.com/article/3111371/consumer-electronics/sony-reveals-dualshock-4-wireless-adapter-for-pcs.html|title=Sony reveals DualShock 4 wireless adapter for PCs|work=PCWorld|access-date=October 18, 2017|language=en|archive-url=https://web.archive.org/web/20170814204420/http://www.pcworld.com/article/3111371/consumer-electronics/sony-reveals-dualshock-4-wireless-adapter-for-pcs.html|archive-date=August 14, 2017|url-status=live}}</ref> In December 2016, [[Valve Corporation|Valve]]'s [[Steam (service)|Steam]] platform was updated to provide support and controller customization functionality for DualShock 4, through existing [[API]]s for the [[Steam Controller (1st generation)|Steam Controller]].<ref>{{Cite news|url=https://www.pcworld.com/article/3131028/hardware/steams-adding-support-for-sonys-dualshock-4-playstation-controller.html|title=Steam adds support for Sony's DualShock 4 PlayStation controller|work=PCWorld|access-date=October 18, 2017|language=en|archive-url=https://web.archive.org/web/20171215005522/https://www.pcworld.com/article/3131028/hardware/steams-adding-support-for-sonys-dualshock-4-playstation-controller.html|archive-date=December 15, 2017|url-status=live}}</ref><ref>{{Cite web|url=http://www.usgamer.net/articles/steam-beta-adds-native-support-for-xbox-one-xbox-360-and-generic-controllers|title=Steam Beta Adds Native Support for Xbox One, Xbox 360 and Generic Controllers|last=Williams|first=Mike|date=January 6, 2017|website=USgamer|language=en-US|access-date=October 18, 2017|archive-url=https://web.archive.org/web/20171018072431/http://www.usgamer.net/articles/steam-beta-adds-native-support-for-xbox-one-xbox-360-and-generic-controllers|archive-date=October 18, 2017|url-status=live}}</ref>
+
+A revision of the DualShock 4 was released alongside the "Slim" and Pro models in 2016, and is bundled with these systems. It is largely identical to the original model, except that the touchpad now contains a "stripe" along the top which the light bar's LED can shine through, and the controller can communicate non-wirelessly when connected to the console over USB.<ref name=":3">{{Cite news|url=http://www.polygon.com/2016/9/8/12847626/peer-into-the-soulful-glow-of-the-new-dualshock-4s-extra-lightbar|title=Peer into the soulful glow of the DualShock 4's extra lightbar|last=Crecente|first=Brian|date=September 8, 2016|work=[[Polygon (website)|Polygon]]|access-date=October 20, 2016|publisher=[[Vox Media]]|archive-url=https://web.archive.org/web/20161021071111/http://www.polygon.com/2016/9/8/12847626/peer-into-the-soulful-glow-of-the-new-dualshock-4s-extra-lightbar|archive-date=October 21, 2016|url-status=live}}</ref>
+
+{{clear left}}
+
+=== Camera ===
+{{main|PlayStation Camera}}
+[[File:Sony-PlayStation-4-Camera-Mk1.jpg|thumb|right|The PlayStation 4 Camera, which is required for use with the [[PlayStation VR|PS VR]]]]
+The PlayStation Camera is an optional [[motion sensor]] and camera for the PlayStation 4, similar to [[Kinect]] on [[Xbox]]. It includes two 1280×800 pixel sensors with {{f/}}2.0 lenses (equivalent to 30&nbsp;cm focusing distance) and an 85° [[field of view]].<ref name=SCEI_DUALSHOCK4_PS4EYE /> The dual camera setup allows for different modes of operation, depending on the initiated and running application.<ref name="Destructoid Eye">{{cite web |url=http://www.destructoid.com/yoshida-discusses-applications-of-playstation-4-eye-246234.phtml |title=PlayStation 4 Eye: Applications of PS4's twin cameras |first=Kyle |last=MacGregor |date=February 21, 2013 |access-date=February 21, 2013 |publisher=Destructoid |archive-url=https://web.archive.org/web/20130530062554/http://www.destructoid.com/yoshida-discusses-applications-of-playstation-4-eye-246234.phtml |archive-date=May 30, 2013 |url-status=dead}}</ref> The two cameras can be used together for [[Photogrammetry#Stereophotogrammetry|depth-sensing]] of its surrounding objects in its field of vision.<ref name="cvg answer">{{cite web |url=http://www.computerandvideogames.com/392819/blog/eye-spy-has-sony-found-its-answer-to-kinect/ |title=Eye spy: Has Sony found its answer to Kinect? |access-date=February 21, 2013 |date=February 21, 2013 |work=Computer and Video Games |author=Scullion, Chris |archive-url=https://web.archive.org/web/20130530062731/http://www.computerandvideogames.com/392819/blog/eye-spy-has-sony-found-its-answer-to-kinect/ |archive-date=May 30, 2013}}</ref> Alternatively, one of the cameras can be used for generating the video image, with the other used for motion tracking.<ref>{{cite web |last=Conditt |first=Jessica |url=http://www.joystiq.com/2013/02/21/ps4-eye-has-two-cameras-one-to-watch-you-one-to-make-you-prett/ |title=PS4 Eye has two cameras: One to watch you, one to make you pretty |work=Joystiq |publisher=AOL |access-date=February 21, 2013 |archive-url=https://web.archive.org/web/20130508185947/http://www.joystiq.com/2013/02/21/ps4-eye-has-two-cameras-one-to-watch-you-one-to-make-you-prett/ |archive-date=May 8, 2013}}</ref>
+
+PlayStation Camera also features a four-channel microphone array, which helps reduce unwanted background noise and can be used for voice commands.<ref name="Destructoid Eye" /> With the PlayStation Camera connected, different users can automatically log-on to the system via [[face detection]].<ref name="SCEI_DUALSHOCK4_PS4EYE" />
+
+=== PlayStation VR ===
+{{main|PlayStation VR}}
+[[File:Sony-PlayStation-4-PSVR-Headset-Mk1-FL.jpg|thumb|A first-generation PlayStation VR]]
+PlayStation VR is a [[virtual reality]] system for PlayStation 4; it consists of a [[virtual reality headset|headset]], which features a [[1080p]] display panel, LED lights on the headset that are used by PlayStation Camera to track its motion, and a control box that processes [[3D audio effect]]s, as well as video output to the external display (either simulcasting the player's VR perspective, or providing an asymmetrical secondary perspective). PlayStation VR can also be used with PlayStation Move motion controllers.<ref>{{Cite web|url=https://www.polygon.com/2016/3/16/11247288/playstation-vr-processing-unit-ps4|title=PlayStation VR's processing unit doesn't add any power to the PS4|last=Sarkar|first=Samit|date=March 16, 2016|website=Polygon|access-date=October 29, 2017|archive-url=https://web.archive.org/web/20170729010837/https://www.polygon.com/2016/3/16/11247288/playstation-vr-processing-unit-ps4|archive-date=July 29, 2017|url-status=live}}</ref><ref>{{Cite news|url=http://www.techradar.com/us/reviews/gaming/playstation-vr-1235379/review|title=PlayStation VR review|work=TechRadar|access-date=October 29, 2017|language=en|archive-url=https://web.archive.org/web/20160830074537/http://www.techradar.com/us/reviews/gaming/playstation-vr-1235379/review|archive-date=August 30, 2016|url-status=dead}}</ref>
+
+== Software and services ==
+{{Main|PlayStation 4 system software|List of PlayStation applications}}
+
+=== PlayStation 4 system software ===
+
+The PlayStation 4's [[operating system]] is called "Orbis OS", based upon a customized [[FreeBSD]] 9.<ref>{{cite web |url=http://www.scei.co.jp/ps4-license/ |title=Open Source Software used in PlayStation 4 |publisher=Scei.co.jp |access-date=January 2, 2014 |archive-url=https://web.archive.org/web/20131117204620/http://www.scei.co.jp/ps4-license/ |archive-date=November 17, 2013 |url-status=live }}</ref><ref>{{Cite web |date=June 20, 2013 |title=Details about Playstation 4 OS development |url=https://vgleaks.com/some-details-about-playstation-4-os-development/ |access-date=January 26, 2023 |website=VGLeaks 3.0 |language=en-US |archive-date=December 2, 2022 |archive-url=https://web.archive.org/web/20221202000214/https://vgleaks.com/some-details-about-playstation-4-os-development/ |url-status=live }}</ref><ref name="Orbis_OS">{{cite web |author=Larabel, Michael |url=https://www.phoronix.com/scan.php?page=news_item&px=MTM5NDI |title=Sony's PlayStation 4 Is Running Modified FreeBSD 9 |date=June 23, 2013 |publisher=Phoronix |archive-url=https://web.archive.org/web/20130624172952/http://www.phoronix.com/scan.php?page=news_item&px=MTM5NDI |archive-date=June 24, 2013 |access-date=September 14, 2013 |url-status=live}}</ref><ref>{{cite web |author=Humphries, Matthew |url=http://www.geek.com/games/ps4-runs-modified-version-of-the-freebsd-9-0-operating-system-1559866/ |title=PS4 runs modified version of the FreeBSD 9.0 operating system |date=June 24, 2013 |publisher=Geek.com |access-date=January 10, 2014 |archive-url=https://web.archive.org/web/20140328060031/http://www.geek.com/games/ps4-runs-modified-version-of-the-freebsd-9-0-operating-system-1559866/ |archive-date=March 28, 2014 |url-status=live}}</ref>
+
+The console does not require an Internet connection for usage, although more functionality is available when connected.<ref name="opm_denny">{{cite news |url=http://www.officialplaystationmagazine.co.uk/2013/03/20/michael-denny/ |title=Michael Denny on PS4's philosophy |last=Hurley |first=Leon |date=March 20, 2013 |work=Official PlayStation Magazine |access-date=June 1, 2013 |archive-url=https://web.archive.org/web/20130601175127/http://www.officialplaystationmagazine.co.uk/2013/03/20/michael-denny/ |archive-date=June 1, 2013 |url-status=dead}}</ref>
+
+The console introduces a customizable menu interface, the "PlayStation Dynamic Menu", featuring a variety of color schemes.<ref name="20ThingsDidntKnow">{{cite web |url=http://blog.eu.playstation.com/2013/07/12/20-things-you-didnt-know-about-ps4/ |title=20 things you didn't know about PS4 |work=PlayStation Blog |publisher=Sony Computer Entertainment, Inc. |date=July 12, 2013 |access-date=July 12, 2013 |author=Pearson, Rob |archive-url=https://web.archive.org/web/20140703225735/http://blog.eu.playstation.com/2013/07/12/20-things-you-didnt-know-about-ps4/ |archive-date=July 3, 2014 |url-status=dead}}</ref> The interface displays the player's profile, recent activity, notifications, and other details in addition to unlocked [[PlayStation Network Trophies|trophies]].<ref name=XtremePs4PS4Trophies>{{cite news |title=PlayStation 4 will support trophies |author=Shah, Niraj |publisher=XTreme PS3 |url=http://www.xtremeps3.com/2013/02/22/ps4-will-support-trophies/ |date=February 22, 2013 |access-date=February 22, 2013 |archive-url=https://web.archive.org/web/20130526193243/http://www.xtremeps3.com/2013/02/22/ps4-will-support-trophies/ |archive-date=May 26, 2013 |url-status=dead}}</ref> It allows multiple user accounts, all with their own pass-codes. Each player account has the option to share their real name with friends, or use a nickname in other situations when anonymity is important. [[Facebook]] profiles can be connected to PlayStation Network accounts, making it easier to recognize friends.<ref>{{cite news |last=Peel |first=Anna |title=Facebook Inc (FB) Integrates With PS4 For Gamers Identity |date=November 15, 2013 |work=ValueWalk |url=http://www.valuewalk.com/2013/11/facebook-inc-fb-integrates-with-ps4-for-gamers-identity/ |archive-url=https://archive.today/20141230225514/http://www.valuewalk.com/2013/11/facebook-inc-fb-integrates-with-ps4-for-gamers-identity/ |archive-date=December 30, 2014 |url-status=usurped}}</ref> The default home screen features real time content from friends. The "What's New" activity feed includes shared media, recently played games, and other notifications.<ref name="SCE introduces PS4" /> Services from third-party vendors, such as [[Netflix]] and [[Amazon Prime Video]], can be accessed within the interface.<ref>{{cite news |last=Dyer |first=Mitch |title=Netflix, Amazon Instant, More Coming to PlayStation 4 |url=http://www.ign.com/articles/2013/02/20/netflix-amazon-instant-coming-to-playstation-4 |work=IGN |publisher=Ziff Davis |access-date=September 9, 2013 |date=February 20, 2013 |archive-url=https://web.archive.org/web/20130415214006/http://www.ign.com/articles/2013/02/20/netflix-amazon-instant-coming-to-playstation-4 |archive-date=April 15, 2013}}</ref> [[Computer multitasking|Multitasking]] is available during gameplay, such as opening the browser or managing party chat, and switching between applications is done by double-tapping the "PS" button.<ref name="SCE introduces PS4" />
+
+The PlayStation Camera or a microphone enables the user to control the system using [[Speech recognition|voice input]]. Players can command the interface to start a game, take screenshots, and save videos. Saying "PlayStation" initiates voice control, and "All Commands" displays a list of possible commands.<ref>[http://manuals.playstation.net/document/gb/ps4/basic/voice.html Operating the system with your voice] {{Webarchive|url=https://web.archive.org/web/20141028171414/http://manuals.playstation.net/document/gb/ps4/basic/voice.html |date=October 28, 2014}}, manuals.playstation.net, October 28, 2014.</ref>
+
+=== Multimedia features ===
+The PlayStation 4 supports [[Blu-ray]] and [[DVD]] playback, including 3D Blu-ray. The playing of [[CD]] is no longer supported,<ref name=dvdbluray>{{cite web |title=Playing videos on discs |url=http://manuals.playstation.net/document/gb/ps4/videos/videodisc.html |work=PlayStation 4 Users Guide |publisher=Sony Computer Entertainment, Inc. |access-date=January 18, 2015 |archive-url=https://web.archive.org/web/20131226080922/http://manuals.playstation.net/document/gb/ps4/videos/videodisc.html |archive-date=December 26, 2013}}</ref> as the console no longer has an infrared 780&nbsp;nm laser.{{Failed verification|date=June 2026}} Custom music and video files can still be played from [[USB flash drive|USB drives]] and [[DLNA]] servers using the Media Player app.<ref>{{Cite web|url=http://blog.us.playstation.com/2015/06/15/media-player-coming-to-ps4/|title=Media Player Coming to PS4 Tonight – PlayStation.Blog|date=June 16, 2015|archive-url=https://web.archive.org/web/20150616043009/http://blog.us.playstation.com/2015/06/15/media-player-coming-to-ps4/|access-date=November 10, 2018|archive-date=June 16, 2015}}</ref>
+
+=== PlayStation Network ===
+{{Main|PlayStation Network}}
+The PlayStation 4 allows users to access a variety of free and premium PlayStation Network (PSN) services, including the [[PlayStation Store]], [[PlayStation Plus]] subscription service, PlayStation Music powered by [[Spotify]], and the [[PlayStation Video]] subscription service, which allows owners to rent or buy TV shows and films ''[[à la carte]]''.<ref name="SCE introduces PS4" /> A United States-exclusive cloud-based [[Video on demand|television-on-demand]] service known as [[PlayStation Vue]] began beta testing in late November 2014.<ref>{{cite web |url=http://gematsu.com/2014/11/cloud-based-tv-service-playstation-vue-announced |title=Cloud-based TV service PlayStation Vue announced |work=Gematsu |date=November 13, 2014 |access-date=February 5, 2015 |archive-url=https://web.archive.org/web/20150118010946/http://gematsu.com/2014/11/cloud-based-tv-service-playstation-vue-announced |archive-date=January 18, 2015 |url-status=live}}</ref><ref>{{cite web |url=https://www.usatoday.com/story/tech/personal/2014/11/13/sony-playstation-vue-cloud-tv-service/18929491/ |title=Sony previews upcoming PlayStation Vue cloud TV service |first=Mike |last=Snider |date=November 13, 2014 |work=USA Today |access-date=February 5, 2015 |archive-url=https://web.archive.org/web/20150209074900/http://www.usatoday.com/story/tech/personal/2014/11/13/sony-playstation-vue-cloud-tv-service/18929491/ |archive-date=February 9, 2015 |url-status=live }}</ref> Sony intends to expand and evolve the services it offers over the console's lifespan.<ref name="Eurogamer big interview">{{cite news |last=Bramwell |first=Tom |title=The big interview: Sony's Shuhei Yoshida on PS4 |url=http://www.eurogamer.net/articles/2013-02-21-the-big-interview-sonys-shuhei-yoshida-on-ps4 |work=Eurogamer |publisher=Eurogamer Network |access-date=February 25, 2013 |date=February 21, 2013 |archive-url=https://web.archive.org/web/20130419103024/http://www.eurogamer.net/articles/2013-02-21-the-big-interview-sonys-shuhei-yoshida-on-ps4 |archive-date=April 19, 2013}}</ref> Unlike PS3, a PlayStation Plus membership is required to access multiplayer in most games; this requirement does not apply to free-to-play or subscription-based games.<ref>[https://support.us.playstation.com/app/answers/detail/a_id/5060/~/ps4-online-multiplayer-requirements PS4 online multiplayer requirements] {{Webarchive|url=https://archive.today/20150201023943/https://support.us.playstation.com/app/answers/detail/a_id/5060/~/ps4-online-multiplayer-requirements |date=February 1, 2015 }}, support.us.playstation.com, November 3, 2014.</ref>
+
+=== Second screen and remote play ===
+{{Main|PlayStation App|Remote Play}}
+[[File:PlayStation-Vita-1101-FL.jpg|thumb|PlayStation Vita can be used for remote play.]]
+Smartphones and tablets can interact with the PlayStation 4 as [[second screen]] devices, and can also wake the console from sleep mode.<ref name="Joystiq always on">{{cite news |last=Conditt |first=Jessica |title=PS4 doesn't require an always-on internet connection |url=http://www.joystiq.com/2013/02/21/ps4-doesnt-require-an-always-on-internet-connection/ |work=Joystiq |publisher=AOL |access-date=February 25, 2013 |date=February 21, 2013 |archive-url=https://web.archive.org/web/20130530063606/http://www.joystiq.com/2013/02/21/ps4-doesnt-require-an-always-on-internet-connection/ |archive-date=May 30, 2013}}</ref> A [[Sony Xperia]] smartphone, tablet or the [[PlayStation Vita]] can be used for streaming gameplay from the console to handheld, allowing supported games to be played remotely from around a household or away from home.<ref name="remoteplay">Remote Play is available on the Xperia Z2 and Xperia Z3 series, as well as the Xperia Z4 tablet. High speed internet connection required.</ref><ref>{{cite news |title=Sony Xperia Z3 Remote Play: How to play PS4 games on your phone |author=Loveridge, Sam |publisher=Trusted Reviews |url=http://www.trustedreviews.com/opinions/sony-xperia-z3-remote-play-how-to-play-ps4-games-on-your-phone |date=September 4, 2014 |access-date=September 4, 2014 |archive-url=https://web.archive.org/web/20140904234505/http://www.trustedreviews.com/opinions/sony-xperia-z3-remote-play-how-to-play-ps4-games-on-your-phone |archive-date=September 4, 2014 |url-status=live}}</ref> Sony has ambitions to make all PS4 games playable on PlayStation Vita.<ref name="SCE introduces PS4" /> Developers can add Vita-specific controls for use via Remote Play.<ref name="Engadget near final">{{cite news |last=Gilbert |first=Ben |title=The DualShock 4 is 'near final' hardware, Remote Play is more than an afterthought, and other notes from Shuhei Yoshida |url=https://www.engadget.com/2013/02/21/dualshock-4-near-final-remote-play/ |access-date=February 25, 2013 |work=Engadget |publisher=AOL |date=February 21, 2013 |archive-url=https://web.archive.org/web/20130222195021/http://www.engadget.com/2013/02/21/dualshock-4-near-final-remote-play/ |archive-date=February 22, 2013}}</ref> This feature was later expanded to enable PS4 Remote Play functionality on [[Microsoft Windows]] PCs and on [[Apple OS X]] Macs. The update, released in April 2016, allows for Remote Play functionality on computers running [[Windows 8.1]], [[Windows 10]], [[OS X Yosemite]], and [[OS X El Capitan]]. Remote Play supports [[Display resolution|resolution]] options of 360p, 540p, and 720p (1080p is available on PS4 Pro), [[frame rate]] options of 30–60 FPS, and the DualShock 4 can be connected via [[USB]].<ref>{{cite web |last1=Saed |first1=Sherif |title=PlayStation 4 firmware update 3.50 out tomorrow – full details |url=https://www.vg247.com/2016/04/05/playstation-4-firmware-update-3-50-release-date-details/ |website=VG24/7 |access-date=April 5, 2016 |date=April 5, 2016 |archive-url=https://web.archive.org/web/20160405212908/http://www.vg247.com/2016/04/05/playstation-4-firmware-update-3-50-release-date-details/ |archive-date=April 5, 2016 |url-status=live}}</ref>
+
+The PlayStation App allows [[iOS]] and [[Android (operating system)|Android]] mobile devices to interact with the PlayStation 4 from their device. The user can use this application to purchase PS4 games from the console and have them remotely downloaded, watch live streams of other gamers and view in-game maps while playing games.<ref>{{cite news |last=McCormick |first=Rich |title=PlayStation app now available on Android and iOS devices |url=https://www.theverge.com/2013/11/13/5098690/download-playstation-app-for-android-and-ios |work=[[The Verge]] |access-date=September 4, 2015 |date=November 13, 2013 |archive-url=https://web.archive.org/web/20150905213227/http://www.theverge.com/2013/11/13/5098690/download-playstation-app-for-android-and-ios |archive-date=September 5, 2015 |url-status=live}}</ref>
+
+== Social features ==
+{{quote box|align=right|width=25em|quote="Ustream's integration within PS4 consoles will put gamers on a new media field. They will have the ability to direct, produce, and star in their own video game production, simply by being an awesome (or not so awesome!) gamer."|source=— Ustream co-founder [[Brad Hunstable]]<ref>{{cite news |url=http://www.ign.com/articles/2013/02/28/ustream-on-consoles-not-exclusive-to-ps4 |title=Ustream on Consoles Not Exclusive to PS4 |first=Colin |last=Moriarty |publisher=[[IGN]] |date=February 28, 2013 |access-date=July 10, 2015 |archive-url=https://web.archive.org/web/20150714202104/http://www.ign.com/articles/2013/02/28/ustream-on-consoles-not-exclusive-to-ps4 |archive-date=July 14, 2015 |url-status=live}}</ref>}}
+Sony focused on "social" aspects as a major feature of the console. Although the PS4 has improved social functionality, the features are optional and can be disabled.<ref name="Eurogamer big interview" />
+
+=== Community creation ===
+Users have the option to create or join community groups based on personal interest. Communities include a discussion board, accomplishments and game clips shared by other members, plus the ability to join group chat and launch cooperative games. Sony stated that "communities are a good way to socialize with like-minded players", particularly when "you want to tackle a big multiplayer raid, but don't have enough friends available."<ref name="3.0">Adam Westlake. [http://www.slashgear.com/ps4s-software-update-3-00-beta-launches-new-features-detailed-02400453/ PS4's software update 3.00 beta launches, new features detailed] {{Webarchive|url=https://web.archive.org/web/20150905134913/http://www.slashgear.com/ps4s-software-update-3-00-beta-launches-new-features-detailed-02400453/ |date=September 5, 2015}}, slashgear.com, September 2, 2015.</ref> Sony has officially stated that starting April 2021, the community system of the PlayStation Network will be discontinued. This, however, will not prevent users from communicating with their friends in private messaging or in group chats on the PlayStation Network.<ref>{{Cite web|last=Yin-Poole|first=Wesley|date=March 15, 2021|title=PS4 communities feature shuts down in April, Sony confirms|url=https://www.eurogamer.net/articles/2021-03-15-ps4-communities-feature-shuts-down-in-april-sony-confirms|access-date=March 15, 2021|website=Eurogamer|language=en|archive-date=March 15, 2021|archive-url=https://web.archive.org/web/20210315153530/https://www.eurogamer.net/articles/2021-03-15-ps4-communities-feature-shuts-down-in-april-sony-confirms|url-status=live}}</ref>
+
+=== Media sharing ===
+The DualShock 4 controller includes a "SHARE" button, allowing the player to cycle through the last 60 minutes of recorded gameplay to select a screenshot or video clip appropriate for sharing. Media is uploaded seamlessly from the console to other PSN users or social networking sites such as [[Dailymotion]], [[Facebook]], [[Twitter]] and [[YouTube]], or else users can copy media to a [[USB flash drive]] and upload to a social network or website of their preference.<ref>Leon Hurley. [http://www.officialplaystationmagazine.co.uk/2014/03/19/upcoming-ps4-update-to-remove-hdcp-let-you-save-shares-to-usb/ Upcoming PS4 update to remove HDCP & let you save Shares to USB] {{webarchive|url=https://web.archive.org/web/20140827084928/http://www.officialplaystationmagazine.co.uk/2014/03/19/upcoming-ps4-update-to-remove-hdcp-let-you-save-shares-to-usb/ |date=August 27, 2014}} ''PlayStation Magazine'', March 19, 2014.</ref> Players can also use a free video editing application named ShareFactory to cut and assemble their favorite video clips and add custom music or voice commentary with green screen effects. Subsequent updates have added options for picture-in-picture layouts, the ability to create photo collages and [[animated GIFs]].<ref>Stuart Platt. [http://blog.us.playstation.com/2016/06/01/new-update-for-sharefactory-track-2-green-screen-and-more/ New Update for Sharefactory: Track 2, Green Screen and More] {{Webarchive|url=https://web.archive.org/web/20161118042331/http://blog.us.playstation.com/2016/06/01/new-update-for-sharefactory-track-2-green-screen-and-more/ |date=November 18, 2016}}, blog.playstation.com, June 1, 2016.</ref><ref>Stuart Platt. [http://blog.us.playstation.com/2016/11/09/sharefactory-update-2-0-out-today-gifs-photo-mode-ps4-pro-support/ Sharefactory Update 2.0 Out Today] {{Webarchive|url=https://web.archive.org/web/20161118043155/http://blog.us.playstation.com/2016/11/09/sharefactory-update-2-0-out-today-gifs-photo-mode-ps4-pro-support/ |date=November 18, 2016}}, blog.playstation.com, November 9, 2016.</ref>
+
+=== Live streaming ===
+Gamers can either watch live gameplay of games which their friends are playing through the PS4 interface with cross-game camera and microphone input, spectate silently, or broadcast their own gameplay live via [[DailyMotion]], [[Twitch (service)|Twitch]],<ref>{{cite web |url=http://blog.twitch.tv/2013/08/twitch-coming-to-ps4/ |title=Twitch Confirmed for PlayStation 4 |publisher=[[Twitch (service)|Twitch]] |date=August 20, 2013 |access-date=September 14, 2013 |archive-url=https://web.archive.org/web/20140102193525/http://blog.twitch.tv/2013/08/twitch-coming-to-ps4/ |archive-date=January 2, 2014 |url-status=dead}}</ref> [[Ustream]],<ref name="SCE introduces PS4" /> [[Niconico]],<ref>[http://shoryuken.com/2014/04/16/niconico-live-streaming-support-available-on-playstation-4-starting-april-30/ Niconico Live Streaming Support Available on PS4] {{Webarchive|url=https://web.archive.org/web/20170701134751/http://shoryuken.com/2014/04/16/niconico-live-streaming-support-available-on-playstation-4-starting-april-30/ |date=July 1, 2017}} shoryuken.com, April 16, 2004.</ref> or [[YouTube Gaming]],<ref name="3.0" /> allowing for friends and members of the public to view and comment upon them from other web browsers and devices. If a user is not screen-casting, a friend can send them a "Request to Watch" notification.<ref name="3.0" />
+
+=== Share Play ===
+{{redirect|Share Play|the FaceTime feature|FaceTime#History}}
+Share Play allows users to invite an online friend to join their play session via streaming, even if they do not own a copy of the game. Users can pass control of the game entirely to the remote user or partake in [[cooperative multiplayer]] as if they were physically present. Mark Cerny says that remote assistance is particularly useful when confronted by a potentially game-defeating obstacle. "You can even see that your friend is in trouble and reach out through the network to take over the controller and assist them through some difficult portion of the game," he said. Share Play requires a PlayStation Plus subscription and can only be used for one hour at a time.<ref name=us-shareplay>Andrew Kelly. [http://blog.us.playstation.com/2014/10/24/check-out-share-play-in-action-on-ps4/ Share Play in Action on PS4] {{Webarchive|url=https://web.archive.org/web/20141026233857/http://blog.us.playstation.com/2014/10/24/check-out-share-play-in-action-on-ps4/ |date=October 26, 2014 }}, blog.us.playstation.com, October 24, 2014.</ref><ref name=eu-shareplay>Isabelle Tomatis. [http://blog.eu.playstation.com/2014/10/24/ps4s-share-play-feature-in-action/ PS4's Share Play feature in action] {{Webarchive|url=https://web.archive.org/web/20141027192343/http://blog.eu.playstation.com/2014/10/24/ps4s-share-play-feature-in-action/ |date=October 27, 2014 }}, blog.eu.playstation.com, October 24, 2014.</ref>
+
+== Games ==
+{{See also|List of best-selling PlayStation 4 video games|list of PlayStation 4 games|list of cancelled PlayStation 4 games}}
+Each PlayStation 4 console comes preinstalled with [[The Playroom (2013 video game)|The Playroom]], a game designed to server as demonstration of the DualShock 4 controller and the PlayStation Camera. The PlayStation Camera accessory is required to play ''The Playroom''. If a camera is not present, a trailer for ''The Playroom'' will be displayed instead of the full game.<ref>{{cite web|url=http://www.ign.com/articles/2013/08/20/reminder-playroom-will-be-pre-installed-on-every-ps4|title=Reminder: Playroom Will Be Pre-installed On Every PlayStation 4|date=August 20, 2013|accessdate=September 2, 2013|publisher=[[IGN]]|archive-date=August 23, 2013|archive-url=https://web.archive.org/web/20130823061434/http://www.ign.com/articles/2013/08/20/reminder-playroom-will-be-pre-installed-on-every-ps4|url-status=live}}</ref>
+
+PlayStation 4 games are distributed at retail on [[Blu-ray Disc]], and digitally as downloads through the [[PlayStation Network#PlayStation Store|PlayStation Store]].<ref name="cvg every">{{cite web |last=Prescott |first=Shaun |url=http://www.computerandvideogames.com/393081/sony-every-ps4-title-will-be-available-as-digital-download/ |title=Sony: every PS4 title will be available as digital download |work=Computer and Video Games |access-date=February 25, 2013 |archive-url=https://web.archive.org/web/20130528001838/http://www.computerandvideogames.com/393081/sony-every-ps4-title-will-be-available-as-digital-download/ |archive-date=May 28, 2013}}</ref> Games are not region-locked, so games purchased in one region can be played on consoles in all regions,<ref>{{cite web |url=https://www.engadget.com/2013/06/11/the-ps4-wont-be-region-locked/ |title=The PS4 won't be region-locked |access-date=June 11, 2013 |date=September 14, 2013 |work=Engadget |publisher=AOL |first=Mat |last=Smith |archive-url=https://web.archive.org/web/20130615223513/http://www.engadget.com/2013/06/11/the-ps4-wont-be-region-locked/ |archive-date=June 15, 2013 |url-status=dead}}</ref> and players can sign-on to any PS4 console to access their entire digital game library.<ref>{{cite web |first=Leon |last=Hurley |url=http://www.officialplaystationmagazine.co.uk/2013/07/10/ps4s-digital-library-lets-you-play-your-games-anywhere-on-anyones-console/ |title=PS4's digital library lets you play your games anywhere & on anyone's console |work=Official PlayStation Magazine |date=July 10, 2013 |access-date=September 14, 2013 |archive-url=https://web.archive.org/web/20140723041652/http://www.officialplaystationmagazine.co.uk/2013/07/10/ps4s-digital-library-lets-you-play-your-games-anywhere-on-anyones-console/ |archive-date=July 23, 2014 |url-status=dead}}</ref> All PlayStation 4 games must be [[Installation (computer programs)|installed]] to the console's storage.<ref>{{Cite web|title=How Mandatory Game Installations Will Work On PS4|url=https://kotaku.com/how-mandatory-game-installations-will-work-on-ps4-1462283797|last=Totilo|first=Stephen|date=November 11, 2013|website=Kotaku|language=en-us|url-status=live|archive-url=https://web.archive.org/web/20200728192105/https://kotaku.com/how-mandatory-game-installations-will-work-on-ps4-1462283797|archive-date=July 28, 2020|access-date=May 12, 2020}}</ref> Additionally a system called "PlayGo" allows users to begin to play portions of a game (such as opening levels) once the installation or download reaches a specific point, while the remainder of the game is downloaded or installed in the background. Updates to games and system software are also downloaded in the background and while in standby.<ref name="gamasutra_interview" /> PS4 users will, in the future, be able to browse games and stream games via [[Gaikai]] to [[Game demo|demo]] them almost instantaneously.<ref name="SCE introduces PS4" /><ref>{{cite news |last=Jackson |first=Mike |title=Gaikai tech brings spectating, instant demos, more to PS4 |url=http://www.computerandvideogames.com/392446/gaikai-tech-brings-spectating-instant-demos-more-to-ps4/ |work=Computer and Video Games |access-date=February 25, 2013 |date=February 20, 2013 |archive-url=https://web.archive.org/web/20130509010917/http://www.computerandvideogames.com/392446/gaikai-tech-brings-spectating-instant-demos-more-to-ps4/ |archive-date=May 9, 2013}}</ref> Sony says it is committed to releasing an ever-increasing number of [[List of PlayStation 4 free-to-play games|free-to-play]] games, including ''[[PlanetSide 2]]'' and ''[[War Thunder]]''.<ref>Chris Wright. [http://www.develop-online.net/opinions/sony-s-commitment-to-free-to-play-may-be-a-masterstroke/0195356 Sony's commitment to free-to-play may be a masterstroke] {{Webarchive|url=https://web.archive.org/web/20150923225412/http://www.develop-online.net/opinions/sony-s-commitment-to-free-to-play-may-be-a-masterstroke/0195356 |date=September 23, 2015}}, Develop, July 16, 2014.</ref><ref name="f2p1">Shaikh Sehran. [http://www.gamepur.com/feature/15692-10-upcoming-free-play-ps4-games-releasing-20142015.html 10 Upcoming Free To Play PS4 Games Releasing in 2014/2015] {{Webarchive|url=https://web.archive.org/web/20141226085213/http://www.gamepur.com/feature/15692-10-upcoming-free-play-ps4-games-releasing-20142015.html |date=December 26, 2014}}, Gamepur, August 5, 2014.</ref> Sony also took steps to make it easier for [[Indie game development|independent game developers]] to release games for the PS4 by giving them the option to self-publish their own games rather than rely upon others to distribute their games.<ref name=autogenerated1>{{cite web |last=Duhaime |first=Arielle |url=https://www.theverge.com/2013/3/29/4162430/sony-playstation-indie-games-love-story |title=PlayStation and indie games: a love story |publisher=The Verge |date=March 29, 2013 |access-date=March 25, 2014 |archive-url=https://web.archive.org/web/20140131021248/http://www.theverge.com/2013/3/29/4162430/sony-playstation-indie-games-love-story |archive-date=January 31, 2014 |url-status=live}}</ref><ref>{{cite web |url=https://venturebeat.com/2013/06/10/sony-will-allow-indie-devs-to-publish-their-own-games-on-playstation-4/ |title=Sony will allow indie devs to publish their own games on PlayStation 4 |first=Jeffrey |last=Grubb |date=June 10, 2013 |access-date=June 13, 2013 |publisher=[[VentureBeat]] |archive-url=https://web.archive.org/web/20130823174446/http://venturebeat.com/2013/06/10/sony-will-allow-indie-devs-to-publish-their-own-games-on-playstation-4/ |archive-date=August 23, 2013}}</ref>
+
+=== Backward compatibility ===
+{{See also|PlayStation 4 system software#Backward compatibility|list of PlayStation 2 games for PlayStation 4}}
+PlayStation 4 is not compatible with any disc of older PlayStation consoles.<ref name=polygon-ps2classics /><ref name=polygon-nobc>{{cite web |title=PlayStation still not considering backward compatibility for PS4 |url=http://www.polygon.com/2015/6/17/8800073/playstation-still-not-considering-backwards-compatibility-for-ps4 |website=Polygon |date=June 17, 2015 |access-date=December 5, 2015 |archive-url=https://web.archive.org/web/20151208052409/http://www.polygon.com/2015/6/17/8800073/playstation-still-not-considering-backwards-compatibility-for-ps4 |archive-date=December 8, 2015 |url-status=live }}</ref> Emulated versions of selected PlayStation, PlayStation 2 and PlayStation Portable games are available for purchase via PlayStation Store, which are upscaled to high definition and have support for PS4 social features.<ref name=polygon-ps2classics>{{cite web |url=http://www.polygon.com/2015/12/4/9851808/ps2-games-ps4-1080p-upscale |title=PlayStation 2 games launch on PS4 tomorrow |website=Polygon |date=December 4, 2015 |access-date=December 5, 2015 |archive-url=https://web.archive.org/web/20151206030530/http://www.polygon.com/2015/12/4/9851808/ps2-games-ps4-1080p-upscale |archive-date=December 6, 2015 |url-status=live}}</ref><ref>{{cite web|url=https://gamerant.com/ps1-game-features-ps4-ps5/|date=May 23, 2022|access-date=December 5, 2022|title=PS1 Game Features for PS4, PS5 Revealed|website=gamerant.com|archive-date=November 11, 2022|archive-url=https://web.archive.org/web/20221111214612/https://gamerant.com/ps1-game-features-ps4-ps5/|url-status=live}}</ref>
+
+=== PlayStation Now ===
+{{main|PlayStation Now}}
+In December 2013, [[Andrew House]] indicated that Sony was planning to launch a [[cloud gaming]] service for the PS4 in North America within the third quarter of 2014, with a European launch to follow in 2015.<ref name=ext-gaikaips4launch>{{cite web |title=PS4's Gaikai game streaming service to launch in 2014, Microsoft mum on retaliation |url=http://www.extremetech.com/gaming/171957-ps4s-gakai-game-streaming-service-to-launch-in-2014-microsoft-mum-on-retaliation |work=ExtremeTech |date=December 3, 2013 |access-date=December 8, 2013 |archive-url=https://web.archive.org/web/20131207193359/http://www.extremetech.com/gaming/171957-ps4s-gakai-game-streaming-service-to-launch-in-2014-microsoft-mum-on-retaliation |archive-date=December 7, 2013 |url-status=live }}</ref><ref name=ars-gaikailaunch>{{cite web |author=Orland, Kyle |title=Report: Gaikai streaming coming to PS4 in third quarter of 2014 |url=https://arstechnica.com/gaming/2013/12/report-gaikai-streaming-coming-to-ps4-in-third-quarter-of-2014/ |date=December 3, 2013 |publisher=Ars Technica |access-date=December 8, 2013 |archive-url=https://web.archive.org/web/20131203042102/http://arstechnica.com/gaming/2013/12/report-gaikai-streaming-coming-to-ps4-in-third-quarter-of-2014/ |archive-date=December 3, 2013}}</ref>
+
+At [[Consumer Electronics Show]] on January 7, 2014, Sony unveiled [[PlayStation Now]], a [[Digital distribution|digital distribution service]] which will initially allow users to access PlayStation 3 games on the PS4 via a cloud-based streaming system, purchasing games individually or via a subscription, as a solution of no backward compatibility on the hardware of the console.<ref name="verge-psnow">{{cite web |title=Sony announces PlayStation Now, its cloud gaming service for TVs, consoles, and phones |url=https://www.theverge.com/2014/1/7/5284294/sony-announces-playstation-now-cloud-gaming |work=The Verge |date=January 7, 2014 |access-date=January 7, 2014 |archive-url=https://web.archive.org/web/20140107184641/http://www.theverge.com/2014/1/7/5284294/sony-announces-playstation-now-cloud-gaming |archive-date=January 7, 2014 |url-status=live}}</ref> The United States Open Beta went live on July 31, 2014.<ref>{{cite web |url=http://www.gamespot.com/articles/playstation-now-public-beta-starts-today-on-ps4-wi/1100-6421408/ |title=PlayStation Now Public Beta Starts Today on PS4 With 100+ Games; Check Out This Walkthrough Video |work=GameSpot |access-date=April 26, 2015 |archive-url=https://web.archive.org/web/20150423200624/http://www.gamespot.com/articles/playstation-now-public-beta-starts-today-on-ps4-wi/1100-6421408/ |archive-date=April 23, 2015 |url-status=live}}</ref> The official United States release of the service was on January 13, 2015.<ref>{{cite news |url=http://www.eurogamer.net/articles/2015-01-05-north-america-gets-usd15-a-month-playstation-now-subscription-service |title=North America Get a $15-a-Month PlayStation Now Subscription Service |first=Wesley |last=Yin-Poole |work=[[Eurogamer]] |date=January 5, 2015 |access-date=June 20, 2015 |archive-url=https://web.archive.org/web/20150621081704/http://www.eurogamer.net/articles/2015-01-05-north-america-gets-usd15-a-month-playstation-now-subscription-service |archive-date=June 21, 2015 |url-status=live}}</ref> {{Asof|2015|03}} PlayStation Now was in closed beta in the United Kingdom.<ref>{{cite news |url=http://www.eurogamer.net/articles/2015-03-17-playstation-now-closed-beta-begins-this-spring-in-uk |title=PlayStation Now Closed Beta Begins This Spring in UK |first=Wesley |last=Yin-Poole |work=[[Eurogamer]] |date=March 17, 2015 |access-date=June 20, 2015 |archive-url=https://web.archive.org/web/20150621081610/http://www.eurogamer.net/articles/2015-03-17-playstation-now-closed-beta-begins-this-spring-in-uk |archive-date=June 21, 2015 |url-status=live}}</ref>
+
+===PlayLink===
+At [[E3 2017]], Sony revealed the "PlayLink" line of games, which let players control the game with their mobile devices and PlayLink companion apps.<ref name="engadget-playlink">{{cite web |first=Jon|last=Fingas|title=Sony wants you to control PlayStation games on your phone|url=https://www.engadget.com/2017-06-12-playlink-for-playstation-4.html |work=Engadget|date=June 12, 2017 |access-date=October 18, 2024}}</ref> The apps would release on November 21 that same year and would include games such as [[Knowledge is Power (video game)|''Knowledge is Power'']], [[That's You!|''That's You'']], [[Hidden Agenda (2017 video game)|''Hidden Agenda'']], ''[[SingStar Celebration]]'', and ''[[Planet of the Apes: Last Frontier]]''.<ref name="techradar-playlink">{{cite web |first=Steve|last=Boxer|title=PlayLink turns the PS4 into a Christmas party machine|url=https://www.techradar.com/news/playlink-turns-the-ps4-into-a-christmas-party-machine|work=Techradar|date=December 24, 2017 |access-date=October 18, 2024}}</ref> On November 14, 2018, more games would be released, including ''Just Deal With It'', ''Chimparty'', ''WordHunters'', ''UNO'', ''Melbits World'', ''Ticket To Ride'', and ''Knowledge is Power: Decades''.<ref name="psblog-playlink">{{cite web |author=PlayStation Blog Staff|title=Plan a fun family night in with these 6 new PlayLink games, out on PS4 today|url=https://blog.playstation.com/archive/2018/11/14/plan-a-fun-family-night-in-with-these-6-new-playlink-games-out-on-ps4-today/|work=PlayStation Blog|date=November 14, 2018 |access-date=October 18, 2024}}</ref> In 2019, the delayed release of [[Erica (video game)|''Erica'']] made no mention of the PlayLink initiative, when it was planned with PlayLink functionality at the 2017 Paris Games Week event.<ref name="pslifestyle-playlink">{{cite web |first=Chandler|last=Wood|title=Daily Reaction: Does Erica Signal the Death of Sony's PlayLink Initiative?|url=https://www.playstationlifestyle.net/2019/08/19/erica-death-of-sonys-erica-playlink-initiative/|work=PlayStation Lifestyle|date=August 19, 2019 |access-date=October 18, 2024}}</ref> It would be confirmed by Sony in 2020 that PS4 PlayLink titles would be backwards-compatible with the PlayStation 5.<ref name="gamerant-playlink">{{cite web |first=Kean|last=Sullivan|title=PS4 PlayLink Games Will Work on PS5|url=https://gamerant.com/ps4-playlink-games-ps5-backward-compatible/|work=GameRant|date=October 19, 2020 |access-date=October 18, 2024}}</ref> Since 2021, many of the PlayLink companion apps have been delisted from the [[Apple App Store]] and [[Google Play]], such as ''Uno''.{{citation needed|date=October 2024}} On December 14, 2023, companion apps for ''Chimparty'', ''Frantics'', ''Hidden Agenda'', ''Knowledge is Power'', ''Knowledge is Power: Decades'', and ''That's You'' were no longer downloadable for new Google Play users with devices above Android 9 or 11 due to compatibility issues, with iOS users being unaffected.<ref>{{cite web |author=PlayStation Mobile Inc.|title=Frantics - Apps on Google Play|url=https://play.google.com/store/apps/details?id=com.playstation.frantics&hl=en_US|work=Google Play|date=December 14, 2023 |access-date=October 18, 2024}}</ref> There are other PlayLink applications that have been published outside of PlayStation, including by Ubisoft for ''[[Battleship (game)|Battleship]]''.<ref>{{cite web |author=Ubisoft Entertainment|title= BATTLESHIP PlayLink - Apps on Google Play|url= https://play.google.com/store/apps/details?id=com.ubisoft.battleship|work=Google Play|date=March 17, 2019 |access-date=March 7, 2025}}</ref>
+
+== Release ==
+
+=== Critical reception ===
+
+==== Pre-release ====
+{{quote box|align=right|width=25em|quote="It's abundantly clear that PS4 is being driven as a collaboration between East and West, as opposed to a dictation from one side to the other. Developers are fully involved, activated, discussed and doing really cool collaborative things."|source=— [[Mark Rein (software executive)|Mark Rein]], Epic Games<ref name=CVG />}}
+Pre-release reception to the console from developers and journalists was positive. Mark Rein of [[Epic Games]] praised the "enhanced" architecture of Sony's system, describing it as "a phenomenal piece of hardware".<ref name=CVG>{{cite web |first=Andy |last=Robinson |url=http://www.computerandvideogames.com/398783/interviews/interview-were-more-epic-than-weve-ever-been/ |title=Interview: 'We're more Epic than we've ever been' |work=Computer and Video Games |date=April 2, 2013 |archive-url=https://web.archive.org/web/20140715163010/http://www.computerandvideogames.com/398783/interviews/interview-were-more-epic-than-weve-ever-been/ |archive-date=July 15, 2014 |access-date=September 14, 2013 |url-status=dead}}</ref> [[John Carmack]], programmer and co-founder of [[id Software]], also commended the design by saying "Sony made wise engineering choices",<ref>{{cite web |first=David |last=Lynch |url=http://www.nowgamer.com/news/1818986/ps4_sony_made_wise_choices_carmack.html |title=PS4: 'Sony Made Wise Choices' - Carmack |work=Nowgamer |publisher=Imagine Publishing |date=February 21, 2013 |archive-url=https://web.archive.org/web/20140501024436/http://www.nowgamer.com/news/1818986/ps4_sony_made_wise_choices_carmack.html |archive-date=May 1, 2014 |access-date=September 14, 2013 |url-status=dead}}</ref> while Randy Pitchford of [[Gearbox Software]] expressed satisfaction with the amount of high-speed memory in the console.<ref name="Eurogamer PC like architecture"/> Eurogamer also called the graphics technology in the PS4 "impressive" and an improvement from the difficulties developers experienced on the PlayStation 3.<ref name="Eurogamer spec analysis" />
+
+Numerous industry professionals have acknowledged the PlayStation 4's performance advantage over the Xbox One. Speaking to ''[[Edge (magazine)|Edge]]'' magazine, multiple game developers have described the difference as "significant" and "obvious".<ref name="edge">{{cite web |url=http://www.edge-online.com/news/power-struggle-the-real-differences-between-ps4-and-xbox-one-performance/ |title=Power struggle: the real differences between PS4 and Xbox One performance |last=Long |first=Neil |publisher=edge-online.com |date=September 13, 2013 |access-date=September 2, 2014 |archive-url=https://web.archive.org/web/20140801181214/http://www.edge-online.com/news/power-struggle-the-real-differences-between-ps4-and-xbox-one-performance/ |archive-date=August 1, 2014 |url-status=live}}</ref> ExtremeTech says the PS4's graphics processing unit offers a "serious advantage" over the competition, but due to the nature of cross-platform development, games that share the same assets will appear "very similar". In other scenarios, designers may tap some of PS4's additional power in a straightforward manner, to boost frame rate or output at a higher resolution, whereas games from Sony's own first-party studios that take full advantage of the hardware "will probably look significantly better than anything on the Xbox One."<ref>Sebastian Anthony. [http://www.extremetech.com/gaming/156273-xbox-720-vs-ps4-vs-pc-how-the-hardware-specs-compare/2 Xbox One vs. PS4: How the final hardware specs compare] {{Webarchive|url=https://web.archive.org/web/20150411090241/http://www.extremetech.com/gaming/156273-xbox-720-vs-ps4-vs-pc-how-the-hardware-specs-compare/2 |date=April 11, 2015}}, ''ExtremeTech'', November 22, 2013.</ref>
+
+In response to concerns surrounding the possibility of [[digital rights management|DRM]] measures to hinder the resale of used games (and in particular, the initial DRM policies of [[Xbox One]], which did contain such restrictions), [[Jack Tretton]] explicitly stated during Sony's E3 press conference that there would be "no restrictions" on the resale and trading of PS4 games on physical media, while software product development head Scott Rohde specified that Sony was planning to disallow [[online pass]]es as well, going on to say that the policies were designed to be "consumer-friendly, extremely retailer-friendly, and extremely publisher-friendly".<ref name="onlinepass">{{cite web |url=https://www.gamedeveloper.com/business/further-clarification-on-sony-s-drm-policies-no-more-online-pass |title=Further clarification on Sony's DRM policies: No more online pass |access-date=June 12, 2013 |date=June 11, 2013 |first=Christian |last=Nutt |publisher=Gamasutra |url-status=live |archive-url=https://web.archive.org/web/20130812012901/http://gamasutra.com/view/news/194150/Further_clarification_on_Sonys_DRM_policies_No_more_online_pass.php |archive-date=August 12, 2013}}</ref><ref name=gamasutra-ps4norestrictions>{{cite web |title=Sony: No restrictions on preowned PlayStation 4 games |url=https://www.gamedeveloper.com/business/sony-no-restrictions-on-preowned-playstation-4-games |work=Gamasutra |date=June 10, 2013 |access-date=December 8, 2013 |archive-url=https://web.archive.org/web/20131215004547/http://gamasutra.com/view/news/194059/Sony_No_restrictions_on_preowned_PlayStation_4_games.php |archive-date=December 15, 2013 |url-status=live}}</ref> After Sony's [[E3 2013]] press conference, ''[[IGN]]'' responded positively to Sony's attitude towards indie developers and trading games, stating they thought "most gamers would agree" that "if you care about games like [Sony] do, you'll buy a PlayStation 4".<ref>{{cite news |last=MacDonald |first=Keza |title=E3 2013: Sony's Knock-Out Blow |url=http://www.ign.com/articles/2013/06/11/e3-2013-sonys-knock-out-blow |work=IGN |publisher=Ziff Davis |access-date=June 11, 2013 |date=June 11, 2013 |archive-url=https://web.archive.org/web/20140413193113/http://www.ign.com/articles/2013/06/11/e3-2013-sonys-knock-out-blow |archive-date=April 13, 2014}}</ref> PlayStation 4's removable and upgradable [[hard drive]] also drew praise from ''IGN'',<ref>{{Cite news|url=https://www.resetera.com/threads/media-create-sales-week-30-2018-jul-23-jul-29.59229/|title=Media Create Sales: Week 30, 2018 (Jul 23 - Jul 29)|work=ResetEra|access-date=August 2, 2018|language=en-US|archive-url=https://web.archive.org/web/20180801212259/https://www.resetera.com/threads/media-create-sales-week-30-2018-jul-23-jul-29.59229/|archive-date=August 1, 2018|url-status=live}}</ref> with Scott Lowe commenting that the decision gave the console "another advantage" over the Xbox One, whose hard drive cannot be accessed.<ref>{{cite news |last=Lowe |first=Scott |title=E3 2013: PlayStation 4 Hard Drive is Removable, Upgradable |work=IGN |publisher=Ziff Davis |access-date=June 11, 2013 |url=http://www.ign.com/articles/2013/06/11/e3-2013-playstation-4-hard-drive-is-removable-upgradable |date=June 11, 2013 |archive-url=https://web.archive.org/web/20130613042852/http://www.ign.com/articles/2013/06/11/e3-2013-playstation-4-hard-drive-is-removable-upgradable |archive-date=June 13, 2013 |url-status=live}}</ref>
+
+''[[GameSpot]]'' called the PlayStation 4 "the gamer's choice for next-generation", citing its price, lack of restrictive [[digital rights management]], and most importantly, Sony's efforts to "acknowledge its consumers" and "respect its audience" as major factors.<ref>{{cite news |last=Gaston |first=Martin |title=PlayStation 4 is the gamer's choice for next-gen |url=http://www.gamespot.com/e3/playstation-4-is-the-gamers-choice-for-next-gen-6409777/?tag=Topslot;Slot3 |work=[[GameSpot]] |publisher=CBS Interactive |access-date=June 11, 2013 |date=June 11, 2013 |archive-url=https://archive.today/20130615103408/http://www.gamespot.com/e3/playstation-4-is-the-gamers-choice-for-next-gen-6409777/?tag=Topslot;Slot3 |archive-date=June 15, 2013 |url-status=dead}}</ref>
+
+==== Post-release ====
+The PlayStation 4 has received very positive reviews from critics. Scott Lowe of ''IGN'' gave it an 8.2 rating out of 10 praising the console's DualShock 4 design and social integration features. He criticized the console's lack of software features and for underutilizing the DualShock 4's touch pad.<ref>{{cite web |url=http://uk.ign.com/articles/2013/11/13/playstation-4-review |title=PS4 Review&nbsp;— IGN |date=November 13, 2013 |access-date=January 13, 2014 |archive-url=https://web.archive.org/web/20141214203720/http://uk.ign.com/articles/2013/11/13/playstation-4-review |archive-date=December 14, 2014 |url-status=live}}</ref> ''[[The Gadget Show]]'' gave a similar review complimenting the DualShock 4's new triggers and control sticks, in addition to the new Remote Play feature, yet criticized the system's lack of media support at launch.<ref>{{cite web |url=http://gadgetshow.channel5.com/gadgets/games/consoles/sony-playstation-4 |title=Sony PlayStation 4 review by The Gadget Show |date=November 27, 2013 |access-date=January 13, 2014 |url-status=dead |archive-url=https://web.archive.org/web/20140114070146/http://gadgetshow.channel5.com/gadgets/games/consoles/sony-playstation-4 |archive-date=January 14, 2014}}</ref> ''IGN'' compared the Xbox One and the PlayStation 4 over various categories, allowing their readers to vote for their preferred system. The PS4 won every category offered, and ''IGN'' awarded the PS4 with their People's Choice Award.<ref>{{cite web |url=http://au.ign.com/videos/2014/01/17/xbox-one-vs-playstation-4-the-results-ign-versus |title=Xbox One vs PS4 - IGN Versus&nbsp;— IGN |date=January 16, 2014 |access-date=January 23, 2014 |archive-url=https://archive.today/20140123034024/http://au.ign.com/videos/2014/01/17/xbox-one-vs-playstation-4-the-results-ign-versus |archive-date=January 23, 2014 |url-status=live}}</ref>
+
+Shortly following the launch, it became apparent that some games released on multiple platforms were available in higher resolutions on the PS4 as opposed to other video game consoles. Kirk Hamilton of ''[[Kotaku]]'' reported on the differences in early games such as ''[[Call of Duty: Ghosts]]'' and ''[[Assassin's Creed IV: Black Flag]]'' which ran at 1080p on the PS4, but in 720p and 900p, respectively, on the [[Xbox One]].<ref name="1080p - Kotaku">{{cite web |url=http://kotaku.com/why-it-matters-that-ps4-games-are-higher-resolution-th-1475165066 |title=Why It Matters That PS4 Games Are Higher-Resolution Than Xbox One |last=Hamilton |first=Kirk |date=December 3, 2013 |publisher=[[Kotaku]] |access-date=February 10, 2015 |archive-url=https://web.archive.org/web/20150210231309/http://kotaku.com/why-it-matters-that-ps4-games-are-higher-resolution-th-1475165066 |archive-date=February 10, 2015 |url-status=live}}</ref>
+
+=== Sales ===
+{| class="wikitable" style="float:right; margin:0 0 0.5em 1em;"
+|-
+! Region !! Lifetime sell-through by region !! Lifetime sell-through by country
+|-
+| North America
+| 30M
+| United States 30M <small>({{as of|lc=on|df=US|2019|9}})</small><ref name=":9">{{Cite web|url=https://www.uk24.co/2019/09/ps4-over-30-million-consoles-sold-in-the-usa-followed-by-japan-germany-and-the-uk.html|title=PS4, over 30 million consoles sold in the USA; followed by Japan, Germany and the UK|last=Ahmad|first=Daniel|date=September 15, 2019|website=UK24 News|publisher=Niko Partners Market Intelligence|language=en-US|access-date=September 15, 2019|archive-date=February 21, 2022|archive-url=https://web.archive.org/web/20220221155852/https://www.uk24.co/2019/09/ps4-over-30-million-consoles-sold-in-the-usa-followed-by-japan-germany-and-the-uk.html|url-status=dead}}</ref><ref name=":10">{{Cite web|url=https://www.4players.de/4players.php/spielinfonews/PlayStation4/34337/2185278/PlayStation_4-Hat_sich_72_Millionen_Mal_in_Deutschland_verkauft.html|title=PlayStation 4: Hat sich 7,2 Millionen Mal in Deutschland verkauft|trans-title=PlayStation 4: 7.2 million units sold in Germany|website=4Players.de|date=September 15, 2019 |language=de|access-date=September 16, 2019|archive-url=https://web.archive.org/web/20190922171939/https://www.4players.de/4players.php/spielinfonews/PlayStation4/34337/2185278/PlayStation_4-Hat_sich_72_Millionen_Mal_in_Deutschland_verkauft.html|archive-date=September 22, 2019|url-status=live}}</ref>
+|-
+| Europe
+| ~24M
+|Germany 7.2M <small>({{as of|lc=on|df=US|2019|9}})</small>;<ref name=":9" /><ref name=":10" /><br /> United Kingdom 6.8M <small>({{as of|lc=on|df=US|2019|9|}})</small>;<ref name=":9" /><ref name=":10" /><br /> France ~6M <small>({{as of|lc=on|df=US|2019|9|}})</small>;<ref name=":10" /><br /> Italy ~3M <small>({{as of|lc=on|df=US|2018|12}})</small>;<ref>{{cite web|language=it|title=PlayStation 4 è stata la console più venduta in Italia nel 2018|trans-title=PlayStation 4 was the best-selling console in Italy in 2018|date=September 30, 2019|access-date=December 28, 2021|website=skytg24.it|quote=Con 2,97 milioni di unità, la console più venduta in Italia è PlayStation 4. [With 2.97 million units, the best-selling console in Italy is PlayStation 4.]|url=https://tg24.sky.it/tecnologia/2019/09/30/playstation-4-vendite-italia|archive-date=December 28, 2021|archive-url=https://web.archive.org/web/20211228145322/https://tg24.sky.it/tecnologia/2019/09/30/playstation-4-vendite-italia|url-status=live}}</ref><br /> Spain 700K <small>({{as of|lc=on|df=US|2015|06|17}})</small>;<ref>{{cite web|url=http://www.elotrolado.net/noticia_sony-ha-vendido-700-000-ps4-y-600-000-ps-vita-en-espana-actualizada_26668|title=Sony ha vendido 700.000 PS4 y 600.000 PS Vita en España|trans-title=PSony has sold 700,000 PS4 and 600,000 PS Vita in Spain|website=elotrolado.net|language=es|date=June 17, 2015|access-date=September 19, 2019|archive-url=https://web.archive.org/web/20190820190050/https://www.elotrolado.net/noticia_sony-ha-vendido-700-000-ps4-y-600-000-ps-vita-en-espana-actualizada_26668|archive-date=August 20, 2019|url-status=live}}</ref><br /> Portugal 100K <small>({{as of|lc=on|df=US|2015|5|4}})</small><ref>{{cite news|language=pt|title=PS4 com mais de 100 mil unidades vendidas em Portugal|trans-title=PS4 with more than 100 thousand units sold in Portugal|url=https://www.eurogamer.pt/articles/2015-05-04-ps4-com-mais-de-100-mil-unidades-vendidas-em-portugal|date=May 4, 2015|access-date=August 5, 2020|website=Eurogamer.pt|archive-date=March 23, 2016|archive-url=https://web.archive.org/web/20160323005902/http://www.eurogamer.pt/articles/2015-05-04-ps4-com-mais-de-100-mil-unidades-vendidas-em-portugal|url-status=live}}</ref>
+|-
+|Asia
+| +10M
+|Japan 8.3M <small>({{as of|2019|9||df=US|lc=on}})</small>;<ref name=":9" /><ref name=":10" /> <br /> China ~1.5M <small>({{as of|lc=on|df=US|2018|8|2}})</small>;<ref>{{Cite web|url=http://nikopartners.com/sony-playstation-chinajoy-2018-press-conference/|title=SONY PLAYSTATION CHINAJOY 2018 PRESS CONFERENCE|date=August 15, 2018|website=Niko Partners|archive-url=https://web.archive.org/web/20180818145424/http://nikopartners.com/sony-playstation-chinajoy-2018-press-conference/|archive-date=August 18, 2018|url-status=live}}</ref> <br /> India ~250,000 <small>({{as of|lc=on|df=US|2018|3|}})</small><ref>{{cite web|title=Gaming Is Too Damn Expensive in India|date=March 5, 2018|access-date=August 5, 2020|website=gadgets.ndtv.com|url=https://gadgets.ndtv.com/games/opinion/gaming-is-too-damn-expensive-in-india-1833274|quote=[...] PS4 at 250,000 units sold, and a mere 30,000 for the Xbox One.|archive-date=October 4, 2020|archive-url=https://web.archive.org/web/20201004190924/https://gadgets.ndtv.com/games/opinion/gaming-is-too-damn-expensive-in-india-1833274|url-status=live}}</ref>
+|-
+| Others
+| 200,000
+| Mexico, Brazil, Argentina ~150,000 <small>({{as of|lc=on|df=US|2014|12|}})</small>;<ref>{{cite web|title=Xbox One sells better than PS4 in Latin America in 2014|date=October 7, 2015|access-date=August 5, 2020|url=https://gearnuke.com/xbox-one-sells-better-ps4-latin-america-2014/|website=Gearnuke.com|quote=In 2014 it's estimated that around 600,000 Xbox One's and PlayStation 4's were sold through to end users in Mexico, Brazil and Argentina with around 75% of those sales attributed to the Xbox One.|archive-date=September 19, 2020|archive-url=https://web.archive.org/web/20200919090203/https://gearnuke.com/xbox-one-sells-better-ps4-latin-america-2014/|url-status=live}}</ref> <br /> South Africa 50,000 <small>({{as of|lc=on|df=US|2014|12|12}})</small><ref>{{cite web |url=http://www.lazygamer.net/general-news/how-is-the-playstation-4-doing-in-south-africa/ |title=How is the PlayStation 4 doing in South Africa? |date=December 12, 2014 |publisher=lazygamer.net |access-date=July 17, 2016 |archive-url=https://web.archive.org/web/20160806100347/http://www.lazygamer.net/general-news/how-is-the-playstation-4-doing-in-south-africa/ |archive-date=August 6, 2016 |url-status=live}}</ref> 
+|-
+| Worldwide
+| style="text-align:center;" colspan=2| 106.0M <small>(as of December 31, 2019)</small><ref name="ps4_units_sold_106M">{{cite press release |title=PlayStation Network Monthly Active Users Reaches 103 Million |publisher=Sony |date=January 6, 2020 |url=https://www.sie.com/en/corporate/release/2020/200107.html |access-date=January 6, 2020 |archive-url=https://web.archive.org/web/20200113155603/https://www.sie.com/en/corporate/release/2020/200107.html |archive-date=January 13, 2020 |url-status=live}}</ref>
+|}
+
+Demand for PlayStation 4 was strong. In August 2013, Sony announced the placement of over a million preorders for the console,<ref name="WSJ 1 million">{{cite web |last=Sherr |first=Ian |url=https://blogs.wsj.com/digits/2013/08/20/sony-says-playstation-4-launches-nov-15/ |title=Sony Says PlayStation 4 Launches Nov. 15 |work=The Wall Street Journal |date=August 20, 2013 |access-date=August 23, 2013 |archive-url=https://web.archive.org/web/20130820201821/https://blogs.wsj.com/digits/2013/08/20/sony-says-playstation-4-launches-nov-15/ |archive-date=August 20, 2013 |url-status=live}}</ref> while on the North American launch alone, one million PlayStation 4 consoles were sold.<ref name="IGN 1 million sold">{{cite web |last=Goldfarb |first=Andrew |url=http://www.ign.com/articles/2013/11/17/playstation-4-sales-pass-1-million-in-north-america/ |title=Sony sold 1 million PS4 consoles in 24 hours |work=IGN |publisher=Ziff Davis |date=November 17, 2013 |access-date=November 17, 2013 |archive-url=https://web.archive.org/web/20131117143456/http://www.ign.com/articles/2013/11/17/playstation-4-sales-pass-1-million-in-north-america |archive-date=November 17, 2013 |url-status=live}}</ref> In the UK, the PlayStation 4 became the best-selling console at launch, with the sale of 250,000 consoles within a 48-hour period<ref>{{cite news |url=https://www.independent.co.uk/life-style/gadgets-and-tech/news/ps4-beats-xbox-one-to-become-uks-fastest-ever-selling-console-8977399.html |title=PS4 beats Xbox One to become UK's fastest ever selling console |work=The Independent |access-date=December 2, 2013 |date=December 2, 2013 |archive-url=https://web.archive.org/web/20131203070946/http://www.independent.co.uk/life-style/gadgets-and-tech/news/ps4-beats-xbox-one-to-become-uks-fastest-ever-selling-console-8977399.html |archive-date=December 3, 2013}}</ref> and 530,000 in the first five weeks.<ref>{{cite web |url=http://www.mcvuk.com/news/read/ps4-outsold-xbox-one-by-166-000-consoles-in-uk-last-year/0126321 |title=PS4 outsold Xbox One by 166,000 consoles in UK last year |access-date=January 1, 2014 |date=January 1, 2014 |archive-url=https://web.archive.org/web/20140102082659/http://www.mcvuk.com/news/read/ps4-outsold-xbox-one-by-166-000-consoles-in-uk-last-year/0126321 |archive-date=January 2, 2014 |url-status=live}}</ref>
+
+On January 7, 2014, [[Andrew House]] announced in his [[Consumer Electronics Show]] keynote speech that 4.2&nbsp;million PS4 units had been sold-through by the end of 2013,<ref name="Sony's CES keynote">{{cite web |url=http://ca.ign.com/articles/2014/01/07/ces-playstation-4-sales-pass-42-million |title=CES: PlayStation 4 Sales Pass 4.2 Million |last=Goldfarb |first=Andrew |work=[[IGN]] |date=January 7, 2014 |access-date=January 7, 2014 |archive-url=http://arquivo.pt/wayback/20160522145009/http://ca.ign.com/articles/2014/01/07/ces-playstation-4-sales-pass-42-million |archive-date=May 22, 2016 |url-status=live}}</ref> with more than 9.7&nbsp;million software units sold.<ref>2014-01-07, [http://gematsu.com/2014/01/playstation-4-sales-topped-4-2-million-2013 PlayStation 4 sales topped 4.2 million in 2013] {{Webarchive|url=https://web.archive.org/web/20170701183432/http://gematsu.com/2014/01/playstation-4-sales-topped-4-2-million-2013 |date=July 1, 2017}}, Gematsu</ref> On February 18, 2014, Sony announced that, as of February 8, it had sold over 5.3&nbsp;million console units following the release of the PS4 onto the North American and Western/Central European markets.<ref name="VergeSalesFeb2014">{{cite web |url=https://www.theverge.com/2014/2/18/5421644/sony-ps4-sales-5-3-million |title=Sony has sold over 5.3 million PlayStation 4 consoles worldwide |last=Byford |first=Sam |work=[[The Verge]] |date=February 18, 2014 |access-date=February 18, 2014 |archive-url=https://web.archive.org/web/20140218191407/http://www.theverge.com/2014/2/18/5421644/sony-ps4-sales-5-3-million |archive-date=February 18, 2014 |url-status=live}}</ref><ref>{{cite web |title=Sony Beats Its PS4 Sales Target, With 5.3M Consoles Sold In 3-Months |url=https://techcrunch.com/2014/02/18/ps4-sells-5-3m/?ncid=tcdaily |work=TechCrunch |publisher=AOL Inc |access-date=February 19, 2014 |first=Natasha |last=Lomas |date=February 18, 2014 |archive-url=https://web.archive.org/web/20140301074345/http://techcrunch.com/2014/02/18/ps4-sells-5-3m/?ncid=tcdaily |archive-date=March 1, 2014 |url-status=live}}</ref> Within the first two days of release in Japan during the weekend of February 22, 2014, 322,083 consoles were sold.<ref>2014-02-25, [http://www.famitsu.com/news/201402/25048815.html プレイステーション4が発売2日間で32万2083台を販売] {{Webarchive|url=https://web.archive.org/web/20170726165222/https://www.famitsu.com/news/201402/25048815.html |date=July 26, 2017}}, [[Famitsu]]</ref> PS4 software unit sales surpassed 20.5&nbsp;million on April 13, 2014.<ref name=7mil_gem>{{cite web |url=http://gematsu.com/2014/04/playstation-4-sales-top-seven-million-worldwide |title=PlayStation 4 sales top 7 million worldwide |last=Romano |first=Sal |publisher=gematsu.com |date=April 16, 2014 |access-date=April 27, 2014 |archive-url=https://web.archive.org/web/20140421110208/http://gematsu.com/2014/04/playstation-4-sales-top-seven-million-worldwide |archive-date=April 21, 2014 |url-status=live}}</ref> During Japan's 2013 [[fiscal year]], heightened demand for the PS4 helped Sony top global console sales, beating Nintendo for the first time in eight years.<ref name="PS4sales">{{cite news |title=Sony tops game consoles for 1st time in 8 years |url=http://asia.nikkei.com/Business/Consumers/Sony-tops-game-console-sales-for-1st-time-in-8-years |date=June 7, 2014 |access-date=December 8, 2015 |work=[[The Nikkei|Nikkei Asian Review]] |archive-url=https://web.archive.org/web/20151210224154/http://asia.nikkei.com/Business/Consumers/Sony-tops-game-console-sales-for-1st-time-in-8-years |archive-date=December 10, 2015 |url-status=live}}</ref>
+
+According to data released by [[Nielsen Media Research|Nielsen]] in August 2014, nine months after the PS4 was released, thirty-one percent of its sales were to existing Wii and Xbox 360 owners, none of whom had by then owned a PS3.<ref>Eddie Makuch. [http://www.gamespot.com/articles/ps4-poaching-players-from-microsoft-nintendo-niels/1100-6421917/ PS4 Poaching Players From Microsoft, Nintendo] {{Webarchive|url=https://web.archive.org/web/20140920193815/http://www.gamespot.com/articles/ps4-poaching-players-from-microsoft-nintendo-niels/1100-6421917/ |date=September 20, 2014 }}, GameSpot, August 26, 2014.</ref> At [[Gamescom]] 2014, it was announced that 10&nbsp;million PS4 units had been sold-through to consumers worldwide,<ref>{{cite web |url=https://www.theverge.com/2014/8/12/5995275/sony-has-sold-10-million-playstation-4s |title=Sony has sold 10 million PlayStation 4s |last=Webster |first=Andrew |work=The Verge |date=August 12, 2014 |access-date=August 12, 2014 |archive-url=https://web.archive.org/web/20140812202015/http://www.theverge.com/2014/8/12/5995275/sony-has-sold-10-million-playstation-4s |archive-date=August 12, 2014 |url-status=live}}</ref> and on November 13, it was announced that the PlayStation 4 was the top-selling console in the U.S. for the tenth consecutive month.<ref>{{cite web |url=http://www.gamespot.com/articles/ps4-tops-xbox-one-in-october-npd-nba-2k15-and-smas/1100-6423582/ |title=PS4 Tops Xbox One in October NPD, NBA 2K15 and Smash Bros. are Top Games |last=Haywald |first=Justin |work=[[GameSpot]] |date=November 13, 2014 |access-date=November 13, 2014 |archive-url=https://web.archive.org/web/20141116142637/http://www.gamespot.com/articles/ps4-tops-xbox-one-in-october-npd-nba-2k15-and-smas/1100-6423582/ |archive-date=November 16, 2014 |url-status=live}}</ref>
+
+In its first sales announcement of 2015, Sony confirmed on January 4 that it had sold-through 18.5&nbsp;million PlayStation 4 units.<ref name="globalsales">{{cite web |url=http://www.sony.net/SonyInfo/IR/financial/fr/14q4_sony.pdf |title=Consolidated Financial Results for the Fiscal Year Ended March 31, 2015 |author=Sony |date=April 30, 2015 |publisher=Sony |access-date=April 30, 2015 |archive-url=https://web.archive.org/web/20150513023457/http://www.sony.net/SonyInfo/IR/financial/fr/14q4_sony.pdf |archive-date=May 13, 2015 |url-status=live}}</ref> Sony updated the sell-through figures for the system throughout 2015: over 20&nbsp;million consoles {{as of| 2015|03|03|lc=yes|df=US}},<ref>{{cite web |url=http://www.ign.com/articles/2015/03/03/sonys-playstation-4-sells-over-202-million-units-worldwide |title=Sony's PlayStation 4 Sells Over 20.2 Million Units Worldwide |publisher=IGN |date=March 3, 2015 |access-date=April 26, 2015 |last=Moser |first=Cassidee |archive-url=https://web.archive.org/web/20170712125236/http://www.ign.com/articles/2015/03/03/sonys-playstation-4-sells-over-202-million-units-worldwide |archive-date=July 12, 2017 |url-status=live}}</ref> over 30&nbsp;million {{as of|2015|11|22|lc=yes|df=US}},<ref>{{cite web |last1=Byford |first1=Sam |title=PlayStation 4 sales hit 30 million worldwide |url=https://www.theverge.com/2015/11/25/9797964/ps4-sales-worldwide-30-million |website=The Verge |date=November 25, 2015 |access-date=November 26, 2015 |archive-url=https://web.archive.org/web/20151125232254/http://www.theverge.com/2015/11/25/9797964/ps4-sales-worldwide-30-million |archive-date=November 25, 2015 |url-status=live}}</ref> and over 35&nbsp;million by the end of 2015.<ref name="units_sold">{{cite web|url=https://www.gamespot.com/articles/e3-2017-ps4-sales-reach-new-heights/1100-6450884/|title=E3 2017: PS4 Sales Reach New Heights|date=June 12, 2017|website=GameSpot|access-date=August 1, 2017|archive-url=https://web.archive.org/web/20170801155707/https://www.gamespot.com/articles/e3-2017-ps4-sales-reach-new-heights/1100-6450884/|archive-date=August 1, 2017|url-status=live}}</ref> As of May 22, 2016, total worldwide sell-through reached 40&nbsp;million.<ref name=":1">{{Cite web |url=http://www.sie.com/en/corporate/release/2016/160526.html |title=PLAYSTATION 4 SALES SURPASS 40 MILLION UNITS WORLDWIDE |website=www.sie.com |access-date=May 26, 2016 |archive-url=https://web.archive.org/web/20160527165908/http://www.sie.com/en/corporate/release/2016/160526.html |archive-date=May 27, 2016 |url-status=live}}</ref> As of December 2018, over 91&nbsp;million consoles and more than 876&nbsp;million PlayStation 4 games have been sold worldwide. By October 2019, the PS4 had sold 102.8 million times, making it the second [[List of best-selling game consoles|best-selling video game console]] of all time, behind the [[PlayStation 2]].<ref name=":13">{{cite news|title=Sony's PS4 is the second best-selling console of all time|language=en|work=Engadget|url=https://www.engadget.com/2019-10-30-sony-earnings-ps4-console-sales.html?|url-status=live|access-date=May 21, 2020|archive-url=https://web.archive.org/web/20200806111346/https://www.engadget.com/2019-10-30-sony-earnings-ps4-console-sales.html|archive-date=August 6, 2020}}</ref>
+
+The PlayStation 4 holds a market share of at least 70% within all European countries, {{as of |2015|06|df=US|lc=yes}}.<ref>{{cite web |url=http://www.vg247.com/2015/06/30/playstation-4-dominates-europe-with-70-90-of-console-market/ |title=PlayStation 4 dominates Europe with '70-90%' of console market |date=June 30, 2015 |website=VG247 |access-date=June 30, 2015 |archive-url=https://web.archive.org/web/20150701191447/http://www.vg247.com/2015/06/30/playstation-4-dominates-europe-with-70-90-of-console-market/ |archive-date=July 1, 2015 |url-status=live}}</ref>
+
+{| class="wikitable"
+!Lifetime worldwide hardware sell-through
+!Lifetime worldwide software sell-through
+!Tie ratio
+|-
+|1.0M <small>(as of November 16, 2013)</small><ref name=":6">{{Cite web|url=https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/18q1_supplement.pdf|title=PlayStation 4 (PS4) Hardware and Software Unit Sales|date=July 31, 2018|website=Sony Supplemental Information for the Consolidated Financial Results for the First Quarter Ended June 30, 2018|archive-url=https://web.archive.org/web/20180731213641/https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/18q1_supplement.pdf|archive-date=July 31, 2018|url-status=live}}</ref>
+|{{N/a}}
+|{{N/a}}
+|-
+|2.1M <small>(as of December 1, 2013)</small><ref>{{Cite web |url=http://www.sie.com/en/corporate/release/2013/131203b.html |title=PLAYSTATION 4 (PS4) GLOBAL SALES SURPASS 2.1 MILLION UNITS FOLLOWING EUROPE, AUSTRALASIA AND LATIN AMERICA LAUNCH |website=www.sie.com |access-date=May 26, 2016 |archive-url=https://web.archive.org/web/20160701113123/http://www.sie.com/en/corporate/release/2013/131203b.html |archive-date=July 1, 2016 |url-status=live}}</ref>
+|{{N/a}}
+|{{N/a}}
+|-
+|4.2M <small>(as of December 28, 2013)</small><ref>{{Cite web |url=http://www.sie.com/en/corporate/release/2014/140108a.html |title=PLAYSTATION 4 (PS4) GLOBAL CUMULATIVE SALES SURPASS 4.2 MILLION |website=www.sie.com |access-date=May 26, 2016 |archive-url=https://web.archive.org/web/20160701025135/http://www.sie.com/en/corporate/release/2014/140108a.html |archive-date=July 1, 2016 |url-status=live}}</ref>
+|9.7M <small>(as of December 28, 2013)</small>
+|2.31 games/console
+|-
+|5.3M <small>(as of February 8, 2014)</small><ref>{{Cite web |url=http://www.sie.com/en/corporate/release/2014/140218.html |title=PLAYSTATION 4 SALES SURPASS 5.3 MILLION UNITS WORLDWIDE |website=www.sie.com |access-date=May 26, 2016 |archive-url=https://web.archive.org/web/20160604011054/http://www.sie.com/en/corporate/release/2014/140218.html |archive-date=June 4, 2016 |url-status=live}}</ref>
+|{{N/a}}
+|{{N/a}}
+|-
+|6.0M <small>(as of March 2, 2014)</small><ref>{{Cite web |url=http://www.sie.com/en/corporate/release/2014/140304a.html |title=PLAYSTATION 4 (PS4) SALES SURPASS 6.0 MILLION UNITS WORLDWIDE IN LESS THAN 4 MONTHS SINCE LAUNCH |website=www.sie.com |access-date=May 26, 2016 |archive-url=https://web.archive.org/web/20160701085345/http://www.sie.com/en/corporate/release/2014/140304a.html |archive-date=July 1, 2016 |url-status=live}}</ref>
+|13.7M <small>(as of March 2, 2014)</small>
+|2.28 games/console
+|-
+|7.0M <small>(as of April 6, 2014)</small><ref>{{Cite web |url=http://www.sie.com/en/corporate/release/2014/140417.html |title=PLAYSTATION 4 (PS4) SALES SURPASS 7.0 MILLION UNITS WORLDWIDE |website=www.sie.com |access-date=May 26, 2016 |archive-url=https://web.archive.org/web/20160701083318/http://www.sie.com/en/corporate/release/2014/140417.html |archive-date=July 1, 2016 |url-status=live}}</ref>
+|20.5M <small>(as of April 13, 2014)</small>
+|2.93 games/console
+|-
+|10.0M <small>(as of August 10, 2014)</small><ref>{{Cite web |url=http://www.sie.com/en/corporate/release/2014/140813a.html |title=PLAYSTATION 4 (PS4) SALES SURPASS 10 MILLION UNITS WORLDWIDE |website=www.sie.com |access-date=May 26, 2016 |archive-url=https://web.archive.org/web/20160701093256/http://www.sie.com/en/corporate/release/2014/140813a.html |archive-date=July 1, 2016 |url-status=live}}</ref>
+|30.0M <small>(as of August 10, 2014)</small>
+|3.00 games/console
+|-
+|14.4M <small>(as of November 22, 2014)</small><ref name=":0">{{Cite web |url=http://www.sie.com/en/corporate/release/2015/150106.html |title=PLAYSTATION 4 (PS4) SALES SURPASS18.5 MILLION UNITS WORLDWIDE |website=www.sie.com |access-date=May 26, 2016 |archive-url=https://web.archive.org/web/20160604114804/http://www.sie.com/en/corporate/release/2015/150106.html |archive-date=June 4, 2016 |url-status=live}}</ref>
+|64.0M <small>(as of November 22, 2014)</small>
+|4.44 games/console
+|-
+|18.5M <small>(as of January 4, 2015)</small><ref name=":0" />
+|81.8M <small>(as of January 4, 2015)</small>
+|4.42 games/console
+|-
+|20.2M <small>(as of March 1, 2015)</small><ref>{{Cite web |url=http://www.sie.com/en/corporate/release/2015/150304a.html |title=PLAYSTATION 4 (PS4) SALES SURPASS 20.2 MILLION UNITS WORLDWIDE |website=www.sie.com |access-date=May 26, 2016 |archive-url=https://web.archive.org/web/20160603193932/http://www.sie.com/en/corporate/release/2015/150304a.html |archive-date=June 3, 2016 |url-status=live}}</ref>
+|{{N/a}}
+|{{N/a}}
+|-
+|30.2M <small>(as of November 22, 2015)</small><ref>{{Cite web |url=http://www.sie.com/en/corporate/release/2015/151125.html |title=PLAYSTATION 4 (PS4) SALES SURPASS 30.2 MILLION UNITS WORLDWIDE |website=www.sie.com |access-date=May 26, 2016 |archive-url=https://web.archive.org/web/20160603234158/http://www.sie.com/en/corporate/release/2015/151125.html |archive-date=June 3, 2016 |url-status=live}}</ref>
+|{{N/a}}
+|{{N/a}}
+|-
+|35.9M <small>(as of January 3, 2016)</small><ref>{{Cite web |url=http://www.sie.com/en/corporate/release/2016/160105.html |title=PLAYSTATION 4 (PS4) SELLS THROUGH 5.7 MILLION UNITS WORLDWIDE DURING THE 2015 HOLIDAY SEASON |website=www.sie.com |access-date=May 26, 2016 |archive-url=https://web.archive.org/web/20160604111948/http://www.sie.com/en/corporate/release/2016/160105.html |archive-date=June 4, 2016 |url-status=live}}</ref>
+|{{N/a}}
+|{{N/a}}
+|-
+|40.0M <small>(as of May 22, 2016)</small><ref name=":1" />
+|270.9M <small>(as of May 22, 2016)</small>
+|6.77 games/console
+|-
+|50.0M <small>(as of December 6, 2016)</small><ref>{{Cite web |url=http://www.sie.com/en/corporate/release/2016/161207b.html |title=PLAYSTATION 4 (PS4) SALES SURPASS 50 MILLION UNITS WORLDWIDE |website=www.sie.com |access-date=January 5, 2017 |archive-url=https://web.archive.org/web/20161220082944/http://www.sie.com/en/corporate/release/2016/161207b.html |archive-date=December 20, 2016 |url-status=live}}</ref>
+|369.6M <small>(as of December 4, 2016)</small>
+|7.39 games/console
+|-
+|53.4M <small>(as of January 1, 2017)</small><ref name="units_sold"/>
+|401.1M <small>(as of January 1, 2017)</small><ref>{{Cite web|url=http://www.thewolfhall.com/ps4/sie-japan-gm-ps4-pro-psvr-supply-issues/|title=SIE Japan GM Apologizes For PS4 Pro And PSVR Supply Issues, Says VR Games Will Improve With Enhanced Tech|access-date=January 22, 2017|archive-url=https://web.archive.org/web/20170125162705/http://www.thewolfhall.com/ps4/sie-japan-gm-ps4-pro-psvr-supply-issues/|archive-date=January 25, 2017|url-status=dead}}</ref>
+|7.51 games/console
+|-
+|60.4M <small>(as of June 11, 2017)</small><ref name=":4">{{Cite web|url=https://www.sie.com/en/corporate/release/2017/170613.html|title=PLAYSTATION 4 SALES SURPASS 60.4 MILLION UNITS WORLDWIDE|website=www.sie.com|language=en|access-date=August 17, 2017|archive-url=https://web.archive.org/web/20170817043449/http://www.sie.com/en/corporate/release/2017/170613.html|archive-date=August 17, 2017|url-status=live}}</ref>
+|487.8M <small>(as of June 11, 2017)</small>
+|8.08 games/console
+|-
+|70.6M <small>(as of December 3, 2017)</small><ref>{{cite web|url=http://www.sie.com/en/corporate/release/2017/171207.html|title=PLAYSTATION 4 SALES SURPASS 70.6 MILLION UNITS WORLDWIDE|date=December 7, 2017|website=SIE|access-date=January 9, 2018|archive-url=https://web.archive.org/web/20180110065738/http://www.sie.com/en/corporate/release/2017/171207.html|archive-date=January 10, 2018|url-status=live}}</ref>
+|617.8M <small>(as of December 3, 2017)</small>
+|8.75 games/console
+|-
+|73.6M <small>(as of December 31, 2017)</small><ref name="SalesDecember2017">{{cite web|url=http://www.sie.com/en/corporate/release/2018/180109.html|title=PLAYSTATION 4 SELLS 5.9 MILLION UNITS WORLDWIDE DURING THE 2017 HOLIDAY SEASON|date=January 9, 2018|website=SIE|access-date=January 9, 2018|archive-url=https://web.archive.org/web/20180110052815/https://www.sie.com/en/corporate/release/2018/180109.html|archive-date=January 10, 2018|url-status=live}}</ref>
+|645.0M <small>(as of December 31, 2017)</small>
+|8.76 games/console
+|-
+|{{N/a}}
+|777.9M <small>(as of June 30, 2018)</small><ref name=":7">{{Cite web|url=https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/18q3_supplement.pdf|title=Game & Network Services Segment Supplemental Information, Q2 FY18|website=Sony Corporation|archive-url=https://web.archive.org/web/20190202042748/https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/18q3_supplement.pdf|archive-date=February 2, 2019|url-status=live|access-date=February 1, 2019}}</ref>
+|{{N/a}}
+|-
+|81.2M <small>(as of July 22, 2018)</small><ref>{{Cite press release|url=http://www.sie.com/en/corporate/release/2018/180809.html|title=SONY INTERACTIVE ENTERTAINMENT INTRODUCES "PLAYSTATION 4 PRO 500 MILLION LIMITED EDITION"|publisher=Sony Interactive Entertainment|location=Tokyo|date=August 9, 2018|language=en|access-date=August 10, 2018|archive-url=https://web.archive.org/web/20180809215425/http://www.sie.com/en/corporate/release/2018/180809.html|archive-date=August 9, 2018|url-status=live}}</ref>
+|{{N/a}}
+|{{N/a}}
+|-
+|86.0M <small>(as of November 18, 2018)</small><ref name="ps4_units_sold">{{cite press release |title=PLAYSTATION 4 SALES SURPASS 91.6 MILLION UNITS WORLDWIDE AFTER THE STRONG HOLIDAY SEASON |publisher=Sony Interactive Entertainment |location=Tokyo |date=January 8, 2019 |url=https://www.sie.com/en/corporate/release/2019/190108.html |access-date=January 8, 2019 |archive-url=https://web.archive.org/web/20190108090009/https://www.sie.com/en/corporate/release/2019/190108.html |archive-date=January 8, 2019 |url-status=live}}</ref>
+|825.3M <small>(as of November 18, 2018)</small><ref name="ps4_units_sold" />
+|9.59 games/console
+|-
+|91.6M <small>(as of December 31, 2018)</small><ref name="ps4_units_sold" />
+|924.0M <small>(as of December 31, 2018)</small><ref name="ps4_units_sold" /><ref name="Jan31Correction" />
+|10.09 games/console
+|-
+|106.0M <small>(as of December 31, 2019)</small><ref name="ps4_units_sold_106M" />
+|1.181B <small>(as of December 31, 2019)</small><ref name="ps4_units_sold_106M" /><ref name="Jan31Correction">{{cite press release |title=UPDATE ON CUMULATIVE WORLDWIDE SELL-THROUGH OF PLAYSTATION 4 SOFTWARE TITLES  |publisher=Sony |date=January 31, 2020 |url=https://www.sie.com/en/corporate/release/2020/200131.html |access-date=January 31, 2020 |archive-url=https://web.archive.org/web/20200131135540/https://www.sie.com/en/corporate/release/2020/200131.html |archive-date=January 31, 2020 |url-status=live}}</ref>
+|11.14 games/console
+|}
+{| class="wikitable"
+! colspan="2" |Worldwide hardware shipments
+! colspan="2" |Worldwide hardware shipments (including returned and refurbished consoles)
+|-
+!Quarterly<ref name=":2">{{Cite web|url=http://www.sie.com/en/corporate/data/hardware_sale.html|title=Unit Sales of Hardware(FY2013-) {{!}} Sony Interactive Entertainment Inc.|website=www.sie.com|access-date=July 29, 2016|archive-url=https://web.archive.org/web/20160803125432/http://www.sie.com/en/corporate/data/hardware_sale.html|archive-date=August 3, 2016|url-status=live}}</ref>
+!Lifetime
+!Quarterly<ref>{{Cite web |title=SIE Business Data & Sales {{!}} Sony Interactive Entertainment Inc. |url=https://www.sie.com/en/corporate/data.html |access-date=November 29, 2022 |website=SIE.COM |language=en |archive-date=December 14, 2020 |archive-url=https://web.archive.org/web/20201214141927/https://www.sie.com/en/corporate/data.html |url-status=live }}</ref>
+!Lifetime
+|-
+|4.5M <small>(Launch – December 31, 2013)</small>
+|4.5M <small>(as of December 31, 2013)</small>
+|4.5M <small>(Launch – December 31, 2013)</small>
+|4.5M <small>(as of December 31, 2013)</small>
+|-
+|3.0M <small>(January 1, 2014 – March 31, 2014)</small>
+|7.5M <small>(as of March 31, 2014)</small>
+|3.1M <small>(January 1, 2014 – March 31, 2014)</small>
+|7.6M <small>(as of March 31, 2014)</small>
+|-
+|2.7M <small>(April 1, 2014 – June 30, 2014)</small>
+|10.2M <small>(as of June 30, 2014)</small>
+|2.8M <small>(April 1, 2014 – June 30, 2014)</small>
+|10.4M <small>(as of June 30, 2014)</small>
+|-
+|3.3M <small>(July 1, 2014 – September 30, 2014)</small>
+|13.5M <small>(as of September 30, 2014)</small>
+|3.4M <small>(July 1, 2014 – September 30, 2014)</small>
+|13.8M <small>(as of September 30, 2014)</small>
+|-
+|6.4M <small>(October 1, 2014 – December 31, 2014)</small>
+|19.9M <small>(as of December 31, 2014)</small>
+|6.4M <small>(October 1, 2014 – December 31, 2014)</small>
+|20.2M <small>(as of December 31, 2014)</small>
+|-
+|2.4M <small>(January 1, 2015 – March 31, 2015)</small>
+|22.3M <small>(as of March 31, 2015)</small>
+|2.3M <small>(January 1, 2015 – March 31, 2015)</small>
+|22.5M <small>(as of March 31, 2015)</small>
+|-
+|3.0M <small>(April 1, 2015 – June 30, 2015)</small>
+|25.3M <small>(as of June 30, 2015)</small>
+|2.9M <small>(April 1, 2015 – June 30, 2015)</small>
+|25.4M <small>(as of June 30, 2015)</small>
+|-
+|4.0M <small>(July 1, 2015 – September 30, 2015)</small>
+|29.3M <small>(as of September 30, 2015)</small>
+|4.0M <small>(July 1, 2015 – September 30, 2015)</small>
+|29.4M <small>(as of September 30, 2015)</small>
+|-
+|8.4M <small>(October 1, 2015 – December 31, 2015)</small>
+|37.7M <small>(as of December 31, 2015)</small>
+|8.4M <small>(October 1, 2015 – December 31, 2015)</small>
+|37.8M <small>(as of December 31, 2015)</small>
+|-
+|2.3M <small>(January 1, 2016 – March 31, 2016)</small>
+|40.0M <small>(as of March 31, 2016)</small>
+|2.4M <small>(January 1, 2016 – March 31, 2016)</small>
+|40.2M <small>(as of March 31, 2016)</small>
+|-
+|3.5M <small>(April 1, 2016 – June 30, 2016)</small>
+|43.5M <small>(as of June 30, 2016)</small>
+|3.5M <small>(April 1, 2016 – June 30, 2016)</small>
+|43.7M <small>(as of June 30, 2016)</small>
+|-
+|3.9M <small>(July 1, 2016 – September 30, 2016)</small>
+|47.4M <small>(as of September 30, 2016)</small>
+|3.9M <small>(July 1, 2016 – September 30, 2016)</small>
+|47.6M <small>(as of September 30, 2016)</small>
+|-
+|9.7M <small>(October 1, 2016 – December 31, 2016)</small>
+|57.1M <small>(as of December 31, 2016)</small>
+|9.7M <small>(October 1, 2016 – December 31, 2016)</small>
+|57.3M <small>(as of December 31, 2016)</small>
+|-
+|2.9M <small>(January 1, 2017 – March 31, 2017)</small>
+|60.0M <small>(as of March 31, 2017)</small>
+|2.9M <small>(January 1, 2017 – March 31, 2017)</small>
+|60.2M <small>(as of March 31, 2017)</small>
+|-
+|3.3M <small>(April 1, 2017 – June 30, 2017)</small>
+|63.3M <small>(as of June 30, 2017)</small>
+|3.3M <small>(April 1, 2017 – June 30, 2017)</small>
+|63.5M <small>(as of June 30, 2017)</small>
+|-
+|4.2M <small>(July 1, 2017 – September 30, 2017)</small>
+|67.5M <small>(as of September 30, 2017)</small>
+|4.2M <small>(July 1, 2017 – September 30, 2017)</small>
+|67.7M <small>(as of September 30, 2017)</small>
+|-
+|9.0M <small>(October 1, 2017 – December 31, 2017)</small>
+|76.5M <small>(as of December 31, 2017)</small>
+|9.0M <small>(October 1, 2017 – December 31, 2017)</small>
+|76.7M <small>(as of December 31, 2017)</small>
+|-
+|2.5M <small>(January 1, 2018 – March 31, 2018)</small>
+|79.0M <small>(as of March 31, 2018)</small>
+|2.5M <small>(January 1, 2018 – March 31, 2018)</small>
+|79.2M <small>(as of March 31, 2018)</small>
+|-
+|3.2M <small>(April 1, 2018 – June 30, 2018)</small>
+|82.2M <small>(as of June 30, 2018)</small>
+|3.2M <small>(April 1, 2018 – June 30, 2018)</small>
+|82.4M <small>(as of June 30, 2018)</small>
+|-
+|3.9M <small>(July 1, 2018 – September 30, 2018)</small>
+|86.1M <small>(as of September 30, 2018)</small>
+|3.9M <small>(July 1, 2018 – September 30, 2018)</small>
+|86.3M <small>(as of September 30, 2018)</small>
+|-
+|8.1M <small>(October 1, 2018 – December 31, 2018)</small>
+|94.2M <small>(as of December 31, 2018)</small>
+|8.1M <small>(October 1, 2018 – December 31, 2018)</small>
+|94.4M <small>(as of December 31, 2018)</small>
+|-
+|2.6M <small>(January 1, 2019 – March 31, 2019)</small>
+|96.8M <small>(as of March 31, 2019)</small>
+|2.6M <small>(January 1, 2019 – March 31, 2019)</small>
+|97.0M <small>(as of March 31, 2019)</small>
+|-
+|3.2M <small>(April 1, 2019 – June 30, 2019)</small>
+|100.0M <small>(as of June 30, 2019)</small>
+|3.2M <small>(April 1, 2019 – June 30, 2019)</small>
+|100.2M <small>(as of June 30, 2019)</small>
+|-
+|2.8M <small>(July 1, 2019 – September 30, 2019)</small>
+|102.8M <small>(as of September 30, 2019)</small>
+|2.8M <small>(July 1, 2019 – September 30, 2019)</small>
+|103.0M <small>(as of September 30, 2019)</small>
+|-
+|6.1M <small>(October 1, 2019 – December 31, 2019)</small>
+|108.9M <small>(as of December 31, 2019)</small>
+|6.0M <small>(October 1, 2019 – December 31, 2019)</small>
+|109.0M <small>(as of December 31, 2019)</small>
+|-
+|1.5M <small>(January 1, 2020 – March 31, 2020)</small>
+|110.4M <small>(as of March 31, 2020)</small>
+|1.4M <small>(January 1, 2020 – March 31, 2020)</small>
+|110.4M <small>(as of March 31, 2020)</small>
+|-
+|
+|
+|1.9M <small>(April 1, 2020 – June 30, 2020)</small>
+|112.3M <small>(as of June 30, 2020)</small>
+|-
+|
+|
+|1.5M <small>(July 1, 2020 – September 30, 2020)</small>
+|113.8M <small>(as of September 30, 2020)</small>
+|-
+|
+|
+|1.4M <small>(October 1, 2020 – December 31, 2020)</small>
+|115.2M <small>(as of December 31, 2020)</small>
+|-
+|
+|
+|1.0M <small>(January 1, 2021 – March 31, 2021)</small>
+|116.2M <small>(as of March 31, 2021)</small>
+|-
+|
+|
+|0.5M <small>(April 1, 2021 – June 30, 2021)</small>
+|116.7M <small>(as of June 30, 2021)</small>
+|-
+|
+|
+|0.2M <small>(July 1, 2021 – September 30, 2021)</small>
+|116.9M <small>(as of September 30, 2021)</small>
+|-
+|
+|
+|0.2M <small>(October 1, 2021 – December 31, 2021)</small>
+|117.1M <small>(as of December 31, 2021)</small>
+|-
+|
+|
+|0.1M <small>(January 1, 2022 – March 31, 2022)</small>
+|117.2M <small>(as of March 31, 2022)</small>
+|}
+{| class="wikitable"
+! colspan="4" |Worldwide full game software shipments<ref>{{Cite web|url=https://www.sie.com/en/corporate/data.html|title=SIE Business Development {{!}} Sony Interactive Entertainment Inc.|website=www.sie.com|access-date=October 31, 2019|archive-url=https://web.archive.org/web/20190427203732/https://www.sie.com/en/corporate/data.html|archive-date=April 27, 2019|url-status=live}}</ref>'''<ref name=":6" /><ref name=":7" /><ref name="Apr2019Ship">{{Cite web|url=https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/18q4_supplement.pdf|title=Supplemental Information for the Consolidated Financial Results for the Fourth Quarter Ended March 31, 2019|website=www.sie.com|access-date=April 26, 2019|archive-url=https://web.archive.org/web/20190426131027/https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/18q4_supplement.pdf|archive-date=April 26, 2019|url-status=live}}</ref><ref name="Jul2020Ship">{{Cite web|url=https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/19q1_supplement.pdf|title=Supplemental Information for the Consolidated Financial Results for the First Quarter Ended June 30, 2019|website=www.sie.com|access-date=July 30, 2019|archive-url=https://web.archive.org/web/20190730100226/https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/19q1_supplement.pdf|archive-date=July 30, 2019|url-status=live}}</ref>'''<ref name=":11">{{Cite web|url=https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/19q2_supplement.pdf|title=Supplemental Information for the Consolidated Financial Results for the Second Quarter Ended September 30, 2019|website=Sony Corporation|url-status=live|archive-url=https://web.archive.org/web/20191030082122/https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/19q2_supplement.pdf|archive-date=October 30, 2019|access-date=October 30, 2019}}</ref><ref name="Q32019">{{Cite web|url=https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/19q3_supplement.pdf|title=Supplemental Information for the Consolidated Financial Results for the Third Quarter Ended October 31, 2019|website=Sony Corporation|url-status=live|archive-url=https://web.archive.org/web/20200204111604/https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/19q3_supplement.pdf|archive-date=February 4, 2020|access-date=February 4, 2020}}</ref>
+|-
+!Quarterly
+!Yearly
+!Tie ratio
+!Digital download ratio
+|-
+|36.7M <small>(April 1, 2016 – June 30, 2016)</small>
+|
+|10.49 games/console
+|
+|-
+|50.1M <small>(July 1, 2016 – September 30, 2016)</small>
+|
+|12.85 games/console
+|
+|-
+|80.5M <small>(October 1, 2016 – December 31, 2016)</small>
+|
+|8.30 games/console
+|
+|-
+|50.6M <small>(January 1, 2017 – March 31, 2017)</small>
+|
+|17.45 games/console
+|
+|-
+|
+|217.9M <small>(April 1, 2016 – March 31, 2017)</small>
+|10.90 games/console
+|27%
+|-
+|38.7M <small>(April 1, 2017 – June 30, 2017)</small>
+|
+|11.73 games/console
+|39%
+|-
+|69.7M <small>(July 1, 2017 – September 30, 2017)</small>
+|
+|16.60 games/console
+|27%
+|-
+|86.5M <small>(October 1, 2017 – December 31, 2017)</small>
+|
+|9.61 games/console
+|28%
+|-
+|52.0M <small>(January 1, 2018 – March 31, 2018)</small>
+|
+|20.80 games/console
+|43%
+|-
+|
+|246.9M <small>(April 1, 2017 – March 31, 2018)</small>
+|12.99 games/console
+|32%
+|-
+|40.6M <small>(April 1, 2018 – June 30, 2018)</small>
+|
+|12.69 games/console
+|43%
+|-
+|75.1M <small>(July 1, 2018 – September 30, 2018)</small>
+|
+|19.26 games/console
+|28%
+|-
+|87.2M <small>(October 1, 2018 – December 31, 2018)</small>
+|
+|10.77 games/console
+|37%
+|-
+|54.7M <small>(January 1, 2019 – March 31, 2019)</small>
+|
+|21.04 games/console
+|45%
+|-
+|
+|257.6M <small>(April 1, 2018 – March 31, 2019)</small>
+|14.47 games/console
+|37%
+|-
+|42.9M <small>(April 1, 2019 – June 30, 2019)</small>
+|
+|13.41 games/console
+|53%
+|-
+|61.3M <small>(July 1, 2019 – September 30, 2019)</small>
+|
+|21.89 games/console
+|37%
+|-
+|81.1M <small>(October 1, 2019 – December 31, 2019)</small>
+|
+|13.30 games/console
+|49%
+|-
+|59.6M <small>(January 1, 2020 – March 31, 2020)</small>
+|
+|39.73 games/console
+|66%
+|-
+|
+|245.0M <small>(April 1, 2019 – March 31, 2020)</small>
+|18.01 games/console
+|51%
+|}
+{| class="wikitable"
+|+
+! colspan="6" |Worldwide total software unit sales (including download-only, bundled, and PS VR titles)<ref name=":2" /><ref name=":12">{{Cite web|date=August 4, 2020|title=Supplemental Information for the Consolidated Financial Results for the First Quarter Ended June 30, 2020|url=https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/20q1_supplement.pdf|url-status=live|archive-url=https://web.archive.org/web/20200805030754/https://www.sony.net/SonyInfo/IR/library/presen/er/pdf/20q1_supplement.pdf|archive-date=August 5, 2020|website=Sony Corporation}}</ref>
+|-
+!Quarterly
+!Yearly
+!Tie ratio
+!First party
+!First party ratio
+!Digital download ratio
+|-
+|39.9M <small>(April 1, 2016 – June 30, 2016)</small>
+|
+|11.40 games/console
+|
+|
+|
+|-
+|54.0M <small>(July 1, 2016 – September 30, 2016)</small>
+|
+|13.85 games/console
+|
+|
+|
+|-
+|85.5M <small>(October 1, 2016 – December 31, 2016)</small>
+|
+|8.81 games/console
+|
+|
+|
+|-
+|54.9M <small>(January 1, 2017 – March 31, 2017)</small>
+|
+|18.93 games/console
+|
+|
+|
+|-
+|
+|234.2M <small>(April 1, 2016 – March 31, 2017)</small>
+|11.71 games/console
+|
+|
+|27%
+|-
+|45.9M <small>(April 1, 2017 – June 30, 2017)</small>
+|
+|13.91 games/console
+|
+|
+|39%
+|-
+|76.1M <small>(July 1, 2017 – September 30, 2017)</small>
+|
+|18.12 games/console
+|
+|
+|27%
+|-
+|92.8M <small>(October 1, 2017 – December 31, 2017)</small>
+|
+|10.31 games/console
+|
+|
+|28%
+|-
+|59.4M <small>(January 1, 2018 – March 31, 2018)</small>
+|
+|23.76 games/console
+|
+|
+|43%
+|-
+|
+|274.2M <small>(April 1, 2017 – March 31, 2018)</small>
+|14.43 games/console
+|
+|
+|32%
+|-
+|47.7M <small>(April 1, 2018 – June 30, 2018)</small>
+|
+|14.91 games/console
+|
+|
+|43%
+|-
+|82.3M <small>(July 1, 2018 – September 30, 2018)</small>
+|
+|21.10 games/console
+|
+|
+|28%
+|-
+|95.6M <small>(October 1, 2018 – December 31, 2018)</small>
+|
+|11.80 games/console
+|
+|
+|37%
+|-
+|62.3M <small>(January 1, 2019 – March 31, 2019)</small>
+|
+|23.96 games/console
+|
+|
+|45%
+|-
+|
+|287.9M <small>(April 1, 2018 – March 31, 2019)</small>
+|16.17 games/console
+|50.6M
+|18%
+|37%
+|-
+|49.8M <small>(April 1, 2019 – June 30, 2019)</small>
+|
+|15.56 games/console
+|11.7M
+|23%
+|53%
+|-
+|70.6M <small>(July 1, 2019 – September 30, 2019)</small>
+|
+|25.21 games/console
+|6.3M
+|9%
+|37%
+|-
+|83.3M <small>(October 1, 2019 – December 31, 2019)</small>
+|
+|13.88 games/console
+|16.3M
+|20%
+|49%
+|-
+|64.9M <small>(January 1, 2020 – March 31, 2020)</small>
+|
+|46.36 games/console
+|9.1M
+|14%
+|66%
+|-
+|
+|268.7M <small>(April 1, 2019 – March 31, 2020)</small>
+|19.90 games/console
+|43.3M
+|16%
+|51%
+|-
+|91.0M <small>(April 1, 2020 – June 30, 2020)</small>
+|
+|47.89 games/console
+|18.5M
+|20%
+|74%
+|}
+{| class="wikitable"
+!PlayStation Plus subscribers'''<ref name=":6" /><ref name=":7" /><ref name="Apr2019Ship" /><ref name="Jul2020Ship" /><ref name=":11" />'''
+!Monthly active users<ref name=":12" />
+|-
+|20.8M <small>(as of March 31, 2016)</small>
+|
+|-
+|26.4M <small>(as of March 31, 2017)</small>
+|
+|-
+|27.0M <small>(as of June 30, 2017)</small>
+|
+|-
+|28.1M <small>(as of September 30, 2017)</small>
+|
+|-
+|31.5M <small>(as of December 31, 2017)</small>
+|
+|-
+|34.2M <small>(as of March 31, 2018)</small>
+|
+|-
+|33.9M <small>(as of June 30, 2018)</small>
+|
+|-
+|34.3M <small>(as of September 30, 2018)</small>
+|
+|-
+|36.3M <small>(as of December 31, 2018)</small>
+|
+|-
+|36.4M <small>(as of March 31, 2019)</small>
+|
+|-
+|36.2M <small>(as of June 30, 2019)</small>
+|
+|-
+|36.9M <small>(as of September 30, 2019)</small>
+|
+|-
+|38.8M <small>(as of December 31, 2019)</small>
+|
+|-
+|41.5M <small>(as of March 31, 2020)</small>
+|
+|-
+|44.9M <small>(as of June 30, 2020)</small>
+|
+|-
+|47.6M <small>(as of March 31, 2021)</small>
+|113M <small>(as of March, 2021)</small>
+|}
+
+== Hardware revisions ==
+<div class="noprint">
+<div style="width: 100%; height:auto; overflow: auto; padding: 3px;text-align: left">
+{{#tag:timeline|
+DateFormat=mm/dd/yyyy
+Define $now = {{#time:m/d/Y}}
+Define $later = {{#time:m/d/Y|+6 months}}
+Define $skip = at:end # Force a blank line
+Define $dayunknown = 15 # what day to use if it's actually not known
+Period = from:09/01/2013 till:04/30/2025
+ImageSize= width:1000 height:auto barincrement:20
+TimeAxis = orientation:horizontal
+PlotArea = right:1 left:1 bottom:130 top:1
+
+Colors =
+     id:bg            value:white
+     id:lightline     value:rgb(0.9,0.9,0.9)
+     id:lighttext     value:rgb(0.5,0.5,0.5)
+     id:server        value:rgb(0.8,0.8,0.9)
+     id:generation1   value:rgb(1,0.8,0.8)     Legend:PlayStation_4
+     id:generation1.5 value:rgb(1,0.85,0.85)
+     id:generation1.8 value:rgb(1,0.9,0.9)
+     id:generation2   value:rgb(1,0.8,0.6)     Legend:PlayStation_4_Slim
+     id:generation3   value:rgb(0,0.8,0.2)     Legend:PlayStation_4_Pro
+
+BackgroundColors = canvas:bg
+ScaleMajor = gridcolor:lighttext unit:year increment:1 start:01/01/2014
+ScaleMinor = gridcolor:lightline unit:month increment:1 start:09/01/2013
+Legend = orientation:vertical position:bottom columns:3
+
+BarData =
+  barset:model
+
+PlotData =
+  width:15 textcolor:black shift:(5,-5) anchor:from fontsize:s
+
+  barset:model
+    color:generation1 from:11/15/2013 till:09/26/2014 text:"500 GB CUH-10xx"
+    $skip
+    $skip
+    $skip
+  barset:break
+    color:generation1.5 from:09/27/2014 till:06/23/2015 text:"500 GB CUH-11xx"
+    color:generation1.5 from:07/15/2015 till:09/13/2015 text:"1 TB CUH-11xx"
+    $skip
+    $skip
+  barset:break
+    color:generation1.8 from:06/24/2015 till:09/14/2016 text:"500 GB CUH-12xx"
+    $skip
+    color:generation1.8 from:09/14/2015 till:09/14/2016 text:"1 TB CUH-12xx"
+    $skip
+  barset:break
+    color:generation2 from:09/15/2016 till:04/18/2017 text:"500 GB CUH-20xx"
+    color:generation2 from:04/18/2017 till:03/28/2024 text:"1 TB CUH-20xx"
+    $skip
+    $skip
+  barset:break
+    $skip
+    $skip
+    color:generation3 from:11/10/2016 till:01/05/2021 text:"1 TB CUH-70xx"
+    $skip
+  barset:break
+    $skip
+}}</div></div>
+
+The PlayStation 4 has been produced in various models: the original, the Slim, and the Pro. Successive models have added or removed various features, and each model has variations of Limited Edition consoles.
+
+=== PlayStation 4 Slim ===
+[[File:PlayStation 4 Slim 8504.jpg|thumb|A white PlayStation 4 Slim]]
+On September 7, 2016, Sony announced a hardware revision of the PlayStation 4, model number CUH-2000, known colloquially as the '''PlayStation 4 Slim''', which phased out the original model.<ref>{{Cite web|last=King|first=Jade|date=August 10, 2019|title=PS4 Pro vs PS4: Which PlayStation console is right for you|url=https://www.trustedreviews.com/news/ps4-pro-vs-ps4-2941086|url-status=live|archive-url=https://web.archive.org/web/20200806101103/https://www.trustedreviews.com/news/ps4-pro-vs-ps4-2941086|archive-date=August 6, 2020|access-date=September 19, 2020|website=Trusted Reviews|language=en}}</ref> It is a revision of the original PS4 hardware with a smaller form factor; it has a rounded body with a matte finish on the top of the console rather than a two-tone finish, and is 40% smaller in size than the original model. The two USB ports on the front have been updated to the newer [[USB 3.1]] standard and have a larger gap between them, and the optical audio port was removed.<ref>{{Cite news|url=http://www.eurogamer.net/articles/digitalfoundry-2016-hands-on-with-the-playstation-4-slim-cuh-2000|title=Digital Foundry: Hands-on with the CUH-2000 PS4 Slim|work=Eurogamer.net|access-date=April 25, 2018|language=en|archive-url=https://web.archive.org/web/20180314013136/http://www.eurogamer.net/articles/digitalfoundry-2016-hands-on-with-the-playstation-4-slim-cuh-2000|archive-date=March 14, 2018|url-status=live}}</ref> This model also features support for USB 3.1, [[Bluetooth 4.0]] and 5.0&nbsp;GHz Wi-Fi.<ref name=":8">{{Cite web|url=https://www.gamespot.com/articles/ps4-vs-ps4-pro-vs-ps4-slim-what-are-the-difference/1100-6456440/|title=PS4 Vs PS4 Pro Vs PS4 Slim: What Are The Differences And Which PlayStation Console Should You Buy?|last=Thang|first=Jimmy|date=February 23, 2018|website=GameSpot|language=en-US|access-date=January 8, 2019|archive-url=https://web.archive.org/web/20190108100900/https://www.gamespot.com/articles/ps4-vs-ps4-pro-vs-ps4-slim-what-are-the-difference/1100-6456440/|archive-date=January 8, 2019|url-status=live}}</ref>
+
+It was released on September 15, 2016, with a 500&nbsp;GB model at the same price as the original version of the PlayStation 4.<ref name="ars-ps4slim">{{cite web |title=PS4 Slim: A smaller, sexier console with surprisingly few compromises |url=https://arstechnica.com/gaming/2016/09/ps4-slim-review-2/ |website=Ars Technica |date=September 7, 2016 |access-date=September 7, 2016 |archive-url=https://web.archive.org/web/20160907203338/http://arstechnica.com/gaming/2016/09/ps4-slim-review-2/ |archive-date=September 7, 2016 |url-status=live}}</ref> On April 18, 2017, Sony announced that it had replaced this base model with a 1&nbsp;TB version at the same MSRP.<ref name="verge-1tbslim">{{cite web |title=Sony's PS4 Slim now comes with a 1TB hard drive for the same price |url=https://www.theverge.com/circuitbreaker/2017/4/18/15344360/sony-ps4-slim-1tb-hard-drive-announced |website=The Verge |date=April 18, 2017 |publisher=Vox Media |access-date=April 19, 2017 |archive-url=https://web.archive.org/web/20170419112328/http://www.theverge.com/circuitbreaker/2017/4/18/15344360/sony-ps4-slim-1tb-hard-drive-announced |archive-date=April 19, 2017 |url-status=live}}</ref>
+
+=== PlayStation 4 Pro ===
+[[File:AMD@16nm@Jaguar Polaris@Neo@Playstation 4 Pro@CXD90044GB Stack-DSC08867-DSC08882 - ZS-retouched (28006779559).jpg|thumb|[[Infrared photography|Infrared photograph]] of the PS4 Pro's APU [[Die (integrated circuit)|die]]]]
+The '''PlayStation 4 Pro''' (codenamed '''Neo''', model number CUH-7000)<ref name="PS4Neo" /> was announced on September 7, 2016, and launched worldwide on November 10, 2016.<ref>{{cite web |last1=Layden |first1=Shawn |title=PlayStation 4 Pro Launches Today |url=http://blog.us.playstation.com/2016/11/10/playstation-4-pro-launches-today/ |website=blog.us.playstation.com |date=November 10, 2016 |access-date=November 10, 2016 |archive-url=https://web.archive.org/web/20161111062512/http://blog.us.playstation.com/2016/11/10/playstation-4-pro-launches-today/ |archive-date=November 11, 2016 |url-status=live }}</ref><ref name=ps4pro_model_no>{{cite web |url=http://www.playstationlifestyle.net/2016/09/07/new-official-ps4-peripherals-announced-includes-new-dualshock-4-ps-camera-and-headset/#/slide/1 |title=New Official PS4 Peripherals Announced, Includes New DualShock 4, PS Camera and Headset |author=Co, Alex |date=September 7, 2016 |website=PlayStation Lifestyle |access-date=September 8, 2016 |archive-url=https://web.archive.org/web/20160908170320/http://www.playstationlifestyle.net/2016/09/07/new-official-ps4-peripherals-announced-includes-new-dualshock-4-ps-camera-and-headset/#/slide/1 |archive-date=September 8, 2016 |url-status=live}}</ref> It is an upgraded version of the PlayStation 4 with improved hardware to enable [[4K resolution|4K]] rendering and improved [[PlayStation VR]] performance, including an upgraded GPU with 4.2 [[teraflop]]s of processing power<ref>{{cite web|url=https://www.theverge.com/2016/11/9/13572236/sony-playstation-4-pro-review-4k|title=PlayStation 4 Pro review: 4K gaming is here|first=Paul|last=Miller|website=The Verge|date=November 8, 2016|access-date=November 8, 2016}}</ref><ref>{{cite web|url=https://www.gamespot.com/articles/playstation-4-pro-review/1100-6445141/|title=PlayStation 4 Pro Review|first=Jimmy|last=Thang|website=GameSpot|date=May 23, 2017|access-date=May 23, 2017}}</ref><ref>{{cite web|url=https://www.tomsguide.com/us/ps4-pro,review-4036.html|title=PS4 Pro review|first=Sherri|last=Smith|website=Tom's Guide|date=June 28, 2022|access-date=June 28, 2022}}</ref> and hardware support for [[checkerboard rendering]],<ref name="engadget-prointerview"/> and a higher CPU clock. As with PS4 "Slim", this model also features support for USB 3.1, Bluetooth 4.0 and 5.0 GHz Wi-Fi.<ref name=":8" /> The PS4 Pro also includes 1&nbsp;GB of DDR3 memory that is used to swap out non-gaming applications that run in the background, allowing games to utilize an additional 512&nbsp;MB of the console's GDDR5 memory.<ref name=eurogamer-ps4pro-interview /> Although capable of streaming 4K video, the PS4 Pro does not support [[Ultra HD Blu-ray]].<ref name="verge-no4kbluray">{{cite web |title=Sony's new PlayStation 4 Pro can't play 4K Blu-rays |url=https://www.theverge.com/circuitbreaker/2016/9/7/12839756/sony-ps4-no-4k-uhd-blu-ray |website=The Verge |date=September 7, 2016 |publisher=Vox Media |access-date=September 7, 2016 |archive-url=https://web.archive.org/web/20160907220637/http://www.theverge.com/circuitbreaker/2016/9/7/12839756/sony-ps4-no-4k-uhd-blu-ray |archive-date=September 7, 2016 |url-status=live}}</ref><ref name="verge-ps4pro">{{cite web |title=Sony announces PlayStation 4 Pro with 4K HDR gaming for $399 |url=https://www.theverge.com/2016/9/7/12748316/sony-ps4-pro-announced-price-specs-release-date |website=The Verge |date=September 7, 2016 |publisher=Vox Media |access-date=September 7, 2016 |archive-url=https://web.archive.org/web/20160907204154/http://www.theverge.com/2016/9/7/12748316/sony-ps4-pro-announced-price-specs-release-date |archive-date=September 7, 2016 |url-status=live}}</ref><ref name="engadget-pro">{{cite web |title=The PlayStation 4 Pro vs. the original PS4: What's changed? |url=https://www.engadget.com/2016/09/07/playstation-4-pro-vs-the-original-ps4/ |website=Engadget |date=September 7, 2016 |access-date=September 7, 2016 |archive-url=https://web.archive.org/web/20190502035921/https://www.engadget.com/2016/09/07/playstation-4-pro-vs-the-original-ps4/ |archive-date=May 2, 2019 |url-status=live}}</ref> The Pro model has a release price of $399 (NA), €399 (Europe), and £349 (UK).<ref name=":8" />
+
+Games marketed by Sony as ''PS4 Pro Enhanced'' have specific optimizations when played on this model, such as 4K resolution graphics or higher performance.<ref name="vg247-ps4profeatures">{{cite web |title=Games with PS4 Pro features will have a 'PS4 Pro Enhanced' on the cover |url=https://www.vg247.com/2016/09/09/games-with-ps4-pro-features-will-have-a-ps4-pro-enhanced-on-the-cover/ |website=VG24/7 |date=September 9, 2016 |access-date=December 31, 2016 |archive-url=https://web.archive.org/web/20170101092021/https://www.vg247.com/2016/09/09/games-with-ps4-pro-features-will-have-a-ps4-pro-enhanced-on-the-cover/ |archive-date=January 1, 2017 |url-status=live }}</ref> For games not specifically optimized, an option known as "Boost Mode" was added on system software 4.5, which can be enabled to force higher CPU and GPU clock rates to possibly improve performance.<ref>{{Cite web|url=https://www.theverge.com/2017/2/3/14502366/playstation-4-pro-boost-mode-update|title=Sony confirms new PS4 Pro "Boost Mode" will help some older games run faster and smoother|last=Welch|first=Chris|date=February 3, 2017|website=The Verge|access-date=January 8, 2019|archive-url=https://web.archive.org/web/20190108145521/https://www.theverge.com/2017/2/3/14502366/playstation-4-pro-boost-mode-update|archive-date=January 8, 2019|url-status=live}}</ref>
+
+Rendering games at 4K resolution is achieved through various rendering techniques and hardware features; PlayStation technical chief Mark Cerny explained that Sony could not "brute force" 4K without compromising form factor and cost, so the console was designed to support "streamlined rendering techniques" using custom hardware, "best-in-breed temporal and spatial anti-aliasing algorithms", and "many new features from the [[AMD Polaris]] architecture as well as several even beyond it". The most prominent technique used is checkerboard rendering, wherein the console only renders portions of a scene using a checkerboard pattern, and then uses algorithms to fill in the non-rendered segments. The checkerboarded screen can then be smoothed using an anti-aliasing filter. Hermen Hulst of [[Guerrilla Games]] explained that PS4 Pro could render something "perceptively so close [to 4K] that you wouldn't be able to see the difference".<ref name="eg-4kanalysis">{{cite web |title=Tech Analysis: 4K gaming on PlayStation 4 Pro |url=http://www.eurogamer.net/articles/digitalfoundry-2016-4k-gaming-on-ps4-pro-tech-analysis |website=Eurogamer |date=October 9, 2016 |access-date=April 6, 2017 |archive-url=https://web.archive.org/web/20170407145124/http://www.eurogamer.net/articles/digitalfoundry-2016-4k-gaming-on-ps4-pro-tech-analysis |archive-date=April 7, 2017 |url-status=live }}</ref><ref name="vb-not4k">{{cite web |title=PlayStation 4 Pro is not a real 4K console |url=https://venturebeat.com/2016/09/08/ps4-pro-isnt-4k-that-doesnt-matter/ |website=VentureBeat |date=September 8, 2016 |access-date=April 6, 2017 |archive-url=https://web.archive.org/web/20170407150007/https://venturebeat.com/2016/09/08/ps4-pro-isnt-4k-that-doesnt-matter/ |archive-date=April 7, 2017 |url-status=live}}</ref><ref name="engadget-prointerview">{{cite web |title=The PS4 Pro, as explained by the man who designed it |url=https://www.engadget.com/2016/10/20/ps4-pro-mark-cerny-interview-hardware/ |website=Engadget |date=October 20, 2016 |access-date=April 6, 2017 |archive-url=https://web.archive.org/web/20170214181639/https://www.engadget.com/2016/10/20/ps4-pro-mark-cerny-interview-hardware/ |archive-date=February 14, 2017 |url-status=live}}</ref>
+
+The PS4 Pro supports Remote Play, Share Play, and streaming at up to 1080p resolution at 60 frames per second, as well as capturing screenshots at 2160p, and 1080p video at 30 frames per second.<ref>{{Cite web |url=http://www.polygon.com/2016/9/7/12842868/ps4-pro-share-grabs-4k-screens-caps-1080p-video |title=PS4 Pro "Share" grabs 4K screens, caps 1080p video |date=September 7, 2016 |website=Polygon |publisher=Vox Media |access-date=November 17, 2016 |archive-url=https://web.archive.org/web/20161117211124/http://www.polygon.com/2016/9/7/12842868/ps4-pro-share-grabs-4k-screens-caps-1080p-video |archive-date=November 17, 2016 |url-status=live}}</ref>
+
+In late 2017, Sony issued a new PS4 Pro revision (model number CUH-7100) that featured updated internal components. The actual hardware specifications and performance remained the same as the original model, although it was found that the revised console has a slightly quieter fan profile than the original and as a result was operating at a slightly higher temperature under load than the CUH-7000.<ref>{{Cite news |date=October 3, 2017 |title=PS4 Pro Gets Minor Hardware Update, Changing Model to CUH-7100 |url=https://www.dualshockers.com/playstation-pro-hardware-update/ |url-status=live |archive-url=https://web.archive.org/web/20181110120122/https://www.dualshockers.com/playstation-pro-hardware-update/ |archive-date=November 10, 2018 |access-date=November 10, 2018 |work=DualShockers |language=en-US}}</ref><ref>{{Cite web |title=PS4 Pro Jet Black model number changed to "CUH - 7100 BB 01". "With internal parts change, there is no difference in specifications" (translated by Google Translate from Japanese) |url=https://www.4gamer.net/games/990/G999024/20171003022/ |url-status=live |archive-url=https://web.archive.org/web/20181211010156/https://www.4gamer.net/games/990/G999024/20171003022/ |archive-date=December 11, 2018 |access-date=December 10, 2018 |website=www.4gamer.net |language=ja}}</ref> In October 2018, Sony quietly issued another revision (model number CUH-7200), initially as part of ''[[Red Dead Redemption 2]]'' hardware bundles. The revision has a different power supply which uses the same type of cord as the "Slim" model, and was shown to have further improvements to acoustics.<ref>{{Cite web|url=https://www.eurogamer.net/articles/digitalfoundry-2018-playstation-4-pro-cuh-7200-review|title=PlayStation 4 Pro CUH-7200 review: the latest, quietest hardware revision|last=Leadbetter|first=Richard|date=November 7, 2018|website=Eurogamer|language=en|access-date=January 7, 2019|archive-url=https://web.archive.org/web/20190107030802/https://www.eurogamer.net/articles/digitalfoundry-2018-playstation-4-pro-cuh-7200-review|archive-date=January 7, 2019|url-status=live}}</ref>
+
+==Notes==
+{{notelist}}
+
+==References==
+{{Reflist|refs=
+<ref name=engadget>
+{{cite news |last=O'Brien |first=Terrence |title=PlayStation 4 hitting shelves on November 15th in the US for $399, November 29th in Europe |url=https://www.engadget.com/2013/08/20/playstation-4-hitting-shelves-on-november-15/ |access-date=August 20, 2013 |work=Engadget |publisher=AOL |date=August 20, 2013 |archive-url=https://web.archive.org/web/20130820183348/http://www.engadget.com/2013/08/20/playstation-4-hitting-shelves-on-november-15/ |archive-date=August 20, 2013 |url-status=live}}
+</ref>
+<ref name=eurogamer>{{cite news |author=Phillips, Tom |title=PlayStation 4 won't launch in Japan until February 2014 |url=http://www.eurogamer.net/articles/2013-09-09-playstation-4-wont-launch-in-japan-until-february-2014 |access-date=September 9, 2013 |work=Eurogamer |publisher=Eurogamer Network |date=September 9, 2013 |archive-url=https://archive.today/20130909100823/http://www.eurogamer.net/articles/2013-09-09-playstation-4-wont-launch-in-japan-until-february-2014 |archive-date=September 9, 2013 |url-status=live }}</ref>
+<ref name=eurogamer-ps4pro-interview>{{cite web|last1=Leadbetter|first1=Richard|title=Inside PlayStation 4 Pro: How Sony made the first 4K games console|url=https://www.eurogamer.net/articles/digitalfoundry-2016-inside-playstation-4-pro-how-sony-made-a-4k-games-machine|website=Eurogamer|date=October 20, 2016|access-date=May 9, 2018|archive-url=https://web.archive.org/web/20180510183924/https://www.eurogamer.net/articles/digitalfoundry-2016-inside-playstation-4-pro-how-sony-made-a-4k-games-machine|archive-date=May 10, 2018|url-status=live}}</ref>
+<ref name="eurogamer_7cores">{{cite web |last1=Leadbetter |first1=Richard |title=Sony unlocks more CPU power for PS4 game developers |url=https://www.eurogamer.net/articles/digitalfoundry-2015-sony-unlocks-more-cpu-power-for-ps4-game-developers |website=Eurogamer |access-date=August 23, 2018 |archive-url=https://web.archive.org/web/20160104221509/https://www.eurogamer.net/articles/digitalfoundry-2015-sony-unlocks-more-cpu-power-for-ps4-game-developers |archive-date=January 4, 2016 |date=November 30, 2015}}
+</ref>
+<!--ref name=BGR>
+{{cite news |author=Satpathy, Sambit |title=Sony PlayStation 4 to launch in India on December 18 |url=http://www.bgr.in/news/sony-playstation-4-to-launch-in-india-on-december-18/ |access-date=December 12, 2013 |publisher=BGR |date=December 12, 2013 |url-status=live |archive-url=https://web.archive.org/web/20131214091736/http://www.bgr.in/news/sony-playstation-4-to-launch-in-india-on-december-18/ |archive-date=December 14, 2013}}
+</ref-->
+}}
+
+== External links ==
+{{Commons}}
+{{Wikiquote}}
+* {{Official website}}
+* [http://manuals.playstation.net/document/en/ps4/index.html PlayStation 4 online user guide]
+
+{{PlayStation}}
+{{Eighth generation game consoles}}
+{{Home video game consoles}}
+{{High definition media}}
+{{Portal bar|2010s|Video games}}
+{{Authority control}}
+
+[[Category:PlayStation 4| ]]
+[[Category:2010s toys]]
+[[Category:2013 in video gaming]]
+[[Category:Computer-related introductions in 2013]]
+[[Category:Eighth-generation video game consoles]]
+[[Category:Home video game consoles]]
+[[Category:PlayStation (brand)]]
+[[Category:Products introduced in 2013]]
+[[Category:Regionless game consoles]]
+[[Category:Sony consoles]]
+[[Category:x86-based game consoles]]
