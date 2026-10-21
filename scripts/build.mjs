@@ -137,6 +137,7 @@ async function buildWork(work) {
     id: work.id,
     title: work.title,
     type,
+    qaState: work.qaState || (work.status === 'ready' ? 'verified' : 'pending-reverify'),
     outputDir: work.outputDir,
     buildState: 'pending',
     built: false,

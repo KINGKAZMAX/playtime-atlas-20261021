@@ -26,6 +26,21 @@ const STATUS_LABEL = {
   skipped: '未构建',
 };
 
+/**
+ * 展示状态 = 构建结果 × 验收状态。
+ * 构建通过但 13 复验未完成的，标「已构建·待复验」，不冒充「已上线」。
+ */
+function pillState(work) {
+  const st = statusOf(work);
+  if (st === 'unavailable' || st === 'skipped') return { key: st, label: STATUS_LABEL[st] || st, cls: 'pending' };
+  if (st === 'fallback') return { key: st, label: '构建回退', cls: 'fallback' };
+  if (st === 'built-no-entry') return { key: st, label: '入口缺失', cls: 'pending' };
+  if (work.qaState === 'pending-reverify' || work.status === 'pending') {
+    return { key: 'reverify', label: '已构建·待复验', cls: 'fallback' };
+  }
+  return { key: 'built', label: '已上线', cls: 'online' };
+}
+
 /* ------------------------------------------------------------ bootstrap */
 
 function readJSON(id, fallback) {
@@ -107,7 +122,7 @@ function sectionCounts() {
 function statusCounts() {
   const map = new Map();
   for (const w of state.works) {
-    const s = statusOf(w);
+    const s = pillState(w).key;
     map.set(s, (map.get(s) || 0) + 1);
   }
   return map;
@@ -142,7 +157,14 @@ function renderFilters() {
     secBox.appendChild(b);
   }
 
-  const order = ['built', 'fallback', 'built-no-entry', 'pending', 'unavailable'];
+  const order = ['built', 'reverify', 'fallback', 'built-no-entry', 'unavailable'];
+  const CHIP_LABEL = {
+    built: '已上线',
+    reverify: '已构建·待复验',
+    fallback: '构建回退',
+    'built-no-entry': '入口缺失',
+    unavailable: '不可用',
+  };
   stBox.innerHTML = '';
   const allSt = document.createElement('button');
   allSt.className = 'chip';
@@ -159,7 +181,7 @@ function renderFilters() {
     b.className = 'chip';
     b.type = 'button';
     b.setAttribute('aria-pressed', String(state.status === key));
-    b.innerHTML = `${STATUS_LABEL[key] || key} <span class="n">${n}</span>`;
+    b.innerHTML = `${CHIP_LABEL[key] || STATUS_LABEL[key] || key} <span class="n">${n}</span>`;
     b.onclick = () => { state.status = key; renderFilters(); renderGrid(); };
     stBox.appendChild(b);
   }
@@ -175,11 +197,11 @@ function filteredWorks() {
       .join(' ').toLowerCase();
     return hay.includes(q);
   });
-  const rank = { built: 0, fallback: 1, 'built-no-entry': 2, pending: 3, unavailable: 4 };
+  const rank = { built: 0, reverify: 1, fallback: 2, 'built-no-entry': 3, unavailable: 4 };
   list = list.slice();
   if (state.sort === 'era') list.sort((a, b) => String(a.era).localeCompare(String(b.era)));
   else if (state.sort === 'title') list.sort((a, b) => String(a.title).localeCompare(String(b.title), 'zh'));
-  else if (state.sort === 'status') list.sort((a, b) => (rank[statusOf(a)] ?? 9) - (rank[statusOf(b)] ?? 9));
+  else if (state.sort === 'status') list.sort((a, b) => (rank[pillState(a).key] ?? 9) - (rank[pillState(b).key] ?? 9));
   return list;
 }
 
@@ -189,7 +211,7 @@ function cardHTML(work, index) {
   const st = statusOf(work);
   const online = isOnline(work);
   const playable = isPlayable(work);
-  const pillClass = st === 'built' ? 'online' : st === 'fallback' ? 'fallback' : 'pending';
+  const pill = pillState(work);
   const no = String(state.works.indexOf(work) + 1).padStart(2, '0');
   const tags = (work.tags || []).slice(0, 3).map((t) => `<span class="tag">${esc(t)}</span>`).join('');
   const eraTag = work.era ? `<span class="tag era">${esc(work.era)}</span>` : '';
@@ -205,16 +227,18 @@ function cardHTML(work, index) {
     actions += `<button class="btn btn-sm" data-act="detail" data-id="${esc(work.id)}">查看状态</button>`;
   }
 
-  const note = !online && work.statusNote
-    ? `<p class="card-note">${esc(work.statusNote)}</p>`
-    : '';
+  const note = work.qaNote && work.qaState === 'pending-reverify' && online
+    ? `<p class="card-note">◷ ${esc(work.qaNote)}</p>`
+    : !online && work.statusNote
+      ? `<p class="card-note">${esc(work.statusNote)}</p>`
+      : '';
 
   return `
   <article class="card" role="listitem" data-id="${esc(work.id)}" tabindex="0">
     <div class="card-cover">
       <img src="${esc(work.cover || '')}" alt="${esc(work.title)} 封面" loading="lazy" width="800" height="500" />
       <span class="card-no">NO.${no}</span>
-      <span class="pill ${pillClass}">${esc(STATUS_LABEL[st] || st)}</span>
+      <span class="pill ${pill.cls}">${esc(pill.label)}</span>
     </div>
     <div class="card-body">
       <span class="card-sub">${esc(work.subtitle || work.id)}</span>
@@ -241,7 +265,8 @@ function renderGrid() {
 
 function renderStats() {
   const total = state.works.length;
-  const online = state.works.filter(isOnline).length;
+  const online = state.works.filter((w) => isOnline(w) && w.qaState !== 'pending-reverify' && w.status !== 'pending').length;
+  const reverify = state.works.filter((w) => isOnline(w) && (w.qaState === 'pending-reverify' || w.status === 'pending')).length;
   const playable = state.works.filter(isPlayable).length;
   const eras = new Set(state.works.map((w) => w.era).filter(Boolean)).size;
   const set = (k, v) => {
@@ -250,6 +275,7 @@ function renderStats() {
   };
   set('total', total);
   set('online', online);
+  set('reverify', reverify);
   set('playable', playable);
   set('eras', eras);
   const built = state.report.builtAt ? new Date(state.report.builtAt) : null;
@@ -273,6 +299,7 @@ function renderBoard() {
       <td><b>${esc(r.title || r.id)}</b><br><span class="note mono">${esc(r.id)}</span></td>
       <td class="mono">${esc(r.type)}</td>
       <td><span class="bstate ${esc(st)}">${esc(label)}</span></td>
+      <td class="mono">${esc(r.qaState === 'verified' ? '已复验' : r.qaState === 'pending-reverify' ? '待复验' : '—')}</td>
       <td class="mono">${fmtBytes(r.bytes)}</td>
       <td class="mono">${r.durationMs ? (r.durationMs / 1000).toFixed(1) + 's' : '—'}</td>
       <td class="note">${notes}</td>
@@ -291,6 +318,7 @@ function openDrawer(id) {
   const st = statusOf(work);
   const online = isOnline(work);
   const playable = isPlayable(work);
+  const pill = pillState(work);
   const controls = (work.controls || []).map((c) => `<li>${esc(c)}</li>`).join('');
   const tags = (work.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join('');
   const sources = (work.sources || []).map((s) => {
@@ -305,8 +333,12 @@ function openDrawer(id) {
   const lic = work.license || {};
 
   const statusBlock = online
-    ? `<div class="d-status"><b>${esc(STATUS_LABEL[st])}</b> · 线上入口已就绪。${work.buildNotes?.length ? esc(work.buildNotes.join('；')) : ''}</div>`
-    : `<div class="d-status"><b>${esc(STATUS_LABEL[st] || st)}</b> · ${esc(work.statusNote || '尚未就绪')} 本条暂不提供可点击的游玩入口。</div>`;
+    ? `<div class="d-status"><b>${esc(pill.label)}</b> · 线上入口已就绪。${
+        work.qaState === 'pending-reverify'
+          ? `${esc(work.qaNote || '')} —— <b>可访问但尚未通过 13 的新一轮全量复验</b>，请以验收报告为准。`
+          : (work.qaNote ? esc(work.qaNote) : '')
+      }${work.buildNotes?.length ? esc(work.buildNotes.join('；')) : ''}</div>`
+    : `<div class="d-status"><b>${esc(pill.label)}</b> · ${esc(work.statusNote || work.qaNote || '尚未就绪')} 本条暂不提供可点击的游玩入口。</div>`;
 
   const actions = [];
   if (playable) {
