@@ -193,7 +193,7 @@ function cardHTML(work, index) {
   const img =
     '<img class="work-img" src="' + esc(cover) + '" alt="' + esc(title) + ' 封面" ' +
     (first ? 'loading="eager" fetchpriority="high" ' : 'loading="lazy" ') +
-    'decoding="async" width="1200" height="800" />';
+    'decoding="async" width="1600" height="1000" />';
 
   const media = online
     ? '<button class="work-media" type="button" data-act="play" data-id="' + esc(work.id) + '" ' +
@@ -301,7 +301,7 @@ function openDetail(id) {
   const body = $('#detail-body');
   body.innerHTML =
     '<div class="detail-media"><img src="' + esc(cover) + '" alt="' + esc(title) + ' 封面" ' +
-      'loading="lazy" decoding="async" width="1200" height="800" /></div>' +
+      'loading="lazy" decoding="async" width="1600" height="1000" /></div>' +
     '<p class="detail-kicker">' + esc(kind) + '</p>' +
     '<h2 class="detail-title" id="detail-title">' + esc(title) + '</h2>' +
     (work.subtitle ? '<p class="detail-sub">' + esc(work.subtitle) + '</p>' : '') +
