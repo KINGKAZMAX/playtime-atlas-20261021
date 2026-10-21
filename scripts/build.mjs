@@ -367,6 +367,37 @@ function assembleHall(runtimeWorks, report) {
   fs.writeFileSync(path.join(SITE, 'data', 'works.json'), JSON.stringify(publicWorks, null, 2));
 }
 
+/**
+ * 最终公开主页数据与封面生成步骤。
+ *
+ * assembleHall 注入的是源 manifest（封面仍是旧的 SVG、字段偏多），
+ * 因此发布链路的最后一步交给 refresh-gallery.mjs：以 hall/cover-map.json 的真实截图封面
+ * 与白名单净化字段重写主页内嵌 JSON。
+ *
+ * 该步骤失败必须中断整个构建（抛错 → main() 的 catch 退出码 1），
+ * 绝不允许在失败时静默继续，否则会把旧封面当作成功产物发布。
+ */
+function refreshGallery() {
+  const script = path.join(ROOT, 'scripts', 'refresh-gallery.mjs');
+  if (!fs.existsSync(script)) {
+    throw new Error('缺少 scripts/refresh-gallery.mjs：无法生成最终公开主页数据与真实封面');
+  }
+
+  const res = run('node', [script, '--root', ROOT], ROOT, { quiet: true });
+
+  const tail = String(res.stdout || '').trim().split('\n').filter(Boolean).pop() || '';
+  let note = '';
+  try {
+    const data = JSON.parse(tail);
+    if (data && data.ok) {
+      note = `作品 ${data.works} 件 · 封面覆盖 ${Object.keys(data.coverOverrides || {}).length} 张`;
+    }
+  } catch {
+    /* 摘要解析失败不影响发布结果，run() 已保证退出码为 0 */
+  }
+  log('最终公开主页数据与封面已生成：', note || 'refresh-gallery 完成');
+}
+
 // ---------------------------------------------------------------- main
 
 async function main() {
@@ -430,6 +461,8 @@ async function main() {
   fs.writeFileSync(path.join(SITE, 'data', 'build-report.json'), JSON.stringify(report, null, 2));
 
   assembleHall(runtimeWorks, report);
+  // 公开主页的最终形态由 refresh-gallery 决定（真实封面 + 净化字段）
+  refreshGallery();
 
   log('---- 构建汇总 ----');
   log(`成功 ${report.totals.built} · 回退 ${report.totals.fallback} · 不可用 ${report.totals.unavailable} · 合计 ${(report.totals.bytes / 1024 / 1024).toFixed(2)} MB`);

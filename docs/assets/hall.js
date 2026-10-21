@@ -1,47 +1,45 @@
 /* ============================================================
-   作品与资产总览 · WORKS & ASSETS — 交互层
+   回响电玩馆 · PLAYTIME ATLAS — 极简作品画廊
+   数据：embedded works-data → data/works.json（两种形状都兼容）
    ============================================================ */
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
 const state = {
-  manifest: { meta: {}, sections: [], works: [] },
+  meta: {},
+  sections: [],
   works: [],
   q: '',
   section: 'all',
-  status: 'all',
-  sort: 'index',
-  report: { works: [], totals: {}, builtAt: null },
-  active: null,
   lastFocus: null,
+  locked: false,
 };
 
-const STATUS_LABEL = {
-  built: '已上线',
-  'built-no-entry': '已构建',
-  fallback: '构建回退',
-  unavailable: '不可用',
-  pending: '待集成',
-  skipped: '未构建',
-};
+/* 封面占位图：图片缺失或加载失败时使用，避免空洞 */
+const PLACEHOLDER =
+  'data:image/svg+xml;charset=utf-8,' +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">' +
+      '<rect width="1200" height="800" fill="#efeae1"/>' +
+      '<g fill="none" stroke="#cabfab" stroke-width="2">' +
+        '<rect x="430" y="290" width="340" height="220" rx="10"/>' +
+        '<path d="M430 290l170 116 170-116"/>' +
+      '</g></svg>'
+  );
 
-/**
- * 展示状态 = 构建结果 × 验收状态。
- * 构建通过但 13 复验未完成的，标「已构建·待复验」，不冒充「已上线」。
- */
-function pillState(work) {
-  const st = statusOf(work);
-  if (st === 'unavailable' || st === 'skipped') return { key: st, label: STATUS_LABEL[st] || st, cls: 'pending' };
-  if (st === 'fallback') return { key: st, label: '构建回退', cls: 'fallback' };
-  if (st === 'built-no-entry') return { key: st, label: '入口缺失', cls: 'pending' };
-  if (work.qaState === 'pending-reverify' || work.status === 'pending') {
-    return { key: 'reverify', label: '已构建·待复验', cls: 'fallback' };
-  }
-  return { key: 'built', label: '已上线', cls: 'online' };
+/* 依次尝试的封面字段（兼容后续加入的真实截图封面） */
+const COVER_FIELDS = [
+  'cover', 'coverUrl', 'cover_url', 'coverSrc', 'coverImage',
+  'thumbnail', 'thumb', 'image', 'screenshot', 'poster', 'hero', 'banner', 'ogImage',
+];
+
+/* ------------------------------------------------------------- 工具 */
+
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"']/g, (c) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
-
-/* ------------------------------------------------------------ bootstrap */
 
 function readJSON(id, fallback) {
   const el = document.getElementById(id);
@@ -51,533 +49,449 @@ function readJSON(id, fallback) {
   try {
     return JSON.parse(raw);
   } catch (e) {
-    console.warn('[hall] 解析', id, '失败', e);
+    console.warn('[hall] 解析 ' + id + ' 失败', e);
     return fallback;
   }
 }
 
-async function loadData() {
-  let manifest = readJSON('works-data', null);
-  if (!manifest || !manifest.works) {
-    try {
-      const res = await fetch('data/works.json', { cache: 'no-cache' });
-      if (res.ok) manifest = await res.json();
-    } catch (e) {
-      console.warn('[hall] fetch data/works.json 失败', e);
+function coverOf(work) {
+  for (const field of COVER_FIELDS) {
+    const v = work[field];
+    if (!v) continue;
+    if (typeof v === 'string' && v.trim()) return v.trim();
+    if (typeof v === 'object') {
+      const s = v.src || v.url || v.path || v.href;
+      if (typeof s === 'string' && s.trim()) return s.trim();
     }
   }
-  if (!manifest) manifest = { meta: {}, sections: [], works: [] };
-  state.manifest = manifest;
-  state.works = manifest.works || [];
-
-  const report = readJSON('build-report', null);
-  if (report && report.works) state.report = report;
-  else {
-    try {
-      const res = await fetch('data/build-report.json', { cache: 'no-cache' });
-      if (res.ok) state.report = await res.json();
-    } catch (e) { /* 报告缺失不阻塞目录 */ }
-  }
+  return '';
 }
 
-/* -------------------------------------------------------------- helpers */
-
-function statusOf(work) {
-  if (work.buildState) return work.buildState;
-  return work.status === 'ready' ? 'built' : 'pending';
-}
-
+/* 线上状态：构建产物里 online 为显式布尔；缺失时保持可进入 */
 function isOnline(work) {
-  return work.online === true || statusOf(work) === 'built' || statusOf(work) === 'fallback';
+  if (typeof work.online === 'boolean') return work.online;
+  return true;
 }
 
 function isPlayable(work) {
-  return !!(work.playable && isOnline(work));
-}
-
-function esc(s) {
-  return String(s ?? '').replace(/[&<>"']/g, (c) =>
-    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-}
-
-function fmtBytes(n) {
-  if (!n && n !== 0) return '—';
-  if (n < 1024) return `${n} B`;
-  if (n < 1024 * 1024) return `${(n / 1024).toFixed(0)} KB`;
-  return `${(n / 1024 / 1024).toFixed(2)} MB`;
+  return work.playable !== false;
 }
 
 function workById(id) {
-  return state.works.find((w) => w.id === id);
+  return state.works.find((w) => w.id === id) || null;
 }
 
-/* ------------------------------------------------------------- filters */
+function coverButtonOf(id) {
+  return $$('.work-media').find((el) => el.dataset.id === id) || null;
+}
 
-function sectionCounts() {
+/* ------------------------------------------------------------- 数据 */
+
+function normalizeManifest(raw) {
+  if (!raw) return null;
+  if (Array.isArray(raw)) return { meta: {}, sections: [], works: raw };
+  if (Array.isArray(raw.works)) {
+    return { meta: raw.meta || {}, sections: raw.sections || [], works: raw.works };
+  }
+  return null;
+}
+
+function deriveSections(works) {
   const map = new Map();
-  for (const w of state.works) map.set(w.section, (map.get(w.section) || 0) + 1);
-  return map;
+  for (const w of works) {
+    if (!w || !w.section || map.has(w.section)) continue;
+    map.set(w.section, { id: w.section, label: w.section });
+  }
+  return Array.from(map.values());
 }
 
-function statusCounts() {
-  const map = new Map();
-  for (const w of state.works) {
-    const s = pillState(w).key;
-    map.set(s, (map.get(s) || 0) + 1);
+async function loadData() {
+  let manifest = normalizeManifest(readJSON('works-data', null));
+
+  if (!manifest) {
+    try {
+      const res = await fetch('data/works.json', { cache: 'no-cache' });
+      if (res.ok) manifest = normalizeManifest(await res.json());
+    } catch (e) {
+      console.warn('[hall] 读取 data/works.json 失败', e);
+    }
   }
-  return map;
+
+  if (!manifest) manifest = { meta: {}, sections: [], works: [] };
+
+  state.meta = manifest.meta || {};
+  state.works = Array.isArray(manifest.works) ? manifest.works.filter(Boolean) : [];
+  state.sections = (Array.isArray(manifest.sections) ? manifest.sections : []).filter(
+    (s) => s && s.id && s.publish !== false
+  );
+  if (!state.sections.length) state.sections = deriveSections(state.works);
 }
 
-function renderFilters() {
-  const secBox = $('#filter-sections');
-  const stBox = $('#filter-status');
-  const counts = sectionCounts();
-  const scounts = statusCounts();
+/* ------------------------------------------------------------- 分类 */
 
-  const sections = state.manifest.sections || [];
-  secBox.innerHTML = '';
-  const allChip = document.createElement('button');
-  allChip.className = 'chip';
-  allChip.type = 'button';
-  allChip.setAttribute('aria-pressed', String(state.section === 'all'));
-  allChip.innerHTML = `全部分区 <span class="n">${state.works.length}</span>`;
-  allChip.onclick = () => { state.section = 'all'; renderFilters(); renderGrid(); };
-  secBox.appendChild(allChip);
+function categories() {
+  const counts = new Map();
+  for (const w of state.works) counts.set(w.section, (counts.get(w.section) || 0) + 1);
 
-  for (const s of sections) {
-    const n = counts.get(s.id) || 0;
-    if (!n) continue;
-    const b = document.createElement('button');
-    b.className = 'chip';
-    b.type = 'button';
-    b.setAttribute('aria-pressed', String(state.section === s.id));
-    b.innerHTML = `${esc(s.label)} <span class="n">${n}</span>`;
-    b.title = s.desc || '';
-    b.onclick = () => { state.section = s.id; renderFilters(); renderGrid(); };
-    secBox.appendChild(b);
+  const list = [{ id: 'all', label: '全部' }];
+  for (const s of state.sections) {
+    if (!counts.get(s.id)) continue;
+    list.push({ id: s.id, label: s.label || s.id });
   }
-
-  const order = ['built', 'reverify', 'fallback', 'built-no-entry', 'unavailable'];
-  const CHIP_LABEL = {
-    built: '已上线',
-    reverify: '已构建·待复验',
-    fallback: '构建回退',
-    'built-no-entry': '入口缺失',
-    unavailable: '不可用',
-  };
-  stBox.innerHTML = '';
-  const allSt = document.createElement('button');
-  allSt.className = 'chip';
-  allSt.type = 'button';
-  allSt.setAttribute('aria-pressed', String(state.status === 'all'));
-  allSt.innerHTML = `全部状态 <span class="n">${state.works.length}</span>`;
-  allSt.onclick = () => { state.status = 'all'; renderFilters(); renderGrid(); };
-  stBox.appendChild(allSt);
-
-  for (const key of order) {
-    const n = scounts.get(key) || 0;
-    if (!n) continue;
-    const b = document.createElement('button');
-    b.className = 'chip';
-    b.type = 'button';
-    b.setAttribute('aria-pressed', String(state.status === key));
-    b.innerHTML = `${CHIP_LABEL[key] || STATUS_LABEL[key] || key} <span class="n">${n}</span>`;
-    b.onclick = () => { state.status = key; renderFilters(); renderGrid(); };
-    stBox.appendChild(b);
-  }
-}
-
-function filteredWorks() {
-  const q = state.q.trim().toLowerCase();
-  let list = state.works.filter((w) => {
-    if (state.section !== 'all' && w.section !== state.section) return false;
-    if (state.status !== 'all' && statusOf(w) !== state.status) return false;
-    if (!q) return true;
-    const hay = [w.title, w.subtitle, w.description, w.kind, w.era, w.id, ...(w.tags || [])]
-      .join(' ').toLowerCase();
-    return hay.includes(q);
-  });
-  const rank = { built: 0, reverify: 1, fallback: 2, 'built-no-entry': 3, unavailable: 4 };
-  list = list.slice();
-  if (state.sort === 'era') list.sort((a, b) => String(a.era).localeCompare(String(b.era)));
-  else if (state.sort === 'title') list.sort((a, b) => String(a.title).localeCompare(String(b.title), 'zh'));
-  else if (state.sort === 'status') list.sort((a, b) => (rank[pillState(a).key] ?? 9) - (rank[pillState(b).key] ?? 9));
   return list;
 }
 
-/* ---------------------------------------------------------------- grid */
+function renderCats() {
+  const box = $('#cats');
+  if (!box) return;
+  box.innerHTML = '';
+
+  for (const cat of categories()) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'cat';
+    btn.textContent = cat.label;
+    btn.setAttribute('aria-pressed', String(state.section === cat.id));
+    btn.addEventListener('click', () => {
+      if (state.section === cat.id) return;
+      state.section = cat.id;
+      renderCats();
+      render();
+    });
+    box.appendChild(btn);
+  }
+}
+
+/* ------------------------------------------------------------- 筛选 */
+
+function filteredWorks() {
+  const q = state.q.trim().toLowerCase();
+  return state.works.filter((w) => {
+    if (state.section !== 'all' && w.section !== state.section) return false;
+    if (!q) return true;
+    const hay = [
+      w.title, w.subtitle, w.kind, w.era, w.id, w.description,
+      (w.tags || []).join(' '),
+    ].filter(Boolean).join(' ').toLowerCase();
+    return hay.indexOf(q) !== -1;
+  });
+}
+
+/* ------------------------------------------------------------- 画廊 */
 
 function cardHTML(work, index) {
-  const st = statusOf(work);
+  const wide = index % 3 === 0;                       /* 1 宽 + 2 列的编辑式节奏 */
   const online = isOnline(work);
   const playable = isPlayable(work);
-  const pill = pillState(work);
-  const no = String(state.works.indexOf(work) + 1).padStart(2, '0');
-  const tags = (work.tags || []).slice(0, 3).map((t) => `<span class="tag">${esc(t)}</span>`).join('');
-  const eraTag = work.era ? `<span class="tag era">${esc(work.era)}</span>` : '';
+  const title = work.title || work.id || '未命名作品';
+  const cover = coverOf(work) || PLACEHOLDER;
+  const kind = work.kind || '';
+  const era = work.era && String(work.era).length <= 14 ? String(work.era) : '';
 
-  let actions = '';
-  if (playable) {
-    actions += `<button class="btn btn-primary btn-sm" data-act="play" data-id="${esc(work.id)}">进入体验</button>`;
-    actions += `<button class="btn btn-sm" data-act="detail" data-id="${esc(work.id)}">详情</button>`;
-  } else if (online) {
-    actions += `<button class="btn btn-sm" data-act="open" data-id="${esc(work.id)}">打开作品</button>`;
-    actions += `<button class="btn btn-ghost btn-sm" data-act="detail" data-id="${esc(work.id)}">详情</button>`;
-  } else {
-    actions += `<button class="btn btn-sm" data-act="detail" data-id="${esc(work.id)}">查看状态</button>`;
-  }
+  /* 首屏第一张封面是 LCP 候选：立即加载并提权，其余保持懒加载 */
+  const first = index === 0;
+  const img =
+    '<img class="work-img" src="' + esc(cover) + '" alt="' + esc(title) + ' 封面" ' +
+    (first ? 'loading="eager" fetchpriority="high" ' : 'loading="lazy" ') +
+    'decoding="async" width="1200" height="800" />';
 
-  const note = work.qaNote && work.qaState === 'pending-reverify' && online
-    ? `<p class="card-note">◷ ${esc(work.qaNote)}</p>`
-    : !online && work.statusNote
-      ? `<p class="card-note">${esc(work.statusNote)}</p>`
-      : '';
+  const media = online
+    ? '<button class="work-media" type="button" data-act="play" data-id="' + esc(work.id) + '" ' +
+      'aria-label="' + (playable ? '进入《' : '查看《') + esc(title) + '》' + (playable ? '体验' : '预览') + '">' +
+      img + '<span class="work-veil" aria-hidden="true"></span>' +
+      '<span class="work-cta" aria-hidden="true">' + (playable ? '体验' : '查看') + '</span></button>'
+    : '<div class="work-media is-static">' + img + '</div>';
 
-  return `
-  <article class="card" role="listitem" data-id="${esc(work.id)}" tabindex="0">
-    <div class="card-cover">
-      <img src="${esc(work.cover || '')}" alt="${esc(work.title)} 封面" loading="lazy" width="800" height="500" />
-      <span class="card-no">NO.${no}</span>
-      <span class="pill ${pill.cls}">${esc(pill.label)}</span>
-    </div>
-    <div class="card-body">
-      <span class="card-sub">${esc(work.subtitle || work.id)}</span>
-      <h3 class="card-title">${esc(work.title)}</h3>
-      <p class="card-desc">${esc(work.description || '')}</p>
-      ${note}
-      <div class="card-meta">${eraTag}${tags}</div>
-      <div class="card-actions">${actions}</div>
-    </div>
-  </article>`;
+  return (
+    '<article class="work' + (wide ? ' is-wide' : '') + '" role="listitem" data-id="' + esc(work.id) + '">' +
+      media +
+      '<div class="work-info">' +
+        '<h2 class="work-title"><button class="work-title-btn" type="button" data-act="detail" data-id="' +
+          esc(work.id) + '">' + esc(title) + '</button></h2>' +
+        '<p class="work-kind">' + esc(kind) +
+          (era ? '<span class="work-era">' + esc(era) + '</span>' : '') + '</p>' +
+      '</div>' +
+    '</article>'
+  );
 }
 
-function renderGrid() {
-  const grid = $('#grid');
+function render() {
+  const box = $('#works');
+  if (!box) return;
+
   const list = filteredWorks();
-  grid.innerHTML = list.map(cardHTML).join('');
-  $('#empty').hidden = list.length > 0;
-  $('#catalog-count').textContent = list.length === state.works.length
-    ? `共 ${state.works.length} 件作品，全部显示`
-    : `命中 ${list.length} / ${state.works.length} 件`;
-}
+  box.innerHTML = list.map(cardHTML).join('');
 
-/* ---------------------------------------------------------------- stats */
+  $$('.work-img', box).forEach((img) => {
+    img.addEventListener('error', () => {
+      if (img.getAttribute('src') !== PLACEHOLDER) img.setAttribute('src', PLACEHOLDER);
+    });
+  });
 
-function renderStats() {
-  const total = state.works.length;
-  const online = state.works.filter((w) => isOnline(w) && w.qaState !== 'pending-reverify' && w.status !== 'pending').length;
-  const reverify = state.works.filter((w) => isOnline(w) && (w.qaState === 'pending-reverify' || w.status === 'pending')).length;
-  const playable = state.works.filter(isPlayable).length;
-  const eras = new Set(state.works.map((w) => w.era).filter(Boolean)).size;
-  const set = (k, v) => {
-    const el = $(`[data-stat="${k}"]`);
-    if (el) el.textContent = v;
-  };
-  set('total', total);
-  set('online', online);
-  set('reverify', reverify);
-  set('playable', playable);
-  set('eras', eras);
-  const built = state.report.builtAt ? new Date(state.report.builtAt) : null;
-  set('builtAt', built ? built.toISOString().slice(0, 16).replace('T', ' ') + ' UTC' : '—');
-}
+  const empty = $('#empty');
+  if (empty) empty.hidden = list.length > 0;
 
-/* ----------------------------------------------------------- build board */
-
-function renderBoard() {
-  const body = $('#board-body');
-  const rows = state.report.works || [];
-  if (!rows.length) {
-    body.innerHTML = `<tr><td colspan="6" class="note">构建报告尚未生成（data/build-report.json 缺失）。</td></tr>`;
-    return;
+  const status = $('#results-status');
+  if (status) {
+    status.textContent = list.length
+      ? '共 ' + list.length + ' 件作品' + (list.length === state.works.length ? '' : '，已筛选')
+      : '没有匹配的作品';
   }
-  body.innerHTML = rows.map((r) => {
-    const st = r.buildState || 'pending';
-    const label = STATUS_LABEL[st] || st;
-    const notes = (r.notes || []).length ? esc(r.notes.join('；')) : '—';
-    return `<tr>
-      <td><b>${esc(r.title || r.id)}</b><br><span class="note mono">${esc(r.id)}</span></td>
-      <td class="mono">${esc(r.type)}</td>
-      <td><span class="bstate ${esc(st)}">${esc(label)}</span></td>
-      <td class="mono">${esc(r.qaState === 'verified' ? '已复验' : r.qaState === 'pending-reverify' ? '待复验' : '—')}</td>
-      <td class="mono">${fmtBytes(r.bytes)}</td>
-      <td class="mono">${r.durationMs ? (r.durationMs / 1000).toFixed(1) + 's' : '—'}</td>
-      <td class="note">${notes}</td>
-    </tr>`;
-  }).join('');
 }
 
-/* ---------------------------------------------------------------- drawer */
+/* --------------------------------------------------------- 滚动与焦点 */
 
-function openDrawer(id) {
+function lockScroll() {
+  if (state.locked) return;
+  const sw = window.innerWidth - document.documentElement.clientWidth;
+  document.body.style.paddingRight = sw > 0 ? sw + 'px' : '';
+  document.body.style.overflow = 'hidden';
+  state.locked = true;
+}
+
+function unlockScroll() {
+  if (!state.locked) return;
+  document.body.style.overflow = '';
+  document.body.style.paddingRight = '';
+  state.locked = false;
+}
+
+function focusables(root) {
+  return $$(
+    'a[href], button:not([disabled]), input:not([disabled]), select, textarea, iframe, [tabindex]:not([tabindex="-1"])',
+    root
+  ).filter((el) => el.tagName === 'IFRAME' || el.offsetParent !== null || el === document.activeElement);
+}
+
+function trapTab(root, e) {
+  const items = focusables(root);
+  if (!items.length) return;
+  const first = items[0];
+  const last = items[items.length - 1];
+  const active = document.activeElement;
+
+  if (e.shiftKey && (active === first || !root.contains(active))) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && active === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
+
+function restoreFocus(el) {
+  if (el && typeof el.focus === 'function' && document.contains(el)) el.focus();
+}
+
+/* ------------------------------------------------------------- 详情 */
+
+function openDetail(id) {
   const work = workById(id);
   if (!work) return;
-  state.active = work;
+
   state.lastFocus = document.activeElement;
 
-  const st = statusOf(work);
+  const title = work.title || work.id || '未命名作品';
   const online = isOnline(work);
   const playable = isPlayable(work);
-  const pill = pillState(work);
-  const controls = (work.controls || []).map((c) => `<li>${esc(c)}</li>`).join('');
-  const tags = (work.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join('');
-  const artifacts = (work.artifacts || [])
-    .map((a) => `<li><a href="${esc(a.path)}" download>${esc(a.label)}</a></li>`)
-    .join('');
+  const cover = coverOf(work) || PLACEHOLDER;
+  const controls = (work.controls || []).filter(Boolean);
+  const kind = work.kind || work.subtitle || '';
 
-  const statusBlock = online
-    ? `<div class="d-status"><b>${esc(pill.label)}</b> · 线上入口已就绪。${
-        work.qaState === 'pending-reverify'
-          ? `${esc(work.qaNote || '')} —— <b>可访问但尚未通过 13 的新一轮全量复验</b>，请以验收报告为准。`
-          : (work.qaNote ? esc(work.qaNote) : '')
-      }${work.buildNotes?.length ? esc(work.buildNotes.join('；')) : ''}</div>`
-    : `<div class="d-status"><b>${esc(pill.label)}</b> · ${esc(work.statusNote || work.qaNote || '尚未就绪')} 本条暂不提供可点击的游玩入口。</div>`;
+  const body = $('#detail-body');
+  body.innerHTML =
+    '<div class="detail-media"><img src="' + esc(cover) + '" alt="' + esc(title) + ' 封面" ' +
+      'loading="lazy" decoding="async" width="1200" height="800" /></div>' +
+    '<p class="detail-kicker">' + esc(kind) + '</p>' +
+    '<h2 class="detail-title" id="detail-title">' + esc(title) + '</h2>' +
+    (work.subtitle ? '<p class="detail-sub">' + esc(work.subtitle) + '</p>' : '') +
+    (work.description ? '<p class="detail-desc">' + esc(work.description) + '</p>' : '') +
+    (controls.length
+      ? '<ul class="detail-controls">' + controls.map((c) => '<li>' + esc(c) + '</li>').join('') + '</ul>'
+      : '') +
+    (online ? '' : '<p class="detail-note">这件作品暂时还没有可打开的体验入口。</p>') +
+    '<div class="detail-actions">' +
+      (online
+        ? '<button class="btn btn-solid" type="button" data-act="play" data-id="' + esc(work.id) + '">' +
+            (playable ? '进入体验' : '打开预览') + '</button>' +
+          '<a class="btn" href="' + esc(work.entry || '#') + '" target="_blank" rel="noopener noreferrer">独立窗口打开</a>'
+        : '') +
+    '</div>';
 
-  const actions = [];
-  if (playable) {
-    actions.push(`<button class="btn btn-primary" data-act="play" data-id="${esc(work.id)}">进入体验</button>`);
+  const img = body.querySelector('img');
+  if (img) {
+    img.addEventListener('error', () => {
+      if (img.getAttribute('src') !== PLACEHOLDER) img.setAttribute('src', PLACEHOLDER);
+    });
   }
-  if (online) {
-    actions.push(`<a class="btn" href="${esc(work.entry)}" target="_blank" rel="noopener noreferrer">独立窗口打开</a>`);
-  }
-  actions.push(`<button class="btn btn-ghost" data-act="copy" data-id="${esc(work.id)}">复制线上地址</button>`);
 
-  $('#drawer-body').innerHTML = `
-    <div class="d-head">
-      <span class="d-kicker">${esc(work.kind || work.section)}</span>
-      <h2 class="d-title" id="drawer-title">${esc(work.title)}</h2>
-      <span class="d-sub">${esc(work.subtitle || work.id)}</span>
-    </div>
-    <div class="d-cover"><img src="${esc(work.cover || '')}" alt="${esc(work.title)} 封面" width="800" height="500" /></div>
-    <p class="d-desc">${esc(work.description || '')}</p>
-    ${statusBlock}
-    <div class="d-block">
-      <h4>作品信息</h4>
-      <dl class="d-grid">
-        <div><dt>所属分区</dt><dd>${esc(sectionLabel(work.section))}</dd></div>
-        <div><dt>时代 / 年份</dt><dd>${esc(work.era || '—')}</dd></div>
-        <div><dt>入口路径</dt><dd class="mono">${esc(work.entry || '—')}</dd></div>
-        <div><dt>构建体积</dt><dd>${fmtBytes(work.bytes)}</dd></div>
-      </dl>
-    </div>
-    ${controls ? `<div class="d-block"><h4>操作说明</h4><ul>${controls}</ul></div>` : ''}
-    ${artifacts ? `<div class="d-block"><h4>可下载产物</h4><ul>${artifacts}</ul></div>` : ''}
-    ${work.notes ? `<div class="d-block"><h4>部署备注</h4><ul><li>${esc(work.notes)}</li></ul></div>` : ''}
-    ${tags ? `<div class="d-block"><h4>标签</h4><div class="card-meta" style="padding-top:0">${tags}</div></div>` : ''}
-    <div class="d-actions">${actions.join('')}</div>`;
-
-  const backdrop = $('#drawer-backdrop');
-  const drawer = $('#drawer');
-  backdrop.hidden = false;
-  drawer.hidden = false;
-  document.body.style.overflow = 'hidden';
-  drawer.focus();
+  $('#overlay').hidden = false;
+  $('#detail').hidden = false;
+  lockScroll();
+  $('#detail-close').focus();
 }
 
-function closeDrawer() {
-  $('#drawer-backdrop').hidden = true;
-  $('#drawer').hidden = true;
-  document.body.style.overflow = '';
-  state.active = null;
-  if (state.lastFocus && state.lastFocus.focus) state.lastFocus.focus();
+function closeDetail(restore) {
+  $('#overlay').hidden = true;
+  $('#detail').hidden = true;
+  if (!stageOpen()) unlockScroll();
+  if (restore !== false) restoreFocus(state.lastFocus);
 }
 
-function sectionLabel(id) {
-  const s = (state.manifest.sections || []).find((x) => x.id === id);
-  return s ? s.label : id;
+/* ------------------------------------------------------------- 体验台 */
+
+function stageOpen() {
+  const el = $('#stage');
+  return !!el && !el.hidden;
 }
 
-/* ----------------------------------------------------------------- stage */
-
-function openStage(id) {
+function openStage(id, trigger) {
   const work = workById(id);
-  if (!work || !isOnline(work)) return;
-  const stage = $('#stage');
-  const frame = $('#stage-frame');
-  $('#stage-name').textContent = work.title;
-  $('#stage-sub').textContent = work.subtitle || work.id;
-  frame.src = work.entry;
-  const sel = $('#stage-select');
-  sel.innerHTML = state.works.filter(isOnline)
-    .map((w) => `<option value="${esc(w.id)}"${w.id === id ? ' selected' : ''}>${esc(w.title)}</option>`)
-    .join('');
-  stage.hidden = false;
-  document.body.style.overflow = 'hidden';
+  if (!work || !isOnline(work) || !work.entry) return;
+
+  state.lastFocus = trigger || document.activeElement;
+
+  const title = work.title || work.id || '未命名作品';
+  $('#stage-name').textContent = title;
+  $('#stage-sub').textContent = work.kind || work.subtitle || '';
+  $('#stage-frame').src = work.entry;
+
+  $('#stage').hidden = false;
+  lockScroll();
   $('#stage-back').focus();
 }
 
-function closeStage() {
+function closeStage(restore) {
   const stage = $('#stage');
+  if (stage.hidden) return;
   stage.hidden = true;
   $('#stage-frame').src = 'about:blank';
-  document.body.style.overflow = '';
+  if (!detailOpen()) unlockScroll();
+  if (restore !== false) restoreFocus(state.lastFocus);
 }
 
-function stageOpenExternal() {
-  const work = state.works.find((w) => w.id === $('#stage-select').value);
-  if (work) window.open(work.entry, '_blank', 'noopener');
+function detailOpen() {
+  const el = $('#detail');
+  return !!el && !el.hidden;
 }
 
-/* ------------------------------------------------------------- events */
+/*
+ * 焦点进入 iframe 之后，键盘事件不再冒泡到父文档，Escape 会失效。
+ * 这里把 iframe 内的 Escape 转交给父文档；若作品自己处理了 Escape
+ * （例如打开暂停菜单并 preventDefault），则尊重作品的行为，不关闭体验台。
+ */
+function bindFrameKeys() {
+  const frame = $('#stage-frame');
+  if (!frame) return;
+
+  frame.addEventListener('load', () => {
+    let doc = null;
+    try {
+      doc = frame.contentDocument;
+    } catch (e) {
+      return; /* 跨域作品无法注入监听，退回父文档的 Escape 处理 */
+    }
+    if (!doc) return;
+    doc.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || e.defaultPrevented) return;
+      e.preventDefault();
+      closeStage();
+    });
+  });
+}
+
+/* ------------------------------------------------------------- 事件 */
 
 function bind() {
-  $('#q').addEventListener('input', (e) => {
-    state.q = e.target.value;
-    renderGrid();
-  });
+  const q = $('#q');
+  if (q) {
+    q.addEventListener('input', (e) => {
+      state.q = e.target.value;
+      render();
+    });
+    q.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        e.stopPropagation();
+        q.value = '';
+        state.q = '';
+        render();
+        q.blur();
+      }
+    });
+  }
 
-  $('#sort').addEventListener('change', (e) => {
-    state.sort = e.target.value;
-    renderGrid();
-  });
+  const clear = $('#clear-filters');
+  if (clear) {
+    clear.addEventListener('click', () => {
+      state.q = '';
+      state.section = 'all';
+      if (q) q.value = '';
+      renderCats();
+      render();
+      if (q) q.focus();
+    });
+  }
 
-  $('#btn-reset').addEventListener('click', () => {
-    state.q = ''; state.section = 'all'; state.status = 'all'; state.sort = 'index';
-    $('#q').value = ''; $('#sort').value = 'index';
-    renderFilters(); renderGrid();
+  $('#detail-close').addEventListener('click', () => closeDetail());
+  $('#overlay').addEventListener('click', () => closeDetail());
+  $('#stage-back').addEventListener('click', () => closeStage());
+  bindFrameKeys();
+  $('#stage-open').addEventListener('click', () => {
+    const frame = $('#stage-frame');
+    const src = frame.getAttribute('src') || '';
+    if (src && src !== 'about:blank') window.open(src, '_blank', 'noopener');
   });
-
-  $('#btn-random').addEventListener('click', () => {
-    const pool = state.works.filter(isOnline);
-    if (!pool.length) return;
-    const pick = pool[Math.floor(Math.random() * pool.length)];
-    openDrawer(pick.id);
-  });
-
-  $('#drawer-close').addEventListener('click', closeDrawer);
-  $('#drawer-backdrop').addEventListener('click', closeDrawer);
-  $('#stage-back').addEventListener('click', closeStage);
-  $('#stage-open').addEventListener('click', stageOpenExternal);
-  $('#stage-select').addEventListener('change', (e) => openStage(e.target.value));
 
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-act]');
-    if (btn) {
-      const act = btn.dataset.act;
-      const id = btn.dataset.id;
-      if (act === 'play') { closeDrawer(); openStage(id); }
-      else if (act === 'open') { window.open(workById(id)?.entry, '_blank', 'noopener'); }
-      else if (act === 'detail') { openDrawer(id); }
-      else if (act === 'copy') {
-        const url = new URL(workById(id)?.entry || '', location.href).href;
-        navigator.clipboard?.writeText(url).then(
-          () => { btn.textContent = '已复制 ✓'; setTimeout(() => { btn.textContent = '复制线上地址'; }, 1600); },
-          () => { btn.textContent = '复制失败'; }
-        );
-      }
-      return;
+    const trigger = e.target.closest('[data-act]');
+    if (!trigger) return;
+
+    const act = trigger.dataset.act;
+    const id = trigger.dataset.id;
+
+    if (act === 'play') {
+      const fromDetail = !!trigger.closest('#detail');
+      if (fromDetail) closeDetail(false);
+      openStage(id, fromDetail ? coverButtonOf(id) : trigger);
+    } else if (act === 'detail') {
+      openDetail(id);
     }
-    const card = e.target.closest('.card');
-    if (card && !e.target.closest('button')) openDrawer(card.dataset.id);
   });
 
   document.addEventListener('keydown', (e) => {
-    const stageOpen = !$('#stage').hidden;
-    const drawerOpen = !$('#drawer').hidden;
     if (e.key === 'Escape') {
-      if (stageOpen) { closeStage(); e.preventDefault(); }
-      else if (drawerOpen) { closeDrawer(); e.preventDefault(); }
+      if (stageOpen()) {
+        e.preventDefault();
+        closeStage();
+      } else if (detailOpen()) {
+        e.preventDefault();
+        closeDetail();
+      }
       return;
     }
-    if (stageOpen || drawerOpen) return;
-    if (e.key === '/' && document.activeElement !== $('#q')) {
+
+    if (e.key === 'Tab') {
+      if (stageOpen()) trapTab($('#stage'), e);
+      else if (detailOpen()) trapTab($('#detail'), e);
+      return;
+    }
+
+    if (stageOpen() || detailOpen()) return;
+
+    if (e.key === '/' && document.activeElement !== q) {
       e.preventDefault();
-      $('#q').focus();
+      if (q) q.focus();
     }
-  });
-
-  $('#q').addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { $('#q').value = ''; state.q = ''; renderGrid(); $('#q').blur(); }
   });
 }
 
-/* -------------------------------------------------- generative backdrop */
-
-function initField() {
-  const cv = $('#field');
-  if (!cv) return;
-  const ctx = cv.getContext('2d');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let w = 0, h = 0, dpr = 1, dots = [], t = 0, raf = 0;
-
-  const resize = () => {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = cv.clientWidth; h = cv.clientHeight;
-    cv.width = Math.floor(w * dpr); cv.height = Math.floor(h * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const count = Math.min(90, Math.round((w * h) / 26000));
-    dots = Array.from({ length: count }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.12,
-      vy: (Math.random() - 0.5) * 0.12,
-      r: 0.7 + Math.random() * 1.5,
-      hue: Math.random() < 0.22 ? '79,214,232' : Math.random() < 0.5 ? '255,106,43' : '243,237,225',
-    }));
-  };
-
-  const draw = () => {
-    t += 0.006;
-    ctx.clearRect(0, 0, w, h);
-
-    // 回响环：从若干锚点发出的扩散圆
-    const anchors = dots.filter((_, i) => i % 23 === 0);
-    ctx.lineWidth = 1;
-    anchors.forEach((a, i) => {
-      const phase = (t * 0.5 + i * 0.37) % 1;
-      const rad = phase * Math.max(w, h) * 0.55;
-      ctx.strokeStyle = `rgba(79,214,232,${(0.10 * (1 - phase)).toFixed(3)})`;
-      ctx.beginPath();
-      ctx.arc(a.x, a.y, rad, 0, Math.PI * 2);
-      ctx.stroke();
-    });
-
-    for (const d of dots) {
-      d.x += d.vx; d.y += d.vy;
-      if (d.x < -20) d.x = w + 20;
-      if (d.x > w + 20) d.x = -20;
-      if (d.y < -20) d.y = h + 20;
-      if (d.y > h + 20) d.y = -20;
-      ctx.fillStyle = `rgba(${d.hue},0.30)`;
-      ctx.beginPath();
-      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    raf = requestAnimationFrame(draw);
-  };
-
-  resize();
-  window.addEventListener('resize', resize, { passive: true });
-  if (reduce) { draw(); cancelAnimationFrame(raf); } else { raf = requestAnimationFrame(draw); }
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) cancelAnimationFrame(raf);
-    else if (!reduce) raf = requestAnimationFrame(draw);
-  });
-}
-
-/* ----------------------------------------------------------------- boot */
+/* ------------------------------------------------------------- 启动 */
 
 async function main() {
   await loadData();
-  renderStats();
-  renderFilters();
-  renderGrid();
-  renderBoard();
+  renderCats();
+  render();
   bind();
-  initField();
-
-  const foot = $('#foot-meta');
-  if (foot) {
-    const m = state.manifest.meta || {};
-    const built = state.report.builtAt ? new Date(state.report.builtAt).toISOString().replace('T', ' ').slice(0, 16) + ' UTC' : '—';
-    foot.innerHTML = [
-      `REPO ${esc(m.repo || '—')}`,
-      `BATCH ${esc(m.batch || '—')}`,
-      `BUILD ${esc(built)}`,
-      `NODE ${esc(state.report.node || '—')}`,
-    ].join('<br>');
-  }
 }
 
 main();

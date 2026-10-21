@@ -1,185 +1,73 @@
 {
-  "builtAt": "2026-10-21T12:27:23.345Z",
-  "node": "v24.13.0",
   "works": [
     {
       "id": "01-chroma-s1",
-      "title": "千色仪",
-      "type": "npm",
-      "qaState": "verified",
-      "outputDir": "docs/works/01-chroma-s1",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 961814,
-      "durationMs": 62769,
-      "notes": [
-        "发布过滤：移除台账文档 0 份、清理台账区块 1 处"
-      ],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "02-abyss-salvager",
-      "title": "渊甲拾遗者",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/02-abyss-salvager",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 9908692,
-      "durationMs": 6822,
-      "notes": [
-        "发布过滤：移除台账文档 0 份、清理台账区块 1 处"
-      ],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "03-interaction",
-      "title": "织造车间调度台",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/03-interaction",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 346007,
-      "durationMs": 19194,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "04-frostgap-voyager",
-      "title": "霜隙远航",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/04-frostgap-voyager",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 676964,
-      "durationMs": 27658,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "06-museum-main",
-      "title": "回响电玩馆",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/06-museum-main",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 56575023,
-      "durationMs": 7927,
-      "notes": [
-        "发布过滤：移除台账文档 3 份、清理台账区块 5 处"
-      ],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "07-museum-art",
-      "title": "美术资产包",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/07-museum-art",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 55631252,
-      "durationMs": 17689,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "08-era-origins",
-      "title": "光点年代",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/08-era-origins",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 118138,
-      "durationMs": 4767,
-      "notes": [
-        "发布过滤：移除台账文档 3 份、清理台账区块 3 处"
-      ],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "09-era-arcade",
-      "title": "霓虹街廊",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/09-era-arcade",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 93103,
-      "durationMs": 1334,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "10-era-console",
-      "title": "色块远征",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/10-era-console",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 124339,
-      "durationMs": 2082,
-      "notes": [
-        "发布过滤：移除台账文档 0 份、清理台账区块 1 处"
-      ],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "11-era-online",
-      "title": "联机曙光",
-      "type": "npm",
-      "qaState": "verified",
-      "outputDir": "docs/works/11-era-online",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 136564,
-      "durationMs": 5086,
-      "notes": [
-        "发布过滤：移除台账文档 0 份、清理台账区块 1 处"
-      ],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "12-era-modern",
-      "title": "折光纪",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/12-era-modern",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 785146,
-      "durationMs": 3285,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     }
   ],
+  "builtAt": "2026-10-21T12:27:23.345Z",
   "totals": {
     "total": 11,
     "built": 11,

@@ -3,209 +3,82 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>作品与资产总览 · WORKS &amp; ASSETS | PLAYTIME ATLAS 回响电玩馆</title>
-<meta name="description" content="回响电玩馆个人作品与资产总览：独立作品、年代可玩展厅与原创美术资产包的统一在线入口，支持站内直接试玩与下载。" />
-<meta name="theme-color" content="#0a1020" />
-<meta property="og:title" content="作品与资产总览 · WORKS &amp; ASSETS | PLAYTIME ATLAS" />
-<meta property="og:description" content="个人作品与资产总览：独立作品、年代展厅与原创美术资产，可在线直接试玩与下载。" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a1020'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23ff6a2b' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%234fd6e8'/%3E%3C/svg%3E" />
+<title>回响电玩馆 · PLAYTIME ATLAS</title>
+<meta name="description" content="回响电玩馆个人作品画廊：独立作品、年代展厅与原创美术资产，可直接在线体验。" />
+<meta name="theme-color" content="#faf8f4" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="回响电玩馆 · PLAYTIME ATLAS" />
+<meta property="og:description" content="个人作品画廊：独立作品、年代展厅与原创美术资产，可直接在线体验。" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23faf8f4'/%3E%3Ccircle cx='11.5' cy='13' r='2.1' fill='%2314110d'/%3E%3Ccircle cx='20.5' cy='13' r='2.1' fill='%2314110d'/%3E%3Cpath d='M8 21.5c3.2 1.7 12.8 1.7 16 0' stroke='%2314110d' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
 <link rel="stylesheet" href="assets/hall.css" />
 </head>
 <body>
-<a class="skip-link" href="#catalog">跳到作品目录</a>
-
-<canvas id="field" class="field" aria-hidden="true"></canvas>
-<div class="grain" aria-hidden="true"></div>
+<a class="skip-link" href="#gallery">跳到作品列表</a>
 
 <header class="topbar">
   <a class="brand" href="#top">
-    <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-    <span class="brand-text">
-      <b>回响电玩馆</b>
-      <em>PLAYTIME ATLAS · 作品与资产总览</em>
-    </span>
+    <span class="brand-cn">回响电玩馆</span>
+    <span class="brand-en">PLAYTIME ATLAS</span>
   </a>
-  <nav class="topnav" aria-label="主导航">
-    <a href="#catalog">作品目录</a>
-    <a href="#build">构建状态</a>
-    <a href="#overview">作品与资产</a>
-  </nav>
-  <div class="topbar-right">
-    <label class="search" for="q">
-      <span class="sr-only">搜索作品</span>
-      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <input id="q" type="search" placeholder="检索作品 / era / tag" autocomplete="off" spellcheck="false" />
-      <kbd>/</kbd>
-    </label>
+  <div class="topbar-tools">
+    <nav class="cats" id="cats" aria-label="作品分类"></nav>
+    <div class="search">
+      <label class="sr-only" for="q">搜索作品</label>
+      <svg class="search-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="6.8" cy="6.8" r="4.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.3 10.3 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <input id="q" name="q" type="search" placeholder="搜索作品" autocomplete="off" spellcheck="false" />
+    </div>
   </div>
 </header>
 
 <main id="top">
-  <!-- ============================ HERO ============================ -->
-  <section class="hero">
-    <div class="hero-inner">
-      <p class="eyebrow"><span class="dot"></span>FLASH-SHOWCASE · 2026-10-21 · BATCH 00—13</p>
-      <h1 class="display">
-        <span class="l1">作品与资产总览</span>
-        <span class="l2 mono">WORKS&nbsp;&amp;&nbsp;ASSETS</span>
-      </h1>
-      <p class="lede">
-        这里是我为 PLAYTIME ATLAS 做的作品与资产总览：独立作品、年代可玩展厅与原创美术资产包。
-        每一件都可在站内直接打开、操作、游玩，部分提供可下载产物；
-        未就绪的部分如实标注状态与阻塞原因，不提供无法兑现的按钮。
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#catalog">进入作品目录 <span aria-hidden="true">↓</span></a>
-        <button class="btn" id="btn-random" type="button">随机进入一件作品</button>
-      </div>
-      <dl class="stats" id="stats">
-        <div><dt>作品总数</dt><dd data-stat="total">—</dd></div>
-        <div><dt>已上线</dt><dd data-stat="online">—</dd></div>
-        <div><dt>待复验</dt><dd data-stat="reverify">—</dd></div>
-        <div><dt>可试玩</dt><dd data-stat="playable">—</dd></div>
-        <div><dt>覆盖时代</dt><dd data-stat="eras">—</dd></div>
-        <div><dt>最新构建</dt><dd data-stat="builtAt" class="small">—</dd></div>
-      </dl>
-    </div>
-    <aside class="hero-note">
-      <h2>关于这些作品</h2>
-      <ul>
-        <li><b>独立设计</b>：作品名、文案、字体、配色、布局与模型形态全部重新设计并实现，不复制他人代码、素材或品牌视觉。</li>
-        <li><b>历史条目</b>：年代展厅与策展目录中的历史资料是第三方史料的整理与索引，权利归各自权利人，不是我的原创作品。</li>
-        <li><b>零依赖</b>：所有作品运行时自包含，资产本地化，不请求外部接口。</li>
-        <li><b>诚实状态</b>：未完成的作品显示真实状态与阻塞项，点击前即知。</li>
-      </ul>
-    </aside>
-  </section>
-
-  <!-- =========================== CATALOG =========================== -->
-  <section id="catalog" class="catalog">
-    <div class="section-head">
-      <h2><span class="idx mono">01</span> 作品目录 <em class="mono">CATALOG</em></h2>
-      <p class="section-desc" id="catalog-count">正在载入…</p>
+  <section id="gallery" class="gallery" aria-labelledby="gallery-label">
+    <div class="gallery-head">
+      <h1 class="gallery-label" id="gallery-label">作品<span class="gallery-label-en">Selected work</span></h1>
+      <p class="sr-only" id="results-status" role="status" aria-live="polite"></p>
     </div>
 
-    <div class="filters" role="group" aria-label="筛选">
-      <div class="filter-row" id="filter-sections"></div>
-      <div class="filter-row" id="filter-status"></div>
-      <div class="filter-row filter-sort">
-        <label for="sort">排序</label>
-        <select id="sort">
-          <option value="index">按编号</option>
-          <option value="era">按时代</option>
-          <option value="status">按状态</option>
-          <option value="title">按名称</option>
-        </select>
-        <button class="btn btn-ghost" id="btn-reset" type="button">重置筛选</button>
-      </div>
-    </div>
+    <div class="works" id="works" role="list"></div>
 
-    <div class="grid" id="grid" role="list"></div>
-    <p class="empty" id="empty" hidden>没有匹配的作品。试试清空搜索词或切换分区。</p>
-  </section>
-
-  <!-- ========================== BUILD BOARD ========================== -->
-  <section id="build" class="board">
-    <div class="section-head">
-      <h2><span class="idx mono">02</span> 构建状态 <em class="mono">BUILD BOARD</em></h2>
-      <p class="section-desc">由 <code>scripts/build.mjs</code> 在每次发布时实际写入，非手写清单。</p>
-    </div>
-    <div class="board-wrap">
-      <table class="board-table">
-        <thead>
-          <tr><th>作品</th><th>类型</th><th>结果</th><th>验收</th><th>体积</th><th>耗时</th><th>备注</th></tr>
-        </thead>
-        <tbody id="board-body"></tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- =========================== OVERVIEW =========================== -->
-  <section id="overview" class="overview">
-    <div class="section-head">
-      <h2><span class="idx mono">03</span> 作品与资产 <em class="mono">WORKS &amp; ASSETS</em></h2>
-      <p class="section-desc">探索可玩的作品、年代展厅与美术资产。</p>
-    </div>
-    <div class="ov-grid">
-      <article class="ov-card">
-        <h3>独立作品</h3>
-        <p>四件可独立游玩的完整作品：掌机落地页、程序化生成的机械甲壳生物查看器、织造调度台与 6 自由度驾驶模拟。机制、界面与玩法规则均为我重新设计实现。</p>
-      </article>
-      <article class="ov-card">
-        <h3>年代展厅</h3>
-        <p>五个独立可玩的年代展厅，覆盖早期电子实验、街机、16 位主机、网络时代与现代 VR 主题。展厅内的<b>历史条目属于第三方史料整理</b>，展厅玩法为原创演绎。</p>
-      </article>
-      <article class="ov-card">
-        <h3>原创美术资产</h3>
-        <p>深墨蓝 + 暖纸白 + 信号橙的视觉方案，自托管字体、图标、年代海报、封面、展柜与跨时代硬件简化模型，可预览并随作品一起使用。</p>
-      </article>
-      <article class="ov-card">
-        <h3>可下载产物</h3>
-        <p>部分作品提供可下载产物（例如可导出的 3D 模型），在各作品详情页内直接取得；其余作品以在线体验为主。</p>
-      </article>
-      <article class="ov-card">
-        <h3>零依赖</h3>
-        <p>全部几何、贴图、图标、封面与音效由代码生成或使用可再分发的开源字体。作品运行时自包含、资产本地化，<b>不请求外部接口</b>，展品图像不使用商业游戏截帧。</p>
-      </article>
-      <article class="ov-card">
-        <h3>试玩说明</h3>
-        <p>作品在站内以 <code>iframe</code> 嵌入运行。首次点击画面后才会激活键盘输入与指针锁定；部分驾驶类作品在嵌套页面中可能被浏览器限制，必要时请「独立窗口打开」。</p>
-      </article>
-      <article class="ov-card">
-        <h3>部署与构建</h3>
-        <p>本站由 GitHub Actions 自动构建并发布到 GitHub Pages。仓库保存全部源码与构建脚本；单件构建失败不会阻断其余作品，并会回退到上一版已验证产物。</p>
-      </article>
-    </div>
+    <p class="empty" id="empty" hidden>
+      没有匹配的作品。<button class="link-btn" id="clear-filters" type="button">清除筛选</button>
+    </p>
   </section>
 </main>
 
 <footer class="footer">
-  <div class="footer-inner">
-    <div>
-      <p class="foot-title">PLAYTIME ATLAS · 回响电玩馆</p>
-      <p class="foot-sub mono">WORKS &amp; ASSETS / FLASH-SHOWCASE-20261021</p>
-    </div>
-    <div class="foot-meta" id="foot-meta"></div>
-  </div>
-  <p class="foot-note">
-    本批作品的实现、美术、测试与部署由 MiniMax Code M3.1-Flash 完成。
-    部署总控：14-publish。
-  </p>
+  <p class="foot-brand">回响电玩馆 <span>PLAYTIME ATLAS</span></p>
+  <p class="foot-copy">© 2026 · 个人作品画廊</p>
 </footer>
 
-<!-- ============================ DRAWER ============================ -->
-<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
-<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden tabindex="-1">
-  <button class="drawer-close" id="drawer-close" type="button" aria-label="关闭详情">✕</button>
-  <div class="drawer-body" id="drawer-body"></div>
-</aside>
+<!-- ===================== 轻量详情 ===================== -->
+<div class="overlay" id="overlay" hidden></div>
+<section class="detail" id="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" hidden tabindex="-1">
+  <button class="detail-close" id="detail-close" type="button" aria-label="关闭详情">✕</button>
+  <div class="detail-body" id="detail-body"></div>
+</section>
 
-<!-- ============================ STAGE ============================ -->
-<div class="stage" id="stage" role="dialog" aria-modal="true" aria-label="游玩台" hidden>
+<!-- ===================== 体验台 ===================== -->
+<section class="stage" id="stage" role="dialog" aria-modal="true" aria-labelledby="stage-name" hidden>
   <header class="stage-bar">
-    <button class="btn btn-ghost" id="stage-back" type="button">← 返回总览</button>
+    <button class="stage-btn" id="stage-back" type="button">← 返回作品</button>
     <div class="stage-title">
       <b id="stage-name">—</b>
-      <em class="mono" id="stage-sub">—</em>
+      <em id="stage-sub">—</em>
     </div>
-    <div class="stage-tools">
-      <label class="sr-only" for="stage-select">切换作品</label>
-      <select id="stage-select"></select>
-      <button class="btn btn-ghost" id="stage-open" type="button">独立窗口</button>
-    </div>
+    <button class="stage-btn" id="stage-open" type="button">独立窗口</button>
   </header>
   <div class="stage-body">
-    <iframe id="stage-frame" title="作品试玩区" allow="fullscreen; pointer-lock; gamepad; autoplay; clipboard-write" allowfullscreen></iframe>
+    <iframe id="stage-frame" title="作品体验区" allow="fullscreen; pointer-lock; gamepad; autoplay; clipboard-write" allowfullscreen></iframe>
   </div>
-  <p class="stage-hint" id="stage-hint">点击画面以激活键盘控制与指针锁定。</p>
-</div>
+  <p class="stage-hint" id="stage-hint">点击画面以激活键盘与指针锁定。</p>
+</section>
 
 <script id="works-data" type="application/json">{
   "meta": {
     "project": "PLAYTIME ATLAS",
     "projectCn": "回响电玩馆",
-    "hall": "作品与资产总览",
-    "hallEn": "WORKS & ASSETS",
+    "hall": "作品",
+    "hallEn": "WORKS",
     "repo": "playtime-atlas-20261021",
     "batch": "flash-showcase-20261021",
     "updated": "2026-10-21"
@@ -237,10 +110,6 @@
       "subtitle": "CHROMA S1",
       "description": "把颜色量出来的网页作品：奶油底与四色换肤、纯 CSS 绘制的掌机机身、屏幕内可玩的迷你游戏、跑马灯与四卡规格区。视觉、文案与规则为独立重新设计。",
       "entry": "works/01-chroma-s1/index.html",
-      "buildCommand": "npm run build",
-      "outputDir": "docs/works/01-chroma-s1",
-      "status": "ready",
-      "playable": true,
       "section": "standalone",
       "era": "2020s",
       "kind": "网页 / 落地页",
@@ -250,23 +119,19 @@
         "内嵌小游戏",
         "零外部请求"
       ],
-      "build": {
-        "type": "npm",
-        "appDir": "apps/01-chroma-s1"
-      },
-      "cover": "assets/covers/01-chroma-s1.svg",
       "controls": [
         "方向键移动",
         "Enter 确认",
         "R 重开"
       ],
+      "cover": "assets/gallery-covers/01-chroma-s1.webp",
+      "playable": true,
+      "status": "ready",
       "qaState": "verified",
-      "qaNote": "已通过 13-qa-curation 实机验收",
       "buildState": "built",
-      "buildNotes": [],
-      "bytes": 961809,
       "entryExists": true,
-      "online": true
+      "online": true,
+      "bytes": 961814
     },
     {
       "id": "02-abyss-salvager",
@@ -274,10 +139,6 @@
       "subtitle": "AC-VII · ABYSS-CARAPACE SALVAGER",
       "description": "程序化生成的全长机械甲壳生物：可分解检视、纵剖与头截面技术图、参数化重建、X 光与爆炸视图，并可导出标准 GLB。几何与贴图在运行时由代码生成。",
       "entry": "works/02-abyss-salvager/index.html",
-      "buildCommand": "npm run build",
-      "outputDir": "docs/works/02-abyss-salvager",
-      "status": "pending",
-      "playable": true,
       "section": "standalone",
       "era": "2020s",
       "kind": "3D 交互模型查看器",
@@ -288,11 +149,6 @@
         "GLB 导出",
         "剖切与 X 光"
       ],
-      "build": {
-        "type": "npm",
-        "appDir": "apps/02-abyss-salvager"
-      },
-      "cover": "assets/covers/02-abyss-salvager.svg",
       "controls": [
         "左键拖拽 轨道旋转",
         "滚轮 缩放",
@@ -300,19 +156,20 @@
         "参数面板实时重建",
         "导出 GLB 下载模型"
       ],
+      "cover": "assets/gallery-covers/02-abyss-salvager.webp",
+      "playable": true,
+      "status": "pending",
+      "qaState": "pending-reverify",
+      "buildState": "built",
+      "entryExists": true,
+      "online": true,
+      "bytes": 9908692,
       "artifacts": [
         {
           "label": "导出的 GLB 模型（9.1 MB）",
           "path": "works/02-abyss-salvager/models/abyss-salvager-ac-vii.glb"
         }
-      ],
-      "qaState": "pending-reverify",
-      "qaNote": "上游修复中，13 复验后更新",
-      "buildState": "built",
-      "buildNotes": [],
-      "bytes": 9823216,
-      "entryExists": true,
-      "online": true
+      ]
     },
     {
       "id": "03-interaction",
@@ -320,11 +177,6 @@
       "subtitle": "LOOMDECK",
       "description": "原创改编的浏览器端实时织造调度台：经线排布、梭子调度、开口与张力控制，附实时统计与可保存的排布方案。",
       "entry": "works/03-interaction/index.html",
-      "buildCommand": "npm run build",
-      "outputDir": "docs/works/03-interaction",
-      "status": "pending",
-      "statusNote": "",
-      "playable": true,
       "section": "standalone",
       "era": "2020s",
       "kind": "交互工具 / 调度台",
@@ -334,23 +186,19 @@
         "方案保存",
         "键盘与指针"
       ],
-      "build": {
-        "type": "npm",
-        "appDir": "apps/03-interaction"
-      },
-      "cover": "assets/covers/03-interaction.svg",
       "controls": [
         "拖拽梭子与导轨",
         "数字键切换机台",
         "保存 / 读取排布方案"
       ],
+      "cover": "assets/gallery-covers/03-interaction.webp",
+      "playable": true,
+      "status": "pending",
       "qaState": "pending-reverify",
-      "qaNote": "本轮新增产物，13 复验后更新",
       "buildState": "built",
-      "buildNotes": [],
-      "bytes": 319239,
       "entryExists": true,
-      "online": true
+      "online": true,
+      "bytes": 346007
     },
     {
       "id": "04-frostgap-voyager",
@@ -358,10 +206,6 @@
       "subtitle": "FROSTGAP VOYAGER",
       "description": "第一人称 6 自由度飞船驾驶：驾驶舱舷窗与仪表台、星图跃迁、天体扫描、停靠补给与任务链，全部天体与纹理程序化生成，进度写入本地存储。",
       "entry": "works/04-frostgap-voyager/index.html",
-      "buildCommand": "npm run build",
-      "outputDir": "docs/works/04-frostgap-voyager",
-      "status": "pending",
-      "playable": true,
       "section": "standalone",
       "era": "2020s",
       "kind": "科幻驾驶模拟",
@@ -373,11 +217,6 @@
         "WebAudio",
         "本地存档"
       ],
-      "build": {
-        "type": "npm",
-        "appDir": "apps/04-frostgap-voyager"
-      },
-      "cover": "assets/covers/04-frostgap-voyager.svg",
       "controls": [
         "W A S D 推进",
         "Space / Ctrl 升降",
@@ -390,14 +229,14 @@
         "V 视角",
         "Esc 暂停"
       ],
-      "notes": "部署副本应用了一处上游缺陷修复（见 scripts/patches.mjs）：makeRingTexture() 缺少 const data = img.data;，导致启动即抛 ReferenceError。上游 04-spaceflight 尚未修复。",
+      "cover": "assets/gallery-covers/04-frostgap-voyager.webp",
+      "playable": true,
+      "status": "pending",
       "qaState": "pending-reverify",
-      "qaNote": "上游修复中，13 复验后更新",
       "buildState": "built",
-      "buildNotes": [],
-      "bytes": 678292,
       "entryExists": true,
-      "online": true
+      "online": true,
+      "bytes": 676964
     },
     {
       "id": "06-museum-main",
@@ -405,10 +244,6 @@
       "subtitle": "PLAYTIME ATLAS",
       "description": "博物馆主站：十道年代门沿时间长廊排开，含检索筛选、收藏、展品索引与可玩展厅，年代展厅内嵌各时代的独立小游戏。",
       "entry": "works/06-museum-main/index.html",
-      "buildCommand": "npm run build",
-      "outputDir": "docs/works/06-museum-main",
-      "status": "pending",
-      "playable": true,
       "section": "museum",
       "era": "1950s—2020s",
       "kind": "可漫游博物馆",
@@ -419,23 +254,19 @@
         "展品索引",
         "内嵌可玩"
       ],
-      "build": {
-        "type": "npm",
-        "appDir": "apps/06-museum-main"
-      },
-      "cover": "assets/covers/06-museum-main.svg",
       "controls": [
         "滚轮 / 拖拽漫游",
         "点击展柜查看详情",
         "键盘 Tab 与方向键浏览"
       ],
+      "cover": "assets/gallery-covers/06-museum-main.webp",
+      "playable": true,
+      "status": "pending",
       "qaState": "pending-reverify",
-      "qaNote": "上游修复中，13 复验后更新",
       "buildState": "built",
-      "buildNotes": [],
-      "bytes": 55395585,
       "entryExists": true,
-      "online": true
+      "online": true,
+      "bytes": 56575023
     },
     {
       "id": "07-museum-art",
@@ -443,11 +274,6 @@
       "subtitle": "ART PACK",
       "description": "博物馆原创美术包的可浏览预览：深墨蓝 + 暖纸白 + 信号橙视觉方案、自托管许可字体、图标、年代海报与封面、展柜以及跨时代硬件简化模型。",
       "entry": "works/07-museum-art/index.html",
-      "buildCommand": "npm run build",
-      "outputDir": "docs/works/07-museum-art",
-      "status": "pending",
-      "statusNote": "",
-      "playable": false,
       "section": "museum",
       "era": "1950s—2020s",
       "kind": "资产包预览",
@@ -458,23 +284,19 @@
         "年代海报",
         "GLB 硬件模型"
       ],
-      "build": {
-        "type": "npm",
-        "appDir": "apps/07-museum-art"
-      },
-      "cover": "assets/covers/07-museum-art.svg",
       "controls": [
         "分类筛选",
         "点击资产查看大图",
         "下载 SVG / GLB"
       ],
+      "cover": "assets/gallery-covers/07-museum-art.webp",
+      "playable": false,
+      "status": "pending",
       "qaState": "pending-reverify",
-      "qaNote": "入口已补齐，13 复验后更新",
       "buildState": "built",
-      "buildNotes": [],
-      "bytes": 54842056,
       "entryExists": true,
-      "online": true
+      "online": true,
+      "bytes": 55631252
     },
     {
       "id": "08-era-origins",
@@ -482,10 +304,6 @@
       "subtitle": "LUMEN ERA · 1950s—1970s",
       "description": "早期电子实验与街机机制展厅：双人 / AI 光点球与轨道引力对决，含开始、暂停、重开、计分、难度与触屏支持。",
       "entry": "works/08-era-origins/index.html",
-      "buildCommand": "npm run build",
-      "outputDir": "docs/works/08-era-origins",
-      "status": "pending",
-      "playable": true,
       "section": "era",
       "era": "1950s—1970s",
       "kind": "年代可玩展厅",
@@ -495,23 +313,19 @@
         "双人对战",
         "触屏"
       ],
-      "build": {
-        "type": "npm",
-        "appDir": "apps/08-era-origins"
-      },
-      "cover": "assets/covers/08-era-origins.svg",
       "controls": [
         "方向键 / WASD 移动",
         "空格发球",
         "触屏拖拽"
       ],
+      "cover": "assets/gallery-covers/08-era-origins.webp",
+      "playable": true,
+      "status": "pending",
       "qaState": "pending-reverify",
-      "qaNote": "上游修复中，13 复验后更新",
       "buildState": "built",
-      "buildNotes": [],
-      "bytes": 119319,
       "entryExists": true,
-      "online": true
+      "online": true,
+      "bytes": 118138
     },
     {
       "id": "09-era-arcade",
@@ -519,10 +333,6 @@
       "subtitle": "NEON CORRIDOR · 1980s",
       "description": "街机时代展厅：晶格迷宫追逐与流星编队射击，像素美术与可关闭的 CRT 效果，键盘与触控双支持。",
       "entry": "works/09-era-arcade/index.html",
-      "buildCommand": "npm run build",
-      "outputDir": "docs/works/09-era-arcade",
-      "status": "pending",
-      "playable": true,
       "section": "era",
       "era": "1980s",
       "kind": "年代可玩展厅",
@@ -532,23 +342,19 @@
         "像素美术",
         "CRT 效果"
       ],
-      "build": {
-        "type": "npm",
-        "appDir": "apps/09-era-arcade"
-      },
-      "cover": "assets/covers/09-era-arcade.svg",
       "controls": [
         "方向键移动",
         "空格射击",
         "触屏虚拟摇杆"
       ],
+      "cover": "assets/gallery-covers/09-era-arcade.webp",
+      "playable": true,
+      "status": "pending",
       "qaState": "pending-reverify",
-      "qaNote": "上游修复中，13 复验后更新",
       "buildState": "built",
-      "buildNotes": [],
-      "bytes": 90877,
       "entryExists": true,
-      "online": true
+      "online": true,
+      "bytes": 93103
     },
     {
       "id": "10-era-console",
@@ -556,10 +362,6 @@
       "subtitle": "CHROMA VOYAGE · 1990s",
       "description": "16 位与早期 3D 时代展厅：平台冒险《棱晶峡谷》与等距探索场景《等距测绘所》，美术与音乐程序化生成。",
       "entry": "works/10-era-console/index.html",
-      "buildCommand": "npm run build",
-      "outputDir": "docs/works/10-era-console",
-      "status": "pending",
-      "playable": true,
       "section": "era",
       "era": "1990s",
       "kind": "年代可玩展厅",
@@ -569,23 +371,19 @@
         "检查点",
         "收集物"
       ],
-      "build": {
-        "type": "npm",
-        "appDir": "apps/10-era-console"
-      },
-      "cover": "assets/covers/10-era-console.svg",
       "controls": [
         "方向键移动",
         "空格跳跃",
         "触屏按钮"
       ],
+      "cover": "assets/gallery-covers/10-era-console.webp",
+      "playable": true,
+      "status": "pending",
       "qaState": "pending-reverify",
-      "qaNote": "上游修复中，13 复验后更新",
       "buildState": "built",
-      "buildNotes": [],
-      "bytes": 127359,
       "entryExists": true,
-      "online": true
+      "online": true,
+      "bytes": 124339
     },
     {
       "id": "11-era-online",
@@ -593,10 +391,6 @@
       "subtitle": "LINK DAWN · 2000s",
       "description": "2000 年代 PC / 掌机 / 网络游戏展厅：可玩的微型策略防守游戏与掌机风探索区域，AI 对手明确标注。",
       "entry": "works/11-era-online/index.html",
-      "buildCommand": "npm run build",
-      "outputDir": "docs/works/11-era-online",
-      "status": "ready",
-      "playable": true,
       "section": "era",
       "era": "2000s",
       "kind": "年代可玩展厅",
@@ -606,23 +400,19 @@
         "升级资源",
         "本地存档"
       ],
-      "build": {
-        "type": "npm",
-        "appDir": "apps/11-era-online"
-      },
-      "cover": "assets/covers/11-era-online.svg",
       "controls": [
         "鼠标点击操作",
         "数字键选择单位",
         "触屏按钮"
       ],
+      "cover": "assets/gallery-covers/11-era-online.webp",
+      "playable": true,
+      "status": "ready",
       "qaState": "verified",
-      "qaNote": "已通过 13-qa-curation 实机验收",
       "buildState": "built",
-      "buildNotes": [],
-      "bytes": 136224,
       "entryExists": true,
-      "online": true
+      "online": true,
+      "bytes": 136564
     },
     {
       "id": "12-era-modern",
@@ -630,10 +420,6 @@
       "subtitle": "PRISM ERA · 2010s—NOW",
       "description": "现代独立 / 移动 / VR 时代展厅：节奏反应、空间解谜与桌面端沉浸观景台，支持静音视觉替代与进度保存。",
       "entry": "works/12-era-modern/index.html",
-      "buildCommand": "npm run build",
-      "outputDir": "docs/works/12-era-modern",
-      "status": "pending",
-      "playable": true,
       "section": "era",
       "era": "2010s—2020s",
       "kind": "年代可玩展厅",
@@ -643,202 +429,98 @@
         "WebAudio",
         "进度保存"
       ],
-      "build": {
-        "type": "npm",
-        "appDir": "apps/12-era-modern"
-      },
-      "cover": "assets/covers/12-era-modern.svg",
       "controls": [
         "方向键 / 触屏击打",
         "E 键交互",
         "R 重置"
       ],
+      "cover": "assets/gallery-covers/12-era-modern.webp",
+      "playable": true,
+      "status": "pending",
       "qaState": "pending-reverify",
-      "qaNote": "13 复验后更新",
       "buildState": "built",
-      "buildNotes": [],
-      "bytes": 785146,
       "entryExists": true,
-      "online": true
+      "online": true,
+      "bytes": 785146
     }
   ]
 }</script>
 <script id="build-report" type="application/json">{
-  "builtAt": "2026-10-21T10:34:11.209Z",
-  "node": "v24.13.0",
   "works": [
     {
       "id": "01-chroma-s1",
-      "title": "千色仪",
-      "type": "npm",
-      "qaState": "verified",
-      "outputDir": "docs/works/01-chroma-s1",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 961809,
-      "durationMs": 3085,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "02-abyss-salvager",
-      "title": "渊甲拾遗者",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/02-abyss-salvager",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 9823216,
-      "durationMs": 1841,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "03-interaction",
-      "title": "织造车间调度台",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/03-interaction",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 319239,
-      "durationMs": 755,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "04-frostgap-voyager",
-      "title": "霜隙远航",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/04-frostgap-voyager",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 678292,
-      "durationMs": 1618,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "06-museum-main",
-      "title": "回响电玩馆",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/06-museum-main",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 55395585,
-      "durationMs": 5113,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "07-museum-art",
-      "title": "美术资产包",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/07-museum-art",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 54842056,
-      "durationMs": 2150,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "08-era-origins",
-      "title": "光点年代",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/08-era-origins",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 119319,
-      "durationMs": 498,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "09-era-arcade",
-      "title": "霓虹街廊",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/09-era-arcade",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 90877,
-      "durationMs": 489,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "10-era-console",
-      "title": "色块远征",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/10-era-console",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 127359,
-      "durationMs": 490,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "11-era-online",
-      "title": "联机曙光",
-      "type": "npm",
-      "qaState": "verified",
-      "outputDir": "docs/works/11-era-online",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 136224,
-      "durationMs": 1334,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     },
     {
       "id": "12-era-modern",
-      "title": "折光纪",
-      "type": "npm",
-      "qaState": "pending-reverify",
-      "outputDir": "docs/works/12-era-modern",
       "buildState": "built",
-      "built": true,
-      "fallback": false,
-      "bytes": 785146,
-      "durationMs": 991,
-      "notes": [],
-      "absolutePathRisks": [],
-      "entryExists": true
+      "entryExists": true,
+      "online": true
     }
   ],
+  "builtAt": "2026-10-21T12:27:23.345Z",
   "totals": {
     "total": 11,
     "built": 11,
     "fallback": 0,
     "unavailable": 0,
-    "bytes": 123279122
+    "bytes": 125357042
   }
 }</script>
 <script src="assets/hall.js" type="module"></script>
