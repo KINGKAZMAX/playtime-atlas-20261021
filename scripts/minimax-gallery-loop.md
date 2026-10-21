@@ -11,7 +11,7 @@
 
 ## 1. 快速开始
 
-`bash
+```bash
 # 默认 3 轮
 scripts/minimax-gallery-loop.sh
 
@@ -26,7 +26,7 @@ scripts/minimax-gallery-loop.sh --review-only
 
 # 另指定仓库根目录
 scripts/minimax-gallery-loop.sh --root /path/to/repo
-`
+```
 
 | 选项 | 含义 |
 | --- | --- |
@@ -39,9 +39,9 @@ scripts/minimax-gallery-loop.sh --root /path/to/repo
 模型 CLI 固定为 `/Users/mekzenx2/.local/bin/codex-minimax`，可用环境变量
 `MINIMAX_CODEX_BIN` 覆盖（仅用于离线 fixture 验证）。实际调用形式：
 
-`bash
+```bash
 codex-minimax exec -C <ROOT> -s danger-full-access -c 'model_reasoning_effort="max"' -o <final.txt>
-`
+```
 
 `--review-only` 时沙箱换成 `read-only`，提示词里也明确禁止任何写操作。
 
@@ -135,13 +135,13 @@ codex-minimax exec -C <ROOT> -s danger-full-access -c 'model_reasoning_effort="m
 
 由 Codex 官方自动化（或其他调度器）调用本脚本，不要在脚本里另建定时器：
 
-`bash
+```bash
 # 每日一次，最多 5 轮
 scripts/minimax-gallery-loop.sh --rounds 5
 
 # 只做一次只读审查
 scripts/minimax-gallery-loop.sh --review-only
-`
+```
 
 配合主控的提交动作时，顺序是：**先提交现有结果 → 再跑 loop → 检查 state.json →
 再由主控提交本轮成果**。loop 自身永远不碰 git 历史。
