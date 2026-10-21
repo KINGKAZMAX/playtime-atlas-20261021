@@ -1,0 +1,160 @@
+{
+  "ranAt": "2026-10-21T20:23:47.100Z",
+  "taskSpaceId": 188,
+  "base": "https://kingkazmax.github.io/playtime-atlas-20261021",
+  "paths": [
+    {
+      "path": "qa/",
+      "status": 200,
+      "bytes": 65145
+    },
+    {
+      "path": "research/catalog.html",
+      "status": 200,
+      "bytes": 227538
+    },
+    {
+      "path": "works/00-research-dossier/",
+      "status": 200,
+      "bytes": 174733
+    },
+    {
+      "path": "works/16-design-system/",
+      "status": 200,
+      "bytes": 30357
+    },
+    {
+      "path": "works/17-architecture-research/",
+      "status": 200,
+      "bytes": 221863
+    },
+    {
+      "path": "works/18-architecture-models/",
+      "status": 200,
+      "bytes": 4433
+    },
+    {
+      "path": "favicon.ico",
+      "status": 200,
+      "bytes": 5430
+    },
+    {
+      "path": "assets/ds/tokens.css",
+      "status": 200,
+      "bytes": 10115
+    },
+    {
+      "path": "assets/ds/fonts/fonts.css",
+      "status": 200,
+      "bytes": 1676
+    },
+    {
+      "path": "works/06-museum-main/art/assets/fonts/fonts.css",
+      "status": 200,
+      "bytes": 451
+    },
+    {
+      "path": "data/works.json",
+      "status": 200,
+      "bytes": 7871
+    },
+    {
+      "path": "assets/gallery-covers/01-chroma-s1.webp",
+      "status": 200,
+      "bytes": 38431
+    }
+  ],
+  "pages": [
+    {
+      "label": "catalog-05",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/research/catalog.html",
+      "health": {
+        "consoleErrors": [],
+        "http4xx5xx": []
+      },
+      "dom": {
+        "title": "博物馆策展目录 · CATALOG | PLAYTIME ATLAS",
+        "textLen": 7843,
+        "items": 556,
+        "links": 418,
+        "inputs": 1,
+        "imgs": 0,
+        "brokenImgs": 0
+      },
+      "search": {
+        "typed": true,
+        "before": 556,
+        "after": 4,
+        "filtered": true
+      },
+      "screenshot": "/Users/mekzenx2/Documents/ChatGPT/mavis-14-v3/online-evidence/ego/catalog-05.png"
+    },
+    {
+      "label": "qa-13",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/qa/",
+      "health": {
+        "consoleErrors": [],
+        "http4xx5xx": []
+      },
+      "dom": {
+        "title": "全作品验收报告 · QA MATRIX | PLAYTIME ATLAS",
+        "textLen": 40596,
+        "items": 186,
+        "links": 1,
+        "inputs": 0,
+        "imgs": 0,
+        "brokenImgs": 0
+      },
+      "search": null,
+      "screenshot": "/Users/mekzenx2/Documents/ChatGPT/mavis-14-v3/online-evidence/ego/qa-13.png"
+    },
+    {
+      "label": "dossier-00",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/works/00-research-dossier/",
+      "health": {
+        "consoleErrors": [],
+        "http4xx5xx": []
+      },
+      "dom": {
+        "title": "MiniMax M3.1 Flash · 全球公开案例索引",
+        "textLen": 46549,
+        "items": 373,
+        "links": 179,
+        "inputs": 3,
+        "imgs": 0,
+        "brokenImgs": 0
+      },
+      "search": {
+        "typed": true,
+        "before": 373,
+        "after": 57,
+        "filtered": true
+      },
+      "screenshot": "/Users/mekzenx2/Documents/ChatGPT/mavis-14-v3/online-evidence/ego/dossier-00.png"
+    },
+    {
+      "label": "hall",
+      "url": "https://kingkazmax.github.io/playtime-atlas-20261021/",
+      "health": {
+        "consoleErrors": [],
+        "http4xx5xx": []
+      },
+      "dom": {
+        "title": "回响电玩馆 · PLAYTIME ATLAS",
+        "textLen": 396,
+        "items": 11,
+        "links": 2,
+        "inputs": 1,
+        "imgs": 11,
+        "brokenImgs": 0
+      },
+      "search": {
+        "typed": true,
+        "before": 11,
+        "after": 0,
+        "filtered": true
+      },
+      "screenshot": "/Users/mekzenx2/Documents/ChatGPT/mavis-14-v3/online-evidence/ego/hall.png"
+    }
+  ]
+}
